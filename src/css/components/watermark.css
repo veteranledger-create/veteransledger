@@ -1,0 +1,16 @@
+/* ===== ARCHIVE WATERMARK (background text) ===== */
+.archive-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: min(15vw, 20rem);
+  color: var(--doc-accent);
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+  font-family: var(--font-typewriter);
+  white-space: nowrap;
+  user-select: none;
+  letter-spacing: min(15px, 2vw);
+}

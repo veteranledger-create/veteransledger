@@ -1,0 +1,15 @@
+/* ===== FOOTER ===== */
+.footer { background: var(--doc-paper); padding: clamp(32px, 6vw, 48px) clamp(20px, 4vw, 32px); margin-top: auto; border-top: 3px solid var(--doc-border); }
+.footer-content { max-width: 1200px; margin: 0 auto; text-align: center; }
+.footer-logo { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.footer-logo .eagle-logo { width: 72px; height: 72px; }
+@media (max-width: 768px) { .footer-logo .eagle-logo { width: 56px; height: 56px; } }
+.footer-logo-text { font-family: var(--font-typewriter); font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700; color: var(--doc-text); letter-spacing: 3px; text-transform: uppercase; }
+.footer-tagline { font-size: 0.75rem; color: var(--doc-text-secondary); margin-bottom: 16px; letter-spacing: 2px; font-family: var(--font-typewriter); text-transform: uppercase; }
+.footer-copyright { font-size: 0.7rem; color: var(--doc-text-muted); margin-bottom: 8px; font-family: var(--font-typewriter); }
+.footer-disclaimer { font-size: 0.7rem; color: var(--doc-text-muted); font-style: italic; max-width: 600px; margin: 16px auto 0; padding-top: 16px; border-top: 1px dashed var(--doc-border); font-family: var(--font-typewriter); }
+.footer-disclaimer-link { color: var(--doc-accent); text-decoration: none; font-family: var(--font-typewriter); font-size: 0.8rem; border-bottom: 1px dashed var(--doc-accent); padding-bottom: 2px; transition: color 0.2s ease; word-break: break-word; }
+.footer-disclaimer-link:hover { color: var(--doc-text); border-bottom-color: var(--doc-text); }
+.telegram-link { display: inline-block; transition: opacity 0.2s ease; }
+.telegram-link:hover { opacity: 0.8; }
+.telegram-icon { width: 48px; height: 48px; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238B7A66"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12 16l-2.06 1.51c-.25.23-.46.45-.16.94z"/></svg>'); background-size: contain; background-repeat: no-repeat; background-position: center; display: inline-block; filter: none !important; border: none; }

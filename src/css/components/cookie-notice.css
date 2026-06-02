@@ -1,0 +1,113 @@
+/* ===== ARCHIVAL COOKIE NOTICE =====
+ *
+ * Minimal, non-blocking bottom banner.
+ * Archival museum aesthetic — not corporate/legal-tech.
+ * Dismissible with localStorage persistence.
+ * Keyboard accessible.
+ * ================================================================ */
+
+.archival-cookie-notice {
+  --cookie-bg: var(--doc-bg, #f8f4ec);
+  --cookie-border: var(--doc-border, #c0b0a0);
+  --cookie-text: var(--doc-text-muted, #8a7a6a);
+  --cookie-accent: var(--doc-accent, #8b7355);
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: var(--cookie-bg);
+  border-top: 1px solid var(--cookie-border);
+  padding: 8px 16px;
+  font-family: var(--font-typewriter, 'Courier New', monospace);
+  font-size: 0.7rem;
+  color: var(--cookie-text);
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 16px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.archival-cookie-notice.hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.archival-cookie-notice-text {
+  flex: 1 1 auto;
+  min-width: 240px;
+  max-width: 640px;
+  text-align: center;
+}
+
+.archival-cookie-notice-text a {
+  color: var(--cookie-accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.archival-cookie-notice-text a:hover {
+  text-decoration-style: solid;
+}
+
+.archival-cookie-notice-btn {
+  flex-shrink: 0;
+  font-family: var(--font-typewriter, 'Courier New', monospace);
+  font-size: 0.65rem;
+  color: var(--cookie-accent);
+  background: transparent;
+  border: 1px solid var(--cookie-border);
+  padding: 4px 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.archival-cookie-notice-btn:hover,
+.archival-cookie-notice-btn:focus-visible {
+  background: var(--cookie-accent);
+  color: #fff;
+  border-color: var(--cookie-accent);
+}
+
+.archival-cookie-notice-btn:focus-visible {
+  outline: 2px solid var(--cookie-accent);
+  outline-offset: 2px;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .archival-cookie-notice {
+    transition: none;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .archival-cookie-notice {
+    padding: 6px 12px;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.65rem;
+  }
+
+  .archival-cookie-notice-text {
+    min-width: auto;
+    max-width: 100%;
+  }
+}
+
+/* ── Print ── */
+@media print {
+  .archival-cookie-notice {
+    display: none;
+  }
+}

@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Axis Battles 1939–1945 – VeteranLedger</title>
+    <!-- Google AdSense Auto Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4660758104899478"
+        crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18147274954">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-18147274954');
+    </script>
+    <!-- Event snippet for Page view conversion page -->
+    <script>
+        gtag('event', 'conversion', { 'send_to': 'AW-18147274954/WTUnCM24rqkcEMrhpc1D' });
+    </script>
+
+    <!-- Tailwind for responsive utilities only -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- ONLY TYPEWRITER FONTS – NO ICONS, NO EMOJIS, NO GOTHIC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="/images/ui/favicon.png">
+    <style>
+        /* ===== AUTHENTIC ARCHIVAL DOCUMENT – PURE TYPEWRITER ===== */
+        :root {
+            --doc-bg: #F2E8DA;
+            --doc-bg-secondary: #E5D9C8;
+            --doc-paper: #FCF5E8;
+            --doc-text: #1E1B16;
+            --doc-text-secondary: #3A342C;
+            --doc-text-muted: #5F5345;
+            --doc-border: #7F6E5A;
+            --doc-accent: #8B7A66;
+            --doc-accent-light: #A08F7A;
+            --doc-shadow: rgba(0, 0, 0, 0.12);
+
+            --hero-title: #1E1B16;
+            --hero-subtitle: #3A342C;
+
+            --font-document: 'Special Elite', 'Courier Prime', 'Courier New', monospace;
+            --font-typewriter: 'Special Elite', 'Courier Prime', 'Courier New', monospace;
+
+            --logo-url: url("/images/ui/logo-web-site.png");
+            --logo-filter: none;
+
+            --axis-color: #4A4A4A;
+        }
+
+        [data-theme="dark"] {
+            --doc-bg: #1E1B16;
+            --doc-bg-secondary: #2C2720;
+            --doc-paper: #2A241E;
+            --doc-text: #E5D9C8;
+            --doc-text-secondary: #CBBFAE;
+            --doc-text-muted: #9F907E;
+            --doc-border: #6A5C4C;
+            --doc-accent: #A08F7A;
+            --doc-accent-light: #B3A28D;
+            --doc-shadow: rgba(0, 0, 0, 0.6);
+
+            --hero-title: #E5D9C8;
+            --hero-subtitle: #CBBFAE;
+
+            --logo-url: url("/images/ui/logo-web-site.png");
+            --logo-filter: invert(100%) brightness(200%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-document);
+            background-color: var(--doc-bg);
+            color: var(--doc-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* AGED PAPER TEXTURES */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(90deg,
+                    transparent 0px,
+                    transparent 80px,
+                    rgba(120, 100, 80, 0.05) 80px,
+                    rgba(120, 100, 80, 0.05) 81px),
+                repeating-linear-gradient(0deg,
+                    transparent 0px,
+                    transparent 60px,
+                    rgba(100, 85, 70, 0.04) 60px,
+                    rgba(100, 85, 70, 0.04) 61px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJmIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc0IiBudW1PY3RhdmVzPSIzIiAvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNmKSIgb3BhY2l0eT0iMC4wMzUiIC8+PC9zdmc+');
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .archive-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: min(15vw, 20rem);
+            color: var(--doc-accent);
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+            font-family: var(--font-typewriter);
+            white-space: nowrap;
+            user-select: none;
+            letter-spacing: min(15px, 2vw);
+        }
+
+        main {
+            flex: 1;
+            padding-top: 100px;
+            position: relative;
+            z-index: 3;
+            width: 100%;
+        }
+
+        .section-container {
+            max-width: 1440px;
+            margin: 0 auto 60px;
+            padding: 5px;
+            position: relative;
+            z-index: 3;
+        }
+
+        @media (max-width: 768px) {
+            .section-container {
+                padding: 0 20px;
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-container {
+                padding: 5px;
+                margin-bottom: 32px;
+            }
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--doc-paper);
+            border-bottom: 2px solid var(--doc-border);
+            z-index: 1000;
+            box-shadow: 0 2px 12px var(--doc-shadow);
+            height: 100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-inner {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-inner {
+                padding: 0 16px;
+                gap: 8px;
+            }
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            height: 72px;
+        }
+
+        .eagle-logo {
+            width: 72px;
+            height: 72px;
+            background-image: var(--logo-url);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+            filter: var(--logo-filter);
+            image-rendering: crisp-edges;
+        }
+
+        .eagle-logo:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .eagle-logo {
+                width: 56px;
+                height: 56px;
+            }
+
+            .logo-link {
+                height: 56px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .eagle-logo {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-item {
+            color: var(--doc-text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: var(--font-typewriter);
+            white-space: nowrap;
+        }
+
+        .nav-item:hover {
+            color: var(--doc-accent);
+        }
+
+        .nav-item.active {
+            color: var(--doc-accent);
+            font-weight: 600;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--doc-accent);
+        }
+
+        .mobile-menu-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: 1px solid var(--doc-border);
+            color: var(--doc-text);
+            cursor: pointer;
+            padding: 8px 16px;
+            height: 44px;
+            font-family: var(--font-typewriter);
+            font-size: 0.85rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            transition: background 0.2s;
+        }
+
+        .mobile-menu-button:hover {
+            background-color: var(--doc-bg-secondary);
+            border-color: var(--doc-accent);
+        }
+
+        @media (max-width: 480px) {
+            .mobile-menu-button span {
+                display: inline;
+            }
+
+            .mobile-menu-button {
+                padding: 8px 12px;
+            }
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 100px;
+            left: 0;
+            right: 0;
+            background-color: var(--doc-paper);
+            border-top: 1px solid var(--doc-border);
+            border-bottom: 1px solid var(--doc-border);
+            box-shadow: 0 10px 20px var(--doc-shadow);
+            z-index: 999;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .mobile-nav-content {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mobile-nav-item {
+            padding: 12px 20px;
+            color: var(--doc-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-family: var(--font-typewriter);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid transparent;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            border-radius: 4px;
+        }
+
+        .mobile-nav-item:hover {
+            border-color: var(--doc-border);
+            background: var(--doc-bg-secondary);
+        }
+
+        .mobile-nav-item.active {
+            background: var(--doc-accent);
+            color: white;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-button {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        .theme-toggle {
+            background: var(--doc-paper);
+            border: 1px solid var(--doc-border);
+            padding: 8px 16px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: var(--doc-text);
+            font-family: var(--font-typewriter);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            background: var(--doc-accent);
+            color: white;
+            border-color: var(--doc-accent);
+        }
+
+        .theme-toggle .theme-text {
+            display: inline-block;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .battles-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 80px 32px 60px;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--doc-border);
+            border-top: 1px solid var(--doc-border);
+            background-color: var(--doc-bg-secondary);
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mix-blend-mode: multiply;
+            filter: sepia(0.1) grayscale(0.1) contrast(1.1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(145deg, rgba(220, 200, 180, 0.4) 0%, rgba(200, 180, 160, 0.4) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        [data-theme="dark"] .hero-overlay {
+            background: linear-gradient(145deg, rgba(30, 25, 20, 0.6) 0%, rgba(40, 35, 30, 0.6) 100%);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .hero-title {
+            font-family: var(--font-typewriter);
+            font-size: clamp(2.2rem, 7vw, 4rem);
+            font-weight: 700;
+            color: var(--hero-title);
+            margin-bottom: 16px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+            border-top: 1px dashed var(--doc-border);
+            border-bottom: 1px dashed var(--doc-border);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(2px);
+            border-radius: 2px;
+        }
+
+        [data-theme="dark"] .hero-title {
+            background: rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: var(--hero-subtitle);
+            max-width: 800px;
+            margin: 0 auto;
+            font-family: var(--font-typewriter);
+            letter-spacing: 2px;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            padding: 15px 20px;
+            line-height: 1.6;
+            border-top: 1px dashed var(--doc-border);
+            border-bottom: 1px dashed var(--doc-border);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(2px);
+            width: fit-content;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        [data-theme="dark"] .hero-subtitle {
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        /* ===== PROJECT NOTE ===== */
+        .project-note {
+            margin: 20px auto 40px;
+            padding: 24px 32px;
+            max-width: 900px;
+            background: var(--doc-paper);
+            border: 2px solid var(--doc-border);
+            font-size: 0.95rem;
+            color: var(--doc-text);
+            font-family: var(--font-typewriter);
+            /* text-align: center; */
+            position: relative;
+            z-index: 3;
+            box-shadow: 0 6px 14px var(--doc-shadow);
+            border-left: 6px solid var(--doc-accent);
+        }
+
+        @media (max-width: 768px) {
+            .project-note {
+                padding: 20px;
+            }
+        }
+
+        /* ===== FILTER CONTROLS ===== */
+        .filter-container {
+            max-width: 1440px;
+            margin: 0 auto 40px;
+            padding: 0 32px;
+        }
+
+        @media (max-width: 768px) {
+            .filter-container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-container {
+                padding: 0 16px;
+            }
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--doc-paper);
+            border: 1px solid var(--doc-border);
+            box-shadow: 0 4px 8px var(--doc-shadow);
+            margin-bottom: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .filter-bar {
+                margin-bottom: 0;
+            }
+        }
+
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            flex: 1;
+            min-width: min(100%, 600px);
+        }
+
+        .filter-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 18px;
+            min-height: 44px;
+            font-size: 0.85rem;
+            border: 1px solid var(--doc-border);
+            cursor: pointer;
+            background: transparent;
+            color: var(--doc-text);
+            font-family: var(--font-typewriter);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            min-width: 60px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: filterFadeIn 0.5s ease forwards;
+        }
+
+        /* Staggered animation delays */
+        .filter-btn:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .filter-btn:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .filter-btn:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .filter-btn:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .filter-btn:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .filter-btn:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+
+        .filter-btn:nth-child(7) {
+            animation-delay: 0.35s;
+        }
+
+        .filter-btn:nth-child(8) {
+            animation-delay: 0.4s;
+        }
+
+        .filter-btn:nth-child(9) {
+            animation-delay: 0.45s;
+        }
+
+        .filter-btn:nth-child(10) {
+            animation-delay: 0.5s;
+        }
+
+        .filter-btn:hover {
+            background: var(--doc-accent);
+            color: white;
+            border-color: var(--doc-accent);
+        }
+
+        .filter-btn.active {
+            background: var(--doc-accent);
+            color: white;
+            border-color: var(--doc-accent);
+        }
+
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            background: var(--doc-bg);
+            border: 1px solid var(--doc-border);
+            padding: 4px 4px 4px 16px;
+            width: 100%;
+            max-width: 100%;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: filterFadeIn 0.5s ease 0.5s forwards;
+        }
+
+        @media (min-width: 768px) {
+            .search-wrapper {
+                width: 280px;
+                flex-shrink: 0;
+            }
+        }
+
+        #battleSearch {
+            border: none;
+            padding: 10px 8px;
+            font-size: 0.95rem;
+            width: 100%;
+            background: transparent;
+            outline: none;
+            color: var(--doc-text);
+            font-family: var(--font-typewriter);
+        }
+
+        #battleSearch::placeholder {
+            color: var(--doc-text-muted);
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        #battleSearch:focus {
+            outline: 1px solid var(--doc-accent);
+        }
+
+        @keyframes filterFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+                padding: 16px;
+            }
+
+            .filter-group {
+                justify-content: center;
+            }
+
+            .search-wrapper {
+                max-width: 100%;
+                margin-top: 4px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-btn {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+                min-width: 45px;
+            }
+
+            .filter-group {
+                gap: 6px;
+            }
+        }
+
+        [data-theme="dark"] .filter-bar {
+            background: var(--doc-paper);
+            border-color: var(--doc-border);
+        }
+
+        [data-theme="dark"] .filter-btn {
+            color: var(--doc-text);
+            border-color: var(--doc-border);
+        }
+
+        [data-theme="dark"] .filter-btn:hover {
+            background: var(--doc-accent);
+            color: white;
+            border-color: var(--doc-accent);
+        }
+
+        [data-theme="dark"] .search-wrapper {
+            background: var(--doc-bg);
+            border-color: var(--doc-border);
+        }
+
+        [data-theme="dark"] #battleSearch {
+            color: var(--doc-text);
+        }
+
+        [data-theme="dark"] #battleSearch::placeholder {
+            color: var(--doc-text-muted);
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            margin: 48px 0 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--doc-border);
+        }
+
+        .section-header:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-title {
+            font-family: var(--font-typewriter);
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            font-weight: 700;
+            color: var(--doc-text);
+            letter-spacing: 1px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* ===== BATTLES GRID – VERTICAL CARDS ===== */
+        .battles-container {
+            max-width: 1440px;
+            margin: 0 auto 60px;
+            padding: 0 16px;
+        }
+
+        .battles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        @media (min-width: 640px) {
+            .battles-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .battles-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 36px;
+            }
+        }
+
+        .battle-card {
+            background: var(--doc-paper);
+            border: 1px solid var(--doc-border);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px var(--doc-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .battle-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px var(--doc-shadow);
+        }
+
+        .battle-card-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--doc-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--doc-bg-secondary);
+        }
+
+        .battle-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.2) grayscale(0.1) contrast(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .battle-card:hover .battle-card-image img {
+            transform: scale(1.05);
+        }
+
+        .battle-card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .battle-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .battle-card-date {
+            font-size: 0.7rem;
+            color: var(--doc-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-typewriter);
+            background: var(--doc-bg-secondary);
+            padding: 4px 10px;
+            border: 1px solid var(--doc-border);
+        }
+
+        .faction-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            font-family: var(--font-typewriter);
+            background: var(--axis-color);
+        }
+
+        .battle-card-title {
+            font-family: var(--font-typewriter);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--doc-text);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .battle-card-description {
+            font-size: 0.9rem;
+            color: var(--doc-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            flex: 1;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            line-clamp: 4;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--doc-text-muted);
+            font-size: 1.1rem;
+            background: var(--doc-bg-secondary);
+            border: 1px solid var(--doc-border);
+            grid-column: 1 / -1;
+            font-family: var(--font-typewriter);
+            display: none;
+        }
+
+        /* ===== FULL-SCREEN SECONDARY PAGE ===== */
+        .battle-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 20, 20, 0.98);
+            z-index: 2000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .battle-panel.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .panel-header {
+            background: var(--doc-paper);
+            border-bottom: 2px solid var(--doc-border);
+            padding: 16px 32px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .panel-header {
+                padding: 12px 20px;
+            }
+        }
+
+        .panel-doc-number {
+            font-family: var(--font-typewriter);
+            font-size: 0.85rem;
+            color: var(--doc-accent);
+            background: var(--doc-bg-secondary);
+            padding: 4px 12px;
+            border: 1px solid var(--doc-border);
+            display: inline-block;
+        }
+
+        .panel-content {
+            max-width: 1600px;
+            margin: 40px auto;
+            padding: 0 32px 60px;
+        }
+
+        @media (max-width: 1200px) {
+            .panel-content {
+                padding: 0 0px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .panel-content {
+                padding: 0 0px 40px;
+            }
+        }
+
+        .panel-two-column {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            align-items: flex-start;
+            background: var(--doc-paper);
+            border: 2px solid var(--doc-border);
+            padding: 40px;
+        }
+
+        @media (max-width: 1000px) {
+            .panel-two-column {
+                flex-direction: column;
+                gap: 32px;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .panel-two-column {
+                padding: 24px;
+            }
+        }
+
+        .panel-image-column {
+            flex: 0 0 45%;
+            max-width: 45%;
+            border: 1px solid var(--doc-border);
+            background: var(--doc-bg-secondary);
+            overflow: hidden;
+        }
+
+        @media (max-width: 1000px) {
+            .panel-image-column {
+                flex: 0 0 auto;
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        .panel-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            filter: sepia(0.2) grayscale(0.1) contrast(1.1);
+        }
+
+        .image-credit {
+            font-family: var(--font-typewriter);
+            font-size: 0.7rem;
+            color: var(--doc-text-muted);
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: var(--doc-bg-secondary);
+            border: 1px solid var(--doc-border);
+            text-align: center;
+        }
+
+        .panel-text-column {
+            flex: 1;
+            min-width: 0;
+            font-family: var(--font-typewriter);
+        }
+
+        .panel-text-column h2 {
+            font-family: var(--font-typewriter);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--doc-text);
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .panel-text-column h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .panel-subtitle {
+            font-size: 1rem;
+            color: var(--doc-accent);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px dashed var(--doc-border);
+        }
+
+        .panel-metadata {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+            padding: 20px;
+            background: var(--doc-bg-secondary);
+            border: 1px solid var(--doc-border);
+        }
+
+        .metadata-item {
+            font-family: var(--font-typewriter);
+        }
+
+        .metadata-label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--doc-accent);
+            margin-bottom: 4px;
+        }
+
+        .metadata-value {
+            font-size: 0.95rem;
+            color: var(--doc-text);
+        }
+
+        .panel-text-column h3 {
+            font-family: var(--font-typewriter);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--doc-accent);
+            margin: 32px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--doc-accent);
+        }
+
+        .panel-text-column p {
+            margin-bottom: 20px;
+            color: var(--doc-text-secondary);
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+
+        .panel-text-column blockquote {
+            border-left: 4px solid var(--doc-accent);
+            padding: 16px 24px;
+            background: var(--doc-bg-secondary);
+            font-style: italic;
+            margin: 28px 0;
+            color: var(--doc-text);
+            font-size: 1rem;
+        }
+
+        /* ===== RETURN BUTTON ===== */
+        .return-container {
+            margin-top: 48px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .return-btn {
+            background: transparent;
+            border: 2px solid var(--doc-accent);
+            color: var(--doc-accent);
+            padding: 14px 48px;
+            font-family: var(--font-typewriter);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .return-btn:hover {
+            background: var(--doc-accent);
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .return-btn {
+                padding: 12px 32px;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .back-to-top a {
+            background: var(--doc-paper);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: var(--font-typewriter);
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 32px;
+            border: 1px solid var(--doc-accent);
+            transition: all 0.2s ease;
+            color: var(--doc-accent);
+            cursor: pointer;
+        }
+
+        .back-to-top a:hover {
+            background: var(--doc-accent);
+            color: white;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--doc-paper);
+            padding: 48px 32px;
+            margin-top: auto;
+            border-top: 3px solid var(--doc-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo .eagle-logo {
+            width: 72px;
+            height: 72px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-logo .eagle-logo {
+                width: 56px;
+                height: 56px;
+            }
+        }
+
+        .footer-logo-text {
+            font-family: var(--font-typewriter);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--doc-text);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .footer-tagline {
+            font-size: 0.75rem;
+            color: var(--doc-text-secondary);
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+            font-family: var(--font-typewriter);
+            text-transform: uppercase;
+        }
+
+        .footer-copyright {
+            font-size: 0.7rem;
+            color: var(--doc-text-muted);
+            margin-bottom: 8px;
+            font-family: var(--font-typewriter);
+        }
+
+        .telegram-icon {
+            width: 48px;
+            height: 48px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238B7A66"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12 16l-2.06 1.51c-.25.23-.46.45-.16.94z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            filter: none !important;
+            border: none;
+            margin: 16px auto;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.7rem;
+            color: var(--doc-text-muted);
+            font-style: italic;
+            max-width: 600px;
+            margin: 16px auto 0;
+            padding-top: 16px;
+            border-top: 1px dashed var(--doc-border);
+            font-family: var(--font-typewriter);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-transition {
+            opacity: 0;
+            animation: pageFadeIn 0.5s ease forwards;
+        }
+
+        @keyframes pageFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="archive-watermark">ARCHIV · ACHSENMÄCHTE · 1939-1945</div>
+
+    <header>
+        <nav class="nav-container">
+            <div class="nav-inner">
+                <div class="nav-logo">
+                    <a href="index.html" class="logo-link">
+                        <div class="eagle-logo"></div>
+                    </a>
+                </div>
+
+                <div class="desktop-nav">
+                    <a href="index.html" class="nav-item">HOME</a>
+                    <a href="timeline.html" class="nav-item">TIMELINE</a>
+                    <a href="articles.html" class="nav-item">ARTICLES</a>
+                    <a href="veterans.html" class="nav-item">VETERANS</a>
+                    <a href="battles.html" class="nav-item active">BATTLES</a>
+                    <a href="letters.html" class="nav-item">LETTERS</a>
+                    <a href="technology.html" class="nav-item">TECHNOLOGY</a>
+                    <a href="political.html" class="nav-item">POLITICAL</a>
+                </div>
+
+                <button id="themeToggle" class="theme-toggle">
+                    <span id="themeText" class="theme-text">LIGHT</span>
+                </button>
+
+                <button id="mobileMenuToggle" class="mobile-menu-button">
+                    <span>MENU</span>
+                </button>
+            </div>
+
+            <div id="mobileMenu" class="mobile-menu hidden">
+                <div class="mobile-nav-content">
+                    <a href="index.html" class="mobile-nav-item">HOME</a>
+                    <a href="timeline.html" class="mobile-nav-item">TIMELINE</a>
+                    <a href="articles.html" class="mobile-nav-item">ARTICLES</a>
+                    <a href="veterans.html" class="mobile-nav-item">VETERANS</a>
+                    <a href="battles.html" class="mobile-nav-item active">BATTLES</a>
+                    <a href="letters.html" class="mobile-nav-item">LETTERS</a>
+                    <a href="technology.html" class="mobile-nav-item">TECHNOLOGY</a>
+                    <a href="political.html" class="mobile-nav-item">POLITICAL</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-transition">
+        <!-- HERO SECTION -->
+        <section class="battles-hero">
+            <div class="hero-image-container">
+                <img src="/images/background-hero/battles-hero-background.png" alt="Historical archive"
+                    class="hero-image" loading="eager">
+            </div>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">AXIS BATTLES 1939-1945</h1>
+                <p class="hero-subtitle">GERMAN AND AXIS OPERATIONS · STRATEGIC ANALYSIS · MILITARY HISTORY</p>
+            </div>
+        </section>
+
+        <!-- PROJECT NOTE -->
+        <div class="section-container">
+            <div class="project-note fade-in">
+                <strong>AXIS MILITARY OPERATIONS · NEUTRAL ANALYSIS</strong><br><br>
+                This archive presents 36 major battles of the European Theater from the Axis perspective – 6 battles per
+                year from 1939 to 1945. Each entry describes German and Axis operations, strategies, and outcomes with
+                neutral, factual language. The focus is on military analysis, documenting the organization, movements,
+                and decisions of Axis forces in both victories and defeats, without demonization or disparagement.
+            </div>
+        </div>
+
+        <!-- YEAR FILTER -->
+        <div class="filter-container fade-in">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="1939">1939</button>
+                    <button class="filter-btn" data-filter="1940">1940</button>
+                    <button class="filter-btn" data-filter="1941">1941</button>
+                    <button class="filter-btn" data-filter="1942">1942</button>
+                    <button class="filter-btn" data-filter="1943">1943</button>
+                    <button class="filter-btn" data-filter="1944">1944</button>
+                    <button class="filter-btn" data-filter="1945">1945</button>
+                </div>
+                <div class="search-wrapper">
+                    <input type="text" id="battleSearch" placeholder="Search battles...">
+                </div>
+            </div>
+        </div>
+
+        <!-- BATTLES BY YEAR – Dynamically loaded -->
+        <div class="battles-container" id="battlesByYear"></div>
+        <div id="noResults" class="no-results">No battles match your search criteria.</div>
+
+        <!-- BACK TO TOP -->
+        <div class="back-to-top">
+            <a href="#" id="backToTopBtn">RETURN TO TOP</a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="eagle-logo"></div>
+                <span class="footer-logo-text">VETERANLEDGER</span>
+            </div>
+            <p class="footer-tagline">PERSONAL HISTORICAL ARCHIVE · 1933-1945</p>
+            <p class="footer-copyright">© 2026 VETERANLEDGER. PERSONAL RESEARCH ONLY.</p>
+
+            <a href="https://t.me/VETERANLEDGER" target="_blank" rel="noopener noreferrer" class="telegram-link"
+                aria-label="Telegram">
+                <div class="telegram-icon"></div>
+            </a>
+
+            <div class="footer-legal-nav">
+                <a href="/privacy-policy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms of Use</a>
+                <a href="/archive-disclaimer.html">Archive Disclaimer</a>
+                <a href="/transparency-policy.html">Transparency</a>
+                <a href="/credits.html">Image Attribution</a>
+                <a href="/credits.html">Sources &amp; Licensing</a>
+                <a href="/removal-requests.html">Removal Requests</a>
+            </div>
+
+            <p class="footer-disclaimer">DEDICATED TO HISTORICAL ACCURACY AND RESPECTFUL REMEMBRANCE.</p>
+        </div>
+    </footer>
+
+    <!-- FULL-SCREEN PANEL FOR BATTLES -->
+    <div id="battlePanel" class="battle-panel">
+        <div class="panel-header">
+            <span class="panel-doc-number" id="panelDocNumber">AXIS-000-000</span>
+        </div>
+        <div class="panel-content" id="panelContent">
+            <!-- Content dynamically loaded -->
+        </div>
+    </div>
+
+    <!-- External battles data (all battle records) -->
+    <script>
+        let battlesData = [];
+
+        async function loadBattlesData() {
+            const response = await fetch('data/battles.json');
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: data/battles.json`);
+            }
+            const data = await response.json();
+            if (!Array.isArray(data)) {
+                throw new Error('Invalid JSON: expected battles array');
+            }
+            battlesData = data;
+        }
+
+        // Wait for the JSON data to load and then initialize the page
+        function initBattlesPage() {
+            if (!Array.isArray(battlesData) || battlesData.length === 0) {
+                console.error('Battles data not loaded. Please check data/battles.json exists.');
+                return;
+            }
+
+            initMobileMenu();
+            initDarkMode();
+            setActiveNav();
+            initBackToTop();
+            loadBattles();
+            initFiltersAndSearch();
+            initPanel();
+            restoreFilterFromSession();
+        }
+
+        function initMobileMenu() {
+            const toggle = document.getElementById('mobileMenuToggle');
+            const menu = document.getElementById('mobileMenu');
+            if (!toggle || !menu) return;
+
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+                toggle.innerHTML = menu.classList.contains('hidden') ? '<span>MENU</span>' : '<span>CLOSE</span>';
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                    menu.classList.add('hidden');
+                    toggle.innerHTML = '<span>MENU</span>';
+                }
+            });
+
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function () {
+                    menu.classList.add('hidden');
+                    toggle.innerHTML = '<span>MENU</span>';
+                });
+            });
+        }
+
+        function setActiveNav() {
+            const path = window.location.pathname;
+            let currentPage = path.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-item, .mobile-nav-item').forEach(item => {
+                if (!item) return;
+                const href = item.getAttribute('href');
+                if (href === currentPage) item.classList.add('active');
+                else item.classList.remove('active');
+            });
+        }
+
+        function initDarkMode() {
+            const toggle = document.getElementById('themeToggle');
+            const text = document.getElementById('themeText');
+            const saved = localStorage.getItem('theme');
+
+            if (saved === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                if (text) text.textContent = 'DARK';
+            }
+
+            if (toggle) {
+                toggle.addEventListener('click', function () {
+                    const current = document.documentElement.getAttribute('data-theme');
+                    if (current === 'dark') {
+                        document.documentElement.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'light');
+                        if (text) text.textContent = 'LIGHT';
+                    } else {
+                        document.documentElement.setAttribute('data-theme', 'dark');
+                        localStorage.setItem('theme', 'dark');
+                        if (text) text.textContent = 'DARK';
+                    }
+                });
+            }
+        }
+
+        function initBackToTop() {
+            const btn = document.getElementById('backToTopBtn');
+            if (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        }
+
+        // Use global battlesData from external file
+        function loadBattles() {
+            const container = document.getElementById('battlesByYear');
+            if (!container) return;
+
+            // Group battles by year
+            const battlesByYear = {};
+            battlesData.forEach(battle => {
+                if (!battlesByYear[battle.year]) {
+                    battlesByYear[battle.year] = [];
+                }
+                battlesByYear[battle.year].push(battle);
+            });
+
+            // Sort years chronologically
+            const sortedYears = Object.keys(battlesByYear).sort();
+
+            let html = '';
+            sortedYears.forEach(year => {
+                const yearBattles = battlesByYear[year];
+
+                html += `<div class="section-header"><h2 class="section-title">${year}</h2></div>`;
+                html += `<div class="battles-grid" data-year="${year}">`;
+
+                yearBattles.forEach(battle => {
+                    const searchText = `${battle.title} ${battle.description}`.toLowerCase();
+                    html += `
+                        <div class="battle-card" data-id="${battle.id}" data-search="${searchText}">
+                            <div class="battle-card-image">
+                                <img src="${battle.image}" alt="${battle.title}" loading="lazy"
+                                     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\' viewBox=\'0 0 400 300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%235F5345\'/%3E%3Ctext x=\'50\' y=\'150\' font-family=\'Special Elite\' font-size=\'20\' fill=\'%23F2E8DA\'%3E${battle.title}%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="battle-card-content">
+                                <div class="battle-card-header">
+                                    <span class="battle-card-date">${battle.year}</span>
+                                    <span class="faction-badge">AXIS</span>
+                                </div>
+                                <h3 class="battle-card-title">${battle.title}</h3>
+                                <p class="battle-card-description">${battle.description.substring(0, 150)}...</p>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+            });
+
+            container.innerHTML = html;
+            attachBattleClicks();
+        }
+
+        function attachBattleClicks() {
+            document.querySelectorAll('.battle-card').forEach(card => {
+                card.addEventListener('click', function () {
+                    const id = parseInt(this.dataset.id);
+                    const battle = battlesData.find(b => b.id === id);
+                    if (battle) {
+                        showBattlePanel(battle);
+                    }
+                });
+            });
+        }
+
+        function showBattlePanel(battle) {
+            const panel = document.getElementById('battlePanel');
+            const panelContent = document.getElementById('panelContent');
+            const docNumber = document.getElementById('panelDocNumber');
+
+            if (!panel || !panelContent || !docNumber) return;
+
+            docNumber.textContent = `AXIS-${battle.year}-${battle.id.toString().padStart(3, '0')}`;
+
+            panelContent.innerHTML = `
+                <div class="panel-two-column">
+                    <div class="panel-image-column">
+                        <img src="${battle.image}" alt="${battle.title}" class="panel-image"
+                             onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'400\' viewBox=\'0 0 600 400\'%3E%3Crect width=\'600\' height=\'400\' fill=\'%235F5345\'/%3E%3Ctext x=\'100\' y=\'200\' font-family=\'Special Elite\' font-size=\'30\' fill=\'%23F2E8DA\'%3E${battle.title}%3C/text%3E%3C/svg%3E'">
+                        <div class="image-credit">${battle.credit || "Source: Wikimedia Commons – Public Domain"}</div>
+                    </div>
+                    
+                    <div class="panel-text-column">
+                        <h2>${battle.title}</h2>
+                        <div class="panel-subtitle">${battle.year} · AXIS OPERATION</div>
+                        
+                        <div class="panel-metadata">
+                            <div class="metadata-item">
+                                <span class="metadata-label">YEAR</span>
+                                <span class="metadata-value">${battle.year}</span>
+                            </div>
+                            <div class="metadata-item">
+                                <span class="metadata-label">FACTION</span>
+                                <span class="metadata-value">AXIS</span>
+                            </div>
+                            <div class="metadata-item">
+                                <span class="metadata-label">THEATER</span>
+                                <span class="metadata-value">EUROPEAN</span>
+                            </div>
+                            <div class="metadata-item">
+                                <span class="metadata-label">REFERENCE</span>
+                                <span class="metadata-value">AXIS-${battle.year}-${battle.id.toString().padStart(3, '0')}</span>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Overview:</strong> ${battle.description}</p>
+                        
+                        ${battle.longContent || '<p>Detailed historical analysis available in the complete archive.</p>'}
+                        
+                        <div class="image-credit" style="margin-top: 30px;">The visual materials for this article were obtained from official archives and Wikimedia Commons. All images are used under appropriate licenses (Public Domain, CC BY-SA) for educational and archival purposes.</div>
+                    </div>
+                </div>
+                
+                <div class="return-container">
+                    <button class="return-btn" id="panelReturnBtn">RETURN TO ARCHIVE</button>
+                </div>
+            `;
+
+            panel.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            const returnBtn = document.getElementById('panelReturnBtn');
+            if (returnBtn) {
+                returnBtn.addEventListener('click', closePanel);
+            }
+        }
+
+        function closePanel() {
+            const panel = document.getElementById('battlePanel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function initPanel() {
+            const panel = document.getElementById('battlePanel');
+            if (!panel) return;
+
+            panel.addEventListener('click', function (e) {
+                if (e.target === panel) {
+                    closePanel();
+                }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && panel.classList.contains('active')) {
+                    closePanel();
+                }
+            });
+        }
+
+        // Combined filter and search functionality
+        function initFiltersAndSearch() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('battleSearch');
+            const noResults = document.getElementById('noResults');
+
+            if (!filterBtns.length) return;
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+                    sessionStorage.setItem('battleFilter', filter);
+
+                    applyFilters(filter, searchInput ? searchInput.value.toLowerCase() : '');
+                });
+            });
+
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+                    applyFilters(activeFilter, this.value.toLowerCase());
+                });
+            }
+        }
+
+        function applyFilters(yearFilter, searchTerm = '') {
+            const sections = document.querySelectorAll('.section-header');
+            const grids = document.querySelectorAll('.battles-grid');
+            const cards = document.querySelectorAll('.battle-card');
+            const noResults = document.getElementById('noResults');
+
+            let visibleCount = 0;
+
+            // First apply year filter
+            if (yearFilter === 'all') {
+                sections.forEach(s => s.style.display = '');
+                grids.forEach(g => g.style.display = '');
+            } else {
+                sections.forEach(s => s.style.display = 'none');
+                grids.forEach(g => g.style.display = 'none');
+
+                sections.forEach(header => {
+                    if (header.querySelector('.section-title')?.textContent === yearFilter) {
+                        header.style.display = '';
+                    }
+                });
+                grids.forEach(grid => {
+                    if (grid.dataset.year === yearFilter) {
+                        grid.style.display = 'grid';
+                    }
+                });
+            }
+
+            // Then apply search filter
+            if (searchTerm !== '') {
+                cards.forEach(card => {
+                    const searchText = card.dataset.search || '';
+                    if (searchText.includes(searchTerm)) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Hide empty year sections when searching
+                grids.forEach(grid => {
+                    const hasVisible = Array.from(grid.querySelectorAll('.battle-card')).some(c => c.style.display !== 'none');
+                    const header = grid.previousElementSibling;
+                    if (header?.classList.contains('section-header')) {
+                        header.style.display = hasVisible ? '' : 'none';
+                    }
+                    grid.style.display = hasVisible ? 'grid' : 'none';
+                });
+            } else {
+                // If no search term, ensure all cards in visible years are shown
+                cards.forEach(card => card.style.display = '');
+                visibleCount = cards.length;
+            }
+
+            // Show/hide no results message
+            if (noResults) {
+                if (searchTerm !== '') {
+                    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            }
+        }
+
+        function restoreFilterFromSession() {
+            const savedFilter = sessionStorage.getItem('battleFilter');
+            if (savedFilter && savedFilter !== 'all') {
+                const btn = document.querySelector(`.filter-btn[data-filter="${savedFilter}"]`);
+                if (btn) {
+                    btn.click();
+                }
+            }
+        }
+
+        // Start initialization after DOM is ready
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                await loadBattlesData();
+                initBattlesPage();
+            } catch (error) {
+                console.error('Failed to load battles data:', error);
+                const container = document.getElementById('battlesByYear');
+                if (container) {
+                    container.innerHTML = '<div class="no-results" style="display:block;">Error loading battles data. Please refresh the page.</div>';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

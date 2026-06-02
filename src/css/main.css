@@ -1,0 +1,35 @@
+/* ===========================================================
+ * VETERANLEDGER – MAIN CSS ENTRY POINT
+ * Axis History Archive 1933-1945
+ *
+ * This file imports all modular CSS files in proper cascade order.
+ * Each module handles a specific concern.
+ *
+ * IMPORTANT: This is loaded via Vite and used in the modular build.
+ * Original HTML pages retain their inline styles for backward compat.
+ * =========================================================== */
+
+/* ─── 1. Base Layer ─── */
+@import "./base/reset.css";
+@import "./base/variables.css";
+
+/* ─── 2. Utility Layer ─── */
+@import "./utilities/animations.css";
+@import "./utilities/typography.css";
+@import "./utilities/responsive.css";
+
+/* ─── 3. Layout Layer ─── */
+@import "./layout/navbar.css";
+@import "./layout/hero.css";
+@import "./layout/section-container.css";
+@import "./layout/footer.css";
+
+/* ─── 4. Component Layer ─── */
+@import "./components/buttons.css";
+@import "./components/cards.css";
+@import "./components/modal.css";
+@import "./components/attribution.css";
+@import "./components/watermark.css";
+
+/* ─── 5. Page-Specific Layer ─── */
+@import "./pages/home.css";

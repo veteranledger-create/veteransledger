@@ -1,0 +1,26 @@
+{
+  "name": "veteransledger",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VeteransLedger – Axis History Archive 1933-1945",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/copy-static-files.mjs",
+    "preview": "vite preview",
+    "validate:json": "node scripts/validate-json.mjs",
+    "validate:images": "node scripts/validate-images.mjs",
+    "validate:all": "npm run validate:json && npm run validate:images"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  },
+  "keywords": [
+    "historical-archive",
+    "world-war-ii",
+    "veterans",
+    "military-history",
+    "axis-history"
+  ],
+  "license": "Educational Use Only"
+}

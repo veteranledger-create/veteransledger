@@ -1,0 +1,32 @@
+{
+  "timeline": {
+    "title": "Complete Timeline 1933-1945",
+    "content": "<p>The comprehensive timeline documents twelve years of German history with scholarly precision. Each year includes political developments, military campaigns, social changes, and primary source documentation from my personal research.</p><p><strong>Key periods covered:</strong></p><ul><li>1933-1934: Rise to Power and Consolidation</li><li>1935-1938: Rearmament and Territorial Expansion</li><li>1939-1941: Blitzkrieg and Early Victories</li><li>1942-1943: Turning Points at Stalingrad and Kursk</li><li>1944-1945: Decline and Defeat</li></ul><p><strong>Source:</strong> Bundesarchiv (BA), National Archives (NARA), Imperial War Museum (IWM)</p><p>This timeline represents years of careful research and compilation from primary sources. Each entry is cross-referenced with multiple archival records to ensure accuracy. The political developments section covers the consolidation of power, the implementation of Nazi policies, and the gradual drift toward war. Military campaigns are documented with strategic context, operational details, and outcomes. Social changes are examined through demographic shifts, economic transformation, and cultural evolution under the regime.</p>",
+    "link": "timeline.html"
+  },
+  "battles": {
+    "title": "Major Battles & Campaigns",
+    "content": "<p>Detailed analysis of significant military engagements involving German and Axis forces. Each battle page includes strategic context, order of battle, maps, and historical assessment.</p><p><strong>Featured battles:</strong> Stalingrad, Kursk, Normandy, Battle of the Bulge, El Alamein, Operation Barbarossa, and more.</p><p><strong>Source:</strong> OKW War Diaries, Army Group Records, Personal Accounts</p><p>The analysis examines each battle from multiple perspectives: strategic objectives, troop deployments, terrain considerations, weather conditions, and the decision-making processes of commanders. Primary source documents including war diaries, after-action reports, and personal correspondence have been consulted. The human cost of each engagement is documented, with attention to casualties on all sides and the impact on civilian populations.</p>",
+    "link": "battles.html"
+  },
+  "veterans": {
+    "title": "Veterans Archive",
+    "content": "<p>Biographical profiles of German military personnel, from field marshals to frontline soldiers. Each profile includes service record, commands, decorations, and historical assessment.</p><p><strong>Featured profiles:</strong> Erwin Rommel, Heinz Guderian, Erich von Manstein, Friedrich Paulus, Karl Dönitz, and many others.</p><p><strong>Source:</strong> Bundesarchiv, Personal Papers, Military Personnel Files</p><p>These biographies are compiled from official military records, personal memoirs, and family archives. Each profile is presented with respect for the individual while maintaining scholarly objectivity. The service records include ranks held, commands, decorations, and notable actions. The historical assessment places each figure within their proper context, acknowledging both their military achievements and their moral complexities.</p>",
+    "link": "veterans.html"
+  },
+  "political": {
+    "title": "Political History",
+    "content": "<p>Historical documentation of the political landscape from 1920 to 1945. This archive presents the organizational structures, leadership hierarchy, and political developments of the era.</p><p><strong>Key sections include:</strong></p><ul><li>Political Organization and Structure</li><li>Leadership and Key Figures</li><li>Political Programs and Policies</li><li>Electoral Results 1924-1938</li><li>Affiliated Organizations</li></ul><p><strong>Source:</strong> Bundesarchiv, Party Records, Contemporary Publications</p><p>The political history section examines the rise of National Socialism, its organizational effectiveness, and its transformation of German society. Primary source documents include party programs, speeches, internal memoranda, and contemporary press coverage. The analysis focuses on institutional structures, decision-making processes, and the mechanisms of control and consent that enabled the regime to function.</p>",
+    "link": "political.html"
+  },
+  "letters": {
+    "title": "Letters of Axis Soldiers",
+    "content": "<p>A curated collection of personal correspondence from German and Axis military and political figures. Each letter is presented with historical context, source verification, and analysis.</p><p><strong>Categories:</strong> Military strategy, battlefield commentary, leadership reflections, personal experiences, final messages.</p><p><strong>Source:</strong> Personal Memoirs, OKW Records, Family Archives, Nuremberg Testimony</p><p>These letters offer intimate glimpses into the thoughts, fears, and hopes of those who lived through the war. They range from official communications between commanders to personal letters home from frontline soldiers. Each document is presented with its full historical context, including information about the writer, the recipient, and the circumstances of its composition. The authenticity of each letter has been verified against archival records.</p>",
+    "link": "letters.html"
+  },
+  "articles": {
+    "title": "Featured Articles",
+    "content": "<p>In-depth analysis of key historical events, policies, and developments. Articles are written from my personal research perspective, with full citations and references.</p><p><strong>Topics include:</strong> The rise of National Socialism, German rearmament, Anschluss, Operation Barbarossa, the home front, and more.</p><p><strong>Source:</strong> Bundesarchiv, NARA, IWM, RGVA</p><p>These featured articles represent original historical analysis based on extensive primary source research. Each article is fully referenced, allowing readers to verify claims and pursue further research. Topics are examined from multiple perspectives, with attention to historiographical debates and differing interpretations. The writing is accessible to general readers while maintaining scholarly standards of evidence and argumentation.</p>",
+    "link": "articles.html"
+  }
+}

@@ -1,0 +1,28 @@
+# robots.txt for veteransledger.com
+# Created: March 10, 2026
+# Allows all search engines to crawl the entire site
+
+# Allow all bots to access everything
+User-agent: *
+Disallow:
+
+# Specify crawl delay to be respectful to server resources (optional)
+# Uncomment if you experience server load issues
+# Crawl-delay: 1
+
+# Sitemap location for search engines
+Sitemap: https://veteransledger.com/sitemap.xml
+
+# Optional: Specific rules for individual bots (uncomment if needed)
+#
+# Googlebot specific rules
+# User-agent: Googlebot
+# Disallow: /private/
+#
+# Bingbot specific rules  
+# User-agent: Bingbot
+# Disallow: /private/
+#
+# Googlebot-Image rules for image crawling
+# User-agent: Googlebot-Image
+# Disallow: /images/private/
