@@ -20,7 +20,7 @@ export const config = {
 
   server: {
     port: parseInt(optional("PORT", "3000"), 10),
-    host: optional("HOST", "localhost"),
+    host: optional("HOST", "0.0.0.0"),
   },
 
   database: {
