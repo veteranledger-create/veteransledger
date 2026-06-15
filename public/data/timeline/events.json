@@ -1,0 +1,668 @@
+{
+  "events": [
+    {
+      "year": 1933,
+      "date": "30 January 1933",
+      "category": "political",
+      "title": "Hitler Appointed Chancellor",
+      "summary": "President Hindenburg appoints Adolf Hitler as Chancellor of Germany, believing conservative advisors could keep him in check. Within weeks the Nazi movement begins dismantling the Weimar Republic.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1933,
+      "date": "27 February 1933",
+      "category": "political",
+      "title": "Reichstag Fire",
+      "summary": "The Reichstag parliament building is burned down. The Nazis blame the Communists; the Reichstag Fire Decree suspends civil liberties and enables mass arrests of political opponents.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1933,
+      "date": "23 March 1933",
+      "category": "political",
+      "title": "Enabling Act Passed",
+      "summary": "The Reichstag passes the Ermächtigungsgesetz, granting Hitler's cabinet authority to enact laws without parliamentary approval. The Weimar Republic effectively ends; Germany becomes a one-party dictatorship.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1933,
+      "date": "1 April 1933",
+      "category": "economic",
+      "title": "National Boycott of Jewish Businesses",
+      "summary": "The Nazi regime organises a nationwide one-day boycott of Jewish-owned businesses, law offices, and medical practices. SA men stand guard outside establishments. It marks the beginning of systematic economic persecution.",
+      "location": "Germany-wide"
+    },
+    {
+      "year": 1933,
+      "date": "14 July 1933",
+      "category": "political",
+      "title": "Germany Becomes a One-Party State",
+      "summary": "A law prohibiting the formation of new political parties is enacted, making the NSDAP the sole legal party in Germany. All other political parties had already dissolved or been banned.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1933,
+      "date": "19 October 1933",
+      "category": "diplomatic",
+      "title": "Germany Withdraws from League of Nations",
+      "summary": "Germany announces its withdrawal from the League of Nations and the World Disarmament Conference, signalling its rejection of the post-war international order and intent to rearm without oversight.",
+      "location": "Geneva / Berlin"
+    },
+    {
+      "year": 1934,
+      "date": "26 January 1934",
+      "category": "diplomatic",
+      "title": "German–Polish Non-Aggression Pact",
+      "summary": "Germany and Poland sign a ten-year non-aggression pact, temporarily normalising relations and isolating France. The pact is later violated when Germany invades Poland in September 1939.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1934,
+      "date": "25 July 1934",
+      "category": "political",
+      "title": "Austrian Nazis Murder Chancellor Dollfuss",
+      "summary": "Austrian National Socialists launch a coup attempt in Vienna, assassinating Chancellor Engelbert Dollfuss. The coup fails after Mussolini mobilises troops at the Brenner Pass. Germany denies direct involvement though the conspirators operated with Nazi support.",
+      "location": "Vienna, Austria"
+    },
+    {
+      "year": 1934,
+      "date": "30 June 1934",
+      "category": "political",
+      "title": "Night of the Long Knives",
+      "summary": "Hitler orders the murder of SA leadership including Ernst Röhm and other perceived threats to his power. At least 85 people are killed. The SS consolidates its dominance; the Wehrmacht pledges personal loyalty to Hitler.",
+      "location": "Germany"
+    },
+    {
+      "year": 1934,
+      "date": "2 August 1934",
+      "category": "political",
+      "title": "Death of Hindenburg — Hitler Becomes Führer",
+      "summary": "President Paul von Hindenburg dies. Hitler immediately merges the offices of President and Chancellor, assuming the title Führer und Reichskanzler. The Wehrmacht swears a personal oath of loyalty to Hitler.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1934,
+      "date": "5 September 1934",
+      "category": "political",
+      "title": "Nuremberg Rally — 'Rally of Unity and Strength'",
+      "summary": "The NSDAP holds its sixth annual party congress at Nuremberg — the first under Hitler's consolidated power. Leni Riefenstahl films the event for Triumph of the Will (1935), a landmark work of political propaganda. Over 700,000 party members attend.",
+      "location": "Nuremberg, Germany"
+    },
+    {
+      "year": 1935,
+      "date": "13 January 1935",
+      "category": "diplomatic",
+      "title": "Saar Plebiscite — Return to Germany",
+      "summary": "A League of Nations-supervised plebiscite in the Saar region produces a 90.8% vote for reunion with Germany. It is the first major territorial revision of the Versailles settlement achieved by popular vote and a significant propaganda victory for Hitler.",
+      "location": "Saar Basin"
+    },
+    {
+      "year": 1935,
+      "date": "11 April 1935",
+      "category": "diplomatic",
+      "title": "Stresa Front",
+      "summary": "Britain, France, and Italy meet at Stresa and issue a joint condemnation of German rearmament, pledging to maintain the Locarno Treaties. The front collapses within months following the Anglo-German Naval Agreement and Italy's invasion of Ethiopia.",
+      "location": "Stresa, Italy"
+    },
+    {
+      "year": 1935,
+      "date": "16 March 1935",
+      "category": "military",
+      "title": "Rearmament Announced — Conscription Restored",
+      "summary": "Hitler publicly announces the reintroduction of conscription and the existence of the Luftwaffe, openly violating the Treaty of Versailles. Germany begins mass military expansion with a target of 36 divisions.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1935,
+      "date": "18 June 1935",
+      "category": "diplomatic",
+      "title": "Anglo-German Naval Agreement",
+      "summary": "Britain and Germany conclude a bilateral naval treaty permitting Germany to build a fleet up to 35% of British tonnage. France and other nations are not consulted. The agreement effectively legitimises German rearmament and fractures the Stresa Front.",
+      "location": "London, UK"
+    },
+    {
+      "year": 1935,
+      "date": "15 September 1935",
+      "category": "political",
+      "title": "Nuremberg Laws Enacted",
+      "summary": "The Reich Citizenship Law and the Law for the Protection of German Blood and Honour are enacted at the Nuremberg Party Rally. Jews are stripped of German citizenship; marriage between Jews and non-Jews is prohibited.",
+      "location": "Nuremberg, Germany"
+    },
+    {
+      "year": 1935,
+      "date": "3 October 1935",
+      "category": "military",
+      "title": "Italy Invades Ethiopia",
+      "summary": "Fascist Italy under Mussolini invades the Ethiopian Empire without declaration of war. The League of Nations imposes limited sanctions but fails to stop the conquest. Ethiopia falls by May 1936, straining Anglo-French relations with Italy.",
+      "location": "East Africa"
+    },
+    {
+      "year": 1936,
+      "date": "7 March 1936",
+      "category": "military",
+      "title": "Remilitarisation of the Rhineland",
+      "summary": "German troops march into the demilitarised Rhineland zone, violating the Treaty of Versailles and the Locarno Pact. France and Britain protest but take no military action — a critical failure that emboldens Hitler's expansionist strategy.",
+      "location": "Rhineland, Germany"
+    },
+    {
+      "year": 1936,
+      "date": "17 July 1936",
+      "category": "military",
+      "title": "Spanish Civil War — German Intervention Begins",
+      "summary": "A nationalist military uprising begins in Spain. Germany sends the Condor Legion to support Franco's forces. The intervention provides combat experience for the Luftwaffe and Wehrmacht and tests new aerial and armoured tactics.",
+      "location": "Spain"
+    },
+    {
+      "year": 1936,
+      "date": "1 August 1936",
+      "category": "diplomatic",
+      "title": "Berlin Olympics — International Showcase",
+      "summary": "Germany hosts the Summer Olympics in Berlin, using the games as a propaganda showcase for the Nazi regime. Hitler orders visible antisemitic signage removed during the games. Jesse Owens wins four gold medals.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1936,
+      "date": "25 October 1936",
+      "category": "diplomatic",
+      "title": "Rome–Berlin Axis Pact",
+      "summary": "Germany and Italy sign the Rome–Berlin Axis agreement, establishing political and military cooperation between the two fascist powers and coining the term 'Axis'.",
+      "location": "Rome / Berlin"
+    },
+    {
+      "year": 1936,
+      "date": "25 November 1936",
+      "category": "diplomatic",
+      "title": "Anti-Comintern Pact",
+      "summary": "Germany and Japan sign the Anti-Comintern Pact directed against the Soviet Union and international communism. Italy joins in 1937. The pact is the foundation of the eventual Tripartite Alliance.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1937,
+      "date": "26 April 1937",
+      "category": "military",
+      "title": "Bombing of Guernica",
+      "summary": "The German Condor Legion and Italian Aviazione Legionaria conduct an aerial bombardment of the Basque town of Guernica during the Spanish Civil War, killing hundreds of civilians. The attack is one of the first deliberate bombings of a civilian population and inspires Picasso's famous painting.",
+      "location": "Guernica, Spain"
+    },
+    {
+      "year": 1937,
+      "date": "7 July 1937",
+      "category": "military",
+      "title": "Japan Launches Full-Scale War in China",
+      "summary": "Following the Marco Polo Bridge Incident, Japan launches a full-scale invasion of China. The Second Sino-Japanese War draws in Axis partner Japan in a major parallel conflict that will eventually merge into the wider Pacific War.",
+      "location": "China"
+    },
+    {
+      "year": 1937,
+      "date": "6 November 1937",
+      "category": "diplomatic",
+      "title": "Italy Joins the Anti-Comintern Pact",
+      "summary": "Italy formally adheres to the German–Japanese Anti-Comintern Pact, consolidating the ideological and diplomatic alignment of the future Axis powers against the Soviet Union.",
+      "location": "Rome, Italy"
+    },
+    {
+      "year": 1937,
+      "date": "5 November 1937",
+      "category": "military",
+      "title": "Hossbach Memorandum",
+      "summary": "At a secret conference recorded in the Hossbach Memorandum, Hitler outlines his strategic vision: Germany must acquire 'living space' by force by 1943–1945 at the latest. Austria and Czechoslovakia are designated as first targets. Senior generals express doubts.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1938,
+      "date": "4 February 1938",
+      "category": "military",
+      "title": "Hitler Takes Direct Command of Wehrmacht",
+      "summary": "Hitler abolishes the War Ministry and creates the Oberkommando der Wehrmacht (OKW), placing himself in direct supreme command of all German armed forces. Senior conservative generals Blomberg and Fritsch are dismissed in manufactured scandals.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1938,
+      "date": "12 March 1938",
+      "category": "diplomatic",
+      "title": "Anschluss — Annexation of Austria",
+      "summary": "German forces march into Austria; Austria is annexed into the German Reich. A plebiscite produces a reported 99.73% approval. The annexation violates Versailles but meets no military response from Britain or France.",
+      "location": "Vienna, Austria"
+    },
+    {
+      "year": 1938,
+      "date": "30 September 1938",
+      "category": "diplomatic",
+      "title": "Munich Agreement",
+      "summary": "Britain, France, Germany, and Italy sign the Munich Agreement, ceding Czechoslovakia's Sudetenland to Germany without Czechoslovakian participation. Chamberlain declares 'peace for our time'. Czechoslovakia loses its defensive frontier.",
+      "location": "Munich, Germany"
+    },
+    {
+      "year": 1938,
+      "date": "9 November 1938",
+      "category": "political",
+      "title": "Kristallnacht — Night of Broken Glass",
+      "summary": "A coordinated nationwide pogrom against Jews is carried out across Germany and Austria. Over 7,500 Jewish businesses are destroyed, approximately 1,400 synagogues burned, 91 Jews killed outright, and 30,000 arrested and sent to concentration camps.",
+      "location": "Germany and Austria"
+    },
+    {
+      "year": 1938,
+      "date": "12 November 1938",
+      "category": "economic",
+      "title": "Atonement Fine Levied on German Jews",
+      "summary": "Following Kristallnacht, the Nazi regime levies a collective 'atonement fine' of one billion Reichsmarks on Germany's Jewish community. Jewish businesses are compulsorily transferred to Aryan ownership (Arisierung). Jews are excluded from all economic life.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1939,
+      "date": "15 March 1939",
+      "category": "military",
+      "title": "Germany Occupies Rump Czechoslovakia",
+      "summary": "German forces occupy the remaining Czech lands in violation of the Munich Agreement, establishing the Protectorate of Bohemia and Moravia. Britain and France abandon appeasement; military guarantees are extended to Poland.",
+      "location": "Prague, Czechoslovakia"
+    },
+    {
+      "year": 1939,
+      "date": "22 May 1939",
+      "category": "diplomatic",
+      "title": "Pact of Steel — German–Italian Military Alliance",
+      "summary": "Germany and Italy sign the Pact of Steel, committing both nations to full military alliance. Mussolini is drawn into formal military commitment with Nazi Germany, though Italy declares non-belligerence when war begins.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1939,
+      "date": "23 August 1939",
+      "category": "diplomatic",
+      "title": "Molotov–Ribbentrop Pact",
+      "summary": "Germany and the Soviet Union sign a non-aggression pact including a secret protocol dividing Eastern Europe into spheres of influence. The pact neutralises Soviet opposition to the planned invasion of Poland.",
+      "location": "Moscow, Soviet Union"
+    },
+    {
+      "year": 1939,
+      "date": "1 September 1939",
+      "category": "military",
+      "title": "Invasion of Poland — World War II Begins",
+      "summary": "Germany invades Poland using Blitzkrieg tactics after staging false border provocations (the Gleiwitz incident). Britain and France declare war on Germany on 3 September, but provide no direct military aid to Poland.",
+      "location": "Poland"
+    },
+    {
+      "year": 1939,
+      "date": "17 September 1939",
+      "category": "military",
+      "title": "Soviet Union Invades Poland",
+      "summary": "Soviet forces invade Poland from the east under the terms of the secret Molotov–Ribbentrop protocol. Poland is partitioned between Germany and the Soviet Union by 6 October 1939.",
+      "location": "Eastern Poland"
+    },
+    {
+      "year": 1939,
+      "date": "30 November 1939",
+      "category": "military",
+      "title": "Soviet Union Invades Finland — Winter War",
+      "summary": "The Soviet Union launches a massive invasion of Finland. Finnish resistance far exceeds Soviet expectations, causing enormous Soviet casualties before Finland concedes territorial losses in the March 1940 peace treaty.",
+      "location": "Finland"
+    },
+    {
+      "year": 1940,
+      "date": "9 April 1940",
+      "category": "military",
+      "title": "Invasion of Denmark and Norway",
+      "summary": "Germany simultaneously invades Denmark and Norway in Operation Weserübung. Denmark surrenders within hours. Norway resists with British and French assistance until June but is ultimately occupied.",
+      "location": "Denmark and Norway"
+    },
+    {
+      "year": 1940,
+      "date": "10 May 1940",
+      "category": "military",
+      "title": "Fall of France Begins — Low Countries Invaded",
+      "summary": "Germany launches Fall Gelb, invading France, Belgium, the Netherlands, and Luxembourg. The Manstein Plan sends armoured forces through the Ardennes, bypassing the Maginot Line and cutting off Allied forces in Belgium.",
+      "location": "France and Benelux"
+    },
+    {
+      "year": 1940,
+      "date": "26 May 1940",
+      "category": "military",
+      "title": "Dunkirk Evacuation",
+      "summary": "Operation Dynamo evacuates approximately 338,000 Allied troops from Dunkirk beaches as German forces close in. The evacuation is a strategic success for the Allies despite the loss of vast quantities of equipment.",
+      "location": "Dunkirk, France"
+    },
+    {
+      "year": 1940,
+      "date": "10 June 1940",
+      "category": "diplomatic",
+      "title": "Italy Declares War on France and Britain",
+      "summary": "Mussolini declares war on France and Britain, entering the war on Germany's side following the imminent fall of France. Italy immediately attacks southern France and launches a campaign in North Africa.",
+      "location": "Rome, Italy"
+    },
+    {
+      "year": 1940,
+      "date": "22 June 1940",
+      "category": "military",
+      "title": "France Signs Armistice",
+      "summary": "France signs an armistice with Germany in the same railway carriage in which Germany signed the armistice of 1918. Northern France is occupied by Germany; southern France is governed by the collaborationist Vichy regime.",
+      "location": "Compiègne, France"
+    },
+    {
+      "year": 1940,
+      "date": "10 July 1940",
+      "category": "military",
+      "title": "Battle of Britain Begins",
+      "summary": "The Luftwaffe begins a sustained air campaign against Britain as a prelude to a planned invasion (Operation Sea Lion). The RAF's successful defence forces Germany to indefinitely postpone the invasion by September 1940.",
+      "location": "Britain"
+    },
+    {
+      "year": 1940,
+      "date": "27 September 1940",
+      "category": "diplomatic",
+      "title": "Tripartite Pact Signed",
+      "summary": "Germany, Italy, and Japan sign the Tripartite Pact in Berlin, formalising the Axis alliance. Each party commits to assist the others if attacked by a power not then at war — primarily aimed at deterring the United States.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1941,
+      "date": "6 April 1941",
+      "category": "military",
+      "title": "Invasion of Yugoslavia and Greece",
+      "summary": "Germany, Italy, Hungary, and Bulgaria invade Yugoslavia and Greece. Yugoslavia surrenders after eleven days; Greece falls by late April. The Balkans campaign delays Operation Barbarossa by approximately six weeks.",
+      "location": "Yugoslavia and Greece"
+    },
+    {
+      "year": 1941,
+      "date": "14 August 1941",
+      "category": "diplomatic",
+      "title": "Atlantic Charter Signed",
+      "summary": "Roosevelt and Churchill meet aboard warships off Newfoundland and sign the Atlantic Charter, outlining a post-war vision: national self-determination, free trade, disarmament, and collective security. The document is a statement of Anglo-American war aims before US entry.",
+      "location": "Placentia Bay, Newfoundland"
+    },
+    {
+      "year": 1941,
+      "date": "22 June 1941",
+      "category": "military",
+      "title": "Operation Barbarossa — Invasion of the Soviet Union",
+      "summary": "Germany launches the largest military operation in history, invading the Soviet Union with 3 million men along a 2,900-km front. Three army groups advance on Leningrad, Moscow, and Kiev. The operation embodies Nazi racial ideology — a war of extermination.",
+      "location": "Soviet Union"
+    },
+    {
+      "year": 1941,
+      "date": "8 September 1941",
+      "category": "military",
+      "title": "Siege of Leningrad Begins",
+      "summary": "German and Finnish forces complete the encirclement of Leningrad, beginning a siege that will last 872 days — until January 1944. Approximately 1.1 million civilians die of starvation, cold, and bombardment.",
+      "location": "Leningrad, Soviet Union"
+    },
+    {
+      "year": 1941,
+      "date": "5 December 1941",
+      "category": "military",
+      "title": "German Advance on Moscow Halted",
+      "summary": "A Soviet counteroffensive north and south of Moscow halts and reverses the German advance. Operation Typhoon's failure to capture Moscow before winter is the first major strategic defeat suffered by German forces.",
+      "location": "Moscow, Soviet Union"
+    },
+    {
+      "year": 1941,
+      "date": "7 December 1941",
+      "category": "military",
+      "title": "Japan Attacks Pearl Harbor",
+      "summary": "Japan launches a surprise attack on the United States naval base at Pearl Harbor, Hawaii, destroying or damaging 19 ships and killing 2,403 Americans. The attack brings the United States into the war.",
+      "location": "Pearl Harbor, Hawaii"
+    },
+    {
+      "year": 1941,
+      "date": "11 December 1941",
+      "category": "diplomatic",
+      "title": "Germany Declares War on the United States",
+      "summary": "Hitler declares war on the United States, honouring Germany's Tripartite Pact obligations. The declaration transforms a European war into a global conflict and ultimately brings the full industrial might of the United States against Germany.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1942,
+      "date": "20 January 1942",
+      "category": "political",
+      "title": "Wannsee Conference",
+      "summary": "Fifteen senior Nazi and SS officials meet at a villa in Wannsee to coordinate the 'Final Solution to the Jewish Question' — the systematic extermination of all Jews under German control. The Holocaust enters its industrial phase.",
+      "location": "Wannsee, Berlin"
+    },
+    {
+      "year": 1942,
+      "date": "27 May 1942",
+      "category": "political",
+      "title": "Assassination of Reinhard Heydrich",
+      "summary": "Czech paratroopers trained in Britain assassinate SS-Obergruppenführer Reinhard Heydrich, chief architect of the Holocaust, in Prague. Nazi reprisals include the annihilation of the village of Lidice.",
+      "location": "Prague, Protectorate"
+    },
+    {
+      "year": 1942,
+      "date": "4 June 1942",
+      "category": "military",
+      "title": "Battle of Midway — Japan Suffers Decisive Defeat",
+      "summary": "The United States Navy defeats the Imperial Japanese Navy at Midway, sinking four Japanese fleet carriers. The battle marks the strategic turning point in the Pacific and ends Japan's offensive superiority.",
+      "location": "Midway Atoll, Pacific Ocean"
+    },
+    {
+      "year": 1942,
+      "date": "28 June 1942",
+      "category": "military",
+      "title": "Case Blue — German Summer Offensive",
+      "summary": "Germany launches its 1942 summer offensive, driving into the southern Soviet Union toward the Caucasus oilfields and the Volga River. Army Group B drives toward Stalingrad while Army Group A advances into the Caucasus.",
+      "location": "Southern Soviet Union"
+    },
+    {
+      "year": 1942,
+      "date": "7 August 1942",
+      "category": "military",
+      "title": "Allied Landings on Guadalcanal",
+      "summary": "US Marines land on Guadalcanal in the Solomon Islands, seizing the Japanese airfield under construction. The ensuing six-month campaign is the first major Allied ground offensive in the Pacific and ends in Japanese withdrawal.",
+      "location": "Guadalcanal, Solomon Islands"
+    },
+    {
+      "year": 1942,
+      "date": "23 October 1942",
+      "category": "military",
+      "title": "Second Battle of El Alamein",
+      "summary": "British Eighth Army under Montgomery launches a major offensive against Axis forces at El Alamein, Egypt. The German–Italian defeat begins the definitive expulsion of Axis forces from North Africa.",
+      "location": "El Alamein, Egypt"
+    },
+    {
+      "year": 1942,
+      "date": "19 November 1942",
+      "category": "military",
+      "title": "Operation Uranus — Soviet Counteroffensive at Stalingrad",
+      "summary": "Soviet forces launch a massive pincer movement north and south of Stalingrad, encircling the German 6th Army of approximately 290,000 men. The encirclement is complete within days, trapping an entire German field army.",
+      "location": "Stalingrad, Soviet Union"
+    },
+    {
+      "year": 1943,
+      "date": "2 February 1943",
+      "category": "military",
+      "title": "German 6th Army Surrenders at Stalingrad",
+      "summary": "Field Marshal Friedrich Paulus and the remnants of the German 6th Army surrender at Stalingrad — approximately 91,000 soldiers, including 24 generals. The defeat is the psychological and strategic turning point of the Eastern Front.",
+      "location": "Stalingrad, Soviet Union"
+    },
+    {
+      "year": 1943,
+      "date": "13 May 1943",
+      "category": "military",
+      "title": "Axis Forces Surrender in North Africa",
+      "summary": "All remaining Axis forces in Tunisia surrender unconditionally, ending the North African campaign. Approximately 250,000 Axis troops are taken prisoner. The stage is set for the invasion of southern Europe.",
+      "location": "Tunisia"
+    },
+    {
+      "year": 1943,
+      "date": "5 July 1943",
+      "category": "military",
+      "title": "Battle of Kursk — Operation Citadel",
+      "summary": "Germany launches its last major strategic offensive on the Eastern Front at the Kursk salient. Soviet forces repel the German attack after the largest tank battle in history. The Wehrmacht loses its capacity for large-scale offensive operations in the east.",
+      "location": "Kursk, Soviet Union"
+    },
+    {
+      "year": 1943,
+      "date": "10 July 1943",
+      "category": "military",
+      "title": "Allied Invasion of Sicily",
+      "summary": "American, British, and Canadian forces launch Operation Husky, the largest amphibious operation to that date, landing on Sicily. The island falls to Allied forces by 17 August, opening the gateway to mainland Italy.",
+      "location": "Sicily, Italy"
+    },
+    {
+      "year": 1943,
+      "date": "25 July 1943",
+      "category": "political",
+      "title": "Mussolini Arrested — Italian Fascism Collapses",
+      "summary": "The Fascist Grand Council votes to strip Mussolini of his powers; King Victor Emmanuel III orders his arrest. Marshal Badoglio forms a new government and begins secret armistice negotiations with the Allies.",
+      "location": "Rome, Italy"
+    },
+    {
+      "year": 1943,
+      "date": "8 September 1943",
+      "category": "diplomatic",
+      "title": "Italy Surrenders to the Allies",
+      "summary": "Italy's armistice with the Allied forces is announced. Germany immediately occupies Italy in Operation Achse, disarming Italian forces. Mussolini is freed in a German commando raid and installed as head of the puppet Italian Social Republic.",
+      "location": "Italy"
+    },
+    {
+      "year": 1944,
+      "date": "27 January 1944",
+      "category": "military",
+      "title": "Siege of Leningrad Lifted",
+      "summary": "Soviet forces definitively break the 872-day siege of Leningrad, the longest siege in modern warfare. German forces are pushed back from the city. Approximately 1.1 million civilians died during the siege.",
+      "location": "Leningrad, Soviet Union"
+    },
+    {
+      "year": 1944,
+      "date": "4 June 1944",
+      "category": "military",
+      "title": "Liberation of Rome",
+      "summary": "American forces enter Rome as the Germans withdraw northward. Rome is the first Axis capital to fall. German forces establish a new defensive line (the Gothic Line) further north. The liberation is overshadowed two days later by D-Day.",
+      "location": "Rome, Italy"
+    },
+    {
+      "year": 1944,
+      "date": "6 June 1944",
+      "category": "military",
+      "title": "D-Day — Allied Invasion of Normandy",
+      "summary": "Operation Overlord launches the largest amphibious assault in history, landing over 156,000 Allied troops on five Normandy beaches. A second front is opened in Western Europe, stretching German resources and hastening the end of the war.",
+      "location": "Normandy, France"
+    },
+    {
+      "year": 1944,
+      "date": "23 June 1944",
+      "category": "military",
+      "title": "Operation Bagration — Soviet Summer Offensive",
+      "summary": "The Soviet Union launches its largest strategic offensive of the war, destroying German Army Group Centre in Belarus. In eight weeks Soviet forces advance over 600 km, inflicting perhaps 400,000 German casualties. The offensive is largely simultaneous with Normandy, preventing German redeployment.",
+      "location": "Belarus / Soviet Union"
+    },
+    {
+      "year": 1944,
+      "date": "20 July 1944",
+      "category": "political",
+      "title": "July Plot — Assassination Attempt on Hitler",
+      "summary": "Colonel Claus von Stauffenberg places a bomb at Hitler's Wolf's Lair headquarters. Hitler survives with minor injuries. The conspirators are arrested and executed; a wave of executions eliminates thousands of suspected opponents.",
+      "location": "Rastenburg, East Prussia"
+    },
+    {
+      "year": 1944,
+      "date": "1 August 1944",
+      "category": "military",
+      "title": "Warsaw Uprising Begins",
+      "summary": "The Polish Home Army (Armia Krajowa) rises against the German occupation in Warsaw, expecting Soviet support that does not materialise. After 63 days of brutal fighting, the uprising is crushed. The Germans deport surviving civilians and systematically demolish the city.",
+      "location": "Warsaw, Poland"
+    },
+    {
+      "year": 1944,
+      "date": "25 August 1944",
+      "category": "military",
+      "title": "Liberation of Paris",
+      "summary": "French and American forces liberate Paris after four years of German occupation. General de Gaulle leads Free French forces into the city. The liberation is a major symbolic victory and marks the effective end of German control in France.",
+      "location": "Paris, France"
+    },
+    {
+      "year": 1944,
+      "date": "17 September 1944",
+      "category": "military",
+      "title": "Operation Market Garden",
+      "summary": "Allied forces launch the largest airborne operation in history, dropping three divisions into the Netherlands. The operation fails to capture the bridge at Arnhem, delaying the liberation of the Netherlands until 1945.",
+      "location": "Netherlands"
+    },
+    {
+      "year": 1944,
+      "date": "16 December 1944",
+      "category": "military",
+      "title": "Battle of the Bulge — German Ardennes Offensive",
+      "summary": "Germany launches its last major offensive on the Western Front through the Ardennes in Belgium and Luxembourg, aiming to split Allied lines and capture Antwerp. Initial success gives way to defeat by late January 1945.",
+      "location": "Ardennes, Belgium"
+    },
+    {
+      "year": 1945,
+      "date": "12 January 1945",
+      "category": "military",
+      "title": "Soviet Vistula–Oder Offensive",
+      "summary": "Soviet forces launch a massive offensive from the Vistula River to the Oder River, advancing over 500 km in three weeks. By early February Soviet troops stand less than 70 km from Berlin.",
+      "location": "Poland"
+    },
+    {
+      "year": 1945,
+      "date": "4 February 1945",
+      "category": "diplomatic",
+      "title": "Yalta Conference",
+      "summary": "Roosevelt, Churchill, and Stalin meet at Yalta to plan the postwar world. Agreements are reached on Germany's occupation and division, the formation of the United Nations, and Soviet entry into the Pacific War.",
+      "location": "Yalta, Crimea"
+    },
+    {
+      "year": 1945,
+      "date": "13 February 1945",
+      "category": "military",
+      "title": "Bombing of Dresden",
+      "summary": "British and American bombers conduct raids on Dresden over three nights, killing between 22,000 and 25,000 people and destroying much of the historic city. The raids remain a subject of historical and ethical debate.",
+      "location": "Dresden, Germany"
+    },
+    {
+      "year": 1945,
+      "date": "7 March 1945",
+      "category": "military",
+      "title": "Allies Cross the Rhine at Remagen",
+      "summary": "American forces capture the Ludendorff Bridge at Remagen before it can be destroyed, establishing the first Allied bridgehead east of the Rhine. The crossing accelerates the Allied advance into Germany.",
+      "location": "Remagen, Germany"
+    },
+    {
+      "year": 1945,
+      "date": "16 April 1945",
+      "category": "military",
+      "title": "Soviet Assault on Berlin Begins",
+      "summary": "Soviet forces under Marshals Zhukov and Konev launch the final assault on Berlin. Over one million Soviet troops converge on the German capital in the last major battle on the Eastern Front.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1945,
+      "date": "28 April 1945",
+      "category": "political",
+      "title": "Mussolini Executed",
+      "summary": "Italian communist partisans capture Benito Mussolini and his mistress Clara Petacci near Lake Como as they attempt to flee to Switzerland. They are shot and their bodies displayed publicly in Milan.",
+      "location": "Giulino, Italy"
+    },
+    {
+      "year": 1945,
+      "date": "30 April 1945",
+      "category": "political",
+      "title": "Hitler's Death in the Führerbunker",
+      "summary": "With Soviet forces fighting street by street in Berlin, Hitler marries Eva Braun, dictates his final political testament, and commits suicide by gunshot in the Führerbunker. His body is burned in the Reich Chancellery garden.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1945,
+      "date": "8 May 1945",
+      "category": "military",
+      "title": "Victory in Europe — Germany Surrenders",
+      "summary": "Germany signs the unconditional surrender instrument in Berlin, ending the war in Europe. Victory in Europe Day (VE Day) is declared. The Third Reich, which Hitler declared would last a thousand years, lasts twelve.",
+      "location": "Berlin, Germany"
+    },
+    {
+      "year": 1945,
+      "date": "6 August 1945",
+      "category": "military",
+      "title": "Atomic Bomb Dropped on Hiroshima",
+      "summary": "The United States drops the first atomic bomb used in warfare on Hiroshima, Japan, killing approximately 80,000 people immediately. A second bomb is dropped on Nagasaki on 9 August. Japan announces its surrender on 15 August 1945.",
+      "location": "Hiroshima, Japan"
+    },
+    {
+      "year": 1945,
+      "date": "20 November 1945",
+      "category": "political",
+      "title": "Nuremberg Trials Begin",
+      "summary": "The International Military Tribunal begins trials of twenty-four major Nazi war criminals at Nuremberg. Twelve defendants are sentenced to death, seven receive prison sentences, and three are acquitted. The trials establish international legal precedents for crimes against humanity.",
+      "location": "Nuremberg, Germany"
+    }
+  ]
+}

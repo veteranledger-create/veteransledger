@@ -1,0 +1,212 @@
+/* ============================================================
+   VeteransLedger · Hero Section
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.hero--tall {
+  min-height: 600px;
+}
+/* Full hero: on desktop there's no header, so full vh */
+.hero--full {
+  min-height: 100vh;
+}
+@media (max-width: 1023px) {
+  .hero--full {
+    min-height: calc(100vh - var(--header-h));
+  }
+}
+
+/* Background image layer */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  filter: grayscale(30%) brightness(0.45) sepia(20%);
+  transform: scale(1.02);
+  transition: transform 8s ease;
+}
+.hero:hover .hero__bg {
+  transform: scale(1.04);
+}
+
+/* Gradient overlay */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg-base) 0%,
+    rgba(8, 8, 6, 0.72) 40%,
+    rgba(8, 8, 6, 0.35) 70%,
+    rgba(8, 8, 6, 0.18) 100%
+  );
+}
+
+/* Side gradient on desktop (content column) */
+.hero__side-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8, 8, 6, 0) 45%,
+    rgba(8, 8, 6, 0.85) 100%
+  );
+}
+
+/* Content */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  padding: var(--space-12) var(--space-10) var(--space-16);
+}
+
+@media (max-width: 768px) {
+  .hero__content {
+    max-width: 100%;
+    padding: var(--space-8) var(--space-5) var(--space-12);
+  }
+}
+
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-5);
+}
+.hero__eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--border-gold);
+}
+
+.hero__cross {
+  display: block;
+  font-size: 18px;
+  color: var(--gold-dim);
+  letter-spacing: 0;
+  margin-bottom: var(--space-4);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+}
+
+.hero__subtitle {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: var(--space-5);
+}
+
+.hero__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+.hero__divider-line {
+  width: 40px;
+  height: 1px;
+  background: var(--border-gold);
+}
+.hero__divider-icon {
+  color: var(--gold-dim);
+  font-size: 16px;
+}
+
+.hero__description {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+  max-width: 460px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Page-level hero (smaller, for inner pages) */
+.page-hero {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(30%) brightness(0.35) sepia(25%);
+}
+
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--bg-base) 0%,
+    rgba(8, 8, 6, 0.5) 100%
+  );
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-8) var(--space-10);
+}
+@media (max-width: 768px) {
+  .page-hero__content {
+    padding: var(--space-6) var(--space-5);
+  }
+}
+
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.page-hero__subtitle {
+  font-size: var(--text-sm);
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: var(--space-1);
+}

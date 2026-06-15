@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Search VeteransLedger — Full-text search across all campaigns, personnel, armaments, letters and articles.">
+  <title>Search · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/cards.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <div style="padding:var(--space-12) var(--space-10) var(--space-8);">
+      <div class="section-label">Archive Search</div>
+
+      <form class="search-form" id="search-form" role="search" style="margin-bottom:var(--space-8);">
+        <div style="display:flex;gap:var(--space-3);max-width:640px;">
+          <input type="search" id="search-input" name="q" class="contact-form__input"
+            placeholder="Search campaigns, personnel, armaments, letters…" autocomplete="off"
+            aria-label="Search archive" style="flex:1;font-size:var(--text-base);">
+          <button type="submit" class="btn btn-primary">SEARCH</button>
+        </div>
+
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);" role="group"
+          aria-label="Filter by type">
+          <button type="button" class="filter-btn is-active" data-type="all">All</button>
+          <button type="button" class="filter-btn" data-type="CAMPAIGN">Campaigns</button>
+          <button type="button" class="filter-btn" data-type="PERSON">Personnel</button>
+          <button type="button" class="filter-btn" data-type="ARMAMENT">Armaments</button>
+          <button type="button" class="filter-btn" data-type="LETTER">Letters</button>
+          <button type="button" class="filter-btn" data-type="ARTICLE">Articles</button>
+        </div>
+      </form>
+
+      <div id="search-results" aria-live="polite" aria-label="Search results">
+        <div class="empty-state">
+          <div class="empty-state__icon" aria-hidden="true">⌕</div>
+          <p class="empty-state__title">Search the Archive</p>
+          <p class="empty-state__text">Enter a keyword to search across all records.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Search/search.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!--
+  VeteransLedger · Mobile Slide-out Menu (visible below 1024px)
+  Hydrated from /public/data/navigation.json by navigation.js.
+-->
+<div class="mobile-menu" id="mobile-menu-root">
+  <div class="mobile-menu__scrim" data-nav-action="close-mobile-menu" hidden></div>
+
+  <div id="mobile-menu" class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Site navigation" hidden>
+
+    <!-- Drawer header -->
+    <div class="mobile-menu__header">
+      <a class="mobile-menu__brand" href="/" aria-label="VeteransLedger home">
+        <img class="mobile-menu__eagle" src="/public/logos/eagle.png" alt="" aria-hidden="true" width="28" height="28">
+        <span class="mobile-menu__brand-name" data-nav-mount="brand" data-bind="text:name">VeteransLedger</span>
+      </a>
+      <button type="button" class="mobile-menu__close" data-nav-action="close-mobile-menu"
+        aria-label="Close navigation menu">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <!-- Primary nav -->
+    <nav class="mobile-menu__nav" aria-label="Primary">
+      <ul class="mobile-menu__list" data-nav-source="primary" data-nav-template="mobile"></ul>
+    </nav>
+
+    <!-- Bottom: theme + utility links -->
+    <div class="mobile-menu__bottom">
+      <button type="button" class="mobile-menu__link mobile-menu__theme-btn" data-nav-action="toggle-theme"
+        aria-pressed="false" aria-label="Toggle dark mode">
+        <span class="nav-icon mobile-menu__theme-icon" aria-hidden="true"></span>
+        <span data-nav-mount="theme-label">DARK</span>
+      </button>
+      <a href="/search" class="mobile-menu__link">
+        <span class="nav-icon" data-icon="search" aria-hidden="true"></span>
+        <span>Search</span>
+      </a>
+      <a href="/site-policies" class="mobile-menu__link mobile-menu__util-link">Policies</a>
+      <a href="/site-policies#removal" class="mobile-menu__link mobile-menu__util-link">Removal Requests</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Templates ───────────────────────────────────────────── -->
+<template id="tpl-mobile-item">
+  <li class="mobile-menu__item">
+    <a class="mobile-menu__link" data-bind="href:url,aria-current:active">
+      <span class="nav-icon" data-bind="data-icon:icon" aria-hidden="true"></span>
+      <span data-bind="text:label"></span>
+    </a>
+  </li>
+</template>
+
+<template id="tpl-mobile-group">
+  <li class="mobile-menu__item mobile-menu__item--group">
+    <button type="button" class="mobile-menu__group-toggle" aria-expanded="false" data-bind="aria-controls:panelId">
+      <span class="nav-icon" data-bind="data-icon:icon" aria-hidden="true"></span>
+      <span data-bind="text:label"></span>
+      <span class="mobile-menu__chevron" aria-hidden="true"></span>
+    </button>
+    <ul class="mobile-menu__sublist" data-bind="id:panelId" data-nav-slot="children" hidden></ul>
+  </li>
+</template>
+
+<template id="tpl-mobile-child">
+  <li class="mobile-menu__subitem">
+    <a class="mobile-menu__sublink" data-bind="href:url,text:label,aria-current:active"></a>
+  </li>
+</template>
+</content>

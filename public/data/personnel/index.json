@@ -1,0 +1,9 @@
+{
+  "branches": [
+    { "id": "army",        "label": "Heer (Army)",          "file": "/public/data/personnel/army.json" },
+    { "id": "luftwaffe",   "label": "Luftwaffe (Air Force)", "file": "/public/data/personnel/luftwaffe.json" },
+    { "id": "kriegsmarine","label": "Kriegsmarine (Navy)",   "file": "/public/data/personnel/kriegsmarine.json" },
+    { "id": "waffen-ss",   "label": "Waffen-SS",             "file": "/public/data/personnel/waffen-ss.json" },
+    { "id": "foreign",     "label": "Foreign / Allied Axis", "file": "/public/data/personnel/foreign.json" }
+  ]
+}

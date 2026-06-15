@@ -1,0 +1,22 @@
+{
+  "title": "Cookie Policy",
+  "lastUpdated": "2025-01-01",
+  "sections": [
+    {
+      "heading": "What Are Cookies",
+      "body": "Cookies are small text files placed on your device by websites you visit. They are widely used to make websites function, improve efficiency, and provide information to site owners."
+    },
+    {
+      "heading": "Cookies We Use",
+      "body": "VeteransLedger uses a minimal set of cookies:\n\n• **Session cookie** (strictly necessary) — maintains your login state if you are an authenticated user. Expires when you close your browser.\n• **Theme preference** (functional) — stores your light/dark mode preference in localStorage, not a cookie.\n• **Cookie consent** (strictly necessary) — records your acknowledgement of this policy. Stored in localStorage."
+    },
+    {
+      "heading": "Third-Party Cookies",
+      "body": "VeteransLedger does not currently use third-party analytics, advertising, or tracking cookies. If this changes, this policy will be updated and your consent re-requested."
+    },
+    {
+      "heading": "Managing Cookies",
+      "body": "You can control and delete cookies through your browser settings. Deleting the session cookie will log you out. Your theme and consent preferences are stored in localStorage and can be cleared via your browser's developer tools or by clearing site data."
+    }
+  ]
+}

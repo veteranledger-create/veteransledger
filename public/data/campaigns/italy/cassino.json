@@ -1,0 +1,20 @@
+{
+  "id": "cassino",
+  "title": "Battles of Monte Cassino",
+  "theater": "italy",
+  "dates": { "start": "1944-01-17", "end": "1944-05-18" },
+  "summary": "The four Battles of Monte Cassino were a series of Allied assaults on the Gustav Line in central Italy, anchored on the Benedictine monastery of Monte Cassino. German paratroopers of the 1st Fallschirmjäger Division held the position for four months against successive Allied attacks from four different Allied army corps.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Albert Kesselring", "Heinrich von Vietinghoff", "Richard Heidrich (1st Fallschirmjäger Division)"],
+      "strength": "1st Fallschirmjäger Division and supporting units on the Gustav Line"
+    },
+    "allied": {
+      "commanders": ["Harold Alexander", "Mark Clark (5th Army)", "Bernard Freyberg (New Zealand Corps)"],
+      "strength": "US, British, Indian, New Zealand, Polish, French forces"
+    }
+  },
+  "monastery_controversy": "On 15 February 1944, Allied bombers destroyed the ancient Benedictine Abbey of Monte Cassino despite German assurances it was not occupied. German paratroopers then occupied the ruins, which made a far stronger defensive position than the original structure.",
+  "outcome": "Allied victory on 18 May 1944 after the Polish II Corps under General Anders captured the ruins of the monastery. The Gustav Line was broken, opening the road to Rome.",
+  "casualties": { "axis": "~20,000 killed, wounded, missing across the four battles", "allied": "~55,000 killed, wounded, missing across the four battles" }
+}

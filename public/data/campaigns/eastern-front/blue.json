@@ -1,0 +1,15 @@
+{
+  "id": "blue",
+  "title": "Case Blue (Fall Blau) — Summer Offensive 1942",
+  "theater": "eastern-front",
+  "dates": { "start": "1942-06-28", "end": "1942-11-19" },
+  "summary": "Fall Blau was Germany's 1942 strategic offensive in the Soviet Union, aimed at capturing the Caucasus oilfields and the Volga at Stalingrad. Initial advances were spectacular, but the decision to pursue both objectives simultaneously overstretched German forces and led directly to the Stalingrad disaster.",
+  "objectives": ["Capture Caucasus oilfields (Baku, Maikop, Grozny)", "Reach the Volga at Stalingrad to cut Soviet supply lines"],
+  "combatants": {
+    "axis": { "commanders": ["Fedor von Bock (initially)", "Wilhelm List", "Friedrich Paulus (6th Army)"], "strength": "Army Group South split into Army Groups A and B" },
+    "allied": { "commanders": ["Semyon Timoshenko", "Aleksandr Vasilevsky"], "strength": "Reconstituted Soviet forces; strategic reserves in depth" }
+  },
+  "fatal_decision": "In late July 1942, Hitler split Army Group South into Army Group A (Caucasus) and Army Group B (Stalingrad). Pursuing both objectives simultaneously — with an ever-widening front — left both forces insufficient to achieve decisive results and stretched supply lines beyond breaking point.",
+  "outcome": "Initial German advances were dramatic; Maikop oilfields captured (though destroyed before capture). However, German forces became bogged down in Stalingrad's urban fighting while the Caucasus thrust stalled in the mountains. Operation Uranus (November 1942) encircled the 6th Army at Stalingrad, ending Case Blue in catastrophe.",
+  "casualties": { "germany": "Enormous — folded into Stalingrad accounting", "soviet": "Staggering losses in summer retreats before stabilisation" }
+}

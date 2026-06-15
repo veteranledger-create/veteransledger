@@ -1,0 +1,30 @@
+{
+  "id": "anschluss",
+  "title": "The Anschluss — Annexation of Austria, March 1938",
+  "subtitle": "Germany's bloodless absorption of its southern neighbour",
+  "category": "political",
+  "date_published": "2024-02-15",
+  "author": "VeteransLedger Archive",
+  "tags": ["Anschluss", "Austria", "1938", "expansion", "Versailles"],
+  "summary": "On 12 March 1938, German troops marched into Austria, completing the Anschluss ('joining') that had been forbidden by the Treaty of Versailles. Austria ceased to exist as an independent state and was incorporated into the German Reich as the 'Ostmark'.",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "The Anschluss — the political union of Germany and Austria — had been Hitler's dream since his youth. Born in Austria, he regarded the two German-speaking states as a single nation divided by history. The Treaty of Versailles had explicitly forbidden Austro-German union."
+    },
+    {
+      "type": "paragraph",
+      "text": "By February 1938, Hitler had pressured Austrian Chancellor Kurt Schuschnigg into appointing Nazis to key cabinet posts. When Schuschnigg announced a plebiscite on Austrian independence to be held on 13 March, Hitler presented an ultimatum demanding his resignation and replacement by Nazi Arthur Seyss-Inquart. Schuschnigg complied and resigned."
+    },
+    { "type": "heading", "text": "The March" },
+    {
+      "type": "paragraph",
+      "text": "German troops crossed the Austrian border at dawn on 12 March 1938. They encountered no resistance — many Austrians greeted them with cheering crowds and Nazi salutes. Hitler himself drove through his birthplace of Braunau am Inn and received a triumphant reception in Vienna. A plebiscite held on 10 April returned 99.73% approval — a figure influenced by intimidation and the exclusion of Jews and political opponents."
+    },
+    { "type": "heading", "text": "International Response" },
+    {
+      "type": "paragraph",
+      "text": "Britain and France protested diplomatically but took no action. Mussolini, who had previously threatened military action to protect Austrian independence, had since aligned with Germany and offered his support. The League of Nations proved impotent. The annexation demonstrated that the Western powers would not oppose Hitler's expansion within what he defined as the German ethnic sphere."
+    }
+  ]
+}

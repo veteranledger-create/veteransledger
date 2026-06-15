@@ -1,0 +1,262 @@
+{
+  "brand": {
+    "name": "VeteransLedger",
+    "href": "/",
+    "logo": "/public/logos/eagle.png",
+    "tagline": "Axis History Archive"
+  },
+
+  "settings": {
+    "stickyHeader": true,
+    "sidebarPermanentFrom": 1024,
+    "breakpoints": { "mobile": 768, "tablet": 1024, "desktop": 1280 }
+  },
+
+  "primary": [
+    { "id": "home", "label": "HOME", "href": "/", "icon": "home" },
+    {
+      "id": "timeline",
+      "label": "TIMELINE",
+      "href": "/timeline",
+      "icon": "timeline"
+    },
+
+    {
+      "id": "campaigns",
+      "label": "CAMPAIGNS",
+      "href": "/campaigns",
+      "icon": "campaigns",
+      "children": [
+        {
+          "id": "camp-east",
+          "label": "Eastern Front",
+          "href": "/campaigns#eastern-front"
+        },
+        {
+          "id": "camp-west",
+          "label": "Western Front",
+          "href": "/campaigns#western-front"
+        },
+        {
+          "id": "camp-africa",
+          "label": "North Africa",
+          "href": "/campaigns#africa"
+        },
+        { "id": "camp-italy", "label": "Italy", "href": "/campaigns#italy" },
+        { "id": "camp-atl", "label": "Atlantic", "href": "/campaigns#atlantic" }
+      ]
+    },
+
+    {
+      "id": "armaments",
+      "label": "ARMAMENTS",
+      "href": "/armaments",
+      "icon": "armaments",
+      "children": [
+        { "id": "arm-panzer", "label": "Panzers", "href": "/armaments#panzer" },
+        { "id": "arm-air", "label": "Aircraft", "href": "/armaments#aircraft" },
+        { "id": "arm-naval", "label": "Naval", "href": "/armaments#naval" },
+        {
+          "id": "arm-missile",
+          "label": "Missiles",
+          "href": "/armaments#missiles"
+        },
+        {
+          "id": "arm-wunder",
+          "label": "Wunderwaffen",
+          "href": "/armaments#wunderwaffen"
+        },
+        {
+          "id": "arm-equip",
+          "label": "Equipment",
+          "href": "/armaments#equipment"
+        }
+      ]
+    },
+
+    {
+      "id": "personnel",
+      "label": "PERSONNEL",
+      "href": "/personnel",
+      "icon": "personnel",
+      "children": [
+        {
+          "id": "pers-army",
+          "label": "Heer (Army)",
+          "href": "/personnel#army"
+        },
+        {
+          "id": "pers-luft",
+          "label": "Luftwaffe",
+          "href": "/personnel#luftwaffe"
+        },
+        {
+          "id": "pers-km",
+          "label": "Kriegsmarine",
+          "href": "/personnel#kriegsmarine"
+        },
+        {
+          "id": "pers-ss",
+          "label": "Waffen-SS",
+          "href": "/personnel#waffen-ss"
+        },
+        {
+          "id": "pers-foreign",
+          "label": "Foreign Volunteers",
+          "href": "/personnel#foreign"
+        }
+      ]
+    },
+
+    {
+      "id": "letters",
+      "label": "LETTERS",
+      "href": "/letters",
+      "icon": "letters",
+      "children": [
+        { "id": "let-german", "label": "German", "href": "/letters#german" },
+        { "id": "let-italian", "label": "Italian", "href": "/letters#italian" },
+        {
+          "id": "let-japanese",
+          "label": "Japanese",
+          "href": "/letters#japanese"
+        },
+        {
+          "id": "let-volunteer",
+          "label": "Volunteers",
+          "href": "/letters#volunteers"
+        }
+      ]
+    },
+
+    {
+      "id": "nsdap",
+      "label": "NSDAP",
+      "href": "/nsdap",
+      "icon": "nsdap",
+      "children": [
+        {
+          "id": "nsdap-hitler",
+          "label": "Adolf Hitler",
+          "href": "/nsdap#hitler"
+        },
+        {
+          "id": "nsdap-party",
+          "label": "Party Structure",
+          "href": "/nsdap#party"
+        }
+      ]
+    },
+
+    {
+      "id": "articles",
+      "label": "ARTICLES",
+      "href": "/articles",
+      "icon": "articles",
+      "children": [
+        {
+          "id": "art-military",
+          "label": "Military",
+          "href": "/articles#military"
+        },
+        {
+          "id": "art-political",
+          "label": "Political",
+          "href": "/articles#political"
+        },
+        {
+          "id": "art-economy",
+          "label": "Economy",
+          "href": "/articles#economy"
+        },
+        { "id": "art-legal", "label": "Legal", "href": "/articles#legal" }
+      ]
+    },
+
+    {
+      "id": "about",
+      "label": "ABOUT",
+      "href": "/about",
+      "icon": "about",
+      "children": [
+        { "id": "about-mission", "label": "Mission", "href": "/about#mission" },
+        {
+          "id": "about-sources",
+          "label": "Sources & Methodology",
+          "href": "/about#sources"
+        }
+      ]
+    }
+  ],
+
+  "utility": [
+    {
+      "id": "policies",
+      "label": "POLICIES",
+      "href": "/site-policies",
+      "children": [
+        {
+          "id": "pol-terms",
+          "label": "Terms of Use",
+          "href": "/site-policies#terms"
+        },
+        {
+          "id": "pol-privacy",
+          "label": "Privacy Policy",
+          "href": "/site-policies#privacy"
+        },
+        {
+          "id": "pol-disclaimer",
+          "label": "Disclaimer",
+          "href": "/site-policies#disclaimer"
+        },
+        {
+          "id": "pol-copyright",
+          "label": "Copyright",
+          "href": "/site-policies#copyright"
+        }
+      ]
+    },
+    {
+      "id": "removal",
+      "label": "Removal Requests",
+      "href": "/site-policies#removal"
+    },
+    {
+      "id": "theme",
+      "type": "action",
+      "action": "toggle-theme",
+      "labels": { "light": "LIGHT", "dark": "DARK" }
+    }
+  ],
+
+  "footer": {
+    "columns": [
+      {
+        "heading": "EXPLORE",
+        "items": ["home", "timeline", "campaigns", "armaments"]
+      },
+      {
+        "heading": "ARCHIVE",
+        "items": ["personnel", "letters", "nsdap", "articles"]
+      },
+      { "heading": "LEGAL", "items": ["policies", "removal"] }
+    ],
+    "social": [
+      {
+        "id": "telegram",
+        "label": "Telegram",
+        "href": "https://t.me/VETERANSLEDGER",
+        "icon": "telegram"
+      },
+      {
+        "id": "email",
+        "label": "Email",
+        "href": "mailto:veteransledger@gmail.com",
+        "icon": "email"
+      }
+    ],
+    "legalLine": "HISTORY IS NOT TO BE HIDDEN, BUT TO BE UNDERSTOOD.",
+    "copyright": "© 2026 VETERANSLEDGER · PERSONAL HISTORICAL ARCHIVE · EDUCATIONAL USE ONLY"
+  }
+}

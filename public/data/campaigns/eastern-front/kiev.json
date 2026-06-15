@@ -1,0 +1,20 @@
+{
+  "id": "kiev",
+  "title": "Battle of Kiev",
+  "theater": "eastern-front",
+  "dates": { "start": "1941-08-23", "end": "1941-09-26" },
+  "summary": "The Battle of Kiev was the largest encirclement in military history. German Army Group South, reinforced by Guderian's Panzer Group 2 swinging south from Army Group Centre, encircled four Soviet armies east of Kiev in a pocket that yielded over 660,000 prisoners.",
+  "background": "Hitler's controversial decision to divert Guderian's Panzers south toward Kiev rather than continuing toward Moscow created the conditions for the encirclement. Guderian and the Army General Staff opposed the decision; Hitler overruled them, and the Kiev operation produced the war's most devastating single encirclement.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Gerd von Rundstedt (Army Group South)", "Heinz Guderian (Panzer Group 2)", "Ewald von Kleist (Panzer Group 1)"],
+      "strength": "Army Group South + Guderian's corps from Army Group Centre"
+    },
+    "allied": {
+      "commanders": ["Mikhail Kirponos (South-West Front, killed)", "Semyon Budyonny"],
+      "strength": "South-West Front (four armies)"
+    }
+  },
+  "outcome": "Catastrophic Soviet defeat. 665,212 prisoners taken — the largest single encirclement in history. The four Soviet armies of the South-West Front were effectively destroyed. General Kirponos was killed attempting to break out.",
+  "casualties": { "germany": "~100,000 killed or wounded", "soviet": "~616,000–700,000 killed, wounded, or captured; 3,718 guns, 884 tanks lost" }
+}

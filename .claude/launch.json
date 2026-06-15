@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "veteransledger-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "node_modules/ts-node-dev/lib/bin.js",
+        "--respawn",
+        "--transpile-only",
+        "src/index.ts"
+      ],
+      "port": 3000
+    }
+  ]
+}

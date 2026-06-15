@@ -1,0 +1,29 @@
+{
+  "category": "Guided Weapons & Missiles — Italy",
+  "weapons": [
+    {
+      "name": "Motobomba FFF",
+      "type": "Circling Torpedo",
+      "year": 1940,
+      "weight_kg": 350,
+      "warhead_kg": 100,
+      "notes": "Air-dropped circling torpedo that spiralled in an expanding circle on the water surface until it struck a ship. Used by the Regia Aeronautica against Allied convoys in the Mediterranean."
+    },
+    {
+      "name": "Siluro a Lenta Corsa (SLC) / 'Maiale'",
+      "type": "Human-Guided Torpedo",
+      "year": 1936,
+      "length_m": 6.7,
+      "warhead_kg": 300,
+      "notes": "The 'Pig' — a manned torpedo ridden by two frogmen (10th Flotilla MAS). Used in daring raids on Alexandria (sinking HMS Valiant and HMS Queen Elizabeth) and Gibraltar. The most successful Italian special weapon of the war."
+    },
+    {
+      "name": "Breda 20/65 Mod. 35",
+      "type": "Anti-Aircraft Cannon",
+      "calibre": "20mm",
+      "year": 1935,
+      "rate_of_fire": "240 rpm",
+      "notes": "Italy's standard light anti-aircraft cannon. Used in ground-based and vehicle-mounted roles. Less sophisticated than the German Flak 38 but effective at low altitudes."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "gazala",
+  "title": "Battle of Gazala",
+  "theater": "africa",
+  "dates": { "start": "1942-05-26", "end": "1942-06-21" },
+  "summary": "Rommel's most brilliant victory in Africa. By outflanking the Gazala Line and drawing the British armour into piecemeal counterattacks, he destroyed three British armoured brigades, captured the fortress of Tobruk in one day, and drove the 8th Army back to El Alamein.",
+  "combatants": {
+    "axis": { "commanders": ["Erwin Rommel"], "strength": "Panzerarmee Afrika: ~90,000 troops, 560 tanks" },
+    "allied": { "commanders": ["Neil Ritchie", "Claude Auchinleck"], "strength": "8th Army: ~100,000 troops, 843 tanks" }
+  },
+  "outcome": "Decisive Axis victory. Tobruk fell on 21 June 1942 with 33,000 Allied prisoners — Churchill called it 'a bitter moment. Defeat is one thing; disgrace is another.' Rommel was promoted to Generalfeldmarschall the same day.",
+  "casualties": { "axis": "~3,360 killed, ~3,100 wounded", "allied": "~50,000 killed, wounded, or captured" }
+}

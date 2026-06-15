@@ -1,0 +1,11 @@
+{
+  "title": "NSDAP Affiliated Organisations",
+  "organisations": [
+    { "name": "Sturmabteilung (SA)", "abbrev": "SA", "founded": 1921, "peak_membership": "3,000,000 (1934)", "description": "The original Nazi paramilitary wing, the 'Brownshirts'. Used violence to intimidate political opponents and Jews. Emasculated after the Night of the Long Knives (June 1934) when its leadership was murdered; thereafter a largely ceremonial organisation." },
+    { "name": "Schutzstaffel (SS)", "abbrev": "SS", "founded": 1925, "peak_membership": "800,000", "description": "Originally Hitler's bodyguard, expanded under Heinrich Himmler into the most powerful organisation in Nazi Germany. Ran the concentration camp system (through the SS-Totenkopfverbände), the Gestapo (through the RSHA), the Einsatzgruppen, and the Waffen-SS armed force. Declared a criminal organisation at Nuremberg." },
+    { "name": "Hitlerjugend (HJ)", "abbrev": "HJ", "founded": 1922, "peak_membership": "8,700,000 (1939)", "description": "The Hitler Youth — mandatory for German boys 14–18 from 1936. Emphasised physical fitness, ideological indoctrination, and military preparation. Younger boys (10–14) attended the Deutsches Jungvolk. In 1945, HJ units defended Berlin." },
+    { "name": "Bund Deutscher Mädel (BDM)", "abbrev": "BDM", "founded": 1930, "peak_membership": "4,500,000", "description": "League of German Girls — the female counterpart to the Hitler Youth. Emphasised physical fitness, domestic skills, and racial ideology. Membership mandatory from 1936." },
+    { "name": "Deutsche Arbeitsfront (DAF)", "abbrev": "DAF", "founded": 1933, "description": "The German Labour Front replaced dissolved trade unions. 25 million members. Controlled wages and working conditions; organised the Kraft durch Freude (Strength Through Joy) leisure programme." },
+    { "name": "Geheime Staatspolizei (Gestapo)", "abbrev": "Gestapo", "founded": 1933, "description": "The Secret State Police, operating outside normal judicial oversight. Despite popular myth of omnipresence, depended heavily on denunciations from ordinary Germans. Formally part of the RSHA (SS) from 1939. Declared criminal at Nuremberg." }
+  ]
+}

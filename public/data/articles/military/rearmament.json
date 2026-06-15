@@ -1,0 +1,51 @@
+{
+  "id": "rearmament",
+  "title": "German Rearmament, 1933–1939",
+  "subtitle": "The secret rebuilding of the Wehrmacht",
+  "category": "military",
+  "date_published": "2024-01-20",
+  "author": "VeteransLedger Archive",
+  "image": "/storage/images/articles/rearmament.jpg",
+  "tags": [
+    "rearmament",
+    "Wehrmacht",
+    "Luftwaffe",
+    "Kriegsmarine",
+    "Versailles"
+  ],
+  "summary": "Between 1933 and 1939, Nazi Germany systematically dismantled the military restrictions imposed by the Treaty of Versailles and rebuilt its armed forces into the most powerful war machine in Europe — partly in secret, partly in open defiance.",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "The Treaty of Versailles (1919) had reduced the German Army (Reichswehr) to 100,000 long-service men, abolished the General Staff, forbidden tanks, aircraft, and submarines, and limited the navy to ships below 10,000 tonnes. Between 1933 and 1939, all of these restrictions were systematically violated or unilaterally repudiated."
+    },
+    {
+      "type": "heading",
+      "text": "Secret Rearmament, 1919–1933"
+    },
+    {
+      "type": "paragraph",
+      "text": "Even under the Weimar Republic, Germany had circumvented Versailles restrictions. Pilots trained secretly in the Soviet Union under the Rapallo Agreement. Panzer doctrine was developed at a secret tank school at Kazan, Russia. The General Staff was disguised as the Truppenamt (Troop Office). Hans von Seeckt used the long-service 100,000-man army to train a cadre of future officers and NCOs who would form the skeleton of a larger force."
+    },
+    {
+      "type": "heading",
+      "text": "Hitler's Open Rearmament, 1933–1936"
+    },
+    {
+      "type": "paragraph",
+      "text": "After taking power in January 1933, Hitler accelerated rearmament while initially maintaining the pretence of treaty compliance. Military spending rose from 1.9 billion Reichsmarks in 1933 to 14.5 billion in 1936. On 9 March 1935, the existence of the Luftwaffe was publicly announced. On 16 March 1935, conscription was reintroduced and the Reichswehr renamed the Wehrmacht. The Western powers protested but took no action."
+    },
+    {
+      "type": "paragraph",
+      "text": "The remilitarisation of the Rhineland on 7 March 1936 — a violation of both Versailles and the Locarno Treaties — was the riskiest gamble. Hitler later admitted that if France had responded militarily, Germany would have been forced to retreat. France and Britain again took no action."
+    },
+    {
+      "type": "heading",
+      "text": "The Wehrmacht by 1939"
+    },
+    {
+      "type": "paragraph",
+      "text": "By September 1939, Germany fielded 98 divisions, 3,466 tanks (though most were light), 4,093 aircraft, and a navy including 57 submarines. The Wehrmacht was not yet the juggernaut it would appear in France in 1940 — much equipment was of poor quality and logistics were strained — but the speed of rearmament had dramatically shifted the European balance of power."
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "leningrad",
+  "title": "Siege of Leningrad",
+  "theater": "eastern-front",
+  "dates": { "start": "1941-09-08", "end": "1944-01-27" },
+  "summary": "The Siege of Leningrad was one of the longest and most destructive sieges in history, lasting 872 days. German and Finnish forces encircled the city from September 1941 without capturing it, while the civilian population endured starvation, intense artillery bombardment, and extreme cold.",
+  "background": "Leningrad — the former imperial capital and the Soviet Union's second city — was Army Group North's primary objective in Operation Barbarossa. Hitler decreed that the city should be starved into submission and then razed to the ground; it was never to be allowed to fall to German ground assault.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Wilhelm Ritter von Leeb (Army Group North)", "Georg von Küchler (later)", "Finnish forces under Mannerheim (north)"],
+      "strength": "725,000 German troops; Finnish forces in the north"
+    },
+    "allied": {
+      "commanders": ["Georgy Zhukov (briefly)", "Kirill Meretskov", "Leonid Govorov"],
+      "strength": "450,000 military defenders (varying); 2.5 million civilians"
+    }
+  },
+  "the_road_of_life": {
+    "description": "The only supply route to the besieged city was across frozen Lake Ladoga — the 'Road of Life'. In winter, trucks drove across the ice; in summer, barges crossed the lake. It was constantly attacked by the Luftwaffe.",
+    "supplies_delivered_tonnes": 1615000,
+    "evacuees": 1376182
+  },
+  "outcome": "Soviet victory. The siege was broken on 18 January 1943 when Soviet forces opened a narrow land corridor. Full relief came on 27 January 1944, when Leningrad was finally liberated. The date is still commemorated annually in St. Petersburg.",
+  "casualties": {
+    "civilians": "~800,000–1,100,000 died (starvation, cold, bombardment)",
+    "soviet_military": "~1,017,881 killed or missing",
+    "germany": "~579,985 killed, wounded, missing"
+  },
+  "image": "/storage/images/campaigns/leningrad.jpg",
+  "significance": "The Siege of Leningrad became a symbol of Soviet resistance and suffering. The civilian death toll — primarily from starvation — was greater than the total military and civilian losses of Britain or the United States in the entire war."
+}

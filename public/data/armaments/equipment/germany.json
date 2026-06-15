@@ -1,0 +1,58 @@
+[
+  {
+    "id": "mg-42",
+    "name": "MG 42 General-Purpose Machine Gun",
+    "type": "Infantry Weapon",
+    "nation": "Germany",
+    "category": "Machine Gun",
+    "years_of_service": "1942–1945",
+    "manufacturer": "Großfuß Metall- und Lackierwarenfabrik",
+    "caliber": "7.92×57mm Mauser",
+    "rate_of_fire": "1,200–1,500 rounds/min",
+    "weight_kg": 11.57,
+    "image": "/storage/images/armaments/equipment/mg42.jpg",
+    "summary": "The MG 42 was the most effective general-purpose machine gun of the war and is still in service today in modified form. Its exceptionally high rate of fire — up to 1,500 rounds per minute — produced the characteristic tearing sound that earned it the Allied nicknames 'Hitler's Buzzsaw' and 'Bone Saw'. Allied infantry were trained to go to ground immediately upon hearing it. Its quick-change barrel system allowed sustained fire without the barrel overheating."
+  },
+  {
+    "id": "stg-44",
+    "name": "Sturmgewehr 44",
+    "type": "Infantry Weapon",
+    "nation": "Germany",
+    "category": "Assault Rifle",
+    "years_of_service": "1944–1945",
+    "manufacturer": "C. G. Haenel, others",
+    "caliber": "7.92×33mm Kurz",
+    "rate_of_fire": "500–600 rounds/min",
+    "weight_kg": 5.22,
+    "units_produced": 425977,
+    "summary": "The StG 44 was the world's first mass-produced assault rifle, combining the controllable automatic fire of a submachine gun with the range and accuracy of a rifle. It defined the concept that nearly every military rifle today — from the AK-47 to the M16 — follows. Hitler initially opposed the project; it was developed partly in secret and presented to him as a 'machine pistol'. He was reportedly impressed by field reports and approved it."
+  },
+  {
+    "id": "panzerfaust",
+    "name": "Panzerfaust",
+    "type": "Infantry Weapon",
+    "nation": "Germany",
+    "category": "Anti-tank Weapon",
+    "years_of_service": "1943–1945",
+    "manufacturer": "Multiple",
+    "range_m": 30,
+    "penetration_mm": 200,
+    "weight_kg": 6.8,
+    "units_produced": 8250000,
+    "summary": "The Panzerfaust ('tank fist') was a cheap, single-shot, disposable anti-tank weapon requiring minimal training — a shaped-charge grenade on a wooden tube with a propellant charge. Effective at short range against all Allied tanks, it became the primary anti-tank weapon of German infantry, particularly the Volkssturm in 1945. Its hollow-charge warhead could penetrate up to 200mm of armour."
+  },
+  {
+    "id": "mp-40",
+    "name": "MP 40 Submachine Gun",
+    "type": "Infantry Weapon",
+    "nation": "Germany",
+    "category": "Submachine Gun",
+    "years_of_service": "1940–1945",
+    "manufacturer": "Erma Werke, Steyr-Daimler-Puch, Haenel",
+    "caliber": "9×19mm Parabellum",
+    "rate_of_fire": "500–550 rounds/min",
+    "weight_kg": 4.03,
+    "units_produced": 1100000,
+    "summary": "The MP 40 — often incorrectly called the 'Schmeisser' — was the standard submachine gun of German NCOs and vehicle crews. Its all-metal construction and folding stock were innovations for the period. It became an iconic symbol of the German military in wartime film and photography, though it was not as widely issued as often depicted — most German infantry carried the Karabiner 98k bolt-action rifle."
+  }
+]

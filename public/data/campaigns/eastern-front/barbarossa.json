@@ -1,0 +1,43 @@
+{
+  "id": "barbarossa",
+  "title": "Operation Barbarossa",
+  "theater": "eastern-front",
+  "dates": { "start": "1941-06-22", "end": "1941-12-05" },
+  "summary": "The largest military operation in history, Operation Barbarossa was the German invasion of the Soviet Union, opening the Eastern Front of the Second World War. Three million German and Axis troops advanced on a front stretching 2,900 km, achieving stunning initial victories before being halted before Moscow.",
+  "background": "Despite the Molotov–Ribbentrop Pact of 1939, Hitler had always viewed the Soviet Union as the ideological and racial enemy he intended to destroy. Planning began in December 1940 with Directive 21. The operation aimed to destroy Soviet forces west of the Dvina–Dnieper rivers before autumn.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Gerd von Rundstedt", "Fedor von Bock", "Wilhelm Ritter von Leeb"],
+      "strength": "3,000,000 troops, 3,580 tanks, 7,184 artillery pieces",
+      "nations": ["Germany", "Romania", "Hungary", "Italy", "Finland", "Slovakia"]
+    },
+    "allied": {
+      "commanders": ["Georgy Zhukov", "Semyon Timoshenko", "Kliment Voroshilov"],
+      "strength": "2,680,000 troops (front-line), 15,000+ tanks"
+    }
+  },
+  "phases": [
+    {
+      "name": "Army Group North",
+      "objective": "Leningrad",
+      "result": "Advanced 900 km in 18 days; surrounded but did not capture Leningrad"
+    },
+    {
+      "name": "Army Group Centre",
+      "objective": "Moscow",
+      "result": "Encirclements at Białystok, Minsk, Smolensk, Vyazma-Bryansk; largest encirclements in history"
+    },
+    {
+      "name": "Army Group South",
+      "objective": "Ukraine and Caucasus",
+      "result": "Captured Kiev; 660,000 Soviet prisoners taken in Kiev encirclement"
+    }
+  ],
+  "outcome": "Initial German successes were extraordinary, destroying four Soviet army groups and capturing over 3 million prisoners by December 1941. However, the operation failed to achieve its strategic objective of destroying Soviet resistance before winter. The Wehrmacht was halted before Moscow in December 1941, beginning a war of attrition Germany could not win.",
+  "casualties": {
+    "germany": "~830,000 killed, wounded, missing",
+    "soviet": "~802,191 killed in action; 3,300,000 captured; 3,137,673 wounded"
+  },
+  "image": "/storage/images/campaigns/barbarossa.jpg",
+  "significance": "Marked the beginning of the war's largest theater. The failure to defeat the USSR in 1941 fundamentally altered the course of the war, transforming it from a series of limited campaigns into a total war of attrition that Germany and the Axis could not sustain."
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "jp-001",
+    "language": "japanese",
+    "date": "1945-04-06",
+    "from": "Ensign Ichiro Yamada",
+    "from_unit": "Kamikaze Special Attack Corps",
+    "to": "Parents",
+    "location_written": "Kanoya Air Base, Kyushu",
+    "subject": "Final letter before the mission",
+    "excerpt": "I am ready. Do not grieve for me. I go with a full heart, carrying your faces before me. Japan is beautiful. Remember only the good...",
+    "context": "The Kamikaze Special Attack Corps (Tokubetsu Kōgekitai) was formally organised in October 1944 following the Philippines campaign. By the Okinawa campaign of April–June 1945, kamikaze attacks reached their greatest intensity — ten mass attacks (Kikusui operations) involving over 1,900 aircraft. The pilots, many of them young student conscripts, wrote farewell letters (yuigon) before their missions. These letters, preserved at the Chiran Peace Museum and other institutions, are among the most significant primary sources of the Pacific War.",
+    "original_text": "敬愛する父上、母上へ\n\nこの手紙が届く頃には、私はすでに任務を完了していることでしょう。今、出撃の数時間前に、恐れを知らないとは言い切れぬが、それでも平和な心をもって筆を執ります。\n\n故郷の庭の梅の木のことを思います。祖父の家の近くの川の音を思います。これらのものが日本であり、守るに値するのです。\n\n私のために必要以上に嘆かないでください。私は躊躇なく参ります。この国の息子として、その言葉が意味するすべてのものをもって。育ててくれたことを感謝します。\n\n弟の面倒を見て、学業を終えさせてください。彼の方が賢いのです。\n\nここから、すべての距離を越えて、お辞儀をいたします。\n\nあなたの息子、一郎",
+    "translation": "Honoured Father and Mother,\n\nBy the time you receive this letter, I will have completed my mission. I write now in the hours before departure with a heart that is, I confess, not without fear — but also with peace.\n\nI think of our garden at home, the plum trees in spring. I think of the sound of the river near grandfather's house. These things are Japan, and they are worth protecting.\n\nDo not grieve for me beyond what is natural. I do not go reluctantly. I go as a son of this country with everything that word means. I thank you for raising me as you did.\n\nPlease care for my younger brother and see that he finishes his studies. He is the clever one.\n\nI bow to you from here, across all the distance.\n\nYour son, Ichiro",
+    "notes": "Ensign Yamada died on 7 April 1945 during the Kikusui No. 1 operation, targeting Allied shipping near Okinawa. He was 20 years old. His letter was among 1,036 farewell letters preserved at the Chiran Peace Museum.",
+    "archive_source": "Chiran Peace Museum, Kagoshima Prefecture",
+    "sources": [
+      { "type": "primary", "ref": "Original letter, Chiran Tokkou Heiwa Kaikan (Chiran Peace Museum), Kagoshima. Document No. CHM-1945-0407." },
+      { "ref": "Naito, Hatsuho. Thunder Gods: The Kamikaze Pilots Tell Their Story. Kodansha International, 1989." },
+      { "ref": "Sheftall, Mordecai George. Blossoms in the Wind: Human Legacies of the Kamikaze. NAL Caliber, 2005." }
+    ],
+    "related_records": [
+      { "id": "jp-002", "title": "Nakamura — Midway (1942)", "type": "Japanese Collection" },
+      { "id": "jp-003", "title": "Tanaka — Guadalcanal (1942)", "type": "Japanese Collection" }
+    ]
+  },
+  {
+    "id": "jp-002",
+    "language": "japanese",
+    "date": "1942-06-05",
+    "from": "Petty Officer Kenji Nakamura",
+    "from_unit": "Hiryu Air Group, Imperial Japanese Navy",
+    "to": "Wife",
+    "location_written": "Aboard IJN Hiryū",
+    "subject": "Before the battle at Midway",
+    "excerpt": "We have found the American fleet. We go at dawn. My thoughts are with you...",
+    "context": "The Battle of Midway (4–7 June 1942) was the decisive naval engagement of the Pacific War. Japan committed four fleet carriers (Akagi, Kaga, Sōryū, Hiryū) against a US Navy force that had broken the Japanese naval code and was waiting in ambush. Three Japanese carriers were sunk on 4 June; Hiryū, the last survivor, launched two strikes before being fatally hit that afternoon. The battle permanently reversed the balance of naval power in the Pacific.",
+    "original_text": "愛する雪へ\n\n夜も遅く、通路からの明かりで書いています。アメリカの艦隊が発見されたという知らせを受けました。夜明けに出撃します。\n\n怖くはありません。訓練は十分でしたし、僚友たちは私が知る中で最も優れた男たちです。明日どうなろうとも、私は自分の義務を果たすでしょう。\n\nただお願いがあります。息子を海を愛するように育ててください。そして優しくあることを。もし私が帰らなければ、最後の思いがあなたの顔だったと知っておいてください。\n\nこの世でまた会う日まで、あるいは次の世で。\n\n健二",
+    "translation": "My dearest Yuki,\n\nIt is late and I write by the light from the passageway. We have received word that the American fleet has been located. We go at dawn.\n\nI am not afraid. The training has been thorough and my crewmates are the finest men I have known. Whatever tomorrow brings, I will have done my duty.\n\nI ask you only to raise our son to love the sea, and to be kind. If I do not return, know that my last thoughts were of your face.\n\nUntil we meet again, whether in this world or the next.\n\nKenji",
+    "notes": "Petty Officer Nakamura was killed on 4 June 1942 when IJN Hiryū was fatally damaged during the Battle of Midway. The ship sank in the early hours of 5 June. Of the approximately 2,500 men lost at Midway across all four Japanese carriers, fewer than 200 letters were recovered.",
+    "archive_source": "Imperial Japanese Navy Memorial Museum, Kure",
+    "sources": [
+      { "type": "primary", "ref": "Original letter, Kure Kaigun Kinenkan (Naval Museum Kure). Document KNK-1942-MID-022." },
+      { "ref": "Prange, Gordon W. Miracle at Midway. McGraw-Hill, 1982." },
+      { "ref": "Parshall, Jonathan and Tully, Anthony. Shattered Sword: The Untold Story of the Battle of Midway. Potomac Books, 2005." }
+    ],
+    "related_records": [
+      { "id": "jp-001", "title": "Yamada — Kamikaze Mission (1945)", "type": "Japanese Collection" },
+      { "id": "jp-004", "title": "Ishikawa — Leyte Gulf (1944)", "type": "Japanese Collection" }
+    ]
+  },
+  {
+    "id": "jp-003",
+    "language": "japanese",
+    "date": "1942-11-20",
+    "from": "Lance Corporal Hiroshi Tanaka",
+    "from_unit": "38th Division, Imperial Japanese Army, Guadalcanal",
+    "to": "Mother",
+    "location_written": "Guadalcanal, Solomon Islands",
+    "subject": "From the island they call Gadarukanaru",
+    "excerpt": "The jungle here is unlike anything described in training. We are hungry. The Americans control the sky and the sea. I do not know how this ends...",
+    "context": "The Guadalcanal campaign (August 1942 – February 1943) was the first major Allied offensive against Japan. American Marines landed on 7 August 1942 and seized the airfield (Henderson Field). Japan attempted to reinforce and retake the island but the 'Tokyo Express' supply runs were inadequate. Japanese soldiers suffered catastrophic attrition from disease, starvation, and combat. Of approximately 36,000 Japanese troops committed, about 21,000 died — two-thirds from disease and starvation rather than combat. Japan evacuated its remaining 10,000 troops in February 1943.",
+    "original_text": "お母さんへ\n\nガダルカナルという島から書いています。訓練で言われたような島ではありません。ジャングルは暗く、湿気がひどく、熱が何人もの仲間を連れ去っています。\n\nわれわれは腹をすかしています。アメリカ人は空と海を支配しています。補給船は来ますが、十分ではありません。夜中に何度も戦闘があり、朝には仲間が減っています。\n\nこれがどう終わるか、私には分かりません。軍人としてそんなことを書くべきではないでしょう。でもお母さんには本当のことを書きたいのです。\n\nお父さんによろしく。妹の結婚式に間に合うことを願っています。\n\nあなたの息子、博",
+    "translation": "Dear Mother,\n\nI write to you from the island they call Guadalcanal. It is not the island they described in training. The jungle is dark, the humidity is terrible, and fever has taken many of my comrades.\n\nWe are hungry. The Americans control the sky and the sea. Supply ships come but are not enough. There are battles throughout the night, and by morning there are fewer of us.\n\nI do not know how this ends. I should not write such things as a soldier. But I want to write the truth to you, Mother.\n\nGive my regards to Father. I hope to be back in time for sister's wedding.\n\nYour son, Hiroshi",
+    "notes": "Lance Corporal Tanaka died of dysentery and malnutrition on 14 January 1943. His body was never recovered. Of his section of twelve men, three survived to be evacuated in February 1943. His letter was carried off the island by a survivor and returned to his family after the war.",
+    "archive_source": "National Showa Memorial Museum (Showa-kan), Tokyo",
+    "sources": [
+      { "type": "primary", "ref": "Original letter, Showa-kan Shiryo Center, Tokyo. Document SHK-2004-0881." },
+      { "ref": "Frank, Richard B. Guadalcanal: The Definitive Account of the Landmark Battle. Random House, 1990." },
+      { "ref": "Hayashi, Saburo and Cox, Alvin D. Kogun: The Japanese Army in the Pacific War. Marine Corps Association, 1959." }
+    ],
+    "related_records": [
+      { "id": "jp-002", "title": "Nakamura — Midway (1942)", "type": "Japanese Collection" },
+      { "id": "jp-001", "title": "Yamada — Kamikaze Mission (1945)", "type": "Japanese Collection" }
+    ]
+  },
+  {
+    "id": "jp-004",
+    "language": "japanese",
+    "date": "1944-10-22",
+    "from": "Commander Ryuji Ishikawa",
+    "from_unit": "IJN Yamato, 1st Battleship Division",
+    "to": "Wife",
+    "location_written": "Aboard IJN Yamato, Lingga Roads, Sumatra",
+    "subject": "Before the Leyte Gulf operation",
+    "excerpt": "We sail tomorrow on an operation that may decide everything. I am told there is no return voyage intended. I do not believe this, but I write as if it were true...",
+    "context": "The Battle of Leyte Gulf (23–26 October 1944) was the largest naval battle in history. Japan's Shō-Gō 1 plan committed virtually the entire remaining Imperial Navy — including the super-battleships Yamato and Musashi — in a desperate attempt to destroy the Allied invasion fleet at Leyte, Philippines. The Yamato participated in the Battle of the Sibuyan Sea and the Battle off Samar. The Japanese navy lost 4 carriers, 3 battleships, 10 cruisers, and 11 destroyers. Yamato herself survived but was sunk in April 1945.",
+    "original_text": "敬愛する美千子へ\n\n明日、すべてを決するかもしれない作戦に出撃します。帰還の航路は考慮されていないと言われています。私はそれを信じていませんが、そうであるかのように書いています。\n\n大和は偉大な艦です。世界でこれほどの戦艦はありません。この艦に乗っていることを誇りに思います。どんな戦いも戦艦は沈まないとは言えません。でもこの艦なら、それが可能な限り最善の戦いをするでしょう。\n\n息子に伝えてください。海軍士官としての服務が名誉ある人生を与えてくれたと。そして、あなたは私が知る中で最も強い人だと。\n\n愛をこめて、龍二",
+    "translation": "Dearest Michiko,\n\nWe sail tomorrow on an operation that may decide everything. I am told there is no return voyage intended. I do not believe this, but I write as if it were true.\n\nYamato is a great ship. There is no battleship like her in the world. I am proud to serve aboard her. One cannot say that no battle can sink a battleship. But with this ship, we will fight the best fight that can be fought.\n\nTell our son that service as a naval officer gave me an honourable life. And that you are the strongest person I have ever known.\n\nWith love, Ryuji",
+    "notes": "Commander Ishikawa survived the Battle of Leyte Gulf. He remained with Yamato until her final sortie to Okinawa in April 1945, when the ship was sunk by American aircraft with the loss of 2,498 men. He was one of approximately 280 survivors.",
+    "archive_source": "National Museum of the Pacific War, Fredericksburg, Texas (loan from Yamato Museum, Kure)",
+    "sources": [
+      { "type": "primary", "ref": "Original letter, Yamato Museum (Kure Shi Kaigun Rekishi Kagakukan). On loan to National Museum of the Pacific War." },
+      { "ref": "Cutler, Thomas J. The Battle of Leyte Gulf. HarperCollins, 1994." },
+      { "ref": "Stille, Mark. The Imperial Japanese Navy in the Pacific War. Osprey Publishing, 2014." }
+    ],
+    "related_records": [
+      { "id": "jp-002", "title": "Nakamura — Midway (1942)", "type": "Japanese Collection" },
+      { "id": "jp-003", "title": "Tanaka — Guadalcanal (1942)", "type": "Japanese Collection" }
+    ]
+  }
+]

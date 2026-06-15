@@ -1,0 +1,14 @@
+{
+  "id": "alamein-2",
+  "title": "Second Battle of El Alamein",
+  "theater": "africa",
+  "dates": { "start": "1942-10-23", "end": "1942-11-11" },
+  "summary": "The Second Battle of El Alamein was the decisive engagement in the North African campaign. Under General Montgomery, the British 8th Army launched a set-piece offensive that shattered Rommel's Panzerarmee Afrika and began a pursuit that would not end until Tunisia.",
+  "combatants": {
+    "axis": { "commanders": ["Erwin Rommel (absent ill; returned 25 October)", "Georg Stumme (died of heart attack 24 Oct)"], "strength": "104,000 troops, 547 tanks (221 Italian), 1,219 guns" },
+    "allied": { "commanders": ["Bernard Montgomery", "Harold Alexander"], "strength": "195,000 troops, 1,029 tanks, 2,311 guns" }
+  },
+  "outcome": "Decisive Allied victory. Rommel's army routed; retreat all the way to Tunisia. Hitler famously ordered the Panzerarmee to 'victory or death' and not to retreat — Rommel disobeyed and saved the remnant of his force.",
+  "significance": "Churchill declared: 'Before Alamein we never had a victory. After Alamein we never had a defeat.' The battle marked the end of Axis ambitions in North Africa.",
+  "casualties": { "axis": "~30,000 killed or wounded, ~30,000 captured, 500 tanks", "allied": "~13,560 killed, wounded, or missing" }
+}

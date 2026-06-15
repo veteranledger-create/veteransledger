@@ -1,0 +1,14 @@
+{
+  "id": "tobruk",
+  "title": "Siege of Tobruk",
+  "theater": "africa",
+  "dates": { "start": "1941-04-11", "end": "1941-11-27" },
+  "summary": "The Siege of Tobruk lasted 241 days — the longest siege endured by Australian forces in the war. The Tobruk garrison, primarily Australian with British and Polish elements, held out against the Afrika Korps despite being surrounded, forcing Rommel to divert forces away from his advance toward Egypt.",
+  "combatants": {
+    "axis": { "commanders": ["Erwin Rommel"], "strength": "Afrika Korps + Italian forces" },
+    "allied": { "commanders": ["Leslie Morshead"], "strength": "Primarily 9th Australian Division, 1st Polish Carpathian Brigade, British 32nd Armoured Brigade" }
+  },
+  "significance": "The garrison's resistance earned them the nickname 'The Rats of Tobruk' — a term used mockingly by German propaganda that the defenders adopted with pride. Tobruk tied down significant Axis forces and disrupted Rommel's supply lines for eight months.",
+  "outcome": "Allied victory. Tobruk was relieved on 27 November 1941 by Operation Crusader. (Note: Tobruk fell to a second Axis assault on 21 June 1942 — a separate defeat.)",
+  "casualties": { "axis": "~8,000+ killed, wounded across the siege", "allied": "~3,009 killed, wounded, or missing" }
+}

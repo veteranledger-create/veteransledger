@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="VeteransLedger Campaigns — Detailed archives of Axis military operations and battles across all theaters.">
+  <title>Campaigns · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/hero.css">
+  <link rel="stylesheet" href="/styles/cards.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+  <link rel="stylesheet" href="/styles/pages/campaigns.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <section class="hero campaigns-hero page-hero" aria-label="Campaigns">
+      <div class="page-hero__bg" style="background-image:url('/public/images/covers/campaings-cover.webp')"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Campaigns</h1>
+        <p class="page-hero__subtitle">Military Operations Archive</p>
+      </div>
+    </section>
+
+    <!-- ── Eastern Front ─────────────────────────────────────── -->
+    <div class="archive-section">
+
+      <div id="eastern-front" class="anchor-section theater-section">
+        <div class="archive-section__header">
+          <div>
+            <div class="section-label">Eastern Front</div>
+          </div>
+          <div class="nation-tabs" id="theater-nav">
+            <button type="button" class="nation-tab is-active" data-theater="eastern-front">Eastern Front</button>
+            <button type="button" class="nation-tab" data-theater="western-front">Western Front</button>
+            <button type="button" class="nation-tab" data-theater="africa">North Africa</button>
+            <button type="button" class="nation-tab" data-theater="italy">Italy</button>
+            <button type="button" class="nation-tab" data-theater="atlantic">Atlantic</button>
+          </div>
+        </div>
+
+        <div class="record-grid" id="campaigns-grid">
+          <div class="loader">
+            <span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="western-front" class="anchor-section theater-section" data-theater-id="western-front" hidden></div>
+      <div id="africa" class="anchor-section theater-section" data-theater-id="africa" hidden></div>
+      <div id="italy" class="anchor-section theater-section" data-theater-id="italy" hidden></div>
+      <div id="atlantic" class="anchor-section theater-section" data-theater-id="atlantic" hidden></div>
+
+    </div>
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Campaigns/campaigns.js"></script>
+</body>
+
+</html>

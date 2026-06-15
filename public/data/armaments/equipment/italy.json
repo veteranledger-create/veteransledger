@@ -1,0 +1,39 @@
+{
+  "category": "Infantry Equipment — Italy",
+  "equipment": [
+    {
+      "name": "Carcano M91/38",
+      "type": "Bolt-Action Rifle",
+      "calibre": "7.35×51mm",
+      "length_mm": 1017,
+      "weight_kg": 3.4,
+      "magazine": "6-round en-bloc clip",
+      "notes": "The standard Italian infantry rifle. The calibre was changed from 6.5mm to 7.35mm in 1938 for better stopping power, but wartime shortages meant many soldiers continued using older 6.5mm weapons."
+    },
+    {
+      "name": "Beretta MAB 38",
+      "type": "Submachine Gun",
+      "calibre": "9×19mm Parabellum",
+      "length_mm": 946,
+      "weight_kg": 4.2,
+      "magazine": "10, 20, 30, or 40-round box magazine",
+      "notes": "Considered one of the finest submachine guns of the war. Adopted by Italian, German, and Romanian forces. Its double-trigger design (one for semi-auto, one for full-auto) was innovative."
+    },
+    {
+      "name": "Breda M30",
+      "type": "Light Machine Gun",
+      "calibre": "6.5×52mm",
+      "weight_kg": 10.5,
+      "rate_of_fire": "475 rpm",
+      "notes": "Italy's standard squad automatic weapon. Criticised for its unusual 20-round feed strip (which had to be oiled before loading) and tendency to jam. Replaced gradually by the Breda M37."
+    },
+    {
+      "name": "Breda M37",
+      "type": "Medium Machine Gun",
+      "calibre": "8×59mm RB",
+      "weight_kg": 19.4,
+      "rate_of_fire": "450–500 rpm",
+      "notes": "Italy's standard medium machine gun from 1937. More reliable than the M30. Used a tray feed system; fired cartridges were reinserted into the feed tray (a distinctive feature)."
+    }
+  ]
+}

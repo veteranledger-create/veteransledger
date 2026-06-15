@@ -1,0 +1,39 @@
+[
+  {
+    "id": "v1",
+    "name": "V-1 Flying Bomb (Fieseler Fi 103)",
+    "type": "Cruise Missile",
+    "nation": "Germany",
+    "years_of_service": "1944–1945",
+    "warhead_kg": 850,
+    "range_km": 250,
+    "speed_kmh": 640,
+    "guidance": "Gyroscope + pre-set range counter",
+    "total_launched": 10492,
+    "summary": "The world's first operational cruise missile. Powered by a pulsejet engine producing the distinctive buzzing sound, the V-1 was the first of the Vergeltungswaffe programme. Primarily targeting London and Antwerp, it killed approximately 22,892 people. Allied countermeasures — fast fighters, barrage balloons, radar-directed AA guns — destroyed over 4,000 before they reached their targets."
+  },
+  {
+    "id": "v2",
+    "name": "V-2 Rocket (Aggregat A-4)",
+    "type": "Ballistic Missile",
+    "nation": "Germany",
+    "years_of_service": "1944–1945",
+    "warhead_kg": 910,
+    "range_km": 320,
+    "max_speed_kmh": 5760,
+    "guidance": "Inertial (gyroscope)",
+    "total_launched": 3172,
+    "summary": "The world's first long-range guided ballistic missile and the first man-made object to reach space (crossing the Kármán line during test flights). Developed at Peenemünde under Wernher von Braun, its supersonic speed made interception impossible. It killed approximately 9,000 civilians, but more forced labourers died building it. Its technology became the foundation of both American and Soviet space programmes."
+  },
+  {
+    "id": "hs-293",
+    "name": "Henschel Hs 293",
+    "type": "Anti-ship Guided Missile",
+    "nation": "Germany",
+    "years_of_service": "1943–1944",
+    "warhead_kg": 295,
+    "range_km": 18,
+    "guidance": "Radio command (joystick)",
+    "summary": "The world's first operational anti-ship guided missile. A glide bomb fitted with a rocket motor, the Hs 293 was directed to its target by a radio operator in the launching aircraft. It sank or damaged numerous Allied warships in the Mediterranean and Atlantic, including the sloops HMS Egret and HMCS Athabaskan, before Allied jamming and tactical adaptations reduced its effectiveness."
+  }
+]

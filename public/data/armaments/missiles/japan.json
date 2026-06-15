@@ -1,0 +1,35 @@
+{
+  "category": "Guided Weapons & Missiles — Japan",
+  "weapons": [
+    {
+      "name": "Ohka Model 11",
+      "type": "Piloted Flying Bomb (Kamikaze)",
+      "year": 1944,
+      "length_m": 6.07,
+      "wingspan_m": 5.12,
+      "warhead_kg": 1200,
+      "max_speed_kmh": 740,
+      "notes": "The Ohka ('Cherry Blossom') was a rocket-powered piloted flying bomb, carried under a Mitsubishi G4M bomber and released near the target. Allied sailors called it 'Baka' (fool). Sank USS Mannert L. Abele in April 1945."
+    },
+    {
+      "name": "Type 93 Long Lance Torpedo",
+      "type": "Surface-Launched Torpedo",
+      "year": 1933,
+      "length_m": 9.0,
+      "diameter_mm": 610,
+      "warhead_kg": 490,
+      "range_km": 40,
+      "speed_knots": 48,
+      "notes": "The finest torpedo of the war. Oxygen-fuelled (leaving no bubble trail), it had four times the range of contemporary US torpedoes. Gave Japanese destroyers a decisive night-combat advantage in the Guadalcanal campaign."
+    },
+    {
+      "name": "Kaiten Type 1",
+      "type": "Human-Guided Torpedo",
+      "year": 1944,
+      "length_m": 14.75,
+      "warhead_kg": 1550,
+      "speed_knots": 30,
+      "notes": "A manned suicide torpedo, essentially a modified Type 93 with a cockpit welded on. The pilot could not escape after launch. Deployed from submarines late 1944–1945; sank USS Mississinewa."
+    }
+  ]
+}

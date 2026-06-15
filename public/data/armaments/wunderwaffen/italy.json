@@ -1,0 +1,25 @@
+{
+  "category": "Special & Experimental Weapons — Italy",
+  "weapons": [
+    {
+      "name": "Siluro a Lenta Corsa (SLC) 'Maiale'",
+      "type": "Manned Torpedo",
+      "year": 1936,
+      "description": "Italy's most famous special weapon. Two frogmen rode astride a slow-running torpedo to enemy harbours, detached the warhead, and set a timer before making their escape. In December 1941, operators from the 10th MAS Flotilla sank HMS Queen Elizabeth and HMS Valiant at Alexandria, immobilising the British Mediterranean Battle Fleet.",
+      "operational_use": "Alexandria (1941), Gibraltar (multiple raids), other Mediterranean ports"
+    },
+    {
+      "name": "Barchina Esplosiva (MTM)",
+      "type": "Explosive Motorboat",
+      "year": 1938,
+      "description": "A small plywood motorboat packed with 300kg of explosive. The pilot aimed at a target, locked the wheel, and bailed out before impact. Used in the raid on Souda Bay (1941) that damaged HMS York.",
+      "operational_use": "Souda Bay (1941), Valletta (1941 — failed)"
+    },
+    {
+      "name": "Gamma class frogman suit",
+      "type": "Combat Swimmer Equipment",
+      "year": 1940,
+      "description": "Italy pioneered combat diving with the Gamma Group (10th MAS). Operators wore rubberised suits, closed-circuit oxygen rebreathers, and fins — equipment that was revolutionary for the era and influenced post-war special forces globally."
+    }
+  ]
+}

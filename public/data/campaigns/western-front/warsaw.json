@@ -1,0 +1,23 @@
+{
+  "id": "warsaw",
+  "title": "Warsaw Uprising",
+  "subtitle": "The Polish Home Army's Battle for Liberation",
+  "date_start": "1944-08-01",
+  "date_end": "1944-10-02",
+  "theatre": "Warsaw, German-Occupied Poland",
+  "combatants": {
+    "axis": "Germany (SS-Obergruppenführer Erich von dem Bach-Zelewski's forces: SS-RONA Brigade, Dirlewanger Brigade, regular Wehrmacht and SS units)",
+    "allied": "Polish Home Army (Armia Krajowa) — ~50,000 fighters under General Tadeusz Bór-Komorowski"
+  },
+  "commanders": {
+    "axis": "SS-Obergruppenführer Erich von dem Bach-Zelewski",
+    "allied": "General Tadeusz Bór-Komorowski (AK Commander)"
+  },
+  "summary": "The Warsaw Uprising began on 1 August 1944 (W-Hour: 17:00) as Soviet forces approached the Vistula. The Polish Home Army (Armia Krajowa) rose against the German occupiers, hoping Allied support and Soviet advance would deliver liberation. The Soviets halted across the Vistula and provided minimal assistance, allowing Germany to suppress the uprising. The SS, including the notoriously brutal Dirlewanger Brigade (composed of convicted criminals) and RONA Brigade (defected Soviet troops), committed systematic atrocities — massacring tens of thousands of civilians in Wola and Ochota in the first days. Despite isolated heroism and tunnel warfare through the city's sewers, the AK capitulated on 2 October 1944. Hitler ordered Warsaw razed; systematic demolition destroyed 85% of the city. The uprising and its suppression constitute one of the greatest urban tragedies of the war.",
+  "casualties": {
+    "axis": "~17,000 killed, ~9,000 wounded",
+    "allied": "~16,000 AK fighters killed; 150,000–200,000 civilians killed (including massacres); ~700,000 survivors expelled"
+  },
+  "outcome": "German victory; Warsaw razed on Hitler's orders",
+  "significance": "One of the greatest urban battles and tragedies of the war. The Soviet halt across the Vistula — whether strategic or political — remains controversial to this day."
+}

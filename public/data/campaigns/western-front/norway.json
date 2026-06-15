@@ -1,0 +1,20 @@
+{
+  "id": "norway",
+  "title": "Norwegian Campaign (Operation Weserübung)",
+  "theater": "western-front",
+  "dates": { "start": "1940-04-09", "end": "1940-06-10" },
+  "summary": "Operation Weserübung was the German invasion of Denmark and Norway, launched simultaneously on 9 April 1940. Despite British and French intervention and fierce Norwegian resistance, Germany secured both countries within two months, gaining strategically vital North Sea bases and access to Swedish iron ore.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Nikolaus von Falkenhorst", "Erich Raeder (Kriegsmarine)"],
+      "strength": "100,000 troops, 1 battleship, 2 battlecruisers, 8 cruisers, 14 destroyers"
+    },
+    "allied": {
+      "commanders": ["Claude Auchinleck", "Otto Ruge (Norway)"],
+      "strength": "British, French, Polish, Norwegian forces"
+    }
+  },
+  "notable": "The campaign saw the first major use of airborne troops (Fallschirmjäger) seizing Fornebu airport at Oslo. The Kriegsmarine suffered severe losses — 3 cruisers and 10 destroyers sunk — that crippled surface fleet operations for years. The British failure contributed to Neville Chamberlain's resignation and Churchill's appointment as Prime Minister.",
+  "outcome": "German victory. Norway and Denmark occupied; Norway continued to resist until formal German surrender in May 1945.",
+  "casualties": { "germany": "~5,296 killed, wounded, missing at sea", "allied": "~5,500 killed; Norwegian merchant navy suffered throughout occupation" }
+}

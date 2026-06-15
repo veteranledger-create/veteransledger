@@ -1,0 +1,15 @@
+/* VeteransLedger · Timeline page overrides */
+
+/* Ensure the page-level timeline.css that Timeline/index.html requests exists.
+   All structural styles live in /styles/timeline.css (shared component).
+   This file holds page-specific layout overrides only. */
+
+.timeline-page {
+  padding: var(--space-12) var(--space-10) var(--space-16);
+}
+
+@media (max-width: 768px) {
+  .timeline-page {
+    padding: var(--space-8) var(--space-5) var(--space-12);
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "altmark",
+  "title": "Altmark Incident",
+  "subtitle": "HMS Cossack and the Rescue of British Prisoners",
+  "date_start": "1940-02-16",
+  "date_end": "1940-02-16",
+  "theatre": "Atlantic / Norwegian Waters",
+  "combatants": {
+    "axis": "Germany (supply ship Altmark, German naval forces)",
+    "allied": "United Kingdom (HMS Cossack, H08)"
+  },
+  "commanders": {
+    "axis": "Kapitän zur See Heinrich Dau (Altmark)",
+    "allied": "Captain Philip Vian RN (HMS Cossack)"
+  },
+  "summary": "The Altmark was the supply ship and prison vessel for Admiral Graf Spee. After Graf Spee was scuttled at Montevideo (December 1939), Altmark carried 299 British merchant seamen prisoners north through Norwegian waters, claiming neutral status. On 16 February 1940, HMS Cossack, under Captain Philip Vian, intercepted Altmark in Jøssingfjord — Norwegian territorial waters. Despite Norwegian protests, Cossack's crew boarded Altmark. The cry 'The Navy's here!' from the boarding party became famous as British sailors freed the prisoners. Germany protested the violation of Norwegian neutrality; the British argued Norway had failed to enforce international law. The incident hardened German resolve to occupy Norway, contributing to the decision to launch Operation Weserübung in April 1940.",
+  "casualties": {
+    "axis": "4 German sailors killed in the boarding action",
+    "allied": "Minor"
+  },
+  "outcome": "British victory — 299 prisoners freed",
+  "significance": "Contributed to the German decision to invade Norway; famous for 'The Navy's here' rescue."
+}

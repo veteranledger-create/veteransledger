@@ -1,0 +1,136 @@
+{
+  "events": [
+    {
+      "year": 1919,
+      "date": "5 January 1919",
+      "title": "German Workers' Party Founded",
+      "description": "Anton Drexler founds the Deutsche Arbeiterpartei (DAP) in Munich. Adolf Hitler attends his first meeting on 12 September 1919 as an army spy and joins as member No. 555."
+    },
+    {
+      "year": 1920,
+      "date": "24 February 1920",
+      "title": "Party Renamed and 25-Point Programme",
+      "description": "The DAP is renamed the Nationalsozialistische Deutsche Arbeiterpartei (NSDAP). Hitler presents the 25-Point Programme calling for German expansion, racial purity, and rejection of the Versailles Treaty."
+    },
+    {
+      "year": 1921,
+      "date": "29 July 1921",
+      "title": "Hitler Becomes Party Leader",
+      "description": "Hitler assumes leadership of the NSDAP with near-dictatorial powers. He restructures the party and establishes the Sturmabteilung (SA) as the party's paramilitary wing."
+    },
+    {
+      "year": 1923,
+      "date": "8–9 November 1923",
+      "title": "Beer Hall Putsch",
+      "description": "Hitler and General Ludendorff attempt to seize power in Munich, modelled on Mussolini's March on Rome. The putsch fails; Hitler is arrested and sentenced to five years (serves nine months). He dictates 'Mein Kampf' during his imprisonment."
+    },
+    {
+      "year": 1925,
+      "date": "27 February 1925",
+      "title": "NSDAP Refounded",
+      "description": "After release from prison, Hitler refounds the NSDAP, this time committing to the 'legal path' to power. He establishes the SS as his personal bodyguard."
+    },
+    {
+      "year": 1929,
+      "date": "October 1929",
+      "title": "Wall Street Crash — Rise of Extremism",
+      "description": "The Great Depression devastates Germany. Unemployment rises to 6 million by 1932. The NSDAP's share of the vote rises from 2.6% (1928) to 18.3% (September 1930) and 37.4% (July 1932)."
+    },
+    {
+      "year": 1932,
+      "date": "13 March 1932",
+      "title": "Presidential Election",
+      "description": "Hitler challenges Hindenburg for the Presidency, winning 30.1% in the first round and 36.8% in the runoff. Hindenburg retains the presidency with 53% of the vote."
+    },
+    {
+      "year": 1933,
+      "date": "30 January 1933",
+      "title": "Hitler Appointed Chancellor",
+      "description": "President Hindenburg appoints Hitler as Chancellor of Germany, believing conservative advisors could control him. Within months the Nazis would dismantle the Weimar Republic."
+    },
+    {
+      "year": 1933,
+      "date": "27 February 1933",
+      "title": "Reichstag Fire",
+      "description": "The Reichstag parliament building is set ablaze. The Nazis blame the Communists; the Reichstag Fire Decree suspends civil liberties and enables mass arrests of political opponents."
+    },
+    {
+      "year": 1933,
+      "date": "23 March 1933",
+      "title": "Enabling Act",
+      "description": "The Reichstag passes the Enabling Act (Ermächtigungsgesetz), allowing Hitler's cabinet to enact laws without Reichstag approval. The Weimar Republic effectively ends; Germany becomes a dictatorship."
+    },
+    {
+      "year": 1934,
+      "date": "30 June 1934",
+      "title": "Night of the Long Knives",
+      "description": "Hitler orders the murder of SA leadership (Ernst Röhm and others) who had grown too powerful. At least 85 people are killed; the SS and Wehrmacht emerge strengthened."
+    },
+    {
+      "year": 1935,
+      "date": "15 September 1935",
+      "title": "Nuremberg Laws",
+      "description": "The Reich Citizenship Law and the Law for the Protection of German Blood and Honour strip Jews of citizenship and prohibit marriage between Jews and non-Jews."
+    },
+    {
+      "year": 1936,
+      "date": "7 March 1936",
+      "title": "Remilitarisation of the Rhineland",
+      "description": "German troops march into the demilitarised Rhineland zone in violation of the Treaty of Versailles. France and Britain protest but take no action, emboldening Hitler."
+    },
+    {
+      "year": 1938,
+      "date": "12–13 March 1938",
+      "title": "Anschluss — Annexation of Austria",
+      "description": "German troops march into Austria; Austria is annexed (Anschluss). A plebiscite shows 99.73% approval. The annexation violates the Treaty of Versailles but goes unopposed."
+    },
+    {
+      "year": 1938,
+      "date": "9–10 November 1938",
+      "title": "Kristallnacht",
+      "description": "'Night of Broken Glass': coordinated nationwide pogrom against Jews. Over 7,500 Jewish businesses destroyed, 1,400 synagogues burned, 91 Jews killed, and 30,000 arrested and sent to concentration camps."
+    },
+    {
+      "year": 1939,
+      "date": "1 September 1939",
+      "title": "Germany Invades Poland — World War II Begins",
+      "description": "Germany invades Poland using the false pretext of Polish border provocations (the Gleiwitz incident). Britain and France declare war on Germany on 3 September. World War II begins."
+    },
+    {
+      "year": 1941,
+      "date": "22 June 1941",
+      "title": "Operation Barbarossa",
+      "description": "Germany invades the Soviet Union with 3 million troops on a 2,900 km front. The operation represents the full implementation of Nazi racial ideology — a war of extermination against 'Jewish Bolshevism'."
+    },
+    {
+      "year": 1942,
+      "date": "20 January 1942",
+      "title": "Wannsee Conference",
+      "description": "Senior Nazi officials meet in Berlin to coordinate the 'Final Solution to the Jewish Question' — the systematic murder of all European Jews. The Holocaust enters its industrial phase."
+    },
+    {
+      "year": 1943,
+      "date": "2 February 1943",
+      "title": "Stalingrad Surrender",
+      "description": "German 6th Army surrenders at Stalingrad. The defeat marks the psychological turning point of the war. German strategic offensive capability on the Eastern Front is permanently broken."
+    },
+    {
+      "year": 1944,
+      "date": "20 July 1944",
+      "title": "July Plot — Assassination Attempt on Hitler",
+      "description": "Colonel Claus von Stauffenberg places a bomb at Hitler's headquarters. Hitler survives; the conspirators are arrested and executed. The failed plot triggers brutal reprisals against the military and civilian resistance."
+    },
+    {
+      "year": 1945,
+      "date": "30 April 1945",
+      "title": "Hitler's Suicide",
+      "description": "With Soviet forces fighting in Berlin, Hitler marries Eva Braun, dictates his political testament blaming the Jews for the war, and commits suicide in the Führerbunker. Germany surrenders unconditionally on 8 May 1945."
+    },
+    {
+      "year": 1945,
+      "date": "10 October 1945",
+      "title": "NSDAP Formally Banned",
+      "description": "The Allied Control Council formally bans the NSDAP and all its affiliated organizations. Nazi symbols, uniforms, and propaganda are prohibited. The Nuremberg Trials begin on 20 November 1945."
+    }
+  ]
+}

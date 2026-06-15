@@ -1,0 +1,17 @@
+{
+  "id": "convoy-war",
+  "title": "The Convoy War — U-boat Campaign Against Allied Shipping",
+  "theater": "atlantic",
+  "dates": { "start": "1939-09-03", "end": "1945-05-07" },
+  "summary": "The U-boat campaign against Allied convoy routes was the central strategic struggle of the Battle of the Atlantic. German submarines, operating in coordinated Wolfpack attacks, sank over 2,700 Allied merchant vessels, threatening to starve Britain into surrender before Allied countermeasures — radar, ULTRA decrypts, and long-range aircraft — turned the tide.",
+  "wolfpack_tactics": "Dönitz's Rudeltaktik ('Wolf Pack') coordinated multiple U-boats against a single convoy. Boats shadowed the convoy during daylight, then converged for coordinated night surface attacks — when submerged sonar was ineffective. The tactic was devastating until radio direction-finding allowed escorts to vector onto surfacing submarines.",
+  "statistics": {
+    "peak_monthly_losses": "743,321 tonnes (November 1942)",
+    "total_merchant_ships_sunk": "2,779",
+    "u_boats_commissioned": 1154,
+    "u_boats_lost": 783,
+    "allied_escorts_sunk": 175
+  },
+  "turning_point": "May 1943 ('Black May'): 43 U-boats sunk in one month. Dönitz withdrew remaining boats from the North Atlantic on 24 May, conceding the campaign. Centimetric radar, Hedgehog ahead-throwing weapons, and ULTRA intelligence had transformed the balance.",
+  "outcome": "Allied victory. Despite inflicting enormous losses, U-boats failed to cut the Atlantic lifeline. The campaign cost Germany 783 submarines and ~28,000 crewmen — a casualty rate exceeding 70%."
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Nazi Economic Policy",
+  "description": "The economic policies of the NSDAP regime, 1933–1945.",
+  "policies": [
+    { "heading": "End of the Great Depression", "text": "Hitler inherited 6 million unemployed in January 1933. Through public works (Autobahnen, construction), rearmament, and deficit spending under Economics Minister Hjalmar Schacht, unemployment fell to 300,000 by 1938 — an economic 'miracle' that cemented popular support." },
+    { "heading": "Rearmament and the Four-Year Plan", "text": "From 1936, Göring's Four-Year Plan shifted the economy toward autarky (self-sufficiency) and war preparation. Synthetic rubber (Buna), synthetic fuel (Leuna), and iron ore processing from domestic sources were prioritised despite higher costs. By 1939, military spending consumed 23% of German GDP." },
+    { "heading": "War Economy", "text": "Germany initially fought a 'Blitzkrieg economy' — assuming rapid wars would not require full industrial mobilisation. After the Soviet Union failed to collapse in 1941, Albert Speer as Armaments Minister rationalised industry from 1942, dramatically increasing production despite Allied bombing. Tank production tripled from 1942 to 1944." },
+    { "heading": "Exploitation of Occupied Europe", "text": "Germany systematically looted occupied territories: France was charged 20 million Reichsmarks daily in 'occupation costs'. Forced labour (Zwangsarbeit) from across occupied Europe — 8–10 million workers — sustained German war production, with approximately 2 million dying under brutal conditions." }
+  ]
+}

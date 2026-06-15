@@ -1,0 +1,40 @@
+{
+  "category": "Infantry Equipment — Japan",
+  "equipment": [
+    {
+      "name": "Arisaka Type 38",
+      "type": "Bolt-Action Rifle",
+      "calibre": "6.5×50mm",
+      "length_mm": 1275,
+      "weight_kg": 3.95,
+      "magazine": "5-round internal box magazine",
+      "notes": "The primary Japanese infantry rifle of World War II, derived from an 1897 design. The long length reflected the tradition of attaching a bayonet for close combat."
+    },
+    {
+      "name": "Arisaka Type 99",
+      "type": "Bolt-Action Rifle",
+      "calibre": "7.7×58mm",
+      "length_mm": 1118,
+      "weight_kg": 3.8,
+      "magazine": "5-round internal box magazine",
+      "notes": "Replaced the Type 38 from 1939. More powerful calibre; some versions included a monopod and anti-aircraft sights. Late-war versions show significant quality decline."
+    },
+    {
+      "name": "Type 96 Light Machine Gun",
+      "type": "Light Machine Gun",
+      "calibre": "6.5×50mm",
+      "weight_kg": 9.07,
+      "magazine": "30-round detachable box magazine",
+      "rate_of_fire": "550 rpm",
+      "notes": "Japan's squad automatic weapon through 1941. Required lubricated cartridges to feed reliably."
+    },
+    {
+      "name": "Type 11 Grenade Discharger",
+      "type": "Grenade Launcher",
+      "calibre": "50mm",
+      "weight_kg": 2.6,
+      "range_m": 190,
+      "notes": "Often incorrectly called a 'knee mortar' by Allied soldiers (firing it from the knee would break the leg). Shoulder-fired or braced against the ground, it gave Japanese infantry sections organic indirect fire capability."
+    }
+  ]
+}

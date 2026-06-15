@@ -1,0 +1,54 @@
+{
+  "id": "normandy",
+  "title": "Battle of Normandy (Operation Overlord)",
+  "theater": "western-front",
+  "dates": { "start": "1944-06-06", "end": "1944-08-25" },
+  "summary": "The Allied invasion of German-occupied France at Normandy, codenamed Operation Overlord, was the largest seaborne invasion in history. The German defense under Erwin Rommel and Gerd von Rundstedt attempted to repel the invasion at the beaches, but the Allies secured a beachhead and broke out in Operation Cobra.",
+  "background": "Since 1942, both Stalin and the Western Allies pressed for a second front in Western Europe. After campaigns in North Africa and Italy, Operation Overlord was planned for spring 1944. Germany's Atlantic Wall fortifications defended the French coastline, but Rommel and Rundstedt disagreed on how to use the Panzer reserves.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Erwin Rommel (Army Group B)", "Gerd von Rundstedt (OB West)", "Friedrich Dollmann (7th Army)", "Walter Model (later)"],
+      "strength": "380,000 troops in Normandy, 850,000 total in France"
+    },
+    "allied": {
+      "commanders": ["Dwight D. Eisenhower", "Bernard Montgomery", "Omar Bradley", "Miles Dempsey"],
+      "strength": "156,000 on D-Day; 2,052,299 total by campaign's end"
+    }
+  },
+  "d_day_beaches": [
+    { "name": "Utah", "assault": "4th Infantry Division (US)", "casualties": "~200" },
+    { "name": "Omaha", "assault": "1st and 29th Infantry Divisions (US)", "casualties": "~2,000" },
+    { "name": "Gold", "assault": "50th Infantry Division (British)", "casualties": "~400" },
+    { "name": "Juno", "assault": "3rd Canadian Infantry Division", "casualties": "~1,200" },
+    { "name": "Sword", "assault": "3rd Infantry Division (British)", "casualties": "~630" }
+  ],
+  "phases": [
+    {
+      "name": "D-Day Landings",
+      "dates": "6 June 1944",
+      "description": "Five beaches assaulted simultaneously. Airborne landings behind German lines preceded the seaborne assault. Despite heavy casualties at Omaha Beach, all five beaches were secured."
+    },
+    {
+      "name": "Battle of the Bocage",
+      "dates": "June–July 1944",
+      "description": "Allied forces struggled through the Norman hedgerow country (bocage) against fierce German resistance. Caen, a key objective, was not captured until July 9."
+    },
+    {
+      "name": "Operation Cobra",
+      "dates": "25–31 July 1944",
+      "description": "American breakout from Saint-Lô following carpet bombing. Patton's 3rd Army exploited the gap, beginning the breakout from Normandy."
+    },
+    {
+      "name": "Falaise Pocket",
+      "dates": "12–21 August 1944",
+      "description": "German forces were encircled at Falaise. Though many escaped the closing 'gap', the German Army in Normandy was shattered as a fighting force."
+    }
+  ],
+  "outcome": "Allied victory. The liberation of Paris on 25 August 1944 effectively ended the Normandy campaign. The German Army in the West suffered catastrophic losses and retreated to the German border.",
+  "casualties": {
+    "germany": "~200,000 killed or wounded; 200,000 captured",
+    "allied": "~209,000 military dead; ~37,000 French civilian deaths"
+  },
+  "image": "/storage/images/campaigns/normandy.jpg",
+  "significance": "The decisive turning point on the Western Front. The successful Allied landing opened a second major front in Western Europe, forcing Germany to fight on two fronts simultaneously and beginning the liberation of occupied Western Europe."
+}

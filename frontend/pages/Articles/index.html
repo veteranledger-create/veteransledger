@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="VeteransLedger Articles — In-depth historical analyses covering military, political, economic, and legal aspects of the Axis powers.">
+  <title>Articles · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/hero.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/article.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+  <link rel="stylesheet" href="/styles/pages/articles.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <div class="page-hero articles-hero">
+      <div class="page-hero__bg" style="background-image:url('/public/images/covers/articles-cover.webp')"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Articles</h1>
+        <p class="page-hero__subtitle">Historical Research &amp; Analysis</p>
+      </div>
+    </div>
+
+    <div class="archive-section">
+
+      <div class="category-tabs" id="category-tabs" role="tablist" aria-label="Article category">
+        <button type="button" class="category-tab is-active" role="tab" data-category="all">All</button>
+        <button type="button" class="category-tab" role="tab" data-category="military">Military</button>
+        <button type="button" class="category-tab" role="tab" data-category="political">Political</button>
+        <button type="button" class="category-tab" role="tab" data-category="economy">Economy</button>
+        <button type="button" class="category-tab" role="tab" data-category="legal">Legal</button>
+      </div>
+
+      <div id="military" class="anchor-section articles-category" data-cat-id="military">
+        <div class="articles-grid" id="articles-grid">
+          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+              class="loader__dot"></span></div>
+        </div>
+      </div>
+      <div id="political" class="anchor-section articles-category" data-cat-id="political" hidden></div>
+      <div id="economy" class="anchor-section articles-category" data-cat-id="economy" hidden></div>
+      <div id="legal" class="anchor-section articles-category" data-cat-id="legal" hidden></div>
+
+    </div>
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Articles/articles.js"></script>
+</body>
+
+</html>

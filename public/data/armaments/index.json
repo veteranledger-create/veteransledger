@@ -1,0 +1,16 @@
+{
+  "categories": [
+    { "id": "panzer",      "label": "Panzers & Armour",  "nations": ["germany","italy","japan","other-axis"] },
+    { "id": "aircraft",    "label": "Aircraft",           "nations": ["germany","italy","japan","other-axis"] },
+    { "id": "naval",       "label": "Naval Vessels",      "nations": ["germany","italy","japan","other-axis"] },
+    { "id": "missiles",    "label": "Missiles & Rockets", "nations": ["germany","italy","japan","other-axis"] },
+    { "id": "wunderwaffen","label": "Wunderwaffen",       "nations": ["germany","italy","japan","other-axis"] },
+    { "id": "equipment",   "label": "Infantry Equipment", "nations": ["germany","italy","japan","other-axis"] }
+  ],
+  "nations": [
+    { "id": "germany",    "label": "Germany",    "flag": "/public/images/flags/germany.png" },
+    { "id": "italy",      "label": "Italy",      "flag": "/public/images/flags/italy.png" },
+    { "id": "japan",      "label": "Japan",      "flag": "/public/images/flags/japan.png" },
+    { "id": "other-axis", "label": "Other Axis", "flag": "/public/images/flags/other-axis.png" }
+  ]
+}

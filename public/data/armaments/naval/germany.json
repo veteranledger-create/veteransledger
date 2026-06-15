@@ -1,0 +1,83 @@
+[
+  {
+    "id": "bismarck",
+    "name": "Battleship Bismarck",
+    "type": "Battleship",
+    "nation": "Germany",
+    "class": "Bismarck-class",
+    "image": "/storage/images/armaments/naval/bismarck.jpg",
+    "commissioned": "1940-08-24",
+    "fate": "Sunk 27 May 1941",
+    "displacement_tonnes": 50300,
+    "length_m": 251,
+    "crew": 2092,
+    "armament": {
+      "main": "8× 38 cm SK C/34 guns (4 twin turrets)",
+      "secondary": ["12× 15 cm guns", "16× 10.5 cm guns", "16× 3.7 cm AA guns"],
+      "aircraft": "4× Arado Ar 196 floatplanes"
+    },
+    "speed_knots": 30.1,
+    "armor_mm": { "belt": 320, "deck": 80, "turret_face": 360 },
+    "summary": "The Bismarck was the largest warship Germany had ever built and, at the time of her commissioning, one of the largest battleships in the world. During her only operational sortie (Operation Rheinübung, May 1941), she sank the battlecruiser HMS Hood — Britain's most famous warship — with the loss of all but 3 of her 1,418 crew. She was sunk three days later after being hunted down by the Royal Navy."
+  },
+  {
+    "id": "tirpitz",
+    "name": "Battleship Tirpitz",
+    "type": "Battleship",
+    "nation": "Germany",
+    "class": "Bismarck-class",
+    "image": "/storage/images/armaments/naval/tirpitz.jpg",
+    "commissioned": "1941-02-25",
+    "fate": "Sunk by RAF Tallboy bombs, 12 November 1944",
+    "displacement_tonnes": 52600,
+    "length_m": 251,
+    "crew": 2608,
+    "armament": {
+      "main": "8× 38 cm SK C/34 guns",
+      "secondary": ["12× 15 cm guns", "16× 10.5 cm guns"]
+    },
+    "speed_knots": 30.8,
+    "summary": "The Tirpitz spent most of the war anchored in Norwegian fjords as a 'fleet in being', threatening Allied convoys to the Soviet Union without ever engaging in a major surface action. Her mere presence tied down substantial Royal Navy forces. RAF Lancaster bombers of 617 and 9 Squadrons used 12,000-pound Tallboy bombs to finally sink her at Tromsø on 12 November 1944, with the loss of approximately 1,000 men."
+  },
+  {
+    "id": "type-viic-uboat",
+    "name": "Type VIIC U-boat",
+    "type": "Submarine",
+    "nation": "Germany",
+    "image": "/storage/images/armaments/naval/type-viic.jpg",
+    "years_of_service": "1940–1945",
+    "manufacturer": "Multiple yards",
+    "crew": 44,
+    "displacement_surfaced_tonnes": 769,
+    "displacement_submerged_tonnes": 871,
+    "length_m": 67.1,
+    "max_speed_surfaced_knots": 17.7,
+    "max_speed_submerged_knots": 7.6,
+    "range_km": 14800,
+    "armament": {
+      "torpedoes": "14× G7a/G7e torpedoes (5 tubes: 4 bow, 1 stern)",
+      "gun": "1× 88 mm deck gun"
+    },
+    "units_produced": 568,
+    "summary": "The Type VIIC was the backbone of the U-boat campaign and the most produced German submarine of the war. These boats conducted the Battle of the Atlantic, sinking millions of tonnes of Allied shipping that threatened to starve Britain into submission. Of the 568 Type VIIC boats built, 429 were lost — a casualty rate of over 75%. Their crews faced the highest fatality rate of any service in any country during the war."
+  },
+  {
+    "id": "scharnhorst",
+    "name": "Battlecruiser Scharnhorst",
+    "type": "Battlecruiser",
+    "nation": "Germany",
+    "class": "Scharnhorst-class",
+    "image": "/storage/images/armaments/naval/scharnhorst.jpg",
+    "commissioned": "1939-01-07",
+    "fate": "Sunk 26 December 1943 (Battle of North Cape)",
+    "displacement_tonnes": 38100,
+    "length_m": 234.9,
+    "crew": 1968,
+    "armament": {
+      "main": "9× 28 cm SK C/34 guns (3 triple turrets)",
+      "secondary": ["12× 15 cm guns", "14× 10.5 cm AA guns"]
+    },
+    "speed_knots": 31.5,
+    "summary": "The Scharnhorst and her sister Gneisenau conducted the most successful German surface raider sortie of the war (Operation Berlin, 1941), sinking 22 Allied ships totalling 115,000 tonnes. She was sunk during the Battle of the North Cape on 26 December 1943 by HMS Duke of York and escorting destroyers while attacking convoy JW 55B, with the loss of all but 36 of her crew of 1,968."
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "id": "atlantic",
+  "title": "Battle of the Atlantic",
+  "theater": "atlantic",
+  "dates": { "start": "1939-09-03", "end": "1945-05-08" },
+  "summary": "The longest continuous military campaign of World War II, the Battle of the Atlantic was the struggle between Allied convoys and the German U-boat fleet for control of the vital sea lanes connecting North America to Britain and the Soviet Union.",
+  "background": "Britain was entirely dependent on imports for food, fuel, and raw materials. Germany recognised that sinking enough Allied shipping could starve Britain into surrender before the United States could enter the war and change the balance of forces. Dönitz's U-boats were the primary instrument of this strategy.",
+  "phases": [
+    {
+      "name": "The Happy Time (Die Glückliche Zeit)",
+      "dates": "1940–1941",
+      "description": "With bases in occupied France, U-boats operated far into the Atlantic. The Wolfpack tactic — multiple submarines coordinating surface attacks at night — devastated Allied convoys. Monthly shipping losses frequently exceeded 300,000 tonnes."
+    },
+    {
+      "name": "US Entry and Second Happy Time",
+      "dates": "December 1941 – mid-1942",
+      "description": "US entry into the war initially benefited U-boats. American coastal cities refused to dim their lights, silhouetting ships against the glow. U-boats sank over 400 ships in six months off the US East Coast in Operation Drumbeat (Paukenschlag)."
+    },
+    {
+      "name": "Allied Counteroffensive",
+      "dates": "1942–1943",
+      "description": "Decrypted Enigma communications (ULTRA), improved radar, long-range patrol aircraft, escort carriers, and coordinated convoy defence began to turn the tide. The Air Gap in the mid-Atlantic was gradually closed."
+    },
+    {
+      "name": "Black May (Schwarzer Mai)",
+      "dates": "May 1943",
+      "description": "Allied countermeasures reached critical mass. Germany lost 43 U-boats in May 1943 — an unsustainable rate. Dönitz withdrew U-boats from the North Atlantic on 24 May, effectively conceding the campaign."
+    }
+  ],
+  "statistics": {
+    "allied_ships_sunk": 3500,
+    "allied_tonnage_lost": "14,500,000+",
+    "u_boats_deployed": 1154,
+    "u_boats_lost": 783,
+    "german_crew_lost": "~28,000 out of 39,000 who served"
+  },
+  "outcome": "Allied victory. While U-boats continued to operate until the war's end and inflicted losses throughout, the Allies successfully maintained the supply lines essential to sustaining Britain and supplying the Soviet Union.",
+  "image": "/storage/images/campaigns/atlantic.jpg",
+  "significance": "Churchill later wrote that the only thing that truly frightened him during the war was the U-boat peril. The Battle of the Atlantic was the strategic foundation upon which Allied victory in Europe was built — without it, D-Day could not have occurred."
+}

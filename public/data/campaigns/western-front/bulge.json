@@ -1,0 +1,51 @@
+{
+  "id": "bulge",
+  "title": "Battle of the Bulge (Unternehmen Wacht am Rhein)",
+  "theater": "western-front",
+  "dates": { "start": "1944-12-16", "end": "1945-01-25" },
+  "summary": "Germany's last major offensive on the Western Front, launched through the Ardennes forest in December 1944. It created a 'bulge' in Allied lines 90 km deep before being repulsed, exhausting Germany's last strategic mobile reserves.",
+  "background": "Despite near-universal opposition from his generals, Hitler ordered a massive offensive through the Ardennes aimed at capturing Antwerp and splitting the Allied armies. The operation required absolute secrecy and exploited poor flying weather that grounded Allied air power. Initial success relied on surprise.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Walter Model (Army Group B)", "Sepp Dietrich (6th SS Panzer Army)", "Hasso von Manteuffel (5th Panzer Army)"],
+      "strength": "200,000 troops, 340 tanks, 1,900 artillery pieces"
+    },
+    "allied": {
+      "commanders": ["Dwight Eisenhower", "Omar Bradley", "Anthony McAuliffe (Bastogne)", "George Patton"],
+      "strength": "610,000 troops (at peak response)"
+    }
+  },
+  "key_events": [
+    {
+      "date": "16 December 1944",
+      "event": "German breakthrough along 130 km front in the Ardennes, overwhelming surprised American units"
+    },
+    {
+      "date": "17 December 1944",
+      "event": "Malmedy massacre — Waffen-SS troops of Kampfgruppe Peiper murder 84 American POWs at Baugnez crossroads"
+    },
+    {
+      "date": "19–22 December 1944",
+      "event": "Siege of Bastogne — 101st Airborne Division holds the vital crossroads; McAuliffe famously replies 'NUTS!' to German surrender demand"
+    },
+    {
+      "date": "23 December 1944",
+      "event": "Weather clears; Allied air power intervenes, devastating German supply lines and armoured columns"
+    },
+    {
+      "date": "26 December 1944",
+      "event": "Patton's 3rd Army relieves Bastogne from the south"
+    },
+    {
+      "date": "January 1945",
+      "event": "Allied counteroffensives progressively compress the 'bulge'"
+    }
+  ],
+  "outcome": "Allied victory. Germany failed to achieve any of its strategic objectives. The offensive consumed Germany's last significant armoured reserves in the West — the forces could never be replaced. The path to Germany was now open.",
+  "casualties": {
+    "germany": "~63,000–67,000 killed, wounded, or captured",
+    "allies": "~75,000–80,000 (largest American battle loss of the war)"
+  },
+  "image": "/storage/images/campaigns/bulge.jpg",
+  "significance": "The Battle of the Bulge was the largest land battle in American military history and Germany's last offensive operation in the West. Its failure accelerated the end of the war by depleting German reserves needed to defend the Rhine."
+}

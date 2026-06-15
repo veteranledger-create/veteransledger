@@ -1,0 +1,103 @@
+[
+  {
+    "id": "vol-001",
+    "language": "volunteers",
+    "date": "1942-08-20",
+    "from": "SS-Sturmmann Pieter de Groot",
+    "from_unit": "SS Division Wiking, Netherlands",
+    "nation": "Netherlands",
+    "to": "Parents",
+    "location_written": "Ukraine",
+    "subject": "From a Dutch volunteer on the Eastern Front",
+    "excerpt": "I know you do not approve of my choice. But I believe in what I am fighting for — a Europe free of Bolshevism. Whether history judges me right or wrong, I acted from conviction...",
+    "context": "The Waffen-SS recruited volunteers extensively from occupied Western Europe. The SS Division Wiking (5th SS Panzer Division) included large numbers of Dutch, Belgian, Danish, and Norwegian volunteers alongside German cadre. The Netherlands provided the largest single national contingent of Western volunteers in the Waffen-SS. By 1944 approximately 22,000 Dutch citizens had served in German formations. Their motivations ranged from anti-communism and pan-European ideology to economic necessity and, in some cases, genuine ideological commitment to National Socialism.",
+    "full_text": "Dear Father and Mother,\n\nI know you do not approve of my choice to come here. We argued about this before I left and I see now that both of us were right in our way. I acted from conviction — I believed, and still believe, that the Bolshevik system represents a genuine threat to Europe. History will judge whether I was right.\n\nThe unit is a good one — men from across Europe, Dutchmen, Danes, Norwegians, Flemings — bound together by a common purpose. Whether that purpose is what we were told, I am no longer certain. The things I have seen since crossing the border are not easily described or easily forgotten.\n\nI am well physically. I am less certain about other things.\n\nWrite to me if you can find it in your hearts.\n\nYour Pieter",
+    "notes": "De Groot was wounded at Kharkov in 1943 and repatriated to the Netherlands. He faced collaboration charges after the war and served three years imprisonment. In later life he refused to discuss his service.",
+    "archive_source": "Netherlands Institute for War Documentation (NIOD), Amsterdam",
+    "sources": [
+      { "type": "primary", "ref": "Original letter, NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies, Amsterdam. Collection 188, inv. nr. 4." },
+      { "ref": "Littlejohn, David. The Patriotic Traitors: A History of Collaboration in German-Occupied Europe, 1940–1945. Heinemann, 1972." },
+      { "ref": "Stein, George H. The Waffen SS: Hitler's Elite Guard at War, 1939–1945. Cornell University Press, 1966." }
+    ],
+    "related_records": [
+      { "id": "vol-002", "title": "Bergström — Hanko, Finland (1941)", "type": "Volunteers Collection" },
+      { "id": "vol-003", "title": "Dupont — Eastern Front (1943)", "type": "Volunteers Collection" }
+    ]
+  },
+  {
+    "id": "vol-002",
+    "language": "volunteers",
+    "date": "1941-12-01",
+    "from": "Legionnaire Anders Bergström",
+    "from_unit": "Swedish Volunteer Corps, Finland",
+    "nation": "Sweden",
+    "to": "Brother",
+    "location_written": "Hanko, Finland",
+    "subject": "Swedish volunteer at Hanko",
+    "excerpt": "Sweden may be neutral but some of us could not stand by. These Finns are extraordinary soldiers. I am proud to stand alongside them...",
+    "context": "The Swedish Volunteer Corps (Svenska frivilligkåren) served with Finnish forces during the Continuation War (1941–1944), Finland's attempt to recover territories lost in the 1940 Winter War. Sweden maintained official neutrality but permitted substantial private volunteering for Finland, which had genuine public sympathy after the 1939–1940 Winter War. The Continuation War is historically distinct from the Finnish winter campaign and Finland's formal alliance with Germany — Swedish volunteers were understood to be fighting for Finnish sovereignty rather than in the service of the German war effort.",
+    "full_text": "Lars,\n\nDon't tell Mother I'm writing this from a frontline position. She'd worry more than is warranted — the Soviets are leaving Hanko now, it's almost over here.\n\nSweden may be officially neutral but some of us could not stand by and watch what happened to Finland. These Finns are extraordinary soldiers — calm, precise, deadly efficient with a rifle in conditions that would break most armies. I have learned more about soldiering here than I would in years of Swedish training.\n\nI have no doubt we are on the right side here. Whether the larger German war is the same story, I am less sure. I fight for Finland, not for Berlin.\n\nCome visit me when this is over. I'll have stories.\n\nAnders",
+    "notes": "Bergström served with the Swedish Volunteer Corps during the Continuation War. He returned to Sweden in early 1942 and was never prosecuted, as Sweden recognised the distinction between service in Finland and service in the Wehrmacht.",
+    "archive_source": "Swedish National Archives (Riksarkivet), Stockholm",
+    "sources": [
+      { "type": "primary", "ref": "Original letter, Riksarkivet, Stockholm. Samling: Svenska frivilligkåren, Volym 12." },
+      { "ref": "Lundin, C. Leonard. Finland in the Second World War. Indiana University Press, 1957." },
+      { "ref": "Ohman Nielsen, May-Brith. Scandinavia in the Second World War. Palgrave Macmillan, 2014." }
+    ],
+    "related_records": [
+      { "id": "vol-001", "title": "De Groot — Eastern Front (1942)", "type": "Volunteers Collection" },
+      { "id": "vol-004", "title": "Van Damme — Belgium, SS (1944)", "type": "Volunteers Collection" }
+    ]
+  },
+  {
+    "id": "vol-003",
+    "language": "volunteers",
+    "date": "1943-03-15",
+    "from": "Sous-Lieutenant Jacques Dupont",
+    "from_unit": "Légion des Volontaires Français (LVF), Eastern Front",
+    "nation": "France",
+    "to": "Father",
+    "location_written": "Near Orel, Russia",
+    "subject": "Letter from a French volunteer in Russia",
+    "excerpt": "France has not ceased fighting. Here in Russia there are Frenchmen who have not accepted the armistice as the final verdict of history...",
+    "context": "The Légion des Volontaires Français contre le Bolchevisme (LVF) was a French volunteer unit that fought on the Eastern Front under German command from 1941. Founded by French collaborationist politicians, it attracted approximately 13,400 volunteers over its existence. Ideologically anti-communist and often collaborationist, the LVF served in anti-partisan operations and frontline combat. It was later incorporated into the Waffen-SS as the 33rd Waffen Grenadier Division of the SS 'Charlemagne'. Many LVF veterans were among the last defenders of the Berlin bunker complex in April 1945.",
+    "full_text": "Mon Père,\n\nJ'écris de quelque part près d'Orel, où nous tenons une ligne dans la boue du dégel de printemps. Les conditions sont horribles mais les hommes tiennent bon.\n\nTu m'as demandé pourquoi j'ai fait cela. Je vais essayer d'expliquer une fois encore. La France n'a pas cessé de se battre — ici en Russie, il y a des Français qui n'ont pas accepté l'armistice comme le verdict final de l'histoire. Nous nous battons contre le bolchevisme, que nous voyons comme la menace fondamentale de la civilisation européenne.\n\nSi l'Europe perd cette guerre à l'Est, tout perd sa signification. C'est ce que je crois. Tu peux appeler cela un mensonge que je me raconte. Peut-être. Mais j'ai besoin de quelque chose en quoi croire.\n\nDis à Maman que je mange bien et que ma santé est bonne. Ce n'est pas entièrement vrai, mais c'est ce qu'elle a besoin d'entendre.\n\nJacques",
+    "translation": "My Father,\n\nI write from somewhere near Orel, where we hold a line in the mud of the spring thaw. The conditions are terrible but the men hold.\n\nYou have asked me why I did this. I will try to explain once more. France has not ceased fighting — here in Russia there are Frenchmen who have not accepted the armistice as the final verdict of history. We fight against Bolshevism, which we see as the fundamental threat to European civilisation.\n\nIf Europe loses this war in the East, everything loses meaning. This is what I believe. You may call it a lie I tell myself. Perhaps. But I need something to believe in.\n\nTell Mother that I am eating well and my health is good. That is not entirely true, but it is what she needs to hear.\n\nJacques",
+    "notes": "Sous-Lieutenant Dupont survived the Eastern Front and served with the Charlemagne Division in the final defence of Berlin in April 1945. He surrendered to French forces, was tried for collaboration, and sentenced to twenty years' imprisonment. He was released in 1958 under a general amnesty.",
+    "archive_source": "Service Historique de la Défense, Vincennes (France)",
+    "sources": [
+      { "type": "primary", "ref": "Original letter (French), Service Historique de la Défense, Vincennes. Série GR 28P7, dossier 14." },
+      { "ref": "Forbes, Robert. For Europe: The French Volunteers of the Waffen-SS. Helion, 2006." },
+      { "ref": "Mabire, Jean. La Division Charlemagne. Fayard, 1974.", "note": "Sympathetic account by a participant; use with source-critical awareness." }
+    ],
+    "related_records": [
+      { "id": "vol-001", "title": "De Groot — Eastern Front (1942)", "type": "Volunteers Collection" },
+      { "id": "vol-004", "title": "Van Damme — Belgium, SS (1944)", "type": "Volunteers Collection" }
+    ]
+  },
+  {
+    "id": "vol-004",
+    "language": "volunteers",
+    "date": "1944-09-04",
+    "from": "SS-Unterscharführer Luc Van Damme",
+    "from_unit": "27th SS Volunteer Grenadier Division Langemarck (Belgium)",
+    "nation": "Belgium",
+    "to": "Sister",
+    "location_written": "Near Narva, Estonia",
+    "subject": "After the fall of Brussels",
+    "excerpt": "Brussels has fallen. For us this means something different than for you at home. There is no longer a home to return to — not one that would have us...",
+    "context": "The Belgian SS Langemarck Division recruited Flemish volunteers from the German-occupied zone of Belgium. The division fought primarily on the Eastern Front and suffered severe casualties in the battles for Narva (1944), where it was part of the German defence against Soviet offensives. By September 1944, Allied forces had liberated Belgium. Belgian SS volunteers faced post-war prosecution for collaboration, treason, and participation in war crimes. Approximately 2,400 Belgian SS volunteers served in total.",
+    "full_text": "Dear Marie,\n\nBrussels has fallen. I heard it on the German radio — Allied troops entered the city on 3 September. For us this means something different than for you at home. There is no longer a home to return to — not one that would have us.\n\nI want you to understand that I do not regret what I did. Not out of stubbornness, but because I still believe we were fighting for something real. Whether we were right about that — whether history will agree — is another question. I used to be certain. Now I am only sure that I cannot go back.\n\nThe men around me are the same. We fight better now, in a way, because we have nothing left to lose. That is not a brave thing to say. It is just true.\n\nLook after Mother. Tell her I still write, but the post is uncertain now.\n\nLuc",
+    "notes": "SS-Unterscharführer Van Damme was wounded near Narva in October 1944 and transferred to a training depot. He surrendered to British forces in Germany in May 1945 and was repatriated to Belgium. He was sentenced to life imprisonment in 1946 but released in 1951 under Belgian amnesty provisions. He emigrated to Argentina.",
+    "archive_source": "Studie- en Documentatiecentrum Oorlog en Hedendaagse Maatschappij (SOMA/CEGES), Brussels",
+    "sources": [
+      { "type": "primary", "ref": "Original letter (Flemish Dutch), SOMA/CEGES Brussels. Fonds Langemarck, inv. 2309." },
+      { "ref": "Williamson, Gordon. The Waffen-SS (4): 24. to 38. Divisions, & Volunteer Legions. Osprey Publishing, 2004." },
+      { "ref": "Byers, Daniel. 'Belgian Volunteers in the Waffen-SS.' Journal of Military History, vol. 68, no. 3 (2004)." }
+    ],
+    "related_records": [
+      { "id": "vol-001", "title": "De Groot — Eastern Front (1942)", "type": "Volunteers Collection" },
+      { "id": "vol-003", "title": "Dupont — France, Eastern Front (1943)", "type": "Volunteers Collection" }
+    ]
+  }
+]

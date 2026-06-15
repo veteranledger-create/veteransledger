@@ -1,0 +1,51 @@
+[
+  {
+    "id": "a6m-zero",
+    "name": "Mitsubishi A6M Zero",
+    "type": "Fighter",
+    "nation": "Japan",
+    "role": "Carrier-based fighter",
+    "image": "/storage/images/armaments/aircraft/a6m-zero.jpg",
+    "years_of_service": "1940–1945",
+    "manufacturer": "Mitsubishi",
+    "crew": 1,
+    "max_speed_kmh": 534,
+    "range_km": 3105,
+    "ceiling_m": 10000,
+    "armament": ["2× 20mm Type 99 cannon", "2× 7.7mm Type 97 machine guns"],
+    "units_produced": 10939,
+    "summary": "The A6M Zero was the finest carrier-based fighter in the world at the time of its introduction and came as a complete shock to Allied pilots in 1941. Its extraordinary range and manoeuvrability — achieved by sacrificing pilot armour and self-sealing fuel tanks — made it initially dominant. By 1943, improved Allied fighters and tactics had overcome its advantages, and its lack of protection made it increasingly deadly to its own pilots."
+  },
+  {
+    "id": "ki-43-hayabusa",
+    "name": "Nakajima Ki-43 Hayabusa",
+    "type": "Fighter",
+    "nation": "Japan",
+    "role": "Army air superiority fighter",
+    "image": "/storage/images/armaments/aircraft/ki43.jpg",
+    "years_of_service": "1941–1945",
+    "manufacturer": "Nakajima",
+    "crew": 1,
+    "max_speed_kmh": 530,
+    "range_km": 1760,
+    "armament": ["2× 12.7mm Ho-103 machine guns"],
+    "units_produced": 5919,
+    "summary": "The Imperial Japanese Army Air Force's primary fighter, known to Allied pilots as 'Oscar'. Like the Zero, it prioritised manoeuvrability over protection. The most numerous Japanese army fighter of the war, it served on every front from China to Burma and the Pacific."
+  },
+  {
+    "id": "ki-84-hayate",
+    "name": "Nakajima Ki-84 Hayate",
+    "type": "Fighter",
+    "nation": "Japan",
+    "role": "Multi-role fighter",
+    "image": "/storage/images/armaments/aircraft/ki84.jpg",
+    "years_of_service": "1944–1945",
+    "manufacturer": "Nakajima",
+    "crew": 1,
+    "max_speed_kmh": 631,
+    "range_km": 2168,
+    "armament": ["2× 20mm Ho-5 cannon", "2× 12.7mm Ho-103 machine guns"],
+    "units_produced": 3514,
+    "summary": "Considered the best Japanese fighter of the war. The Ki-84 Hayate ('Gale') could match or outperform the P-51D Mustang at lower altitudes and represented Japan's last serious attempt to produce a competitive front-line fighter. Material shortages and poor-quality fuel limited its operational effectiveness in the war's final year."
+  }
+]

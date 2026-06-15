@@ -1,0 +1,33 @@
+{
+  "site": {
+    "name": "VeteransLedger",
+    "tagline": "Axis History Archive · 1933–1945",
+    "description": "A comprehensive historical archive documenting the military, political, and human history of the Axis powers during the Second World War.",
+    "contact_email": "veteransledger@gmail.com",
+    "copyright_year": 2024,
+    "copyright_holder": "VeteransLedger"
+  },
+  "disclaimer": {
+    "enabled": true,
+    "text": "VeteransLedger is a personal historical archive maintained for educational purposes only. All content is presented with strict historical objectivity. This archive neither promotes nor endorses the ideologies, regimes, or actions documented herein.",
+    "show_on_nsdap": true,
+    "show_on_first_visit": false
+  },
+  "features": {
+    "search_enabled": true,
+    "contact_enabled": true,
+    "cookie_banner": true,
+    "theme_toggle": true
+  },
+  "social": {
+    "email": "veteransledger@gmail.com",
+    "telegram": "",
+    "discord": ""
+  },
+  "archive": {
+    "period_start": 1933,
+    "period_end": 1945,
+    "total_records_approx": 500,
+    "last_updated": "2024-12-01"
+  }
+}

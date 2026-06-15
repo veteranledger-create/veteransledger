@@ -1,0 +1,11 @@
+{
+  "sources": [
+    { "title": "The Rise and Fall of the Third Reich", "author": "William L. Shirer", "year": 1960, "type": "Secondary" },
+    { "title": "Inside the Third Reich", "author": "Albert Speer", "year": 1969, "type": "Primary memoir" },
+    { "title": "Hitler: A Biography", "author": "Ian Kershaw", "year": "1998–2000", "type": "Secondary — definitive scholarly biography" },
+    { "title": "Mein Kampf", "author": "Adolf Hitler", "year": "1925–26", "type": "Primary source", "note": "Cited for historical content only; its ideology is not endorsed." },
+    { "title": "The Anatomy of Fascism", "author": "Robert Paxton", "year": 2004, "type": "Secondary — comparative analysis" },
+    { "title": "Bundesarchiv Berlin-Lichterfelde", "type": "Primary archival", "note": "NSDAP party records, personnel files, correspondence." },
+    { "title": "Documents on German Foreign Policy (DGFP)", "type": "Primary — diplomatic", "note": "Captured German Foreign Ministry documents published by US State Department and British Foreign Office." }
+  ]
+}

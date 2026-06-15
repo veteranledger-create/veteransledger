@@ -1,0 +1,41 @@
+{
+  "name": "VeteransLedger",
+  "tagline": "Axis History Archive · 1933–1945",
+  "description": "A personal historical archive documenting the military, political, and human history of the Axis powers during the Second World War.",
+  "founded": "2023",
+  "purpose": "educational",
+  "contact": "VeteransLedger@gmail.com",
+  "sections": [
+    {
+      "id": "campaigns",
+      "count_approx": 30,
+      "description": "Major Axis military campaigns across all theaters"
+    },
+    {
+      "id": "personnel",
+      "count_approx": 40,
+      "description": "Biographies of key military and political figures"
+    },
+    {
+      "id": "armaments",
+      "count_approx": 60,
+      "description": "Weapons systems, vehicles, and technology"
+    },
+    {
+      "id": "letters",
+      "count_approx": 20,
+      "description": "Wartime letters from soldiers and civilians"
+    },
+    {
+      "id": "articles",
+      "count_approx": 12,
+      "description": "Historical analysis and contextual articles"
+    },
+    {
+      "id": "timeline",
+      "count_approx": 100,
+      "description": "Chronological events from 1933 to 1945"
+    }
+  ],
+  "disclaimer": "This archive is maintained for educational and research purposes only. All content is presented with strict historical objectivity. This archive neither promotes nor endorses the ideologies, regimes, or actions documented herein."
+}

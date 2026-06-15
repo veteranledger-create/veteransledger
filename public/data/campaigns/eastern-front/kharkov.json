@@ -1,0 +1,20 @@
+{
+  "id": "kharkov",
+  "title": "Third Battle of Kharkov — The 'Backhand Blow'",
+  "theater": "eastern-front",
+  "dates": { "start": "1943-02-19", "end": "1943-03-15" },
+  "summary": "The Third Battle of Kharkov was Manstein's brilliant counteroffensive following the fall of Stalingrad. When Soviet forces overextended themselves after recapturing Kharkov, Manstein's Army Group South allowed them to advance, then struck their exposed flanks, recapturing Kharkov and stabilising the Eastern Front.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Erich von Manstein (Army Group South)", "Paul Hausser (SS Panzer Corps)"],
+      "strength": "4 Panzer corps, SS Panzer Divisions (Leibstandarte, Das Reich, Totenkopf)"
+    },
+    "allied": {
+      "commanders": ["Nikolai Vatutin (Voronezh Front)", "Filipp Golikov"],
+      "strength": "Overextended Soviet forces after Operation Star"
+    }
+  },
+  "manstein_concept": "Manstein's 'backhand blow' (Gegenschlag) concept: allow Soviet forces to advance until their logistics failed, then counterattack with concentrated mobile forces against exhausted, overextended enemy spearheads.",
+  "outcome": "Major German victory. Kharkov recaptured on 15 March 1943. Soviet 3rd Tank Army destroyed; ~50,000 Soviet troops killed or captured. The victory stabilised the Eastern Front south of Kursk and created the Kursk salient.",
+  "casualties": { "germany": "~11,500 killed", "soviet": "~50,000+ killed or captured; 600+ tanks destroyed" }
+}

@@ -1,0 +1,61 @@
+<!--
+  VeteransLedger · Permanent Left Sidebar (desktop ≥1024px)
+  Hydrated from /public/data/navigation.json by navigation.js.
+-->
+<aside id="primary-sidebar" class="sidebar" aria-label="Archive navigation">
+
+  <!-- Brand: eagle + name + tagline -->
+  <a class="sidebar__brand" data-nav-mount="brand" aria-label="VeteransLedger home">
+    <img class="sidebar__eagle" src="/public/logos/eagle.png" alt="" aria-hidden="true">
+    <span class="sidebar__brand-name" data-bind="text:name"></span>
+    <span class="sidebar__brand-tagline" data-bind="text:tagline"></span>
+  </a>
+
+  <!-- Primary navigation -->
+  <nav class="sidebar__nav" aria-label="Primary">
+    <ul class="sidebar__list" data-nav-source="primary" data-nav-template="sidebar"></ul>
+  </nav>
+
+  <!-- Bottom: search + theme -->
+  <div class="sidebar__bottom">
+    <div class="sidebar__bottom-divider"></div>
+    <a href="/search" class="sidebar__link sidebar__bottom-item">
+      <span class="nav-icon" data-icon="search" aria-hidden="true"></span>
+      <span>Search</span>
+    </a>
+    <button type="button" class="sidebar__link sidebar__bottom-item sidebar__theme-btn" data-nav-action="toggle-theme"
+      aria-pressed="false" aria-label="Toggle dark mode">
+      <span class="nav-icon sidebar__theme-icon" aria-hidden="true"></span>
+      <span data-nav-mount="theme-label">DARK</span>
+    </button>
+  </div>
+
+</aside>
+
+<!-- ── Templates ───────────────────────────────────────────── -->
+<template id="tpl-sidebar-item">
+  <li class="sidebar__item">
+    <a class="sidebar__link" data-bind="href:url,aria-current:active">
+      <span class="nav-icon" data-bind="data-icon:icon" aria-hidden="true"></span>
+      <span data-bind="text:label"></span>
+    </a>
+  </li>
+</template>
+
+<template id="tpl-sidebar-group">
+  <li class="sidebar__item sidebar__item--group">
+    <button type="button" class="sidebar__group-toggle" aria-expanded="false" data-bind="aria-controls:panelId">
+      <span class="nav-icon" data-bind="data-icon:icon" aria-hidden="true"></span>
+      <span data-bind="text:label"></span>
+      <span class="sidebar__chevron" aria-hidden="true"></span>
+    </button>
+    <ul class="sidebar__sublist" data-bind="id:panelId" data-nav-slot="children" hidden></ul>
+  </li>
+</template>
+
+<template id="tpl-sidebar-child">
+  <li class="sidebar__subitem">
+    <a class="sidebar__sublink" data-bind="href:url,text:label,aria-current:active"></a>
+  </li>
+</template>
+</content>

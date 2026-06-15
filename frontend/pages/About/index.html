@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="About VeteransLedger — Our mission, methodology, and sources for this historical archive.">
+  <title>About · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/hero.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/article.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+  <link rel="stylesheet" href="/styles/pages/about.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <div class="page-hero">
+      <div class="page-hero__bg" style="background-image:url('/public/images/covers/home-cover.webp')"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">About the Archive</h1>
+        <p class="page-hero__subtitle">Mission · Methodology · Sources</p>
+      </div>
+    </div>
+
+    <div class="about-layout">
+      <div>
+        <div id="mission" class="anchor-section">
+          <div class="section-label">Mission</div>
+          <div id="mission-content">
+            <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+                class="loader__dot"></span></div>
+          </div>
+        </div>
+
+        <div id="sources" class="anchor-section sources-section">
+          <div class="section-label">Sources &amp; Methodology</div>
+          <div id="sources-content">
+            <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+                class="loader__dot"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="archive-info">
+          <p class="archive-info__title">☆ Archive Information</p>
+          <div class="archive-info__row">
+            <span class="archive-info__icon" aria-hidden="true">☰</span>
+            <span class="archive-info__label">Project</span>
+            <span class="archive-info__value">VeteransLedger Axis Archive</span>
+          </div>
+          <div class="archive-info__row">
+            <span class="archive-info__icon" aria-hidden="true">✛</span>
+            <span class="archive-info__label">Period</span>
+            <span class="archive-info__value">1933–1945</span>
+          </div>
+          <div class="archive-info__row">
+            <span class="archive-info__icon" aria-hidden="true">☰</span>
+            <span class="archive-info__label">Type</span>
+            <span class="archive-info__value">Historical Documentation</span>
+          </div>
+          <div class="archive-info__row">
+            <span class="archive-info__icon" aria-hidden="true">☰</span>
+            <span class="archive-info__label">License</span>
+            <span class="archive-info__value">Educational Use Only</span>
+          </div>
+          <div class="archive-info__row">
+            <span class="archive-info__icon" aria-hidden="true">✛</span>
+            <span class="archive-info__label">Last Updated</span>
+            <span class="archive-info__value" id="last-updated">2026</span>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-5);">
+          <button type="button" class="btn btn-primary" style="width:100%;" data-action="open-contact">
+            Contact the Archive
+          </button>
+        </div>
+      </aside>
+    </div>
+
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/About/about.js"></script>
+</body>
+
+</html>

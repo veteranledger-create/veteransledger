@@ -1,3 +1,0 @@
-# All routes are static HTML files - no redirects needed
-# This file exists to ensure the build directory
-# is treated as a static site by all deploy platforms

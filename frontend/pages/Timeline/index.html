@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VeteransLedger Timeline — Chronological history of the Axis powers 1933–1945.">
+  <title>Timeline · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/hero.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/timeline.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+  <link rel="stylesheet" href="/styles/pages/timeline.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <div class="page-hero">
+      <div class="page-hero__bg" style="background-image:url('/public/images/covers/timeline-cover.webp')"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Timeline</h1>
+        <p class="page-hero__subtitle">Chronological Archive · 1933–1945</p>
+      </div>
+    </div>
+
+    <div class="timeline-page">
+
+      <div class="timeline-years" id="timeline-year-nav" role="tablist" aria-label="Select year">
+        <!-- populated by timeline.js -->
+        <div class="loader" id="year-loader">
+          <span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span>
+        </div>
+      </div>
+
+      <div class="timeline-filters" id="timeline-filters" role="group" aria-label="Filter by category">
+        <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="military">Military</button>
+        <button type="button" class="filter-btn" data-filter="political">Political</button>
+        <button type="button" class="filter-btn" data-filter="diplomatic">Diplomatic</button>
+        <button type="button" class="filter-btn" data-filter="economic">Economic</button>
+      </div>
+
+      <div class="timeline-track" id="timeline-track" aria-live="polite" aria-label="Timeline events">
+        <div class="loader" id="timeline-loader">
+          <span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Timeline/timeline.js"></script>
+</body>
+
+</html>

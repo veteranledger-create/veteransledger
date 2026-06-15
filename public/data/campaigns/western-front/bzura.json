@@ -1,0 +1,13 @@
+{
+  "id": "bzura",
+  "title": "Battle of Bzura",
+  "theater": "western-front",
+  "dates": { "start": "1939-09-09", "end": "1939-09-22" },
+  "summary": "The Battle of Bzura was the largest single battle of the September 1939 campaign and the most significant Polish counteroffensive. The Poznań and Pomeranian Armies launched a surprise flank attack against the German 8th Army, briefly pushing it back before being encircled and destroyed.",
+  "combatants": {
+    "axis": { "commanders": ["Johannes Blaskowitz (8th Army)", "Gerd von Rundstedt (Army Group South)"], "strength": "Reinforced 8th Army plus Panzer forces diverted from Warsaw advance" },
+    "allied": { "commanders": ["Tadeusz Kutrzeba (Poznań Army)"], "strength": "Poznań Army + Pomeranian Army, ~225,000 troops" }
+  },
+  "outcome": "German victory after encirclement. Despite initial Polish success, German forces closed the pocket and destroyed both armies. Over 120,000 prisoners taken. The battle was the last major Polish offensive action of the campaign.",
+  "significance": "Demonstrated that Polish forces were capable of effective offensive action when given the opportunity — and that the German campaign was not as easy as later accounts suggested."
+}

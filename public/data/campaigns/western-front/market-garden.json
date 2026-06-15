@@ -1,0 +1,19 @@
+{
+  "id": "market-garden",
+  "title": "Operation Market Garden",
+  "theater": "western-front",
+  "dates": { "start": "1944-09-17", "end": "1944-09-25" },
+  "summary": "Operation Market Garden was a combined airborne and ground offensive in the Netherlands aimed at capturing eight bridges over the Rhine and ending the war by Christmas 1944. The airborne landings (Market) succeeded in capturing most objectives, but the ground advance (Garden) was unable to relieve the British 1st Airborne Division at Arnhem — a 'bridge too far'.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Walter Model (Army Group B)", "Wilhelm Bittrich (II SS Panzer Corps)"],
+      "strength": "II SS Panzer Corps (9th and 10th SS Panzer Divisions) near Arnhem"
+    },
+    "allied": {
+      "commanders": ["Bernard Montgomery", "Frederick Browning", "Brian Horrocks"],
+      "strength": "35,000 airborne troops; XXX Corps ground force"
+    }
+  },
+  "outcome": "German tactical victory. Of 10,600 British paratroopers at Arnhem, fewer than 2,400 escaped across the Rhine. The operation's failure meant the war continued into 1945, and the Netherlands endured the 'Hunger Winter' of 1944–45 in which 22,000 Dutch civilians starved.",
+  "casualties": { "germany": "~3,300 killed, wounded, missing", "allied": "~15,300–17,000 killed, wounded, captured (all nations)" }
+}

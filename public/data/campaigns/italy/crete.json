@@ -1,0 +1,14 @@
+{
+  "id": "crete",
+  "title": "Battle of Crete (Operation Mercury)",
+  "theater": "italy",
+  "dates": { "start": "1941-05-20", "end": "1941-06-01" },
+  "summary": "Operation Mercury (Unternehmen Merkur) was the German airborne invasion of Crete — the world's first primarily airborne conquest of a major island. Despite catastrophic initial losses, the Fallschirmjäger secured a foothold at Maleme airfield and the Allies were forced to evacuate.",
+  "combatants": {
+    "axis": { "commanders": ["Kurt Student (XI Flieger Corps)"], "strength": "22,000 paratroopers and mountain troops, 500 transport aircraft" },
+    "allied": { "commanders": ["Bernard Freyberg (New Zealand)"], "strength": "42,640 Allied troops (British, Australian, New Zealand, Greek)" }
+  },
+  "decisive_moment": "The capture of Maleme airfield on 21 May by a single German battalion, after the New Zealand commander ordered a controversial withdrawal. With Maleme secure, Germany could fly in mountain troops faster than Allied forces could counterattack.",
+  "outcome": "German victory; Allies evacuated. However, Fallschirmjäger casualties were so severe — ~6,500 killed or wounded out of 22,000 — that Hitler refused to sanction further large-scale airborne operations. Student later called Crete 'the graveyard of the German paratroopers.'",
+  "casualties": { "germany": "~6,698 killed, wounded, missing; 271 aircraft destroyed", "allied": "~3,579 killed; 12,000 captured; 2 cruisers, 4 destroyers sunk" }
+}

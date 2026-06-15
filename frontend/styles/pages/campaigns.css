@@ -1,0 +1,37 @@
+/* ── Campaigns page ────────────────────────────────────────── */
+
+.campaigns-hero .hero__bg {
+  background-image: url('/public/images/covers/campaings-cover.webp');
+}
+
+.theater-section {
+  scroll-margin-top: calc(var(--header-h) + var(--space-4));
+}
+
+.campaign-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+}
+@media (max-width: 640px) {
+  .campaign-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+.campaign-stat__value {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--gold);
+}
+.campaign-stat__label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: var(--space-1);
+}

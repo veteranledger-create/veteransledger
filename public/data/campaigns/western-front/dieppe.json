@@ -1,0 +1,23 @@
+{
+  "id": "dieppe",
+  "title": "Dieppe Raid (Operation Jubilee)",
+  "subtitle": "The Costliest Raid of the Second World War",
+  "date_start": "1942-08-19",
+  "date_end": "1942-08-19",
+  "theatre": "Dieppe, Occupied France",
+  "combatants": {
+    "axis": "Germany (302nd Infantry Division, Luftwaffe)",
+    "allied": "Canada (2nd Canadian Division — ~5,000 men), United Kingdom (Commandos, Royal Navy, RAF)"
+  },
+  "commanders": {
+    "axis": "General Conrad Haase (302nd Infantry Division)",
+    "allied": "Vice Admiral Lord Louis Mountbatten (Combined Operations), Major General J.H. Roberts (Military Force Commander)"
+  },
+  "summary": "Operation Jubilee was a large-scale amphibious raid on the port of Dieppe. Its stated objectives included testing German defences, capturing equipment and prisoners, and gaining experience for future larger landings. Of 6,086 men who embarked, only 2,210 returned to England. The 2nd Canadian Division suffered catastrophically on the beaches. German defenders — forewarned by chance naval encounter at sea, positioned in cliffs overlooking the beach, and reinforced by concrete fortifications — cut down the attackers as they struggled across pebble beaches under fire. Of 4,963 Canadians who crossed the Channel, 916 were killed and 1,946 taken prisoner. The raid's lessons — on fire support, landing craft, beach reconnaissance, and port assault — directly shaped the planning for the Normandy landings.",
+  "casualties": {
+    "axis": "591 killed or wounded, 48 aircraft lost",
+    "allied": "3,623 Canadian casualties (killed, wounded, captured); 1,027 killed; over 100 RAF aircraft lost"
+  },
+  "outcome": "German defensive victory",
+  "significance": "Demonstrated the impossibility of a frontal assault on a defended port; lessons directly applied to D-Day planning. Confirmed the need for artificial harbours (Mulberry), fire support, and intelligence."
+}

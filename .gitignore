@@ -1,10 +1,45 @@
-node_modules
-dist
-.DS_Store
-*.log
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment — never commit secrets
 .env
 .env.local
-coverage
-.nyc_output
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Storage — user-uploaded files
+storage/images/
+storage/documents/
+storage/audio/
+storage/video/
+storage/thumbnails/
+storage/temporary/
+
+# Database
+backups/database/
+*.db
+*.sqlite
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# TypeScript
 *.tsbuildinfo
-next-env.d.ts
+
+# Prisma
+prisma/migrations/dev.db

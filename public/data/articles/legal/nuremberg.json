@@ -1,0 +1,46 @@
+{
+  "id": "nuremberg",
+  "title": "The Nuremberg Trials, 1945–1946",
+  "subtitle": "Justice and accountability after the Third Reich",
+  "category": "legal",
+  "date_published": "2024-04-01",
+  "author": "VeteransLedger Archive",
+  "image": "/storage/images/articles/nuremberg.jpg",
+  "tags": ["Nuremberg", "war crimes", "international law", "trials", "justice"],
+  "summary": "The Nuremberg Trials were a series of military tribunals held by the Allied powers after World War II in which prominent members of the political, military, and economic leadership of Nazi Germany were prosecuted for crimes against peace, war crimes, and crimes against humanity.",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "The International Military Tribunal (IMT) convened in Nuremberg — the city where the Nazis had held their famous party rallies — on 20 November 1945. Twenty-four major defendants faced four counts: conspiracy to wage aggressive war, crimes against peace, war crimes, and crimes against humanity. The choice of Nuremberg was symbolic: it was one of the few German cities with a usable Palace of Justice."
+    },
+    {
+      "type": "heading",
+      "text": "The Principal Defendants"
+    },
+    {
+      "type": "paragraph",
+      "text": "The defendants included Hermann Göring (Reich Marshal and Luftwaffe commander), Rudolf Hess (Hitler's deputy), Joachim von Ribbentrop (Foreign Minister), Wilhelm Keitel (Chief of OKW), Alfred Rosenberg (Reich Minister for the Eastern Occupied Territories), Hans Frank (Governor-General of occupied Poland), Wilhelm Frick (Reich Minister of the Interior), Julius Streicher (antisemitic propagandist), Albert Speer (Armaments Minister), Karl Dönitz (Commander-in-Chief Kriegsmarine), and Erich Raeder."
+    },
+    {
+      "type": "heading",
+      "text": "Verdicts"
+    },
+    {
+      "type": "paragraph",
+      "text": "Twelve defendants were sentenced to death by hanging: Göring (who committed suicide with a hidden cyanide capsule before the execution), von Ribbentrop, Keitel, Rosenberg, Frank, Frick, Streicher, Sauckel, Jodl, Seyss-Inquart, Bormann (in absentia), and Kaltenbrunner. Three were acquitted: Schacht, von Papen, and Fritzsche. The remainder received prison sentences ranging from ten years to life."
+    },
+    {
+      "type": "heading",
+      "text": "Legal Legacy"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Nuremberg Trials established foundational principles of international law that remain influential today. The 'Nuremberg Principles' established that individuals — not merely states — are subject to international law; that 'following orders' is not a defence to crimes against humanity; and that crimes against humanity constitute a violation of international law regardless of whether they violate domestic law. These principles were incorporated into the UN Charter and formed the basis for the International Criminal Court established in 2002."
+    }
+  ],
+  "defendants_count": 24,
+  "death_sentences": 12,
+  "acquittals": 3,
+  "life_sentences": 3,
+  "prison_sentences": 4
+}

@@ -1,0 +1,19 @@
+{
+  "id": "poland",
+  "title": "Invasion of Poland (Fall Weiss)",
+  "theater": "western-front",
+  "dates": { "start": "1939-09-01", "end": "1939-10-06" },
+  "summary": "The German invasion of Poland on 1 September 1939 began the Second World War in Europe. Using combined-arms tactics — armour, motorised infantry, and air power — Germany defeated Poland in five weeks. A Soviet invasion from the east on 17 September eliminated any possibility of continued resistance.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Gerd von Rundstedt (Army Group South)", "Fedor von Bock (Army Group North)"],
+      "strength": "1,500,000 troops, 2,750 tanks, 1,929 aircraft"
+    },
+    "allied": {
+      "commanders": ["Edward Rydz-Śmigły", "Juliusz Rómmel", "Stefan Dąb-Biernacki"],
+      "strength": "1,000,000 troops, 880 tanks"
+    }
+  },
+  "outcome": "German–Soviet victory. Poland partitioned between Germany and the Soviet Union under the secret protocol of the Molotov-Ribbentrop Pact. Warsaw surrendered 27 September; last organised resistance ended 6 October.",
+  "casualties": { "germany": "~16,000 killed, 30,000 wounded", "poland": "~66,000 killed, ~694,000 captured by Germany, ~230,000 by Soviets" }
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="heroGrad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1a1810"/>
+      <stop offset="100%" stop-color="#080806"/>
+    </radialGradient>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <rect width="1920" height="600" fill="url(#heroGrad)"/>
+  <rect width="1920" height="600" fill="#c9a84c" opacity="0.03" filter="url(#noise)"/>
+  <!-- Subtle ruled lines evoking archival paper -->
+  <g stroke="#c9a84c" stroke-width="0.5" opacity="0.04">
+    <line x1="0" y1="100" x2="1920" y2="100"/>
+    <line x1="0" y1="200" x2="1920" y2="200"/>
+    <line x1="0" y1="300" x2="1920" y2="300"/>
+    <line x1="0" y1="400" x2="1920" y2="400"/>
+    <line x1="0" y1="500" x2="1920" y2="500"/>
+  </g>
+</svg>

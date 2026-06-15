@@ -1,0 +1,13 @@
+{
+  "id": "alamein-1",
+  "title": "First Battle of El Alamein",
+  "theater": "africa",
+  "dates": { "start": "1942-07-01", "end": "1942-07-27" },
+  "summary": "The First Battle of El Alamein halted Rommel's advance into Egypt just 100 km from Alexandria. After Rommel's capture of Tobruk, he drove deep into Egypt before being stopped at a defensive line anchored between El Alamein on the coast and the Qattara Depression — terrain too soft for armour.",
+  "combatants": {
+    "axis": { "commanders": ["Erwin Rommel"], "strength": "Panzerarmee Afrika (exhausted, at end of supply lines)" },
+    "allied": { "commanders": ["Claude Auchinleck"], "strength": "8th Army" }
+  },
+  "outcome": "Allied defensive success. Rommel's overextended advance was halted; this was his high-water mark in Africa. His failure to break through set the stage for the decisive Second Battle in October–November.",
+  "casualties": { "axis": "~13,000 killed, wounded, captured", "allied": "~13,250 killed, wounded, captured" }
+}

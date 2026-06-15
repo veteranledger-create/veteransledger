@@ -1,0 +1,23 @@
+{
+  "id": "gothic-line",
+  "title": "Battle of the Gothic Line",
+  "subtitle": "The Final German Defensive Line in Italy",
+  "date_start": "1944-08-25",
+  "date_end": "1945-04-21",
+  "theatre": "Northern Apennines, Italy",
+  "combatants": {
+    "axis": "Germany (Heeresgruppe C — 10th Army, 14th Army)",
+    "allied": "British 8th Army (General Sir Oliver Leese / General Sir Richard McCreery), US 5th Army (General Mark Clark)"
+  },
+  "commanders": {
+    "axis": "Generalfeldmarschall Albert Kesselring (to March 1945), then Generaloberst Heinrich von Vietinghoff",
+    "allied": "General Harold Alexander (Supreme Allied Commander Italy)"
+  },
+  "summary": "The Gothic Line (Gotenstellung) was the last major German defensive line in Italy, running 320km across the northern Apennines from La Spezia on the Ligurian coast to Pesaro on the Adriatic. Built with forced Italian labour over 6 months, it featured 2,376 machine gun nests, 479 anti-tank, mortar and assault gun positions, and 120,000 metres of barbed wire. The Allied offensive began 25 August 1944. Despite initial breakthroughs on the Adriatic sector (Operation Olive), the onset of autumn rains and fierce German resistance prevented a breakthrough to the Po Valley in 1944. Fighting continued through the winter in difficult mountain conditions. The line was finally broken during Operation Grapeshot (April 1945), collapsing the German position in Italy.",
+  "casualties": {
+    "axis": "~50,000 killed, wounded, or captured (Gothic Line phase)",
+    "allied": "~14,000 killed, ~50,000 wounded (Gothic Line phase)"
+  },
+  "outcome": "Allied victory (April 1945)",
+  "significance": "The last of Germany's Italian defensive lines; its collapse triggered the German surrender in Italy on 2 May 1945 — the first major German surrender of the war."
+}

@@ -1,0 +1,40 @@
+{
+  "category": "Special & Experimental Weapons — Japan",
+  "weapons": [
+    {
+      "name": "Fu-Go Fire Balloon",
+      "type": "Strategic Balloon Bomb",
+      "year": 1944,
+      "description": "Japan's most innovative long-range weapon: hydrogen-filled paper balloons carrying incendiary and fragmentation bombs, designed to ride the jet stream to North America. Approximately 9,300 were launched; 300+ reached the US and Canada. Six Americans — the only WWII combat deaths on the US mainland — were killed in Oregon in May 1945.",
+      "operational_range_km": 9000
+    },
+    {
+      "name": "Ohka Model 11",
+      "type": "Piloted Flying Bomb",
+      "year": 1944,
+      "description": "Rocket-powered piloted suicide aircraft carried under a Mitsubishi G4M bomber and released near Allied ships. With three solid-fuel rockets and 1,200kg of explosives in the nose, it reached 740 km/h in its terminal dive — impossible to intercept by 1945 fighters. Sank USS Mannert L. Abele on 12 April 1945.",
+      "warhead_kg": 1200
+    },
+    {
+      "name": "Kaiten",
+      "type": "Human-Guided Torpedo",
+      "year": 1944,
+      "description": "A Type 93 Long Lance torpedo modified with a cockpit for a pilot who would steer it into enemy ships, giving his life in the attack. The pilot could not escape after launch. Deployed from submarines in the last year of the war; sank USS Mississinewa (November 1944).",
+      "warhead_kg": 1550
+    },
+    {
+      "name": "Shinyo Suicide Boat",
+      "type": "Explosive Motorboat",
+      "year": 1944,
+      "description": "Small plywood motorboat packed with 250kg of explosive, intended to ram Allied ships at night. Over 6,000 were built. Used in the Philippines and Okinawa campaigns; most were destroyed before reaching their targets.",
+      "warhead_kg": 250
+    },
+    {
+      "name": "Fukuryu (Crouching Dragon)",
+      "type": "Suicide Swimmer Mine",
+      "year": 1945,
+      "description": "Combat divers who would walk along the sea floor in diving suits carrying a contact mine on a pole. Intended to destroy Allied landing craft during the anticipated invasion of Japan. Never used operationally.",
+      "mine_kg": 15
+    }
+  ]
+}

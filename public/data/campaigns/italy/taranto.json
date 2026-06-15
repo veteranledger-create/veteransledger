@@ -1,0 +1,23 @@
+{
+  "id": "taranto",
+  "title": "Battle of Taranto",
+  "subtitle": "The First Carrier Airstrike in History",
+  "date_start": "1940-11-11",
+  "date_end": "1940-11-12",
+  "theatre": "Mediterranean — Taranto Harbour, Italy",
+  "combatants": {
+    "axis": "Italy (Regia Marina — battleships Littorio, Conte di Cavour, Caio Duilio, cruisers, destroyers)",
+    "allied": "United Kingdom (HMS Illustrious — 21 Swordfish torpedo bombers, 2 waves)"
+  },
+  "commanders": {
+    "axis": "Ammiraglio di Squadra Inigo Campioni",
+    "allied": "Vice Admiral Andrew Cunningham (C-in-C Mediterranean Fleet)"
+  },
+  "summary": "On the night of 11–12 November 1940, Fleet Air Arm Swordfish biplane torpedo bombers from HMS Illustrious attacked the Italian fleet at anchor in Taranto harbour. In two waves, they sank the battleship Conte di Cavour and severely damaged Littorio and Caio Duilio. With 21 aircraft, the Royal Navy achieved what the entire German surface fleet and Luftwaffe had failed to do — halving the effective Italian Battle Fleet at a cost of only two Swordfish. The remaining Italian fleet withdrew to Naples. The Japanese Naval Air Force studied the attack intensively; Admiral Yamamoto used it as the template for the Pearl Harbor attack 13 months later.",
+  "casualties": {
+    "axis": "59 killed, 600 wounded; 3 battleships damaged (1 sunk for the duration)",
+    "allied": "2 aircraft lost, 2 crew killed, 2 captured"
+  },
+  "outcome": "Decisive British victory",
+  "significance": "The first naval battle decided exclusively by air power. Changed the strategic balance in the Mediterranean; directly influenced the Japanese attack on Pearl Harbor."
+}

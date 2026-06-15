@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <!-- ── Login panel ─────────────────────────────────────── -->
+    <div id="admin-login"
+      style="display:flex;align-items:center;justify-content:center;min-height:80vh;padding:var(--space-8);">
+      <div style="width:100%;max-width:400px;">
+        <div style="text-align:center;margin-bottom:var(--space-8);">
+          <img src="/public/logos/eagle.png" alt="" aria-hidden="true" class="site-logo"
+            style="display:block;margin:0 auto var(--space-4);width:48px;height:48px;">
+          <h1
+            style="font-family:var(--font-display);font-size:var(--text-xl);letter-spacing:0.1em;text-transform:uppercase;color:var(--text-primary);">
+            Archive Admin</h1>
+          <p style="font-size:var(--text-sm);color:var(--text-muted);margin-top:var(--space-2);">Restricted access —
+            authorised personnel only</p>
+        </div>
+
+        <form id="login-form" novalidate>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="admin-email">Email</label>
+            <input type="email" id="admin-email" name="email" class="contact-form__input" required autocomplete="email">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="admin-password">Password</label>
+            <input type="password" id="admin-password" name="password" class="contact-form__input" required
+              autocomplete="current-password">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:var(--space-2);">SIGN IN →</button>
+          <div id="login-error" class="contact-form__status" role="alert"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── Dashboard ───────────────────────────────────────── -->
+    <div id="admin-dashboard" hidden style="padding:var(--space-8) var(--space-10);">
+
+      <!-- Header -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-8);">
+        <h1
+          style="font-family:var(--font-display);font-size:var(--text-2xl);letter-spacing:0.08em;text-transform:uppercase;">
+          Dashboard</h1>
+        <button type="button" class="btn btn-secondary" id="logout-btn">Sign Out</button>
+      </div>
+
+      <!-- Stats grid -->
+      <div id="stats-grid"
+        style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-4);margin-bottom:var(--space-10);">
+      </div>
+
+      <!-- Admin tabs -->
+      <div style="display:flex;gap:0;border-bottom:1px solid var(--border-dim);margin-bottom:var(--space-8);"
+        id="admin-tabs" role="tablist">
+        <button type="button" class="admin-tab-btn category-tab is-active" data-tab="tab-overview" role="tab"
+          aria-selected="true">Overview</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-records" role="tab"
+          aria-selected="false">Records</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-timeline" role="tab"
+          aria-selected="false">Timeline</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-media" role="tab"
+          aria-selected="false">Media</button>
+      </div>
+
+      <!-- Tab: Overview (activity log) -->
+      <div id="tab-overview" class="admin-tab-panel" role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Recent Activity</div>
+        <div id="activity-log">
+          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+              class="loader__dot"></span></div>
+        </div>
+      </div>
+
+      <!-- Tab: Records -->
+      <div id="tab-records" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Create Record</div>
+        <form id="create-record-form"
+          style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:var(--space-3);align-items:end;margin-bottom:var(--space-8);">
+          <div class="contact-form__group" style="margin:0;">
+            <label class="contact-form__label">Title</label>
+            <input name="title" class="contact-form__input" placeholder="Record title" required>
+          </div>
+          <div class="contact-form__group" style="margin:0;">
+            <label class="contact-form__label">Type</label>
+            <select name="type" class="contact-form__input" required>
+              <option value="">— select —</option>
+              <option value="CAMPAIGN">Campaign</option>
+              <option value="ARMAMENT">Armament</option>
+              <option value="LETTER">Letter</option>
+              <option value="ARTICLE">Article</option>
+              <option value="TIMELINE_EVENT">Timeline Event</option>
+              <option value="DOCUMENT">Document</option>
+            </select>
+          </div>
+          <div class="contact-form__group" style="margin:0;">
+            <label class="contact-form__label">Content (optional)</label>
+            <input name="content" class="contact-form__input" placeholder="Brief description">
+          </div>
+          <button type="submit" class="btn btn-primary" style="white-space:nowrap;">Create →</button>
+        </form>
+
+        <div class="section-label" style="margin-bottom:var(--space-6);">All Records</div>
+        <div id="records-list">
+          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+              class="loader__dot"></span></div>
+        </div>
+      </div>
+
+      <!-- Tab: Timeline -->
+      <div id="tab-timeline" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Add Timeline Event</div>
+        <form id="create-event-form"
+          style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:var(--space-3);align-items:end;margin-bottom:var(--space-8);">
+          <div class="contact-form__group" style="margin:0;">
+            <label class="contact-form__label">Date</label>
+            <input name="date" type="date" class="contact-form__input" required>
+          </div>
+          <div class="contact-form__group" style="margin:0;">
+            <label class="contact-form__label">Title</label>
+            <input name="title" class="contact-form__input" placeholder="Event title" required>
+          </div>
+          <div class="contact-form__group" style="margin:0;">
+            <label class="contact-form__label">Category</label>
+            <input name="category" class="contact-form__input" placeholder="military / political…">
+          </div>
+          <div class="contact-form__group" style="margin:0;">
+            <label class="contact-form__label">Summary</label>
+            <input name="summary" class="contact-form__input" placeholder="Brief summary">
+          </div>
+          <button type="submit" class="btn btn-primary" style="white-space:nowrap;">Add →</button>
+        </form>
+
+        <div class="section-label" style="margin-bottom:var(--space-6);">Timeline Events</div>
+        <div id="timeline-list">
+          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+              class="loader__dot"></span></div>
+        </div>
+      </div>
+
+      <!-- Tab: Media -->
+      <div id="tab-media" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Upload Media</div>
+        <form id="media-upload-form"
+          style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-8);flex-wrap:wrap;">
+          <input name="file" type="file" accept="image/*,application/pdf,audio/*,video/*" class="contact-form__input"
+            style="flex:1;min-width:200px;" required>
+          <button type="submit" class="btn btn-primary">Upload →</button>
+          <span id="upload-status" style="font-size:var(--text-sm);color:var(--text-muted);"></span>
+        </form>
+
+        <div class="section-label" style="margin-bottom:var(--space-6);">Media Library</div>
+        <div id="media-list">
+          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+              class="loader__dot"></span></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Admin/admin.js"></script>
+</body>
+
+</html>

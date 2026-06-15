@@ -1,0 +1,14 @@
+{
+  "id": "caucasus",
+  "title": "Caucasus Campaign (Case Blue — Army Group A)",
+  "theater": "eastern-front",
+  "dates": { "start": "1942-07-25", "end": "1943-01-04" },
+  "summary": "The Caucasus campaign was the southern half of Germany's 1942 summer offensive, aimed at capturing the Soviet oilfields at Baku, Maikop, and Grozny. Army Group A advanced rapidly but was stopped short of its objectives by terrain, distance, and the diversion of forces to Stalingrad.",
+  "objectives": "Germany consumed 80% of its domestic oil supply annually; capturing Caucasus oilfields would both deny them to the Soviet Union and alleviate Germany's own critical oil shortage.",
+  "combatants": {
+    "axis": { "commanders": ["Wilhelm List", "Ewald von Kleist"], "strength": "Army Group A: 1st Panzer Army, 17th Army" },
+    "allied": { "commanders": ["Semyon Budyonny", "Ivan Tyulenev"], "strength": "Transcaucasus Front" }
+  },
+  "outcome": "Failure. Maikop oilfields captured but destroyed before seizure; Grozny and Baku never reached. German advance halted in the Caucasus mountains, denied by terrain, overextended supply lines, and the catastrophe at Stalingrad which forced withdrawal.",
+  "casualties": { "axis": "~270,000 killed, wounded, missing", "soviet": "~590,000 killed, wounded, missing during the campaign" }
+}

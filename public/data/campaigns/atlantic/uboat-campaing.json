@@ -1,0 +1,30 @@
+{
+  "id": "uboat-campaign",
+  "title": "U-Boat Campaign — The Battle of the Atlantic",
+  "subtitle": "Germany's Submarine War Against Allied Shipping",
+  "date_start": "1939-09-03",
+  "date_end": "1945-05-08",
+  "theatre": "Atlantic Ocean",
+  "combatants": {
+    "axis": "Germany (Kriegsmarine U-boat arm, over 1,100 U-boats commissioned)",
+    "allied": "United Kingdom, Canada, United States, and Allied nations"
+  },
+  "commanders": {
+    "axis": "Konteradmiral / Admiral Karl Dönitz (BdU — Commander U-boats)",
+    "allied": "Multiple — Admiral of the Fleet Sir Dudley Pound, Admiral Ernest King (USN)"
+  },
+  "phases": [
+    { "name": "First Happy Time", "period": "1940–1941", "description": "After the fall of France gave Germany Atlantic ports, U-boats operated from Brest and Lorient. Small numbers of U-boats achieved enormous sinkings. Ace commanders — Prien, Kretschmer, Schepke, Endrass — accounted for hundreds of thousands of tons. Wolfpack tactics (Rudeltaktik) overwhelmed convoy escorts." },
+    { "name": "Second Happy Time", "period": "1942", "description": "After the US entered the war but before it organised effective coastal convoys, U-boats operated freely off the American East Coast (Operation Drumbeat / Paukenschlag). Monthly Allied losses reached 700,000 GRT — nearly unsustainable." },
+    { "name": "Black May 1943", "period": "May 1943", "description": "Allied anti-submarine technology (HF/DF radio direction finding, centimetric radar, Leigh Lights, VLF Ultra codebreaking, air cover from escort carriers) decisively turned the Battle of the Atlantic. In May 1943 alone, 41 U-boats were sunk. Dönitz withdrew the U-boat fleet from the North Atlantic." },
+    { "name": "Endgame", "period": "1943–1945", "description": "U-boats continued to fight but losses became unsustainable. New designs (Type XXI, Type XXIII) with increased underwater speed and capacity arrived too late. The Schnorchel allowed extended submerged operation but radar still found schnorchel heads. U-boat crew mortality reached 75% — the highest loss rate of any branch of any service in the war." }
+  ],
+  "statistics": {
+    "allied_ships_sunk": 2779,
+    "allied_tonnage_sunk_grt": "14,500,000+",
+    "uboats_lost": 783,
+    "uboat_crew_deaths": "~28,000 of ~40,000 who served"
+  },
+  "outcome": "Allied victory",
+  "significance": "The longest continuous campaign of WWII. Churchill later wrote it was 'the only thing that ever really frightened me.' Allied victory secured the supply lines that made D-Day possible."
+}

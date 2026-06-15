@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="VeteransLedger — A comprehensive archive dedicated to preserving the history, documents, letters, armaments, and personnel of the Axis forces during World War II.">
+  <meta name="robots" content="index, follow">
+  <title>VeteransLedger · Axis History Archive 1933–1945</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheet bundle -->
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/hero.css">
+  <link rel="stylesheet" href="/styles/cards.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+  <link rel="stylesheet" href="/styles/pages/home.css">
+</head>
+
+<body>
+
+  <!-- Layout shell injected by layout.js -->
+
+  <main id="main-content">
+
+    <!-- ── Hero ─────────────────────────────────────────────── -->
+    <section class="hero home-hero" aria-label="Welcome">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">Educational Historical Archive</p>
+
+        <span class="hero__cross" aria-hidden="true">✛</span>
+
+        <h1 class="hero__title">Welcome to<br>VeteransLedger</h1>
+        <p class="hero__subtitle">Axis History Archive</p>
+
+        <div class="hero__divider" aria-hidden="true">
+          <span class="hero__divider-line"></span>
+          <span class="hero__divider-icon">✛</span>
+          <span class="hero__divider-line"></span>
+        </div>
+
+        <p class="hero__description">
+          A comprehensive archive dedicated to preserving the history, documents,
+          letters, armaments, and personnel of the Axis forces during World War II.
+        </p>
+
+        <div class="hero__actions">
+          <a href="/campaigns" class="btn btn-primary">EXPLORE ARCHIVE →</a>
+          <button type="button" class="btn btn-secondary" data-action="open-contact">CONTACT</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Browse Archive ────────────────────────────────────── -->
+    <section class="browse-archive browse-section" aria-label="Browse archive">
+      <div class="section-label">Browse Archive</div>
+
+      <div class="browse-archive__grid" id="browse-grid">
+
+        <a href="/timeline" class="archive-card">
+          <div class="archive-card__icon" aria-hidden="true">
+            <img src="/public/images/icons/timeline.svg" alt="">
+          </div>
+          <h2 class="archive-card__title">Timeline</h2>
+          <p class="archive-card__desc">Explore events chronologically through the war.</p>
+          <span class="archive-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="/campaigns" class="archive-card">
+          <div class="archive-card__icon" aria-hidden="true">
+            <img src="/public/images/icons/campaigns.svg" alt="">
+          </div>
+          <h2 class="archive-card__title">Campaigns</h2>
+          <p class="archive-card__desc">Detailed archives of major operations and battles.</p>
+          <span class="archive-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="/armaments" class="archive-card">
+          <div class="archive-card__icon" aria-hidden="true">
+            <img src="/public/images/icons/armaments.svg" alt="">
+          </div>
+          <h2 class="archive-card__title">Armaments</h2>
+          <p class="archive-card__desc">Tanks, aircraft, ships, weapons and secret projects.</p>
+          <span class="archive-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="/personnel" class="archive-card">
+          <div class="archive-card__icon" aria-hidden="true">
+            <img src="/public/images/icons/personnel.svg" alt="">
+          </div>
+          <h2 class="archive-card__title">Personnel</h2>
+          <p class="archive-card__desc">Profiles, units, and biographies of military personnel.</p>
+          <span class="archive-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a href="/letters" class="archive-card">
+          <div class="archive-card__icon" aria-hidden="true">
+            <img src="/public/images/icons/letters.svg" alt="">
+          </div>
+          <h2 class="archive-card__title">Letters</h2>
+          <p class="archive-card__desc">Personal letters from soldiers and volunteers.</p>
+          <span class="archive-card__arrow" aria-hidden="true">→</span>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Contact modal (injected by layout) -->
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Home/home.js"></script>
+</body>
+
+</html>

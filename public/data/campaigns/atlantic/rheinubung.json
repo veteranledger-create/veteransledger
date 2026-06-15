@@ -1,0 +1,19 @@
+{
+  "id": "rheinubung",
+  "title": "Operation Rheinübung — The Bismarck Sortie",
+  "theater": "atlantic",
+  "dates": { "start": "1941-05-18", "end": "1941-05-27" },
+  "summary": "Operation Rheinübung was the sortie of the battleship Bismarck and heavy cruiser Prinz Eugen into the Atlantic to attack Allied convoys. The operation ended with the sinking of HMS Hood and the destruction of the Bismarck nine days after she sailed.",
+  "combatants": {
+    "axis": { "commanders": ["Günther Lütjens (Fleet Commander)"], "ships": ["Bismarck", "Prinz Eugen"] },
+    "allied": { "commanders": ["John Tovey (Home Fleet)"], "ships": ["HMS Hood", "HMS Prince of Wales", "HMS King George V", "HMS Ark Royal", "HMS Rodney"] }
+  },
+  "key_events": [
+    { "date": "24 May 1941", "event": "Battle of the Denmark Strait — Bismarck sinks HMS Hood in under 10 minutes; 1,415 killed, 3 survivors. HMS Prince of Wales damaged." },
+    { "date": "24–26 May 1941", "event": "Royal Navy hunts Bismarck across the Atlantic. Bismarck shakes pursuit but sends a long radio message that allows triangulation of her position." },
+    { "date": "26 May 1941", "event": "Swordfish torpedo aircraft from HMS Ark Royal hit Bismarck's rudder, leaving her unable to manoeuvre." },
+    { "date": "27 May 1941", "event": "HMS King George V and HMS Rodney shell Bismarck into a burning wreck. She sinks; 2,086 killed, 115 survivors." }
+  ],
+  "outcome": "Allied victory. Bismarck destroyed; Prinz Eugen escaped to Brest. The operation ended German hopes of disrupting Atlantic supply lines with surface raiders.",
+  "casualties": { "germany": "2,086 of Bismarck's 2,221 crew killed", "allied": "~1,418 killed (primarily HMS Hood)" }
+}

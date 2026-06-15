@@ -1,0 +1,47 @@
+{
+  "id": "france",
+  "title": "Fall of France (Fall Gelb / Fall Rot)",
+  "theater": "western-front",
+  "dates": { "start": "1940-05-10", "end": "1940-06-25" },
+  "summary": "The German campaign in the West resulted in the rapid defeat of France, Belgium, Luxembourg, and the Netherlands in just six weeks. The campaign featured the famous Ardennes breakthrough designed by Erich von Manstein and executed by Heinz Guderian's Panzer forces.",
+  "background": "After the 'Phoney War' winter of 1939–1940, Hitler launched Fall Gelb on 10 May 1940. The original plan was a modified Schlieffen Plan through Belgium, but Erich von Manstein proposed the radical Sichelschnitt ('Sickle Cut') — thrusting Panzer forces through the 'impassable' Ardennes forest to cut off Allied forces in Belgium.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Gerd von Rundstedt", "Fedor von Bock", "Heinz Guderian", "Erwin Rommel"],
+      "strength": "2,445,000 troops, 2,445 tanks, 7,378 artillery pieces"
+    },
+    "allied": {
+      "commanders": ["Maurice Gamelin", "Maxime Weygand", "John Gort"],
+      "strength": "2,862,000 troops (France, UK, Belgium, Netherlands), 3,383 tanks"
+    }
+  },
+  "phases": [
+    {
+      "name": "Fall Gelb — Phase One",
+      "dates": "10–21 May 1940",
+      "description": "Germany's Army Group B attacked through Belgium and the Netherlands, drawing Allied forces north. Meanwhile, Army Group A's Panzer forces secretly crossed the Ardennes and emerged at Sedan on 13 May, crossing the Meuse against fierce French resistance."
+    },
+    {
+      "name": "The Drive to the Channel",
+      "dates": "21–28 May 1940",
+      "description": "German Panzers raced to the English Channel, cutting off Allied forces in Belgium. The 'halt order' — controversially attributed to Hitler — paused Panzers short of Dunkirk, enabling partial Allied evacuation."
+    },
+    {
+      "name": "Dunkirk Evacuation",
+      "dates": "26 May – 4 June 1940",
+      "description": "Operation Dynamo evacuated 338,226 Allied troops from Dunkirk beaches, though all heavy equipment was abandoned."
+    },
+    {
+      "name": "Fall Rot",
+      "dates": "5–25 June 1940",
+      "description": "Germany turned south against remaining French forces. Paris fell on 14 June. France signed the armistice on 22 June 1940 at Compiègne — in the same railway car as the 1918 armistice."
+    }
+  ],
+  "outcome": "Total German victory. France signed an armistice on 22 June 1940. Northern and western France came under direct German occupation; southern France became 'Vichy France' under the collaborationist government of Marshal Pétain.",
+  "casualties": {
+    "germany": "~163,213 killed, wounded, missing",
+    "allied": "~360,000 killed or wounded; 1,900,000 French captured"
+  },
+  "image": "/storage/images/campaigns/france.jpg",
+  "significance": "One of the most stunning military victories in modern history. The fall of France in six weeks shocked the world and left Britain alone against Germany. The campaign validated Blitzkrieg doctrine and established German dominance over Western Europe."
+}

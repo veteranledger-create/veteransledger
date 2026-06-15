@@ -1,0 +1,53 @@
+{
+  "id": "poland-1939",
+  "title": "The Invasion of Poland, September 1939",
+  "subtitle": "The campaign that opened the Second World War",
+  "category": "military",
+  "date_published": "2024-01-15",
+  "author": "VeteransLedger Archive",
+  "image": "/storage/images/articles/poland-1939.jpg",
+  "tags": ["poland", "1939", "blitzkrieg", "Wehrmacht", "Luftwaffe"],
+  "summary": "On 1 September 1939, Germany launched its invasion of Poland, beginning the Second World War. The campaign combined armoured thrusts, close air support, and motorised infantry in a manner that overwhelmed Polish defences within weeks.",
+  "body": [
+    {
+      "type": "paragraph",
+      "text": "At 4:45 AM on 1 September 1939, German forces crossed the Polish border on five fronts. The attack followed a false flag operation at Gleiwitz radio station the previous night, which the Nazi regime used as a pretext. Within hours, the Luftwaffe had begun systematically destroying Polish airfields and communications infrastructure."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Wehrmacht deployed 1,500,000 troops, 2,750 tanks, and 1,929 aircraft against Poland. The Polish Army, while numbering over one million men, was outmatched in armour and aviation and suffered from the strategic necessity of defending an extremely long frontier."
+    },
+    {
+      "type": "heading",
+      "text": "The German Plan"
+    },
+    {
+      "type": "paragraph",
+      "text": "The German operation, known as Fall Weiss (Case White), envisaged a rapid double envelopment of Polish forces. Army Group North under Fedor von Bock would drive south from Pomerania and East Prussia, while Army Group South under Gerd von Rundstedt would thrust northeast from Silesia and Slovakia. The objective was to encircle and destroy the main Polish armies before they could retreat behind the Vistula River."
+    },
+    {
+      "type": "heading",
+      "text": "Polish Resistance"
+    },
+    {
+      "type": "paragraph",
+      "text": "Polish resistance was fierce but ultimately futile given the military imbalance. The Polish Air Force, though outnumbered, inflicted significant casualties on the Luftwaffe — shooting down 285 German aircraft at the cost of 333 of their own. Polish cavalry did not charge German tanks with lances as is popularly supposed; the 'cavalry charges' were infantry engagements by dismounted cavalry brigades."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Battle of Bzura (9–19 September) saw the Poznań Army launch the largest Polish counteroffensive of the campaign, initially pushing back German forces before being overwhelmed. The 17 September Soviet invasion of eastern Poland, following the Molotov-Ribbentrop Pact's secret protocol, eliminated any possibility of continued Polish resistance."
+    },
+    {
+      "type": "heading",
+      "text": "Outcome and Significance"
+    },
+    {
+      "type": "paragraph",
+      "text": "Poland was defeated in five weeks. Warsaw surrendered on 27 September; the last organised resistance ended on 6 October. Poland was divided between Germany and the Soviet Union. The campaign validated the Blitzkrieg concept and shocked Western military establishments. Britain and France, who had declared war on 3 September, had been unable to mount any effective intervention."
+    }
+  ],
+  "casualties": {
+    "germany": "~16,000 killed, 30,000 wounded",
+    "poland": "~66,000 killed, 133,700 wounded, 694,000 captured by Germans, 230,000 by Soviets"
+  }
+}

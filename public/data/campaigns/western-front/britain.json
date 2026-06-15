@@ -1,0 +1,46 @@
+{
+  "id": "britain",
+  "title": "Battle of Britain",
+  "theater": "western-front",
+  "dates": { "start": "1940-07-10", "end": "1940-10-31" },
+  "summary": "The Battle of Britain was the German Luftwaffe's attempt to establish air superiority over Britain as a precondition for a seaborne invasion (Operation Sea Lion). The RAF's successful defence, made possible by radar, ground control, and the Hurricane and Spitfire fighters, marked Germany's first major defeat.",
+  "background": "Following the fall of France in June 1940, Britain stood alone. Hitler's Directive 16 ordered preparations for a cross-Channel invasion, but this required the Luftwaffe to first neutralise the RAF. Reichsmarschall Göring promised to destroy British air power within four weeks.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Hermann Göring (Luftwaffe)", "Albert Kesselring (Luftflotte 2)", "Hugo Sperrle (Luftflotte 3)"],
+      "strength": "2,600 aircraft (at peak)"
+    },
+    "allied": {
+      "commanders": ["Hugh Dowding (Fighter Command)", "Keith Park (11 Group)", "Trafford Leigh-Mallory (12 Group)"],
+      "strength": "1,963 aircraft (at peak); Polish, Czech, and other Allied pilots included"
+    }
+  },
+  "phases": [
+    {
+      "name": "Kanalkampf (Channel Battle)",
+      "dates": "10 July – 11 August 1940",
+      "description": "Luftwaffe attacks on Channel convoys and coastal radar stations test RAF defences. RAF resists, but losses are significant."
+    },
+    {
+      "name": "Adlerangriff (Eagle Attack)",
+      "dates": "13 August – 6 September 1940",
+      "description": "Intensified attacks on RAF airfields and radar stations bring Fighter Command to near breaking point. A German navigator error leads to the bombing of London on 24 August."
+    },
+    {
+      "name": "London Blitz",
+      "dates": "7 September – 31 October 1940",
+      "description": "Hitler orders the bombing shifted to London in retaliation. This strategic error allows Fighter Command to recover. On 15 September (Battle of Britain Day) the RAF defeats a massive Luftwaffe raid; on 17 September Hitler postpones Operation Sea Lion indefinitely."
+    }
+  ],
+  "technology": {
+    "radar": "The Chain Home radar network gave Fighter Command advance warning, enabling it to concentrate forces. Ground controllers directed RAF fighters to intercepts via radio — a revolutionary capability.",
+    "aircraft": "The Hawker Hurricane shot down more German aircraft than any other RAF fighter. The Supermarine Spitfire was roughly equivalent to the Bf 109E but with a longer range."
+  },
+  "outcome": "British victory. The Luftwaffe failed to establish air superiority and Operation Sea Lion was postponed (and eventually abandoned). The Battle of Britain was Germany's first defeat and demonstrated that air power alone could not defeat a determined nation with effective air defences.",
+  "casualties": {
+    "germany": "1,977 aircraft, ~2,698 aircrew killed or captured",
+    "britain": "1,087 aircraft, 544 aircrew killed; 43,000 civilians killed in Blitz"
+  },
+  "image": "/storage/images/campaigns/britain.jpg",
+  "significance": "Winston Churchill's words — 'Never in the field of human conflict was so much owed by so many to so few' — became the defining tribute to the RAF's 2,946 aircrew who fought in the battle."
+}

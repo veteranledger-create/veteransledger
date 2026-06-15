@@ -1,0 +1,63 @@
+/* ── About page ────────────────────────────────────────────── */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-10);
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    padding: var(--space-8) var(--space-5);
+  }
+}
+
+.about-mission {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  border-left: 3px solid var(--border-gold);
+  padding-left: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+.about-team-signature {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: var(--space-8);
+}
+
+.sources-section { margin-top: var(--space-10); }
+
+.source-item {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border-dim);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-4);
+  align-items: baseline;
+  font-size: var(--text-sm);
+}
+.source-item:last-child { border-bottom: none; }
+.source-item__num {
+  color: var(--gold-dim);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-xs);
+}
+.source-item__title { color: var(--text-secondary); }
+.source-item__author {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-align: right;
+  white-space: nowrap;
+}

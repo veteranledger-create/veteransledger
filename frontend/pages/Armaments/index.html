@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="VeteransLedger Armaments — Tanks, aircraft, ships, weapons and secret Wunderwaffen projects of the Axis powers.">
+  <title>Armaments · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/hero.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+  <link rel="stylesheet" href="/styles/pages/armaments.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <div class="page-hero armaments-hero">
+      <div class="page-hero__bg" style="background-image:url('/public/images/covers/armaments-cover.webp')"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Armaments</h1>
+        <p class="page-hero__subtitle">Weapons &amp; Technology Archive</p>
+      </div>
+    </div>
+
+    <div class="archive-section">
+
+      <!-- Nation filter -->
+      <div class="nation-tabs" id="nation-tabs" role="group" aria-label="Filter by nation">
+        <button type="button" class="nation-tab is-active" data-nation="all">All Nations</button>
+        <button type="button" class="nation-tab" data-nation="germany">
+          <img src="/public/images/flags/germany.webp" alt=""> Germany
+        </button>
+        <button type="button" class="nation-tab" data-nation="italy">
+          <img src="/public/images/flags/italy.webp" alt=""> Italy
+        </button>
+        <button type="button" class="nation-tab" data-nation="japan">
+          <img src="/public/images/flags/japan.webp" alt=""> Japan
+        </button>
+        <button type="button" class="nation-tab" data-nation="other">
+          Other Axis
+        </button>
+      </div>
+
+      <!-- Category tabs -->
+      <div class="category-tabs" id="category-tabs" role="tablist" aria-label="Armament category">
+        <button type="button" class="category-tab is-active" role="tab" data-category="panzer">Panzers</button>
+        <button type="button" class="category-tab" role="tab" data-category="aircraft">Aircraft</button>
+        <button type="button" class="category-tab" role="tab" data-category="naval">Naval</button>
+        <button type="button" class="category-tab" role="tab" data-category="missiles">Missiles &amp; Artillery</button>
+        <button type="button" class="category-tab" role="tab" data-category="wunderwaffen">Wunderwaffen</button>
+        <button type="button" class="category-tab" role="tab" data-category="equipment">Equipment</button>
+      </div>
+
+      <div id="panzer" class="anchor-section armaments-category" data-cat-id="panzer">
+        <div class="armaments-grid" id="panzer-grid">
+          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+              class="loader__dot"></span></div>
+        </div>
+      </div>
+      <div id="aircraft" class="anchor-section armaments-category" data-cat-id="aircraft" hidden></div>
+      <div id="naval" class="anchor-section armaments-category" data-cat-id="naval" hidden></div>
+      <div id="missiles" class="anchor-section armaments-category" data-cat-id="missiles" hidden></div>
+      <div id="wunderwaffen" class="anchor-section armaments-category" data-cat-id="wunderwaffen" hidden></div>
+      <div id="equipment" class="anchor-section armaments-category" data-cat-id="equipment" hidden></div>
+
+    </div>
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Armaments/armaments.js"></script>
+</body>
+
+</html>

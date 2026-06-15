@@ -1,0 +1,211 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  role         String   @default("VIEWER")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  auditLogs  AuditLog[]
+  mediaAssets MediaAsset[]
+
+  @@map("users")
+}
+
+model Collection {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String?
+  category    String
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  records Record[]
+
+  @@map("collections")
+}
+
+model Record {
+  id           String      @id @default(cuid())
+  collectionId String?
+  type         String
+  title        String
+  slug         String?     @unique
+  summary      String?
+  content      String?
+  date         DateTime?
+  startDate    DateTime?
+  endDate      DateTime?
+  location     String?
+  nationality  String?
+  metadata     Json?
+  tags         String[]
+  published    Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  collection Collection?  @relation(fields: [collectionId], references: [id])
+  citations  Citation[]
+  media      MediaAsset[] @relation("RecordMedia")
+
+  @@map("records")
+}
+
+model Entity {
+  id          String   @id @default(cuid())
+  type        String
+  name        String
+  slug        String?  @unique
+  nationality String?
+  birthDate   DateTime?
+  deathDate   DateTime?
+  summary     String?
+  biography   String?
+  metadata    Json?
+  tags        String[]
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  aliases      EntityAlias[]
+  relationsFrom Relationship[] @relation("RelationFrom")
+  relationsTo   Relationship[] @relation("RelationTo")
+  citations     Citation[]
+  media         MediaAsset[]   @relation("EntityMedia")
+
+  @@map("entities")
+}
+
+model EntityAlias {
+  id       String @id @default(cuid())
+  entityId String
+  alias    String
+  language String?
+
+  entity Entity @relation(fields: [entityId], references: [id], onDelete: Cascade)
+
+  @@map("entity_aliases")
+}
+
+model Relationship {
+  id         String   @id @default(cuid())
+  fromId     String
+  toId       String
+  type       String
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  from Entity @relation("RelationFrom", fields: [fromId], references: [id], onDelete: Cascade)
+  to   Entity @relation("RelationTo",   fields: [toId],   references: [id], onDelete: Cascade)
+
+  @@map("relationships")
+}
+
+model TimelineEvent {
+  id          String   @id @default(cuid())
+  date        DateTime
+  endDate     DateTime?
+  title       String
+  summary     String?
+  category    String?
+  location    String?
+  significance String?
+  metadata    Json?
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("timeline_events")
+}
+
+model Source {
+  id        String   @id @default(cuid())
+  title     String
+  author    String?
+  year      Int?
+  publisher String?
+  url       String?
+  type      String
+  notes     String?
+  createdAt DateTime @default(now())
+
+  citations Citation[]
+
+  @@map("sources")
+}
+
+model Citation {
+  id       String  @id @default(cuid())
+  sourceId String
+  recordId String?
+  entityId String?
+  page     String?
+  notes    String?
+
+  source Source  @relation(fields: [sourceId], references: [id])
+  record Record? @relation(fields: [recordId], references: [id], onDelete: Cascade)
+  entity Entity? @relation(fields: [entityId], references: [id], onDelete: Cascade)
+
+  @@map("citations")
+}
+
+model MediaAsset {
+  id           String   @id @default(cuid())
+  filename     String
+  originalName String
+  mimeType     String
+  size         Int
+  path         String
+  url          String
+  thumbnailUrl String?
+  alt          String?
+  caption      String?
+  uploadedById String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  uploadedBy User     @relation(fields: [uploadedById], references: [id])
+  records    Record[] @relation("RecordMedia")
+  entities   Entity[] @relation("EntityMedia")
+
+  @@map("media_assets")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}
+
+model PreservationRecord {
+  id          String   @id @default(cuid())
+  entityType  String
+  entityId    String
+  checksum    String
+  algorithm   String   @default("sha256")
+  verifiedAt  DateTime @default(now())
+  status      String   @default("VALID")
+  notes       String?
+  createdAt   DateTime @default(now())
+
+  @@map("preservation_records")
+}

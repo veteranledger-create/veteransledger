@@ -1,0 +1,78 @@
+{
+  "description": "Content in this archive draws on the following categories of primary and secondary sources. Where specific documents are reproduced, they are cited within their respective entries.",
+  "sources": [
+    {
+      "title": "Der Zweite Weltkrieg (The Second World War)",
+      "author": "Basil Liddell Hart",
+      "year": 1970,
+      "type": "Secondary — Military History",
+      "notes": "Comprehensive operational history; includes interviews with surviving German generals."
+    },
+    {
+      "title": "Inside the Third Reich",
+      "author": "Albert Speer",
+      "year": 1969,
+      "type": "Primary — Memoir",
+      "notes": "First-hand account of the Nazi leadership by Hitler's armaments minister."
+    },
+    {
+      "title": "Panzer Leader",
+      "author": "Heinz Guderian",
+      "year": 1952,
+      "type": "Primary — Memoir",
+      "notes": "Guderian's account of the development of German armoured doctrine and his wartime command."
+    },
+    {
+      "title": "Lost Victories (Verlorene Siege)",
+      "author": "Erich von Manstein",
+      "year": 1955,
+      "type": "Primary — Memoir",
+      "notes": "Manstein's account of his operations on the Eastern Front; invaluable for Stalingrad and Kharkov."
+    },
+    {
+      "title": "The German Army at War, 1939–1945",
+      "author": "Martin van Creveld",
+      "year": 1982,
+      "type": "Secondary — Military History",
+      "notes": "Analysis of Wehrmacht operational effectiveness and logistics."
+    },
+    {
+      "title": "Hitler's Generals",
+      "author": "Correlli Barnett (ed.)",
+      "year": 1989,
+      "type": "Secondary — Biography collection",
+      "notes": "Biographical essays on 20 senior Wehrmacht and Luftwaffe commanders."
+    },
+    {
+      "title": "Bundesarchiv-Militärarchiv, Freiburg im Breisgau",
+      "type": "Primary — Archival",
+      "notes": "German Federal Military Archive; primary source for unit records, personnel files, and operational orders."
+    },
+    {
+      "title": "U-Boat Archive (U-Boot-Archiv), Cuxhaven",
+      "type": "Primary — Archival",
+      "notes": "Specialist archive for Kriegsmarine submarine records, war diaries, and crew testimonies."
+    },
+    {
+      "title": "The Rise and Fall of the Third Reich",
+      "author": "William L. Shirer",
+      "year": 1960,
+      "type": "Secondary — History",
+      "notes": "Comprehensive political history of the Nazi regime by an American journalist who was present in Berlin."
+    },
+    {
+      "title": "Stalingrad",
+      "author": "Antony Beevor",
+      "year": 1998,
+      "type": "Secondary — Military History",
+      "notes": "Definitive account of the Battle of Stalingrad drawing on Soviet archives."
+    },
+    {
+      "title": "D-Day: The Battle for Normandy",
+      "author": "Antony Beevor",
+      "year": 2009,
+      "type": "Secondary — Military History",
+      "notes": "Comprehensive account of the Normandy campaign from both Allied and German perspectives."
+    }
+  ]
+}

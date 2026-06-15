@@ -1,0 +1,218 @@
+/* ============================================================
+   VeteransLedger · Timeline Component
+   ============================================================ */
+
+.timeline-page {
+  padding: var(--space-12) var(--space-10);
+  max-width: 960px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .timeline-page {
+    padding: var(--space-8) var(--space-5);
+  }
+}
+
+/* ── Year navigation ───────────────────────────────────────── */
+.timeline-years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-10);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.timeline-year-btn {
+  padding: 6px var(--space-4);
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.timeline-year-btn:hover,
+.timeline-year-btn.is-active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-faint);
+}
+
+/* ── Timeline track ────────────────────────────────────────── */
+.timeline-track {
+  position: relative;
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--border-gold) 5%,
+    var(--border-gold) 95%,
+    transparent
+  );
+}
+
+.timeline-group {
+  margin-bottom: var(--space-10);
+}
+
+.timeline-group__year {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-left: 48px;
+  position: relative;
+}
+.timeline-group__year::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-base);
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.3);
+}
+.timeline-group__year-label {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.timeline-group__year-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-dim);
+}
+
+/* ── Timeline event ────────────────────────────────────────── */
+.timeline-event {
+  display: flex;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+  padding-left: 48px;
+  position: relative;
+  cursor: default;
+}
+.timeline-event:last-child {
+  margin-bottom: 0;
+}
+
+/* Node dot */
+.timeline-event::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-gold);
+  border: 1px solid var(--border-accent);
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+.timeline-event:hover::before {
+  background: var(--gold);
+  box-shadow: 0 0 6px rgba(201, 168, 76, 0.4);
+}
+
+.timeline-event__date {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--gold-dim);
+  white-space: nowrap;
+  padding-top: 6px;
+  min-width: 80px;
+}
+
+.timeline-event__body {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  transition: border-color var(--transition-fast);
+}
+.timeline-event:hover .timeline-event__body {
+  border-color: var(--border-accent);
+}
+
+.timeline-event__category {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-2);
+}
+
+.timeline-event__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.timeline-event__summary {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.timeline-event__location {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* ── Category filter pills ─────────────────────────────────── */
+.timeline-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+@media (max-width: 640px) {
+  .timeline-track::before {
+    left: 8px;
+  }
+  .timeline-group__year {
+    padding-left: 32px;
+  }
+  .timeline-group__year::before {
+    left: 0;
+  }
+  .timeline-event {
+    padding-left: 32px;
+  }
+  .timeline-event::before {
+    left: 4px;
+  }
+  .timeline-event__date {
+    display: none;
+  }
+}

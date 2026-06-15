@@ -1,0 +1,47 @@
+{
+  "id": "stalingrad",
+  "title": "Battle of Stalingrad",
+  "theater": "eastern-front",
+  "dates": { "start": "1942-08-23", "end": "1943-02-02" },
+  "summary": "The Battle of Stalingrad was a major battle on the Eastern Front in which Germany and its Axis allies fought the Soviet Union for control of the city of Stalingrad. It was the largest single battle in history and marked the turning point of the war in Europe.",
+  "background": "Following the failure of Barbarossa in 1941, Germany launched Case Blue (Fall Blau) in summer 1942 aiming for the Caucasus oilfields and the Volga river. Stalingrad — named for the Soviet leader — became a symbolic prize for both sides.",
+  "combatants": {
+    "axis": {
+      "commanders": ["Friedrich Paulus", "Erich von Manstein (relief)", "Hermann Hoth"],
+      "strength": "270,000 in 6th Army (at encirclement); 330,000 total Axis force"
+    },
+    "allied": {
+      "commanders": ["Vasily Chuikov", "Aleksandr Vasilevsky", "Georgy Zhukov"],
+      "strength": "187,000 at start; reinforced to over 1 million for Operation Uranus"
+    }
+  },
+  "phases": [
+    {
+      "name": "German Advance",
+      "dates": "August–November 1942",
+      "description": "The 6th Army drove to the Volga and began urban combat in the city, where Soviet resistance was fierce. Street fighting reduced advances to metres per day."
+    },
+    {
+      "name": "Operation Uranus",
+      "dates": "November 19–23, 1942",
+      "description": "Soviet pincer attack encircled the 6th Army in the Stalingrad pocket. Romanian and Italian flanks collapsed within days."
+    },
+    {
+      "name": "Operation Winter Storm",
+      "dates": "December 1942",
+      "description": "Manstein's relief attempt came within 48 km of the pocket before being halted. Paulus refused to break out without Hitler's permission."
+    },
+    {
+      "name": "Operation Ring",
+      "dates": "January 10 – February 2, 1943",
+      "description": "Soviet forces compressed the pocket. The northern and southern pockets surrendered separately, with Paulus surrendering on 31 January 1943."
+    }
+  ],
+  "outcome": "German defeat. The encircled 6th Army surrendered — the greatest defeat in German military history. Of approximately 800,000 Axis personnel engaged, some 750,000 became casualties. Only 6,000 of the 91,000 German prisoners returned home after the war.",
+  "casualties": {
+    "germany": "~400,000 killed or captured in the city; 91,000 taken prisoner",
+    "soviet": "~1,100,000 total casualties (killed, wounded, captured)"
+  },
+  "image": "/storage/images/campaigns/stalingrad.jpg",
+  "significance": "The psychological turning point of the war in Europe. The surrender of the 6th Army shattered the myth of German invincibility and demonstrated that the Wehrmacht could be defeated in large-scale operations. German strategic initiative on the Eastern Front was permanently lost."
+}

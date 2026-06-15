@@ -1,0 +1,112 @@
+[
+  {
+    "id": "pz-iv",
+    "name": "Panzerkampfwagen IV",
+    "designation": "Pz.Kpfw. IV",
+    "type": "Medium Tank",
+    "nation": "Germany",
+    "years_of_service": "1939–1945",
+    "image": "/storage/images/armaments/panzer/pziv.jpg",
+    "manufacturer": "Krupp, Vomag, Nibelungenwerk",
+    "crew": 5,
+    "weight_tonnes": 25.0,
+    "armament": {
+      "primary": "7.5 cm KwK 40 L/48 (later marks)",
+      "secondary": ["2× 7.92 mm MG 34"]
+    },
+    "armor_mm": { "hull_front": 80, "turret_front": 80, "hull_side": 30 },
+    "engine": "Maybach HL 120 TRM, 265 hp",
+    "speed_kmh": 42,
+    "range_km": 210,
+    "units_produced": 8553,
+    "summary": "The Panzer IV was the workhorse of the Wehrmacht and the only German tank produced throughout the entire war. Originally designed for infantry support with a short-barrel 75mm gun, it was progressively upgraded with longer, high-velocity guns and additional armour to remain effective. It served on every front and in every theater."
+  },
+  {
+    "id": "pz-vi-tiger",
+    "name": "Panzerkampfwagen VI Tiger I",
+    "designation": "Pz.Kpfw. VI Ausf. E",
+    "type": "Heavy Tank",
+    "nation": "Germany",
+    "years_of_service": "1942–1945",
+    "image": "/storage/images/armaments/panzer/tiger.jpg",
+    "manufacturer": "Henschel",
+    "crew": 5,
+    "weight_tonnes": 57.0,
+    "armament": {
+      "primary": "8.8 cm KwK 36 L/56",
+      "secondary": ["2× 7.92 mm MG 34"]
+    },
+    "armor_mm": { "hull_front": 100, "turret_front": 100, "hull_side": 60 },
+    "engine": "Maybach HL 230 P45, 700 hp",
+    "speed_kmh": 38,
+    "range_km": 195,
+    "units_produced": 1347,
+    "summary": "The Tiger I was one of the most feared tanks of the Second World War. Armed with the devastating 88mm gun derived from the anti-aircraft weapon that had proven its anti-tank capability in Spain and North Africa, the Tiger I could destroy virtually any Allied tank at combat ranges. Its limited production numbers and mechanical complexity, however, meant it could never be deployed in the quantities that might have changed the war's outcome."
+  },
+  {
+    "id": "pz-v-panther",
+    "name": "Panzerkampfwagen V Panther",
+    "designation": "Pz.Kpfw. V Ausf. G",
+    "type": "Medium Tank",
+    "nation": "Germany",
+    "years_of_service": "1943–1945",
+    "image": "/storage/images/armaments/panzer/panther.jpg",
+    "manufacturer": "MAN, Daimler-Benz, MNH, Henschel",
+    "crew": 5,
+    "weight_tonnes": 44.8,
+    "armament": {
+      "primary": "7.5 cm KwK 42 L/70",
+      "secondary": ["2× 7.92 mm MG 34"]
+    },
+    "armor_mm": { "hull_front": 80, "turret_front": 110, "hull_side": 40 },
+    "engine": "Maybach HL 230 P30, 700 hp",
+    "speed_kmh": 46,
+    "range_km": 250,
+    "units_produced": 6000,
+    "summary": "Designed in response to the T-34, the Panther combined a powerful long-barrelled 75mm gun with well-sloped armour and excellent mobility. Many military historians consider it the best tank of the war overall, but early mechanical unreliability and the industrial strain of production limited its effectiveness. Its high-velocity gun could engage Allied tanks at extraordinary ranges."
+  },
+  {
+    "id": "pz-vi-b-tiger-ii",
+    "name": "Panzerkampfwagen VI Tiger II",
+    "designation": "Pz.Kpfw. VI Ausf. B",
+    "type": "Heavy Tank",
+    "nation": "Germany",
+    "years_of_service": "1944–1945",
+    "image": "/storage/images/armaments/panzer/tiger2.jpg",
+    "manufacturer": "Henschel",
+    "crew": 5,
+    "weight_tonnes": 69.8,
+    "armament": {
+      "primary": "8.8 cm KwK 43 L/71",
+      "secondary": ["2× 7.92 mm MG 34"]
+    },
+    "armor_mm": { "hull_front": 150, "turret_front": 185, "hull_side": 80 },
+    "engine": "Maybach HL 230 P30, 700 hp",
+    "speed_kmh": 38,
+    "range_km": 170,
+    "units_produced": 489,
+    "summary": "The Tiger II, known as the 'Königstiger' (King Tiger), was the most powerfully armoured and armed tank deployed by any nation during the war. Its frontal armour was largely impenetrable to Allied guns at normal combat ranges. However, its enormous weight created severe mechanical strain, logistical difficulties, and fuel consumption that rendered it strategically ineffective despite its formidable tactical capabilities."
+  },
+  {
+    "id": "stug-iii",
+    "name": "Sturmgeschütz III",
+    "designation": "StuG III Ausf. G",
+    "type": "Assault Gun / Tank Destroyer",
+    "nation": "Germany",
+    "years_of_service": "1940–1945",
+    "image": "/storage/images/armaments/panzer/stug3.jpg",
+    "manufacturer": "Alkett, MiAG",
+    "crew": 4,
+    "weight_tonnes": 23.9,
+    "armament": {
+      "primary": "7.5 cm StuK 40 L/48",
+      "secondary": ["7.92 mm MG 34"]
+    },
+    "armor_mm": { "hull_front": 80, "superstructure_front": 80, "hull_side": 30 },
+    "engine": "Maybach HL 120 TRM, 265 hp",
+    "speed_kmh": 40,
+    "range_km": 155,
+    "units_produced": 10086,
+    "summary": "The most produced German armoured fighting vehicle of the war. Originally designed as infantry support, the StuG III was adapted into a highly effective tank destroyer when fitted with a long-barrelled high-velocity gun. Its low profile, reliable chassis, and effective armament made it a favourite among German crews. StuG III crews were credited with destroying more Allied tanks than any other German vehicle."
+  }
+]

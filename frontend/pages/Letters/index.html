@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="VeteransLedger Letters — Personal correspondence from soldiers and volunteers of the Axis forces.">
+  <title>Letters · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/hero.css">
+  <link rel="stylesheet" href="/styles/cards.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+  <link rel="stylesheet" href="/styles/pages/letters.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <div class="page-hero letters-hero">
+      <div class="page-hero__bg" style="background-image:url('/public/images/covers/letters-cover.webp')"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Letters</h1>
+        <p class="page-hero__subtitle">Personal Correspondence Archive</p>
+      </div>
+    </div>
+
+    <div class="filter-bar" style="padding:var(--space-5) var(--space-10);">
+      <span class="filter-bar__label">Language:</span>
+      <button type="button" class="filter-btn is-active" data-lang="all">All</button>
+      <button type="button" class="filter-btn" data-lang="german">German</button>
+      <button type="button" class="filter-btn" data-lang="italian">Italian</button>
+      <button type="button" class="filter-btn" data-lang="japanese">Japanese</button>
+      <button type="button" class="filter-btn" data-lang="volunteers">Volunteers</button>
+    </div>
+
+    <div class="letters-layout">
+      <div class="letters-list" id="letters-list" aria-label="Letter list">
+        <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+            class="loader__dot"></span></div>
+      </div>
+
+      <aside class="letter-viewer" id="letter-viewer" aria-label="Letter viewer" aria-live="polite">
+        <div class="letter-viewer__empty">
+          <span aria-hidden="true" style="font-size:2rem;opacity:0.3">✉</span>
+          <p>Select a letter to read</p>
+        </div>
+      </aside>
+    </div>
+
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Letters/letters.js"></script>
+</body>
+
+</html>

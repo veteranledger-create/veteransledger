@@ -1,0 +1,23 @@
+{
+  "id": "river-plate",
+  "title": "Battle of the River Plate",
+  "subtitle": "The First Naval Battle of World War II",
+  "date_start": "1939-12-13",
+  "date_end": "1939-12-17",
+  "theatre": "South Atlantic",
+  "combatants": {
+    "axis": "Germany (pocket battleship Admiral Graf Spee)",
+    "allied": "United Kingdom / New Zealand (HMS Exeter, HMS Ajax, HMNZS Achilles)"
+  },
+  "commanders": {
+    "axis": "Kapitän zur See Hans Langsdorff",
+    "allied": "Commodore Henry Harwood RN"
+  },
+  "summary": "Admiral Graf Spee had been raiding Allied shipping in the South Atlantic since August 1939, sinking nine merchant ships totalling 50,089 GRT. On 13 December 1939, Commodore Harwood's Force G intercepted her off the River Plate estuary. Despite having superior firepower, Graf Spee sustained cumulative damage from all three British cruisers, particularly from HMS Exeter. Graf Spee put into Montevideo for repairs. Under the Hague Convention, she was allowed 72 hours; Hitler pressured Langsdorff to scuttle. On 17 December, Graf Spee steamed into the Plate estuary and was blown up by her crew. Langsdorff shot himself two days later, wrapped in the old Imperial (not Nazi) war flag. The battle was Britain's first clear naval victory of the war and a major propaganda boost.",
+  "casualties": {
+    "axis": "36 killed (Graf Spee crew)",
+    "allied": "72 killed, 28 wounded (primarily HMS Exeter)"
+  },
+  "outcome": "British strategic victory — Graf Spee scuttled",
+  "significance": "First British naval victory of WWII; demonstrated that even superior surface raiders could be forced to fight on unfavourable terms by aggressive interception."
+}

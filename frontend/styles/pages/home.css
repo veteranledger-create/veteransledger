@@ -1,0 +1,25 @@
+/* ── Home page ─────────────────────────────────────────────── */
+
+.home-hero { min-height: 540px; }
+
+.home-hero .hero__bg {
+  background-image: url('/public/images/covers/home-cover.webp');
+}
+
+.browse-section {
+  background: var(--bg-surface);
+}
+
+.latest-section {
+  padding: var(--space-16) var(--space-10);
+}
+@media (max-width: 768px) {
+  .latest-section { padding: var(--space-10) var(--space-5); }
+}
+
+.latest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-8);
+}

@@ -1,0 +1,30 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "2025-01-01",
+  "sections": [
+    {
+      "heading": "Data We Collect",
+      "body": "For general visitors, VeteransLedger does not collect personally identifiable information. For registered users (archivists and administrators), we collect: email address, bcrypt-hashed password, role assignment, and audit log entries of content changes."
+    },
+    {
+      "heading": "Contact Form",
+      "body": "If you submit a message via the Contact page, we collect your name, email address, subject, and message. This information is used solely to respond to your enquiry and is not retained beyond 90 days."
+    },
+    {
+      "heading": "Server Logs",
+      "body": "Our web server records standard access logs (IP address, browser type, requested URL, timestamp) for security and operational monitoring. These logs are retained for 30 days."
+    },
+    {
+      "heading": "Data Sharing",
+      "body": "VeteransLedger does not sell, rent, or share personal data with third parties except as required by law."
+    },
+    {
+      "heading": "Security",
+      "body": "User passwords are hashed using bcrypt (12 rounds). Authentication uses short-lived JWT tokens over HTTPS. We apply security headers (Content Security Policy, HSTS, X-Frame-Options) to protect against common web vulnerabilities."
+    },
+    {
+      "heading": "Your Rights",
+      "body": "You may request access to, correction of, or deletion of personal data we hold about you by contacting VeteransLedger@gmail.com. Registered users may delete their account via the admin panel."
+    }
+  ]
+}

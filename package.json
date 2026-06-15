@@ -1,26 +1,59 @@
 {
   "name": "veteransledger",
   "version": "1.0.0",
-  "private": true,
-  "description": "VeteransLedger – Axis History Archive 1933-1945",
-  "type": "module",
+  "description": "VeteransLedger — Axis History Archive 1933–1945",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/copy-static-files.mjs",
-    "preview": "vite preview",
-    "validate:json": "node scripts/validate-json.mjs",
-    "validate:images": "node scripts/validate-images.mjs",
-    "validate:all": "npm run validate:json && npm run validate:images"
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "ts-node prisma/seed.ts",
+    "prisma:studio": "prisma studio",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0",
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "connect-redis": "^7.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.3.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.13",
+    "sharp": "^0.33.4",
+    "uuid": "^9.0.1",
+    "winston": "^3.13.0",
+    "winston-daily-rotate-file": "^5.0.0"
   },
   "devDependencies": {
-    "vite": "^6.3.5"
+    "@types/bcryptjs": "^2.4.6",
+    "@types/compression": "^1.7.5",
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.18.0",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^1.4.11",
+    "@types/nodemailer": "^6.4.15",
+    "@types/node": "^20.14.2",
+    "@types/uuid": "^9.0.8",
+    "jest": "^29.7.0",
+    "prisma": "^5.14.0",
+    "ts-jest": "^29.1.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
   },
-  "keywords": [
-    "historical-archive",
-    "world-war-ii",
-    "veterans",
-    "military-history",
-    "axis-history"
-  ],
-  "license": "Educational Use Only"
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }
 }

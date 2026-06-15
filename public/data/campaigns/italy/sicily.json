@@ -1,0 +1,13 @@
+{
+  "id": "sicily",
+  "title": "Allied Invasion of Sicily (Operation Husky)",
+  "theater": "italy",
+  "dates": { "start": "1943-07-09", "end": "1943-08-17" },
+  "summary": "Operation Husky was the Allied invasion of Sicily — the largest amphibious operation of the war. Despite Allied success, most German forces escaped across the Strait of Messina to the Italian mainland. The campaign led directly to the fall of Mussolini on 25 July 1943.",
+  "combatants": {
+    "axis": { "commanders": ["Albert Kesselring", "Hans Hube (XIV Panzer Corps)"], "strength": "~300,000 Italian, ~50,000 German" },
+    "allied": { "commanders": ["Harold Alexander", "Bernard Montgomery (8th Army)", "George Patton (7th Army)"], "strength": "~467,000 troops, 3,200 ships" }
+  },
+  "outcome": "Allied victory. Sicily captured in 38 days. However, 100,000 Axis troops and most heavy equipment were evacuated to Italy in the Strait of Messina crossing — a significant failure of Allied planning. Mussolini fell from power and was arrested on 25 July.",
+  "casualties": { "axis": "~29,000 Italian captured, 5,000 killed; ~4,325 German killed, 4,583 captured", "allied": "~22,811 killed, wounded, missing (US and British combined)" }
+}

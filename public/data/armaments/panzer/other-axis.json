@@ -1,0 +1,50 @@
+{
+  "category": "Armoured Vehicles — Other Axis Powers",
+  "vehicles": [
+    {
+      "name": "Carro Armato M13/40",
+      "nation": "Italy",
+      "type": "Medium Tank",
+      "year": 1940,
+      "weight_tons": 14,
+      "crew": 4,
+      "armour_mm": 42,
+      "main_gun": "47mm Cannone da 47/32",
+      "max_speed_kmh": 32,
+      "notes": "Italy's main tank in North Africa. Outclassed by British Matilda and Crusader tanks; suffered from poor crew conditions and mechanical unreliability in desert conditions."
+    },
+    {
+      "name": "Carro Armato P26/40",
+      "nation": "Italy",
+      "type": "Heavy Tank",
+      "year": 1943,
+      "weight_tons": 26,
+      "crew": 4,
+      "armour_mm": 60,
+      "main_gun": "75mm Ansaldo 75/34",
+      "notes": "Italy's most powerful tank design. Production was delayed and only ~100 were completed, mostly after Italy's armistice; used by German forces in Italy."
+    },
+    {
+      "name": "R-2 (LT vz. 35)",
+      "nation": "Romania",
+      "type": "Light Tank",
+      "year": 1936,
+      "weight_tons": 10.5,
+      "crew": 3,
+      "armour_mm": 25,
+      "main_gun": "37mm Škoda A3",
+      "notes": "Czech-designed tank purchased by Romania. Used on the Eastern Front in 1941. Outclassed by Soviet T-34s by 1942."
+    },
+    {
+      "name": "Toldi II",
+      "nation": "Hungary",
+      "type": "Light Tank",
+      "year": 1940,
+      "weight_tons": 8.5,
+      "crew": 3,
+      "armour_mm": 13,
+      "main_gun": "20mm Solothurn anti-tank rifle",
+      "notes": "Hungary's standard light tank on the Eastern Front. Too lightly armoured and armed to fight Soviet armour effectively; used for reconnaissance and infantry support."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "category": "Guided Weapons & Missiles — Other Axis Powers",
+  "weapons": [
+    {
+      "name": "Antonescu Anti-Tank Grenade (OG 43)",
+      "nation": "Romania",
+      "type": "Anti-Tank Grenade",
+      "year": 1943,
+      "warhead_kg": 0.78,
+      "notes": "Romanian-developed anti-tank grenade used on the Eastern Front. Improvised alternatives were common as Romanian forces faced Soviet armour with limited dedicated anti-tank weapons."
+    },
+    {
+      "name": "Type 4 Anti-Tank Grenade (Japan)",
+      "nation": "Japan",
+      "type": "Anti-Tank Grenade",
+      "year": 1944,
+      "warhead_kg": 0.62,
+      "notes": "Japanese shaped-charge anti-tank grenade designed for close-range use against Allied armour in the Pacific. Often used in suicide attacks as Japanese forces lacked effective portable anti-tank weapons."
+    },
+    {
+      "name": "Spoleto 45/5",
+      "nation": "Italy",
+      "type": "Recoilless Rifle",
+      "calibre": "45mm",
+      "year": 1944,
+      "notes": "Italian recoilless anti-tank weapon developed late in the war. Saw limited operational use before Italy's armistice in 1943; subsequently some were used by RSI (Italian Social Republic) forces."
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+<!--
+  VeteransLedger · Footer — Archival Document Style
+  Nav links hydrated from /public/data/navigation.json by navigation.js.
+-->
+<footer class="site-footer" role="contentinfo">
+
+  <!-- ── Top band: brand + description + quick links ─────── -->
+  <div class="site-footer__top">
+
+    <!-- Brand block -->
+    <div class="site-footer__brand" data-nav-mount="brand">
+      <img class="site-footer__eagle" src="/public/logos/eagle.png" alt="" aria-hidden="true">
+      <span class="site-footer__brand-name" data-bind="text:name"></span>
+      <p class="site-footer__tagline" data-bind="text:tagline"></p>
+      <span class="site-footer__edu-badge">Educational Use Only</span>
+    </div>
+
+    <!-- Description + archive team -->
+    <div class="site-footer__about">
+      <p class="site-footer__about-text">
+        A comprehensive archival project dedicated to documenting the military, political, and
+        technological history of the Axis powers during World War II.
+      </p>
+      <p class="site-footer__signature">— VeteransLedger Archive Team</p>
+    </div>
+
+    <!-- Quick links (from nav data) -->
+    <div class="site-footer__links-block">
+      <p class="site-footer__links-heading">Quick Links</p>
+      <nav aria-label="Footer quick links">
+        <ul class="site-footer__column-list" data-nav-source="footer-columns"></ul>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- ── Bottom band: archive info + legal + connect ──────── -->
+  <div class="site-footer__bottom">
+
+    <!-- Archive information -->
+    <div class="site-footer__info">
+      <p class="site-footer__bottom-heading">✰ Archive Information</p>
+      <ul class="site-footer__info-list">
+        <li><span>Project:</span> VeteransLedger Archive</li>
+        <li><span>Period:</span> 1933–1945</li>
+        <li><span>Type:</span> Historical Documentation</li>
+        <li><span>License:</span> Educational Use Only</li>
+        <li><span>Last Updated:</span> 2026</li>
+      </ul>
+    </div>
+
+    <!-- Legal links -->
+    <div class="site-footer__legal-block">
+      <p class="site-footer__bottom-heading">Legal</p>
+      <ul class="site-footer__legal-links">
+        <li><a href="/site-policies#disclaimer">Archive Disclaimer</a></li>
+        <li><a href="/site-policies#privacy">Privacy Policy</a></li>
+        <li><a href="/site-policies#terms">Terms of Use</a></li>
+        <li><a href="/site-policies#removal">Removal Requests</a></li>
+        <li><a href="/site-policies#copyright">Copyright Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Connect: email + social -->
+    <div class="site-footer__connect">
+      <p class="site-footer__bottom-heading">Connect</p>
+      <p class="site-footer__connect-email">
+        For inquiries, corrections, or contributions:
+      </p>
+      <a href="mailto:veteransledger@gmail.com" class="site-footer__connect-addr">
+        veteransledger@gmail.com
+      </a>
+      <ul class="site-footer__social" data-nav-source="footer-social" aria-label="Social links"></ul>
+    </div>
+
+  </div>
+
+  <!-- ── Legal strip ──────────────────────────────────────── -->
+  <div class="site-footer__legal">
+    <p class="site-footer__legal-line" data-bind="text:legalLine"></p>
+    <p class="site-footer__copyright" data-bind="text:copyright"></p>
+  </div>
+
+</footer>
+
+<!-- ── Templates ───────────────────────────────────────────── -->
+<template id="tpl-footer-column">
+  <li class="site-footer__column">
+    <h3 class="site-footer__column-heading" data-bind="text:heading"></h3>
+    <ul class="site-footer__column-links" data-nav-slot="items"></ul>
+  </li>
+</template>
+
+<template id="tpl-footer-link">
+  <li class="site-footer__footer-item">
+    <a class="site-footer__link" data-bind="href:url,text:label"></a>
+  </li>
+</template>
+
+<template id="tpl-footer-social">
+  <li class="site-footer__social-item">
+    <a class="site-footer__social-link" target="_blank" rel="noopener noreferrer"
+      data-bind="href:url,aria-label:label,data-icon:icon"></a>
+  </li>
+</template>
+</content>

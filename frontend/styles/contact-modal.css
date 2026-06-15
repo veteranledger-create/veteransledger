@@ -1,0 +1,322 @@
+/* ============================================================
+   VeteransLedger · Contact Modal — Archival Document Style
+   ============================================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(4, 3, 2, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  animation: overlay-fade-in 0.25s ease;
+}
+.modal-overlay[hidden] { display: none; }
+
+@keyframes overlay-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Archive modal container ────────────────────────────────── */
+.archive-modal {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  background: #1a1208;
+  border: 1px solid #3d2a0a;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 80px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,168,76,0.08);
+  overflow: hidden;
+  animation: modal-slide-in 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+@keyframes modal-slide-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Close button */
+.modal__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: #7a6040;
+  font-size: 20px;
+  line-height: 1;
+  background: transparent;
+  border: 1px solid #3d2a0a;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.modal__close:hover { color: var(--gold); border-color: var(--gold-dim); }
+
+/* ── Header: eagle + title ──────────────────────────────────── */
+.archive-modal__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-8) var(--space-8) var(--space-5);
+  border-bottom: 1px solid #2a1c06;
+  background: #141008;
+}
+
+.archive-modal__eagle {
+  width: 48px;
+  height: 48px;
+  /* modal is always dark-themed; white eagle with gold glow */
+  filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(201,168,76,0.35));
+}
+
+.archive-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #d4b86a;
+  margin: 0;
+}
+
+/* ── Two-column body ────────────────────────────────────────── */
+.archive-modal__body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+  min-height: 320px;
+}
+
+@media (max-width: 560px) {
+  .archive-modal__body { grid-template-columns: 1fr; }
+}
+
+/* ── Left info panel ────────────────────────────────────────── */
+.archive-modal__info {
+  padding: var(--space-6) var(--space-5);
+  border-right: 1px solid #2a1c06;
+  background: #141008;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.archive-modal__info-heading {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8a7040;
+  margin: 0;
+}
+
+.archive-modal__info-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #6a5838;
+  margin: 0;
+}
+
+.archive-modal__info-section {
+  margin-top: var(--space-2);
+}
+
+.archive-modal__info-label {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6a5838;
+  margin: 0 0 4px 0;
+}
+
+.archive-modal__info-email {
+  font-size: 11px;
+  color: #a08040;
+  text-decoration: none;
+  word-break: break-all;
+  transition: color var(--transition-fast);
+}
+.archive-modal__info-email:hover { color: var(--gold); }
+
+/* Vertraulich stamp */
+.archive-modal__stamp {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%) rotate(-12deg);
+}
+.archive-modal__stamp span {
+  display: block;
+  padding: 4px 10px;
+  border: 2px solid #6b1a1a;
+  border-radius: 2px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #7b2020;
+  white-space: nowrap;
+  opacity: 0.7;
+  box-shadow: inset 0 0 8px rgba(107,26,26,0.2);
+}
+
+/* ── Right: form ────────────────────────────────────────────── */
+.archive-modal__form {
+  padding: var(--space-6) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.contact-form__group {
+  margin-bottom: var(--space-4);
+}
+
+.contact-form__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a6040;
+  margin-bottom: 6px;
+}
+.contact-form__label-icon {
+  color: #6a5030;
+  font-size: 13px;
+  width: 16px;
+  text-align: center;
+}
+
+.contact-form__input,
+.contact-form__textarea {
+  width: 100%;
+  padding: 8px var(--space-3);
+  background: #0e0c06;
+  border: 1px solid #2a1c06;
+  border-bottom: 1px solid #3d2a0a;
+  border-radius: 2px;
+  color: #c8b888;
+  font-size: 13px;
+  font-family: var(--font-body);
+  transition: border-color var(--transition-fast);
+}
+.contact-form__input::placeholder,
+.contact-form__textarea::placeholder { color: #3a2a14; }
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+  outline: none;
+  border-color: #5a4020;
+  border-bottom-color: #8a6030;
+}
+.contact-form__input[readonly] { color: #6a5030; cursor: default; }
+
+.contact-form__textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.contact-form__counter {
+  font-size: 10px;
+  color: #4a3820;
+  text-align: right;
+  margin-top: 4px;
+}
+
+/* Form footer: submit button */
+.archive-modal__form-footer {
+  margin-top: var(--space-4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact-form__submit {
+  background: transparent;
+  border: 1px solid #5a4020;
+  color: #a08040;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px var(--space-6);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all var(--transition-base);
+}
+.contact-form__submit:hover {
+  background: rgba(160,128,64,0.1);
+  border-color: #8a6030;
+  color: #c9a84c;
+}
+.contact-form__submit:disabled { opacity: 0.4; cursor: default; }
+
+/* Status messages */
+.contact-form__status {
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-3);
+  border-radius: 2px;
+  font-size: 12px;
+  display: none;
+}
+.contact-form__status.is-success {
+  display: block;
+  background: rgba(20,40,20,0.5);
+  border: 1px solid #1a3a1a;
+  color: #70b070;
+}
+.contact-form__status.is-error {
+  display: block;
+  background: rgba(40,10,10,0.5);
+  border: 1px solid #4a1515;
+  color: #d06060;
+}
+
+/* ── Cookie banner ──────────────────────────────────────────── */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 350;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border-dim);
+  padding: var(--space-4) var(--space-8);
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.5);
+}
+.cookie-banner[hidden] { display: none; }
+.cookie-banner__text {
+  flex: 1;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  min-width: 200px;
+}
+.cookie-banner__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+</content>
