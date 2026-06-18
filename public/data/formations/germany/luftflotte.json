@@ -1,0 +1,173 @@
+[
+  {
+    "id": "luftflotte-2",
+    "name": "Luftflotte 2",
+    "nation": "Germany",
+    "service": "Luftwaffe",
+    "type": "Air Fleet",
+    "theater": "Western Front / Mediterranean",
+    "active": { "from": "1939", "to": "1945" },
+    "commanders": [
+      { "name": "Generalfeldmarschall Albert Kesselring", "period": "Jan 1940–Dec 1941" },
+      { "name": "Generalfeldmarschall Wolfram von Richthofen", "period": "1943–1944" }
+    ],
+    "peak_strength": "c. 1,200 aircraft (Battle of Britain, August 1940)",
+    "summary": "Luftflotte 2 was the primary striking force in the Battle of Britain, responsible for attacks on south-east England and London from bases in Belgium and northern France. Under Kesselring it conducted the main assault on Fighter Command and the Blitz. It was later transferred to the Mediterranean theater.",
+    "context": "In the Battle of Britain, Luftflotte 2 (Kesselring) operated from Belgium and northern France, targeting London and south-east England. Luftflotte 3 (Sperrle) operated from France against western England. Göring's decision in early September 1940 to shift attacks from RAF airfields to London — made at a moment when Fighter Command was critically weakened — allowed the RAF to recover. Luftflotte 2's attacks on London in the Blitz (September 1940–May 1941) caused enormous civilian casualties but failed to break British resistance. Kesselring argued for an invasion; the Blitz was a poor substitute.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Luftflotte 2 was one of the Luftwaffe's air fleets — the service's highest echelon of organisation, each fleet responsible for air operations across an entire theater or sector, broadly comparable to an army group's role for ground forces. It was the larger and more important of the two air fleets committed to the Battle of Britain, the first major campaign in history fought almost entirely in the air."
+      },
+      {
+        "type": "text",
+        "text": "Operating from captured airfields in Belgium and northern France, it bore primary responsibility for the assault on RAF Fighter Command and, subsequently, the bombing campaign against London known as the Blitz. Under Albert Kesselring, one of the more capable Luftwaffe commanders, it represented Germany's best opportunity to achieve the air superiority that an invasion of Britain would have required."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, Luftflotte 2 connects directly to the Battle of Britain campaign record and to Kesselring's own personnel entry, and its later transfer to the Mediterranean theater links it to Germany's wider air operations in Italy and North Africa, beyond the single campaign for which it is most remembered."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Two Fleets Against Britain",
+        "text": "In the Battle of Britain, Luftflotte 2 under Kesselring operated from Belgium and northern France, targeting London and south-east England, while Luftflotte 3 under Sperrle operated from France against western England — a geographic division that gave each fleet responsibility for distinct sectors of the British defensive system."
+      },
+      {
+        "type": "text",
+        "title": "The Fatal Shift to London",
+        "text": "Göring's decision in early September 1940 to shift the weight of attacks from RAF airfields to London — made at the precise moment when Fighter Command was most critically weakened by weeks of sustained losses — is widely regarded by historians as the single most consequential German error of the campaign, allowing the RAF the breathing room it needed to recover its strength."
+      },
+      {
+        "type": "text",
+        "title": "The Blitz",
+        "text": "Luftflotte 2's subsequent attacks on London during the Blitz, from September 1940 to May 1941, caused enormous civilian casualties but failed to break British civilian morale or government resolve in the way German planners had hoped. Kesselring himself argued throughout that only a ground invasion could decide the issue; the Blitz, in his own later assessment, proved a poor substitute for the invasion that air superiority was meant to enable."
+      }
+    ],
+    "sources": [
+      { "ref": "Bungay, Stephen. The Most Dangerous Enemy: A History of the Battle of Britain. Aurum Press, 2000." },
+      { "ref": "Orange, Vincent. Kesselring: The Making of the Luftwaffe. Batsford, 1990." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "albert-kesselring", "title": "Albert Kesselring", "type": "Personnel", "url": "/personnel/albert-kesselring" },
+      { "id": "hermann-goring", "title": "Hermann Göring", "type": "Personnel", "url": "/personnel/hermann-goring" },
+      { "id": "he-111", "title": "Heinkel He 111", "type": "Armament", "url": "/armaments/he-111" },
+      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" }
+    ]
+  },
+  {
+    "id": "luftflotte-3",
+    "name": "Luftflotte 3",
+    "nation": "Germany",
+    "service": "Luftwaffe",
+    "type": "Air Fleet",
+    "theater": "Western Front",
+    "active": { "from": "1939", "to": "1945" },
+    "commanders": [
+      { "name": "Generalfeldmarschall Hugo Sperrle", "period": "Jan 1939–Aug 1944" }
+    ],
+    "peak_strength": "c. 800 aircraft (Battle of Britain)",
+    "summary": "Luftflotte 3 under Sperrle operated from bases in France, conducting night bombing operations against British ports and industrial cities during the Blitz. It was the western of the two main Luftwaffe air fleets in the Battle of Britain.",
+    "context": "Luftflotte 3's role in the Battle of Britain was secondary to Luftflotte 2, targeting western England and Wales. Its area of operations included attacks on Bristol, Liverpool, Birmingham, and Coventry. The Coventry raid of 14–15 November 1940 (Operation Mondscheinsonate) destroyed much of the city centre and killed 568 people — the most destructive single Luftwaffe raid on a British city. Sperrle commanded the fleet from the Hotel Ritz in Paris, a tenure marked by comfort in striking contrast to his pilots' conditions. He was acquitted at the Nuremberg High Command Trial in 1948.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Luftflotte 3 was the second of the two air fleets committed to the Battle of Britain, operating throughout the campaign from bases in occupied France under the command of Hugo Sperrle, one of the longest-serving Luftwaffe commanders of the war — he held the post from January 1939 until August 1944."
+      },
+      {
+        "type": "text",
+        "text": "Its operational role was consistently secondary to Luftflotte 2's, targeting western England and Wales rather than the more heavily defended south-east, and conducting a significant proportion of its operations at night against British industrial cities and ports rather than in the daylight fighter-versus-fighter battles more associated with the campaign's popular memory."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, Luftflotte 3 is best read alongside Luftflotte 2 as the western pairing of German air fleets in the 1940 campaign, and its commander's postwar acquittal at Nuremberg places it among the relatively small number of senior Luftwaffe commands whose leadership avoided conviction for war crimes."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "A Secondary Role",
+        "text": "Luftflotte 3's role in the Battle of Britain was consistently secondary to Luftflotte 2's, targeting western England and Wales rather than the capital and the more heavily defended south-east. Its area of operations included sustained attacks on Bristol, Liverpool, Birmingham, and Coventry."
+      },
+      {
+        "type": "text",
+        "title": "Coventry",
+        "text": "The raid on Coventry on the night of 14–15 November 1940, codenamed Operation Mondscheinsonate (Moonlight Sonata), destroyed much of the city's historic centre and killed 568 people — the single most destructive Luftwaffe raid against any British city, and one that introduced the term 'Coventrate' into wartime English as a verb for systematic urban destruction."
+      },
+      {
+        "type": "text",
+        "title": "Command from the Ritz",
+        "text": "Sperrle commanded the fleet from the Hotel Ritz in Paris, a tenure noted by contemporaries for its comfort and remoteness from the front, in marked contrast to the conditions endured by the pilots under his command. He was nonetheless acquitted at the Nuremberg High Command Trial in 1948, one of several senior Luftwaffe officers whose direct command responsibility for bombing campaigns against civilian targets did not result in conviction."
+      }
+    ],
+    "sources": [
+      { "ref": "Proctor, Raymond. Hitler's Luftwaffe in the Spanish Civil War. Greenwood, 1983." },
+      { "ref": "Bungay, Stephen. The Most Dangerous Enemy. Aurum, 2000." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "hugo-sperrle", "title": "Hugo Sperrle", "type": "Personnel", "url": "/personnel/hugo-sperrle" },
+      { "id": "he-111", "title": "Heinkel He 111", "type": "Armament", "url": "/armaments/he-111" },
+      { "id": "luftflotte-2", "title": "Luftflotte 2", "type": "Formation", "url": "/formations/luftflotte-2" }
+    ]
+  },
+  {
+    "id": "luftflotte-4",
+    "name": "Luftflotte 4",
+    "nation": "Germany",
+    "service": "Luftwaffe",
+    "type": "Air Fleet",
+    "theater": "Eastern Front / Balkans",
+    "active": { "from": "1940", "to": "1945" },
+    "commanders": [
+      { "name": "Generalfeldmarschall Alexander Löhr", "period": "1940–1942 (Balkans, Ukraine)" },
+      { "name": "Generalfeldmarschall Wolfram von Richthofen", "period": "Feb 1943–Sep 1943" }
+    ],
+    "peak_strength": "c. 1,500 aircraft (Operation Blue, 1942)",
+    "summary": "Luftflotte 4 provided air support for Army Group South throughout Barbarossa and Operation Blue. Its Stuka units were instrumental in the Don–Volga offensive and the attempt to supply the 6th Army at Stalingrad. Richthofen's assessment that adequate air supply was impossible was ignored by Göring.",
+    "context": "Luftflotte 4's most consequential moment was the Stalingrad airlift. Richthofen warned Göring explicitly in November 1942 that the Luftwaffe could not supply the 6th Army with the required 300 tonnes per day — the fleet had at most 300 available transport aircraft, and weather, Soviet fighters, and losses would reduce deliveries far below the minimum. Göring overrode him and promised Hitler the airlift would work. The fleet never exceeded 150 tonnes per day on average; on many days nothing reached the pocket. The resulting disaster killed tens of thousands of German soldiers from starvation and cold.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Luftflotte 4 was the Luftwaffe's principal air fleet on the southern Eastern Front, providing close air support to Army Group South throughout Operation Barbarossa and the 1942 advance toward the Caucasus and Stalingrad. Its Stuka dive-bomber units were closely integrated into the army's ground operations, a hallmark of Luftwaffe doctrine in the war's first years."
+      },
+      {
+        "type": "text",
+        "text": "Its record in this archive is dominated by a single, catastrophic episode: the attempt to keep the encircled 6th Army supplied by air during the Stalingrad pocket's final months, a mission its own commander, Wolfram von Richthofen, judged impossible before it was even attempted, and was overruled on by Hermann Göring regardless."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, Luftflotte 4 connects directly to the 6th Army and Battle of Stalingrad records, and its history illustrates how air power — even when correctly and honestly assessed by the commander responsible for delivering it — could be overridden by political pressure from above with catastrophic consequences for the ground troops who depended on it."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Richthofen's Warning",
+        "text": "Luftflotte 4's most consequential moment was the attempted Stalingrad airlift. Richthofen warned Göring explicitly in November 1942 that the Luftwaffe could not supply the encircled 6th Army with the required 300 tonnes of supplies per day — the fleet had at most around 300 available transport aircraft, and weather, Soviet fighter opposition, and aircraft losses would inevitably reduce actual deliveries far below the stated minimum."
+      },
+      {
+        "type": "text",
+        "title": "Göring's Override",
+        "text": "Göring overrode Richthofen's professional assessment and promised Hitler that the airlift would succeed regardless — a promise made, by most historical accounts, more to preserve his own standing with Hitler than from any genuine belief in its feasibility."
+      },
+      {
+        "type": "text",
+        "title": "The Reality of the Airlift",
+        "text": "The fleet never exceeded an average of roughly 150 tonnes per day, barely half the stated requirement, and on many days adverse weather or Soviet interdiction meant nothing at all reached the pocket. The resulting shortfall in food, fuel, and medical supplies contributed directly to the deaths of tens of thousands of German soldiers from starvation, untreated wounds, and exposure to the Russian winter before the 6th Army's surrender in February 1943."
+      }
+    ],
+    "sources": [
+      { "ref": "Hayward, Joel. Stopped at Stalingrad: The Luftwaffe and Hitler's Defeat in the East, 1942–1943. University Press of Kansas, 1998." }
+    ],
+    "related_records": [
+      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
+      { "id": "blue", "title": "Operation Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "hermann-goring", "title": "Hermann Göring", "type": "Personnel", "url": "/personnel/hermann-goring" },
+      { "id": "ju-87-stuka", "title": "Junkers Ju 87 Stuka", "type": "Armament", "url": "/armaments/ju-87-stuka" }
+    ]
+  }
+]

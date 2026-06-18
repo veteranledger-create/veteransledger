@@ -45,26 +45,45 @@ function renderBody(body) {
   if (!Array.isArray(body)) return "";
   return body
     .map((block) => {
-      if (block.type === "heading") return `<h3>${block.text}</h3>`;
+      if (block.type === "heading") return `<h3 class="article-body__heading">${block.text}</h3>`;
       if (block.type === "paragraph") return `<p>${block.text}</p>`;
       if (block.type === "quote")
-        return `<blockquote style="border-left:3px solid var(--border-gold);padding-left:var(--space-4);color:var(--text-muted);font-style:italic;margin:var(--space-4) 0;">${block.text}</blockquote>`;
+        return `<blockquote class="article-body__quote">${block.text}</blockquote>`;
+      if (block.type === "image")
+        return `<figure class="article-body__figure">
+          <img src="${block.url || block.src || ""}" alt="${block.caption || block.alt || ""}" loading="lazy" onerror="this.onerror=null;this.src='/public/images/covers/articles-cover.webp'">
+          ${block.caption ? `<figcaption class="article-body__caption">${block.caption}</figcaption>` : ""}
+          ${block.source ? `<figcaption class="article-body__caption article-body__caption--source">Source: ${block.source}</figcaption>` : ""}
+        </figure>`;
       return `<p>${block.text || ""}</p>`;
     })
     .join("\n");
 }
 
+function renderArchivalNote(article) {
+  if (!article.archival_note) return "";
+  return `
+    <section class="record-section record-section--archive">
+      <h2 class="record-section__title">Archival Note</h2>
+      <div class="record-section__body"><p>${article.archival_note}</p></div>
+    </section>`;
+}
+
 function render(root, article) {
   document.title = `${article.title} · VeteransLedger`;
 
-  const catLabel = (article._category || article.category || "").replace(
-    /-/g,
-    " ",
-  );
-  const pubDate = formatDate(article.date_published || article.date);
-  const img =
-    article.image || (article.images && article.images[0]) || PLACEHOLDER;
-  const tags = article.tags || [];
+  const catLabel = (article._category || article.category || "").replace(/-/g, " ");
+  const pubDate  = formatDate(article.date_published || article.date);
+  const imgSrc   = article.image || (article.images && article.images[0]) || PLACEHOLDER;
+  const tags     = article.tags || [];
+
+  // Build hero img via DOM so error handler is attached before src fires
+  const heroImg = document.createElement("img");
+  heroImg.className = "record-hero-image";
+  heroImg.alt = article.title || "";
+  heroImg.addEventListener("error", () => { heroImg.src = PLACEHOLDER; }, { once: true });
+  heroImg.addEventListener("load", () => { if (!heroImg.naturalWidth) heroImg.src = PLACEHOLDER; }, { once: true });
+  heroImg.src = imgSrc;
 
   root.innerHTML = `
     <nav class="record-breadcrumb" aria-label="Breadcrumb">
@@ -85,33 +104,26 @@ function render(root, article) {
       </div>
     </header>
 
-    <img class="record-hero-image" src="${img}" alt="${article.title || ""}" onerror="this.src='${PLACEHOLDER}'">
+    <div id="article-hero-placeholder"></div>
 
     ${article.summary ? `<blockquote class="record-summary">${article.summary}</blockquote>` : ""}
 
-    ${
-      article.body?.length
-        ? `
-    <section class="record-section">
-      <div class="record-section__body">
+    ${article.body?.length ? `
+    <section class="record-section article-body">
+      <div class="record-section__body article-body__content">
         ${renderBody(article.body)}
       </div>
-    </section>`
-        : ""
-    }
+    </section>` : ""}
 
-    ${
-      tags.length
-        ? `
+    ${tags.length ? `
     <section class="record-section">
       <h2 class="record-section__title">Tags</h2>
       <div class="record-tags">
         ${tags.map((t) => `<span class="record-tag">${t}</span>`).join("")}
       </div>
-    </section>`
-        : ""
-    }
+    </section>` : ""}
 
+    ${renderArchivalNote(article)}
     ${renderHistoricalContext(article)}
     ${renderFullReport(article)}
     ${renderTimelineRefs(article)}
@@ -121,6 +133,9 @@ function render(root, article) {
 
     <p class="record-archive-note">VeteransLedger Historical Archive · All content is presented for educational purposes only.</p>
   `;
+
+  const placeholder = root.querySelector("#article-hero-placeholder");
+  if (placeholder) placeholder.replaceWith(heroImg);
 }
 
 /* ── Archive section renderers ───────────────────────────────── */

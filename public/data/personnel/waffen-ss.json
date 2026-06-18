@@ -11,7 +11,16 @@
     "biography": "Known as 'Papa Hausser', he was the most senior commander of the Waffen-SS and helped give it its professional military character. He commanded the SS-Panzer Corps at Kharkov and later Army Group G. He was one of the few SS generals who stood up to Hitler, disobeying orders to hold Kharkov in 1943 to save his corps.",
     "commands": ["SS-Division Das Reich", "I SS-Panzer Corps", "7th Army", "Army Group G"],
     "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["france", "barbarossa", "kharkov", "normandy"]
+    "campaigns": ["france", "barbarossa", "kharkov", "normandy"],
+    "sources": [
+      { "ref": "Yerger, Mark. Waffen-SS Commanders: The Army, Corps and Divisional Leaders of a Legend. Schiffer, 1997." },
+      { "ref": "Nipe, George. Decision in the Ukraine. J.J. Fedorowicz, 1996." }
+    ],
+    "related_records": [
+      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
+      { "id": "sepp-dietrich", "title": "Sepp Dietrich", "type": "Personnel", "url": "/personnel/sepp-dietrich" },
+      { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" }
+    ]
   },
   {
     "id": "sepp-dietrich",
@@ -25,7 +34,15 @@
     "biography": "One of Hitler's earliest personal bodyguards who rose to command the 1st SS Panzer Army. He commanded I SS Panzer Corps in Normandy and during the Ardennes offensive. Convicted of war crimes at Dachau for the Malmedy massacre and later for actions during the Night of the Long Knives.",
     "commands": ["Leibstandarte SS Adolf Hitler", "I SS Panzer Corps", "6th SS Panzer Army"],
     "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
-    "campaigns": ["france", "barbarossa", "kharkov", "normandy", "bulge"]
+    "campaigns": ["france", "barbarossa", "kharkov", "normandy", "bulge"],
+    "sources": [
+      { "ref": "Messenger, Charles. Hitler's Gladiator: The Life and Wars of Oberstgruppenführer and Panzergeneral-Oberst der Waffen-SS Sepp Dietrich. Brassey's, 1988." }
+    ],
+    "related_records": [
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "jochen-peiper", "title": "Jochen Peiper", "type": "Personnel", "url": "/personnel/jochen-peiper" }
+    ]
   },
   {
     "id": "michael-wittmann",
@@ -41,7 +58,15 @@
     "awards": ["Knight's Cross with Oak Leaves and Swords"],
     "vehicles": ["Panzer IV", "Tiger I"],
     "tank_kills": 138,
-    "campaigns": ["eastern-front", "normandy"]
+    "campaigns": ["eastern-front", "normandy"],
+    "sources": [
+      { "ref": "Agte, Patrick. Michael Wittmann and the Waffen SS Tiger Commanders of the Leibstandarte. J.J. Fedorowicz, 1996." }
+    ],
+    "related_records": [
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
+      { "id": "sepp-dietrich", "title": "Sepp Dietrich", "type": "Personnel", "url": "/personnel/sepp-dietrich" }
+    ]
   },
   {
     "id": "otto-skorzeny",
@@ -55,7 +80,15 @@
     "biography": "Known as 'Scarface' for his dueling scar, Skorzeny was the most famous special operations commander of the war. He rescued Mussolini from imprisonment on Gran Sasso in 1943, led Operation Greif to sow confusion during the Ardennes offensive using German soldiers in American uniforms, and led the rescue of Miklós Horthy in Hungary.",
     "commands": ["SS-Sonderverband z.b.V. Friedenthal", "150th Panzer Brigade"],
     "awards": ["Knight's Cross with Oak Leaves"],
-    "campaigns": ["eastern-front", "italy", "bulge"]
+    "campaigns": ["eastern-front", "italy", "bulge"],
+    "sources": [
+      { "ref": "Skorzeny, Otto. Special Mission. Robert Hale, 1957." },
+      { "ref": "Foley, Charles. Commando Extraordinary. Longmans, 1954." }
+    ],
+    "related_records": [
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
+      { "id": "warsaw", "title": "Warsaw Uprising", "type": "Campaign", "url": "/campaigns/western-front/warsaw" }
+    ]
   },
   {
     "id": "jochen-peiper",
@@ -69,7 +102,16 @@
     "biography": "One of the most decorated junior officers in the Waffen-SS. He commanded the spearhead Kampfgruppe Peiper during the Battle of the Bulge, penetrating deeper than any other German unit before being cut off. Convicted of war crimes for the Malmedy massacre of American POWs, his death sentence was commuted. He was assassinated in France in 1976.",
     "commands": ["3rd Battalion, 2nd SS Panzergrenadier Regiment", "Kampfgruppe Peiper"],
     "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["barbarossa", "kharkov", "normandy", "bulge"]
+    "campaigns": ["barbarossa", "kharkov", "normandy", "bulge"],
+    "sources": [
+      { "ref": "Reynolds, Michael. The Devil's Adjutant: Jochen Peiper, Panzer Leader. Spellmount, 1995." },
+      { "ref": "Weingartner, James. Crossroads of Death: The Story of the Malmedy Massacre and Trial. University of California Press, 1979." }
+    ],
+    "related_records": [
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
+      { "id": "pz-vi-b-tiger-ii", "title": "Tiger II", "type": "Armament", "url": "/armaments/pz-vi-b-tiger-ii" },
+      { "id": "sepp-dietrich", "title": "Sepp Dietrich", "type": "Personnel", "url": "/personnel/sepp-dietrich" }
+    ]
   },
   {
     "id": "felix-steiner",
@@ -83,6 +125,61 @@
     "biography": "Considered the Waffen-SS's foremost military strategist. He developed the concept of the multi-national SS volunteer divisions and commanded Army Detachment Steiner in the final defence of Berlin. Hitler famously believed Steiner's 'counterattack' would relieve Berlin — it never happened, as Steiner lacked the forces.",
     "commands": ["SS Division Wiking", "III SS Panzer Corps", "Army Detachment Steiner"],
     "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["france", "barbarossa", "eastern-front"]
+    "campaigns": ["france", "barbarossa", "eastern-front"],
+    "sources": [
+      { "ref": "Quarrie, Bruce. Waffen-SS in Russia. Patrick Stephens, 1978." }
+    ],
+    "related_records": [
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "paul-hausser", "title": "Paul Hausser", "type": "Personnel", "url": "/personnel/paul-hausser" }
+    ]
+  },
+  {
+    "id": "wilhelm-bittrich",
+    "name": "Wilhelm Bittrich",
+    "rank": "SS-Obergruppenführer und General der Waffen-SS",
+    "branch": "waffen-ss",
+    "portrait": "/storage/images/veterans/waffen-ss/bittrich.jpg",
+    "born": "1894-02-26",
+    "died": "1979-04-19",
+    "birthplace": "Wernigerode, Saxony",
+    "biography": "Commanded II SS Panzer Corps (9th SS 'Hohenstaufen' and 10th SS 'Frundsberg' Panzer Divisions) during Operation Market Garden at Arnhem in September 1944. His corps, refitting near Arnhem after the Normandy campaign, was the decisive factor in the defeat of the British 1st Airborne Division. Unlike many SS commanders, Bittrich was known for treating prisoners correctly, and released British wounded. A WWI fighter pilot, he was one of the few senior Waffen-SS officers to escape prosecution after the war.",
+    "commands": ["SS-Division Das Reich", "9th SS Panzer Division Hohenstaufen", "II SS Panzer Corps"],
+    "awards": ["Knight's Cross with Oak Leaves and Swords"],
+    "campaigns": ["france", "barbarossa", "kharkov", "normandy"],
+    "sources": [
+      { "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990.", "note": "Bittrich's decisions at Arnhem are central to this account." },
+      { "ref": "Beevor, Antony. Arnhem: The Battle for the Bridges, 1944. Viking, 2018." }
+    ],
+    "related_records": [
+      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" },
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" },
+      { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" }
+    ]
+  },
+  {
+    "id": "theodor-eicke",
+    "name": "Theodor Eicke",
+    "rank": "SS-Obergruppenführer und General der Waffen-SS",
+    "branch": "waffen-ss",
+    "portrait": "/storage/images/veterans/waffen-ss/eicke.jpg",
+    "born": "1892-10-17",
+    "died": "1943-02-26",
+    "birthplace": "Hudingen, Alsace-Lorraine",
+    "biography": "As Inspector of Concentration Camps and first commandant of Dachau, Eicke established the administrative and ideological framework that governed all SS concentration camps. He developed the system of deliberately dehumanising prisoners and trained camp guards who would eventually staff the extermination centres. He personally shot Ernst Röhm on Hitler's orders during the Night of the Long Knives (30 June 1934). He then commanded the SS Division Totenkopf on the Eastern Front, earning a reputation for military effectiveness alongside extreme brutality toward civilians and prisoners. He was killed when his Fieseler Storch aircraft was shot down by Soviet fire near Kharkov in February 1943.",
+    "commands": ["Dachau Concentration Camp", "SS-Totenkopfverbände", "3rd SS Panzer Division Totenkopf"],
+    "awards": ["Knight's Cross with Oak Leaves"],
+    "campaigns": ["france", "barbarossa", "eastern-front"],
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv, Berlin-Lichterfelde. NS 3: SS-Wirtschafts-Verwaltungshauptamt — Concentration camp administration records." },
+      { "ref": "Kogon, Eugen. The Theory and Practice of Hell: The German Concentration Camps and the System Behind Them. Farrar, Straus, 1950.", "note": "Foundational account of the camp system Eicke created, by a survivor." },
+      { "ref": "Sydnor, Charles. Soldiers of Destruction: The SS Death's Head Division, 1933–1945. Princeton University Press, 1977." }
+    ],
+    "related_records": [
+      { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" }
+    ]
   }
 ]

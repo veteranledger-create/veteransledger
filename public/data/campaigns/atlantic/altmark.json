@@ -13,11 +13,22 @@
     "axis": "Kapitän zur See Heinrich Dau (Altmark)",
     "allied": "Captain Philip Vian RN (HMS Cossack)"
   },
+  "context": "The Altmark was the supply ship and tender for the pocket battleship Admiral Graf Spee, which had been scuttled at Montevideo in December 1939 following the Battle of the River Plate. Before the scuttling, Graf Spee had transferred 299 British merchant seamen prisoners to the Altmark. The Altmark then attempted to return to Germany via Norwegian waters, falsely claiming neutral status and denying Norwegian inspection. The British Admiralty tracked her and ordered HMS Cossack to intercept. The boarding of a ship in neutral Norwegian waters was a significant act, but Churchill — then First Lord of the Admiralty — personally authorised it.",
   "summary": "The Altmark was the supply ship and prison vessel for Admiral Graf Spee. After Graf Spee was scuttled at Montevideo (December 1939), Altmark carried 299 British merchant seamen prisoners north through Norwegian waters, claiming neutral status. On 16 February 1940, HMS Cossack, under Captain Philip Vian, intercepted Altmark in Jøssingfjord — Norwegian territorial waters. Despite Norwegian protests, Cossack's crew boarded Altmark. The cry 'The Navy's here!' from the boarding party became famous as British sailors freed the prisoners. Germany protested the violation of Norwegian neutrality; the British argued Norway had failed to enforce international law. The incident hardened German resolve to occupy Norway, contributing to the decision to launch Operation Weserübung in April 1940.",
   "casualties": {
     "axis": "4 German sailors killed in the boarding action",
     "allied": "Minor"
   },
   "outcome": "British victory — 299 prisoners freed",
-  "significance": "Contributed to the German decision to invade Norway; famous for 'The Navy's here' rescue."
+  "significance": "Contributed to the German decision to invade Norway; famous for 'The Navy's here' rescue.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). ADM 199/391: HMS Cossack — Report of Proceedings, Altmark Incident, February 1940." },
+    { "ref": "Haarr, Geirr. The German Invasion of Norway, April 1940. Naval Institute Press, 2009." },
+    { "ref": "Vian, Philip. Action This Day: A War Memoir. Frederick Muller, 1960.", "note": "Memoir of the commander who ordered the boarding." }
+  ],
+  "related_records": [
+    { "id": "river-plate", "title": "Battle of the River Plate", "type": "Campaign", "url": "/campaigns/atlantic/river-plate" },
+    { "id": "norway", "title": "Norwegian Campaign", "type": "Campaign", "url": "/campaigns/western-front/norway" },
+    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
+  ]
 }

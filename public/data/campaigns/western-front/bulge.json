@@ -4,10 +4,11 @@
   "theater": "western-front",
   "dates": { "start": "1944-12-16", "end": "1945-01-25" },
   "summary": "Germany's last major offensive on the Western Front, launched through the Ardennes forest in December 1944. It created a 'bulge' in Allied lines 90 km deep before being repulsed, exhausting Germany's last strategic mobile reserves.",
-  "background": "Despite near-universal opposition from his generals, Hitler ordered a massive offensive through the Ardennes aimed at capturing Antwerp and splitting the Allied armies. The operation required absolute secrecy and exploited poor flying weather that grounded Allied air power. Initial success relied on surprise.",
+  "background": "Despite near-universal opposition from his generals, Hitler ordered a massive offensive through the Ardennes aimed at capturing Antwerp and splitting the Allied armies. The operation required absolute secrecy and exploited poor flying weather that grounded Allied air power.",
+  "context": "Hitler conceived the Ardennes offensive in September 1944, insisting it could replicate the triumph of May 1940. His generals — including Model, Rundstedt, and Guderian — were unanimous that the resources committed could be better used to shorten defensive lines inside Germany. Hitler overruled all objections. The offensive achieved complete surprise: Ultra intelligence had not detected the attack, American forces in the Ardennes were thinly deployed, and German radio silence was near-perfect. Kampfgruppe Peiper's Waffen-SS armoured column achieved the deepest penetration, massacring 84 American POWs at Malmedy on 17 December — an act that stiffened American resistance across the front. The stubborn defence of Bastogne's crossroads by the 101st Airborne, and the clearing weather on 23 December that allowed Allied air power to savage German supply lines, proved decisive. Patton's relief of Bastogne on 26 December effectively ended German strategic ambitions. The offensive consumed Germany's last major armoured reserve in the West.",
   "combatants": {
     "axis": {
-      "commanders": ["Walter Model (Army Group B)", "Sepp Dietrich (6th SS Panzer Army)", "Hasso von Manteuffel (5th Panzer Army)"],
+      "commanders": ["Walter Model (Army Group B)", "Sepp Dietrich (6th SS Panzer Army)", "Hasso von Manteuffel (5th Panzer Army)", "Jochen Peiper (Kampfgruppe Peiper)"],
       "strength": "200,000 troops, 340 tanks, 1,900 artillery pieces"
     },
     "allied": {
@@ -16,36 +17,31 @@
     }
   },
   "key_events": [
-    {
-      "date": "16 December 1944",
-      "event": "German breakthrough along 130 km front in the Ardennes, overwhelming surprised American units"
-    },
-    {
-      "date": "17 December 1944",
-      "event": "Malmedy massacre — Waffen-SS troops of Kampfgruppe Peiper murder 84 American POWs at Baugnez crossroads"
-    },
-    {
-      "date": "19–22 December 1944",
-      "event": "Siege of Bastogne — 101st Airborne Division holds the vital crossroads; McAuliffe famously replies 'NUTS!' to German surrender demand"
-    },
-    {
-      "date": "23 December 1944",
-      "event": "Weather clears; Allied air power intervenes, devastating German supply lines and armoured columns"
-    },
-    {
-      "date": "26 December 1944",
-      "event": "Patton's 3rd Army relieves Bastogne from the south"
-    },
-    {
-      "date": "January 1945",
-      "event": "Allied counteroffensives progressively compress the 'bulge'"
-    }
+    { "date": "16 December 1944", "event": "German breakthrough along 130 km front in the Ardennes" },
+    { "date": "17 December 1944", "event": "Malmedy massacre — Kampfgruppe Peiper murders 84 American POWs" },
+    { "date": "19–22 December 1944", "event": "Siege of Bastogne — 101st Airborne holds vital crossroads; McAuliffe replies 'NUTS!' to German surrender demand" },
+    { "date": "23 December 1944", "event": "Weather clears; Allied air power devastates German supply lines" },
+    { "date": "26 December 1944", "event": "Patton's 3rd Army relieves Bastogne" },
+    { "date": "January 1945", "event": "Allied counteroffensives compress the 'bulge'" }
   ],
-  "outcome": "Allied victory. Germany failed to achieve any of its strategic objectives. The offensive consumed Germany's last significant armoured reserves in the West — the forces could never be replaced. The path to Germany was now open.",
+  "outcome": "Allied victory. Germany failed to achieve any strategic objectives. The offensive consumed Germany's last significant armoured reserves in the West.",
   "casualties": {
     "germany": "~63,000–67,000 killed, wounded, or captured",
     "allies": "~75,000–80,000 (largest American battle loss of the war)"
   },
   "image": "/storage/images/campaigns/bulge.jpg",
-  "significance": "The Battle of the Bulge was the largest land battle in American military history and Germany's last offensive operation in the West. Its failure accelerated the end of the war by depleting German reserves needed to defend the Rhine."
+  "significance": "The largest land battle in American military history; Germany's last offensive in the West. Its failure left Germany unable to defend the Rhine.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (US). RG 407, Box 24037: 101st Airborne Division After Action Report — Bastogne, December 1944." },
+    { "ref": "MacDonald, Charles. A Time for Trumpets: The Untold Story of the Battle of the Bulge. Morrow, 1985.", "note": "The definitive US Army history based on classified records." },
+    { "ref": "Schrijvers, Peter. The Unknown Dead: Civilians in the Battle of the Bulge. University Press of Kentucky, 2005." },
+    { "ref": "Parker, Danny. Battle of the Bulge: Hitler's Ardennes Offensive, 1944–1945. Combined Books, 1991." }
+  ],
+  "related_records": [
+    { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
+    { "id": "sepp-dietrich", "title": "Sepp Dietrich", "type": "Personnel", "url": "/personnel/sepp-dietrich" },
+    { "id": "jochen-peiper", "title": "Jochen Peiper", "type": "Personnel", "url": "/personnel/jochen-peiper" },
+    { "id": "pz-vi-b-tiger-ii", "title": "Tiger II (King Tiger)", "type": "Armament", "url": "/armaments/pz-vi-b-tiger-ii" },
+    { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" }
+  ]
 }

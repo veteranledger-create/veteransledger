@@ -1,0 +1,398 @@
+[
+  {
+    "id": "legion-wallonie",
+    "name": "Legion Wallonie / 28th SS Volunteer Grenadier Division Wallonien",
+    "nation": "Belgium (Walloon)",
+    "shield": "/public/images/icons/shields/wallonie.svg",
+    "service": "Waffen-SS (formerly Wehrmacht)",
+    "type": "Volunteer Legion",
+    "region": "Western European Volunteers",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-08", "to": "1945-05" },
+    "volunteer_origin": "Walloon (French-speaking Belgian) volunteers recruited by Léon Degrelle's Rexist movement",
+    "parent_formation": "Subsequently redesignated 28th SS Volunteer Grenadier Division Wallonien (1943)",
+    "commanders": [
+      { "name": "SS-Sturmbannführer Léon Degrelle", "period": "1943–1945 (combat command)" }
+    ],
+    "peak_strength": "c. 8,000 (1944, as division)",
+    "summary": "The Walloon Legion was a Belgian Fascist volunteer unit formed by Léon Degrelle's Rexist movement. Initially part of the Wehrmacht, it was transferred to the Waffen-SS in 1943. Degrelle rose from private to command the division. The unit fought on the Eastern Front, including the Cherkassy encirclement of February 1944.",
+    "context": "The Walloon Legion exemplifies the ideological volunteers who served Germany from across occupied Europe. Degrelle, the Rexist leader, volunteered with a contingent in 1941 as a private; his personal bravery — he was wounded on multiple occasions — impressed Himmler and led to his rapid promotion. The unit was surrounded and nearly destroyed at Cherkassy in February 1944 but broke out. Hitler reportedly said of Degrelle that if he had a son he would want him to be like Degrelle. After the war Degrelle escaped to Spain, where he lived until 1994, never facing trial for collaboration.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "The Walloon Legion belonged to the family of foreign volunteer formations the Waffen-SS recruited from across occupied and allied Europe — units raised not from German conscripts but from ideologically sympathetic or anti-communist volunteers in France, the Netherlands, Scandinavia, the Balkans, and, here, French-speaking Belgium. It was created in August 1941 in the weeks following the invasion of the Soviet Union, when Léon Degrelle's Rexist movement offered a contingent of Walloon volunteers to fight alongside Germany against Bolshevism."
+      },
+      {
+        "type": "image",
+        "layout": "left",
+        "images": [
+          { "src": "/public/images/icons/shields/wallonie.svg", "caption": "Legion Wallonie collar/sleeve shield", "description": "Worn in place of SS rank insignia after Himmler ruled that foreign legions could not use SS unit markings. Composite of Belgian national colors (black, yellow, red)." }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Unlike the SS divisions it eventually fought alongside, the Legion began life under Wehrmacht rather than Waffen-SS command, and only transferred to the SS in 1943 as Himmler absorbed the smaller national legions into a more unified foreign-volunteer system. Within this archive, the Legion sits in the Volunteer Formations category rather than among Germany's own national divisions — its later redesignation as the 28th SS Volunteer Grenadier Division Wallonien marks the formal endpoint of that absorption, even though it never stopped being, in composition and motivation, a Belgian unit rather than a German one."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Volunteers, Not Conscripts",
+        "text": "The Walloon Legion exemplifies the ideological volunteers who served Germany from across occupied Europe. Degrelle, the Rexist leader, volunteered with the first contingent in 1941 as an ordinary private rather than claiming a command position outright — a deliberate piece of political theatre that he repeated throughout the war, fighting alongside his men at the front rather than directing from the rear."
+      },
+      {
+        "type": "text",
+        "title": "Degrelle's Rise",
+        "text": "His personal bravery — he was wounded on multiple occasions — impressed Himmler and led to his rapid promotion from the ranks to command of the division by 1943. Hitler reportedly remarked of Degrelle that if he had a son, he would want him to be like Degrelle, a level of personal favour rarely extended to a non-German officer."
+      },
+      {
+        "type": "text",
+        "title": "Cherkassy and the Final Year",
+        "text": "The unit was surrounded and nearly destroyed in the Cherkassy–Korsun Pocket in February 1944 alongside several German divisions, but broke out with the survivors of the encirclement. It fought on in a steadily contracting Eastern Front through 1944 and into the final collapse in 1945."
+      },
+      {
+        "type": "text",
+        "title": "Aftermath",
+        "text": "After the war Degrelle escaped to Francoist Spain, where he lived in exile until his death in 1994, never facing trial for collaboration. Many of his surviving men were not so fortunate, returning to a liberated Belgium where collaboration with the German occupation carried severe legal and social consequences."
+      }
+    ],
+    "sources": [
+      { "ref": "Degrelle, Léon. Campaign in Russia: The Waffen SS on the Eastern Front. Noontide Press, 1985.", "note": "Degrelle's own account — self-serving but detailed." },
+      { "ref": "Littlejohn, David. Foreign Legions of the Third Reich. R. James Bender, 1979–1987. 4 vols." }
+    ],
+    "related_records": [
+      { "id": "leon-degrelle", "title": "Léon Degrelle", "type": "Personnel", "url": "/personnel/leon-degrelle" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "vol-001", "title": "De Groot — Eastern Front (1942)", "type": "Letter", "url": "/letters/vol-001" },
+      { "id": "felix-steiner", "title": "Felix Steiner", "type": "Personnel", "url": "/personnel/felix-steiner" }
+    ],
+    "dossier": {
+      "gallery": [
+        {
+          "type": "gallery",
+          "title": "Insignia",
+          "images": [
+            { "src": "/public/images/icons/shields/wallonie.svg", "caption": "Legion Wallonie collar/sleeve shield", "description": "Black, yellow, and red in the Belgian national colors." }
+          ]
+        }
+      ],
+      "propaganda": [
+        {
+          "type": "text",
+          "title": "Rexist Recruitment Themes",
+          "text": "Degrelle's Rexist party framed enlistment as a crusade against Bolshevism rather than service to a foreign occupier, presenting the Legion as the armed wing of a 'New Order' Belgium aligned with Germany. Recruitment material emphasised anti-communism and Walloon martial tradition over explicit National Socialist ideology, an approach that broadened the Legion's appeal beyond Rexism's existing membership."
+        }
+      ]
+    }
+  },
+  {
+    "id": "33rd-ss-charlemagne",
+    "name": "33rd Waffen Grenadier Division SS Charlemagne (French)",
+    "nation": "France",
+    "shield": "/public/images/icons/shields/charlemagne.svg",
+    "service": "Waffen-SS",
+    "type": "Volunteer Division",
+    "region": "Western European Volunteers",
+    "theater": "Eastern Front / Berlin",
+    "active": { "from": "1945-02", "to": "1945-05" },
+    "volunteer_origin": "French collaborationist volunteers, many transferred from the earlier Légion des Volontaires Français (LVF)",
+    "parent_formation": "Légion des Volontaires Français contre le Bolchévisme (LVF), absorbed 1945",
+    "commanders": [
+      { "name": "SS-Brigadeführer Edgar Puaud (KIA)", "period": "Feb–Mar 1945" },
+      { "name": "SS-Obersturmbannführer Henri Fenet (final commander)", "period": "Apr 1945" }
+    ],
+    "peak_strength": "c. 7,000 (February 1945)",
+    "fate": "Mostly destroyed in Pomerania, March 1945. Survivors fought in Berlin to the end.",
+    "summary": "The Charlemagne Division was formed from French volunteers and collaborators. After near-destruction in Pomerania, a remnant of approximately 300 French SS volunteers fought in Berlin in the final days of the war — reportedly the last combat formation defending the Reich Chancellery. Many knew that surrender meant trial and execution for collaboration.",
+    "context": "French SS volunteers fighting in Berlin in May 1945 represent one of the war's darkest ironies — men from the most prominent Allied nation defending the ruins of the Reich that had occupied their homeland. Several earned the Knight's Cross during the Berlin battle, the last such awards made. Most survivors were repatriated and tried for treason and collaboration; some were executed. The Charlemagne Division's existence raises profound questions about ideology, collaboration, and the nature of political commitment under occupation.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "The Charlemagne Division was the final form taken by French collaborationist military service, formed in February 1945 — astonishingly late in the war, when German defeat was all but certain — from the consolidation of several earlier, smaller French volunteer units, chiefly the Légion des Volontaires Français contre le Bolchévisme (LVF), which had been fighting on the Eastern Front since 1941."
+      },
+      {
+        "type": "image",
+        "images": [
+          { "src": "/public/images/icons/shields/charlemagne.svg", "caption": "Charlemagne Division insignia", "description": "Rendered in the blue-white-red of the French tricolor. Composite of French national colors." }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Its name invoked Charlemagne, the medieval Frankish emperor claimed by French nationalist mythology as a unifying European figure — a deliberate piece of propaganda framing French participation in the war against the Soviet Union as a continuation of a shared European, rather than narrowly German, cause. Within this archive, the division represents the last and smallest stage of French collaborationist military service, and its final defence of Berlin in May 1945 is among the most documented episodes of any volunteer formation in this collection."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Formation and Destruction in Pomerania",
+        "text": "Formed from the LVF and other French volunteer units in February 1945, the division was committed to combat in Pomerania within weeks of its creation and suffered catastrophic losses against the advancing Red Army — by the time it withdrew, only a small fraction of its original strength remained."
+      },
+      {
+        "type": "text",
+        "title": "The Defence of Berlin",
+        "text": "French SS volunteers fighting in Berlin in late April and early May 1945 represent one of the war's starkest ironies — men from one of the principal Allied nations defending the ruins of the Reich that had occupied their own homeland for four years. A remnant of roughly 300 French volunteers fought in the city's final battles, reportedly among the last defenders of the Reich Chancellery itself. Several earned the Knight's Cross during the Berlin fighting, among the last such awards made before Germany's surrender."
+      },
+      {
+        "type": "text",
+        "title": "Reckoning",
+        "text": "Most survivors were repatriated to France after the war and tried for treason and collaboration; some were executed. The Charlemagne Division's existence — French volunteers fighting and dying for Germany in the literal last days of the Third Reich — raises some of the most difficult questions in this archive about ideology, collaboration, and the nature of political commitment under foreign occupation."
+      }
+    ],
+    "sources": [
+      { "ref": "Forbes, Robert. For Europe: The French Volunteers of the Waffen-SS. Helion, 2006." },
+      { "ref": "Beevor, Antony. Berlin: The Downfall 1945. Viking, 2002." }
+    ],
+    "related_records": [
+      { "id": "berlin-1945", "title": "Battle of Berlin 1945", "type": "Article", "url": "/articles/military/berlin-1945" },
+      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
+      { "id": "occupation", "title": "German Occupation Policy", "type": "Article", "url": "/articles/political/occupation" }
+    ]
+  },
+  {
+    "id": "frikorps-danmark",
+    "name": "Frikorps Danmark (Free Corps Denmark)",
+    "nation": "Denmark",
+    "flag": "/public/images/flags/denmark.svg",
+    "shield": "/public/images/icons/shields/denmark.svg",
+    "service": "Waffen-SS",
+    "type": "Volunteer Regiment",
+    "region": "Western European Volunteers",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-06", "to": "1943-06" },
+    "volunteer_origin": "Danish volunteers, organised with the cooperation of the Danish Nazi party (DNSAP) and tolerated by the Danish government under occupation",
+    "fate": "Disbanded June 1943 after heavy losses; survivors transferred to the SS Division Nordland.",
+    "commanders": [
+      { "name": "SS-Standartenführer Christian Peder Kryssing", "period": "1941" },
+      { "name": "SS-Obersturmbannführer Christian Frederik von Schalburg (KIA)", "period": "1941–1942" }
+    ],
+    "peak_strength": "c. 1,200 (1942)",
+    "summary": "Frikorps Danmark was the principal Danish volunteer formation raised to fight alongside Germany against the Soviet Union. It served on the Demyansk salient in 1942, suffering heavy casualties, before being disbanded in 1943 and absorbed into the multinational SS Division Nordland.",
+    "context": "Denmark's unique status as an occupied but formally neutral-administered country (the government remained nominally in office until 1943) shaped Frikorps Danmark's character — recruitment was tolerated rather than state-organised, drawing mainly from the small Danish Nazi party and former army officers. The corps fought at Demyansk in 1942, a brutal sector where German forces held a salient inside Soviet lines for over a year; losses there were severe, including the death of commander von Schalburg. The unit's disbandment and absorption into Nordland in 1943 reflected a broader German policy of consolidating the smaller national legions into larger multinational SS divisions as the war ground on.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Frikorps Danmark was Denmark's principal contribution to the Waffen-SS's foreign-volunteer system, raised in the weeks after the invasion of the Soviet Union in 1941 from a country whose occupation status was unlike almost any other in German-controlled Europe — the Danish government remained nominally in office and the country was treated officially as a 'model protectorate' rather than a conquered territory until 1943."
+      },
+      {
+        "type": "image",
+        "images": [
+          { "src": "/public/images/icons/shields/denmark.svg", "caption": "Frikorps Danmark collar/sleeve shield", "description": "The white Nordic cross on a red field of the Danish national flag." }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "This unusual political situation meant recruitment was tolerated by the authorities rather than state-organised, drawing mainly from the small Danish Nazi party (DNSAP) and from former Danish army officers seeking continued military careers. Within this archive, the unit sits among the Western European volunteer legions whose service and eventual dissolution into the multinational SS Division Nordland in 1943 illustrate the broader pattern followed by several of the smaller national contingents documented here."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Recruitment Under Occupation",
+        "text": "Denmark's unique status as an occupied but formally neutral-administered country shaped Frikorps Danmark's character from the outset. Recruitment was tolerated rather than state-organised, drawing mainly from the small Danish Nazi party and from former army officers, rather than representing any broad cross-section of Danish society."
+      },
+      {
+        "type": "text",
+        "title": "Demyansk",
+        "text": "The corps fought at Demyansk in 1942, a brutal sector of the front where German forces held an exposed salient inside Soviet lines for over a year. Losses there were severe, including the death in combat of the corps' second commander, von Schalburg."
+      },
+      {
+        "type": "text",
+        "title": "Disbandment and Absorption",
+        "text": "The unit's disbandment in June 1943 and absorption into the multinational SS Division Nordland reflected a broader German policy of consolidating the smaller national legions into larger combined formations as the war ground on and individual national contingents proved too small to sustain as independent units."
+      }
+    ],
+    "sources": [
+      { "ref": "Christensen, Claus Bundgård et al. Danmark og 2. Verdenskrig. Gyldendal, 2005." },
+      { "ref": "Littlejohn, David. Foreign Legions of the Third Reich. R. James Bender, 1979–1987. 4 vols." }
+    ],
+    "related_records": [
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" }
+    ]
+  },
+  {
+    "id": "den-norske-legion",
+    "name": "Den Norske Legion (Norwegian Legion)",
+    "nation": "Norway",
+    "flag": "/public/images/flags/norway.svg",
+    "shield": "/public/images/icons/shields/norway.svg",
+    "service": "Waffen-SS",
+    "type": "Volunteer Legion",
+    "region": "Western European Volunteers",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-07", "to": "1943-05" },
+    "volunteer_origin": "Norwegian volunteers, organised with backing from Vidkun Quisling's Nasjonal Samling party",
+    "fate": "Disbanded May 1943; survivors transferred to the SS Division Nordland.",
+    "commanders": [
+      { "name": "Oberst Jørgen Bakke", "period": "1941–1942" }
+    ],
+    "peak_strength": "c. 1,200 (1942)",
+    "summary": "The Norwegian Legion was raised from Norwegian volunteers to fight on the Eastern Front, serving most notably on the Leningrad front. Like its Danish counterpart, it was disbanded in 1943 and its personnel folded into the multinational SS Division Nordland.",
+    "context": "Recruitment for the Norwegian Legion was promoted by Vidkun Quisling's collaborationist Nasjonal Samling government, though the legion never reached the size its organisers hoped for. It served in the siege lines around Leningrad through the brutal winter of 1941–42, suffering from cold, disease, and the static attrition typical of that front. As with the Danish and other small national legions, declining recruitment and a German push toward consolidation led to its dissolution in 1943, with veterans transferring into Nordland alongside Danish and Dutch volunteers.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Den Norske Legion was Norway's counterpart to Frikorps Danmark — a national volunteer formation raised within weeks of the German invasion of the Soviet Union in 1941, intended to give occupied Norway's own collaborationist movement a visible military contribution to Germany's war against Bolshevism."
+      },
+      {
+        "type": "image",
+        "images": [
+          { "src": "/public/images/icons/shields/norway.svg", "caption": "Den Norske Legion collar/sleeve shield", "description": "Drawing on the red, white, and blue of the Norwegian national flag." }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Unlike Denmark, Norway was under direct German civil administration alongside Vidkun Quisling's puppet Nasjonal Samling government, which actively promoted recruitment — yet the legion never grew to the size its organisers had hoped, reflecting the limited genuine popular support for collaboration in occupied Norway. Within this archive it sits alongside Frikorps Danmark as one of the two principal Scandinavian national legions, both of which followed a nearly identical trajectory toward dissolution and absorption into the SS Division Nordland in 1943."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Quisling's Recruitment Drive",
+        "text": "Recruitment for the Norwegian Legion was actively promoted by Vidkun Quisling's collaborationist Nasjonal Samling government, which saw the unit as a way to demonstrate Norwegian commitment to the German cause — though the legion never reached the size its organisers had hoped, a reflection of how limited genuine support for collaboration remained among the wider Norwegian population."
+      },
+      {
+        "type": "text",
+        "title": "The Leningrad Front",
+        "text": "The legion served in the siege lines around Leningrad through the brutal winter of 1941–42, suffering heavily from cold, disease, and the static attrition typical of that front — conditions that took a steady toll on a unit too small to sustain significant combat losses indefinitely."
+      },
+      {
+        "type": "text",
+        "title": "Dissolution",
+        "text": "As with the Danish and other small national legions, declining recruitment combined with a broader German push toward consolidation led to the unit's dissolution in 1943, with its surviving veterans transferring into the multinational SS Division Nordland alongside Danish and Dutch volunteers."
+      }
+    ],
+    "sources": [
+      { "ref": "Littlejohn, David. Foreign Legions of the Third Reich. R. James Bender, 1979–1987. 4 vols." },
+      { "ref": "Emberland, Terje and Kott, Matthew. Himmlers Norge. Aschehoug, 2012." }
+    ],
+    "related_records": [
+      { "id": "leningrad", "title": "Siege of Leningrad", "type": "Campaign", "url": "/campaigns/eastern-front/leningrad" }
+    ]
+  },
+  {
+    "id": "croatian-legion",
+    "name": "369th (Croatian) Reinforced Infantry Regiment",
+    "nation": "Croatia",
+    "flag": "/public/images/flags/croatia.svg",
+    "shield": "/public/images/icons/shields/croatia.svg",
+    "service": "Wehrmacht (Heer)",
+    "type": "Volunteer Regiment",
+    "region": "Balkan Volunteers",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-07", "to": "1943-02" },
+    "volunteer_origin": "Croatian volunteers raised by the Independent State of Croatia (NDH) as part of its alliance with Germany",
+    "parent_formation": "Attached to the German 100th Jäger Division",
+    "fate": "Destroyed at Stalingrad, January 1943.",
+    "commanders": [
+      { "name": "Pukovnik Viktor Pavičić (KIA, Stalingrad)", "period": "1942–1943" }
+    ],
+    "peak_strength": "c. 4,000 (1942)",
+    "summary": "The Croatian Legion was the principal Croatian ground force sent to fight alongside Germany on the Eastern Front. Attached to the German 100th Jäger Division, it fought at Stalingrad, where it was annihilated alongside the German 6th Army in the encirclement of January–February 1943.",
+    "context": "The Independent State of Croatia (NDH), established under Axis sponsorship after the invasion of Yugoslavia, contributed the Croatian Legion as a demonstration of loyalty to Germany. Attached to the 100th Jäger Division, the regiment fought in the advance toward Stalingrad in 1942 and was caught inside the pocket when Operation Uranus encircled the German 6th Army that November. Most of the regiment was killed or captured in the final collapse of the pocket in late January 1943 — a disproportionate loss for the small NDH armed forces, and one that contributed to growing disillusionment with the German alliance among Croatian officers later in the war.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "The 369th Reinforced Infantry Regiment was the principal ground force contributed to Germany's war effort by the Independent State of Croatia (NDH), the Axis-sponsored puppet state established after the German-led invasion and dismemberment of Yugoslavia in 1941. Unlike the Western European legions in this archive, it was not a volunteer formation built around an existing political movement so much as a state-organised contingent intended to demonstrate the new Croatian regime's value as a German ally."
+      },
+      {
+        "type": "image",
+        "images": [
+          { "src": "/public/images/icons/shields/croatia.svg", "caption": "Croatian Legion insignia", "description": "Red-and-white checkerboard (šahovnica) of the Croatian national arms." }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Attached directly to a German division — the 100th Jäger Division — rather than fighting as an independent formation, the regiment shared fully in the fate of the German 6th Army at Stalingrad, making it one of the clearest examples in this archive of how the catastrophe at Stalingrad extended well beyond German units to consume the smaller Axis-allied contingents fighting alongside them."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "A State Contribution",
+        "text": "The Independent State of Croatia, established under Axis sponsorship after the invasion of Yugoslavia, contributed the Croatian Legion as a deliberate demonstration of loyalty to Germany, intended to secure the new regime's standing with its German sponsors at a time when its own legitimacy at home was contested."
+      },
+      {
+        "type": "text",
+        "title": "Attached to the 100th Jäger Division",
+        "text": "Attached to the German 100th Jäger Division rather than operating independently, the regiment advanced toward Stalingrad alongside its parent division in the summer of 1942, sharing in both the initial advance and, ultimately, in the disaster that followed."
+      },
+      {
+        "type": "text",
+        "title": "Destruction at Stalingrad",
+        "text": "The regiment was caught inside the pocket when Operation Uranus encircled the German 6th Army in November 1942, and most of its men were killed or captured in the pocket's final collapse in late January 1943 — a disproportionately heavy loss for the small NDH armed forces, and one that contributed to growing disillusionment with the German alliance among Croatian officers as the war continued."
+      }
+    ],
+    "sources": [
+      { "ref": "Krzak, Andrzej. \"Croatian Armed Forces in World War II.\" Journal of Slavic Military Studies, 2006." },
+      { "ref": "Beevor, Antony. Stalingrad. Viking, 1998." }
+    ],
+    "related_records": [
+      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
+      { "id": "6th-army", "title": "6th Army", "type": "Formation", "url": "/formations/6th-army" }
+    ]
+  },
+  {
+    "id": "xv-cossack-cavalry-corps",
+    "name": "XV SS-Kosaken-Kavallerie-Korps (XV SS Cossack Cavalry Corps)",
+    "nation": "Cossack Hosts (Russia/Ukraine)",
+    "shield": "/public/images/icons/shields/cossack.svg",
+    "service": "Waffen-SS",
+    "type": "Volunteer Corps",
+    "region": "Cossack Formations",
+    "theater": "Eastern Front / Balkans / Austria",
+    "active": { "from": "1943-04", "to": "1945-05" },
+    "volunteer_origin": "Cossack émigrés and Soviet POWs/defectors from the Don, Kuban, and Terek hosts, anti-Bolshevik in orientation",
+    "commanders": [
+      { "name": "SS-Gruppenführer Helmuth von Pannwitz", "period": "1943–1945" }
+    ],
+    "peak_strength": "c. 25,000 (1945)",
+    "fate": "Surrendered to British forces in Austria, May 1945; handed over to the Soviet Union under the Yalta repatriation agreements. Pannwitz and senior Cossack officers were executed in Moscow in 1947.",
+    "summary": "The XV SS Cossack Cavalry Corps was the largest Cossack formation to fight alongside Germany, raised from anti-Soviet Cossack volunteers and led by the German cavalry officer Helmuth von Pannwitz. It fought partisans in the Balkans before being committed against the Red Army in 1945. Its forced repatriation to the USSR after surrendering to the British remains one of the most controversial episodes of the war's end.",
+    "context": "Many Cossacks viewed the war as a continuation of the Russian Civil War, fighting Bolshevism rather than serving Hitler's wider aims. Pannwitz, fluent in Russian and respected by his troops, was one of the few German officers to receive a Cossack cavalry sabre as an honour. In May 1945 the corps surrendered to the British 5th Corps in Austria; under the Yalta agreements on repatriation of Soviet citizens, the British handed the Cossacks — including pre-revolutionary émigrés who had never held Soviet citizenship — over to Soviet forces at Judenburg. Pannwitz voluntarily accompanied his men into Soviet custody. He and senior Cossack leaders, including the émigré generals Pyotr Krasnov and Andrei Shkuro, were executed in Moscow in January 1947.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "The XV SS Cossack Cavalry Corps was, by a substantial margin, the largest of the Eastern volunteer formations recruited by Germany, and the only one organised at corps strength. It drew on a distinct constituency: not occupied Western Europeans recruited by ideological sympathy, but Cossack émigrés who had fled Russia after the 1917 revolution and civil war, together with Soviet prisoners of war and defectors from the Don, Kuban, and Terek Cossack hosts who viewed the war primarily through the lens of a decades-old struggle against Bolshevism rather than any commitment to German aims."
+      },
+      {
+        "type": "image",
+        "images": [
+          { "src": "/public/images/icons/shields/cossack.svg", "caption": "Composite Cossack formation insignia", "description": "Used by units raised from the Don, Kuban, and Terek hosts under German command." }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Commanded by Helmuth von Pannwitz, a German cavalry officer fluent in Russian and unusually well regarded by the men he led, the corps fought anti-German partisans in the Balkans before being committed against the Red Army directly in 1945. Within this archive it represents the Eastern volunteer category in its starkest form, and its postwar fate — forced repatriation to the Soviet Union and the execution of its senior leadership — is one of the most consequential and controversial episodes documented among any of the volunteer formations here."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "A Continuation of the Civil War",
+        "text": "Many Cossacks viewed the war as a continuation of the Russian Civil War of 1917–1923, fighting Bolshevism rather than serving Hitler's wider racial and territorial aims — a distinction that mattered greatly to the men themselves even if it made little practical difference to how the corps was used by German command."
+      },
+      {
+        "type": "text",
+        "title": "Pannwitz",
+        "text": "Pannwitz, fluent in Russian and genuinely respected by his troops, was one of the few German officers ever to receive a Cossack cavalry sabre as a mark of honour from the men under his command — an unusually personal gesture of trust between a German commander and non-German volunteer troops."
+      },
+      {
+        "type": "quote",
+        "text": "In May 1945 the corps surrendered to the British 5th Corps in Austria. Under the Yalta agreements on the repatriation of Soviet citizens, the British handed the Cossacks — including pre-revolutionary émigrés who had never held Soviet citizenship at all — over to Soviet forces at Judenburg. Pannwitz voluntarily accompanied his men into Soviet custody rather than seek his own safety.",
+        "attribution": "Summary of the established historical record of the Judenburg repatriations"
+      },
+      {
+        "type": "text",
+        "title": "Execution in Moscow",
+        "text": "Pannwitz and senior Cossack leaders, including the émigré generals Pyotr Krasnov and Andrei Shkuro — men who had not been Soviet citizens since fleeing Russia decades earlier — were executed in Moscow in January 1947, an outcome that remains one of the most cited examples of the moral complexity surrounding the Western Allies' wartime agreements with Stalin."
+      }
+    ],
+    "sources": [
+      { "ref": "Newland, Samuel J. Cossacks in the German Army, 1941–1945. Frank Cass, 1991." },
+      { "ref": "Tolstoy, Nikolai. Victims of Yalta. Hodder and Stoughton, 1977." }
+    ],
+    "related_records": [
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" }
+    ]
+  }
+]

@@ -5,6 +5,7 @@
   "dates": { "start": "1940-07-10", "end": "1940-10-31" },
   "summary": "The Battle of Britain was the German Luftwaffe's attempt to establish air superiority over Britain as a precondition for a seaborne invasion (Operation Sea Lion). The RAF's successful defence, made possible by radar, ground control, and the Hurricane and Spitfire fighters, marked Germany's first major defeat.",
   "background": "Following the fall of France in June 1940, Britain stood alone. Hitler's Directive 16 ordered preparations for a cross-Channel invasion, but this required the Luftwaffe to first neutralise the RAF. Reichsmarschall Göring promised to destroy British air power within four weeks.",
+  "context": "The Battle of Britain was unlike any previous air campaign: both sides fought through a complex system of radar warning, ground control, and radio direction that was invisible to the combatants and decisive to the outcome. Hugh Dowding's Fighter Command used the Chain Home radar network — covering the entire southern coast — and a centralised ground control system to vector fighters onto incoming raids. This meant the RAF could afford to rest squadrons and respond in force, rather than maintaining exhausting standing patrols. German tactical errors compounded the structural advantage: the Bf 109 was limited to 20–30 minutes over Britain by fuel constraints, Göring's decision to shift bombing from airfields to London on 7 September allowed Fighter Command to recover from near-collapse, and German intelligence consistently overestimated losses inflicted and underestimated RAF recovery. On 17 September Hitler postponed Operation Sea Lion indefinitely — a decision never reversed.",
   "combatants": {
     "axis": {
       "commanders": ["Hermann Göring (Luftwaffe)", "Albert Kesselring (Luftflotte 2)", "Hugo Sperrle (Luftflotte 3)"],
@@ -16,31 +17,34 @@
     }
   },
   "phases": [
-    {
-      "name": "Kanalkampf (Channel Battle)",
-      "dates": "10 July – 11 August 1940",
-      "description": "Luftwaffe attacks on Channel convoys and coastal radar stations test RAF defences. RAF resists, but losses are significant."
-    },
-    {
-      "name": "Adlerangriff (Eagle Attack)",
-      "dates": "13 August – 6 September 1940",
-      "description": "Intensified attacks on RAF airfields and radar stations bring Fighter Command to near breaking point. A German navigator error leads to the bombing of London on 24 August."
-    },
-    {
-      "name": "London Blitz",
-      "dates": "7 September – 31 October 1940",
-      "description": "Hitler orders the bombing shifted to London in retaliation. This strategic error allows Fighter Command to recover. On 15 September (Battle of Britain Day) the RAF defeats a massive Luftwaffe raid; on 17 September Hitler postpones Operation Sea Lion indefinitely."
-    }
+    { "name": "Kanalkampf (Channel Battle)", "dates": "10 July – 11 August 1940", "description": "Luftwaffe attacks on Channel convoys and coastal radar stations test RAF defences. RAF resists, but losses are significant." },
+    { "name": "Adlerangriff (Eagle Attack)", "dates": "13 August – 6 September 1940", "description": "Intensified attacks on RAF airfields and radar stations bring Fighter Command to near breaking point. A German navigator error leads to the bombing of London on 24 August." },
+    { "name": "London Blitz", "dates": "7 September – 31 October 1940", "description": "Hitler orders bombing shifted to London in retaliation. This strategic error allows Fighter Command to recover. On 15 September the RAF defeats a massive Luftwaffe raid; on 17 September Hitler postpones Operation Sea Lion indefinitely." }
   ],
   "technology": {
     "radar": "The Chain Home radar network gave Fighter Command advance warning, enabling it to concentrate forces. Ground controllers directed RAF fighters to intercepts via radio — a revolutionary capability.",
-    "aircraft": "The Hawker Hurricane shot down more German aircraft than any other RAF fighter. The Supermarine Spitfire was roughly equivalent to the Bf 109E but with a longer range."
+    "aircraft": "The Hawker Hurricane shot down more German aircraft than any other RAF fighter. The Supermarine Spitfire was roughly equivalent to the Bf 109E but with a longer range over Britain."
   },
-  "outcome": "British victory. The Luftwaffe failed to establish air superiority and Operation Sea Lion was postponed (and eventually abandoned). The Battle of Britain was Germany's first defeat and demonstrated that air power alone could not defeat a determined nation with effective air defences.",
+  "outcome": "British victory. The Luftwaffe failed to establish air superiority and Operation Sea Lion was postponed. Germany's first defeat of the war demonstrated that air power alone could not defeat a nation with effective air defences.",
   "casualties": {
     "germany": "1,977 aircraft, ~2,698 aircrew killed or captured",
-    "britain": "1,087 aircraft, 544 aircrew killed; 43,000 civilians killed in Blitz"
+    "britain": "1,087 aircraft, 544 aircrew killed; 43,000 civilians killed in the Blitz"
   },
   "image": "/storage/images/campaigns/britain.jpg",
-  "significance": "Winston Churchill's words — 'Never in the field of human conflict was so much owed by so many to so few' — became the defining tribute to the RAF's 2,946 aircrew who fought in the battle."
+  "significance": "Winston Churchill's words — 'Never in the field of human conflict was so much owed by so many to so few' — became the defining tribute to the RAF's 2,946 aircrew who fought in the battle.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). AIR 16/635: Fighter Command — Battle of Britain Despatch, November 1940." },
+    { "ref": "Bungay, Stephen. The Most Dangerous Enemy: A History of the Battle of Britain. Aurum Press, 2000.", "note": "The most comprehensive modern account, drawing on Luftwaffe records." },
+    { "ref": "Orange, Vincent. Dowding of Fighter Command: Victor of the Battle of Britain. Grub Street, 2008." },
+    { "ref": "Overy, Richard. The Battle of Britain: The Myth and the Reality. Norton, 2001." }
+  ],
+  "related_records": [
+    { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" },
+    { "id": "fw-190", "title": "Focke-Wulf Fw 190", "type": "Armament", "url": "/armaments/fw-190" },
+    { "id": "erich-hartmann", "title": "Erich Hartmann", "type": "Personnel", "url": "/personnel/erich-hartmann" },
+    { "id": "werner-molders", "title": "Werner Mölders", "type": "Personnel", "url": "/personnel/werner-molders" },
+    { "id": "adolf-galland", "title": "Adolf Galland", "type": "Personnel", "url": "/personnel/adolf-galland" },
+    { "id": "joseph-kammhuber", "title": "Josef Kammhuber", "type": "Personnel", "url": "/personnel/joseph-kammhuber" },
+    { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" }
+  ]
 }

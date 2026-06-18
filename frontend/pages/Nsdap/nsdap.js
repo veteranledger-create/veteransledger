@@ -24,6 +24,11 @@ const DATA_MAP = {
   party_departments: "/public/data/nsdap/party/departments.json",
   party_programme: "/public/data/nsdap/party/programme.json",
   party_religion: "/public/data/nsdap/party/religion.json",
+  party_formation: "/public/data/nsdap/party/formation.json",
+  party_foreign_policy: "/public/data/nsdap/party/foreign-policy.json",
+  party_economy: "/public/data/nsdap/party/economy.json",
+  party_state_relations: "/public/data/nsdap/party/state-relations.json",
+  party_dissolution: "/public/data/nsdap/party/dissolution.json",
   timeline: "/public/data/nsdap/timeline.json",
   glossary: "/public/data/nsdap/glossary.json",
 };
@@ -91,6 +96,11 @@ async function showSection(id) {
       "party_departments",
       "party_programme",
       "party_religion",
+      "party_formation",
+      "party_foreign_policy",
+      "party_economy",
+      "party_state_relations",
+      "party_dissolution",
     ];
     await Promise.all(keys.map(load));
     renderPartySection(container);
@@ -280,6 +290,11 @@ const PARTY_SUBS = [
   { id: "organizations", label: "Organizations" },
   { id: "programme", label: "Programme" },
   { id: "religion", label: "Religion" },
+  { id: "formation", label: "Formation" },
+  { id: "foreign_policy", label: "Foreign Policy" },
+  { id: "economy", label: "Economy" },
+  { id: "state_relations", label: "Party & State" },
+  { id: "dissolution", label: "Dissolution" },
 ];
 
 function renderPartySection(container) {
@@ -328,6 +343,11 @@ function switchPartySub(sub) {
   else if (sub === "departments") renderDepartments(out, data);
   else if (sub === "programme") renderProgramme(out, data);
   else if (sub === "religion") renderSectionDoc(out, data);
+  else if (sub === "formation") renderContentDoc(out, data);
+  else if (sub === "foreign_policy") renderForeignPolicy(out, data);
+  else if (sub === "economy") renderEconomy(out, data);
+  else if (sub === "state_relations") renderContentDoc(out, data);
+  else if (sub === "dissolution") renderContentDoc(out, data);
 }
 
 function renderStructure(container, data) {
@@ -530,6 +550,64 @@ function renderProgramme(container, data) {
           : ""
       }
 
+      ${renderSources(data.sources)}
+    </div>
+  `;
+}
+
+function renderContentDoc(container, data) {
+  const paras = (data.content || data.description || "").split(/\n\n+/).filter(Boolean);
+  container.innerHTML = `
+    <div style="margin-top:var(--space-6);max-width:780px">
+      ${data.title ? `<h2 class="nsdap-section-title">${data.title}</h2>` : ""}
+      ${data.description && data.content ? `<p class="nsdap-section-summary"><em>${data.description}</em></p>` : ""}
+      <div class="article-body">
+        ${paras.map((p) => `<p>${p}</p>`).join("")}
+      </div>
+      ${renderSources(data.sources)}
+    </div>
+  `;
+}
+
+function renderForeignPolicy(container, data) {
+  const objectives = data.objectives || [];
+  const milestones = data.milestones || [];
+  container.innerHTML = `
+    <div style="margin-top:var(--space-6);max-width:780px">
+      ${data.title ? `<h2 class="nsdap-section-title">${data.title}</h2>` : ""}
+      ${data.description ? `<p class="nsdap-section-summary"><em>${data.description}</em></p>` : ""}
+      ${objectives.length ? `
+        <h3 style="font-family:var(--font-display);font-size:var(--text-base);color:var(--text-primary);margin:var(--space-6) 0 var(--space-4)">Core Objectives</h3>
+        <ul style="display:flex;flex-direction:column;gap:var(--space-2);padding-left:var(--space-5)">
+          ${objectives.map((o) => `<li style="font-size:var(--text-sm);color:var(--text-secondary);line-height:1.65">${o}</li>`).join("")}
+        </ul>` : ""}
+      ${milestones.length ? `
+        <h3 style="font-family:var(--font-display);font-size:var(--text-base);color:var(--text-primary);margin:var(--space-8) 0 var(--space-4)">Key Milestones</h3>
+        <div style="display:flex;flex-direction:column;gap:0">
+          ${milestones.map((m) => `
+            <div style="display:grid;grid-template-columns:60px 1fr;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--border-dim)">
+              <span style="font-family:var(--font-display);font-size:var(--text-sm);color:var(--gold);padding-top:2px">${m.year}</span>
+              <p style="font-size:var(--text-sm);color:var(--text-secondary);line-height:1.65;margin:0">${m.event}</p>
+            </div>`).join("")}
+        </div>` : ""}
+      ${renderSources(data.sources)}
+    </div>
+  `;
+}
+
+function renderEconomy(container, data) {
+  const policies = data.policies || [];
+  container.innerHTML = `
+    <div style="margin-top:var(--space-6);max-width:780px">
+      ${data.title ? `<h2 class="nsdap-section-title">${data.title}</h2>` : ""}
+      ${data.description ? `<p class="nsdap-section-summary"><em>${data.description}</em></p>` : ""}
+      <div style="display:flex;flex-direction:column;gap:var(--space-5)">
+        ${policies.map((p) => `
+          <div style="padding:var(--space-5) var(--space-6);background:var(--bg-card);border:1px solid var(--border-dim);border-left:3px solid var(--border-gold);border-radius:var(--radius)">
+            <h3 style="font-family:var(--font-display);font-size:var(--text-sm);color:var(--gold-dim);letter-spacing:0.06em;margin-bottom:var(--space-3)">${p.heading}</h3>
+            <p style="font-size:var(--text-sm);color:var(--text-secondary);line-height:1.7;margin:0">${p.text}</p>
+          </div>`).join("")}
+      </div>
       ${renderSources(data.sources)}
     </div>
   `;

@@ -103,6 +103,8 @@ export function createApp(): Application {
   app.get("/letters/:id", servePage("Letters", "record.html"));
   app.get("/articles", servePage("Articles"));
   app.get("/articles/:id", servePage("Articles", "record.html"));
+  app.get("/formations", servePage("Formations"));
+  app.get("/formations/:id", servePage("Formations", "record.html"));
   app.get("/nsdap", servePage("Nsdap"));
   app.get("/about", servePage("About"));
   app.get("/search", servePage("Search"));

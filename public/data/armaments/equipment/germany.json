@@ -11,7 +11,15 @@
     "rate_of_fire": "1,200–1,500 rounds/min",
     "weight_kg": 11.57,
     "image": "/storage/images/armaments/equipment/mg42.jpg",
-    "summary": "The MG 42 was the most effective general-purpose machine gun of the war and is still in service today in modified form. Its exceptionally high rate of fire — up to 1,500 rounds per minute — produced the characteristic tearing sound that earned it the Allied nicknames 'Hitler's Buzzsaw' and 'Bone Saw'. Allied infantry were trained to go to ground immediately upon hearing it. Its quick-change barrel system allowed sustained fire without the barrel overheating."
+    "summary": "The MG 42 was the most effective general-purpose machine gun of the war and is still in service today in modified form. Its exceptionally high rate of fire produced the characteristic tearing sound that earned it the Allied nicknames 'Hitler's Buzzsaw' and 'Bone Saw'. Allied infantry were trained to go to ground immediately upon hearing it.",
+    "sources": [
+      { "ref": "McNab, Chris. The MG 42 Machine Gun. Osprey, 2014." },
+      { "ref": "Weeks, John. Infantry Weapons of World War II. Orbis, 1971." }
+    ],
+    "related_records": [
+      { "id": "stg-44", "title": "Sturmgewehr 44", "type": "Armament", "url": "/armaments/stg-44" },
+      { "id": "kar-98k", "title": "Karabiner 98k", "type": "Armament", "url": "/armaments/kar-98k" }
+    ]
   },
   {
     "id": "stg-44",
@@ -25,7 +33,14 @@
     "rate_of_fire": "500–600 rounds/min",
     "weight_kg": 5.22,
     "units_produced": 425977,
-    "summary": "The StG 44 was the world's first mass-produced assault rifle, combining the controllable automatic fire of a submachine gun with the range and accuracy of a rifle. It defined the concept that nearly every military rifle today — from the AK-47 to the M16 — follows. Hitler initially opposed the project; it was developed partly in secret and presented to him as a 'machine pistol'. He was reportedly impressed by field reports and approved it."
+    "summary": "The StG 44 was the world's first mass-produced assault rifle, combining controllable automatic fire with the range of a rifle. It defined the concept nearly every military rifle today follows. Hitler initially opposed the project; it was developed partly in secret and presented as a 'machine pistol'.",
+    "sources": [
+      { "ref": "Senich, Peter. The German Assault Rifle 1935–1945. Paladin Press, 1987." }
+    ],
+    "related_records": [
+      { "id": "mg-42", "title": "MG 42", "type": "Armament", "url": "/armaments/mg-42" },
+      { "id": "kar-98k", "title": "Karabiner 98k", "type": "Armament", "url": "/armaments/kar-98k" }
+    ]
   },
   {
     "id": "panzerfaust",
@@ -39,7 +54,19 @@
     "penetration_mm": 200,
     "weight_kg": 6.8,
     "units_produced": 8250000,
-    "summary": "The Panzerfaust ('tank fist') was a cheap, single-shot, disposable anti-tank weapon requiring minimal training — a shaped-charge grenade on a wooden tube with a propellant charge. Effective at short range against all Allied tanks, it became the primary anti-tank weapon of German infantry, particularly the Volkssturm in 1945. Its hollow-charge warhead could penetrate up to 200mm of armour."
+    "summary": "The Panzerfaust ('tank fist') was a cheap, single-shot, disposable anti-tank weapon requiring minimal training. Effective at short range against all Allied tanks, it became the primary anti-tank weapon of German infantry, particularly the Volkssturm in 1945.",
+    "dossier": {
+      "photos": [
+        { "type": "image", "images": [ { "src": "/public/images/armaments/equipment/panzerfaust/photos/panzerfaust.webp", "caption": "Panzerfaust anti-tank weapon", "type": "photograph", "historical_status": "Source Unverified — Pending Archival Review", "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed." } ] }
+      ]
+    },
+    "sources": [
+      { "ref": "Fleischer, Wolfgang. German Anti-Tank Weapons. Schiffer, 1999." }
+    ],
+    "related_records": [
+      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" },
+      { "id": "stg-44", "title": "StG 44", "type": "Armament", "url": "/armaments/stg-44" }
+    ]
   },
   {
     "id": "mp-40",
@@ -53,6 +80,72 @@
     "rate_of_fire": "500–550 rounds/min",
     "weight_kg": 4.03,
     "units_produced": 1100000,
-    "summary": "The MP 40 — often incorrectly called the 'Schmeisser' — was the standard submachine gun of German NCOs and vehicle crews. Its all-metal construction and folding stock were innovations for the period. It became an iconic symbol of the German military in wartime film and photography, though it was not as widely issued as often depicted — most German infantry carried the Karabiner 98k bolt-action rifle."
+    "summary": "The MP 40 — often incorrectly called the 'Schmeisser' — was the standard submachine gun of German NCOs and vehicle crews. Its all-metal construction and folding stock were innovations for the period. It became an iconic symbol of the German military in wartime film and photography.",
+    "dossier": {
+      "photos": [
+        { "type": "image", "images": [ { "src": "/public/images/armaments/equipment/mp-40/photos/mp-40.webp", "caption": "MP 40 submachine gun", "description": "Studio photograph showing the weapon's left and right profiles, stock extended, with the wood-and-metal grip frame and curved magazine visible in both views.", "type": "photograph", "historical_status": "Source Unverified — Pending Archival Review", "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed." } ] }
+      ]
+    },
+    "sources": [
+      { "ref": "Weeks, John. Infantry Weapons of World War II. Orbis, 1971." }
+    ],
+    "related_records": [
+      { "id": "stg-44", "title": "StG 44", "type": "Armament", "url": "/armaments/stg-44" },
+      { "id": "kar-98k", "title": "Karabiner 98k", "type": "Armament", "url": "/armaments/kar-98k" }
+    ]
+  },
+  {
+    "id": "kar-98k",
+    "name": "Karabiner 98k",
+    "type": "Infantry Weapon",
+    "nation": "Germany",
+    "category": "Bolt-Action Rifle",
+    "years_of_service": "1935–1945",
+    "manufacturer": "Mauser, Gustloff-Werke, Berlin-Lübecker Maschinenfabrik, others",
+    "caliber": "7.92×57mm Mauser",
+    "action": "Bolt-action, 5-round internal magazine",
+    "effective_range_m": 500,
+    "weight_kg": 3.9,
+    "length_mm": 1107,
+    "units_produced": 14600000,
+    "summary": "The Karabiner 98k was the standard service rifle of the Wehrmacht throughout the Second World War, produced in greater numbers than any other German small arm. A refined version of the Mauser 98 action — the most reliable bolt-action ever designed — it was accurate, robust, and capable of withstanding extreme conditions. Despite being slower to fire than the American M1 Garand semi-automatic rifle, German units equipped with MG 42s compensated at the squad level: the Kar 98k infantryman was ammunition-carrier and fire supporter for the machine gun team. Over 14.6 million were produced.",
+    "sources": [
+      { "ref": "Ball, Robert. Mauser Military Rifles of the World. Krause, 1996." },
+      { "ref": "Law, Richard. Sniper Variations of the German K98k Rifle. Collector Grade Publications, 1996." }
+    ],
+    "related_records": [
+      { "id": "stg-44", "title": "Sturmgewehr 44", "type": "Armament", "url": "/armaments/stg-44" },
+      { "id": "mg-42", "title": "MG 42", "type": "Armament", "url": "/armaments/mg-42" },
+      { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" }
+    ]
+  },
+  {
+    "id": "flak-88",
+    "name": "8.8 cm Flak 18/36/37",
+    "type": "Heavy Artillery",
+    "nation": "Germany",
+    "category": "Anti-Aircraft / Anti-Tank Gun",
+    "years_of_service": "1933–1945",
+    "manufacturer": "Krupp, Rheinmetall",
+    "caliber_mm": 88,
+    "shell_weight_kg": 9.24,
+    "muzzle_velocity_ms": 820,
+    "effective_ceiling_m": 8000,
+    "effective_range_anti_tank_m": 2000,
+    "penetration_mm": 120,
+    "weight_kg": 5000,
+    "units_produced": 21310,
+    "summary": "The '88' — as it was universally known — was perhaps the most feared and versatile weapon of the Second World War. Originally designed as a high-velocity anti-aircraft gun, its first use against tanks in Spain demonstrated devastating anti-armour capability. In the desert, Rommel used them as anti-tank guns when the British Matilda tanks proved impervious to all conventional German anti-tank weapons. No Allied tank was safe from the 88 at any normal combat range — it could penetrate the armour of every tank it faced. The Tiger I tank was designed around its naval variant, the KwK 36. The Flak 88 required a crew of six and was too heavy for frontline portability in anti-tank roles, but its effectiveness against aircraft and armour made it the defining weapon of German tactical doctrine.",
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 10/143: Artillery equipment records — 8.8cm Flak development." },
+      { "ref": "Hogg, Ian. German Artillery of World War Two. Greenhill Books, 1997." },
+      { "ref": "Jentz, Thomas. Panzer Truppen: The Complete Guide to the Creation and Combat Employment of Germany's Tank Force. Schiffer, 1996." }
+    ],
+    "related_records": [
+      { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
+      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" }
+    ]
   }
 ]

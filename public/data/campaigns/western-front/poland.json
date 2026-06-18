@@ -4,16 +4,33 @@
   "theater": "western-front",
   "dates": { "start": "1939-09-01", "end": "1939-10-06" },
   "summary": "The German invasion of Poland on 1 September 1939 began the Second World War in Europe. Using combined-arms tactics — armour, motorised infantry, and air power — Germany defeated Poland in five weeks. A Soviet invasion from the east on 17 September eliminated any possibility of continued resistance.",
+  "context": "Fall Weiss (Case White) was the product of a year of German diplomatic pressure on Poland following the Anschluss and the seizure of Czechoslovakia. The manufactured Gleiwitz Incident on 31 August 1939 — German SS troops in Polish uniforms 'attacking' a German radio station — provided the pretext. German forces struck simultaneously from north (Army Group North, Bock), south (Army Group South, Rundstedt), and west, aiming to encircle Polish forces before they could retreat east. The Polish Air Force — contrary to myth — was not destroyed on the ground on the first day but fought until it was worn down by attrition over two weeks. The Polish 'Plan Z' assumed Franco-British military action in the west would relieve pressure; the Anglo-French declaration of war on 3 September produced no military action. The Soviet invasion on 17 September, under the secret protocol of the Molotov-Ribbentrop Pact, destroyed any possibility of continuing resistance. The campaign directly preceded the NSDAP rearmament programme bearing fruit; it also produced the largest single Polish counterattack of the campaign at the Bzura River.",
   "combatants": {
     "axis": {
       "commanders": ["Gerd von Rundstedt (Army Group South)", "Fedor von Bock (Army Group North)"],
       "strength": "1,500,000 troops, 2,750 tanks, 1,929 aircraft"
     },
     "allied": {
-      "commanders": ["Edward Rydz-Śmigły", "Juliusz Rómmel", "Stefan Dąb-Biernacki"],
-      "strength": "1,000,000 troops, 880 tanks"
+      "commanders": ["Edward Rydz-Śmigły (Supreme Commander)", "Juliusz Rómmel", "Tadeusz Kutrzeba (Poznań Army)"],
+      "strength": "1,000,000 troops, 880 tanks, 400 aircraft"
     }
   },
-  "outcome": "German–Soviet victory. Poland partitioned between Germany and the Soviet Union under the secret protocol of the Molotov-Ribbentrop Pact. Warsaw surrendered 27 September; last organised resistance ended 6 October.",
-  "casualties": { "germany": "~16,000 killed, 30,000 wounded", "poland": "~66,000 killed, ~694,000 captured by Germany, ~230,000 by Soviets" }
+  "outcome": "German–Soviet victory. Poland partitioned between Germany and the Soviet Union under the Molotov-Ribbentrop Pact. Warsaw surrendered 27 September; last organised resistance ended 6 October at Kock.",
+  "casualties": {
+    "germany": "~16,000 killed, 30,000 wounded",
+    "poland": "~66,000 killed, ~694,000 captured by Germany, ~230,000 by Soviets"
+  },
+  "sources": [
+    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 I/31: Heeresgruppe Süd War Diary, September 1939." },
+    { "ref": "Zaloga, Steven and Madej, Victor. The Polish Campaign 1939. Hippocrene, 1985." },
+    { "ref": "Cienciala, Anna, Materski, Wojciech, and Sanford, George. Katyn: A Crime Without Punishment. Yale University Press, 2007.", "note": "Context on the Soviet invasion and its consequences." },
+    { "ref": "Stachiewicz, Wacław. Wierności Dochować Żołnierskiej. Gryf, 1958.", "note": "Polish Chief of Staff memoirs covering campaign planning and execution." }
+  ],
+  "related_records": [
+    { "id": "bzura", "title": "Battle of Bzura", "type": "Campaign", "url": "/campaigns/western-front/bzura" },
+    { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" },
+    { "id": "warsaw", "title": "Warsaw Uprising", "type": "Campaign", "url": "/campaigns/western-front/warsaw" },
+    { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
+    { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" }
+  ]
 }

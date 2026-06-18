@@ -4,10 +4,11 @@
   "theater": "western-front",
   "dates": { "start": "1944-06-06", "end": "1944-08-25" },
   "summary": "The Allied invasion of German-occupied France at Normandy, codenamed Operation Overlord, was the largest seaborne invasion in history. The German defense under Erwin Rommel and Gerd von Rundstedt attempted to repel the invasion at the beaches, but the Allies secured a beachhead and broke out in Operation Cobra.",
-  "background": "Since 1942, both Stalin and the Western Allies pressed for a second front in Western Europe. After campaigns in North Africa and Italy, Operation Overlord was planned for spring 1944. Germany's Atlantic Wall fortifications defended the French coastline, but Rommel and Rundstedt disagreed on how to use the Panzer reserves.",
+  "background": "Since 1942, both Stalin and the Western Allies pressed for a second front in Western Europe. After campaigns in North Africa and Italy, Operation Overlord was planned for spring 1944. Germany's Atlantic Wall fortifications defended the French coastline, but Rommel and Rundstedt disagreed on how to use the Panzer reserves — Rommel wanted them at the beaches; Rundstedt wanted a mobile reserve.",
+  "context": "Operation Overlord succeeded where Dieppe had failed because of systematic lessons learned: extensive naval and air bombardment, artificial Mulberry harbours, an enormous deception plan (Operation Fortitude) that convinced Germany the main landing was at Pas-de-Calais, and an overwhelming material advantage that prevented Germany from reinforcing Normandy in the critical first days. The German high command's dysfunction — Hitler asleep when news of the landings arrived, Panzer reserves requiring his personal release, Rundstedt and Rommel disagreeing on doctrine — gave the Allies irreplaceable hours on 6 June. The subsequent battle in the Bocage hedgerows was attritional and costly; Caen, expected to fall on D-Day, was not secured until 9 July. Operation Cobra broke the deadlock on 25 July with mass bombing and rapid armoured exploitation. The Falaise Pocket in August encircled and shattered the German 7th Army, though a significant portion escaped the closing gap. The letter de-004 documents the experience of a German defender in Normandy.",
   "combatants": {
     "axis": {
-      "commanders": ["Erwin Rommel (Army Group B)", "Gerd von Rundstedt (OB West)", "Friedrich Dollmann (7th Army)", "Walter Model (later)"],
+      "commanders": ["Erwin Rommel (Army Group B)", "Gerd von Rundstedt (OB West)", "Friedrich Dollmann (7th Army)", "Walter Model (from August 1944)"],
       "strength": "380,000 troops in Normandy, 850,000 total in France"
     },
     "allied": {
@@ -23,32 +24,32 @@
     { "name": "Sword", "assault": "3rd Infantry Division (British)", "casualties": "~630" }
   ],
   "phases": [
-    {
-      "name": "D-Day Landings",
-      "dates": "6 June 1944",
-      "description": "Five beaches assaulted simultaneously. Airborne landings behind German lines preceded the seaborne assault. Despite heavy casualties at Omaha Beach, all five beaches were secured."
-    },
-    {
-      "name": "Battle of the Bocage",
-      "dates": "June–July 1944",
-      "description": "Allied forces struggled through the Norman hedgerow country (bocage) against fierce German resistance. Caen, a key objective, was not captured until July 9."
-    },
-    {
-      "name": "Operation Cobra",
-      "dates": "25–31 July 1944",
-      "description": "American breakout from Saint-Lô following carpet bombing. Patton's 3rd Army exploited the gap, beginning the breakout from Normandy."
-    },
-    {
-      "name": "Falaise Pocket",
-      "dates": "12–21 August 1944",
-      "description": "German forces were encircled at Falaise. Though many escaped the closing 'gap', the German Army in Normandy was shattered as a fighting force."
-    }
+    { "name": "D-Day Landings", "dates": "6 June 1944", "description": "Five beaches assaulted simultaneously. Airborne landings behind German lines preceded the seaborne assault. Despite heavy casualties at Omaha Beach, all five beaches were secured." },
+    { "name": "Battle of the Bocage", "dates": "June–July 1944", "description": "Allied forces struggled through the Norman hedgerow country against fierce German resistance. Caen, a key D-Day objective, was not captured until 9 July." },
+    { "name": "Operation Cobra", "dates": "25–31 July 1944", "description": "American breakout from Saint-Lô following carpet bombing. Patton's 3rd Army exploited the gap." },
+    { "name": "Falaise Pocket", "dates": "12–21 August 1944", "description": "German forces encircled at Falaise. Though many escaped the gap, the German Army in Normandy was shattered as a fighting force." }
   ],
-  "outcome": "Allied victory. The liberation of Paris on 25 August 1944 effectively ended the Normandy campaign. The German Army in the West suffered catastrophic losses and retreated to the German border.",
+  "outcome": "Allied victory. Liberation of Paris on 25 August 1944 effectively ended the Normandy campaign. The German Army in the West suffered catastrophic losses and retreated toward Germany.",
   "casualties": {
     "germany": "~200,000 killed or wounded; 200,000 captured",
     "allied": "~209,000 military dead; ~37,000 French civilian deaths"
   },
   "image": "/storage/images/campaigns/normandy.jpg",
-  "significance": "The decisive turning point on the Western Front. The successful Allied landing opened a second major front in Western Europe, forcing Germany to fight on two fronts simultaneously and beginning the liberation of occupied Western Europe."
+  "significance": "The decisive turning point on the Western Front. The successful Allied landing opened a second major front in Western Europe, forcing Germany to fight on two fronts simultaneously.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). WO 205/118: 21st Army Group — Operation Overlord, Planning and Execution Reports, 1944." },
+    { "ref": "Beevor, Antony. D-Day: The Battle for Normandy. Viking, 2009.", "note": "The definitive modern account, incorporating both Allied and German records." },
+    { "ref": "Hastings, Max. Overlord: D-Day and the Battle for Normandy. Simon and Schuster, 1984." },
+    { "ref": "Ryan, Cornelius. The Longest Day. Simon and Schuster, 1959.", "note": "The classic narrative account based on interviews with over 1,000 participants." }
+  ],
+  "related_records": [
+    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+    { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" },
+    { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
+    { "id": "de-004", "title": "Haas — Normandy (1944)", "type": "Letter", "url": "/letters/de-004" },
+    { "id": "dieppe", "title": "Dieppe Raid", "type": "Campaign", "url": "/campaigns/western-front/dieppe" },
+    { "id": "pz-v-panther", "title": "Panzerkampfwagen V Panther", "type": "Armament", "url": "/armaments/pz-v-panther" },
+    { "id": "pz-vi-tiger", "title": "Panzerkampfwagen VI Tiger", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
+    { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" }
+  ]
 }

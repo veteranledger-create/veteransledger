@@ -6,15 +6,17 @@
   aria-labelledby="contact-modal-title">
   <div class="modal archive-modal">
 
-    <!-- Close button -->
-    <button type="button" class="modal__close" id="contact-modal-close" aria-label="Close contact form">
-      <span aria-hidden="true">&times;</span>
-    </button>
-
-    <!-- Modal header: eagle + title -->
+    <!-- Modal header: spacer | eagle + title | close button -->
     <div class="archive-modal__header">
-      <img src="/public/logos/eagle.png" alt="" class="archive-modal__eagle" aria-hidden="true">
-      <h2 class="archive-modal__title" id="contact-modal-title">Contact The Archive</h2>
+      <span class="archive-modal__header-spacer" aria-hidden="true"></span>
+      <div class="archive-modal__header-content">
+        <img src="/public/images/logos/eagle.png" alt="" class="archive-modal__eagle" aria-hidden="true">
+        <h2 class="archive-modal__title" id="contact-modal-title">Contact The Archive</h2>
+      </div>
+      <button type="button" class="modal__close" id="contact-modal-close" aria-label="Close contact form">
+        <img class="modal__close-icon" src="/public/images/icons/navigation/close.svg"
+          alt="" aria-hidden="true" width="24" height="24">
+      </button>
     </div>
 
     <!-- Two-column body -->
@@ -56,22 +58,25 @@
             <span class="contact-form__label-icon" aria-hidden="true">✏</span> SUBJECT
           </label>
           <input type="text" id="contact-subject" name="subject" class="contact-form__input"
-            placeholder="Enter subject…" maxlength="120" required>
+            placeholder="Enter subject…" minlength="15" maxlength="120" required>
         </div>
 
         <div class="contact-form__group">
           <label class="contact-form__label" for="contact-message">
             <span class="contact-form__label-icon" aria-hidden="true">≡</span> MESSAGE
           </label>
+          <p class="contact-form__guidance">
+            Please provide a detailed message including relevant historical information, corrections, archival inquiries, or collaboration details.
+          </p>
           <textarea id="contact-message" name="message" class="contact-form__textarea"
-            placeholder="Type your message here…" minlength="20" maxlength="2000" required></textarea>
-          <p class="contact-form__counter">
-            <span id="contact-char-count">0</span> / 30 minimum characters
+            placeholder="Type your message here…" minlength="500" maxlength="5000" required></textarea>
+          <p class="contact-form__counter" id="contact-counter-display" aria-live="polite">
+            <span id="contact-char-count">0</span> / 500 minimum characters
           </p>
         </div>
 
         <div class="archive-modal__form-footer">
-          <button type="submit" class="btn btn-primary contact-form__submit">
+          <button type="submit" class="btn btn-primary contact-form__submit" disabled>
             Send Message <span aria-hidden="true">›</span>
           </button>
         </div>

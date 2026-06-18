@@ -155,10 +155,10 @@
   gap: var(--space-3);
 }
 
-/* Page-level hero (smaller, for inner pages) */
+/* Page-level hero — unified banner for all archive pages */
 .page-hero {
   position: relative;
-  height: 200px;
+  min-height: 260px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -169,8 +169,9 @@
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
-  filter: grayscale(30%) brightness(0.35) sepia(25%);
+  background-position: center 30%;
+  filter: grayscale(35%) brightness(0.38) sepia(20%);
+  transform: scale(1.02);
 }
 
 .page-hero__overlay {
@@ -178,35 +179,71 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    var(--bg-base) 0%,
-    rgba(8, 8, 6, 0.5) 100%
+    rgba(8, 8, 6, 0.97) 0%,
+    rgba(8, 8, 6, 0.62) 45%,
+    rgba(8, 8, 6, 0.22) 100%
   );
 }
 
 .page-hero__content {
   position: relative;
   z-index: 2;
-  padding: var(--space-8) var(--space-10);
+  padding: var(--space-5) var(--space-10) var(--space-8);
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .page-hero__content {
-    padding: var(--space-6) var(--space-5);
+    padding: var(--space-5) var(--space-6) var(--space-8);
   }
+}
+@media (max-width: 640px) {
+  .page-hero {
+    min-height: 200px;
+  }
+  .page-hero__content {
+    padding: var(--space-4) var(--space-5) var(--space-6);
+  }
+}
+
+.page-hero__eyebrow {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.page-hero__eyebrow::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: var(--border-gold);
 }
 
 .page-hero__title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-primary);
+  line-height: 1.1;
 }
 
 .page-hero__subtitle {
+  font-family: var(--font-body);
   font-size: var(--text-sm);
+  font-weight: 400;
   color: var(--gold);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+/* Divider rule below the hero, into the content area */
+.page-hero + * {
+  border-top: 1px solid var(--border-dim);
 }

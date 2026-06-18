@@ -27,11 +27,12 @@
   position: relative;
   width: 100%;
   max-width: 680px;
+  max-height: 90dvh;
   background: #1a1208;
   border: 1px solid #3d2a0a;
   border-radius: var(--radius);
   box-shadow: 0 20px 80px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,168,76,0.08);
-  overflow: hidden;
+  overflow-y: auto;
   animation: modal-slide-in 0.3s cubic-bezier(0.16,1,0.3,1);
 }
 
@@ -40,37 +41,48 @@
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Close button */
+/* Close button — lives inside the header grid */
 .modal__close {
-  position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
-  z-index: 10;
-  width: 30px;
-  height: 30px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  color: #7a6040;
-  font-size: 20px;
-  line-height: 1;
   background: transparent;
   border: 1px solid #3d2a0a;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast);
+  flex-shrink: 0;
 }
-.modal__close:hover { color: var(--gold); border-color: var(--gold-dim); }
+.modal__close:hover { border-color: var(--gold-dim); }
+.modal__close-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  filter: brightness(0) invert(1) opacity(0.4);
+  transition: filter var(--transition-fast);
+}
+.modal__close:hover .modal__close-icon {
+  filter: brightness(0) invert(1) sepia(0.6) saturate(3) hue-rotate(5deg) brightness(0.85);
+}
 
-/* ── Header: eagle + title ──────────────────────────────────── */
+/* ── Header: spacer | eagle + title | close button ─────────── */
 .archive-modal__header {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  gap: 0;
+  padding: var(--space-6) var(--space-6) var(--space-5);
+  border-bottom: 1px solid #2a1c06;
+  background: #141008;
+}
+.archive-modal__header-spacer { /* left counterbalance, keeps title centered */ }
+.archive-modal__header-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-8) var(--space-8) var(--space-5);
-  border-bottom: 1px solid #2a1c06;
-  background: #141008;
 }
 
 .archive-modal__eagle {
@@ -99,7 +111,52 @@
 }
 
 @media (max-width: 560px) {
+  .archive-modal {
+    max-height: 88dvh;
+    margin: 0;
+  }
   .archive-modal__body { grid-template-columns: 1fr; }
+  .archive-modal__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-5) 72px var(--space-4) var(--space-6);
+    position: relative;
+  }
+  .archive-modal__header-spacer { display: none; }
+  .archive-modal__header-content { gap: var(--space-2); }
+  .modal__close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    transform: none;
+    width: 44px;
+    height: 44px;
+  }
+  .archive-modal__eagle {
+    width: 32px;
+    height: 32px;
+  }
+  .archive-modal__title {
+    font-size: var(--text-sm);
+    letter-spacing: 0.14em;
+  }
+  .archive-modal__info {
+    padding: var(--space-4) var(--space-4);
+    border-right: none;
+    border-bottom: 1px solid #2a1c06;
+  }
+  .archive-modal__stamp { display: none; }
+  .archive-modal__form {
+    padding: var(--space-4) var(--space-4);
+  }
+  .contact-form__group {
+    margin-bottom: var(--space-3);
+  }
+  .contact-form__textarea {
+    min-height: 70px;
+  }
 }
 
 /* ── Left info panel ────────────────────────────────────────── */
@@ -236,11 +293,20 @@
   resize: vertical;
 }
 
+.contact-form__guidance {
+  font-size: 11px;
+  color: #5a4828;
+  line-height: 1.55;
+  margin: 0 0 6px;
+  font-style: italic;
+}
+
 .contact-form__counter {
   font-size: 10px;
   color: #4a3820;
   text-align: right;
   margin-top: 4px;
+  transition: color 0.2s;
 }
 
 /* Form footer: submit button */
@@ -289,6 +355,121 @@
   background: rgba(40,10,10,0.5);
   border: 1px solid #4a1515;
   color: #d06060;
+}
+
+/* ── Attribution modal — single-column variant of the archive modal,
+   surfacing title/source/license/credit/archive/year for a media item
+   only when its info icon is clicked. ─────────────────────────────── */
+.attribution-modal { max-width: 440px; }
+.attribution-modal__body {
+  padding: var(--space-6) var(--space-6);
+  background: #141008;
+}
+.attribution-modal__list { margin: 0; }
+.attribution-modal__row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid #2a1c06;
+}
+.attribution-modal__row:last-child { border-bottom: none; }
+.attribution-modal__row dt {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a6040;
+  margin: 0;
+}
+.attribution-modal__row dd {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #c8b888;
+  margin: 0;
+}
+.attribution-modal__empty {
+  margin: 0;
+  font-size: 12px;
+  font-style: italic;
+  color: #6a5838;
+}
+/* Historical Status gets a warmer accent — it's the one row whose entire
+   purpose is to stop an AI reconstruction from being mistaken for an
+   original wartime image, so it shouldn't blend in with the rest. */
+.attribution-modal__row--status {
+  border-left: 2px solid #8a6a30;
+  padding-left: var(--space-3);
+  margin-top: 4px;
+}
+.attribution-modal__row--status dt { color: #b08a3a; }
+.attribution-modal__row--status dd { color: #d4b86a; }
+
+/* ── Image lightbox — full-screen viewer for any dossier image, with
+   wheel-zoom and click-drag panning. Deliberately plainer than the archive
+   modal (no header bar, no card chrome) since its only job is showing the
+   picture as large and unobstructed as possible. ───────────────────── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(4, 3, 2, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  animation: overlay-fade-in 0.2s ease;
+}
+.lightbox-overlay[hidden] { display: none; }
+.lightbox-stage {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.05s ease-out;
+  touch-action: none;
+  user-select: none;
+}
+.lightbox-caption {
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 640px;
+}
+.lightbox-caption[hidden] { display: none; }
+.lightbox-close {
+  appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 18, 12, 0.6);
+  border: 1px solid #3d2a0a;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+.lightbox-close:hover { border-color: var(--gold-dim); }
+.lightbox-close img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
 }
 
 /* ── Cookie banner ──────────────────────────────────────────── */

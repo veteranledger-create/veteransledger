@@ -5,6 +5,7 @@
   "dates": { "start": "1941-08-23", "end": "1941-09-26" },
   "summary": "The Battle of Kiev was the largest encirclement in military history. German Army Group South, reinforced by Guderian's Panzer Group 2 swinging south from Army Group Centre, encircled four Soviet armies east of Kiev in a pocket that yielded over 660,000 prisoners.",
   "background": "Hitler's controversial decision to divert Guderian's Panzers south toward Kiev rather than continuing toward Moscow created the conditions for the encirclement. Guderian and the Army General Staff opposed the decision; Hitler overruled them, and the Kiev operation produced the war's most devastating single encirclement.",
+  "context": "The Kiev decision remains one of the most debated command choices of the war. Hitler's Directive No. 34a (21 August 1941) halted the Moscow advance and redirected Army Group Centre's Panzer strength south to eliminate the Soviet South-West Front before winter. The Army General Staff, Guderian, and Halder all argued that Moscow should be the priority. The operation vindicated Hitler tactically — it produced the war's single largest encirclement — but cost six weeks that proved critical: the delay left Operation Typhoon starting too late to capture Moscow before winter.",
   "combatants": {
     "axis": {
       "commanders": ["Gerd von Rundstedt (Army Group South)", "Heinz Guderian (Panzer Group 2)", "Ewald von Kleist (Panzer Group 1)"],
@@ -16,5 +17,17 @@
     }
   },
   "outcome": "Catastrophic Soviet defeat. 665,212 prisoners taken — the largest single encirclement in history. The four Soviet armies of the South-West Front were effectively destroyed. General Kirponos was killed attempting to break out.",
-  "casualties": { "germany": "~100,000 killed or wounded", "soviet": "~616,000–700,000 killed, wounded, or captured; 3,718 guns, 884 tanks lost" }
+  "casualties": { "germany": "~100,000 killed or wounded", "soviet": "~616,000–700,000 killed, wounded, or captured; 3,718 guns, 884 tanks lost" },
+  "sources": [
+    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 I: Heeresgruppe Süd War Diary, August–September 1941." },
+    { "ref": "Guderian, Heinz. Panzer Leader. Michael Joseph, 1952.", "note": "Guderian's own account of his protest against the Kiev diversion." },
+    { "ref": "Glantz, David M. and House, Jonathan. When Titans Clashed. University Press of Kansas, 1995." },
+    { "ref": "Stahel, David. Kiev 1941: Hitler's Battle for Supremacy in the East. Cambridge University Press, 2012." }
+  ],
+  "related_records": [
+    { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+    { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" },
+    { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" },
+    { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" }
+  ]
 }

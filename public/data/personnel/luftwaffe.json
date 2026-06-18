@@ -14,7 +14,14 @@
     "aircraft": ["Junkers Ju 87 Stuka", "Focke-Wulf Fw 190"],
     "kills": 9,
     "tank_kills": 519,
-    "campaigns": ["eastern-front", "barbarossa"]
+    "campaigns": ["eastern-front", "barbarossa"],
+    "sources": [
+      { "ref": "Rudel, Hans-Ulrich. Stuka Pilot. Euphorion Books, 1952." }
+    ],
+    "related_records": [
+      { "id": "ju-87-stuka", "title": "Junkers Ju 87 Stuka", "type": "Armament", "url": "/armaments/ju-87-stuka" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" }
+    ]
   },
   {
     "id": "erich-hartmann",
@@ -30,7 +37,15 @@
     "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
     "aircraft": ["Messerschmitt Bf 109"],
     "kills": 352,
-    "campaigns": ["eastern-front"]
+    "campaigns": ["eastern-front"],
+    "sources": [
+      { "ref": "Toliver, Raymond and Constable, Trevor. Horrido! Fighter Aces of the Luftwaffe. Macmillan, 1968." },
+      { "ref": "Spick, Mike. Luftwaffe Fighter Aces. Ivy Books, 1996." }
+    ],
+    "related_records": [
+      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" },
+      { "id": "gerhard-barkhorn", "title": "Gerhard Barkhorn", "type": "Personnel", "url": "/personnel/gerhard-barkhorn" }
+    ]
   },
   {
     "id": "adolf-galland",
@@ -46,7 +61,16 @@
     "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
     "aircraft": ["Bf 109", "Fw 190", "Me 262"],
     "kills": 104,
-    "campaigns": ["spain", "britain", "western-front"]
+    "campaigns": ["spain", "britain", "western-front"],
+    "sources": [
+      { "ref": "Galland, Adolf. The First and the Last. Methuen, 1955.", "note": "Galland's memoir; essential account of the Luftwaffe fighter war." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "me-262", "title": "Messerschmitt Me 262", "type": "Armament", "url": "/armaments/me-262" },
+      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" },
+      { "id": "werner-molders", "title": "Werner Mölders", "type": "Personnel", "url": "/personnel/werner-molders" }
+    ]
   },
   {
     "id": "werner-molders",
@@ -62,7 +86,15 @@
     "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
     "aircraft": ["Bf 109"],
     "kills": 115,
-    "campaigns": ["spain", "poland", "britain", "eastern-front"]
+    "campaigns": ["spain", "poland", "britain", "eastern-front"],
+    "sources": [
+      { "ref": "Spick, Mike. Luftwaffe Fighter Aces. Ivy Books, 1996." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" },
+      { "id": "adolf-galland", "title": "Adolf Galland", "type": "Personnel", "url": "/personnel/adolf-galland" }
+    ]
   },
   {
     "id": "walter-nowotny",
@@ -78,7 +110,14 @@
     "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
     "aircraft": ["Bf 109", "Fw 190", "Me 262"],
     "kills": 258,
-    "campaigns": ["eastern-front"]
+    "campaigns": ["eastern-front"],
+    "sources": [
+      { "ref": "Obermaier, Ernst. Die Ritterkreuzträger der Luftwaffe. Dieter Hoffmann, 1966." }
+    ],
+    "related_records": [
+      { "id": "me-262", "title": "Messerschmitt Me 262", "type": "Armament", "url": "/armaments/me-262" },
+      { "id": "erich-hartmann", "title": "Erich Hartmann", "type": "Personnel", "url": "/personnel/erich-hartmann" }
+    ]
   },
   {
     "id": "joseph-kammhuber",
@@ -94,6 +133,90 @@
     "awards": ["Knight's Cross with Oak Leaves"],
     "aircraft": ["Bf 110", "He 219"],
     "kills": 0,
-    "campaigns": ["britain", "western-front"]
+    "campaigns": ["britain", "western-front"],
+    "sources": [
+      { "ref": "Price, Alfred. Instruments of Darkness: The History of Electronic Warfare 1939–1945. William Kimber, 1967." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "hermann-goring", "title": "Hermann Göring", "type": "Personnel", "url": "/personnel/hermann-goring" }
+    ]
+  },
+  {
+    "id": "hermann-goring",
+    "name": "Hermann Göring",
+    "rank": "Reichsmarschall",
+    "branch": "luftwaffe",
+    "portrait": "/storage/images/veterans/luftwaffe/goring.jpg",
+    "born": "1893-01-12",
+    "died": "1946-10-15",
+    "birthplace": "Rosenheim, Bavaria",
+    "biography": "World War I fighter ace with 22 kills and last commander of the Richthofen Flying Circus; one of the earliest and most senior members of the Nazi Party. Founded the Gestapo and built the Luftwaffe from nothing. His catastrophic overconfidence — promising to supply the Stalingrad pocket by air, promising to defeat Britain from the air alone — was a decisive factor in Germany's defeat. Convicted at Nuremberg on all four counts and sentenced to death; committed suicide with a hidden cyanide capsule two hours before his scheduled hanging.",
+    "commands": ["Luftwaffe (Commander-in-Chief)", "Luftflotte 1", "Reich Air Ministry"],
+    "awards": ["Pour le Mérite (WWI)", "Knight's Cross", "Grand Cross of the Iron Cross"],
+    "aircraft": ["Fokker D.VII (WWI)"],
+    "kills": 22,
+    "campaigns": ["spain", "poland", "britain", "eastern-front"],
+    "sources": [
+      { "type": "primary", "ref": "National Archives (US). RG 238: Nuremberg Tribunal Records — Göring's testimony, October–November 1945." },
+      { "ref": "Overy, Richard. Goering: The 'Iron Man'. Routledge and Kegan Paul, 1984.", "note": "The definitive scholarly biography; essential for understanding Göring's role in Luftwaffe strategy." },
+      { "ref": "Manvell, Roger and Fraenkel, Heinrich. Göring. Simon and Schuster, 1962." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
+      { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" },
+      { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
+      { "id": "joseph-kammhuber", "title": "Josef Kammhuber", "type": "Personnel", "url": "/personnel/joseph-kammhuber" }
+    ]
+  },
+  {
+    "id": "hugo-sperrle",
+    "name": "Hugo Sperrle",
+    "rank": "Generalfeldmarschall",
+    "branch": "luftwaffe",
+    "portrait": "/storage/images/veterans/luftwaffe/sperrle.jpg",
+    "born": "1885-02-07",
+    "died": "1953-04-02",
+    "birthplace": "Ludwigsburg, Württemberg",
+    "biography": "Commanded the Condor Legion in the Spanish Civil War — the first large-scale use of air power in support of ground operations, including the bombing of Guernica. Commanded Luftflotte 3 during the Battle of Britain and the subsequent Blitz on British cities. He was the last Luftwaffe general to remain in France after D-Day before being dismissed by Hitler. Acquitted at the Nuremberg High Command Trial in 1948.",
+    "commands": ["Condor Legion", "Luftflotte 3"],
+    "awards": ["Knight's Cross"],
+    "campaigns": ["spain", "france", "britain"],
+    "sources": [
+      { "ref": "Proctor, Raymond. Hitler's Luftwaffe in the Spanish Civil War. Greenwood Press, 1983." },
+      { "ref": "Bungay, Stephen. The Most Dangerous Enemy: A History of the Battle of Britain. Aurum Press, 2000." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
+      { "id": "he-111", "title": "Heinkel He 111", "type": "Armament", "url": "/armaments/he-111" },
+      { "id": "hermann-goring", "title": "Hermann Göring", "type": "Personnel", "url": "/personnel/hermann-goring" }
+    ]
+  },
+  {
+    "id": "gerhard-barkhorn",
+    "name": "Gerhard Barkhorn",
+    "rank": "Major",
+    "branch": "luftwaffe",
+    "portrait": "/storage/images/veterans/luftwaffe/barkhorn.jpg",
+    "born": "1919-03-20",
+    "died": "1983-01-08",
+    "birthplace": "Königsberg, East Prussia",
+    "biography": "The second highest scoring fighter ace in aviation history with 301 confirmed aerial victories — all achieved on the Eastern Front. He flew more than 1,100 combat missions over five years with JG 52, the most successful fighter wing in history. Unlike Hartmann, Barkhorn's career included commanding a squadron and acting Geschwaderkommodore. He survived the war, served in the postwar Bundesluftwaffe, and was killed with his wife in a traffic accident in 1983.",
+    "commands": ["JG 52", "JG 6"],
+    "awards": ["Knight's Cross with Oak Leaves and Swords"],
+    "aircraft": ["Bf 109"],
+    "kills": 301,
+    "campaigns": ["eastern-front", "barbarossa"],
+    "sources": [
+      { "ref": "Spick, Mike. Luftwaffe Fighter Aces. Ivy Books, 1996." },
+      { "ref": "Barbas, Bernd. Die Geschichte der I. Gruppe des Jagdgeschwaders 52. Selbstverlag, 2005." }
+    ],
+    "related_records": [
+      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" },
+      { "id": "erich-hartmann", "title": "Erich Hartmann", "type": "Personnel", "url": "/personnel/erich-hartmann" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" }
+    ]
   }
 ]

@@ -4,10 +4,23 @@
   "theater": "africa",
   "dates": { "start": "1942-05-26", "end": "1942-06-21" },
   "summary": "Rommel's most brilliant victory in Africa. By outflanking the Gazala Line and drawing the British armour into piecemeal counterattacks, he destroyed three British armoured brigades, captured the fortress of Tobruk in one day, and drove the 8th Army back to El Alamein.",
+  "context": "The Gazala Line — a series of fortified 'boxes' connected by minefields stretching 64 km from Gazala on the coast to Bir Hakeim in the desert — was the 8th Army's defensive position in Cyrenaica by May 1942. Rommel had been building strength for a new offensive since his repulse in Operation Crusader the previous December. His plan was to fix the Allies along the northern part of the line while sending the Afrika Korps in a wide sweep around the southern end at Bir Hakeim, then cut off and destroy the British armour. The operation nearly went catastrophically wrong when the sweep was ambushed and Rommel found himself surrounded, but British command failures allowed him to recover and deliver a crushing series of blows.",
   "combatants": {
     "axis": { "commanders": ["Erwin Rommel"], "strength": "Panzerarmee Afrika: ~90,000 troops, 560 tanks" },
     "allied": { "commanders": ["Neil Ritchie", "Claude Auchinleck"], "strength": "8th Army: ~100,000 troops, 843 tanks" }
   },
   "outcome": "Decisive Axis victory. Tobruk fell on 21 June 1942 with 33,000 Allied prisoners — Churchill called it 'a bitter moment. Defeat is one thing; disgrace is another.' Rommel was promoted to Generalfeldmarschall the same day.",
-  "casualties": { "axis": "~3,360 killed, ~3,100 wounded", "allied": "~50,000 killed, wounded, or captured" }
+  "casualties": { "axis": "~3,360 killed, ~3,100 wounded", "allied": "~50,000 killed, wounded, or captured" },
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). WO 201/396: Operations in Western Desert, May–June 1942." },
+    { "ref": "Barnett, Correlli. The Desert Generals. Viking, 1960." },
+    { "ref": "Forty, George. Afrika Korps at War, Vol. 2. Ian Allan, 1978." },
+    { "ref": "Rommel, Erwin. The Rommel Papers. Edited by B.H. Liddell Hart. Collins, 1953." }
+  ],
+  "related_records": [
+    { "id": "alamein-1", "title": "First Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-1" },
+    { "id": "tobruk", "title": "Siege of Tobruk", "type": "Campaign", "url": "/campaigns/africa/tobruk" },
+    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+    { "id": "pz-iv", "title": "Panzerkampfwagen IV", "type": "Armament", "url": "/armaments/pz-iv" }
+  ]
 }

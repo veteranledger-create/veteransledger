@@ -72,7 +72,7 @@ function render(root, p) {
           ${born ? `b. ${born}` : ""}${born && died ? " · " : ""}${died ? `d. ${died}` : ""}
         </p>
       </div>
-      <img class="record-portrait" src="${portrait}" alt="${p.name || ""}" onerror="this.src='${PLACEHOLDER}'">
+      <img class="record-portrait" src="${portrait}" alt="${p.name || ""}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
     </header>
 
     ${p.biography ? `<blockquote class="record-summary">${p.biography}</blockquote>` : ""}

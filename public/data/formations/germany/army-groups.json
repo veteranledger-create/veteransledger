@@ -1,0 +1,307 @@
+[
+  {
+    "id": "army-group-north",
+    "name": "Heeresgruppe Nord (Army Group North)",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Army Group",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-06-22", "to": "1945-01" },
+    "commanders": [
+      { "name": "Generalfeldmarschall Wilhelm Ritter von Leeb", "period": "Jun–Jan 1942" },
+      { "name": "Generalfeldmarschall Georg von Küchler", "period": "Jan 1942–Jan 1944" },
+      { "name": "Generalfeldmarschall Walter Model", "period": "Jan–Mar 1944" },
+      { "name": "Generaloberst Georg Lindemann", "period": "Mar–Jul 1944" },
+      { "name": "Generalfeldmarschall Ferdinand Schörner", "period": "Jul 1944–Jan 1945" }
+    ],
+    "peak_strength": "725,000 (June 1941)",
+    "summary": "Army Group North was one of three army groups that invaded the Soviet Union on 22 June 1941. Its objective was the Baltic states and ultimately Leningrad — cradle of the Russian Revolution and second city of the Soviet Union. It reached the outskirts of Leningrad in September 1941 and maintained the siege for 872 days.",
+    "context": "Army Group North achieved its initial objectives with remarkable speed — Riga fell on 1 July, Pskov on 9 July, Novgorod on 19 August 1941. The failure to take Leningrad by direct assault led to one of the longest and most murderous sieges in modern history. The city was partially encircled from September 1941 and completely cut off by land from October 1941 to January 1943, when Operation Iskra opened the Ladoga corridor. The full siege was lifted only on 27 January 1944, after 872 days — at a cost of approximately one million Soviet civilian dead from starvation, bombardment, and cold, and several hundred thousand Soviet military casualties. The army group was progressively stripped of forces for other theaters; by 1944 it faced massive Soviet offensives that drove it back to Courland, where it was encircled and held out until the German surrender.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Army Group North was one of the three principal field-army commands assembled for Operation Barbarossa, the German invasion of the Soviet Union launched on 22 June 1941. It belonged to the Heer's highest echelon of organization — an army group sat above individual armies and corps, coordinating multiple field armies across an entire strategic sector of the front, in this case the Baltic axis running from East Prussia through Lithuania, Latvia, and Estonia toward Leningrad."
+      },
+      {
+        "type": "text",
+        "text": "It was created specifically for Barbarossa's northern thrust, built around the 16th and 18th Armies together with Panzer Group 4, and tasked with destroying Soviet forces in the Baltic states before driving on Leningrad — a city of immense symbolic and industrial importance as the cradle of the Bolshevik revolution and the Soviet Union's second-largest city. Its operational area placed it furthest north of the three army groups, fighting in terrain of forests, lakes, and marshland markedly different from the open steppe its counterparts to the south encountered."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, Army Group North represents the northern of the three Barbarossa army groups, and its record is dominated by a single, defining episode: the siege of Leningrad, one of the longest and most destructive urban sieges of the twentieth century, which this record documents in detail below."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "The Drive to Leningrad",
+        "text": "Army Group North achieved its initial objectives with remarkable speed — Riga fell on 1 July, Pskov on 9 July, Novgorod on 19 August 1941. Soviet resistance in the Baltic states collapsed faster than almost anywhere else along the front, and by early September German forces had reached the outskirts of Leningrad itself."
+      },
+      {
+        "type": "text",
+        "title": "The Siege",
+        "text": "The failure to take Leningrad by direct assault led to one of the longest and most murderous sieges in modern history. The city was partially encircled from September 1941 and completely cut off by land from October 1941 to January 1943, when Operation Iskra opened a narrow corridor along the shore of Lake Ladoga. The full siege was lifted only on 27 January 1944, after 872 days — at a cost of approximately one million Soviet civilian dead from starvation, bombardment, and cold, and several hundred thousand Soviet military casualties."
+      },
+      {
+        "type": "text",
+        "title": "Decline and Collapse",
+        "text": "The army group was progressively stripped of forces to reinforce other theaters as the war turned against Germany, and by 1944 it faced massive Soviet offensives that drove it back through the Baltic states to the Courland Peninsula in Latvia, where it was cut off by the advancing Red Army and held out — entirely isolated from the rest of the German front — until the general German surrender in May 1945."
+      }
+    ],
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 III: Army Group North operational files, 1941–1944." },
+      { "ref": "Glantz, David. The Siege of Leningrad, 1941–1944: 900 Days of Terror. Cassell, 2001." },
+      { "ref": "Ziemke, Earl. Stalingrad to Berlin: The German Defeat in the East. Army Historical Series, 1968." }
+    ],
+    "related_records": [
+      { "id": "leningrad", "title": "Siege of Leningrad", "type": "Campaign", "url": "/campaigns/eastern-front/leningrad" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
+      { "id": "carl-mannerheim", "title": "Carl Mannerheim", "type": "Personnel", "url": "/personnel/carl-mannerheim" }
+    ]
+  },
+  {
+    "id": "army-group-centre",
+    "name": "Heeresgruppe Mitte (Army Group Centre)",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Army Group",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-06-22", "to": "1945-04" },
+    "commanders": [
+      { "name": "Generalfeldmarschall Fedor von Bock", "period": "Jun–Dec 1941" },
+      { "name": "Generalfeldmarschall Günther von Kluge", "period": "Dec 1941–Oct 1943" },
+      { "name": "Generalfeldmarschall Ernst Busch", "period": "Oct 1943–Jun 1944" },
+      { "name": "Generalfeldmarschall Walter Model", "period": "Jun–Aug 1944" },
+      { "name": "Generalfeldmarschall Ferdinand Schörner / others", "period": "1944–1945" }
+    ],
+    "peak_strength": "1,800,000 (June 1941)",
+    "constituent_divisions": [
+      { "id": "panzergruppe-2", "title": "Panzergruppe 2 (Guderian)", "url": "/formations/panzergruppe-2" }
+    ],
+    "summary": "Army Group Centre was the largest and most powerful of the three army groups in Operation Barbarossa, with the primary objective of capturing Moscow. It achieved the greatest encirclements in the history of warfare — at Białystok-Minsk and Vyazma-Bryansk — before being halted 30 kilometres from Moscow in December 1941. It was catastrophically destroyed in Operation Bagration (June–August 1944), the greatest single defeat of the Wehrmacht.",
+    "context": "Army Group Centre's advance in 1941 was staggering in scope. The Białystok-Minsk encirclement (June–July 1941) captured 290,000 prisoners; Smolensk (July–August) yielded 310,000; Vyazma-Bryansk (October) added another 663,000. By the time the army group stood before Moscow in December 1941, it had advanced 1,000 kilometres and captured over 1.5 million prisoners — but had also suffered 400,000 casualties it could not fully replace. The Soviet counteroffensive of December 1941 drove it back 100–300 kilometres. It remained on the offensive again in 1943 but was never able to replicate its 1941 successes. Operation Bagration (23 June–19 August 1944) destroyed 28 of its 34 divisions, killed or captured 300,000 German troops, and is considered the greatest military catastrophe in German history — larger than Stalingrad.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Army Group Centre was the largest and most heavily resourced of the three army groups committed to Operation Barbarossa, reflecting Hitler's and OKH's judgement that the central axis through Belarus toward Moscow was the war's decisive front. It commanded the 4th, 9th, and (initially) 2nd Armies together with Panzer Groups 2 and 3 — the single greatest concentration of German armour assembled for the invasion."
+      },
+      {
+        "type": "text",
+        "text": "Its mission was unambiguous: destroy the Red Army's forces in Belarus and western Russia, then capture Moscow, the Soviet capital and its principal rail and industrial hub. The army group's commanders — Bock initially, then a succession of Hitler's most senior field marshals — pursued this objective with a single-mindedness that produced both the largest encirclement victories of the war and, ultimately, its largest single defeat."
+      },
+      {
+        "type": "text",
+        "text": "In this archive, Army Group Centre sits as the central of the three 1941 invasion army groups, and its trajectory — from the most spectacular German successes of the war to the catastrophic destruction of Operation Bagration in 1944 — makes it one of the clearest single records through which to trace the rise and collapse of German fortunes on the Eastern Front."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "The Encirclement Battles of 1941",
+        "text": "Army Group Centre's advance in 1941 was staggering in scope. The Białystok-Minsk encirclement (June–July 1941) captured 290,000 prisoners; Smolensk (July–August) yielded 310,000; Vyazma-Bryansk (October) added another 663,000. By the time the army group stood before Moscow in December 1941, it had advanced 1,000 kilometres and captured over 1.5 million prisoners — but had also suffered 400,000 casualties it could not fully replace."
+      },
+      {
+        "type": "text",
+        "title": "Stalled Before Moscow",
+        "text": "The Soviet counteroffensive of December 1941, launched while German forces were exhausted, under-supplied for winter, and overextended, drove the army group back 100–300 kilometres from the gates of the capital. It remained on the offensive again in 1943 but was never able to replicate the scale of its 1941 successes as Soviet strength grew and German reserves dwindled."
+      },
+      {
+        "type": "text",
+        "title": "Operation Bagration",
+        "text": "Operation Bagration (23 June–19 August 1944), the Soviet summer offensive timed to coincide with the Normandy landings, destroyed 28 of the army group's 34 divisions and killed or captured some 300,000 German troops. It is considered the greatest military catastrophe in German history — larger in scale than Stalingrad — and effectively ended Army Group Centre as a coherent fighting force for the remainder of the war."
+      }
+    ],
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 II: Army Group Centre operational files, 1941–1944." },
+      { "ref": "Glantz, David and House, Jonathan. When Titans Clashed: How the Red Army Stopped Hitler. University Press of Kansas, 1995." },
+      { "ref": "Megargee, Geoffrey. War of Annihilation: Combat and Genocide on the Eastern Front, 1941. Rowman and Littlefield, 2006." }
+    ],
+    "related_records": [
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" },
+      { "id": "fedor-von-bock", "title": "Fedor von Bock", "type": "Personnel", "url": "/personnel/fedor-von-bock" },
+      { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
+      { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" }
+    ]
+  },
+  {
+    "id": "army-group-south",
+    "name": "Heeresgruppe Süd (Army Group South)",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Army Group",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-06-22", "to": "1944-04" },
+    "commanders": [
+      { "name": "Generalfeldmarschall Gerd von Rundstedt", "period": "Jun–Dec 1941" },
+      { "name": "Generalfeldmarschall Walter von Reichenau", "period": "Dec 1941–Jan 1942" },
+      { "name": "Generalfeldmarschall Fedor von Bock", "period": "Jan–Jul 1942" },
+      { "name": "Generalfeldmarschall Erich von Manstein", "period": "Feb 1943–Mar 1944" },
+      { "name": "Generalfeldmarschall Walter Model", "period": "Mar–Apr 1944 (renamed Army Group North Ukraine)" }
+    ],
+    "peak_strength": "780,000 (June 1941)",
+    "summary": "Army Group South drove through Ukraine in 1941, encircling and destroying Soviet forces at Kiev in the largest encirclement battle in history. It was subsequently split and reconstituted in multiple configurations as operations evolved. Under Manstein in 1943 it achieved the stunning Third Battle of Kharkov — the last major German victory on the Eastern Front.",
+    "context": "The Kiev encirclement of September 1941, achieved against Hitler's directive to keep pushing toward Moscow, captured 665,000 Soviet prisoners — the largest encirclement in military history. Army Group South subsequently drove into southern Ukraine. In late 1942, it became Army Groups A and B for Operation Blue and the drive toward the Caucasus and Stalingrad. After Stalingrad, Manstein's reconstituted Army Group South executed the masterful 'backhand blow' at Kharkov in February–March 1943, destroying two Soviet armies that had overextended in pursuit. At Kursk in July 1943, the southern pincer made the deeper penetration before Operation Citadel was called off. By early 1944, continuous Soviet pressure had forced the army group back toward the Dnieper and beyond; Manstein was relieved by Hitler in March 1944.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Army Group South was the southernmost of the three German army groups committed to Operation Barbarossa, responsible for the invasion's Ukrainian axis. It was built around the 6th, 11th, and 17th Armies along with Panzer Group 1, and — reflecting the multinational character of the war in this sector — incorporated Romanian and later Hungarian and Italian forces fighting alongside it."
+      },
+      {
+        "type": "text",
+        "text": "Its objective was to destroy Soviet forces in Ukraine and seize the region's agricultural and industrial resources, above all the Donbas coalfields and the wheat-producing steppe. Unlike Army Groups North and Centre, which fought largely static campaigns after 1941, Army Group South was repeatedly reorganised, split, and renamed as the war's geography shifted — it generated Army Groups A and B for the 1942 drive to the Caucasus and Stalingrad, then was reconstituted under Manstein for the 1943 fighting around Kharkov and Kursk."
+      },
+      {
+        "type": "text",
+        "text": "Because of this administrative fluidity, Army Group South's record in this archive should be read alongside its successor and sibling commands — Army Group B, the 6th Army, and the various Panzer armies that operated under its authority at different points — rather than as a single unbroken command lineage."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Kiev, 1941",
+        "text": "The Kiev encirclement of September 1941, achieved against Hitler's own initial preference for pushing directly toward Moscow, captured 665,000 Soviet prisoners — the largest encirclement in military history. Army Group South subsequently drove on into southern Ukraine, exploiting the scale of the Soviet collapse in the sector."
+      },
+      {
+        "type": "text",
+        "title": "Stalingrad and the Caucasus",
+        "text": "In late 1942, the command structure split into Army Groups A and B for Operation Blue and the drive toward the Caucasus oilfields and Stalingrad — a division of forces across two divergent objectives that historians have long identified as a critical strategic overreach."
+      },
+      {
+        "type": "text",
+        "title": "Manstein's Reconstitution and the Backhand Blow",
+        "text": "After the disaster at Stalingrad, Manstein's reconstituted Army Group South executed the masterful 'backhand blow' at Kharkov in February–March 1943, destroying two Soviet armies that had overextended in pursuit of the retreating Germans. At Kursk that July, the southern pincer under Army Group South's command made the deeper penetration of the two German thrusts before Operation Citadel was called off."
+      },
+      {
+        "type": "text",
+        "title": "Decline and Dissolution",
+        "text": "By early 1944, continuous Soviet pressure had forced the army group back toward the Dnieper and beyond; Manstein, whose operational skill had repeatedly stabilised the southern front, was relieved by Hitler in March 1944 over disagreements about strategy, and the command was subsequently renamed Army Group North Ukraine as the front continued its westward collapse."
+      }
+    ],
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 I: Army Group South operational files, 1941–1944." },
+      { "ref": "Manstein, Erich von. Lost Victories. Methuen, 1958.", "note": "Manstein's own account of his command of AGS." },
+      { "ref": "Nipe, George. Decision in the Ukraine. J.J. Fedorowicz, 1996." }
+    ],
+    "related_records": [
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "kiev", "title": "Battle of Kiev", "type": "Campaign", "url": "/campaigns/eastern-front/kiev" },
+      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
+      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
+      { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" },
+      { "id": "erich-von-manstein", "title": "Erich von Manstein", "type": "Personnel", "url": "/personnel/erich-von-manstein" },
+      { "id": "fedor-von-bock", "title": "Fedor von Bock", "type": "Personnel", "url": "/personnel/fedor-von-bock" },
+      { "id": "hermann-hoth", "title": "Hermann Hoth", "type": "Personnel", "url": "/personnel/hermann-hoth" }
+    ]
+  },
+  {
+    "id": "army-group-africa",
+    "name": "Heeresgruppe Afrika (Army Group Africa)",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Army Group",
+    "theater": "North Africa",
+    "active": { "from": "1943-02-23", "to": "1943-05-13" },
+    "commanders": [
+      { "name": "Generaloberst Hans-Jürgen von Arnim", "period": "Mar–May 1943" }
+    ],
+    "predecessor": "Panzerarmee Afrika (Rommel)",
+    "peak_strength": "275,000 (Axis total; includes Italian forces)",
+    "summary": "Army Group Africa was the final Axis command in North Africa, created from the remnants of Rommel's Panzerarmee Afrika and Italian forces in Tunisia. It surrendered on 13 May 1943 — the largest Axis defeat in the West until that point, with 275,000 prisoners taken.",
+    "context": "Army Group Africa existed for less than three months. Formed in February 1943 from Panzerarmee Afrika and the Italian 1st Army, it was a desperate holding force for the Tunisian bridgehead. Rommel had left Africa sick in March. Von Arnim — an able defensive commander but lacking Rommel's aggressiveness — could not prevent the Anglo-American pincer from collapsing the bridgehead. The surrender on 13 May 1943 cost the Axis 275,000 men — equivalent to the losses at Stalingrad — and ended the North African campaign. Churchill called it the 'Tunisgrad'. Mussolini's Italy never recovered strategically.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Army Group Africa was a short-lived but consequential command, created in February 1943 to unify the remaining German and Italian forces in Tunisia under a single headquarters after the long retreat from El Alamein. It absorbed what remained of Rommel's Panzerarmee Afrika together with the Italian 1st Army, making it — unusually for a German army group — a genuinely joint Axis command rather than a purely German one."
+      },
+      {
+        "type": "text",
+        "text": "It existed for less than three months, its sole strategic purpose being to hold the Tunisian bridgehead for as long as possible against the converging British 8th Army advancing from the east and the Anglo-American 1st Army advancing from Algeria in the west. Within this archive it represents the final chapter of the North African campaign — the formation that inherited Rommel's army after his own departure from the theater, and the one that ultimately surrendered it."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Formation and Command",
+        "text": "Army Group Africa existed for less than three months. Formed in February 1943 from Panzerarmee Afrika and the Italian 1st Army, it was a desperate holding force for the Tunisian bridgehead. Rommel had left Africa sick in March 1943, handing command to von Arnim — an able defensive commander but one lacking Rommel's aggressiveness and reputation."
+      },
+      {
+        "type": "text",
+        "title": "The Tunisian Collapse",
+        "text": "Von Arnim could not prevent the Anglo-American pincer from collapsing the bridgehead. The surrender on 13 May 1943 cost the Axis 275,000 men — a toll equivalent to the losses at Stalingrad — and ended the North African campaign entirely. Churchill referred to the defeat as 'Tunisgrad' in deliberate echo of the disaster in the East, and Mussolini's Italy never recovered strategically from the loss of its African empire and the bulk of its remaining field army."
+      }
+    ],
+    "sources": [
+      { "ref": "Howe, George. Northwest Africa: Seizing the Initiative in the West. Center of Military History, 1957." },
+      { "ref": "Mitcham, Samuel and von Stauffenberg, Friedrich. The Battle of Sicily. Orion, 1991." }
+    ],
+    "related_records": [
+      { "id": "hans-jurgen-von-arnim", "title": "Hans-Jürgen von Arnim", "type": "Personnel", "url": "/personnel/hans-jurgen-von-arnim" },
+      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+      { "id": "alamein-2", "title": "Second Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-2" },
+      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" }
+    ]
+  },
+  {
+    "id": "army-group-b",
+    "name": "Heeresgruppe B (Army Group B)",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Army Group",
+    "theater": "Western Front",
+    "active": { "from": "1943-07", "to": "1945-04-21" },
+    "commanders": [
+      { "name": "Generalfeldmarschall Erwin Rommel", "period": "Nov 1943–Jul 1944 (Normandy)" },
+      { "name": "Generalfeldmarschall Günther von Kluge", "period": "Jul–Aug 1944" },
+      { "name": "Generalfeldmarschall Walter Model", "period": "Aug 1944–Apr 1945" }
+    ],
+    "peak_strength": "c. 800,000 (June 1944, all theater)",
+    "summary": "Army Group B commanded German forces in France and the Low Countries, including during the Normandy landings, the retreat through France, Operation Market Garden, and the Ardennes offensive. Its last commander, Model, held the Ruhr pocket until his suicide on 21 April 1945.",
+    "context": "Rommel commanded Army Group B during the critical period of preparation for the Allied invasion and the Normandy battle itself. His disagreement with von Rundstedt (OB West) over the deployment of the Panzer reserve — Rommel wanted it near the beaches, Rundstedt further back — proved fatal; the reserve was held back and committed piecemeal. Rommel was wounded by an Allied aircraft on 17 July 1944. Under Kluge and then Model, the army group conducted an increasingly desperate defence. Model's conduct of the Arnhem battle (Market Garden) — utilising Bittrich's II SS Panzer Corps to defeat the British 1st Airborne — was his finest defensive achievement in the West. The Ardennes offensive (Wacht am Rhein) was Model's command; its failure left German forces unable to mount further major counteroffensives. In April 1945 some 325,000 German troops were encircled in the Ruhr pocket; Model dissolved the army group and shot himself on 21 April 1945.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Army Group B was the principal German command on the Western Front for the latter half of the war, formed in mid-1943 and given responsibility for the defence of France and the Low Countries against the long-anticipated Allied invasion. It belonged to OB West's broader command structure alongside Army Group G in southern France, and at its height controlled the bulk of German armoured and infantry strength facing the Western Allies."
+      },
+      {
+        "type": "text",
+        "text": "Its history falls into three distinct phases that this record traces in sequence: the defensive preparations and the Normandy battle under Rommel; the fighting retreat through France and the defence against Operation Market Garden under Kluge and then Model; and the final catastrophe of the Ardennes offensive and the Ruhr encirclement under Model, ending with the army group's dissolution and its last commander's suicide in April 1945."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, Army Group B is the principal point of reference for the German side of the campaign in north-west Europe from 1944 onward, connecting directly to the formations, personnel, and campaigns most associated with Normandy, Market Garden, and the Battle of the Bulge."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Rommel and the Atlantic Wall",
+        "text": "Rommel commanded Army Group B during the critical period of preparation for the Allied invasion and the Normandy battle itself. His disagreement with von Rundstedt, the overall commander in the West (OB West), over the deployment of the Panzer reserve — Rommel wanted it positioned close to the beaches to counterattack immediately, Rundstedt preferred holding it further back for a more concentrated response — proved fatal to German prospects when the invasion came; the reserve was held back and ultimately committed piecemeal, achieving neither commander's intent. Rommel himself was severely wounded by an Allied aircraft strafing his car on 17 July 1944, removing him from command at a decisive moment."
+      },
+      {
+        "type": "text",
+        "title": "Market Garden and the Defence of the West",
+        "text": "Under Kluge and then Model, the army group conducted an increasingly desperate fighting retreat through France. Model's conduct of the battle for Arnhem during Operation Market Garden — utilising Wilhelm Bittrich's II SS Panzer Corps, refitting nearby almost by chance, to defeat the British 1st Airborne Division — stands as his finest defensive achievement in the West and one of the most consequential German tactical successes of the late war."
+      },
+      {
+        "type": "text",
+        "title": "The Ardennes and the End",
+        "text": "The Ardennes offensive (Wacht am Rhein, December 1944) was conducted under Model's command as Army Group B's last major operation; its failure left German forces in the West unable to mount any further significant counteroffensive. In April 1945, some 325,000 German troops were encircled in the Ruhr pocket as American forces closed in from multiple directions. Recognising the situation as hopeless, Model dissolved the army group on his own authority and took his own life on 21 April 1945, rather than surrender or face capture."
+      }
+    ],
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 IX: Army Group B (West) operational records, 1944–1945." },
+      { "ref": "Beevor, Antony. D-Day: The Battle for Normandy. Viking, 2009." },
+      { "ref": "Kershaw, Robert. It Never Snows in September. Ian Allen, 1990." }
+    ],
+    "related_records": [
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" },
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
+      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+      { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
+      { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" }
+    ]
+  }
+]

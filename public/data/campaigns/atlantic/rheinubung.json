@@ -4,6 +4,7 @@
   "theater": "atlantic",
   "dates": { "start": "1941-05-18", "end": "1941-05-27" },
   "summary": "Operation Rheinübung was the sortie of the battleship Bismarck and heavy cruiser Prinz Eugen into the Atlantic to attack Allied convoys. The operation ended with the sinking of HMS Hood and the destruction of the Bismarck nine days after she sailed.",
+  "context": "Bismarck, the most powerful battleship in the world at the time of her commissioning, was intended as the centrepiece of German surface fleet commerce raiding strategy. Combined with the battlecruisers Scharnhorst and Gneisenau already at Brest, a successful Atlantic sortie could threaten Britain's supply lines in a way that U-boats alone could not. The operation's failure — and the loss of the Tirpitz's sister ship — convinced Hitler that risking capital ships in offensive operations was unacceptable. The German surface fleet thereafter played a largely defensive role. Fleet Commander Admiral Lütjens made a critical error by sending a long radio message on 25 May that allowed British forces to triangulate Bismarck's position after she had successfully broken contact.",
   "combatants": {
     "axis": { "commanders": ["Günther Lütjens (Fleet Commander)"], "ships": ["Bismarck", "Prinz Eugen"] },
     "allied": { "commanders": ["John Tovey (Home Fleet)"], "ships": ["HMS Hood", "HMS Prince of Wales", "HMS King George V", "HMS Ark Royal", "HMS Rodney"] }
@@ -15,5 +16,18 @@
     { "date": "27 May 1941", "event": "HMS King George V and HMS Rodney shell Bismarck into a burning wreck. She sinks; 2,086 killed, 115 survivors." }
   ],
   "outcome": "Allied victory. Bismarck destroyed; Prinz Eugen escaped to Brest. The operation ended German hopes of disrupting Atlantic supply lines with surface raiders.",
-  "casualties": { "germany": "2,086 of Bismarck's 2,221 crew killed", "allied": "~1,418 killed (primarily HMS Hood)" }
+  "casualties": { "germany": "2,086 of Bismarck's 2,221 crew killed", "allied": "~1,418 killed (primarily HMS Hood)" },
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). ADM 234/324: Battle Summary No. 5 — The Chase and Sinking of Bismarck." },
+    { "ref": "Ballantyne, Iain. Killing the Bismarck. Pen and Sword, 2010." },
+    { "ref": "Mullenheim-Rechberg, Burkard von. Battleship Bismarck: A Survivor's Story. Naval Institute Press, 1980.", "note": "First-hand account by Bismarck's senior surviving officer." },
+    { "ref": "Garzke, William H. and Dulin, Robert O. Battleships: Axis and Neutral Battleships in World War II. Naval Institute Press, 1985." }
+  ],
+  "related_records": [
+    { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
+    { "id": "gunther-lutjens", "title": "Günther Lütjens", "type": "Personnel", "url": "/personnel/gunther-lutjens" },
+    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" },
+    { "id": "bismarck", "title": "Bismarck", "type": "Armament", "url": "/armaments/bismarck" },
+    { "id": "tirpitz", "title": "Tirpitz", "type": "Armament", "url": "/armaments/tirpitz" }
+  ]
 }

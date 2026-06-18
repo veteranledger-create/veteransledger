@@ -107,51 +107,66 @@ function initContactModal() {
   if (!modal || modal.dataset.wired) return;
   modal.dataset.wired = "1";
 
-  const closeBtn = document.getElementById("contact-modal-close");
-  const form = document.getElementById("contact-form");
-  const msgInput = document.getElementById("contact-message");
-  const charCount = document.getElementById("contact-char-count");
-  const status = document.getElementById("contact-status");
+  const closeBtn      = document.getElementById("contact-modal-close");
+  const form          = document.getElementById("contact-form");
+  const msgInput      = document.getElementById("contact-message");
+  const subjectInput  = document.getElementById("contact-subject");
+  const counterEl     = document.getElementById("contact-counter-display");
+  const status        = document.getElementById("contact-status");
+  const submitBtn     = form?.querySelector("[type='submit']");
 
-  const close = () => {
-    modal.hidden = true;
-  };
+  const MIN_SUBJECT = 15;
+  const MIN_MESSAGE = 500;
+  const MAX_MESSAGE = 5000;
+
+  const close = () => { modal.hidden = true; };
 
   if (closeBtn) closeBtn.addEventListener("click", close);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) close();
-  });
+  modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
   document.addEventListener("keydown", (e) => {
     if (!modal.hidden && e.key === "Escape") close();
   });
 
-  if (msgInput && charCount) {
-    msgInput.addEventListener("input", () => {
-      charCount.textContent = msgInput.value.length;
-    });
+  function updateState() {
+    const msgLen     = msgInput?.value.length ?? 0;
+    const subjectLen = subjectInput?.value.trim().length ?? 0;
+    const ready      = msgLen >= MIN_MESSAGE && subjectLen >= MIN_SUBJECT;
+
+    if (counterEl) {
+      if (msgLen >= MIN_MESSAGE) {
+        counterEl.innerHTML =
+          `<span style="color:#70b070;font-weight:600">${msgLen}</span> / ${MAX_MESSAGE} ✓`;
+      } else {
+        counterEl.innerHTML =
+          `<span style="font-weight:600">${msgLen}</span> / ${MIN_MESSAGE} minimum characters`;
+      }
+    }
+
+    if (submitBtn) submitBtn.disabled = !ready;
   }
+
+  if (msgInput)     msgInput.addEventListener("input",  updateState);
+  if (subjectInput) subjectInput.addEventListener("input", updateState);
 
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      if (status) {
-        status.className = "contact-form__status";
-        status.textContent = "";
-      }
+      if (status) { status.className = "contact-form__status"; status.textContent = ""; }
 
-      const subject = document.getElementById("contact-subject")?.value.trim();
-      const message = msgInput?.value.trim();
+      const subject = subjectInput?.value.trim() ?? "";
+      const message = msgInput?.value.trim() ?? "";
 
-      if (!subject) {
-        showStatus("Please enter a subject.", "error");
+      if (subject.length < MIN_SUBJECT) {
+        showStatus(`Subject must be at least ${MIN_SUBJECT} characters.`, "error");
+        subjectInput?.focus();
         return;
       }
-      if (!message || message.length < 20) {
-        showStatus("Message must be at least 20 characters.", "error");
+      if (message.length < MIN_MESSAGE) {
+        showStatus(`Message must be at least ${MIN_MESSAGE} characters.`, "error");
+        msgInput?.focus();
         return;
       }
 
-      const submitBtn = form.querySelector("[type='submit']");
       if (submitBtn) submitBtn.disabled = true;
 
       try {
@@ -162,18 +177,11 @@ function initContactModal() {
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || "Send failed");
-        showStatus(
-          "Message sent successfully. We'll respond within 14 days.",
-          "success",
-        );
+        showStatus("Message sent successfully. We'll respond within 14 days.", "success");
         form.reset();
-        if (charCount) charCount.textContent = "0";
+        updateState();
       } catch (err) {
-        showStatus(
-          err.message || "Failed to send. Please email us directly.",
-          "error",
-        );
-      } finally {
+        showStatus(err.message || "Failed to send. Please email us directly.", "error");
         if (submitBtn) submitBtn.disabled = false;
       }
     });

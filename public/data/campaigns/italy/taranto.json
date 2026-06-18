@@ -2,22 +2,38 @@
   "id": "taranto",
   "title": "Battle of Taranto",
   "subtitle": "The First Carrier Airstrike in History",
+  "theater": "italy",
+  "dates": { "start": "1940-11-11", "end": "1940-11-12" },
   "date_start": "1940-11-11",
   "date_end": "1940-11-12",
   "theatre": "Mediterranean — Taranto Harbour, Italy",
   "combatants": {
-    "axis": "Italy (Regia Marina — battleships Littorio, Conte di Cavour, Caio Duilio, cruisers, destroyers)",
-    "allied": "United Kingdom (HMS Illustrious — 21 Swordfish torpedo bombers, 2 waves)"
+    "axis": {
+      "commanders": ["Inigo Campioni (Regia Marina)"],
+      "strength": "6 battleships, 7 cruisers, 8 destroyers in Taranto harbour"
+    },
+    "allied": {
+      "commanders": ["Andrew Cunningham (C-in-C Mediterranean Fleet)", "Lumley Lyster (HMS Illustrious)"],
+      "strength": "HMS Illustrious — 21 Swordfish torpedo bombers in 2 waves"
+    }
   },
-  "commanders": {
-    "axis": "Ammiraglio di Squadra Inigo Campioni",
-    "allied": "Vice Admiral Andrew Cunningham (C-in-C Mediterranean Fleet)"
-  },
-  "summary": "On the night of 11–12 November 1940, Fleet Air Arm Swordfish biplane torpedo bombers from HMS Illustrious attacked the Italian fleet at anchor in Taranto harbour. In two waves, they sank the battleship Conte di Cavour and severely damaged Littorio and Caio Duilio. With 21 aircraft, the Royal Navy achieved what the entire German surface fleet and Luftwaffe had failed to do — halving the effective Italian Battle Fleet at a cost of only two Swordfish. The remaining Italian fleet withdrew to Naples. The Japanese Naval Air Force studied the attack intensively; Admiral Yamamoto used it as the template for the Pearl Harbor attack 13 months later.",
+  "summary": "On the night of 11–12 November 1940, Fleet Air Arm Swordfish biplane torpedo bombers from HMS Illustrious attacked the Italian fleet at anchor in Taranto harbour. In two waves they sank the battleship Conte di Cavour and severely damaged Littorio and Caio Duilio. With 21 aircraft the Royal Navy achieved what the entire German surface fleet and Luftwaffe had failed to do — halving the effective Italian Battle Fleet at a cost of only two Swordfish.",
+  "context": "By late 1940 Italian battleships at Taranto threatened British convoy routes to Malta and Egypt. The plan to attack the fleet at anchor in harbour — code-named Operation Judgement — had been in preparation since 1938. Photo-reconnaissance flights in the preceding weeks confirmed the positions of the Italian ships and the location of the defensive net. The attack exploited Italian overconfidence in torpedo defences that were deemed adequate for the known harbour depth. The 21 Swordfish flew in two waves from HMS Illustrious at night, using parachute flares to illuminate targets. The results stunned both navies: three battleships disabled, the Italian fleet forced to withdraw to Naples, and British Mediterranean strategic position transformed. Japanese naval attachés in Rome reported to Tokyo within 24 hours; the attack was studied intensively by Isoroku Yamamoto's planning staff and shaped the concept of the Pearl Harbor attack 13 months later.",
   "casualties": {
-    "axis": "59 killed, 600 wounded; 3 battleships damaged (1 sunk for the duration)",
+    "axis": "59 killed, 600 wounded; 3 battleships damaged (Conte di Cavour permanently, Littorio and Caio Duilio for 5–6 months)",
     "allied": "2 aircraft lost, 2 crew killed, 2 captured"
   },
-  "outcome": "Decisive British victory",
-  "significance": "The first naval battle decided exclusively by air power. Changed the strategic balance in the Mediterranean; directly influenced the Japanese attack on Pearl Harbor."
+  "outcome": "Decisive British victory. Italian fleet withdrew to Naples. Strategic balance in the Mediterranean shifted decisively in Britain's favour.",
+  "significance": "The first naval battle decided exclusively by carrier air power. The attack directly influenced the Japanese planning for Pearl Harbor — the shallow-water torpedo modifications developed for Taranto were adopted by the Imperial Japanese Navy.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). ADM 199/832: Report of Proceedings — Attack on Italian Fleet at Taranto, November 1940." },
+    { "ref": "Wragg, David. Swordfish: The Story of the Taranto Raid. Weidenfeld and Nicolson, 2003." },
+    { "ref": "Lowry, Thomas and Wellham, John. The Attack on Taranto: Blueprint for Pearl Harbor. Stackpole, 1995.", "note": "Draws the explicit connection between Taranto and the Japanese operation." },
+    { "ref": "Cunningham, Andrew. A Sailor's Odyssey. Hutchinson, 1951.", "note": "First-hand account from the C-in-C Mediterranean." }
+  ],
+  "related_records": [
+    { "id": "isoroku-yamamoto", "title": "Isoroku Yamamoto", "type": "Personnel", "url": "/personnel/isoroku-yamamoto" },
+    { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
+    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
+  ]
 }

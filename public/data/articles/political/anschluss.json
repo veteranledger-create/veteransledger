@@ -26,5 +26,16 @@
       "type": "paragraph",
       "text": "Britain and France protested diplomatically but took no action. Mussolini, who had previously threatened military action to protect Austrian independence, had since aligned with Germany and offered his support. The League of Nations proved impotent. The annexation demonstrated that the Western powers would not oppose Hitler's expansion within what he defined as the German ethnic sphere."
     }
+  ],
+  "archival_note": "Austrian diplomatic and police records from 1938 are held in the Österreichisches Staatsarchiv (Vienna), Archiv der Republik series. German Foreign Ministry documents on the Anschluss are in the Auswärtiges Amt records, partly available in the Documents on German Foreign Policy (DGFP) Series D, Volume I.",
+  "sources": [
+    { "type": "primary", "ref": "Österreichisches Staatsarchiv, Vienna. Archiv der Republik — Bundeskanzleramt: Anschluss documentation, February–April 1938." },
+    { "ref": "Brook-Shepherd, Gordon. The Austrians: A Thousand-Year Odyssey. HarperCollins, 1996.", "note": "Covers the political crisis leading to the Anschluss in depth." },
+    { "ref": "Bukey, Evan Burr. Hitler's Austria: Popular Sentiment in the Nazi Era. University of North Carolina Press, 2000.", "note": "Analyses Austrian popular attitudes using local administrative records." },
+    { "ref": "Gedye, G.E.R. Fallen Bastions: The Central European Tragedy. Gollancz, 1939.", "note": "Eyewitness account by a journalist in Vienna during the annexation." }
+  ],
+  "related_records": [
+    { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
+    { "id": "poland-1939", "title": "The Invasion of Poland, 1939", "type": "Article", "url": "/articles/military/poland-1939" }
   ]
 }

@@ -4,6 +4,7 @@
   "theater": "eastern-front",
   "dates": { "start": "1942-06-28", "end": "1942-11-19" },
   "summary": "Fall Blau was Germany's 1942 strategic offensive in the Soviet Union, aimed at capturing the Caucasus oilfields and the Volga at Stalingrad. Initial advances were spectacular, but the decision to pursue both objectives simultaneously overstretched German forces and led directly to the Stalingrad disaster.",
+  "context": "After the failure of Barbarossa to knock out the Soviet Union in 1941 and the catastrophic losses of the winter, Germany could no longer sustain a war of attrition. Fall Blau was designed as a war-winning stroke aimed at the economic foundations of Soviet power: the oilfields of the Caucasus. Without Caucasian oil, Germany calculated, the Soviet war machine would grind to a halt within a year. The operation began brilliantly — Soviet forces had not yet recovered from winter fighting — but Hitler's fatal July decision to split Army Group South into two independent commands pursuing two diverging objectives (Caucasus and Stalingrad) simultaneously guaranteed that neither received sufficient force to achieve decisive results.",
   "objectives": ["Capture Caucasus oilfields (Baku, Maikop, Grozny)", "Reach the Volga at Stalingrad to cut Soviet supply lines"],
   "combatants": {
     "axis": { "commanders": ["Fedor von Bock (initially)", "Wilhelm List", "Friedrich Paulus (6th Army)"], "strength": "Army Group South split into Army Groups A and B" },
@@ -11,5 +12,17 @@
   },
   "fatal_decision": "In late July 1942, Hitler split Army Group South into Army Group A (Caucasus) and Army Group B (Stalingrad). Pursuing both objectives simultaneously — with an ever-widening front — left both forces insufficient to achieve decisive results and stretched supply lines beyond breaking point.",
   "outcome": "Initial German advances were dramatic; Maikop oilfields captured (though destroyed before capture). However, German forces became bogged down in Stalingrad's urban fighting while the Caucasus thrust stalled in the mountains. Operation Uranus (November 1942) encircled the 6th Army at Stalingrad, ending Case Blue in catastrophe.",
-  "casualties": { "germany": "Enormous — folded into Stalingrad accounting", "soviet": "Staggering losses in summer retreats before stabilisation" }
+  "casualties": { "germany": "Enormous — folded into Stalingrad accounting", "soviet": "Staggering losses in summer retreats before stabilisation" },
+  "sources": [
+    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VI: Heeresgruppe B War Diary, 1942." },
+    { "ref": "Hayward, Joel S.A. Stopped at Stalingrad: The Luftwaffe and Hitler's Defeat in the East, 1942–43. University Press of Kansas, 1998." },
+    { "ref": "Glantz, David M. and House, Jonathan. Armageddon in Stalingrad. University Press of Kansas, 2009." },
+    { "ref": "Beevor, Antony. Stalingrad. Viking, 1998." }
+  ],
+  "related_records": [
+    { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
+    { "id": "caucasus", "title": "Caucasus Campaign", "type": "Campaign", "url": "/campaigns/eastern-front/caucasus" },
+    { "id": "friedrich-paulus", "title": "Friedrich Paulus", "type": "Personnel", "url": "/personnel/friedrich-paulus" },
+    { "id": "erich-von-manstein", "title": "Erich von Manstein", "type": "Personnel", "url": "/personnel/erich-von-manstein" }
+  ]
 }

@@ -5,6 +5,7 @@
   "dates": { "start": "1939-09-03", "end": "1945-05-08" },
   "summary": "The longest continuous military campaign of World War II, the Battle of the Atlantic was the struggle between Allied convoys and the German U-boat fleet for control of the vital sea lanes connecting North America to Britain and the Soviet Union.",
   "background": "Britain was entirely dependent on imports for food, fuel, and raw materials. Germany recognised that sinking enough Allied shipping could starve Britain into surrender before the United States could enter the war and change the balance of forces. Dönitz's U-boats were the primary instrument of this strategy.",
+  "context": "Churchill later wrote that the Battle of the Atlantic was 'the only thing that ever really frightened me' during the war. Britain imported approximately 50 million tons of goods per year; Dönitz calculated that sinking 700,000 tons of shipping per month would be enough to strangle British imports below the minimum required for survival. At their peak in 1942, U-boats came close to achieving this rate. The battle was ultimately decided by technology — centimetric radar, HF/DF (Huff-Duff) radio direction finding, ULTRA Enigma decryption, and the closure of the mid-Atlantic 'Air Gap' by very long-range aircraft — rather than numbers of ships or submarines.",
   "phases": [
     {
       "name": "The Happy Time (Die Glückliche Zeit)",
@@ -36,5 +37,18 @@
   },
   "outcome": "Allied victory. While U-boats continued to operate until the war's end and inflicted losses throughout, the Allies successfully maintained the supply lines essential to sustaining Britain and supplying the Soviet Union.",
   "image": "/storage/images/campaigns/atlantic.jpg",
-  "significance": "Churchill later wrote that the only thing that truly frightened him during the war was the U-boat peril. The Battle of the Atlantic was the strategic foundation upon which Allied victory in Europe was built — without it, D-Day could not have occurred."
+  "significance": "Churchill later wrote that the only thing that truly frightened him during the war was the U-boat peril. The Battle of the Atlantic was the strategic foundation upon which Allied victory in Europe was built — without it, D-Day could not have occurred.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). ADM 199/2058: Battle of the Atlantic — Monthly Anti-Submarine Reports, 1942–1945." },
+    { "ref": "Morison, Samuel Eliot. History of United States Naval Operations in World War II, Vol. 1: The Battle of the Atlantic. Little, Brown, 1947." },
+    { "ref": "Milner, Marc. The Battle of the Atlantic. Tempus, 2003." },
+    { "ref": "Blair, Clay. Hitler's U-Boat War: The Hunters, 1939–1942. Random House, 1996." }
+  ],
+  "related_records": [
+    { "id": "convoy-war", "title": "The Convoy War", "type": "Campaign", "url": "/campaigns/atlantic/convoy-war" },
+    { "id": "uboat-campaign", "title": "U-Boat Campaign", "type": "Campaign", "url": "/campaigns/atlantic/uboat-campaing" },
+    { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" },
+    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" },
+    { "id": "type-viic-uboat", "title": "Type VIIC U-Boat", "type": "Armament", "url": "/armaments/type-viic-uboat" }
+  ]
 }

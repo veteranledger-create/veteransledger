@@ -42,5 +42,18 @@
   "death_sentences": 12,
   "acquittals": 3,
   "life_sentences": 3,
-  "prison_sentences": 4
+  "prison_sentences": 4,
+  "archival_note": "Primary trial documents — indictments, testimony transcripts, and evidence submissions — are preserved in the National Archives (US), RG 238 (Records of the Office of the United States Chief Counsel for War Crimes). A complete digitised collection is maintained by the Avalon Project at Yale Law School.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (US). RG 238: Records of the International Military Tribunal, Nuremberg, 1945–1946. Trial Transcripts, Volumes I–XLII." },
+    { "ref": "Tusa, Ann and Tusa, John. The Nuremberg Trial. Macmillan, 1983.", "note": "The standard scholarly account, drawing extensively on trial transcripts." },
+    { "ref": "Taylor, Telford. The Anatomy of the Nuremberg Trials. Knopf, 1992.", "note": "By the lead US Nuremberg prosecutor; covers both the IMT and subsequent trials." },
+    { "ref": "Maguire, Peter. Law and War: An American Story. Columbia University Press, 2001." }
+  ],
+  "related_records": [
+    { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
+    { "id": "july-20", "title": "The July 20 Plot", "type": "Article", "url": "/articles/political/july-20" },
+    { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" },
+    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
+  ]
 }

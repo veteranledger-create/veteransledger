@@ -1,0 +1,17 @@
+{
+  "categories": [
+    { "id": "germany-army-groups", "label": "Army Groups",   "service": "Heer",         "nation": "Germany", "section": "army-groups", "file": "/public/data/formations/germany/army-groups.json"  },
+    { "id": "germany-armies",      "label": "Armies",        "service": "Heer",         "nation": "Germany", "section": "armies",      "file": "/public/data/formations/germany/armies.json"        },
+    { "id": "germany-corps",       "label": "Corps",         "service": "Various",      "nation": "Germany", "section": "corps",       "file": "/public/data/formations/germany/corps.json"         },
+    { "id": "germany-divisions",   "label": "Divisions",     "service": "Heer",         "nation": "Germany", "section": "divisions",   "file": "/public/data/formations/germany/divisions.json"     },
+    { "id": "germany-ss",          "label": "Waffen-SS",     "service": "Waffen-SS",    "nation": "Germany", "section": "waffen-ss",   "file": "/public/data/formations/germany/ss.json"            },
+    { "id": "volunteer-units",     "label": "Volunteers",    "service": "Various",      "nation": "Various", "section": "volunteers",  "file": "/public/data/formations/volunteer-formations.json"  },
+    { "id": "germany-brigades",    "label": "Brigades",      "service": "Various",      "nation": "Germany", "section": "brigades",    "file": "/public/data/formations/germany/brigades.json"      },
+    { "id": "germany-regiments",   "label": "Regiments",     "service": "Various",      "nation": "Germany", "section": "regiments",   "file": "/public/data/formations/germany/regiments.json"     },
+    { "id": "germany-battalions",  "label": "Battalions",    "service": "Various",      "nation": "Germany", "section": "battalions",  "file": "/public/data/formations/germany/battalions.json"    },
+    { "id": "germany-companies",   "label": "Companies",     "service": "Various",      "nation": "Germany", "section": "companies",   "file": "/public/data/formations/germany/companies.json"     },
+    { "id": "germany-luftflotte",  "label": "Luftwaffe",     "service": "Luftwaffe",    "nation": "Germany", "section": "luftwaffe",   "file": "/public/data/formations/germany/luftflotte.json"    },
+    { "id": "germany-naval",       "label": "Kriegsmarine",  "service": "Kriegsmarine", "nation": "Germany", "section": "kriegsmarine","file": "/public/data/formations/germany/naval.json"         },
+    { "id": "axis-allies",         "label": "Axis Allies",   "service": "Allied Axis",  "nation": "Various", "section": "allies",      "file": "/public/data/formations/allies/allies.json"         }
+  ]
+}

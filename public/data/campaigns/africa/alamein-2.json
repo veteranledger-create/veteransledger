@@ -4,11 +4,25 @@
   "theater": "africa",
   "dates": { "start": "1942-10-23", "end": "1942-11-11" },
   "summary": "The Second Battle of El Alamein was the decisive engagement in the North African campaign. Under General Montgomery, the British 8th Army launched a set-piece offensive that shattered Rommel's Panzerarmee Afrika and began a pursuit that would not end until Tunisia.",
+  "context": "Following Rommel's defeat at the First Battle of El Alamein in July 1942, both sides spent three months reinforcing and preparing for a decisive confrontation. General Montgomery replaced Auchinleck and imposed a new style of methodical command. The British advantage in men and materiel was now overwhelming: by October, Montgomery had 195,000 men, 1,029 tanks, and 2,311 guns against Rommel's 104,000 men, 547 tanks, and 1,219 guns. Rommel himself was in Germany ill during the opening days of the battle, leaving his deputy General Stumme in command. Stumme died of a heart attack on the first day. Churchill's pressure for a decisive offensive before the Operation Torch landings in North Africa (8 November) gave the battle additional political urgency.",
   "combatants": {
     "axis": { "commanders": ["Erwin Rommel (absent ill; returned 25 October)", "Georg Stumme (died of heart attack 24 Oct)"], "strength": "104,000 troops, 547 tanks (221 Italian), 1,219 guns" },
     "allied": { "commanders": ["Bernard Montgomery", "Harold Alexander"], "strength": "195,000 troops, 1,029 tanks, 2,311 guns" }
   },
   "outcome": "Decisive Allied victory. Rommel's army routed; retreat all the way to Tunisia. Hitler famously ordered the Panzerarmee to 'victory or death' and not to retreat — Rommel disobeyed and saved the remnant of his force.",
   "significance": "Churchill declared: 'Before Alamein we never had a victory. After Alamein we never had a defeat.' The battle marked the end of Axis ambitions in North Africa.",
-  "casualties": { "axis": "~30,000 killed or wounded, ~30,000 captured, 500 tanks", "allied": "~13,560 killed, wounded, or missing" }
+  "casualties": { "axis": "~30,000 killed or wounded, ~30,000 captured, 500 tanks", "allied": "~13,560 killed, wounded, or missing" },
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). WO 201/437: 8th Army Operations, October–November 1942." },
+    { "ref": "Playfair, I.S.O. The Mediterranean and Middle East, Vol. IV. HMSO, 1966." },
+    { "ref": "Hamilton, Nigel. Monty: Master of the Battlefield 1942–1944. McGraw-Hill, 1983." },
+    { "ref": "Forty, George. The Armies of Rommel. Arms and Armour Press, 1997." }
+  ],
+  "related_records": [
+    { "id": "alamein-1", "title": "First Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-1" },
+    { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
+    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+    { "id": "it-002", "title": "Colombo — El Alamein (1942)", "type": "Letter", "url": "/letters/it-002" },
+    { "id": "pz-iv", "title": "Panzerkampfwagen IV", "type": "Armament", "url": "/armaments/pz-iv" }
+  ]
 }

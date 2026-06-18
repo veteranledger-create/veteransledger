@@ -13,7 +13,13 @@
     "biography": "An Imperial Japanese Army intelligence officer who continued fighting in the Philippine jungle until 1974 because he did not receive orders to surrender. He was discovered by a Japanese explorer and only laid down his arms after being ordered to do so by his former commanding officer. He had waged a guerrilla campaign for nearly 30 years.",
     "commands": ["Intelligence detachment, Lubang Island"],
     "awards": ["Order of the Rising Sun"],
-    "campaigns": ["pacific-theater"]
+    "campaigns": ["pacific-theater"],
+    "sources": [
+      { "ref": "Onoda, Hiroo. No Surrender: My Thirty-Year War. Kodansha, 1974." }
+    ],
+    "related_records": [
+      { "id": "isoroku-yamamoto", "title": "Isoroku Yamamoto", "type": "Personnel", "url": "/personnel/isoroku-yamamoto" }
+    ]
   },
   {
     "id": "isoroku-yamamoto",
@@ -29,7 +35,15 @@
     "biography": "Commander-in-Chief of the Combined Fleet, Yamamoto planned and executed the attack on Pearl Harbor and the Battle of Midway. Despite initially opposing war with the United States, he led the Imperial Japanese Navy's strategic offensives. He was killed when his transport aircraft was ambushed by US P-38 fighters following American codebreaking.",
     "commands": ["Combined Fleet"],
     "awards": ["Order of the Chrysanthemum", "Order of the Rising Sun"],
-    "campaigns": ["pearl-harbor", "midway", "guadalcanal"]
+    "campaigns": ["pearl-harbor", "midway", "guadalcanal"],
+    "sources": [
+      { "ref": "Agawa, Hiroyuki. The Reluctant Admiral: Yamamoto and the Imperial Navy. Kodansha, 1979." },
+      { "ref": "Stille, Mark. Imperial Japanese Navy in the Pacific War. Osprey, 2014." }
+    ],
+    "related_records": [
+      { "id": "taranto", "title": "Battle of Taranto", "type": "Campaign", "url": "/campaigns/italy/taranto" },
+      { "id": "jp-002", "title": "Nakamura — Midway (1942)", "type": "Letter", "url": "/letters/jp-002" }
+    ]
   },
   {
     "id": "erwin-rommel-afk",
@@ -45,7 +59,13 @@
     "biography": "Decorated Fascist aviator and Secretary of the National Fascist Party. He participated in the Second Italo-Ethiopian War and the Spanish Civil War. Among the most decorated Italian officers, he was shot by Italian authorities following the fall of Mussolini.",
     "commands": ["Regia Aeronautica units"],
     "awards": ["Gold Medal of Military Valor (×2)"],
-    "campaigns": ["ethiopia", "spain", "north-africa"]
+    "campaigns": ["ethiopia", "spain", "north-africa"],
+    "sources": [
+      { "ref": "Moseley, Ray. Mussolini: The Last 600 Days of Il Duce. Taylor Trade, 2004." }
+    ],
+    "related_records": [
+      { "id": "rodolfo-graziani", "title": "Rodolfo Graziani", "type": "Personnel", "url": "/personnel/rodolfo-graziani" }
+    ]
   },
   {
     "id": "rodolfo-graziani",
@@ -61,10 +81,17 @@
     "biography": "The last colonial governor of Italian Libya and commander of Italian forces in North Africa in 1940. Known as 'The Butcher of Fezzan' for his brutal suppression of Libyan rebels, he led the Western Desert Campaign until defeated by British forces under Wavell. He later commanded the Italian National Republican Army under German occupation.",
     "commands": ["10th Army (Western Desert)", "Italian National Republican Army"],
     "awards": ["Order of Savoy"],
-    "campaigns": ["north-africa", "ethiopia"]
+    "campaigns": ["north-africa", "ethiopia"],
+    "sources": [
+      { "ref": "Bierman, John and Smith, Colin. War Without Hate: The Desert Campaign of 1940–43. Penguin, 2002." }
+    ],
+    "related_records": [
+      { "id": "sonnenblume", "title": "Operation Sonnenblume", "type": "Campaign", "url": "/campaigns/africa/sonnenblume" },
+      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" }
+    ]
   },
   {
-    "id": "franciszek-kleeberg",
+    "id": "leon-degrelle",
     "name": "Leon Degrelle",
     "rank": "SS-Sturmbannführer",
     "branch": "foreign",
@@ -77,6 +104,89 @@
     "biography": "Leader of the Belgian Rexist movement who volunteered to fight for Germany on the Eastern Front. He rose from private to SS-Sturmbannführer and commanded the 28th SS Volunteer Grenadier Division Wallonien. Hitler reputedly said he was 'the son he never had'. He escaped justice after the war by fleeing to Spain.",
     "commands": ["Legion Wallonie", "28th SS Volunteer Grenadier Division Wallonien"],
     "awards": ["Knight's Cross with Oak Leaves"],
-    "campaigns": ["eastern-front", "cherkassy"]
+    "campaigns": ["eastern-front", "cherkassy"],
+    "sources": [
+      { "ref": "Degrelle, Leon. Campaign in Russia. Noontide Press, 1985." }
+    ],
+    "related_records": [
+      { "id": "vol-001", "title": "De Groot — Eastern Front (1942)", "type": "Letter", "url": "/letters/vol-001" },
+      { "id": "felix-steiner", "title": "Felix Steiner", "type": "Personnel", "url": "/personnel/felix-steiner" }
+    ]
+  },
+  {
+    "id": "carl-mannerheim",
+    "name": "Carl Gustaf Emil Mannerheim",
+    "rank": "Marshal of Finland",
+    "branch": "foreign",
+    "nation": "Finland",
+    "service": "Finnish Defence Forces",
+    "portrait": "/storage/images/veterans/foreign/mannerheim.jpg",
+    "born": "1867-06-04",
+    "died": "1951-01-27",
+    "birthplace": "Askainen, Grand Duchy of Finland",
+    "biography": "Finland's greatest military commander and statesman. A former General in the Imperial Russian Army, he commanded Finnish forces in the Winter War (1939–1940) against the Soviet Union and the Continuation War (1941–1944), where Finland fought alongside Germany to recover lost territories. He successfully maintained Finland's independence and sovereignty, steering a cautious course that prevented Finland from being drawn into the Holocaust or directly into German war aims. He became President of Finland in 1944 and negotiated the armistice with the Soviet Union. His conduct distinguished the Finnish cause from that of Germany, and Finland was never occupied after the war.",
+    "commands": ["Finnish Defence Forces (Supreme Commander)", "Finnish Defence Forces (Commander-in-Chief)"],
+    "awards": ["Mannerheim Cross (Grades I and II)", "Cross of Liberty"],
+    "campaigns": ["eastern-front"],
+    "sources": [
+      { "type": "primary", "ref": "Suomen Sota 1941–1945 (The Finnish War 1941–1945). Finnish General Staff, 1958–1994. 9 vols.", "note": "The official Finnish military history of the Continuation War." },
+      { "ref": "Mannerheim, Carl Gustaf. The Memoirs of Marshal Mannerheim. Cassell, 1953." },
+      { "ref": "Screen, J.E.O. Mannerheim: The Finnish Years. Hurst, 2000." }
+    ],
+    "related_records": [
+      { "id": "leningrad", "title": "Siege of Leningrad", "type": "Campaign", "url": "/campaigns/eastern-front/leningrad" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "vol-002", "title": "Bergström — Hanko, Finland (1941)", "type": "Letter", "url": "/letters/vol-002" }
+    ]
+  },
+  {
+    "id": "hideki-tojo",
+    "name": "Hideki Tōjō",
+    "rank": "General (Taisō)",
+    "branch": "foreign",
+    "nation": "Japan",
+    "service": "Imperial Japanese Army / Government of Japan",
+    "portrait": "/storage/images/veterans/foreign/tojo.jpg",
+    "born": "1884-12-30",
+    "died": "1948-12-23",
+    "birthplace": "Kōjimachi, Tokyo, Japan",
+    "biography": "Prime Minister of Japan from October 1941 to July 1944, simultaneously serving as Army Minister, Home Minister, and Chief of the Army General Staff. As War Minister he was the principal bureaucratic architect of the decision for war with the United States and Britain. He was also War Minister when Japan invaded China and implemented the policy of 'Three Alls' (kill all, burn all, loot all) in China. Following Japan's defeats at Midway and Guadalcanal he retained power until the fall of Saipan in July 1944. He attempted suicide after the Japanese surrender, survived, was tried at the International Military Tribunal for the Far East, convicted of war crimes and crimes against humanity, and executed by hanging at Sugamo Prison in December 1948.",
+    "commands": ["30th Brigade", "China Garrison Army", "Kwantung Army (Chief of Staff)", "Government of Japan"],
+    "awards": ["Order of the Rising Sun", "Order of the Golden Kite"],
+    "campaigns": ["pacific-theater"],
+    "sources": [
+      { "type": "primary", "ref": "National Archives (US). RG 331: Records of the International Military Tribunal for the Far East (Tokyo War Crimes Trials) — Tōjō testimony, 1946–1948." },
+      { "ref": "Butow, Robert. Tojo and the Coming of the War. Princeton University Press, 1961.", "note": "The definitive account of Japan's road to war." },
+      { "ref": "Hoyt, Edwin. Warlord: Tojo Against the World. Scarborough House, 1993." }
+    ],
+    "related_records": [
+      { "id": "isoroku-yamamoto", "title": "Isoroku Yamamoto", "type": "Personnel", "url": "/personnel/isoroku-yamamoto" },
+      { "id": "jp-001", "title": "Yamada — Kamikaze Mission (1945)", "type": "Letter", "url": "/letters/jp-001" }
+    ]
+  },
+  {
+    "id": "masaharu-homma",
+    "name": "Masaharu Homma",
+    "rank": "Lieutenant General (Chūjō)",
+    "branch": "foreign",
+    "nation": "Japan",
+    "service": "Imperial Japanese Army",
+    "portrait": "/storage/images/veterans/foreign/homma.jpg",
+    "born": "1887-11-27",
+    "died": "1946-04-03",
+    "birthplace": "Sado Island, Niigata Prefecture, Japan",
+    "biography": "Commanded the Japanese 14th Army during the invasion of the Philippines (December 1941 – May 1942). Despite initial Allied resistance on Bataan, he secured the Philippines after the largest surrender of American forces in history. He was held responsible for the Bataan Death March — the forced march of 76,000 American and Filipino prisoners in which 5,000–18,000 died from execution, starvation, and disease — despite evidence that he was not personally aware of the conditions during the march. He was tried by a US military commission, convicted of war crimes, and executed by firing squad near Manila in April 1946. The fairness of his trial has been debated by legal scholars.",
+    "commands": ["14th Army (Philippines)"],
+    "awards": ["Order of the Rising Sun"],
+    "campaigns": ["pacific-theater"],
+    "sources": [
+      { "type": "primary", "ref": "National Archives (US). RG 331: Records of the Supreme Commander for the Allied Powers — Homma military tribunal, 1946." },
+      { "ref": "Sides, Hampton. Ghost Soldiers: The Forgotten Epic Story of WWII's Most Dramatic Mission. Doubleday, 2001.", "note": "Covers the Philippines campaign and its aftermath, including the Death March." },
+      { "ref": "Norman, Elizabeth. We Band of Angels: The Untold Story of American Nurses Trapped on Bataan. Random House, 1999." }
+    ],
+    "related_records": [
+      { "id": "hideki-tojo", "title": "Hideki Tōjō", "type": "Personnel", "url": "/personnel/hideki-tojo" },
+      { "id": "isoroku-yamamoto", "title": "Isoroku Yamamoto", "type": "Personnel", "url": "/personnel/isoroku-yamamoto" }
+    ]
   }
 ]

@@ -13,11 +13,23 @@
     "axis": "Kapitän zur See Hans Langsdorff",
     "allied": "Commodore Henry Harwood RN"
   },
+  "context": "Admiral Graf Spee was one of three 'pocket battleships' (Panzerschiffe) built by Germany to circumvent the 10,000-tonne limit imposed by Versailles. With her 11-inch guns, she could outgun any cruiser she could not outrun. Graf Spee had been at sea since before the war's outbreak, raiding Allied merchant shipping in the South Atlantic and Indian Ocean with considerable success. The British had formed several hunting groups to find her. Commodore Harwood deduced that Graf Spee would appear off the River Plate, where Argentine and Uruguayan waters provided rich pickings in merchant traffic, and positioned his small force there in advance.",
   "summary": "Admiral Graf Spee had been raiding Allied shipping in the South Atlantic since August 1939, sinking nine merchant ships totalling 50,089 GRT. On 13 December 1939, Commodore Harwood's Force G intercepted her off the River Plate estuary. Despite having superior firepower, Graf Spee sustained cumulative damage from all three British cruisers, particularly from HMS Exeter. Graf Spee put into Montevideo for repairs. Under the Hague Convention, she was allowed 72 hours; Hitler pressured Langsdorff to scuttle. On 17 December, Graf Spee steamed into the Plate estuary and was blown up by her crew. Langsdorff shot himself two days later, wrapped in the old Imperial (not Nazi) war flag. The battle was Britain's first clear naval victory of the war and a major propaganda boost.",
   "casualties": {
     "axis": "36 killed (Graf Spee crew)",
     "allied": "72 killed, 28 wounded (primarily HMS Exeter)"
   },
   "outcome": "British strategic victory — Graf Spee scuttled",
-  "significance": "First British naval victory of WWII; demonstrated that even superior surface raiders could be forced to fight on unfavourable terms by aggressive interception."
+  "significance": "First British naval victory of WWII; demonstrated that even superior surface raiders could be forced to fight on unfavourable terms by aggressive interception.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). ADM 234/155: Battle Summary No. 1 — The Action with the German Pocket Battleship Graf Spee." },
+    { "ref": "Pope, Dudley. Graf Spee: The Life and Death of a Raider. Kimber, 1956." },
+    { "ref": "Millington-Drake, Eugen. The Drama of Graf Spee and the Battle of the Plate: A Documentary Anthology. Peter Davies, 1964." },
+    { "ref": "Llewelyn, Sam. Dead Reckoning. Hodder and Stoughton, 1987." }
+  ],
+  "related_records": [
+    { "id": "altmark", "title": "Altmark Incident", "type": "Campaign", "url": "/campaigns/atlantic/altmark" },
+    { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
+    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
+  ]
 }

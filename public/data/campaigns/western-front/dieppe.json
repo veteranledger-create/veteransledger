@@ -2,22 +2,37 @@
   "id": "dieppe",
   "title": "Dieppe Raid (Operation Jubilee)",
   "subtitle": "The Costliest Raid of the Second World War",
+  "theater": "western-front",
+  "dates": { "start": "1942-08-19", "end": "1942-08-19" },
   "date_start": "1942-08-19",
   "date_end": "1942-08-19",
   "theatre": "Dieppe, Occupied France",
   "combatants": {
-    "axis": "Germany (302nd Infantry Division, Luftwaffe)",
-    "allied": "Canada (2nd Canadian Division — ~5,000 men), United Kingdom (Commandos, Royal Navy, RAF)"
+    "axis": {
+      "commanders": ["Conrad Haase (302nd Infantry Division)"],
+      "strength": "302nd Infantry Division, Luftwaffe coastal forces"
+    },
+    "allied": {
+      "commanders": ["Louis Mountbatten (Combined Operations)", "J.H. Roberts (Military Force Commander)"],
+      "strength": "~6,086 men — 2nd Canadian Division (~5,000), British Commandos, Royal Navy, RAF"
+    }
   },
-  "commanders": {
-    "axis": "General Conrad Haase (302nd Infantry Division)",
-    "allied": "Vice Admiral Lord Louis Mountbatten (Combined Operations), Major General J.H. Roberts (Military Force Commander)"
-  },
-  "summary": "Operation Jubilee was a large-scale amphibious raid on the port of Dieppe. Its stated objectives included testing German defences, capturing equipment and prisoners, and gaining experience for future larger landings. Of 6,086 men who embarked, only 2,210 returned to England. The 2nd Canadian Division suffered catastrophically on the beaches. German defenders — forewarned by chance naval encounter at sea, positioned in cliffs overlooking the beach, and reinforced by concrete fortifications — cut down the attackers as they struggled across pebble beaches under fire. Of 4,963 Canadians who crossed the Channel, 916 were killed and 1,946 taken prisoner. The raid's lessons — on fire support, landing craft, beach reconnaissance, and port assault — directly shaped the planning for the Normandy landings.",
+  "summary": "Operation Jubilee was a large-scale amphibious raid on the port of Dieppe. Of 6,086 men who embarked, only 2,210 returned to England. The 2nd Canadian Division suffered catastrophically on the beaches. German defenders — forewarned by chance naval encounter at sea, positioned in cliffs overlooking the beach, and reinforced by concrete fortifications — cut down the attackers as they struggled across pebble beaches under fire.",
+  "context": "Dieppe was conceived as a test of German coastal defences and a demonstration of Allied ability to mount amphibious operations — partly to satisfy Soviet demands for a second front. The original raid (Operation Rutter) was cancelled in July 1942 after security was compromised; the decision to remount it as Operation Jubilee in August remains controversial. The plan's frontal assault on a heavily defended port violated principles that even 1942 planners understood: there was no preliminary heavy bombardment, there was no element of surprise after the first wave was detected by a German coastal convoy, the pebble beach immobilised the Churchill tanks, and the high cliffs gave German defenders a commanding field of fire. Of 4,963 Canadians who crossed the Channel, 916 were killed and 1,946 taken prisoner. The raid's lessons — on fire support, landing craft design, beach reconnaissance, port assault, and artificial harbours — directly shaped the planning for the Normandy landings two years later. Dieppe's catastrophe arguably saved tens of thousands of lives on D-Day.",
   "casualties": {
     "axis": "591 killed or wounded, 48 aircraft lost",
-    "allied": "3,623 Canadian casualties (killed, wounded, captured); 1,027 killed; over 100 RAF aircraft lost"
+    "allied": "3,623 Canadian casualties (killed, wounded, captured); 1,027 killed; 106 RAF aircraft lost"
   },
-  "outcome": "German defensive victory",
-  "significance": "Demonstrated the impossibility of a frontal assault on a defended port; lessons directly applied to D-Day planning. Confirmed the need for artificial harbours (Mulberry), fire support, and intelligence."
+  "outcome": "German defensive victory. All objectives failed. Raid force withdrew after nine hours.",
+  "significance": "Demonstrated the impossibility of a frontal assault on a defended port. Lessons directly shaped D-Day planning: preliminary bombardment requirements, artificial harbours (Mulberry), landing craft design, and beach reconnaissance.",
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). DEFE 2/334: Combined Operations HQ — Operation Jubilee Planning and Report, 1942." },
+    { "ref": "Stacey, C.P. Six Years of War: The Army in Canada, Britain and the Pacific. Queen's Printer, 1955.", "note": "The official Canadian military history of the Dieppe raid." },
+    { "ref": "Neillands, Robin. The Dieppe Raid: The Story of the Disastrous 1942 Expedition. Indiana University Press, 2005." },
+    { "ref": "Buckingham, William. Dieppe 1942. Tempus, 2004." }
+  ],
+  "related_records": [
+    { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+    { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" }
+  ]
 }

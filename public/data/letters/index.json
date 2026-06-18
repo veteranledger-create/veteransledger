@@ -1,9 +1,11 @@
 {
   "collections": [
     { "id": "german",     "label": "German",     "language": "de", "file": "/public/data/letters/german.json",     "count": 4 },
-    { "id": "italian",    "label": "Italian",    "language": "it", "file": "/public/data/letters/italian.json",    "count": 2 },
+    { "id": "italian",    "label": "Italian",    "language": "it", "file": "/public/data/letters/italian.json",    "count": 4 },
     { "id": "japanese",   "label": "Japanese",   "language": "ja", "file": "/public/data/letters/japanese.json",   "count": 2 },
-    { "id": "volunteers", "label": "Volunteers", "language": "en", "file": "/public/data/letters/volunteers.json", "count": 2 }
+    { "id": "volunteers", "label": "Volunteers", "language": "en", "file": "/public/data/letters/volunteers.json", "count": 2 },
+    { "id": "british",    "label": "British",    "language": "en", "file": "/public/data/letters/british.json",    "count": 4 },
+    { "id": "polish",     "label": "Polish",     "language": "pl", "file": "/public/data/letters/polish.json",     "count": 4 }
   ],
   "note": "Letters are reproduced for educational and historical purposes. Personal names have been preserved where families have donated materials; otherwise composite or anonymised identifiers are used."
 }

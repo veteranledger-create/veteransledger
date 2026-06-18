@@ -1,0 +1,239 @@
+[
+  {
+    "id": "leibstandarte-ss-ah",
+    "name": "1. SS-Panzer-Division Leibstandarte SS Adolf Hitler",
+    "nation": "Germany",
+    "service": "Waffen-SS",
+    "type": "Panzer Division",
+    "theater": "Western Front / Eastern Front",
+    "active": { "from": "1933", "to": "1945-05" },
+    "parent_formation": { "id": "i-ss-panzer-corps", "title": "I. SS-Panzerkorps", "url": "/formations/i-ss-panzer-corps" },
+    "commanders": [
+      { "name": "SS-Oberstgruppenführer Sepp Dietrich", "period": "1933–Jul 1943" },
+      { "name": "SS-Brigadeführer Theodor Wisch", "period": "Jul 1943–Aug 1944" },
+      { "name": "SS-Brigadeführer Wilhelm Mohnke / others", "period": "1944–1945" }
+    ],
+    "peak_strength": "c. 21,000 (1944)",
+    "summary": "Hitler's personal bodyguard unit, grown into an elite armoured division. The Leibstandarte fought in Poland, France, the Balkans, Greece, Barbarossa, Kharkov, Kursk, Normandy, and the Ardennes. Its members were implicated in numerous war crimes including the Malmedy Massacre (via Jochen Peiper's Kampfgruppe).",
+    "context": "The Leibstandarte's evolution from ceremonial guard to combat division mirrors the Waffen-SS's trajectory. Originally selected purely for physical appearance, by 1942–43 it was among the Wehrmacht's most capable armoured formations. Michael Wittmann's famous single-handed destruction of the British column at Villers-Bocage (Normandy, June 1944) was achieved while serving with the 101st SS Heavy Panzer Battalion attached to the division. Jochen Peiper's Kampfgruppe Peiper — the spearhead of the Ardennes offensive — drew primarily from the Leibstandarte's 1st SS Panzer Regiment.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "The Leibstandarte SS Adolf Hitler began in 1933 not as a combat unit at all but as Hitler's personal protection detachment — a ceremonial guard selected as much for height and physical appearance as for any military qualification. Its transformation over the following decade into one of the Wehrmacht's most capable armoured divisions illustrates, more clearly than almost any other Waffen-SS formation, how far Himmler's combat arm evolved from its political-paramilitary origins."
+      },
+      {
+        "type": "text",
+        "text": "As 1. SS-Panzer-Division, it belonged to the most senior tier of Waffen-SS divisions — the four 'original' divisions that traced their lineage to the prewar SS rather than to wartime volunteer recruitment, and which received priority in equipment and replacements throughout the war as a result. It fought in nearly every major German campaign from the invasion of Poland onward, a breadth of service matched by few other divisions in this archive."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, the Leibstandarte sits as a constituent division of I. SS-Panzerkorps, and its record connects to some of the most heavily documented individuals and events of the war — Michael Wittmann's exploits at Villers-Bocage, Jochen Peiper's Kampfgruppe in the Ardennes, and the war crimes investigations that followed the division's conduct in several campaigns."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "From Ceremonial Guard to Armoured Division",
+        "text": "The Leibstandarte's evolution from ceremonial guard to combat division mirrors the Waffen-SS's broader trajectory over the course of the war. Originally selected purely for physical appearance rather than military skill, by 1942–43 it had become among the Wehrmacht's most capable armoured formations, equipped on a level few other divisions could match."
+      },
+      {
+        "type": "text",
+        "title": "Villers-Bocage",
+        "text": "Michael Wittmann's famous single-handed destruction of a British armoured column at Villers-Bocage in Normandy, June 1944, was achieved while serving with the 101st SS Heavy Panzer Battalion, a unit attached to the division — one of the most studied small-unit tank actions of the entire war, and a key episode in Wittmann's own legend as a tank ace."
+      },
+      {
+        "type": "text",
+        "title": "Kampfgruppe Peiper",
+        "text": "Jochen Peiper's Kampfgruppe Peiper, the spearhead of the Ardennes offensive in December 1944, drew primarily from the Leibstandarte's 1st SS Panzer Regiment. The Kampfgruppe's advance was marked by several documented massacres of American prisoners and Belgian civilians, including at Malmedy, which became the subject of a major postwar war crimes trial."
+      }
+    ],
+    "sources": [
+      { "ref": "Lehmann, Rudolf. The Leibstandarte. J.J. Fedorowicz, 1977–1990. 4 vols." },
+      { "ref": "Messenger, Charles. Hitler's Gladiator. Brassey's, 1988." }
+    ],
+    "related_records": [
+      { "id": "sepp-dietrich", "title": "Sepp Dietrich", "type": "Personnel", "url": "/personnel/sepp-dietrich" },
+      { "id": "jochen-peiper", "title": "Jochen Peiper", "type": "Personnel", "url": "/personnel/jochen-peiper" },
+      { "id": "michael-wittmann", "title": "Michael Wittmann", "type": "Personnel", "url": "/personnel/michael-wittmann" },
+      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
+      { "id": "i-ss-panzer-corps", "title": "I SS Panzer Corps", "type": "Formation", "url": "/formations/i-ss-panzer-corps" }
+    ]
+  },
+  {
+    "id": "ss-division-das-reich",
+    "name": "2. SS-Panzer-Division Das Reich",
+    "nation": "Germany",
+    "service": "Waffen-SS",
+    "type": "Panzer Division",
+    "theater": "Western Front / Eastern Front",
+    "active": { "from": "1939", "to": "1945-05" },
+    "parent_formation": { "id": "i-ss-panzer-corps", "title": "I. SS-Panzerkorps", "url": "/formations/i-ss-panzer-corps" },
+    "commanders": [
+      { "name": "SS-Gruppenführer Paul Hausser", "period": "1939–1941" },
+      { "name": "Multiple commanders", "period": "1941–1945" }
+    ],
+    "peak_strength": "c. 19,000 (1943)",
+    "summary": "Das Reich fought in France (1940), Yugoslavia (1941), and Barbarossa. At Kharkov it played a central role in the 'backhand blow'. In France (1944) the division's march from Toulouse to Normandy was marked by the massacre of 642 civilians at Oradour-sur-Glane — one of the worst war crimes committed in Western Europe.",
+    "context": "The Oradour-sur-Glane massacre (10 June 1944) was perpetrated by the 4th SS Panzer Grenadier Regiment Der Führer as the division moved north to reinforce the Normandy front. The reasons for the massacre — possibly a reprisal for resistance activities, possibly a deliberate terror measure — remain disputed. All 642 inhabitants of the village were killed: the men shot, the women and children locked in the church which was then set ablaze. The ruins of the village have been preserved as a memorial. The division's commander, Heinz Lammerding, was convicted in absentia by a French court in 1953 but lived freely in West Germany until his death in 1971.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Das Reich was one of the four senior Waffen-SS divisions formed before or in the earliest stages of the war, alongside the Leibstandarte and Totenkopf, and like them it served as a constituent division of I. SS-Panzerkorps for much of its operational life. Its name — 'the Reich' — reflected its status as a flagship formation of the SS rather than any specific regional or ideological designation."
+      },
+      {
+        "type": "text",
+        "text": "Its combat record spans the Western and Eastern Fronts in roughly equal measure: France in 1940, the Balkans, Barbarossa, the Kharkov counteroffensive, and finally a return to France in 1944 to help meet the Normandy invasion. It is this final campaign, and specifically the division's march north from Toulouse to the Normandy front, that defines its place in this archive more than any of its purely military engagements."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, Das Reich's record is inseparable from the Oradour-sur-Glane massacre — one of the most documented and most consequential war crimes committed by any German formation in Western Europe, and a case study referenced repeatedly in postwar legal and historical scholarship on Waffen-SS conduct."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "From France to Kharkov",
+        "text": "Das Reich fought in France in 1940, in the Balkans campaign of 1941, and then in Operation Barbarossa from its opening days. At Kharkov in early 1943 it played a central role in Manstein's 'backhand blow', one of the last major German offensive successes on the Eastern Front."
+      },
+      {
+        "type": "text",
+        "title": "Oradour-sur-Glane",
+        "text": "The Oradour-sur-Glane massacre, on 10 June 1944, was perpetrated by the division's 4th SS Panzer Grenadier Regiment Der Führer as the division moved north from southern France to reinforce the Normandy front. The exact motive remains disputed among historians — possibly a reprisal for resistance activity in the area, possibly a deliberate act of terror intended to discourage further partisan attacks on the division's march route."
+      },
+      {
+        "type": "quote",
+        "text": "All 642 inhabitants of the village were killed: the men were shot in barns and garages, while the women and children were locked inside the village church, which was then set ablaze. The ruins of Oradour-sur-Glane have been deliberately preserved, unrebuilt, as a permanent memorial.",
+        "attribution": "Summary of the established historical record of the massacre"
+      },
+      {
+        "type": "text",
+        "title": "Accountability",
+        "text": "The division's commander at the time, Heinz Lammerding, was convicted in absentia by a French military court in 1953, but West Germany declined to extradite him, and he lived freely in the country until his death in 1971 — one of many cases in which senior Waffen-SS officers responsible for documented war crimes escaped meaningful postwar accountability."
+      }
+    ],
+    "sources": [
+      { "ref": "Hastings, Max. Das Reich: Resistance and the March of the 2nd SS Panzer Division through France, June 1944. Michael Joseph, 1981." }
+    ],
+    "related_records": [
+      { "id": "paul-hausser", "title": "Paul Hausser", "type": "Personnel", "url": "/personnel/paul-hausser" },
+      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" }
+    ]
+  },
+  {
+    "id": "ss-division-totenkopf",
+    "name": "3. SS-Panzer-Division Totenkopf",
+    "nation": "Germany",
+    "service": "Waffen-SS",
+    "type": "Panzer Division",
+    "theater": "Western Front / Eastern Front",
+    "active": { "from": "1939", "to": "1945-05" },
+    "parent_formation": { "id": "i-ss-panzer-corps", "title": "I. SS-Panzerkorps", "url": "/formations/i-ss-panzer-corps" },
+    "commanders": [
+      { "name": "SS-Obergruppenführer Theodor Eicke", "period": "Nov 1939–Feb 1943 (KIA)" },
+      { "name": "SS-Brigadeführer Hermann Priess / others", "period": "1943–1945" }
+    ],
+    "peak_strength": "c. 19,000 (1943)",
+    "summary": "Formed from SS concentration camp guards by Eicke, the Totenkopf Division fought in France (1940), where it massacred 97 British prisoners of the Royal Norfolk Regiment at Le Paradis, and on the Eastern Front throughout 1941–1945. Its origins in the concentration camp system made it one of the most ideologically extreme Waffen-SS divisions.",
+    "context": "The Le Paradis massacre (27 May 1940) — in which 97 British soldiers who had surrendered were machine-gunned and bayoneted by troops of the 2nd Regiment Totenkopf — resulted in the postwar execution of the responsible officer, Fritz Knöchlein. On the Eastern Front the division fought at Demyansk (1942), where it was encircled for nearly a year, then at Kharkov (1943), Kursk (1943), and in Hungary (1944–45). Its men brought the values of the concentration camp system — dehumanisation of opponents, routine brutality — into combat, accounting for atrocities in both West and East.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Totenkopf occupies a distinct place even among the Waffen-SS's senior divisions: it was raised directly from the personnel of the SS concentration camp guard service by Theodor Eicke, the man most responsible for shaping the brutal administrative culture of the early camp system, and many of its first soldiers came to the division having served as camp guards rather than through any conventional military route."
+      },
+      {
+        "type": "text",
+        "text": "This origin is reflected throughout its wartime conduct, which historians have consistently identified as among the most ideologically extreme and atrocity-prone of any Waffen-SS division, in both the Western campaign of 1940 and the Eastern Front thereafter. Operationally, however, it also became one of the most heavily engaged divisions of the war, spending nearly a full year encircled at Demyansk before going on to fight at Kharkov, Kursk, and in the final defensive battles in Hungary."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, Totenkopf's record should be read alongside Theodor Eicke's own personnel entry, since the division's character in its first years is, more than for most formations, inseparable from the personality and methods of its founding commander."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Le Paradis",
+        "text": "The Le Paradis massacre, on 27 May 1940 during the French campaign, saw 97 British soldiers of the Royal Norfolk Regiment who had already surrendered machine-gunned and bayoneted by troops of the division's 2nd Regiment. The massacre resulted in the postwar trial and execution of the responsible officer, Fritz Knöchlein, one of the relatively few cases of direct legal accountability for Waffen-SS atrocities committed in Western Europe."
+      },
+      {
+        "type": "text",
+        "title": "Demyansk and the Eastern Front",
+        "text": "On the Eastern Front, the division fought at Demyansk in 1942, where it was encircled by Soviet forces for nearly a full year before being relieved — one of the longest sustained encirclements endured by any German division of the war. It went on to fight at Kharkov and Kursk in 1943, and in the final defensive battles in Hungary during 1944–45."
+      },
+      {
+        "type": "text",
+        "title": "A Documented Pattern",
+        "text": "Historians studying the division have consistently noted that its men brought the institutional values of the concentration camp system — the dehumanisation of opponents and a culture of routine brutality — directly into combat, a pattern reflected in atrocities documented in both the Western and Eastern theaters of the division's service."
+      }
+    ],
+    "sources": [
+      { "ref": "Sydnor, Charles. Soldiers of Destruction: The SS Death's Head Division, 1933–1945. Princeton University Press, 1977." }
+    ],
+    "related_records": [
+      { "id": "theodor-eicke", "title": "Theodor Eicke", "type": "Personnel", "url": "/personnel/theodor-eicke" },
+      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
+      { "id": "i-ss-panzer-corps", "title": "I SS Panzer Corps", "type": "Formation", "url": "/formations/i-ss-panzer-corps" }
+    ]
+  },
+  {
+    "id": "ss-division-wiking",
+    "name": "5. SS-Panzer-Division Wiking",
+    "nation": "Germany",
+    "service": "Waffen-SS",
+    "type": "Panzer Division",
+    "theater": "Eastern Front",
+    "active": { "from": "1940", "to": "1945-05" },
+    "commanders": [
+      { "name": "SS-Obergruppenführer Felix Steiner", "period": "Dec 1940–May 1943" },
+      { "name": "SS-Brigadeführer Herbert Gille", "period": "May 1943–Aug 1944" }
+    ],
+    "peak_strength": "c. 19,000 (1943)",
+    "summary": "The Wiking Division was unique among Waffen-SS formations as it was composed largely of volunteer Germanic conscripts from Norway, Denmark, the Netherlands, Finland, and Belgium. It fought almost exclusively on the Eastern Front from 1941 to 1945, serving in the Caucasus, Ukraine, and Poland. It was encircled at the Cherkassy Pocket in 1944 but broke out with significant losses.",
+    "context": "The division's multinational composition reflected Himmler's vision of a pan-Germanic European SS. Recruits from occupied and neutral nations were drawn by anti-communist ideology, national socialist movements, or adventure. Felix Steiner, its first commander, developed innovative infantry tactics using small-unit infiltration. At the Cherkassy–Korsun Pocket (January–February 1944), Wiking was among the encircled German forces; it broke out but lost most of its heavy equipment. The division's Viking battalion included Finnish volunteers whose government eventually pressured to withdraw in 1943.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Wiking occupies an unusual position in the Waffen-SS order of battle: although classified administratively as a German Waffen-SS Panzer division, alongside the Leibstandarte, Das Reich, and Totenkopf, its rank and file were drawn overwhelmingly from volunteers outside Germany itself — Norwegians, Danes, Dutch, Finns, and Flemish Belgians — recruited under Himmler's vision of a pan-Germanic, rather than purely German, SS."
+      },
+      {
+        "type": "text",
+        "text": "This composition makes Wiking a useful bridge between the senior German Waffen-SS divisions documented in this category and the dedicated Volunteer Formations elsewhere in this archive — many of the smaller national legions recorded under Volunteer Formations were eventually folded into or fought alongside Wiking, and its experience illustrates how the foreign-volunteer system the Waffen-SS built up from 1941 onward actually functioned in the field, rather than only on paper."
+      },
+      {
+        "type": "text",
+        "text": "Operationally, the division served almost exclusively on the Eastern Front and built a reputation as one of the more militarily effective Waffen-SS Panzer divisions, surviving the Cherkassy encirclement of early 1944 — one of the more severe tests faced by any German formation of comparable size."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "A Pan-Germanic Division",
+        "text": "The division's multinational composition reflected Himmler's broader vision of a pan-Germanic European SS, extending beyond Germany's own borders. Recruits from occupied and neutral nations were drawn by a mixture of anti-communist conviction, sympathy with national socialist movements in their home countries, and in some cases simple adventure-seeking rather than deep ideological commitment."
+      },
+      {
+        "type": "text",
+        "title": "Steiner's Tactics",
+        "text": "Felix Steiner, the division's first commander, developed innovative infantry tactics built around small-unit infiltration rather than the more rigid linear formations common elsewhere in the German army — an approach that contributed significantly to the division's combat effectiveness and reputation."
+      },
+      {
+        "type": "text",
+        "title": "Cherkassy and Finnish Withdrawal",
+        "text": "At the Cherkassy–Korsun Pocket in January–February 1944, Wiking was among the German forces encircled by advancing Soviet armies; it broke out successfully but lost most of its heavy equipment in the process. The division's Finnish volunteer battalion was withdrawn in 1943 after the Finnish government, increasingly wary of its alliance with Germany, pressured its citizens serving in the Waffen-SS to return home."
+      }
+    ],
+    "sources": [
+      { "ref": "Strassner, Peter. European Volunteers: The 5th SS Panzer Division Wiking. J.J. Fedorowicz, 1988." },
+      { "ref": "Yerger, Mark C. Waffen-SS Commanders. Schiffer, 1997." }
+    ],
+    "related_records": [
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "caucasus", "title": "Caucasus Campaign", "type": "Campaign", "url": "/campaigns/eastern-front/caucasus" },
+      { "id": "i-ss-panzer-corps", "title": "I SS Panzer Corps", "type": "Formation", "url": "/formations/i-ss-panzer-corps" }
+    ]
+  }
+]

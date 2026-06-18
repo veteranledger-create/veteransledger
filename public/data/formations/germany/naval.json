@@ -1,0 +1,136 @@
+[
+  {
+    "id": "befehlshaber-uboote",
+    "name": "Befehlshaber der Unterseeboote (BdU) — U-boat Command",
+    "nation": "Germany",
+    "service": "Kriegsmarine",
+    "type": "Naval Command",
+    "theater": "Atlantic / Arctic / Mediterranean",
+    "active": { "from": "1939-09-01", "to": "1945-05-08" },
+    "commanders": [
+      { "name": "Vizeadmiral Karl Dönitz", "period": "Sep 1939–Jan 1943 (then Grossadmiral, Commander-in-Chief Kriegsmarine)" },
+      { "name": "Vizeadmiral Eberhard Godt (acting BdU)", "period": "1943–1945" }
+    ],
+    "peak_strength": "c. 400 operational U-boats (1943)",
+    "statistics": {
+      "u_boats_commissioned": 1154,
+      "u_boats_lost": 784,
+      "crew_killed": 28000,
+      "crew_captured": 5000,
+      "allied_ships_sunk": 2779,
+      "allied_tonnage_sunk": "14.5 million GRT"
+    },
+    "summary": "The U-boat arm under Dönitz nearly severed Britain's Atlantic lifeline. Between 1940 and mid-1943, U-boats sank 2,779 Allied ships. The campaign peaked in 1942 (the 'second happy time' in American waters) and collapsed in May 1943 when anti-submarine technology and tactics overwhelmed the wolf packs. Of 40,000 U-boat crew, 28,000 were killed — a 70% fatality rate, the highest of any military service.",
+    "context": "Dönitz's wolf-pack (Rudeltaktik) tactics exploited a critical gap: in 1939–41, the mid-Atlantic had no air cover. Convoys that entered this 'Black Pit' were highly vulnerable. The aces of the first 'happy time' — Kretschmer, Prien, Schepke — sank millions of tonnes before Allied countermeasures caught up. The turning point came in May 1943 ('Black May'), when Allied long-range aircraft, improved ASDIC, centimetric radar, and codebreaking (Bletchley Park's reading of naval Enigma) sank 41 U-boats in a single month. Dönitz withdrew the wolf packs. The campaign continued but never recovered strategic momentum. Dönitz was nonetheless named Hitler's successor as Reich President, serving briefly as head of the Flensburg Government in May 1945 before surrendering to the Allies.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Befehlshaber der Unterseeboote — BdU — was the Kriegsmarine's central command authority for U-boat operations, a naval command rather than a fleet or fighting unit in the conventional sense, responsible for directing the entire German submarine campaign against Allied shipping for nearly the whole of the war."
+      },
+      {
+        "type": "text",
+        "text": "Under Karl Dönitz, who held the post from the war's outbreak until his promotion to Commander-in-Chief of the Kriegsmarine in early 1943, BdU directed what became known as the Battle of the Atlantic — an effort to sever Britain's maritime supply lines that came closer to succeeding, by Churchill's own postwar admission, than almost any other German strategic effort of the war."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, BdU's record connects to several of the most prominent U-boat commanders of the war — Kretschmer, Prien, Schepke, and Lüth — as well as to the Battle of the Atlantic and dedicated U-boat Campaign records, and its grim statistics (a roughly seventy percent fatality rate among U-boat crew) make it one of the most costly commands, relative to personnel committed, in the entire German armed forces."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "The Black Pit",
+        "text": "Dönitz's wolf-pack (Rudeltaktik) tactics exploited a critical gap in Allied defences: between 1939 and 1941, the mid-Atlantic had no air cover at all, since land-based aircraft from Britain, Canada, and Iceland could not reach far enough out to sea. Convoys that entered this so-called 'Black Pit' were highly vulnerable to coordinated U-boat attacks."
+      },
+      {
+        "type": "text",
+        "title": "The First Happy Time",
+        "text": "The aces of the first 'happy time' — Otto Kretschmer, Günther Prien, and Joachim Schepke among the most celebrated — sank millions of tonnes of Allied shipping before countermeasures caught up with their tactics, becoming household names in Germany and the subject of extensive propaganda celebrating the U-boat arm's successes."
+      },
+      {
+        "type": "text",
+        "title": "Black May",
+        "text": "The turning point came in May 1943, remembered in U-boat histories as 'Black May', when Allied long-range aircraft, improved ASDIC sonar, centimetric radar, and the codebreaking success at Bletchley Park in reading naval Enigma traffic combined to sink 41 U-boats in a single month. Dönitz withdrew the wolf packs from the North Atlantic convoy routes shortly afterward; the campaign continued in other forms but never recovered its earlier strategic momentum."
+      },
+      {
+        "type": "text",
+        "title": "Dönitz's Final Role",
+        "text": "Dönitz was nonetheless named Hitler's chosen successor as Reich President in the dictator's final testament, serving briefly as head of the short-lived Flensburg Government in May 1945 before formally surrendering Germany's remaining armed forces to the Allies and being taken into custody himself."
+      }
+    ],
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 87: BdU Kriegstagebuch (War Diary) 1939–1945.", "note": "The most important primary source for U-boat operations." },
+      { "ref": "Blair, Clay. Hitler's U-boat War. 2 vols. Random House, 1996–1998.", "note": "The definitive English-language history." },
+      { "ref": "Dönitz, Karl. Memoirs: Ten Years and Twenty Days. Weidenfeld and Nicolson, 1959." }
+    ],
+    "related_records": [
+      { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" },
+      { "id": "otto-kretschmer", "title": "Otto Kretschmer", "type": "Personnel", "url": "/personnel/otto-kretschmer" },
+      { "id": "gunther-prien", "title": "Günther Prien", "type": "Personnel", "url": "/personnel/gunther-prien" },
+      { "id": "joachim-schepke", "title": "Joachim Schepke", "type": "Personnel", "url": "/personnel/joachim-schepke" },
+      { "id": "wolfgang-luth", "title": "Wolfgang Lüth", "type": "Personnel", "url": "/personnel/wolfgang-luth" },
+      { "id": "uboat-campaing", "title": "U-boat Campaign", "type": "Campaign", "url": "/campaigns/atlantic/uboat-campaing" },
+      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
+      { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" }
+    ]
+  },
+  {
+    "id": "kriegsmarine-surface",
+    "name": "Kriegsmarine Surface Fleet",
+    "nation": "Germany",
+    "service": "Kriegsmarine",
+    "type": "Naval Command",
+    "theater": "Atlantic / Arctic / Baltic",
+    "active": { "from": "1935", "to": "1945-05" },
+    "commanders": [
+      { "name": "Grossadmiral Erich Raeder (Oberbefehlshaber der Kriegsmarine)", "period": "1928–Jan 1943" },
+      { "name": "Grossadmiral Karl Dönitz", "period": "Jan 1943–May 1945" }
+    ],
+    "major_vessels": ["Bismarck", "Tirpitz", "Scharnhorst", "Gneisenau", "Admiral Graf Spee", "Lützow"],
+    "summary": "The Kriegsmarine's surface fleet conducted commerce raiding, threatened Allied convoys as a 'fleet in being', and supported land operations in Norway and the Baltic. Its most famous engagement was the sinking of HMS Hood by Bismarck in May 1941. The surface fleet was largely neutralised by late 1942, with capital ships confined to Norwegian fjords.",
+    "context": "Raeder's surface fleet strategy was based on commerce raiding — using capital ships to threaten Atlantic convoys. The Scharnhorst and Gneisenau raided shipping in Operation Berlin (January–March 1941), sinking 22 ships. The Bismarck sortie (Operation Rheinübung) sank HMS Hood but was hunted down and sunk three days later. After the Bismarck disaster and the fiasco of the Channel Dash, Hitler's confidence in surface ships collapsed. His order to scrap the remaining capital ships in December 1942 prompted Raeder's resignation. The Tirpitz spent most of the war in Norwegian fjords as a 'fleet in being', tying down substantial British naval resources without engaging in battle, until sunk by RAF Tallboy bombs in November 1944.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "The Kriegsmarine's surface fleet represented Germany's conventional battle fleet — battleships, battlecruisers, and heavy cruisers — as distinct from the U-boat arm documented separately in this archive. It never approached the size of Britain's Royal Navy, and German naval strategy was built around this numerical inferiority from the outset."
+      },
+      {
+        "type": "text",
+        "text": "Under Erich Raeder, the fleet's strategy centred on commerce raiding rather than seeking decisive fleet engagements: individual capital ships and raiders would sortie into the Atlantic to threaten convoys, forcing the Royal Navy to divert disproportionate resources to hunt them down even when no German ship was actually at sea — the so-called 'fleet in being' concept that Raeder consciously inherited from earlier naval theory."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, the surface fleet's record connects to several of its named capital ships documented separately as armaments — Bismarck, Tirpitz, and Scharnhorst chief among them — and its trajectory from active commerce raiding in 1940–41 to passive, fjord-bound inactivity by 1943 traces the broader decline of German surface naval ambitions over the course of the war."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Commerce Raiding Strategy",
+        "text": "Raeder's surface fleet strategy was based on commerce raiding — using capital ships individually or in small groups to threaten Atlantic convoys rather than risking the fleet in a decisive engagement it could not realistically win against the Royal Navy's numerical superiority. The Scharnhorst and Gneisenau raided shipping together in Operation Berlin from January to March 1941, sinking 22 ships in a single extended sortie."
+      },
+      {
+        "type": "text",
+        "title": "Bismarck and the Loss of Confidence",
+        "text": "The Bismarck's sortie, Operation Rheinübung, sank the British battlecruiser HMS Hood in May 1941 in one of the most dramatic single ship-to-ship actions of the naval war, but Bismarck was herself hunted down and sunk only three days later by a concentrated Royal Navy pursuit. After the Bismarck disaster, and the embarrassment of the Channel Dash that followed soon after, Hitler's confidence in the value of large surface warships collapsed almost entirely."
+      },
+      {
+        "type": "text",
+        "title": "Raeder's Resignation and the Fjord Fleet",
+        "text": "Hitler's order to scrap the Kriegsmarine's remaining capital ships in December 1942 prompted Raeder's resignation in protest. The Tirpitz, the fleet's last major capital ship, spent most of the remainder of the war stationed in Norwegian fjords as a 'fleet in being' — tying down substantial British naval resources simply through the threat of her existence, without ever again engaging in major combat, until she was finally sunk by RAF Tallboy bombs in November 1944."
+      }
+    ],
+    "sources": [
+      { "ref": "Raeder, Erich. My Life. United States Naval Institute, 1960." },
+      { "ref": "Bekker, Cajus. Hitler's Naval War. Macdonald, 1974." }
+    ],
+    "related_records": [
+      { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" },
+      { "id": "bismarck", "title": "Battleship Bismarck", "type": "Armament", "url": "/armaments/bismarck" },
+      { "id": "tirpitz", "title": "Battleship Tirpitz", "type": "Armament", "url": "/armaments/tirpitz" },
+      { "id": "scharnhorst", "title": "Battlecruiser Scharnhorst", "type": "Armament", "url": "/armaments/scharnhorst" },
+      { "id": "admiral-graf-spee", "title": "Admiral Graf Spee", "type": "Armament", "url": "/armaments/admiral-graf-spee" },
+      { "id": "rheinubung", "title": "Operation Rheinübung", "type": "Campaign", "url": "/campaigns/atlantic/rheinubung" }
+    ]
+  }
+]

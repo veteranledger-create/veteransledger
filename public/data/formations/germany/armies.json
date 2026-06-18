@@ -1,0 +1,261 @@
+[
+  {
+    "id": "6th-army",
+    "name": "6. Armee (6th Army)",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Army",
+    "theater": "Eastern Front",
+    "active": { "from": "1939", "to": "1943-02-02" },
+    "commanders": [
+      { "name": "Generalfeldmarschall Walter von Reichenau", "period": "1939–Jan 1942" },
+      { "name": "Generaloberst Friedrich Paulus", "period": "Jan 1942–Feb 1943" }
+    ],
+    "peak_strength": "430,000 (Aug 1942)",
+    "fate": "Destroyed at Stalingrad. Surrendered 2 February 1943.",
+    "summary": "The 6th Army under Paulus captured Kharkov, drove to the Volga, and fought the Battle of Stalingrad — the most destructive battle in history. Encircled by Operation Uranus in November 1942, it surrendered on 2 February 1943. Of 300,000 encircled, approximately 91,000 survived to surrender; fewer than 6,000 ever returned to Germany.",
+    "context": "The 6th Army was the spearhead of Army Group B's drive to Stalingrad in the summer of 1942. By September it was fighting house-to-house in the city. The Soviet counteroffensive Operation Uranus (19 November 1942) broke through the flanking Romanian armies and encircled the entire 6th Army. Hitler refused permission to break out when escape was still possible. Göring's assurance that the Luftwaffe could supply 300 tons per day proved catastrophically false — an average of 90 tons per day was actually delivered. The relief attempt (Operation Winter Storm, December 1942) was halted 50 kilometres from the pocket. The army fought on through January 1943 in temperatures of minus 30°C, without adequate food, ammunition, or medical care. Paulus surrendered on 2 February 1943 — the same day Hitler promoted him to Generalfeldmarschall, fully expecting him to commit suicide rather than be taken prisoner.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "6th Army was a field army of the Heer — the echelon directly below an army group, typically commanding several corps and numbering several hundred thousand men. It existed from before the war and served in the Polish and French campaigns, but it is overwhelmingly remembered for a single episode: its destruction at Stalingrad, the costliest single battle of the Second World War and arguably of human history."
+      },
+      {
+        "type": "text",
+        "text": "Under Friedrich Paulus, the army formed the spearhead of the 1942 summer offensive (Operation Blue) toward the Volga and the city that bore Stalin's name — a target chosen as much for its symbolic value as for any decisive strategic necessity. Its encirclement and annihilation over the winter of 1942–43 marked the turning point of the war in the East and the first unambiguous, irreversible German strategic defeat."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, 6th Army's record connects directly to the Battle of Stalingrad campaign entry, to Army Group B (its parent command), and to the broader catastrophe that also consumed the Romanian armies guarding its flanks — a chain of related records that together document one of the war's most thoroughly studied campaigns."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "The Drive to the Volga",
+        "text": "The 6th Army was the spearhead of Army Group B's drive to Stalingrad in the summer of 1942. By September it was fighting house-to-house in the city, in combat so close and so attritional that German soldiers coined the term Rattenkrieg — rat war — to describe it."
+      },
+      {
+        "type": "text",
+        "title": "Encirclement",
+        "text": "The Soviet counteroffensive Operation Uranus (19 November 1942) broke through the weaker Romanian armies guarding the 6th Army's flanks and encircled the entire force within days. Hitler refused permission to break out while escape was still possible, insisting the army hold its position and be resupplied by air."
+      },
+      {
+        "type": "text",
+        "title": "The Airlift and Winter Storm",
+        "text": "Göring's assurance that the Luftwaffe could supply 300 tons per day to the trapped army proved catastrophically false — an average of only around 90 tons per day was actually delivered, far short of the minimum needed to sustain the force. The relief attempt, Operation Winter Storm in December 1942, was halted some 50 kilometres from the pocket and never reached the encircled troops."
+      },
+      {
+        "type": "text",
+        "title": "Surrender",
+        "text": "The army fought on through January 1943 in temperatures as low as minus 30 degrees Celsius, without adequate food, ammunition, or medical care. Paulus surrendered on 2 February 1943 — the same day Hitler promoted him to Generalfeldmarschall, fully expecting him to commit suicide rather than be taken prisoner, since no German field marshal had ever previously surrendered. Paulus declined to do so."
+      }
+    ],
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 20-6: 6th Army operational files, 1941–1943." },
+      { "ref": "Beevor, Antony. Stalingrad. Viking, 1998." },
+      { "ref": "Craig, William. Enemy at the Gates: The Battle for Stalingrad. Dutton, 1973." }
+    ],
+    "related_records": [
+      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
+      { "id": "blue", "title": "Operation Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
+      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
+      { "id": "de-001", "title": "Schreiber — Stalingrad (1942)", "type": "Letter", "url": "/letters/de-001" }
+    ]
+  },
+  {
+    "id": "4th-panzer-army",
+    "name": "4. Panzerarmee (4th Panzer Army)",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Panzer Army",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-11", "to": "1945" },
+    "commanders": [
+      { "name": "Generaloberst Erich Hoepner", "period": "Nov 1941–Jan 1942" },
+      { "name": "Generaloberst Hermann Hoth", "period": "May 1942–Nov 1943" },
+      { "name": "Generaloberst Erhard Raus", "period": "Nov 1943–Aug 1944" }
+    ],
+    "peak_strength": "c. 350,000 (July 1943, Kursk)",
+    "summary": "The 4th Panzer Army was Germany's premier armoured formation on the Eastern Front. Under Hoth it led the summer offensive into the Don bend and drove to within 50 kilometres of the encircled 6th Army at Stalingrad. It formed the southern arm of the Kursk offensive (Operation Citadel) in July 1943 — the largest tank battle in history.",
+    "context": "The 4th Panzer Army's history tracks the arc of German fortunes in the East. In the summer of 1942 it drove across the steppe toward Stalingrad as part of Operation Blue. In December 1942, Hoth led the relief attempt (Operation Winter Storm), reaching the Aksai River before being halted by Malinovsky's 2nd Guards Army — forever 50 kilometres from the trapped 6th Army. At Kursk in July 1943, the 4th Panzer Army formed the more powerful southern pincer, with SS Panzer Corps and 48th Panzer Corps achieving the deepest penetration of Soviet defences before Operation Citadel was cancelled. The tank battle at Prokhorovka on 12 July 1943 — often called the largest armoured engagement in history — was fought by units of the 4th Panzer Army. After Kursk the army fought a continuous defensive battle as Soviet offensives pushed it steadily westward.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "4th Panzer Army was one of the principal armoured field armies of the Wehrmacht on the Eastern Front, sitting at the same echelon as 6th Army but distinguished by its composition: rather than predominantly infantry, it commanded panzer and motorized corps, giving it the speed and striking power for the deep, mobile operations that characterised German offensive doctrine."
+      },
+      {
+        "type": "text",
+        "text": "Formed from Panzer Group 4 in 1942, it served under Army Group South and its successor commands for most of its existence, fighting in three of the most heavily documented engagements of the Eastern Front: the drive to Stalingrad and the failed relief of the trapped 6th Army, the southern pincer at Kursk, and the immense tank battle at Prokhorovka. Its history is therefore closely intertwined with — but operationally distinct from — that of 6th Army, which it tried and failed to rescue in December 1942."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, 4th Panzer Army is most usefully read alongside the 6th Army, I. SS-Panzerkorps, and Battle of Stalingrad records, since all four describe overlapping moments of the same southern-front campaign from different organizational perspectives."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Operation Blue and the Drive South",
+        "text": "The 4th Panzer Army's history tracks the arc of German fortunes in the East. In the summer of 1942 it drove across the open steppe toward Stalingrad as part of Operation Blue, the offensive intended to seize the Caucasus oilfields while also securing the Volga at Stalingrad to protect the operation's northern flank."
+      },
+      {
+        "type": "text",
+        "title": "Winter Storm",
+        "text": "In December 1942, Hoth led the relief attempt, Operation Winter Storm, reaching the Aksai River before being halted by Malinovsky's 2nd Guards Army — forever 50 kilometres short of the 6th Army trapped inside Stalingrad. The failure of this relief effort sealed the fate of the encircled army."
+      },
+      {
+        "type": "text",
+        "title": "Kursk and Prokhorovka",
+        "text": "At Kursk in July 1943, the 4th Panzer Army formed the more powerful of the two German pincers, with the SS Panzer Corps and 48th Panzer Corps under its command achieving the deepest penetration of Soviet defences of the entire offensive before Operation Citadel was cancelled. The tank battle at Prokhorovka on 12 July 1943 — often described as the largest armoured engagement in history, though this characterisation has been disputed by some later historians — was fought by units under the 4th Panzer Army's command."
+      },
+      {
+        "type": "text",
+        "title": "The Long Retreat",
+        "text": "After Kursk, the army fought a continuous defensive battle as successive Soviet offensives pushed it steadily westward through Ukraine, never again able to mount an offensive of comparable scale to its operations of 1942–43."
+      }
+    ],
+    "sources": [
+      { "ref": "Nipe, George. Decision in the Ukraine: German Panzer Operations on the Eastern Front, Summer 1943. J.J. Fedorowicz, 1996." },
+      { "ref": "Zetterling, Niklas and Frankson, Anders. Kursk 1943: A Statistical Analysis. Frank Cass, 2000." }
+    ],
+    "related_records": [
+      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
+      { "id": "blue", "title": "Operation Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
+      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
+      { "id": "hermann-hoth", "title": "Hermann Hoth", "type": "Personnel", "url": "/personnel/hermann-hoth" },
+      { "id": "i-ss-panzer-corps", "title": "I SS Panzer Corps", "type": "Formation", "url": "/formations/i-ss-panzer-corps" }
+    ]
+  },
+  {
+    "id": "panzergruppe-2",
+    "name": "Panzergruppe 2 / 2. Panzerarmee",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Panzer Group / Panzer Army",
+    "theater": "Eastern Front",
+    "active": { "from": "1941-06-22", "to": "1944" },
+    "commanders": [
+      { "name": "Generaloberst Heinz Guderian", "period": "Jun 1941–Dec 1941" },
+      { "name": "Generaloberst Rudolf Schmidt", "period": "Dec 1941–Jul 1943" }
+    ],
+    "peak_strength": "c. 200,000 (June 1941)",
+    "parent_formation": { "id": "army-group-centre", "title": "Heeresgruppe Mitte (Army Group Centre)", "url": "/formations/army-group-centre" },
+    "summary": "Panzer Group 2 — later redesignated 2nd Panzer Army — was Guderian's command and the instrument of the most spectacular advances in the history of armoured warfare. It encircled Soviet forces at Białystok, Minsk, Smolensk, and Kiev, advancing over 800 kilometres in the first six weeks of Barbarossa.",
+    "context": "Guderian's operational methods — deep penetration ignoring flanks, crossing rivers in the teeth of opposition, maintaining momentum at all costs — defined Blitzkrieg at its most effective. Panzer Group 2's advance from the Polish border to Smolensk covered 700 kilometres in 52 days. The drive south to close the Kiev encirclement — executed against OKH orders and in direct defiance of his superior von Bock — resulted in the largest encirclement in history but cost critical time before Moscow. Guderian's subsequent drive on Moscow stalled in December 1941 when his leading elements were within 30 kilometres of the Kremlin; he was dismissed by Hitler on Christmas Day 1941 for ordering withdrawals to maintain defensive lines.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Panzer Group 2 was one of the four Panzer groups created for Operation Barbarossa — armoured formations roughly equivalent in size to a field army but distinguished by their composition of fast-moving Panzer and motorized divisions, intended to operate ahead of the slower marching infantry armies and achieve the deep penetrations that defined German operational doctrine."
+      },
+      {
+        "type": "text",
+        "text": "Commanded from its creation by Heinz Guderian, one of the principal theorists and practitioners of armoured warfare in the interwar German army, it formed the spearhead of Army Group Centre's advance into Belarus and Russia in 1941, and its operational history is in many respects inseparable from Guderian's own personal record as a commander — its successes are presented in his postwar memoir Panzer Leader as vindication of the armoured doctrine he had spent the 1930s advocating."
+      },
+      {
+        "type": "text",
+        "text": "Redesignated 2nd Panzer Army in October 1941, it continued under different commanders after Guderian's dismissal, but this record focuses primarily on the 1941 campaign that made it, briefly, the most successful armoured formation in the history of warfare to that date."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Doctrine in Practice",
+        "text": "Guderian's operational methods — deep penetration ignoring flanks, crossing rivers in the teeth of opposition, maintaining momentum at all costs — defined Blitzkrieg at its most effective, and Panzer Group 2's 1941 campaign is often cited as the clearest practical demonstration of the doctrine he had championed since the 1930s."
+      },
+      {
+        "type": "text",
+        "title": "The Advance to Smolensk",
+        "text": "Panzer Group 2's advance from the Polish border to Smolensk covered some 700 kilometres in just 52 days — a pace of advance that exceeded almost anything achieved by mechanised forces up to that point in military history, and one that left Soviet forces with little time to organise coherent defensive lines."
+      },
+      {
+        "type": "text",
+        "title": "Kiev and the Cost of Diversion",
+        "text": "The drive south to close the Kiev encirclement — executed against OKH's preference for a continued direct advance on Moscow, and in direct disagreement with his immediate superior, Fedor von Bock — resulted in the largest encirclement in military history, but the diversion of Panzer Group 2's strength southward cost critical weeks that some historians argue proved decisive in the subsequent failure to take Moscow before winter."
+      },
+      {
+        "type": "text",
+        "title": "Dismissal",
+        "text": "Guderian's subsequent drive on Moscow stalled in early December 1941 when his leading elements came within roughly 30 kilometres of the Kremlin, the closest German forces would ever get to the Soviet capital. He was dismissed by Hitler on Christmas Day 1941 after ordering tactical withdrawals he judged necessary to hold a defensible line in the face of the Soviet winter counteroffensive — a decision Hitler regarded as defeatism."
+      }
+    ],
+    "sources": [
+      { "ref": "Guderian, Heinz. Panzer Leader. Michael Joseph, 1952.", "note": "Guderian's own account of operations." },
+      { "ref": "Glantz, David. Barbarossa: Hitler's Invasion of Russia 1941. Tempus, 2001." }
+    ],
+    "related_records": [
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" },
+      { "id": "kiev", "title": "Battle of Kiev", "type": "Campaign", "url": "/campaigns/eastern-front/kiev" },
+      { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" },
+      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" }
+    ]
+  },
+  {
+    "id": "panzerarmee-afrika",
+    "name": "Panzerarmee Afrika / Deutsch-Italienische Panzerarmee",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Panzer Army (Joint German-Italian)",
+    "theater": "North Africa",
+    "active": { "from": "1941-02", "to": "1943-02" },
+    "commanders": [
+      { "name": "Generalleutnant Erwin Rommel (Deutsches Afrikakorps)", "period": "Feb 1941–Feb 1943" }
+    ],
+    "peak_strength": "c. 100,000 German + 90,000 Italian (June 1942)",
+    "constituent_divisions": [
+      { "id": "deutsches-afrikakorps", "title": "Deutsches Afrikakorps (DAK)", "url": "/formations/deutsches-afrikakorps" }
+    ],
+    "summary": "Panzerarmee Afrika was the combined German-Italian armoured force that fought the North African campaign under Rommel. Beginning as the Deutsches Afrikakorps (DAK), it executed some of the most daring armoured operations of the war, advancing twice to the Egyptian border before being decisively defeated at El Alamein in November 1942.",
+    "context": "Rommel arrived in Libya in February 1941 with instructions to hold the line — and immediately attacked. His audacity, speed of decision, and willingness to lead from the front made him the most celebrated German commander of the war outside the Eastern Front. He drove the British from Cyrenaica, besieged Tobruk, was driven back, advanced again, captured Tobruk (21 June 1942), and reached El Alamein just 100 kilometres from Alexandria. At his peak strength the Afrika Korps was consuming more supply than could realistically be shipped across the Mediterranean under RAF and Royal Navy interdiction. The second Battle of El Alamein (October–November 1942) ended with a crushing defeat; Rommel conducted a fighting withdrawal across 2,000 kilometres. The army was redesignated Heeresgruppe Afrika in February 1943 and surrendered in May.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "Panzerarmee Afrika occupied a unique place among German field armies: a joint German-Italian command formed not for an existing strategic plan but reactively, to prevent the total collapse of Italy's position in Libya after its disastrous defeat in Operation Compass. It absorbed the Deutsches Afrikakorps — the original German expeditionary force — and grew over 1941–42 into a substantial combined-arms army incorporating Italian armoured and infantry corps alongside German formations."
+      },
+      {
+        "type": "text",
+        "text": "Its commander, Erwin Rommel, became the single most internationally famous German general of the war, his reputation built on the seesaw campaign across Libya and Egypt that this army's record documents — repeated advances and retreats across the same stretch of North African coastline, driven as much by the chronic supply difficulties of fighting at the end of a long and contested Mediterranean line of communication as by tactical skill on either side."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, Panzerarmee Afrika connects directly to the Deutsches Afrikakorps (its founding component), Army Group Africa (its eventual successor command), and the sequence of North African campaign records — Sonnenblume, Gazala, and the two Battles of El Alamein — that together trace the rise and fall of the Axis position in the desert."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Arrival and Early Offensives",
+        "text": "Rommel arrived in Libya in February 1941 with instructions to hold the line — and immediately attacked instead. His audacity, speed of decision, and willingness to lead from the front made him the most celebrated German commander of the war outside the Eastern Front, and his early successes against a numerically superior but poorly coordinated British force established a reputation that endured long after the campaign's outcome turned against him."
+      },
+      {
+        "type": "text",
+        "title": "The Seesaw Campaign",
+        "text": "He drove the British from Cyrenaica, besieged Tobruk, was driven back, advanced again, captured Tobruk on 21 June 1942, and reached El Alamein just 100 kilometres from Alexandria — the deepest German penetration into Egypt and the high-water mark of the entire North African campaign."
+      },
+      {
+        "type": "text",
+        "title": "The Supply Problem",
+        "text": "At its peak strength, the Afrika Korps was consuming more supply than could realistically be shipped across the Mediterranean under sustained RAF and Royal Navy interdiction of Axis convoys — a structural problem that no amount of tactical skill could fully overcome, and one that ultimately constrained every German offensive option in the theater."
+      },
+      {
+        "type": "text",
+        "title": "El Alamein and Withdrawal",
+        "text": "The second Battle of El Alamein (October–November 1942) ended in a crushing defeat for the depleted and under-supplied Axis force; Rommel conducted a fighting withdrawal across nearly 2,000 kilometres of North African coastline back into Tunisia. The army was redesignated Heeresgruppe Afrika in February 1943, by which point its remaining strength had been folded into the final defence of the Tunisian bridgehead, which surrendered that May."
+      }
+    ],
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VIII: Panzerarmee Afrika operational files." },
+      { "ref": "Rommel, Erwin. The Rommel Papers. Ed. B.H. Liddell Hart. Collins, 1953." },
+      { "ref": "Kitchen, Martin. Rommel's Desert War. Cambridge University Press, 2009." }
+    ],
+    "related_records": [
+      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
+      { "id": "alamein-2", "title": "Second Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-2" },
+      { "id": "sonnenblume", "title": "Operation Sonnenblume", "type": "Campaign", "url": "/campaigns/africa/sonnenblume" },
+      { "id": "flak-88", "title": "8.8 cm Flak 88", "type": "Armament", "url": "/armaments/flak-88" },
+      { "id": "army-group-africa", "title": "Army Group Africa", "type": "Formation", "url": "/formations/army-group-africa" }
+    ]
+  }
+]

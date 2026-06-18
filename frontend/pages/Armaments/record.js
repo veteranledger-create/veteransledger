@@ -3,6 +3,8 @@
  * Reads :id from URL, searches all category/nation files, renders specifications.
  */
 
+import { renderDossierSection, renderHistoricalPhotographsSection, attachMediaFallbacks, initAttributionModal, initImageLightbox, heroImageCandidates, isAiGeneratedImageSrc } from "/pages/shared/media-blocks.js";
+
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
 const CATEGORIES = [
@@ -48,7 +50,6 @@ function render(root, item) {
   const catLabel =
     CAT_LABELS[item._category] || item._category || item.category || "";
   const nationStr = (item.nation || item._nation || "").replace(/-/g, " ");
-  const img = item.image || PLACEHOLDER;
 
   const armor = item.armor_mm || {};
   const armament = item.armament || {};
@@ -58,6 +59,35 @@ function render(root, item) {
     : armament.secondary
       ? [armament.secondary]
       : [];
+
+  // Cascades explicit image → real photo → blueprint/diagram → AI
+  // illustration → placeholder, advancing on load failure instead of
+  // jumping straight to the placeholder (handles the many still-broken
+  // legacy /storage/... paths gracefully).
+  const heroCandidates = heroImageCandidates(item, PLACEHOLDER);
+  let heroIndex = 0;
+  const heroWrap = document.createElement("div");
+  heroWrap.className = "armament-hero-wrap";
+  const heroBadge = document.createElement("span");
+  heroBadge.className = "media-ai-badge";
+  heroBadge.textContent = "Digital Reconstruction";
+  heroBadge.hidden = true;
+  const heroImg = document.createElement("img");
+  heroImg.className = "record-hero-image armament-hero-image";
+  heroImg.alt = item.name || "";
+  const updateHeroBadge = () => {
+    heroBadge.hidden = !isAiGeneratedImageSrc(item, heroImg.src.replace(location.origin, ""));
+  };
+  const tryNextHero = () => {
+    heroIndex++;
+    if (heroIndex < heroCandidates.length) { heroImg.src = heroCandidates[heroIndex]; updateHeroBadge(); }
+  };
+  heroImg.addEventListener("error", tryNextHero);
+  heroImg.addEventListener("load", () => { if (!heroImg.naturalWidth) tryNextHero(); });
+  heroImg.src = heroCandidates[0];
+  updateHeroBadge();
+  heroWrap.appendChild(heroBadge);
+  heroWrap.appendChild(heroImg);
 
   root.innerHTML = `
     <nav class="record-breadcrumb" aria-label="Breadcrumb">
@@ -79,7 +109,7 @@ function render(root, item) {
       </div>
     </header>
 
-    <img class="record-hero-image" src="${img}" alt="${item.name || ""}" onerror="this.src='${PLACEHOLDER}'">
+    <div id="record-hero-placeholder"></div>
 
     ${item.summary ? `<blockquote class="record-summary">${item.summary}</blockquote>` : ""}
 
@@ -109,12 +139,24 @@ function render(root, item) {
     ${renderHistoricalContext(item)}
     ${renderFullReport(item)}
     ${renderTimelineRefs(item)}
-    ${renderMedia(item)}
+    ${renderHistoricalPhotographsSection("Historical Photographs", item.dossier?.photos)}
+    ${renderDossierSection("Combat Photography", item.dossier?.combat_photos)}
+    ${renderDossierSection("Blueprint Archive", item.dossier?.blueprints)}
+    ${renderDossierSection("Technical Drawings", item.dossier?.diagrams)}
+    ${renderDossierSection("Factory Documentation", item.dossier?.factory_documents)}
+    ${renderDossierSection("Technical Manuals", item.dossier?.manuals)}
+    ${renderDossierSection("Maintenance Manuals", item.dossier?.maintenance_manuals)}
+    ${renderDossierSection("Testing Reports", item.dossier?.testing_reports)}
+    ${renderDossierSection("Operational Maps", item.dossier?.maps)}
     ${renderSources(item)}
     ${renderRelatedRecords(item, "/armaments")}
 
     <p class="record-archive-note">VeteransLedger Historical Archive · All content is presented for educational purposes only.</p>
   `;
+
+  // Replace placeholder div with the pre-built hero img (handler attached before src was set)
+  const placeholder = root.querySelector("#record-hero-placeholder");
+  if (placeholder) placeholder.replaceWith(heroWrap);
 }
 
 /* ── Archive section renderers ───────────────────────────────── */
@@ -223,66 +265,6 @@ function renderRelatedRecords(rec, backPath) {
     </section>`;
 }
 
-function renderMedia(rec) {
-  const media = rec.media || [];
-  if (!media.length) return "";
-
-  const images = media.filter(
-    (m) => m.type === "image" || m.type === "gallery",
-  );
-  const maps = media.filter((m) => m.type === "map");
-  const docs = media.filter((m) => m.type === "document" || m.type === "pdf");
-  const audios = media.filter((m) => m.type === "audio");
-  const videos = media.filter((m) => m.type === "video");
-
-  return `
-    <section class="record-section record-section--archive">
-      <h2 class="record-section__title">Media Archive</h2>
-      ${
-        images.length
-          ? `<div class="record-media-gallery">${images
-              .map(
-                (m) => `
-        <figure class="record-media-item">
-          <img src="${m.url}" alt="${m.caption || ""}" loading="lazy">
-          ${m.caption ? `<figcaption>${m.caption}</figcaption>` : ""}
-        </figure>`,
-              )
-              .join("")}</div>`
-          : ""
-      }
-      ${
-        maps.length
-          ? `<div style="margin-top:var(--space-6)"><h3 class="record-sources-group__label">Maps</h3>${maps
-              .map(
-                (m) => `
-        <figure class="record-media-item" style="max-width:100%;margin-bottom:var(--space-4)">
-          <img src="${m.url}" alt="${m.caption || "Map"}" loading="lazy" style="max-width:100%;height:auto">
-          ${m.caption ? `<figcaption>${m.caption}</figcaption>` : ""}
-        </figure>`,
-              )
-              .join("")}</div>`
-          : ""
-      }
-      ${
-        docs.length
-          ? `<div style="margin-top:var(--space-6)"><h3 class="record-sources-group__label">Documents</h3>${docs
-              .map(
-                (d) => `
-        <div style="padding:var(--space-3) var(--space-4);background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);margin-bottom:var(--space-2)">
-          <span style="font-size:var(--text-sm);color:var(--gold-dim)">${d.title || "Document"}</span>
-          ${d.description ? `<p style="font-size:var(--text-xs);color:var(--text-muted);margin:var(--space-1) 0 0">${d.description}</p>` : ""}
-          ${d.url ? `<a href="${d.url}" style="font-size:var(--text-xs);color:var(--gold)" target="_blank" rel="noopener">View ↗</a>` : ""}
-        </div>`,
-              )
-              .join("")}</div>`
-          : ""
-      }
-      ${audios.length ? audios.map((a) => `<div style="margin-top:var(--space-4)"><p style="font-size:var(--text-xs);color:var(--gold-dim);margin-bottom:var(--space-2)">${a.caption || "Audio"}</p><audio controls src="${a.url}" style="width:100%"></audio></div>`).join("") : ""}
-      ${videos.length ? videos.map((v) => `<div style="margin-top:var(--space-4)"><p style="font-size:var(--text-xs);color:var(--gold-dim);margin-bottom:var(--space-2)">${v.caption || "Video"}</p><video controls src="${v.url}" style="width:100%;max-height:480px"></video></div>`).join("") : ""}
-    </section>`;
-}
-
 function renderTimelineRefs(rec) {
   const refs = rec.timeline_refs || [];
   if (!refs.length) return "";
@@ -323,6 +305,9 @@ async function init() {
   }
 
   render(root, item);
+  attachMediaFallbacks(root);
+  initAttributionModal();
+  initImageLightbox();
 }
 
 function renderError(root, msg) {

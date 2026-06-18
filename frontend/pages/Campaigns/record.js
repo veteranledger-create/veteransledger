@@ -105,7 +105,7 @@ function render(root, campaign) {
       </div>
     </header>
 
-    <img class="record-hero-image" src="${img}" alt="${campaign.title || ""}" onerror="this.src='${PLACEHOLDER}'">
+    <img class="record-hero-image" src="${img}" alt="${campaign.title || ""}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
 
     ${campaign.summary ? `<blockquote class="record-summary">${campaign.summary}</blockquote>` : ""}
 

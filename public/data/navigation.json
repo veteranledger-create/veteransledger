@@ -2,7 +2,7 @@
   "brand": {
     "name": "VeteransLedger",
     "href": "/",
-    "logo": "/public/logos/eagle.png",
+    "logo": "/public/images/logos/eagle.png",
     "tagline": "Axis History Archive"
   },
 
@@ -125,7 +125,30 @@
           "id": "let-volunteer",
           "label": "Volunteers",
           "href": "/letters#volunteers"
-        }
+        },
+        { "id": "let-british", "label": "British", "href": "/letters#british" },
+        { "id": "let-polish",  "label": "Polish",  "href": "/letters#polish"  }
+      ]
+    },
+
+    {
+      "id": "formations",
+      "label": "FORMATIONS",
+      "href": "/formations",
+      "icon": "formations",
+      "children": [
+        { "id": "form-army-groups", "label": "Army Groups",  "href": "/formations#army-groups" },
+        { "id": "form-armies",      "label": "Armies",       "href": "/formations#armies"      },
+        { "id": "form-corps",       "label": "Corps",        "href": "/formations#corps"       },
+        { "id": "form-divisions",  "label": "Divisions",    "href": "/formations#divisions"   },
+        { "id": "form-ss",         "label": "Waffen-SS",    "href": "/formations#waffen-ss"   },
+        { "id": "form-vol",        "label": "Volunteers",   "href": "/formations#volunteers"  },
+        { "id": "form-brigades",   "label": "Brigades",     "href": "/formations#brigades"    },
+        { "id": "form-regiments",  "label": "Regiments",    "href": "/formations#regiments"   },
+        { "id": "form-battalions", "label": "Battalions",   "href": "/formations#battalions"  },
+        { "id": "form-luft",       "label": "Luftwaffe",    "href": "/formations#luftwaffe"   },
+        { "id": "form-km",         "label": "Kriegsmarine", "href": "/formations#kriegsmarine"},
+        { "id": "form-allies",     "label": "Axis Allies",  "href": "/formations#allies"      }
       ]
     },
 
@@ -223,6 +246,16 @@
       "href": "/site-policies#removal"
     },
     {
+      "id": "about-mission",
+      "label": "MISSION",
+      "href": "/about#mission"
+    },
+    {
+      "id": "sources-methodology",
+      "label": "SOURCES & METHODOLOGY",
+      "href": "/about#sources"
+    },
+    {
       "id": "theme",
       "type": "action",
       "action": "toggle-theme",
@@ -240,7 +273,10 @@
         "heading": "ARCHIVE",
         "items": ["personnel", "letters", "nsdap", "articles"]
       },
-      { "heading": "LEGAL", "items": ["policies", "removal"] }
+      {
+        "heading": "RESEARCH",
+        "items": ["sources-methodology", "about-mission"]
+      }
     ],
     "social": [
       {
@@ -248,6 +284,12 @@
         "label": "Telegram",
         "href": "https://t.me/VETERANSLEDGER",
         "icon": "telegram"
+      },
+      {
+        "id": "discord",
+        "label": "Discord",
+        "href": "https://discord.gg/ZeFPnNt3",
+        "icon": "discord"
       },
       {
         "id": "email",

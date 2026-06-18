@@ -8,30 +8,31 @@
   border-top: 1px solid var(--border-dim);
 }
 
-/* ── Top band ───────────────────────────────────────────────── */
+/* ── Top band: LEFT (brand+desc) | CENTER (status) | RIGHT (links) ──
+   All three zones share one row down to a fairly narrow width — they
+   only stack once there's no longer room to keep them side by side,
+   so no zone is ever left stranded below a tall, mostly-empty sibling. */
 .site-footer__top {
   display: grid;
-  grid-template-columns: 200px 1fr 300px;
-  gap: var(--space-10);
+  grid-template-columns: minmax(220px, 280px) minmax(130px, 160px) minmax(240px, 1fr);
+  gap: var(--space-8);
   padding: var(--space-10) var(--space-10) var(--space-8);
   border-bottom: 1px solid var(--border-dim);
 }
 
-@media (max-width: 900px) {
-  .site-footer__top {
-    grid-template-columns: 1fr 1fr;
-  }
-  .site-footer__brand {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   .site-footer__top {
     grid-template-columns: 1fr;
     padding: var(--space-8) var(--space-5) var(--space-6);
     gap: var(--space-6);
   }
+}
+
+/* LEFT zone: brand block + short description, stacked */
+.site-footer__left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
 }
 
 /* Brand block */
@@ -83,12 +84,15 @@
   color: var(--red);
 }
 
-/* Description block */
+/* Description block — compact editorial copy, capped to ~45 characters
+   per line so it reads as a short identity blurb, not a stretched paragraph. */
 .site-footer__about {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  align-items: flex-start;
+  gap: var(--space-3);
   padding-top: var(--space-1);
+  max-width: 36ch;
 }
 
 .site-footer__about-text {
@@ -96,6 +100,7 @@
   line-height: 1.65;
   color: var(--text-secondary);
   margin: 0;
+  max-width: 36ch;
 }
 
 .site-footer__signature {
@@ -104,6 +109,32 @@
   font-size: var(--text-sm);
   color: var(--text-muted);
   margin: 0;
+}
+
+/* CENTER zone: Archive Status — compact definition-list card.
+   Labels get a fixed min-width so values line up directly after them
+   instead of stretching to the column's far edge. */
+.site-footer__stats {
+  max-width: 160px;
+}
+.site-footer__stats-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.site-footer__stats-list li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.site-footer__stats-list li span {
+  color: var(--text-faint);
+  flex-shrink: 0;
+  min-width: 88px;
 }
 
 /* Quick links block */
@@ -126,6 +157,19 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-2) var(--space-5);
   list-style: none;
+}
+
+@media (max-width: 600px) {
+  .site-footer__column-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4) var(--space-3);
+  }
+}
+
+@media (max-width: 420px) {
+  .site-footer__column-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .site-footer__column {
@@ -196,23 +240,26 @@
   margin: 0 0 var(--space-4) 0;
 }
 
-/* Archive info list */
+/* Archive info list — compact definition-list pairing, capped so rows
+   can't stretch wide inside the bottom-band grid column. */
 .site-footer__info-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  max-width: 220px;
 }
 .site-footer__info-list li {
   font-size: 11px;
   color: var(--text-muted);
   display: flex;
+  align-items: baseline;
   gap: var(--space-2);
 }
 .site-footer__info-list li span {
   color: var(--text-faint);
   flex-shrink: 0;
-  width: 90px;
+  min-width: 60px;
 }
 
 /* Legal links */
@@ -256,49 +303,78 @@
   color: var(--gold);
 }
 
-/* Social icons */
+/* Social icons — horizontal row on desktop, vertical stack on mobile */
 .site-footer__social {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: var(--space-3);
   list-style: none;
+}
+.site-footer__social-item {
+  display: flex;
 }
 .site-footer__social-link {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
+  gap: var(--space-2);
+  min-height: 44px; /* touch-friendly target */
+  padding: 0 var(--space-3);
   border: 1px solid var(--border-base);
   border-radius: var(--radius-sm);
   text-decoration: none;
   transition: all var(--transition-fast);
-  background-size: 16px;
+}
+.site-footer__social-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background-size: 18px;
   background-repeat: no-repeat;
   background-position: center;
   /* dark theme: soft white icon */
   filter: brightness(0) invert(0.7);
+  transition: filter var(--transition-fast);
 }
-[data-theme="light"] .site-footer__social-link {
+[data-theme="light"] .site-footer__social-icon {
   filter: brightness(0) opacity(0.45);
 }
-.site-footer__social-link[data-icon="telegram"] {
-  background-image: url("/public/images/icons/telegram.svg");
+.site-footer__social-link[data-icon="telegram"] .site-footer__social-icon {
+  background-image: url("/public/images/icons/social/telegram.svg");
 }
-.site-footer__social-link[data-icon="email"] {
-  background-image: url("/public/images/icons/email.svg");
+.site-footer__social-link[data-icon="email"] .site-footer__social-icon {
+  background-image: url("/public/images/icons/social/email.svg");
 }
-.site-footer__social-link[data-icon="discord"] {
-  background-image: url("/public/images/icons/discord.svg");
+.site-footer__social-link[data-icon="discord"] .site-footer__social-icon {
+  background-image: url("/public/images/icons/social/discord.svg");
+}
+.site-footer__social-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color var(--transition-fast);
 }
 .site-footer__social-link:hover {
   border-color: var(--border-gold);
   background-color: var(--gold-faint);
+}
+.site-footer__social-link:hover .site-footer__social-icon {
   /* dark theme: warm gold icon */
   filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(5deg)
     brightness(0.85);
 }
-[data-theme="light"] .site-footer__social-link:hover {
+[data-theme="light"] .site-footer__social-link:hover .site-footer__social-icon {
   filter: brightness(0) opacity(0.8);
+}
+.site-footer__social-link:hover .site-footer__social-label {
+  color: var(--gold);
+}
+
+@media (max-width: 768px) {
+  .site-footer__social {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 /* ── Legal strip ────────────────────────────────────────────── */

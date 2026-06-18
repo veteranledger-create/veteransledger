@@ -5,11 +5,16 @@
 
 /* ── Archive section wrapper ───────────────────────────────── */
 .archive-section {
-  padding: var(--space-12) var(--space-10);
+  padding: var(--space-8) var(--space-10) var(--space-12);
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .archive-section {
-    padding: var(--space-8) var(--space-5);
+    padding: var(--space-6) var(--space-6) var(--space-10);
+  }
+}
+@media (max-width: 640px) {
+  .archive-section {
+    padding: var(--space-5) var(--space-4) var(--space-8);
   }
 }
 
@@ -39,10 +44,10 @@
 
 /* ── Anchor section ────────────────────────────────────────── */
 .anchor-section {
-  scroll-margin-top: calc(var(--header-h) + var(--space-6));
-  padding-top: var(--space-10);
+  scroll-margin-top: calc(var(--header-h) + var(--space-4));
+  padding-top: var(--space-8);
   border-top: 1px solid var(--border-dim);
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
 }
 .anchor-section:first-of-type {
   border-top: none;
@@ -95,12 +100,69 @@
   background: var(--gold-faint);
 }
 
+/* ── Division subtype subgroups ────────────────────────────── */
+.formation-subgroup {
+  margin-bottom: var(--space-8);
+}
+.formation-subgroup:last-child {
+  margin-bottom: 0;
+}
+.formation-subgroup__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin: 0 0 var(--space-4) 0;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-dim);
+}
+
 /* ── Nation tabs ───────────────────────────────────────────── */
 .nation-tabs {
   display: flex;
   gap: var(--space-2);
   flex-wrap: wrap;
+}
+
+/* Grouped tab rows (e.g. Formations: Primary echelons vs Special branches) —
+   each row gets a small caption label so the tab bar reads as a structured
+   hierarchy instead of one flat row of buttons. */
+.nation-tabs-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
   margin-bottom: var(--space-8);
+}
+.nation-tabs-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.nation-tabs-row .nation-tabs {
+  margin-bottom: 0;
+}
+.nation-tabs__group-label {
+  flex-shrink: 0;
+  min-width: 52px;
+  padding-top: 9px;
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+@media (max-width: 640px) {
+  .nation-tabs-row {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .nation-tabs__group-label {
+    padding-top: 0;
+  }
 }
 
 .nation-tab {
@@ -266,6 +328,30 @@
 .pagination__btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+.pagination__ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 36px;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .pagination {
+    gap: var(--space-1);
+    padding: var(--space-6) 0;
+  }
+  .pagination__btn {
+    min-width: 32px;
+    height: 32px;
+    font-size: var(--text-xs);
+    padding: 0 var(--space-2);
+  }
 }
 
 /* ── Archive info block ────────────────────────────────────── */

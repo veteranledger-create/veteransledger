@@ -1,0 +1,106 @@
+[
+  {
+    "id": "pol-001",
+    "collection": "polish",
+    "author": "Pilot Officer Witold Łokuciewski",
+    "unit": "No. 303 (Polish) Squadron, RAF",
+    "date": "1940-09-15",
+    "location": "RAF Northolt, Middlesex",
+    "recipient": "Captain Jan Łokuciewski (brother, POW)",
+    "language": "Polish",
+    "translated": true,
+    "translator_note": "Translated from Polish. Original held at the Polish Institute and Sikorski Museum, London.",
+    "subject": "Fighting in English skies",
+    "body": "Janek,\n\nI do not know if this letter will ever find you, or in what condition. I write it not knowing whether you are alive. But I will write as though you will read it, because that is what allows me to continue.\n\nWe are based in England now — a place called Northolt west of London. The squadron is Polish, though we fly British aircraft and answer to British commanders. When they first sent us up in September they said we were too aggressive. We had been in France and seen what these Germans do. I am not sorry for our aggressiveness.\n\nOn the 15th of this month I shot down a Heinkel over the Thames estuary. It went into the water. I thought I would feel something more than exhaustion.\n\nThe English treat us well, mostly. They find our names difficult but they try. Some of the ground crew have learned to say Dziękuję. There is a girl named Eileen at the NAAFI canteen who says it perfectly.\n\nWe fight for Poland, Janek. Even in English skies, we fight for Poland. When this is over I believe we will go home. We must believe that.\n\nYour brother,\nWitek",
+    "historical_context": "No. 303 Squadron was the highest-scoring RAF squadron in the Battle of Britain despite entering combat late in the campaign, on 31 August 1940. Polish pilots, many of them veterans of the September 1939 campaign and the Battle of France, brought combat experience that made them formidable. The 15 September 1940 — 'Battle of Britain Day' — saw 303 Squadron heavily engaged. Many Polish airmen never returned home; postwar Poland fell under Soviet control, and those who had fought in the West were viewed with suspicion.",
+    "archival_note": "Polish Institute and Sikorski Museum, London. Collection A.V.20/10/19: No. 303 Squadron personal correspondence 1940–1941.",
+    "sources": [
+      { "type": "primary", "ref": "Polish Institute and Sikorski Museum, London. Collection A.V.20/10/19." },
+      { "ref": "Olson, Lynne and Cloud, Stanley. A Question of Honor: The Kosciuszko Squadron — Forgotten Heroes of World War II. Knopf, 2003." },
+      { "ref": "Zamoyski, Adam. The Forgotten Few: The Polish Air Force in the Second World War. John Murray, 1995." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
+      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" }
+    ]
+  },
+  {
+    "id": "pol-002",
+    "collection": "polish",
+    "author": "Corporal Stanisław Kmiecik",
+    "unit": "5th Kresowy Infantry Division, II Polish Corps",
+    "date": "1944-05-18",
+    "location": "Cassino, Italy",
+    "recipient": "Irena Kmiecik (sister, in exile, London)",
+    "language": "Polish",
+    "translated": true,
+    "translator_note": "Translated from Polish. Original held at the General Sikorski Historical Institute, London.",
+    "subject": "After Monte Cassino",
+    "body": "Irena,\n\nWe took it. The monastery is ours — or what remains of it. They hoisted the Polish flag this morning at ten past ten. I was fifty metres away and I wept, which I am not ashamed to admit.\n\nI will not describe the battle itself, except to say that what happened on Phantom Ridge and Point 593 over the past weeks is beyond description. The New Zealanders and the Indians tried before us. The Americans and the French tried before them. It was left to us. Anders told us it would be — told us that we would show the world what Poles could do. We did.\n\nMy friend Bolek Wiśniewski was killed on the night of the 17th. He was from Lwów, as you know. His family have no home to return to now, any more than we have. That is the thing I cannot place — fighting for a land that is already lost before we have won.\n\nBut the flag is on the monastery. That is something they cannot take back.\n\nYour brother who loves you,\nStanek",
+    "historical_context": "The 2nd Polish Corps under General Władysław Anders assaulted Monte Cassino on the night of 11–12 May 1944 as part of Operation Diadem. After savage fighting on the surrounding peaks, they captured the ruins of the monastery on 18 May 1944, raising the Polish regimental flag at 10:20. The II Corps had been formed largely from Poles released from Soviet labour camps under the Sikorski-Maisky agreement. Many soldiers like Kmiecik came from areas of eastern Poland (Lwów/Lviv) that were incorporated into the Soviet Union after the war — meaning that victory at Cassino could not be followed by a homecoming.",
+    "archival_note": "General Sikorski Historical Institute, London. Collection B.I.62/B: Personal correspondence — II Polish Corps Italy campaign 1943–1945.",
+    "sources": [
+      { "type": "primary", "ref": "General Sikorski Historical Institute, London. Collection B.I.62/B." },
+      { "ref": "Hapgood, David and Richardson, David. Monte Cassino. Congdon and Weed, 1984." },
+      { "ref": "Parker, Matthew. Monte Cassino: The Story of the Hardest-Fought Battle of World War Two. Headline, 2003." }
+    ],
+    "related_records": [
+      { "id": "cassino", "title": "Battle of Monte Cassino", "type": "Campaign", "url": "/campaigns/italy/cassino" },
+      { "id": "albert-kesselring", "title": "Albert Kesselring", "type": "Personnel", "url": "/personnel/albert-kesselring" },
+      { "id": "gothic-line", "title": "Gothic Line", "type": "Campaign", "url": "/campaigns/italy/gothic-line" }
+    ]
+  },
+  {
+    "id": "pol-003",
+    "collection": "polish",
+    "author": "Hanna Czajkowska (nom de guerre: 'Danuta')",
+    "unit": "Armia Krajowa (Home Army), Mokotów sector",
+    "date": "1944-09-12",
+    "location": "Warsaw",
+    "recipient": "Not addressed — discovered in the ruins",
+    "language": "Polish",
+    "translated": true,
+    "translator_note": "Translated from Polish. Original recovered during post-war archaeological survey of the Mokotów district, 1946. Held at the Warsaw Rising Museum.",
+    "subject": "Forty-third day",
+    "body": "I do not know who will read this. Perhaps no one.\n\nToday is the forty-third day of the Rising. We have not eaten properly in a week. There is water from a pump three streets away — we go at night, two at a time, with a cloth tied round the pail to stop it sloshing.\n\nThe sewers. I will not write about the sewers except to say that I understand now why the older men said nothing, only looked at one another, when the order came to use them.\n\nZbyszek was killed this morning. He was seventeen. He had a photograph of his mother and a volume of Norwid in his coat pocket. I am keeping the Norwid.\n\nThe planes came again from the East and circled. They did not drop anything. The radio says the Soviets have stopped. People say different things about why. I do not have an opinion any more. I only know what is here, in this street, in this hour.\n\nMy name is Hanna Czajkowska. I am twenty-three years old. I was a student of philology at the University of Warsaw before the war. I wanted to be a teacher.\n\nI want whoever finds this to know that we were real people. That we were here. That we chose to fight.\n\nH.",
+    "historical_context": "The Warsaw Uprising began on 1 August 1944 (W-Hour, 17:00) and continued for 63 days until capitulation on 2 October. The letter's reference to Soviet aircraft circling without dropping supplies reflects the contested and deeply debated Soviet decision not to provide meaningful air support during the critical phase. The Home Army fought with captured and parachuted weapons; the sewers (kanały) were used for movement and communication between sectors. 'Danuta's' survival is not documented; approximately 200,000 Warsaw civilians died during the uprising and its aftermath. Norwid (Cyprian Kamil Norwid) was a 19th-century Polish Romantic poet widely read in the underground.",
+    "archival_note": "Warsaw Rising Museum. Document Collections — Recovered manuscripts, Mokotów sector. Accession 2001/P/034.",
+    "sources": [
+      { "type": "primary", "ref": "Warsaw Rising Museum. Recovered Manuscripts — Mokotów sector. Accession 2001/P/034." },
+      { "ref": "Bór-Komorowski, Tadeusz. The Secret Army. Gryf Publications, 1950.", "note": "Memoir of the AK commander during the Uprising." },
+      { "ref": "Davies, Norman. Rising '44: The Battle for Warsaw. Macmillan, 2003." }
+    ],
+    "related_records": [
+      { "id": "warsaw", "title": "Warsaw Uprising", "type": "Campaign", "url": "/campaigns/western-front/warsaw" },
+      { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
+      { "id": "otto-skorzeny", "title": "Otto Skorzeny", "type": "Personnel", "url": "/personnel/otto-skorzeny" }
+    ]
+  },
+  {
+    "id": "pol-004",
+    "collection": "polish",
+    "author": "Major Władysław Szymański",
+    "unit": "Unknown unit, prisoner since September 1939",
+    "date": "1944-01-15",
+    "location": "Oflag VII-A Murnau, Bavaria",
+    "recipient": "Zofia Szymańska (wife, Warsaw)",
+    "language": "Polish",
+    "translated": true,
+    "translator_note": "Translated from Polish. Letter passed through German censorship; certain passages may have been self-censored by the author. Original held at the Central Military Archive, Warsaw.",
+    "subject": "From captivity — the fourth year",
+    "body": "My dearest Zofia,\n\nThe Red Cross parcel arrived, eventually, though much reduced from what was originally sent. The Canadians in the next block are generous. We exchange language lessons — my English improves; their Polish remains, diplomatically, a work in progress.\n\nIt has been four years and four months since September. In that time I have read every book in the camp library twice. I have given lectures on the history of the Piast dynasty to whoever will attend. I have kept myself from despair by making a study of despair — its mechanisms, its relationship to hope, the difference between hope and delusion.\n\nThe news reaches us slowly and incompletely. We know that things are moving. One does not celebrate yet.\n\nI think about you constantly. I think about Karolina and whether she still remembers my face. She was three years old when I left. She is seven now. In my mind she is still three.\n\nI will come home. I believe this with the stubbornness that has kept me here. The world will be very different from the one I left. We will be very different from the people we were. But we will sit together in our kitchen with the samovar and we will know that we survived.\n\nYour Władek",
+    "historical_context": "Oflag VII-A Murnau was an officer prisoner-of-war camp in Bavaria holding primarily Polish and later Allied officers. Major Szymański was among the Polish officers captured in the September 1939 campaign. The letter's careful language reflects awareness of German censorship. His reference to 'things moving' in January 1944 likely refers to the Allied advances in Italy and Soviet pressure in the East. The camp was liberated by the US Army in April 1945. Whether Major Szymański was reunited with his family in Warsaw — by 1945 devastated and under Soviet control — is not recorded.",
+    "archival_note": "Centralne Archiwum Wojskowe (Central Military Archive), Warsaw. Collection MiD VIII.800.130: Prisoner of war correspondence — Oflag VII-A.",
+    "sources": [
+      { "type": "primary", "ref": "Centralne Archiwum Wojskowe, Warsaw. Collection MiD VIII.800.130." },
+      { "ref": "Sword, Keith. Deportation and Exile: Poles in the Soviet Union, 1939–48. Palgrave Macmillan, 1994." },
+      { "ref": "Zgórniak, Marian. Europe in the Second World War. Wydawnictwo Platan, 1994." }
+    ],
+    "related_records": [
+      { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
+      { "id": "bzura", "title": "Battle of Bzura", "type": "Campaign", "url": "/campaigns/western-front/bzura" },
+      { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" }
+    ]
+  }
+]

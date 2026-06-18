@@ -59,7 +59,12 @@
     "shell_weight_kg": 7100,
     "range_km": 47,
     "units_produced": 2,
-    "summary": "Schwerer Gustav was the largest calibre gun ever used in combat and fired the heaviest shells in artillery history. Each shell weighed 7,100 kg and could penetrate 7 metres of concrete. It was used during the Siege of Sevastopol in 1942, firing 48 rounds into Soviet fortifications. The gun required a crew of 2,500 men and special twin railway tracks — its tactical impact was negligible compared to the resources consumed in its construction and deployment."
+    "summary": "Schwerer Gustav was the largest calibre gun ever used in combat and fired the heaviest shells in artillery history. Each shell weighed 7,100 kg and could penetrate 7 metres of concrete. It was used during the Siege of Sevastopol in 1942, firing 48 rounds into Soviet fortifications. The gun required a crew of 2,500 men and special twin railway tracks — its tactical impact was negligible compared to the resources consumed in its construction and deployment.",
+    "dossier": {
+      "diagrams": [
+        { "type": "image", "images": [ { "src": "/public/images/armaments/wunderwaffen/schwerer-gustav/photos/schwerer-gustav.webp", "caption": "Schwerer Gustav railway gun (digital reconstruction)", "description": "Stylized illustration depicting the railway gun and its launch crew in a quarry emplacement.", "is_ai_generated": true } ] }
+      ]
+    }
   },
   {
     "id": "v3-supergun",
@@ -72,6 +77,11 @@
     "manufacturer": "Röchling",
     "barrel_length_m": 130,
     "range_km": 165,
-    "summary": "The Hochdruckpumpe (High Pressure Pump), designated V-3, was a supergun concept with 130-metre barrels angled toward London, built into a bunker at Mimoyecques, France. Lateral propellant charges along the barrel were meant to accelerate the shell progressively. RAF bombing raids, including bouncing bomb attacks by 617 Squadron, rendered the installation unusable before it could fire a shot. Two shorter versions were used against Luxembourg and Luxemburg, firing 183 rounds."
+    "summary": "The Hochdruckpumpe (High Pressure Pump), designated V-3, was a supergun concept with 130-metre barrels angled toward London, built into a bunker at Mimoyecques, France. Lateral propellant charges along the barrel were meant to accelerate the shell progressively. RAF bombing raids, including bouncing bomb attacks by 617 Squadron, rendered the installation unusable before it could fire a shot. Two shorter versions were used against Luxembourg and Luxemburg, firing 183 rounds.",
+    "dossier": {
+      "diagrams": [
+        { "type": "image", "images": [ { "src": "/public/images/armaments/wunderwaffen/v3-supergun/photos/v3-supergun.webp", "caption": "V-3 (Hochdruckpumpe) site cutaway (digital reconstruction)", "description": "Illustrated cutaway of the angled multi-chamber barrels and underground bunker complex at Mimoyecques, with a location map inset.", "is_ai_generated": true } ] }
+      ]
+    }
   }
 ]

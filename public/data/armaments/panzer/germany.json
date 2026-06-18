@@ -19,7 +19,17 @@
     "speed_kmh": 42,
     "range_km": 210,
     "units_produced": 8553,
-    "summary": "The Panzer IV was the workhorse of the Wehrmacht and the only German tank produced throughout the entire war. Originally designed for infantry support with a short-barrel 75mm gun, it was progressively upgraded with longer, high-velocity guns and additional armour to remain effective. It served on every front and in every theater."
+    "summary": "The Panzer IV was the workhorse of the Wehrmacht and the only German tank produced throughout the entire war. Originally designed for infantry support with a short-barrel 75mm gun, it was progressively upgraded with longer, high-velocity guns and additional armour to remain effective. It served on every front and in every theater.",
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 10/90: Panzerkommission reports — Pz IV production variants." },
+      { "ref": "Jentz, Thomas and Doyle, Hilary. Panzer Tracts No. 4: Panzerkampfwagen IV. Panzer Tracts, 1997." },
+      { "ref": "Spielberger, Walter. Der Panzerkampfwagen IV. Motorbuch, 1975." }
+    ],
+    "related_records": [
+      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" },
+      { "id": "michael-wittmann", "title": "Michael Wittmann", "type": "Personnel", "url": "/personnel/michael-wittmann" },
+      { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" }
+    ]
   },
   {
     "id": "pz-vi-tiger",
@@ -41,7 +51,17 @@
     "speed_kmh": 38,
     "range_km": 195,
     "units_produced": 1347,
-    "summary": "The Tiger I was one of the most feared tanks of the Second World War. Armed with the devastating 88mm gun derived from the anti-aircraft weapon that had proven its anti-tank capability in Spain and North Africa, the Tiger I could destroy virtually any Allied tank at combat ranges. Its limited production numbers and mechanical complexity, however, meant it could never be deployed in the quantities that might have changed the war's outcome."
+    "summary": "The Tiger I was one of the most feared tanks of the Second World War. Armed with the devastating 88mm gun derived from the anti-aircraft weapon that had proven its anti-tank capability in Spain and North Africa, the Tiger I could destroy virtually any Allied tank at combat ranges. Its limited production numbers and mechanical complexity, however, meant it could never be deployed in the quantities that might have changed the war's outcome.",
+    "sources": [
+      { "ref": "Jentz, Thomas. Germany's Tiger Tanks: Tiger I and II. Schiffer, 1997." },
+      { "ref": "Schneider, Wolfgang. Tigers in Combat I. J.J. Fedorowicz, 1994." }
+    ],
+    "related_records": [
+      { "id": "michael-wittmann", "title": "Michael Wittmann", "type": "Personnel", "url": "/personnel/michael-wittmann" },
+      { "id": "flak-88", "title": "8.8 cm Flak 88", "type": "Armament", "url": "/armaments/flak-88" },
+      { "id": "kursk", "title": "Battle of Kursk", "type": "Campaign", "url": "/campaigns/eastern-front/kursk" },
+      { "id": "paul-hausser", "title": "Paul Hausser", "type": "Personnel", "url": "/personnel/paul-hausser" }
+    ]
   },
   {
     "id": "pz-v-panther",
@@ -63,7 +83,17 @@
     "speed_kmh": 46,
     "range_km": 250,
     "units_produced": 6000,
-    "summary": "Designed in response to the T-34, the Panther combined a powerful long-barrelled 75mm gun with well-sloped armour and excellent mobility. Many military historians consider it the best tank of the war overall, but early mechanical unreliability and the industrial strain of production limited its effectiveness. Its high-velocity gun could engage Allied tanks at extraordinary ranges."
+    "summary": "Designed in response to the T-34, the Panther combined a powerful long-barrelled 75mm gun with well-sloped armour and excellent mobility. Many military historians consider it the best tank of the war overall, but early mechanical unreliability and the industrial strain of production limited its effectiveness. Its high-velocity gun could engage Allied tanks at extraordinary ranges.",
+    "sources": [
+      { "ref": "Jentz, Thomas. Panther Variants 1942–45. Osprey, 1997." },
+      { "ref": "Spielberger, Walter. Der Panzerkampfwagen Panther und seine Abarten. Motorbuch, 1978." }
+    ],
+    "related_records": [
+      { "id": "kursk", "title": "Battle of Kursk", "type": "Campaign", "url": "/campaigns/eastern-front/kursk" },
+      { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "wilhelm-bittrich", "title": "Wilhelm Bittrich", "type": "Personnel", "url": "/personnel/wilhelm-bittrich" }
+    ]
   },
   {
     "id": "pz-vi-b-tiger-ii",
@@ -85,7 +115,15 @@
     "speed_kmh": 38,
     "range_km": 170,
     "units_produced": 489,
-    "summary": "The Tiger II, known as the 'Königstiger' (King Tiger), was the most powerfully armoured and armed tank deployed by any nation during the war. Its frontal armour was largely impenetrable to Allied guns at normal combat ranges. However, its enormous weight created severe mechanical strain, logistical difficulties, and fuel consumption that rendered it strategically ineffective despite its formidable tactical capabilities."
+    "summary": "The Tiger II, known as the 'Königstiger' (King Tiger), was the most powerfully armoured and armed tank deployed by any nation during the war. Its frontal armour was largely impenetrable to Allied guns at normal combat ranges. However, its enormous weight created severe mechanical strain, logistical difficulties, and fuel consumption that rendered it strategically ineffective despite its formidable tactical capabilities.",
+    "sources": [
+      { "ref": "Jentz, Thomas. Germany's Tiger Tanks: VK45.02 to Tiger II. Schiffer, 1997." }
+    ],
+    "related_records": [
+      { "id": "jochen-peiper", "title": "Jochen Peiper", "type": "Personnel", "url": "/personnel/jochen-peiper" },
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
+      { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" }
+    ]
   },
   {
     "id": "stug-iii",
@@ -107,6 +145,84 @@
     "speed_kmh": 40,
     "range_km": 155,
     "units_produced": 10086,
-    "summary": "The most produced German armoured fighting vehicle of the war. Originally designed as infantry support, the StuG III was adapted into a highly effective tank destroyer when fitted with a long-barrelled high-velocity gun. Its low profile, reliable chassis, and effective armament made it a favourite among German crews. StuG III crews were credited with destroying more Allied tanks than any other German vehicle."
+    "summary": "The most produced German armoured fighting vehicle of the war. Originally designed as infantry support, the StuG III was adapted into a highly effective tank destroyer when fitted with a long-barrelled high-velocity gun. Its low profile, reliable chassis, and effective armament made it a favourite among German crews. StuG III crews were credited with destroying more Allied tanks than any other German vehicle.",
+    "sources": [
+      { "ref": "Jentz, Thomas. Sturmgeschütz: s.Pak to StuG III Ausf. G. Panzer Tracts, 2010." }
+    ],
+    "related_records": [
+      { "id": "pz-iv", "title": "Panzer IV", "type": "Armament", "url": "/armaments/pz-iv" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" }
+    ]
+  },
+  {
+    "id": "jagdpanther",
+    "name": "Jagdpanther",
+    "designation": "Sd.Kfz. 173",
+    "type": "Tank Destroyer",
+    "nation": "Germany",
+    "years_of_service": "1944–1945",
+    "image": "/storage/images/armaments/panzer/jagdpanther.jpg",
+    "manufacturer": "MIAG, MBA, Niedersächsische Motorenwerke",
+    "crew": 5,
+    "weight_tonnes": 45.5,
+    "armament": {
+      "primary": "8.8 cm Pak 43/3 L/71",
+      "secondary": ["1× 7.92 mm MG 34"]
+    },
+    "armor_mm": { "superstructure_front": 80, "hull_front": 60, "hull_side": 50 },
+    "engine": "Maybach HL 230 P30, 700 hp",
+    "speed_kmh": 46,
+    "range_km": 160,
+    "units_produced": 415,
+    "summary": "Widely regarded as the finest tank destroyer of the Second World War, the Jagdpanther combined the powerful 88mm Pak 43 gun with the reliable Panther chassis. Its gun could penetrate the frontal armour of any Allied tank at combat ranges, and its well-sloped armour made it difficult to destroy in return. The Jagdpanther could destroy Soviet IS-2 heavy tanks or American M4 Shermans from over 2,000 metres. Only 415 were completed before the war ended — had it been available in quantity from 1943, it would have significantly altered the balance on both fronts.",
+    "sources": [
+      { "ref": "Jentz, Thomas. Jagdpanther. Panzer Tracts, 1995." },
+      { "ref": "Doyle, David. Jagdpanther Tank Destroyer. Squadron Signal, 2006." }
+    ],
+    "related_records": [
+      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" },
+      { "id": "stug-iii", "title": "StuG III", "type": "Armament", "url": "/armaments/stug-iii" },
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
+      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" }
+    ]
+  },
+  {
+    "id": "sdkfz-251",
+    "name": "Sd.Kfz. 251 Mittlerer Gepanzerter Mannschaftskraftwagen",
+    "designation": "Sd.Kfz. 251",
+    "type": "Armoured Personnel Carrier / Halftrack",
+    "nation": "Germany",
+    "years_of_service": "1939–1945",
+    "image": "/storage/images/armaments/panzer/sdkfz251.jpg",
+    "manufacturer": "Hanomag, Büssing-NAG, others",
+    "crew": 2,
+    "passengers": 10,
+    "weight_tonnes": 8.5,
+    "armament": {
+      "primary": "2× 7.92 mm MG 34/42 (standard variant)",
+      "variants": ["75mm infantry gun (Sd.Kfz. 251/9)", "37mm anti-tank gun (Sd.Kfz. 251/10)", "80mm mortar (Sd.Kfz. 251/2)", "flame-thrower (Sd.Kfz. 251/16)"]
+    },
+    "armor_mm": { "front": 14.5, "side": 8, "rear": 8 },
+    "engine": "Maybach HL 42 TURKM, 100 hp",
+    "speed_kmh": 53,
+    "range_km": 300,
+    "units_produced": 15252,
+    "summary": "The Sd.Kfz. 251 was the primary armoured halftrack of the Wehrmacht and the defining vehicle of Panzergrenadier doctrine. It gave infantry the mobility to accompany tanks in the exploitation phase of an attack while providing protection from small arms fire. The halftrack configuration — rubber tracks at the rear, steerable front wheels — gave it superior cross-country performance compared to wheeled vehicles while being cheaper and simpler to produce than fully tracked vehicles. Produced in 23 variants for every role from command vehicle to flame-thrower carrier, the Sd.Kfz. 251 was a cornerstone of German mobile warfare from Poland to the final defence of Berlin.",
+    "dossier": {
+      "photos": [
+        { "type": "image", "images": [ { "src": "/public/images/armaments/panzer/sdkfz-251/photos/sdkfz-251-wurfrahmen.webp", "caption": "Sd.Kfz. 251 Wurfrahmen variant", "description": "Sd.Kfz. 251/1 fitted with Wurfrahmen 40 rocket-launcher frames.", "type": "photograph", "historical_status": "Source Unverified — Pending Archival Review", "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed." } ] }
+      ]
+    },
+    "sources": [
+      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 10/88: Waffenamt reports on Sd.Kfz. 251 production variants, 1943–1944." },
+      { "ref": "Jentz, Thomas and Doyle, Hilary. Panzer Tracts No. 15-2: Mittlere gepanzerte Mannschaftskraftwagen. Panzer Tracts, 2009." },
+      { "ref": "Bishop, Chris. The Encyclopedia of Weapons of World War II. Orbis, 1998." }
+    ],
+    "related_records": [
+      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
+      { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" }
+    ]
   }
 ]

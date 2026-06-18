@@ -1,0 +1,222 @@
+[
+  {
+    "id": "i-ss-panzer-corps",
+    "name": "I. SS-Panzerkorps",
+    "nation": "Germany",
+    "service": "Waffen-SS",
+    "type": "Panzer Corps",
+    "theater": "Eastern Front / Western Front",
+    "active": { "from": "1943-07", "to": "1945-05" },
+    "commanders": [
+      { "name": "SS-Oberstgruppenführer Paul Hausser", "period": "Jul 1943–Jun 1944" },
+      { "name": "SS-Oberstgruppenführer Sepp Dietrich", "period": "Jun 1944–Aug 1944 (redesignated 6th SS Panzer Army)" }
+    ],
+    "constituent_divisions": [
+      { "id": "leibstandarte-ss-ah",    "title": "1st SS Panzer Division Leibstandarte", "url": "/formations/leibstandarte-ss-ah" },
+      { "id": "ss-division-das-reich",  "title": "2nd SS Panzer Division Das Reich",      "url": "/formations/ss-division-das-reich" },
+      { "id": "ss-division-totenkopf",  "title": "3rd SS Panzer Division Totenkopf",      "url": "/formations/ss-division-totenkopf" }
+    ],
+    "peak_strength": "c. 70,000 (July 1943)",
+    "summary": "The I SS Panzer Corps was the premier German armoured formation at Kharkov and Kursk, and in Normandy. Its three constituent SS divisions constituted the most powerful armoured concentration in the Wehrmacht. Under Hausser it recaptured Kharkov in February–March 1943 and formed the SS element of the Kursk offensive. In Normandy it faced the British and Canadians south of Caen.",
+    "context": "The Third Battle of Kharkov (February–March 1943) established the I SS Panzer Corps' reputation. After the encirclement at Stalingrad, two Soviet armies had overextended in pursuit and Manstein allowed them to advance until they outran their supply before the SS Corps cut them off and destroyed them. This 'backhand blow' — the last major German offensive success on the Eastern Front — recaptured Kharkov on 14 March 1943. At Kursk in July 1943, the corps formed the spearhead of the 4th Panzer Army's assault in the south. In Normandy, the 1st and 2nd SS Panzer Divisions fought some of the most vicious defensive battles of the campaign, with repeated British armoured offensives (Epsom, Goodwood) failing to dislodge them.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "I. SS-Panzerkorps was the first corps-level command formed within the Waffen-SS, established in July 1943 to give unified operational control over the three most experienced Waffen-SS armoured divisions then serving on the Eastern Front. It belonged administratively to the Waffen-SS but operated under conventional Wehrmacht corps command — a hybrid arrangement typical of how Himmler's combat formations were folded into the German order of battle as the war progressed."
+      },
+      {
+        "type": "text",
+        "text": "Its creation reflected a wider shift in how the Waffen-SS was used: away from independent divisions operating under army-level command, toward larger, corps-sized armoured formations capable of conducting the concentrated, mobile operations the German army increasingly depended on as it lost the initiative in the East. Bringing the Leibstandarte, Das Reich, and Totenkopf together under one corps headquarters consolidated what was already, division for division, some of the best-equipped and most experienced armour in the Wehrmacht."
+      },
+      {
+        "type": "text",
+        "text": "The corps fought in two of the most heavily studied engagements of the war — the recapture of Kharkov in early 1943 and the southern pincer at Kursk that summer — before being transferred west to meet the Allied invasion of Normandy in 1944. Within this archive it sits at the corps echelon of the Waffen-SS hierarchy, directly above its three constituent Panzer divisions and below the army-level commands, 4th Panzer Army and later 6th SS Panzer Army, it served under at different points in the war."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "The Backhand Blow at Kharkov",
+        "text": "The Third Battle of Kharkov (February–March 1943) established the I SS Panzer Corps' reputation. After the encirclement at Stalingrad, two Soviet armies had overextended in pursuit and Manstein allowed them to advance until they outran their supply before the SS Corps cut them off and destroyed them. This 'backhand blow' — the last major German offensive success on the Eastern Front — recaptured Kharkov on 14 March 1943."
+      },
+      {
+        "type": "text",
+        "title": "Kursk, July 1943",
+        "text": "At Kursk that July, the corps formed the spearhead of the 4th Panzer Army's assault in the south, advancing against the deepest and most heavily mined defensive system the Red Army had yet constructed. The battle exhausted both sides; when Hitler called off Operation Citadel on 13 July to redeploy forces against the Allied landings in Sicily, I. SS-Panzerkorps had advanced further than any other German formation in the offensive but had failed to achieve the operational breakthrough Manstein had hoped for."
+      },
+      {
+        "type": "text",
+        "title": "Normandy and the End of an Independent Command",
+        "text": "By the time of its commitment in Normandy a year later, the corps no longer enjoyed the operational freedom it had under Manstein at Kharkov. Hitler's no-withdrawal orders locked it into a static defensive battle south of Caen, absorbing Allied material superiority while denying the British and Canadians the open ground they needed to break out of the bridgehead — a costly but, for several weeks, effective use of the corps' remaining armoured strength. Sepp Dietrich's elevation to command the newly formed 6th SS Panzer Army in August 1944 effectively ended I. SS-Panzerkorps' existence as a fully independent command, though its constituent divisions continued fighting under various corps formations through the war's final months."
+      }
+    ],
+    "sources": [
+      { "ref": "Nipe, George. Decision in the Ukraine. J.J. Fedorowicz, 1996." },
+      { "ref": "Lehmann, Rudolf. The Leibstandarte, Vol. III. J.J. Fedorowicz, 1990." }
+    ],
+    "related_records": [
+      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "paul-hausser", "title": "Paul Hausser", "type": "Personnel", "url": "/personnel/paul-hausser" },
+      { "id": "sepp-dietrich", "title": "Sepp Dietrich", "type": "Personnel", "url": "/personnel/sepp-dietrich" },
+      { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
+      { "id": "4th-panzer-army", "title": "4th Panzer Army", "type": "Formation", "url": "/formations/4th-panzer-army" },
+      { "id": "leibstandarte-ss-ah", "title": "1. SS-Panzer-Division Leibstandarte", "type": "Formation", "url": "/formations/leibstandarte-ss-ah" },
+      { "id": "ss-division-das-reich", "title": "2. SS-Panzer-Division Das Reich", "type": "Formation", "url": "/formations/ss-division-das-reich" },
+      { "id": "ss-division-totenkopf", "title": "3. SS-Panzer-Division Totenkopf", "type": "Formation", "url": "/formations/ss-division-totenkopf" }
+    ],
+    "dossier": {
+      "order_of_battle": [
+        {
+          "type": "orbat",
+          "title": "I. SS-Panzerkorps — constituent divisions",
+          "rows": [
+            { "unit": "1. SS-Panzer-Division Leibstandarte", "type": "Panzer Division", "commander": "SS-Brigadeführer Theodor Wisch (from Jul 1943)", "strength": "c. 21,000 (1944)" },
+            { "unit": "2. SS-Panzer-Division Das Reich",      "type": "Panzer Division", "commander": "Multiple commanders",                       "strength": "c. 19,000 (1943)" },
+            { "unit": "3. SS-Panzer-Division Totenkopf",      "type": "Panzer Division", "commander": "SS-Brigadeführer Hermann Priess / others",   "strength": "c. 19,000 (1943)" }
+          ]
+        }
+      ],
+      "equipment": [
+        {
+          "type": "table",
+          "title": "Principal Armor, 1943–1944",
+          "headers": ["Type", "Role"],
+          "rows": [
+            ["Panzer VI Tiger I", "Heavy breakthrough tank, concentrated in corps-level heavy companies"],
+            ["Panzer V Panther", "Main battle tank from late 1943 onward"],
+            ["StuG III", "Assault gun / tank destroyer, issued across all three divisions"]
+          ]
+        }
+      ],
+      "orders": [
+        {
+          "type": "text",
+          "title": "Manstein's Counteroffensive Directive, February 1943",
+          "text": "Field Marshal Erich von Manstein's operational plan for Army Group South called for a controlled withdrawal to draw overextended Soviet spearheads away from their supply lines, followed by a concentrated counterattack. The I SS Panzer Corps, newly transferred from France, was committed to this 'backhand blow' as it assembled around Kharkov in February 1943, recapturing the city on 14 March after a week of street fighting."
+        }
+      ]
+    }
+  },
+  {
+    "id": "ii-ss-panzer-corps",
+    "name": "II. SS-Panzerkorps",
+    "nation": "Germany",
+    "service": "Waffen-SS",
+    "type": "Panzer Corps",
+    "theater": "Eastern Front / Western Front",
+    "active": { "from": "1943-02", "to": "1945-05" },
+    "commanders": [
+      { "name": "SS-Obergruppenführer Paul Hausser", "period": "Feb–Jul 1943" },
+      { "name": "SS-Obergruppenführer Wilhelm Bittrich", "period": "Jun 1944–May 1945" }
+    ],
+    "constituent_divisions": ["9th SS Panzer Division Hohenstaufen", "10th SS Panzer Division Frundsberg"],
+    "peak_strength": "c. 75,000 (June 1944, Normandy)",
+    "summary": "The II SS Panzer Corps was refitting near Arnhem when Operation Market Garden was launched in September 1944. Its 9th and 10th SS Panzer Divisions destroyed the British 1st Airborne Division at Arnhem and turned the largest Allied airborne operation of the war into a catastrophe.",
+    "context": "The corps had fought at Kharkov and Kursk before being sent to France. After the Normandy defeat it was pulled back to re-equip in the Netherlands. Allied intelligence — specifically the failure of Major Brian Urquhart to convince his superiors that aerial photographs showed SS armour near Arnhem — did not adequately account for its presence. Bittrich's rapid decision to reinforce the Arnhem bridge with the 9th SS and block approaches with the 10th SS, combined with the breakdown of British radio communications, sealed the fate of the British 1st Airborne. Frost's battalion held the north end of Arnhem bridge for four days against elements of the corps before being overwhelmed.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "II. SS-Panzerkorps was the second corps-level Waffen-SS armoured command, formed in February 1943 — roughly contemporary with I. SS-Panzerkorps — as part of the same broader consolidation of independent SS divisions into larger, corps-sized formations. It commanded the 9th SS Panzer Division Hohenstaufen and 10th SS Panzer Division Frundsberg, two divisions raised specifically for this corps rather than inherited from the earlier, more senior SS divisions."
+      },
+      {
+        "type": "text",
+        "text": "Like its sister corps, it fought at Kharkov and Kursk before being transferred to France to meet the Normandy invasion. Its most consequential moment, however, came not in offensive action but almost by accident: refitting near Arnhem in the Netherlands in September 1944, it found itself directly in the path of the largest airborne operation of the war, Operation Market Garden, and its presence — undetected or disbelieved by Allied intelligence — proved decisive in the operation's failure."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, II. SS-Panzerkorps sits alongside I. SS-Panzerkorps as one of the two senior Waffen-SS corps commands, and its record connects most directly to the Operation Market Garden campaign entry and to Wilhelm Bittrich, the corps commander whose decisions at Arnhem are central to its history."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "From Kharkov to the Refit at Arnhem",
+        "text": "The corps had fought at Kharkov and Kursk before being sent to France to help meet the anticipated Allied invasion, and fought through the Normandy campaign before being pulled back, badly depleted, to re-equip in the Netherlands — a quiet rear area chosen specifically because it was assumed to be safe from Allied ground operations."
+      },
+      {
+        "type": "text",
+        "title": "Missed Warning",
+        "text": "Allied intelligence — specifically the failure of Major Brian Urquhart to convince his superiors that aerial reconnaissance photographs showed SS armour refitting near Arnhem — did not adequately account for the corps' presence in the area chosen for the British 1st Airborne Division's landing zones, a failure that would have grave consequences once the operation began."
+      },
+      {
+        "type": "text",
+        "title": "The Battle for Arnhem Bridge",
+        "text": "Bittrich's rapid decision to reinforce the Arnhem road bridge with elements of the 9th SS and block the approach routes with the 10th SS, combined with the near-total breakdown of British radio communications during the battle, sealed the fate of the British 1st Airborne Division. Lieutenant Colonel John Frost's battalion held the northern end of Arnhem bridge for four days against elements of the corps before being overwhelmed — a defence later commemorated in the title of Cornelius Ryan's history of the battle, A Bridge Too Far."
+      }
+    ],
+    "sources": [
+      { "ref": "Beevor, Antony. Arnhem: The Battle for the Bridges, 1944. Viking, 2018." },
+      { "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990." }
+    ],
+    "related_records": [
+      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" },
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "wilhelm-bittrich", "title": "Wilhelm Bittrich", "type": "Personnel", "url": "/personnel/wilhelm-bittrich" },
+      { "id": "brit-004", "title": "Frost — Arnhem Bridge (1944)", "type": "Letter", "url": "/letters/brit-004" },
+      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" }
+    ]
+  },
+  {
+    "id": "deutsches-afrikakorps",
+    "name": "Deutsches Afrikakorps (DAK)",
+    "nation": "Germany",
+    "service": "Heer",
+    "type": "Corps",
+    "theater": "North Africa",
+    "active": { "from": "1941-02", "to": "1943-02" },
+    "commanders": [
+      { "name": "Generalleutnant Erwin Rommel", "period": "Feb 1941–Aug 1941" },
+      { "name": "General Ludwig Crüwell", "period": "Aug 1941–May 1942" },
+      { "name": "General Walther Nehring", "period": "May–Sep 1942" }
+    ],
+    "constituent_divisions": ["15th Panzer Division", "21st Panzer Division", "90th Light Afrika Division"],
+    "parent_formation": { "id": "panzerarmee-afrika", "title": "Panzerarmee Afrika", "url": "/formations/panzerarmee-afrika" },
+    "peak_strength": "c. 50,000 (mid-1942)",
+    "fate": "Absorbed into Panzerarmee Afrika as its German corps component; surrendered with Heeresgruppe Afrika in Tunisia, May 1943.",
+    "summary": "The Deutsches Afrikakorps was the original German expeditionary force sent to North Africa in February 1941 to support the collapsing Italian position in Libya. Built initially around the 5th Light Division (later 21st Panzer) and 15th Panzer Division, it became the core of Rommel's desert army and gave its name — Afrika Korps — to the entire German presence in the theater, even after it was administratively absorbed into the larger Panzerarmee Afrika.",
+    "context": "Hitler dispatched the Afrikakorps reluctantly, mainly to prevent a total Italian collapse after the disaster of Operation Compass. Rommel exceeded his orders almost immediately, attacking rather than holding a defensive line, and the corps' rapid advance to the Egyptian frontier in spring 1941 set the pattern for the seesaw campaign that followed. As Panzerarmee Afrika grew to include Italian armoured and infantry corps, the Afrikakorps designation persisted informally and became a byword — in German propaganda and Allied accounts alike — for the entire desert war. Its veterans wore the Afrikakorps cuff title with pride, and the unit retains a reputation, contested by historians, for having fought a comparatively 'clean' war by the standards of the Wehrmacht's other fronts.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "The Deutsches Afrikakorps was the founding German formation of the North African campaign — a single corps, originally just the 5th Light Division (soon redesignated 21st Panzer) and the 15th Panzer Division, dispatched in February 1941 to prevent the total collapse of Italy's colonial position in Libya after its catastrophic defeat in Operation Compass."
+      },
+      {
+        "type": "text",
+        "text": "It is the smallest echelon — a single corps — among the major German commands documented for the North African theater in this archive, yet its name became synonymous with the entire desert war: as the German presence in Africa grew into the larger Panzerarmee Afrika, incorporating Italian formations as well, the original Afrikakorps designation persisted informally in both German propaganda and Allied reporting, eventually being applied loosely to the whole Axis force in the theater rather than strictly to the corps itself."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, the Deutsches Afrikakorps should be read as the founding component of Panzerarmee Afrika and, later, Heeresgruppe Afrika — the corps from which the larger army and army-group commands grew, and the formation whose cuff title veterans wore with particular pride for the rest of their lives."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "A Reluctant Commitment",
+        "text": "Hitler dispatched the Afrikakorps reluctantly, mainly to prevent a total Italian collapse after the disaster of Operation Compass, in which a much smaller British force had destroyed Italy's 10th Army. German strategic priorities lay firmly in the East, and North Africa was intended initially as a holding operation, not a campaign of conquest."
+      },
+      {
+        "type": "text",
+        "title": "Rommel Exceeds His Orders",
+        "text": "Rommel exceeded his orders almost immediately, attacking rather than holding a defensive line as instructed, and the corps' rapid advance to the Egyptian frontier in the spring of 1941 set the pattern for the seesaw campaign that followed over the next two years — repeated advances and retreats across the same several hundred kilometres of coastal desert."
+      },
+      {
+        "type": "text",
+        "title": "A Contested Reputation",
+        "text": "As Panzerarmee Afrika grew to include Italian armoured and infantry corps, the Afrikakorps designation persisted informally and became a byword — in German propaganda and in Allied accounts alike — for the entire desert war. Its veterans wore the Afrikakorps cuff title with evident pride after the war, and the unit retains a reputation, contested by historians, for having fought a comparatively less ideologically driven and less atrocity-marked war than German formations on the Eastern Front — a claim that has been both repeated and challenged in postwar scholarship."
+      }
+    ],
+    "sources": [
+      { "ref": "Lewin, Ronald. The Life and Death of the Afrika Korps. Batsford, 1977." },
+      { "ref": "Rommel, Erwin. The Rommel Papers. Ed. B.H. Liddell Hart. Collins, 1953." }
+    ],
+    "related_records": [
+      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+      { "id": "sonnenblume", "title": "Operation Sonnenblume", "type": "Campaign", "url": "/campaigns/africa/sonnenblume" },
+      { "id": "tobruk", "title": "Siege of Tobruk", "type": "Campaign", "url": "/campaigns/africa/tobruk" },
+      { "id": "panzerarmee-afrika", "title": "Panzerarmee Afrika", "type": "Formation", "url": "/formations/panzerarmee-afrika" },
+      { "id": "flak-88", "title": "8.8 cm Flak 88", "type": "Armament", "url": "/armaments/flak-88" }
+    ]
+  }
+]

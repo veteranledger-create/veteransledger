@@ -168,11 +168,70 @@
   color: inherit;
   transition:
     border-color var(--transition-base),
-    box-shadow var(--transition-base);
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
 }
 .record-card:hover {
-  border-color: var(--border-accent);
-  box-shadow: var(--shadow);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow), var(--glow-gold);
+  transform: translateY(-2px);
+}
+.record-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Formation / text-only record card header (no image) */
+.record-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+/* Classification icon + badge grouped as one unit so the header stays a
+   simple two-child space-between row (icon/badge | year) — avoids the
+   icon being stranded mid-row with no defined position. */
+.record-card__type {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.record-card__icon {
+  height: 14px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.record-card__badge {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+.record-card__year {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.record-card__excerpt {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .record-card__image {
@@ -276,59 +335,178 @@
 /* ── Personnel Card ────────────────────────────────────────── */
 .person-card {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-4);
-  padding: var(--space-5);
+  flex-direction: column;
   background: var(--bg-card);
   border: 1px solid var(--border-dim);
   border-radius: var(--radius);
+  overflow: hidden;
   text-decoration: none;
   color: inherit;
-  transition: border-color var(--transition-base);
+  transition:
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+  position: relative;
 }
 .person-card:hover {
-  border-color: var(--border-accent);
+  border-color: var(--border-gold);
+  box-shadow: var(--shadow), var(--glow-gold);
+  transform: translateY(-2px);
+}
+.person-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }
 
 .person-card__portrait {
-  width: 72px;
-  height: 72px;
-  border-radius: var(--radius-sm);
+  width: 100%;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
-  flex-shrink: 0;
   background: var(--bg-elevated);
-  border: 1px solid var(--border-base);
+  flex-shrink: 0;
 }
 .person-card__portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(30%);
+  object-position: center top;
+  filter: grayscale(28%) brightness(0.92) sepia(6%);
+  transition:
+    filter var(--transition-slow),
+    transform var(--transition-slow);
+}
+.person-card:hover .person-card__portrait img {
+  filter: grayscale(10%) brightness(1);
+  transform: scale(1.04);
 }
 
-.person-card__info {
+.person-card__body {
+  padding: var(--space-4) var(--space-4) var(--space-5);
   flex: 1;
-  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
+
+/* Header contains only rank — full width, no flex competition.
+   Vertical clearance (not horizontal reservation) keeps the badge clear:
+   unbreakable rank strings (e.g. "Generalfeldmarschall") can't wrap, so
+   reserving side padding doesn't stop overlap — pushing the whole rank
+   row below the badge's bottom edge does, regardless of text length. */
+.person-card__header {
+  display: block;
+  margin-bottom: var(--space-2);
+  padding-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .person-card__header {
+    padding-top: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .person-card__header {
+    padding-top: 24px;
+  }
+}
+
 .person-card__rank {
-  font-size: var(--text-xs);
+  display: block;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
   color: var(--gold-dim);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: var(--space-1);
+  line-height: 1.4;
+  overflow-wrap: break-word;
 }
+
+/* Branch classification badge — top-right of card body */
+.person-card__branch-icon {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG branch icon (Heer / Luftwaffe / Kriegsmarine / Waffen-SS) */
+.branch-icon--svg {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  .person-card__branch-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .branch-icon--svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .person-card__branch-icon {
+    width: 18px;
+    height: 18px;
+  }
+  .branch-icon--svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Country flag icon (Foreign Volunteers) */
+.branch-icon--flag {
+  width: 22px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 1px;
+  border: 1px solid var(--border-dim);
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+}
+.person-card:hover .branch-icon--flag {
+  opacity: 1;
+}
+
 .person-card__name {
   font-family: var(--font-display);
   font-size: var(--text-base);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: var(--space-2);
   line-height: 1.2;
+  margin-bottom: var(--space-2);
+  letter-spacing: 0.03em;
 }
+
 .person-card__meta {
   font-size: var(--text-xs);
   color: var(--text-muted);
+  letter-spacing: 0.04em;
   line-height: 1.5;
+  margin-bottom: var(--space-2);
+}
+
+.person-card__excerpt {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: auto;
+  padding-top: var(--space-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* ── Letter Card ───────────────────────────────────────────── */

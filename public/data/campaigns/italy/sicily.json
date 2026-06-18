@@ -3,11 +3,33 @@
   "title": "Allied Invasion of Sicily (Operation Husky)",
   "theater": "italy",
   "dates": { "start": "1943-07-09", "end": "1943-08-17" },
-  "summary": "Operation Husky was the Allied invasion of Sicily — the largest amphibious operation of the war. Despite Allied success, most German forces escaped across the Strait of Messina to the Italian mainland. The campaign led directly to the fall of Mussolini on 25 July 1943.",
+  "summary": "Operation Husky was the Allied invasion of Sicily — the largest amphibious operation of the war at that point. Despite Allied success, most German forces escaped across the Strait of Messina to the Italian mainland. The campaign led directly to the fall of Mussolini on 25 July 1943.",
+  "context": "Operation Husky — the invasion of Sicily — was the stepping stone from North Africa to mainland Europe. The decision to invade Sicily rather than directly into France was controversial, driven partly by British caution and partly by the need to knock Italy out of the war and draw German resources away from the Eastern Front. A successful deception operation (Operation Mincemeat) persuaded German planners that the next Allied blow would fall on Sardinia or Greece. Despite complete strategic surprise, the campaign on Sicily was dogged by inter-Allied rivalry: Montgomery's methodical advance up the east coast allowed German forces to establish successive defensive lines, while Patton's American 7th Army was initially constrained to a flank-guard role. Patton's subsequent race to Palermo and Messina outpaced Montgomery but failed to close the Strait before 100,000 Axis troops evacuated to Italy. The campaign's greatest political result — Mussolini's overthrow on 25 July 1943 — transformed the Mediterranean war.",
   "combatants": {
-    "axis": { "commanders": ["Albert Kesselring", "Hans Hube (XIV Panzer Corps)"], "strength": "~300,000 Italian, ~50,000 German" },
-    "allied": { "commanders": ["Harold Alexander", "Bernard Montgomery (8th Army)", "George Patton (7th Army)"], "strength": "~467,000 troops, 3,200 ships" }
+    "axis": {
+      "commanders": ["Albert Kesselring", "Hans Hube (XIV Panzer Corps)"],
+      "strength": "~300,000 Italian, ~50,000 German"
+    },
+    "allied": {
+      "commanders": ["Harold Alexander", "Bernard Montgomery (8th Army)", "George Patton (7th Army)"],
+      "strength": "~467,000 troops, 3,200 ships, 4,000 aircraft"
+    }
   },
-  "outcome": "Allied victory. Sicily captured in 38 days. However, 100,000 Axis troops and most heavy equipment were evacuated to Italy in the Strait of Messina crossing — a significant failure of Allied planning. Mussolini fell from power and was arrested on 25 July.",
-  "casualties": { "axis": "~29,000 Italian captured, 5,000 killed; ~4,325 German killed, 4,583 captured", "allied": "~22,811 killed, wounded, missing (US and British combined)" }
+  "outcome": "Allied victory. Sicily captured in 38 days. However, ~100,000 Axis troops and most heavy equipment were evacuated to Italy via the Strait of Messina — a significant planning failure. Mussolini was arrested on 25 July 1943.",
+  "casualties": {
+    "axis": "~29,000 Italian captured, 5,000 killed; ~4,325 German killed, 4,583 captured",
+    "allied": "~22,811 killed, wounded, missing (US and British combined)"
+  },
+  "sources": [
+    { "type": "primary", "ref": "National Archives (UK). WO 204/6971: Allied Force HQ — Sicily Operations (Operation Husky), July–August 1943." },
+    { "ref": "D'Este, Carlo. Bitter Victory: The Battle for Sicily, 1943. Collins, 1988.", "note": "Comprehensive account emphasising the command failures and inter-Allied tensions." },
+    { "ref": "Blumenson, Martin. Sicily: Whose Victory? Ballantine, 1969." },
+    { "ref": "Garland, Albert and Smyth, Howard. Sicily and the Surrender of Italy. Center of Military History, 1965." }
+  ],
+  "related_records": [
+    { "id": "cassino", "title": "Battles of Monte Cassino", "type": "Campaign", "url": "/campaigns/italy/cassino" },
+    { "id": "gothic-line", "title": "Battle of the Gothic Line", "type": "Campaign", "url": "/campaigns/italy/gothic-line" },
+    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+    { "id": "it-004", "title": "Russo — Sicily Landing (1943)", "type": "Letter", "url": "/letters/it-004" }
+  ]
 }

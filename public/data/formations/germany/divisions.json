@@ -1,0 +1,56 @@
+[
+  {
+    "id": "brandenburgers",
+    "name": "Brandenburg Division (Sonderverband z.b.V. Brandenburg)",
+    "nation": "Germany",
+    "service": "Heer / Abwehr",
+    "type": "Special Forces Division",
+    "theater": "All Fronts",
+    "active": { "from": "1939-10", "to": "1945-05" },
+    "commanders": [
+      { "name": "Oberstleutnant Alexander von Pfuhlstein / others", "period": "1940–1944" }
+    ],
+    "peak_strength": "c. 17,000 (1944, as division)",
+    "summary": "The Brandenburgers were Germany's elite special operations unit, trained to operate behind enemy lines in foreign uniforms, speaking enemy languages. They captured key bridges and tunnels ahead of Barbarossa, seized the Maykop oilfields in the Caucasus, and conducted sabotage, assassination, and deception operations across all theaters.",
+    "context": "Originally formed as a company by the Abwehr (military intelligence) in 1939, the Brandenburgers grew to division strength by 1944. Their speciality was deception operations — entering enemy territory disguised as civilians, police, or enemy soldiers to seize objectives before conventional forces arrived. In Barbarossa their detachments seized critical bridges and installations in the first hours. In the Caucasus they seized the Maykop oilfields (August 1942) before they could be destroyed. As the war turned against Germany they increasingly operated as conventional infantry; in 1944 much of the division was absorbed into the Großdeutschland Corps. The unit's methods influenced postwar special forces doctrine worldwide.",
+    "overview_blocks": [
+      {
+        "type": "text",
+        "text": "The Brandenburg Division belonged to a category unlike any other formation in this archive: it was raised not by the regular army or the Waffen-SS but by the Abwehr, German military intelligence, specifically to conduct covert and deception operations rather than conventional combat. Its soldiers trained in foreign languages, foreign uniforms, and the customs of the countries they would operate in, blurring the line between soldier and intelligence operative."
+      },
+      {
+        "type": "text",
+        "text": "It grew from a single company in 1939 to full division strength by 1944, expanding as the German military leadership found increasing uses for troops who could seize bridges, tunnels, and installations intact in the chaotic opening hours of an invasion, before defenders had time to demolish them or organise resistance. This made the Brandenburgers a recurring presence at the very start of nearly every major German offensive of the war, even though their numbers were always small relative to the conventional forces that followed them."
+      },
+      {
+        "type": "text",
+        "text": "Within this archive, the division sits administratively under the Heer (it was eventually placed under conventional army command despite its Abwehr origins) but functionally apart from every other division — its closest connection is to Otto Skorzeny, the SS commando leader whose later, more famous operations drew directly on methods the Brandenburgers had pioneered earlier in the war."
+      }
+    ],
+    "context_blocks": [
+      {
+        "type": "text",
+        "title": "Origins in Military Intelligence",
+        "text": "Originally formed as a single company by the Abwehr in 1939, the Brandenburgers grew steadily through the war and reached division strength by 1944. Their speciality was deception operations — entering enemy territory disguised as civilians, police, or enemy soldiers to seize objectives before conventional forces had a chance to arrive and before defenders could organise demolitions or resistance."
+      },
+      {
+        "type": "text",
+        "title": "Barbarossa and the Caucasus",
+        "text": "In Operation Barbarossa, Brandenburger detachments seized critical bridges and installations in the very first hours of the invasion, often before the bulk of conventional forces had even crossed the frontier. In the Caucasus campaign of 1942, similar detachments seized the Maykop oilfields before retreating Soviet forces could destroy them — though the fields proved less productive than German planners had hoped, and the wider Caucasus offensive ultimately failed regardless."
+      },
+      {
+        "type": "text",
+        "title": "Conventional Infantry and Absorption",
+        "text": "As the war turned decisively against Germany and the need for covert operations behind a contracting front diminished, the unit increasingly operated as conventional infantry rather than in its original specialist role. In 1944, much of the division was absorbed into the Großdeutschland Corps, an elite combined formation, marking the effective end of the Brandenburgers as an independent special-operations command — though the unit's methods are widely credited with influencing postwar special forces doctrine in multiple countries."
+      }
+    ],
+    "sources": [
+      { "ref": "Kurowski, Franz. The Brandenburgers: Global Mission. J.J. Fedorowicz, 1997." }
+    ],
+    "related_records": [
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+      { "id": "caucasus", "title": "Caucasus Campaign", "type": "Campaign", "url": "/campaigns/eastern-front/caucasus" },
+      { "id": "otto-skorzeny", "title": "Otto Skorzeny", "type": "Personnel", "url": "/personnel/otto-skorzeny" }
+    ]
+  }
+]

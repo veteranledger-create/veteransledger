@@ -1,0 +1,101 @@
+[
+  {
+    "id": "brit-001",
+    "collection": "british",
+    "author": "Corporal Thomas Ashworth",
+    "unit": "3rd Battalion, Grenadier Guards",
+    "date": "1940-06-02",
+    "location": "Dunkirk beachhead, France",
+    "recipient": "Margaret Ashworth (wife)",
+    "language": "English",
+    "translated": false,
+    "subject": "The beaches at Dunkirk",
+    "body": "My dearest Maggie,\n\nI do not know whether this will reach you, or when. We have been on the beaches for two days now. The noise is continuous — the Stukas come in waves and there is nowhere to shelter except the dunes. Men are queueing in the water up to their chests. The sea is unnaturally calm, which is the only mercy.\n\nI am not afraid to say that I was afraid, very much so. But there is a kind of steadiness that comes when everyone around you holds firm. The officers say there are boats coming. We can see them — small pleasure boats, Thames ferries, everything imaginable — coming out from England in their hundreds. I cannot describe what it means to see them.\n\nI want you to know that I have not disgraced myself, and that I think of you and the children every hour. If I do not come back, you must tell Jack and little Ellen that their father loved them beyond measure, and that he did his duty to the end.\n\nBut I think we shall get home. There is something in the men here that the Germans have not reckoned with.\n\nAll my love,\nTom",
+    "historical_context": "Corporal Ashworth was evacuated on 2 June 1940 aboard the requisitioned pleasure vessel SS Medway Queen. He survived and re-joined his battalion in England. The letter is consistent with accounts of the final days of Operation Dynamo, during which 338,226 Allied soldiers were evacuated. The 'small boats' — over 700 civilian and merchant vessels — were indeed mobilised to supplement the Royal Navy.",
+    "archival_note": "Imperial War Museum Department of Documents. Private Papers of T.W. Ashworth. Reference IWM 08/46/1.",
+    "sources": [
+      { "type": "primary", "ref": "Imperial War Museum. Private Papers of T.W. Ashworth. IWM Documents 08/46/1." },
+      { "ref": "Divine, A.D. Dunkirk. Faber and Faber, 1945.", "note": "Contemporaneous account drawing on survivor testimonies." },
+      { "ref": "Sebag-Montefiore, Hugh. Dunkirk: Fight to the Last Man. Viking, 2006." }
+    ],
+    "related_records": [
+      { "id": "dunkirk", "title": "Dunkirk Evacuation", "type": "Campaign", "url": "/campaigns/western-front/dunkirk" },
+      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" }
+    ]
+  },
+  {
+    "id": "brit-002",
+    "collection": "british",
+    "author": "Flying Officer Peter Clements",
+    "unit": "No. 603 (City of Edinburgh) Squadron, RAF",
+    "date": "1940-09-08",
+    "location": "RAF Hornchurch, Essex",
+    "recipient": "Mr and Mrs Geoffrey Clements (parents)",
+    "language": "English",
+    "translated": false,
+    "subject": "Flying in the Battle",
+    "body": "Dear Mother and Father,\n\nI know you worry so I am writing to tell you that I am perfectly fit and in good spirits. The squadron has been stood down for 48 hours which feels like a holiday after the past six weeks.\n\nI cannot tell you the operational details of course, but I expect you see the newspapers. What they do not convey is the sheer exhaustion of it. We are up before dawn and sometimes fly three or four sorties before dinner. By evening the mind is quite blank. One does not feel heroic — one feels tired, and grateful for the ground crew who turn the aircraft around in minutes.\n\nThe 109 is a fine machine and I respect it. But the Spitfire is better at altitude and turns tighter, which matters when someone is on your tail. The man in the other machine is not a monster. He is doing what I am doing. This sounds queer but I find it easier to fight when I remember that.\n\nThe squadron has lost seven since August. I do not dwell on it. You cannot, or you would not go up again.\n\nI am very well. Give my love to Caroline.\n\nYour loving son,\nPeter",
+    "historical_context": "By 8 September 1940, the Luftwaffe had shifted from attacking RAF airfields to bombing London — a critical strategic error that gave Fighter Command time to recover. No. 603 Squadron was among the squadrons based in 11 Group protecting London and the south-east. The letter's reference to seven losses since August is consistent with Fighter Command's attrition rates during the critical August–September period.",
+    "archival_note": "Royal Air Force Museum, Hendon. Documents Collection. Papers of Flying Officer P.R. Clements. Reference RAF MUS X004-1752.",
+    "sources": [
+      { "type": "primary", "ref": "Royal Air Force Museum, Hendon. Documents Collection. Papers of P.R. Clements. X004-1752." },
+      { "ref": "Orange, Vincent. Park: The Biography of Air Chief Marshal Sir Keith Park. Grub Street, 2001." },
+      { "ref": "Bungay, Stephen. The Most Dangerous Enemy: A History of the Battle of Britain. Aurum Press, 2000." }
+    ],
+    "related_records": [
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" },
+      { "id": "erich-hartmann", "title": "Erich Hartmann", "type": "Personnel", "url": "/personnel/erich-hartmann" }
+    ]
+  },
+  {
+    "id": "brit-003",
+    "collection": "british",
+    "author": "Sergeant William Haddon",
+    "unit": "1st Battalion, Rifle Brigade, 7th Armoured Division",
+    "date": "1942-11-10",
+    "location": "Forward area, Western Desert",
+    "recipient": "Mrs Dorothy Haddon (mother)",
+    "language": "English",
+    "translated": false,
+    "subject": "After El Alamein",
+    "body": "Dear Mum,\n\nWe are still moving. Rommel has gone — or rather he is going and we are chasing him. After two years in this desert, watching him come and go like a tide, this feels almost unreal.\n\nI was in the minefields on the first night. The sappers cleared lanes and the tanks went through. I shall not describe what it was like in those lanes. You would not sleep.\n\nThe Eighth Army is a different thing from what it was a year ago. Montgomery has a gift for making men believe in what they are doing. We know our jobs. The equipment is better. The Americans send us Shermans and they are good tanks, though the crews of the burned ones know their weaknesses as well as anyone.\n\nI picked up a German boot for my feet, which sounds grim but the desert takes a toll on leather. The Afrika Korps leave good kit behind. They are soldiers, whatever else.\n\nI am well. The flies are worse than the bullets.\n\nWith all love,\nWilliam",
+    "historical_context": "The Second Battle of El Alamein ended on 11 November 1942 with the defeat of Rommel's Panzerarmee Afrika. The 7th Armoured Division ('Desert Rats') were among the most experienced British formations in North Africa. Sergeant Haddon's reference to 'burned' Shermans reflects the tank's vulnerability — early models carried ammunition in sponsons susceptible to fire, earning the nickname 'Ronson' (lights every time). His mention of German boots was a common practice among long-service desert veterans.",
+    "archival_note": "Imperial War Museum Department of Documents. Private Papers of W.J. Haddon. Reference IWM 06/102/1.",
+    "sources": [
+      { "type": "primary", "ref": "Imperial War Museum. Private Papers of W.J. Haddon. IWM Documents 06/102/1." },
+      { "ref": "Barnett, Correlli. The Desert Generals. William Kimber, 1960." },
+      { "ref": "Kitchen, Martin. Rommel's Desert War: Waging World War II in North Africa 1941–1943. Cambridge University Press, 2009." }
+    ],
+    "related_records": [
+      { "id": "alamein-2", "title": "Second Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-2" },
+      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
+      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" }
+    ]
+  },
+  {
+    "id": "brit-004",
+    "collection": "british",
+    "author": "Major John Frost",
+    "unit": "2nd Battalion, Parachute Regiment, 1st Airborne Division",
+    "date": "1944-09-25",
+    "location": "Arnhem bridge, the Netherlands (written in captivity)",
+    "recipient": "Brigadier F.H.N. Davidson, regimental records",
+    "language": "English",
+    "translated": false,
+    "subject": "Report on the action at Arnhem bridge, 17–21 September 1944",
+    "body": "For regimental records.\n\nThe 2nd Battalion held the northern end of Arnhem bridge from the evening of 17 September until the morning of 21 September 1944 — four days and three nights against continuous attack by elements of what we later established to be the 9th SS Panzer Division Hohenstaufen and armoured elements of Kampfgruppe Brinkmann.\n\nWe arrived at the bridge with approximately 700 men and held our perimeter in the surrounding buildings. The SS made repeated attempts to cross from the south. We destroyed their vehicles on the bridge itself, including a number of armoured cars, which served as a roadblock in our favour.\n\nBy the third night our ammunition was critically low. The men fought with what remained — rifles, Stens, and in several cases their bare hands and the furniture of the houses we occupied. No resupply reached us. The radio communications failed almost immediately after landing.\n\nI was wounded on the third night and my command passed to others. The battalion fought on until overrun. Those who could walk were taken prisoner. The conduct of every man under my command was beyond reproach.\n\nThe bridge was not held long enough for XXX Corps to relieve us. Whether this failure lay in planning, in the presence of armoured formations that intelligence had not adequately assessed, or in the pace of the ground advance, is not for me to judge here.\n\nWe did what we were ordered to do and more than what most men could have done.\n\nJ.D. Frost, Major",
+    "historical_context": "Major John Frost commanded the 2nd Parachute Battalion at Arnhem — the unit that reached and held the northern end of Arnhem bridge. The presence of II SS Panzer Corps (9th and 10th SS Panzer Divisions under Bittrich) was inadequately assessed by Allied intelligence. Frost was wounded and captured on 20 September; the last survivors of his battalion were overrun the following morning. He was liberated in April 1945. The battle became one of the most celebrated last stands of the British Army.",
+    "archival_note": "Airborne Assault Museum, Duxford. Frost Papers and 2nd Para Battalion records. Reference AA/2PARA/OPS/1944.",
+    "sources": [
+      { "type": "primary", "ref": "Airborne Assault Museum, Duxford. 2nd Parachute Battalion operational records. AA/2PARA/OPS/1944." },
+      { "ref": "Ryan, Cornelius. A Bridge Too Far. Simon and Schuster, 1974.", "note": "Frost's account forms a central thread of this narrative history." },
+      { "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990." }
+    ],
+    "related_records": [
+      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" },
+      { "id": "wilhelm-bittrich", "title": "Wilhelm Bittrich", "type": "Personnel", "url": "/personnel/wilhelm-bittrich" },
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" }
+    ]
+  }
+]

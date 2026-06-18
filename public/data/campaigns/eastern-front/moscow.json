@@ -5,6 +5,7 @@
   "dates": { "start": "1941-10-02", "end": "1942-01-07" },
   "summary": "Operation Typhoon was the German offensive aimed at capturing Moscow in autumn and winter 1941. The Wehrmacht came within 15 km of the Soviet capital before a Soviet counteroffensive drove it back, marking Germany's first major strategic defeat.",
   "background": "Following the enormous encirclements at Vyazma and Bryansk in early October, the road to Moscow appeared open. However, autumn rains turned roads to mud (the 'Rasputitsa'), delaying the advance. When the ground froze, the Panzers advanced to the suburbs but were halted by Soviet reserves and winter conditions for which the Germans were unprepared.",
+  "context": "Operation Typhoon began in circumstances of extreme confidence: the Vyazma-Bryansk encirclements yielded 657,000 prisoners and appeared to open the road to Moscow. But the German advance was already four weeks late due to the diversion to Kiev. The autumn Rasputitsa (mud season) brought the advance to a crawl. When it froze and the Panzers advanced again in November, German soldiers were fighting in summer uniforms at -30°C without adequate equipment. Japanese intelligence reports that the Soviet Far East forces would not move westward allowed Zhukov to transfer up to 18 Siberian divisions — fresh, winter-equipped, and trained in cold-weather warfare — to the Moscow front. Their arrival and Zhukov's counteroffensive of 5 December saved the capital.",
   "combatants": {
     "axis": {
       "commanders": ["Fedor von Bock (Army Group Centre)", "Heinz Guderian (Panzer Group 2)", "Hermann Hoth (Panzer Group 3)"],
@@ -16,26 +17,10 @@
     }
   },
   "phases": [
-    {
-      "name": "Initial Typhoon",
-      "dates": "October 1941",
-      "description": "German forces achieve massive encirclements at Vyazma and Bryansk, capturing 657,000 Soviet prisoners. The road to Moscow appears open."
-    },
-    {
-      "name": "Mud and Delay",
-      "dates": "October–November 1941",
-      "description": "Autumn rains turn roads to impassable mud (Rasputitsa). German advance slows to a crawl. Soviet defences are rebuilt."
-    },
-    {
-      "name": "Final Push",
-      "dates": "November–early December 1941",
-      "description": "German Panzers advance to within 15–30 km of Moscow in sub-zero temperatures. Troops are inadequately equipped for winter conditions. German divisions are at 35% strength."
-    },
-    {
-      "name": "Soviet Counteroffensive",
-      "dates": "5–7 December 1941",
-      "description": "Zhukov launches a massive counteroffensive with fresh Siberian divisions. German forces, exhausted and frostbitten, are pushed back 100–250 km from Moscow."
-    }
+    { "name": "Initial Typhoon", "dates": "October 1941", "description": "German forces achieve massive encirclements at Vyazma and Bryansk, capturing 657,000 Soviet prisoners. The road to Moscow appears open." },
+    { "name": "Mud and Delay", "dates": "October–November 1941", "description": "Autumn rains turn roads to impassable mud (Rasputitsa). German advance slows to a crawl. Soviet defences are rebuilt." },
+    { "name": "Final Push", "dates": "November–early December 1941", "description": "German Panzers advance to within 15–30 km of Moscow in sub-zero temperatures. Troops are inadequately equipped for winter conditions. German divisions are at 35% strength." },
+    { "name": "Soviet Counteroffensive", "dates": "5–7 December 1941", "description": "Zhukov launches a massive counteroffensive with fresh Siberian divisions. German forces, exhausted and frostbitten, are pushed back 100–250 km from Moscow." }
   ],
   "outcome": "Soviet victory. The German Army did not capture Moscow. Hitler's response — dismissing von Bock and 35 other generals, personally assuming command of the army — set a damaging precedent for future command decisions.",
   "casualties": {
@@ -43,5 +28,18 @@
     "soviet": "~1,806,000 killed, wounded, captured in the offensive phase"
   },
   "image": "/storage/images/campaigns/moscow.jpg",
-  "significance": "The failure to capture Moscow shattered the myth of Blitzkrieg invincibility and proved the Soviet Union could not be defeated in a single campaign. Japan's decision not to attack the USSR from the east was partly informed by these German setbacks."
+  "significance": "The failure to capture Moscow shattered the myth of Blitzkrieg invincibility and proved the Soviet Union could not be defeated in a single campaign. Japan's decision not to attack the USSR from the east was partly informed by these German setbacks.",
+  "sources": [
+    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 II: Heeresgruppe Mitte War Diary, October 1941–January 1942." },
+    { "ref": "Stahel, David. Operation Typhoon: Hitler's March on Moscow, October 1941. Cambridge University Press, 2013." },
+    { "ref": "Reinhardt, Klaus. Moscow — The Turning Point: The Failure of Hitler's Strategy in the Winter of 1941–42. Berg, 1992." },
+    { "ref": "Braithwaite, Rodric. Moscow 1941: A City and Its People at War. Profile, 2006." }
+  ],
+  "related_records": [
+    { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
+    { "id": "kiev", "title": "Battle of Kiev", "type": "Campaign", "url": "/campaigns/eastern-front/kiev" },
+    { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" },
+    { "id": "de-001", "title": "Becker — Eastern Front (1941)", "type": "Letter", "url": "/letters/de-001" },
+    { "id": "pz-iv", "title": "Panzerkampfwagen IV", "type": "Armament", "url": "/armaments/pz-iv" }
+  ]
 }
