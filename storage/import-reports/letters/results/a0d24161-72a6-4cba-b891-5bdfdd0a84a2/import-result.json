@@ -1,0 +1,398 @@
+{
+  "runId": "a0d24161-72a6-4cba-b891-5bdfdd0a84a2",
+  "executedAt": "2026-06-20T17:46:29.273Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 4,
+    "collectionCount": 1,
+    "existingLetterSlugs": [
+      "de-001",
+      "de-002",
+      "de-003",
+      "de-004"
+    ]
+  },
+  "preview": {
+    "generatedAt": "2026-06-20T17:46:29.326Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "it-001",
+      "it-002",
+      "it-003",
+      "it-004",
+      "jp-001",
+      "jp-002",
+      "jp-003",
+      "jp-004",
+      "pol-001",
+      "pol-002",
+      "pol-003",
+      "pol-004",
+      "brit-001",
+      "brit-002",
+      "brit-003",
+      "brit-004",
+      "vol-001",
+      "vol-002",
+      "vol-003",
+      "vol-004"
+    ],
+    "recordsToUpdate": [
+      "de-001",
+      "de-002",
+      "de-003",
+      "de-004"
+    ],
+    "collectionsToCreate": [
+      "letters-italian",
+      "letters-japanese",
+      "letters-polish",
+      "letters-british",
+      "letters-volunteers"
+    ],
+    "collectionsExisting": [
+      "letters-german"
+    ]
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqmng3u6000410ennsqvvrrl",
+      "slug": "it-001",
+      "collection": "italian"
+    },
+    {
+      "id": "cmqmng3uc000610enfzy1jnev",
+      "slug": "it-002",
+      "collection": "italian"
+    },
+    {
+      "id": "cmqmng3ue000810en9lhi4yjt",
+      "slug": "it-003",
+      "collection": "italian"
+    },
+    {
+      "id": "cmqmng3uh000a10en2b0urbj0",
+      "slug": "it-004",
+      "collection": "italian"
+    },
+    {
+      "id": "cmqmng3ul000d10encol6tlfi",
+      "slug": "jp-001",
+      "collection": "japanese"
+    },
+    {
+      "id": "cmqmng3un000f10en9xjgmfor",
+      "slug": "jp-002",
+      "collection": "japanese"
+    },
+    {
+      "id": "cmqmng3up000h10enuoyg05ze",
+      "slug": "jp-003",
+      "collection": "japanese"
+    },
+    {
+      "id": "cmqmng3ur000j10ens1i2ulcn",
+      "slug": "jp-004",
+      "collection": "japanese"
+    },
+    {
+      "id": "cmqmng3uv000m10enk0bi5iaz",
+      "slug": "pol-001",
+      "collection": "polish"
+    },
+    {
+      "id": "cmqmng3ux000o10en64gciw51",
+      "slug": "pol-002",
+      "collection": "polish"
+    },
+    {
+      "id": "cmqmng3v0000q10enm2gmv9ai",
+      "slug": "pol-003",
+      "collection": "polish"
+    },
+    {
+      "id": "cmqmng3v2000s10engti7kwtq",
+      "slug": "pol-004",
+      "collection": "polish"
+    },
+    {
+      "id": "cmqmng3v5000v10en78w8fu5m",
+      "slug": "brit-001",
+      "collection": "british"
+    },
+    {
+      "id": "cmqmng3v7000x10enldmktd85",
+      "slug": "brit-002",
+      "collection": "british"
+    },
+    {
+      "id": "cmqmng3v9000z10entesz7jgv",
+      "slug": "brit-003",
+      "collection": "british"
+    },
+    {
+      "id": "cmqmng3va001110endjqtovl3",
+      "slug": "brit-004",
+      "collection": "british"
+    },
+    {
+      "id": "cmqmng3vd001410enpfzuh039",
+      "slug": "vol-001",
+      "collection": "volunteers"
+    },
+    {
+      "id": "cmqmng3vf001610enzdmsdbrv",
+      "slug": "vol-002",
+      "collection": "volunteers"
+    },
+    {
+      "id": "cmqmng3vi001810eno4ac5xus",
+      "slug": "vol-003",
+      "collection": "volunteers"
+    },
+    {
+      "id": "cmqmng3vk001a10ennjew0vlg",
+      "slug": "vol-004",
+      "collection": "volunteers"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "letters-italian",
+      "id": "cmqmng3u3000210enmh8mjri7"
+    },
+    {
+      "slug": "letters-japanese",
+      "id": "cmqmng3uj000b10en8ao576lw"
+    },
+    {
+      "slug": "letters-polish",
+      "id": "cmqmng3ut000k10envrbnsj7o"
+    },
+    {
+      "slug": "letters-british",
+      "id": "cmqmng3v4000t10enoeskjtgf"
+    },
+    {
+      "slug": "letters-volunteers",
+      "id": "cmqmng3vc001210enyr3m3kd4"
+    }
+  ],
+  "recordsSkipped": [
+    "de-001",
+    "de-002",
+    "de-003",
+    "de-004"
+  ],
+  "verification": {
+    "recordsCompared": 20,
+    "expectedDifferences": [
+      {
+        "recordId": "it-001",
+        "field": "collection",
+        "generatedValue": "italian",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-002",
+        "field": "collection",
+        "generatedValue": "italian",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-003",
+        "field": "collection",
+        "generatedValue": "italian",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-004",
+        "field": "collection",
+        "generatedValue": "italian",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-001",
+        "field": "collection",
+        "generatedValue": "japanese",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-002",
+        "field": "collection",
+        "generatedValue": "japanese",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-003",
+        "field": "collection",
+        "generatedValue": "japanese",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-004",
+        "field": "collection",
+        "generatedValue": "japanese",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "pol-001",
+        "field": "excerpt",
+        "generatedValue": "Janek,\n\nI do not know if this letter will ever find you, or in what condition. I write it not knowing whether you are alive. But I will write as though you will",
+        "classification": "expected"
+      },
+      {
+        "recordId": "pol-002",
+        "field": "excerpt",
+        "generatedValue": "Irena,\n\nWe took it. The monastery is ours — or what remains of it. They hoisted the Polish flag this morning at ten past ten. I was fifty metres away and I wept",
+        "classification": "expected"
+      },
+      {
+        "recordId": "pol-003",
+        "field": "excerpt",
+        "generatedValue": "I do not know who will read this. Perhaps no one.\n\nToday is the forty-third day of the Rising. We have not eaten properly in a week. There is water from a pump ",
+        "classification": "expected"
+      },
+      {
+        "recordId": "pol-004",
+        "field": "excerpt",
+        "generatedValue": "My dearest Zofia,\n\nThe Red Cross parcel arrived, eventually, though much reduced from what was originally sent. The Canadians in the next block are generous. We",
+        "classification": "expected"
+      },
+      {
+        "recordId": "brit-001",
+        "field": "excerpt",
+        "generatedValue": "My dearest Maggie,\n\nI do not know whether this will reach you, or when. We have been on the beaches for two days now. The noise is continuous — the Stukas come ",
+        "classification": "expected"
+      },
+      {
+        "recordId": "brit-002",
+        "field": "excerpt",
+        "generatedValue": "Dear Mother and Father,\n\nI know you worry so I am writing to tell you that I am perfectly fit and in good spirits. The squadron has been stood down for 48 hours",
+        "classification": "expected"
+      },
+      {
+        "recordId": "brit-003",
+        "field": "excerpt",
+        "generatedValue": "Dear Mum,\n\nWe are still moving. Rommel has gone — or rather he is going and we are chasing him. After two years in this desert, watching him come and go like a ",
+        "classification": "expected"
+      },
+      {
+        "recordId": "brit-004",
+        "field": "excerpt",
+        "generatedValue": "For regimental records.\n\nThe 2nd Battalion held the northern end of Arnhem bridge from the evening of 17 September until the morning of 21 September 1944 — four",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-001",
+        "field": "collection",
+        "generatedValue": "volunteers",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-002",
+        "field": "collection",
+        "generatedValue": "volunteers",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-003",
+        "field": "collection",
+        "generatedValue": "volunteers",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-004",
+        "field": "collection",
+        "generatedValue": "volunteers",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

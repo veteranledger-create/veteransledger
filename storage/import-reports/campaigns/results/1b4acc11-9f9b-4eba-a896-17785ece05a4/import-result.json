@@ -1,0 +1,136 @@
+{
+  "runId": "1b4acc11-9f9b-4eba-a896-17785ece05a4",
+  "executedAt": "2026-06-21T13:43:14.003Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 32,
+    "collectionCount": 10,
+    "existingCampaignSlugs": []
+  },
+  "preview": {
+    "generatedAt": "2026-06-21T13:43:14.048Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "alamein-1",
+      "alamein-2",
+      "gazala",
+      "sonnenblume",
+      "tobruk",
+      "altmark",
+      "atlantic",
+      "convoy-war",
+      "rheinubung",
+      "river-plate",
+      "uboat-campaign",
+      "barbarossa",
+      "blue",
+      "caucasus",
+      "kharkov",
+      "kiev",
+      "leningrad",
+      "moscow",
+      "stalingrad",
+      "cassino",
+      "crete",
+      "gothic-line",
+      "sicily",
+      "taranto",
+      "britain",
+      "bulge",
+      "bzura",
+      "dieppe",
+      "dunkirk",
+      "france",
+      "market-garden",
+      "normandy",
+      "norway",
+      "poland",
+      "warsaw"
+    ],
+    "recordsToUpdate": [],
+    "collectionsToCreate": [
+      "campaigns-africa",
+      "campaigns-atlantic",
+      "campaigns-eastern-front",
+      "campaigns-italy",
+      "campaigns-western-front"
+    ],
+    "collectionsExisting": []
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqnu74p70003pxiheqctj11n",
+      "slug": "alamein-1",
+      "theater": "africa"
+    },
+    {
+      "id": "cmqnu74pt0005pxihojjyqxt6",
+      "slug": "alamein-2",
+      "theater": "africa"
+    },
+    {
+      "id": "cmqnu74pw0007pxihd9wshx2l",
+      "slug": "gazala",
+      "theater": "africa"
+    },
+    {
+      "id": "cmqnu74py0009pxihmkqilzsq",
+      "slug": "sonnenblume",
+      "theater": "africa"
+    },
+    {
+      "id": "cmqnu74q1000bpxihp70qkfqw",
+      "slug": "tobruk",
+      "theater": "africa"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "campaigns-africa",
+      "id": "cmqnu74p40001pxihhpwo440z"
+    }
+  ],
+  "recordsSkipped": [],
+  "verification": {
+    "recordsCompared": 5,
+    "expectedDifferences": [
+      {
+        "recordId": "alamein-1",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "alamein-2",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "gazala",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "sonnenblume",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "tobruk",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

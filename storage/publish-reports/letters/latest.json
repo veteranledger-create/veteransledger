@@ -1,0 +1,19 @@
+{
+  "runId": "0cabd51c-53d6-4cb9-941a-d43e023c7b52",
+  "type": "letters",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-20T11:36:03.023Z",
+  "recordsChecked": 1,
+  "valid": 1,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\letters\\german.json"
+  ]
+}

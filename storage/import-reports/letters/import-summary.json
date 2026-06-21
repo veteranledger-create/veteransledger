@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-06-20T11:42:33.083Z",
+  "mode": "dry-run",
+  "totalRecords": 24,
+  "byCollection": {
+    "german": 4,
+    "italian": 4,
+    "japanese": 4,
+    "polish": 4,
+    "british": 4,
+    "volunteers": 4
+  },
+  "duplicateIds": [],
+  "collectionMismatches": [],
+  "missingRelatedTargets": [],
+  "validation": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {},
+    "issues": []
+  },
+  "readyToImport": 24,
+  "blockedByErrors": 0
+}

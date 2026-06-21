@@ -1,0 +1,871 @@
+{
+  "runId": "20638511-5ac0-4912-ba8b-f188bb62de22",
+  "executedAt": "2026-06-21T18:44:19.142Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "entityCount": 13,
+    "existingPersonnelSlugs": [
+      "erwin-rommel",
+      "heinz-guderian",
+      "erich-von-manstein",
+      "gerd-von-rundstedt",
+      "walter-model",
+      "kurt-student",
+      "friedrich-paulus",
+      "dietrich-von-choltitz",
+      "albert-kesselring",
+      "fedor-von-bock",
+      "hermann-hoth",
+      "gotthard-heinrici",
+      "hans-jurgen-von-arnim"
+    ]
+  },
+  "preview": {
+    "generatedAt": "2026-06-21T18:44:19.199Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "karl-donitz",
+      "erich-raeder",
+      "otto-kretschmer",
+      "gunther-prien",
+      "gunther-lutjens",
+      "erich-topp",
+      "wolfgang-luth",
+      "joachim-schepke",
+      "hans-ulrich-rudel",
+      "erich-hartmann",
+      "adolf-galland",
+      "werner-molders",
+      "walter-nowotny",
+      "joseph-kammhuber",
+      "hermann-goring",
+      "hugo-sperrle",
+      "gerhard-barkhorn",
+      "paul-hausser",
+      "sepp-dietrich",
+      "michael-wittmann",
+      "otto-skorzeny",
+      "jochen-peiper",
+      "felix-steiner",
+      "wilhelm-bittrich",
+      "theodor-eicke",
+      "hiroo-onoda",
+      "isoroku-yamamoto",
+      "ettore-muti",
+      "rodolfo-graziani",
+      "leon-degrelle",
+      "carl-mannerheim",
+      "hideki-tojo",
+      "masaharu-homma"
+    ],
+    "recordsToUpdate": [
+      "erwin-rommel",
+      "heinz-guderian",
+      "erich-von-manstein",
+      "gerd-von-rundstedt",
+      "walter-model",
+      "kurt-student",
+      "friedrich-paulus",
+      "dietrich-von-choltitz",
+      "albert-kesselring",
+      "fedor-von-bock",
+      "hermann-hoth",
+      "gotthard-heinrici",
+      "hans-jurgen-von-arnim"
+    ],
+    "personnelRelationshipsToCreate": [
+      {
+        "fromSlug": "gotthard-heinrici",
+        "toSlug": "walter-model"
+      },
+      {
+        "fromSlug": "hans-jurgen-von-arnim",
+        "toSlug": "erwin-rommel"
+      },
+      {
+        "fromSlug": "gunther-prien",
+        "toSlug": "karl-donitz"
+      },
+      {
+        "fromSlug": "erich-topp",
+        "toSlug": "karl-donitz"
+      },
+      {
+        "fromSlug": "wolfgang-luth",
+        "toSlug": "otto-kretschmer"
+      },
+      {
+        "fromSlug": "joachim-schepke",
+        "toSlug": "otto-kretschmer"
+      },
+      {
+        "fromSlug": "joachim-schepke",
+        "toSlug": "gunther-prien"
+      },
+      {
+        "fromSlug": "erich-hartmann",
+        "toSlug": "gerhard-barkhorn"
+      },
+      {
+        "fromSlug": "adolf-galland",
+        "toSlug": "werner-molders"
+      },
+      {
+        "fromSlug": "werner-molders",
+        "toSlug": "adolf-galland"
+      },
+      {
+        "fromSlug": "walter-nowotny",
+        "toSlug": "erich-hartmann"
+      },
+      {
+        "fromSlug": "joseph-kammhuber",
+        "toSlug": "hermann-goring"
+      },
+      {
+        "fromSlug": "hermann-goring",
+        "toSlug": "joseph-kammhuber"
+      },
+      {
+        "fromSlug": "hugo-sperrle",
+        "toSlug": "hermann-goring"
+      },
+      {
+        "fromSlug": "gerhard-barkhorn",
+        "toSlug": "erich-hartmann"
+      },
+      {
+        "fromSlug": "paul-hausser",
+        "toSlug": "sepp-dietrich"
+      },
+      {
+        "fromSlug": "sepp-dietrich",
+        "toSlug": "jochen-peiper"
+      },
+      {
+        "fromSlug": "michael-wittmann",
+        "toSlug": "sepp-dietrich"
+      },
+      {
+        "fromSlug": "jochen-peiper",
+        "toSlug": "sepp-dietrich"
+      },
+      {
+        "fromSlug": "felix-steiner",
+        "toSlug": "paul-hausser"
+      },
+      {
+        "fromSlug": "wilhelm-bittrich",
+        "toSlug": "walter-model"
+      },
+      {
+        "fromSlug": "hiroo-onoda",
+        "toSlug": "isoroku-yamamoto"
+      },
+      {
+        "fromSlug": "ettore-muti",
+        "toSlug": "rodolfo-graziani"
+      },
+      {
+        "fromSlug": "rodolfo-graziani",
+        "toSlug": "erwin-rommel"
+      },
+      {
+        "fromSlug": "leon-degrelle",
+        "toSlug": "felix-steiner"
+      },
+      {
+        "fromSlug": "hideki-tojo",
+        "toSlug": "isoroku-yamamoto"
+      },
+      {
+        "fromSlug": "masaharu-homma",
+        "toSlug": "hideki-tojo"
+      },
+      {
+        "fromSlug": "masaharu-homma",
+        "toSlug": "isoroku-yamamoto"
+      }
+    ],
+    "nonPersonnelReferences": [
+      {
+        "fromSlug": "erwin-rommel",
+        "type": "Article",
+        "targetId": "july-20"
+      },
+      {
+        "fromSlug": "erwin-rommel",
+        "type": "Campaign",
+        "targetId": "gazala"
+      },
+      {
+        "fromSlug": "erwin-rommel",
+        "type": "Campaign",
+        "targetId": "normandy"
+      },
+      {
+        "fromSlug": "erwin-rommel",
+        "type": "Armament",
+        "targetId": "pz-iv"
+      },
+      {
+        "fromSlug": "heinz-guderian",
+        "type": "Campaign",
+        "targetId": "france"
+      },
+      {
+        "fromSlug": "heinz-guderian",
+        "type": "Campaign",
+        "targetId": "barbarossa"
+      },
+      {
+        "fromSlug": "heinz-guderian",
+        "type": "Armament",
+        "targetId": "pz-iv"
+      },
+      {
+        "fromSlug": "erich-von-manstein",
+        "type": "Campaign",
+        "targetId": "stalingrad"
+      },
+      {
+        "fromSlug": "erich-von-manstein",
+        "type": "Campaign",
+        "targetId": "kharkov"
+      },
+      {
+        "fromSlug": "erich-von-manstein",
+        "type": "Campaign",
+        "targetId": "france"
+      },
+      {
+        "fromSlug": "gerd-von-rundstedt",
+        "type": "Campaign",
+        "targetId": "france"
+      },
+      {
+        "fromSlug": "gerd-von-rundstedt",
+        "type": "Campaign",
+        "targetId": "dunkirk"
+      },
+      {
+        "fromSlug": "gerd-von-rundstedt",
+        "type": "Campaign",
+        "targetId": "normandy"
+      },
+      {
+        "fromSlug": "walter-model",
+        "type": "Campaign",
+        "targetId": "market-garden"
+      },
+      {
+        "fromSlug": "walter-model",
+        "type": "Campaign",
+        "targetId": "bulge"
+      },
+      {
+        "fromSlug": "walter-model",
+        "type": "Campaign",
+        "targetId": "normandy"
+      },
+      {
+        "fromSlug": "kurt-student",
+        "type": "Campaign",
+        "targetId": "crete"
+      },
+      {
+        "fromSlug": "kurt-student",
+        "type": "Campaign",
+        "targetId": "norway"
+      },
+      {
+        "fromSlug": "kurt-student",
+        "type": "Campaign",
+        "targetId": "cassino"
+      },
+      {
+        "fromSlug": "friedrich-paulus",
+        "type": "Campaign",
+        "targetId": "stalingrad"
+      },
+      {
+        "fromSlug": "friedrich-paulus",
+        "type": "Campaign",
+        "targetId": "blue"
+      },
+      {
+        "fromSlug": "friedrich-paulus",
+        "type": "Letter",
+        "targetId": "de-002"
+      },
+      {
+        "fromSlug": "dietrich-von-choltitz",
+        "type": "Campaign",
+        "targetId": "france"
+      },
+      {
+        "fromSlug": "dietrich-von-choltitz",
+        "type": "Campaign",
+        "targetId": "normandy"
+      },
+      {
+        "fromSlug": "albert-kesselring",
+        "type": "Campaign",
+        "targetId": "cassino"
+      },
+      {
+        "fromSlug": "albert-kesselring",
+        "type": "Campaign",
+        "targetId": "gothic-line"
+      },
+      {
+        "fromSlug": "albert-kesselring",
+        "type": "Campaign",
+        "targetId": "sicily"
+      },
+      {
+        "fromSlug": "albert-kesselring",
+        "type": "Campaign",
+        "targetId": "britain"
+      },
+      {
+        "fromSlug": "fedor-von-bock",
+        "type": "Campaign",
+        "targetId": "poland"
+      },
+      {
+        "fromSlug": "fedor-von-bock",
+        "type": "Campaign",
+        "targetId": "moscow"
+      },
+      {
+        "fromSlug": "fedor-von-bock",
+        "type": "Campaign",
+        "targetId": "barbarossa"
+      },
+      {
+        "fromSlug": "fedor-von-bock",
+        "type": "Campaign",
+        "targetId": "blue"
+      },
+      {
+        "fromSlug": "hermann-hoth",
+        "type": "Campaign",
+        "targetId": "stalingrad"
+      },
+      {
+        "fromSlug": "hermann-hoth",
+        "type": "Campaign",
+        "targetId": "blue"
+      },
+      {
+        "fromSlug": "hermann-hoth",
+        "type": "Campaign",
+        "targetId": "kharkov"
+      },
+      {
+        "fromSlug": "hermann-hoth",
+        "type": "Armament",
+        "targetId": "pz-vi-tiger"
+      },
+      {
+        "fromSlug": "gotthard-heinrici",
+        "type": "Campaign",
+        "targetId": "barbarossa"
+      },
+      {
+        "fromSlug": "gotthard-heinrici",
+        "type": "Campaign",
+        "targetId": "moscow"
+      },
+      {
+        "fromSlug": "hans-jurgen-von-arnim",
+        "type": "Campaign",
+        "targetId": "alamein-2"
+      },
+      {
+        "fromSlug": "hans-jurgen-von-arnim",
+        "type": "Campaign",
+        "targetId": "gazala"
+      },
+      {
+        "fromSlug": "karl-donitz",
+        "type": "Campaign",
+        "targetId": "atlantic"
+      },
+      {
+        "fromSlug": "karl-donitz",
+        "type": "Campaign",
+        "targetId": "uboat-campaing"
+      },
+      {
+        "fromSlug": "karl-donitz",
+        "type": "Armament",
+        "targetId": "type-viic-uboat"
+      },
+      {
+        "fromSlug": "karl-donitz",
+        "type": "Article",
+        "targetId": "nuremberg"
+      },
+      {
+        "fromSlug": "erich-raeder",
+        "type": "Campaign",
+        "targetId": "norway"
+      },
+      {
+        "fromSlug": "erich-raeder",
+        "type": "Campaign",
+        "targetId": "rheinubung"
+      },
+      {
+        "fromSlug": "erich-raeder",
+        "type": "Armament",
+        "targetId": "bismarck"
+      },
+      {
+        "fromSlug": "erich-raeder",
+        "type": "Article",
+        "targetId": "nuremberg"
+      },
+      {
+        "fromSlug": "otto-kretschmer",
+        "type": "Campaign",
+        "targetId": "atlantic"
+      },
+      {
+        "fromSlug": "otto-kretschmer",
+        "type": "Campaign",
+        "targetId": "convoy-war"
+      },
+      {
+        "fromSlug": "otto-kretschmer",
+        "type": "Armament",
+        "targetId": "type-viic-uboat"
+      },
+      {
+        "fromSlug": "gunther-prien",
+        "type": "Campaign",
+        "targetId": "convoy-war"
+      },
+      {
+        "fromSlug": "gunther-prien",
+        "type": "Armament",
+        "targetId": "type-viic-uboat"
+      },
+      {
+        "fromSlug": "gunther-lutjens",
+        "type": "Campaign",
+        "targetId": "rheinubung"
+      },
+      {
+        "fromSlug": "gunther-lutjens",
+        "type": "Armament",
+        "targetId": "bismarck"
+      },
+      {
+        "fromSlug": "gunther-lutjens",
+        "type": "Armament",
+        "targetId": "tirpitz"
+      },
+      {
+        "fromSlug": "erich-topp",
+        "type": "Campaign",
+        "targetId": "uboat-campaing"
+      },
+      {
+        "fromSlug": "erich-topp",
+        "type": "Armament",
+        "targetId": "type-viic-uboat"
+      },
+      {
+        "fromSlug": "wolfgang-luth",
+        "type": "Campaign",
+        "targetId": "atlantic"
+      },
+      {
+        "fromSlug": "wolfgang-luth",
+        "type": "Campaign",
+        "targetId": "uboat-campaing"
+      },
+      {
+        "fromSlug": "wolfgang-luth",
+        "type": "Armament",
+        "targetId": "type-viic-uboat"
+      },
+      {
+        "fromSlug": "joachim-schepke",
+        "type": "Campaign",
+        "targetId": "convoy-war"
+      },
+      {
+        "fromSlug": "joachim-schepke",
+        "type": "Armament",
+        "targetId": "type-viic-uboat"
+      },
+      {
+        "fromSlug": "hans-ulrich-rudel",
+        "type": "Armament",
+        "targetId": "ju-87-stuka"
+      },
+      {
+        "fromSlug": "hans-ulrich-rudel",
+        "type": "Campaign",
+        "targetId": "barbarossa"
+      },
+      {
+        "fromSlug": "erich-hartmann",
+        "type": "Armament",
+        "targetId": "bf-109"
+      },
+      {
+        "fromSlug": "adolf-galland",
+        "type": "Campaign",
+        "targetId": "britain"
+      },
+      {
+        "fromSlug": "adolf-galland",
+        "type": "Armament",
+        "targetId": "me-262"
+      },
+      {
+        "fromSlug": "adolf-galland",
+        "type": "Armament",
+        "targetId": "bf-109"
+      },
+      {
+        "fromSlug": "werner-molders",
+        "type": "Campaign",
+        "targetId": "britain"
+      },
+      {
+        "fromSlug": "werner-molders",
+        "type": "Armament",
+        "targetId": "bf-109"
+      },
+      {
+        "fromSlug": "walter-nowotny",
+        "type": "Armament",
+        "targetId": "me-262"
+      },
+      {
+        "fromSlug": "joseph-kammhuber",
+        "type": "Campaign",
+        "targetId": "britain"
+      },
+      {
+        "fromSlug": "hermann-goring",
+        "type": "Campaign",
+        "targetId": "britain"
+      },
+      {
+        "fromSlug": "hermann-goring",
+        "type": "Campaign",
+        "targetId": "stalingrad"
+      },
+      {
+        "fromSlug": "hermann-goring",
+        "type": "Article",
+        "targetId": "nuremberg"
+      },
+      {
+        "fromSlug": "hermann-goring",
+        "type": "Article",
+        "targetId": "rise-nsdap"
+      },
+      {
+        "fromSlug": "hugo-sperrle",
+        "type": "Campaign",
+        "targetId": "britain"
+      },
+      {
+        "fromSlug": "hugo-sperrle",
+        "type": "Campaign",
+        "targetId": "france"
+      },
+      {
+        "fromSlug": "hugo-sperrle",
+        "type": "Armament",
+        "targetId": "he-111"
+      },
+      {
+        "fromSlug": "gerhard-barkhorn",
+        "type": "Armament",
+        "targetId": "bf-109"
+      },
+      {
+        "fromSlug": "gerhard-barkhorn",
+        "type": "Campaign",
+        "targetId": "barbarossa"
+      },
+      {
+        "fromSlug": "paul-hausser",
+        "type": "Campaign",
+        "targetId": "kharkov"
+      },
+      {
+        "fromSlug": "paul-hausser",
+        "type": "Armament",
+        "targetId": "pz-vi-tiger"
+      },
+      {
+        "fromSlug": "sepp-dietrich",
+        "type": "Campaign",
+        "targetId": "bulge"
+      },
+      {
+        "fromSlug": "sepp-dietrich",
+        "type": "Campaign",
+        "targetId": "normandy"
+      },
+      {
+        "fromSlug": "michael-wittmann",
+        "type": "Campaign",
+        "targetId": "normandy"
+      },
+      {
+        "fromSlug": "michael-wittmann",
+        "type": "Armament",
+        "targetId": "pz-vi-tiger"
+      },
+      {
+        "fromSlug": "otto-skorzeny",
+        "type": "Campaign",
+        "targetId": "bulge"
+      },
+      {
+        "fromSlug": "otto-skorzeny",
+        "type": "Campaign",
+        "targetId": "warsaw"
+      },
+      {
+        "fromSlug": "jochen-peiper",
+        "type": "Campaign",
+        "targetId": "bulge"
+      },
+      {
+        "fromSlug": "jochen-peiper",
+        "type": "Armament",
+        "targetId": "pz-vi-b-tiger-ii"
+      },
+      {
+        "fromSlug": "felix-steiner",
+        "type": "Campaign",
+        "targetId": "barbarossa"
+      },
+      {
+        "fromSlug": "wilhelm-bittrich",
+        "type": "Campaign",
+        "targetId": "market-garden"
+      },
+      {
+        "fromSlug": "wilhelm-bittrich",
+        "type": "Campaign",
+        "targetId": "normandy"
+      },
+      {
+        "fromSlug": "wilhelm-bittrich",
+        "type": "Armament",
+        "targetId": "pz-v-panther"
+      },
+      {
+        "fromSlug": "theodor-eicke",
+        "type": "Article",
+        "targetId": "rise-nsdap"
+      },
+      {
+        "fromSlug": "theodor-eicke",
+        "type": "Campaign",
+        "targetId": "barbarossa"
+      },
+      {
+        "fromSlug": "theodor-eicke",
+        "type": "Article",
+        "targetId": "nuremberg"
+      },
+      {
+        "fromSlug": "isoroku-yamamoto",
+        "type": "Campaign",
+        "targetId": "taranto"
+      },
+      {
+        "fromSlug": "isoroku-yamamoto",
+        "type": "Letter",
+        "targetId": "jp-002"
+      },
+      {
+        "fromSlug": "rodolfo-graziani",
+        "type": "Campaign",
+        "targetId": "sonnenblume"
+      },
+      {
+        "fromSlug": "leon-degrelle",
+        "type": "Letter",
+        "targetId": "vol-001"
+      },
+      {
+        "fromSlug": "carl-mannerheim",
+        "type": "Campaign",
+        "targetId": "leningrad"
+      },
+      {
+        "fromSlug": "carl-mannerheim",
+        "type": "Campaign",
+        "targetId": "barbarossa"
+      },
+      {
+        "fromSlug": "carl-mannerheim",
+        "type": "Letter",
+        "targetId": "vol-002"
+      },
+      {
+        "fromSlug": "hideki-tojo",
+        "type": "Letter",
+        "targetId": "jp-001"
+      }
+    ],
+    "relationshipCount": 28,
+    "blockingSlugConflicts": []
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqo4ybuy00011judg5o9cplg",
+      "slug": "paul-hausser",
+      "branch": "waffen-ss"
+    },
+    {
+      "id": "cmqo4ybv800021juddvmoz3x3",
+      "slug": "sepp-dietrich",
+      "branch": "waffen-ss"
+    },
+    {
+      "id": "cmqo4ybva00031jud1p0k8a4l",
+      "slug": "michael-wittmann",
+      "branch": "waffen-ss"
+    },
+    {
+      "id": "cmqo4ybvv00041judycqmrgt3",
+      "slug": "otto-skorzeny",
+      "branch": "waffen-ss"
+    },
+    {
+      "id": "cmqo4ybvy00051judvautb3gb",
+      "slug": "jochen-peiper",
+      "branch": "waffen-ss"
+    },
+    {
+      "id": "cmqo4ybw100061judldbs3ga4",
+      "slug": "felix-steiner",
+      "branch": "waffen-ss"
+    },
+    {
+      "id": "cmqo4ybw400071judrgsffzf8",
+      "slug": "wilhelm-bittrich",
+      "branch": "waffen-ss"
+    },
+    {
+      "id": "cmqo4ybw700081judmp5xy8o3",
+      "slug": "theodor-eicke",
+      "branch": "waffen-ss"
+    }
+  ],
+  "recordsSkipped": [],
+  "relationshipsCreated": [
+    {
+      "id": "cmqo4ybwc000a1jud95hn3mqk",
+      "fromSlug": "paul-hausser",
+      "toSlug": "sepp-dietrich"
+    },
+    {
+      "id": "cmqo4ybwe000c1jud4ff4pvwf",
+      "fromSlug": "sepp-dietrich",
+      "toSlug": "jochen-peiper"
+    },
+    {
+      "id": "cmqo4ybwg000e1judk8mrzzds",
+      "fromSlug": "michael-wittmann",
+      "toSlug": "sepp-dietrich"
+    },
+    {
+      "id": "cmqo4ybwh000g1judx4jq17pc",
+      "fromSlug": "jochen-peiper",
+      "toSlug": "sepp-dietrich"
+    },
+    {
+      "id": "cmqo4ybwi000i1judycapkfq6",
+      "fromSlug": "felix-steiner",
+      "toSlug": "paul-hausser"
+    },
+    {
+      "id": "cmqo4ybwk000k1judv7v68w7j",
+      "fromSlug": "wilhelm-bittrich",
+      "toSlug": "walter-model"
+    }
+  ],
+  "verification": {
+    "entitiesCompared": 8,
+    "expectedDifferences": [
+      {
+        "recordId": "paul-hausser",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly stale)",
+        "generatedValue": "flat urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "sepp-dietrich",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly stale)",
+        "generatedValue": "flat urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "michael-wittmann",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly stale)",
+        "generatedValue": "flat urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "otto-skorzeny",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly stale)",
+        "generatedValue": "flat urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jochen-peiper",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly stale)",
+        "generatedValue": "flat urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "felix-steiner",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly stale)",
+        "generatedValue": "flat urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "wilhelm-bittrich",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly stale)",
+        "generatedValue": "flat urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "theodor-eicke",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly stale)",
+        "generatedValue": "flat urls (always regenerated)",
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": [],
+    "relationshipsExpected": 6,
+    "relationshipsCreated": 6,
+    "relationshipMismatches": []
+  },
+  "status": "success"
+}

@@ -32,6 +32,7 @@ async function init() {
     if (panel === "tab-records") loadRecords();
     if (panel === "tab-timeline") loadTimelineEvents();
     if (panel === "tab-media") loadMedia();
+    if (panel === "tab-publish") renderPublishResult(lastPublishReport);
   });
 }
 
@@ -441,6 +442,99 @@ document
       if (submitBtn) submitBtn.disabled = false;
     }
   });
+
+// ── Publish pipeline (Phase 0 — writes to storage/publish-staging only) ──
+let lastPublishReport = null;
+
+document
+  .getElementById("publish-form")
+  ?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const action = e.submitter?.dataset.action === "run" ? "run" : "validate";
+    const type = form.querySelector("[name='type']")?.value;
+    if (!type) return;
+
+    const resultEl = document.getElementById("publish-result");
+    if (resultEl) resultEl.innerHTML = loader();
+    const buttons = form.querySelectorAll("[type='submit']");
+    buttons.forEach((b) => (b.disabled = true));
+
+    try {
+      const method = action === "run" ? "POST" : "GET";
+      const res = await fetch(`/api/publish/${type}/${action}`, {
+        method,
+        headers: authHeader(),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Request failed.");
+      lastPublishReport = data;
+      renderPublishResult(data);
+    } catch (err) {
+      if (resultEl) {
+        resultEl.innerHTML = `<p style="color:#e06060;">${escHtml(err.message || "Publish request failed.")}</p>`;
+      }
+    } finally {
+      buttons.forEach((b) => (b.disabled = false));
+    }
+  });
+
+function renderPublishResult(report) {
+  const container = document.getElementById("publish-result");
+  if (!container) return;
+  if (!report) {
+    container.innerHTML = `<p style="color:var(--text-muted)">No publish run yet.</p>`;
+    return;
+  }
+
+  const statusColor = report.invalid > 0 ? "#e0a060" : "#60c060";
+  container.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:var(--space-4);margin-bottom:var(--space-6);">
+      <div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);padding:var(--space-4);">
+        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--gold);">${report.recordsChecked}</div>
+        <div style="font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;">Checked</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);padding:var(--space-4);">
+        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:#60c060;">${report.valid}</div>
+        <div style="font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;">Valid</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);padding:var(--space-4);">
+        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:${statusColor};">${report.invalid}</div>
+        <div style="font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;">Invalid</div>
+      </div>
+    </div>
+    ${
+      report.issues.length
+        ? `<div style="margin-bottom:var(--space-6);">
+        <p style="font-size:var(--text-xs);color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-3);">Issues</p>
+        <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+          ${report.issues
+            .map(
+              (i) => `
+            <div style="padding:var(--space-3);background:var(--bg-card);border:1px solid #4a1515;border-radius:var(--radius);font-size:var(--text-sm);">
+              <span class="badge">${escHtml(i.field)}</span>
+              <span style="color:var(--text-muted);margin-left:var(--space-2);">${escHtml(i.recordId)}</span>
+              <p style="color:var(--text-secondary);margin-top:var(--space-1);">${escHtml(i.message)}</p>
+            </div>`,
+            )
+            .join("")}
+        </div>
+      </div>`
+        : ""
+    }
+    ${
+      report.mode === "run"
+        ? `<div>
+        <p style="font-size:var(--text-xs);color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-3);">Staged Files</p>
+        ${
+          report.staged.length
+            ? `<ul style="font-size:var(--text-sm);color:var(--text-secondary);padding-left:var(--space-5);">${report.staged.map((s) => `<li>${escHtml(s)}</li>`).join("")}</ul>`
+            : `<p style="color:var(--text-muted);">Nothing staged — no valid records to publish.</p>`
+        }
+      </div>`
+        : ""
+    }`;
+}
 
 // ── Helpers ─────────────────────────────────────────────────
 function authHeader() {

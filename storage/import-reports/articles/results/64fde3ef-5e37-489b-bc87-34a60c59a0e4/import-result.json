@@ -1,0 +1,115 @@
+{
+  "runId": "64fde3ef-5e37-489b-bc87-34a60c59a0e4",
+  "executedAt": "2026-06-21T00:20:17.106Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 27,
+    "collectionCount": 7,
+    "existingArticleSlugs": [
+      "berlin-1945",
+      "rearmament",
+      "poland-1939"
+    ]
+  },
+  "preview": {
+    "generatedAt": "2026-06-21T00:20:17.169Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "rise-nsdap",
+      "july-20",
+      "anschluss",
+      "occupation",
+      "nuremberg"
+    ],
+    "recordsToUpdate": [
+      "poland-1939",
+      "rearmament",
+      "berlin-1945"
+    ],
+    "collectionsToCreate": [
+      "articles-political",
+      "articles-economy",
+      "articles-legal"
+    ],
+    "collectionsExisting": [
+      "articles-military"
+    ]
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqn1ij6p0004zv9bwpmw4aqp",
+      "slug": "rise-nsdap",
+      "category": "political"
+    },
+    {
+      "id": "cmqn1ij720006zv9b5xp0wl9n",
+      "slug": "july-20",
+      "category": "political"
+    },
+    {
+      "id": "cmqn1ij750008zv9bulzazs1j",
+      "slug": "anschluss",
+      "category": "political"
+    },
+    {
+      "id": "cmqn1ij77000azv9b44hqukpa",
+      "slug": "occupation",
+      "category": "political"
+    },
+    {
+      "id": "cmqn1ij7c000ezv9bfoalz52g",
+      "slug": "nuremberg",
+      "category": "legal"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "articles-political",
+      "id": "cmqn1ij6n0002zv9bubc4w1wj"
+    },
+    {
+      "slug": "articles-economy",
+      "id": "cmqn1ij7a000bzv9b9vf3nayy"
+    },
+    {
+      "slug": "articles-legal",
+      "id": "cmqn1ij7b000czv9bvdfweocz"
+    }
+  ],
+  "recordsSkipped": [
+    "poland-1939",
+    "rearmament",
+    "berlin-1945"
+  ],
+  "verification": {
+    "recordsCompared": 5,
+    "expectedDifferences": [
+      {
+        "recordId": "rise-nsdap",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/rise-nsdap.jpg"
+        ],
+        "classification": "expected"
+      },
+      {
+        "recordId": "july-20",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/july-20.jpg"
+        ],
+        "classification": "expected"
+      },
+      {
+        "recordId": "nuremberg",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/nuremberg.jpg"
+        ],
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

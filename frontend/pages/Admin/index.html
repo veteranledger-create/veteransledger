@@ -79,6 +79,8 @@
           aria-selected="false">Timeline</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-media" role="tab"
           aria-selected="false">Media</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-publish" role="tab"
+          aria-selected="false">Publish</button>
       </div>
 
       <!-- Tab: Overview (activity log) -->
@@ -171,6 +173,30 @@
         <div id="media-list">
           <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
               class="loader__dot"></span></div>
+        </div>
+      </div>
+
+      <!-- Tab: Publish (Phase 0 — writes to storage/publish-staging only, never public/data) -->
+      <div id="tab-publish" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Publish Pipeline</div>
+        <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-6);max-width:640px;">
+          Validates published Letter records and generates the legacy JSON shape into a staging directory.
+          This does not touch the live archive JSON yet.
+        </p>
+        <form id="publish-form" style="display:flex;gap:var(--space-3);align-items:end;margin-bottom:var(--space-8);flex-wrap:wrap;">
+          <div class="contact-form__group" style="margin:0;">
+            <label class="contact-form__label">Content type</label>
+            <select name="type" class="contact-form__input">
+              <option value="letters">Letters</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-secondary" data-action="validate">Validate →</button>
+          <button type="submit" class="btn btn-primary" data-action="run">Validate &amp; Publish to Staging →</button>
+        </form>
+
+        <div class="section-label" style="margin-bottom:var(--space-6);">Last Result</div>
+        <div id="publish-result">
+          <p style="font-size:var(--text-sm);color:var(--text-muted);">No publish run yet.</p>
         </div>
       </div>
 

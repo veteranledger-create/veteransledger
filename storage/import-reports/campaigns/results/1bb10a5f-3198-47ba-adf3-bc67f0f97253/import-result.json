@@ -1,0 +1,468 @@
+{
+  "runId": "1bb10a5f-3198-47ba-adf3-bc67f0f97253",
+  "executedAt": "2026-06-21T13:59:46.191Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 37,
+    "collectionCount": 11,
+    "existingCampaignSlugs": [
+      "alamein-1",
+      "alamein-2",
+      "gazala",
+      "sonnenblume",
+      "tobruk"
+    ]
+  },
+  "preview": {
+    "generatedAt": "2026-06-21T13:59:46.246Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "altmark",
+      "atlantic",
+      "convoy-war",
+      "rheinubung",
+      "river-plate",
+      "uboat-campaign",
+      "barbarossa",
+      "blue",
+      "caucasus",
+      "kharkov",
+      "kiev",
+      "leningrad",
+      "moscow",
+      "stalingrad",
+      "cassino",
+      "crete",
+      "gothic-line",
+      "sicily",
+      "taranto",
+      "britain",
+      "bulge",
+      "bzura",
+      "dieppe",
+      "dunkirk",
+      "france",
+      "market-garden",
+      "normandy",
+      "norway",
+      "poland",
+      "warsaw"
+    ],
+    "recordsToUpdate": [
+      "alamein-1",
+      "alamein-2",
+      "gazala",
+      "sonnenblume",
+      "tobruk"
+    ],
+    "collectionsToCreate": [
+      "campaigns-atlantic",
+      "campaigns-eastern-front",
+      "campaigns-italy",
+      "campaigns-western-front"
+    ],
+    "collectionsExisting": [
+      "campaigns-africa"
+    ]
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqnuseai0004dn0ejtgf23gc",
+      "slug": "altmark",
+      "theater": "atlantic"
+    },
+    {
+      "id": "cmqnuseav0006dn0ei4d77vre",
+      "slug": "atlantic",
+      "theater": "atlantic"
+    },
+    {
+      "id": "cmqnuseay0008dn0e0hxxfpuw",
+      "slug": "convoy-war",
+      "theater": "atlantic"
+    },
+    {
+      "id": "cmqnuseb0000adn0efl2xqegk",
+      "slug": "rheinubung",
+      "theater": "atlantic"
+    },
+    {
+      "id": "cmqnuseb2000cdn0eeiy0y6m4",
+      "slug": "river-plate",
+      "theater": "atlantic"
+    },
+    {
+      "id": "cmqnuseb4000edn0e1fixk5ip",
+      "slug": "uboat-campaign",
+      "theater": "atlantic"
+    },
+    {
+      "id": "cmqnuseb9000hdn0eys63vrpg",
+      "slug": "barbarossa",
+      "theater": "eastern-front"
+    },
+    {
+      "id": "cmqnusebb000jdn0e2uq1c633",
+      "slug": "blue",
+      "theater": "eastern-front"
+    },
+    {
+      "id": "cmqnusebe000ldn0eyofh9ylc",
+      "slug": "caucasus",
+      "theater": "eastern-front"
+    },
+    {
+      "id": "cmqnusebf000ndn0e0yadwllf",
+      "slug": "kharkov",
+      "theater": "eastern-front"
+    },
+    {
+      "id": "cmqnusebh000pdn0ekp81uk73",
+      "slug": "kiev",
+      "theater": "eastern-front"
+    },
+    {
+      "id": "cmqnusebj000rdn0e6fta8a2i",
+      "slug": "leningrad",
+      "theater": "eastern-front"
+    },
+    {
+      "id": "cmqnusebl000tdn0e3t5pulxz",
+      "slug": "moscow",
+      "theater": "eastern-front"
+    },
+    {
+      "id": "cmqnusebn000vdn0ezuzx5r1b",
+      "slug": "stalingrad",
+      "theater": "eastern-front"
+    },
+    {
+      "id": "cmqnusebr000ydn0edt00vsux",
+      "slug": "cassino",
+      "theater": "italy"
+    },
+    {
+      "id": "cmqnusebt0010dn0e6jh799f8",
+      "slug": "crete",
+      "theater": "italy"
+    },
+    {
+      "id": "cmqnusebv0012dn0esvf6vl3w",
+      "slug": "gothic-line",
+      "theater": "italy"
+    },
+    {
+      "id": "cmqnusebx0014dn0el0onioxi",
+      "slug": "sicily",
+      "theater": "italy"
+    },
+    {
+      "id": "cmqnuseby0016dn0evjcrtqau",
+      "slug": "taranto",
+      "theater": "italy"
+    },
+    {
+      "id": "cmqnusec20019dn0e7kvy5uod",
+      "slug": "britain",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnusec4001bdn0epfisfau3",
+      "slug": "bulge",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnusec6001ddn0ed4u5507c",
+      "slug": "bzura",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnusec8001fdn0eaibqrvo4",
+      "slug": "dieppe",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnuseca001hdn0evjdieem5",
+      "slug": "dunkirk",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnusecc001jdn0epczx6lco",
+      "slug": "france",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnusece001ldn0ety4fn2kf",
+      "slug": "market-garden",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnusecg001ndn0enuyhktss",
+      "slug": "normandy",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnuseci001pdn0ed8fvnaan",
+      "slug": "norway",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnuseck001rdn0eeo9im69h",
+      "slug": "poland",
+      "theater": "western-front"
+    },
+    {
+      "id": "cmqnusecm001tdn0ekwq2qtxz",
+      "slug": "warsaw",
+      "theater": "western-front"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "campaigns-atlantic",
+      "id": "cmqnuseag0002dn0ejwzha4fm"
+    },
+    {
+      "slug": "campaigns-eastern-front",
+      "id": "cmqnuseb7000fdn0e0fsow8ah"
+    },
+    {
+      "slug": "campaigns-italy",
+      "id": "cmqnusebp000wdn0epyc9k1vq"
+    },
+    {
+      "slug": "campaigns-western-front",
+      "id": "cmqnusec00017dn0ewfpm2sid"
+    }
+  ],
+  "recordsSkipped": [
+    "alamein-1",
+    "alamein-2",
+    "gazala",
+    "sonnenblume",
+    "tobruk"
+  ],
+  "verification": {
+    "recordsCompared": 30,
+    "expectedDifferences": [
+      {
+        "recordId": "altmark",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "atlantic",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "convoy-war",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "rheinubung",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "river-plate",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "uboat-campaign",
+        "field": "summary",
+        "generatedValue": "The U-boat campaign represented Germany's most potent strategic threat to Britain, which depended on imports for survival. Karl Dönitz had developed wolfpack ta...",
+        "classification": "expected"
+      },
+      {
+        "recordId": "uboat-campaign",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "barbarossa",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "blue",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "caucasus",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "kharkov",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "kiev",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "leningrad",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "moscow",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "stalingrad",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "cassino",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "crete",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "gothic-line",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "sicily",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "taranto",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "britain",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "bulge",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "bzura",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "dieppe",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "dunkirk",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "france",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "market-garden",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "normandy",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "norway",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "poland",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      },
+      {
+        "recordId": "warsaw",
+        "field": "related_records",
+        "sourceValue": "source urls (possibly theater-prefixed)",
+        "generatedValue": "flat /campaigns/:id urls (always regenerated)",
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

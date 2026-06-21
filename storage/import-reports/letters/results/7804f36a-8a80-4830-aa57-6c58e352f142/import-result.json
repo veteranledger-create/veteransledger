@@ -1,0 +1,125 @@
+{
+  "runId": "7804f36a-8a80-4830-aa57-6c58e352f142",
+  "executedAt": "2026-06-20T17:38:17.780Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 1,
+    "collectionCount": 0,
+    "existingLetterSlugs": [
+      "de-001"
+    ]
+  },
+  "preview": {
+    "generatedAt": "2026-06-20T17:38:17.838Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "de-002",
+      "de-003",
+      "de-004",
+      "it-001",
+      "it-002",
+      "it-003",
+      "it-004",
+      "jp-001",
+      "jp-002",
+      "jp-003",
+      "jp-004",
+      "pol-001",
+      "pol-002",
+      "pol-003",
+      "pol-004",
+      "brit-001",
+      "brit-002",
+      "brit-003",
+      "brit-004",
+      "vol-001",
+      "vol-002",
+      "vol-003",
+      "vol-004"
+    ],
+    "recordsToUpdate": [
+      "de-001"
+    ],
+    "collectionsToCreate": [
+      "letters-german",
+      "letters-italian",
+      "letters-japanese",
+      "letters-polish",
+      "letters-british",
+      "letters-volunteers"
+    ],
+    "collectionsExisting": []
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqmn5kl70003rin2gepgrwsp",
+      "slug": "de-002",
+      "collection": "german"
+    },
+    {
+      "id": "cmqmn5klb0005rin27fp16now",
+      "slug": "de-003",
+      "collection": "german"
+    },
+    {
+      "id": "cmqmn5kle0007rin2d6ajguus",
+      "slug": "de-004",
+      "collection": "german"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "letters-german",
+      "id": "cmqmn5kl20001rin2u0khpwne"
+    }
+  ],
+  "recordsSkipped": [
+    "de-001"
+  ],
+  "verification": {
+    "recordsCompared": 3,
+    "expectedDifferences": [
+      {
+        "recordId": "de-002",
+        "field": "collection",
+        "generatedValue": "german",
+        "classification": "expected"
+      },
+      {
+        "recordId": "de-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "de-003",
+        "field": "collection",
+        "generatedValue": "german",
+        "classification": "expected"
+      },
+      {
+        "recordId": "de-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "de-004",
+        "field": "collection",
+        "generatedValue": "german",
+        "classification": "expected"
+      },
+      {
+        "recordId": "de-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

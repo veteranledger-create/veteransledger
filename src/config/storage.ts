@@ -12,6 +12,9 @@ export const storageConfig = {
     video: path.join(config.storage.path, "video"),
     thumbnails: path.join(config.storage.path, "thumbnails"),
     temporary: path.join(config.storage.path, "temporary"),
+    publishStaging: path.join(config.storage.path, "publish-staging"),
+    publishReports: path.join(config.storage.path, "publish-reports"),
+    importReports: path.join(config.storage.path, "import-reports"),
   },
 
   allowedMimeTypes: {

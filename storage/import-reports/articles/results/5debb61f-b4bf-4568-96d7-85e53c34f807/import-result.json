@@ -1,0 +1,79 @@
+{
+  "runId": "5debb61f-b4bf-4568-96d7-85e53c34f807",
+  "executedAt": "2026-06-21T00:08:33.793Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 24,
+    "collectionCount": 6,
+    "existingArticleSlugs": []
+  },
+  "preview": {
+    "generatedAt": "2026-06-21T00:08:33.852Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "poland-1939",
+      "rearmament",
+      "berlin-1945",
+      "rise-nsdap",
+      "july-20",
+      "anschluss",
+      "occupation",
+      "nuremberg"
+    ],
+    "recordsToUpdate": [],
+    "collectionsToCreate": [
+      "articles-military",
+      "articles-political",
+      "articles-economy",
+      "articles-legal"
+    ],
+    "collectionsExisting": []
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqn13gi90003r81yes89xagb",
+      "slug": "poland-1939",
+      "category": "military"
+    },
+    {
+      "id": "cmqn13gir0005r81y92az0sgx",
+      "slug": "rearmament",
+      "category": "military"
+    },
+    {
+      "id": "cmqn13gj30007r81ythq5nl04",
+      "slug": "berlin-1945",
+      "category": "military"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "articles-military",
+      "id": "cmqn13gi50001r81ytxpkzg46"
+    }
+  ],
+  "recordsSkipped": [],
+  "verification": {
+    "recordsCompared": 3,
+    "expectedDifferences": [
+      {
+        "recordId": "poland-1939",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/poland-1939.jpg"
+        ],
+        "classification": "expected"
+      },
+      {
+        "recordId": "rearmament",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/rearmament.jpg"
+        ],
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}
