@@ -15,11 +15,20 @@ const CATEGORIES = [
   { id: "equipment",    path: "equipment" },
 ];
 
-const NATION_FILES = ["germany", "italy", "japan"];
+const NATION_FILES = ["germany", "italy", "japan", "other-axis"];
+// Keyed by the real per-record nation (lowercased), not the source folder
+// — "other-axis" is a folder label grouping several real nations
+// (Romania, Hungary, etc.), never a nation to show a flag for itself.
 const FLAG_MAP = {
-  germany: "/public/images/flags/germany.svg",
-  italy:   "/public/images/flags/italy.svg",
-  japan:   "/public/images/flags/japan.svg",
+  germany:  "/public/images/flags/germany.svg",
+  italy:    "/public/images/flags/italy.svg",
+  japan:    "/public/images/flags/japan.svg",
+  romania:  "/public/images/flags/romania.svg",
+  hungary:  "/public/images/flags/hungary.svg",
+  bulgaria: "/public/images/flags/bulgaria.svg",
+  finland:  "/public/images/flags/finland.svg",
+  croatia:  "/public/images/flags/croatia.svg",
+  slovakia: "/public/images/flags/slovakia.svg",
 };
 
 const PAGE_SIZE   = 12;
@@ -114,7 +123,13 @@ async function loadCategory(catId) {
         .then((r) => (r.ok ? r.json() : null))
         .then((data) => {
           if (!data) return { nation, items: [] };
-          const items = Array.isArray(data) ? data : data?.armaments || data?.items || [];
+          // Minor-schema files wrap their array under a category-specific
+          // key (vehicles/aircraft/vessels/weapons/equipment), never a
+          // single generic one — find whichever property actually holds
+          // an array rather than guessing a fixed key name.
+          const items = Array.isArray(data)
+            ? data
+            : Object.values(data || {}).find((v) => Array.isArray(v)) ?? [];
           return { nation, items };
         }),
     ),
@@ -176,12 +191,20 @@ function renderArmaments(container, items, catId) {
     const nationKey   = item._nation || "";
     const nationLabel = item.nation || nationKey.replace(/\b\w/g, c => c.toUpperCase()) || "";
     const candidates  = cardImageCandidates(item, PLACEHOLDER);
-    const flag        = FLAG_MAP[nationKey] || "";
+    // Prefer the record's own real nation (e.g. "Romania") over the
+    // source-folder grouping ("other-axis" is a label, not a nation) —
+    // falls back to the folder only when no per-record nation is set.
+    const flag        = FLAG_MAP[(item.nation || nationKey).toLowerCase()] || "";
     const type        = item.type || item.category || catId;
+    // Minor-schema records have no stable id in the static source data
+    // (ids are only synthesized once a category is migrated to the
+    // database) — render these as non-navigable cards rather than link to
+    // a URL that doesn't resolve to anything yet.
+    const hasId = !!item.id;
 
-    const card = document.createElement("a");
-    card.className = "armament-card";
-    card.href = `/armaments/${item.id}`;
+    const card = document.createElement(hasId ? "a" : "div");
+    card.className = "armament-card" + (hasId ? "" : " armament-card--pending");
+    if (hasId) card.href = `/armaments/${item.id}`;
 
     // Build image with DOM method so error handler attaches before src fires.
     // On failure, advance to the next candidate instead of jumping straight
@@ -219,7 +242,8 @@ function renderArmaments(container, items, catId) {
         ${flag ? `<img class="armament-card__flag" src="${flag}" alt="${nationLabel}">` : ""}
         ${nationLabel}
       </p>
-      ${item.summary ? `<p class="armament-card__desc">${item.summary}</p>` : ""}`;
+      ${item.summary ? `<p class="armament-card__desc">${item.summary}</p>` : ""}
+      ${hasId ? "" : `<p class="armament-card__pending-note">Catalogue entry pending — not yet linkable.</p>`}`;
 
     card.appendChild(imageDiv);
     card.appendChild(body);

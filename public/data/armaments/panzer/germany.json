@@ -91,7 +91,7 @@
     "related_records": [
       { "id": "kursk", "title": "Battle of Kursk", "type": "Campaign", "url": "/campaigns/eastern-front/kursk" },
       { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
+      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/normandy" },
       { "id": "wilhelm-bittrich", "title": "Wilhelm Bittrich", "type": "Personnel", "url": "/personnel/wilhelm-bittrich" }
     ]
   },
@@ -121,7 +121,7 @@
     ],
     "related_records": [
       { "id": "jochen-peiper", "title": "Jochen Peiper", "type": "Personnel", "url": "/personnel/jochen-peiper" },
-      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/bulge" },
       { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" }
     ]
   },
@@ -151,7 +151,7 @@
     ],
     "related_records": [
       { "id": "pz-iv", "title": "Panzer IV", "type": "Armament", "url": "/armaments/pz-iv" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" }
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/barbarossa" }
     ]
   },
   {
@@ -182,8 +182,8 @@
     "related_records": [
       { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" },
       { "id": "stug-iii", "title": "StuG III", "type": "Armament", "url": "/armaments/stug-iii" },
-      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
-      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" }
+      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/bulge" },
+      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/market-garden" }
     ]
   },
   {
@@ -220,8 +220,8 @@
     ],
     "related_records": [
       { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/barbarossa" },
+      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/france" },
       { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" }
     ]
   }

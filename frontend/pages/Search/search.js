@@ -38,12 +38,12 @@ const CAMPAIGN_FILES = [
 ];
 
 const ARMAMENT_FILES = [
-  ["panzer",      "germany"], ["panzer",      "italy"], ["panzer",      "japan"],
-  ["aircraft",    "germany"], ["aircraft",    "italy"], ["aircraft",    "japan"],
-  ["naval",       "germany"], ["naval",       "italy"], ["naval",       "japan"],
-  ["equipment",   "germany"], ["equipment",   "italy"], ["equipment",   "japan"],
-  ["missiles",    "germany"], ["missiles",    "italy"], ["missiles",    "japan"],
-  ["wunderwaffen","germany"], ["wunderwaffen","italy"], ["wunderwaffen","japan"],
+  ["panzer",      "germany"], ["panzer",      "italy"], ["panzer",      "japan"], ["panzer",      "other-axis"],
+  ["aircraft",    "germany"], ["aircraft",    "italy"], ["aircraft",    "japan"], ["aircraft",    "other-axis"],
+  ["naval",       "germany"], ["naval",       "italy"], ["naval",       "japan"], ["naval",       "other-axis"],
+  ["equipment",   "germany"], ["equipment",   "italy"], ["equipment",   "japan"], ["equipment",   "other-axis"],
+  ["missiles",    "germany"], ["missiles",    "italy"], ["missiles",    "japan"], ["missiles",    "other-axis"],
+  ["wunderwaffen","germany"], ["wunderwaffen","italy"], ["wunderwaffen","japan"], ["wunderwaffen","other-axis"],
 ];
 
 const ARTICLE_FILES = [
@@ -188,11 +188,19 @@ async function buildIndex() {
     });
   });
 
-  // Armaments — each file is an array
+  // Armaments — full-schema files are a plain array; minor-schema files
+  // wrap their array under a category-specific key (vehicles/aircraft/
+  // vessels/weapons/equipment), never a single generic one — find
+  // whichever property actually holds an array rather than guessing.
   armamentResults.forEach((data, i) => {
-    const arr = Array.isArray(data) ? data : data?.armaments || data?.items || [];
+    const arr = Array.isArray(data) ? data : Object.values(data || {}).find((v) => Array.isArray(v)) ?? [];
     const [cat] = ARMAMENT_FILES[i];
     arr.forEach((a) => {
+      // Minor-schema records have no stable id in the static source data
+      // — without one there's no working /armaments/:id destination to
+      // index, so these are correctly excluded rather than given a link
+      // that would 404. They'll become searchable once that category is
+      // migrated to the database and a real id exists.
       if (!a?.id) return;
       index.push({
         type: "ARMAMENT",

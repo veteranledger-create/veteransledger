@@ -1,31 +1,49 @@
 import { body, query } from "express-validator";
 
 const ARMAMENT_CATEGORIES = ["panzer", "aircraft", "naval", "missiles", "wunderwaffen", "equipment"] as const;
-const NATIONS = ["germany", "italy", "japan", "other"] as const;
+
+// No nation enum — confirmed real archive data includes compound values
+// ("Hungary / Romania / Bulgaria") that a strict isIn([...]) check would
+// always reject. Accept any non-empty string; "other-axis" folder-derived
+// fallbacks and free-text real nations both pass through unchanged.
+const nationField = (optional: boolean) => {
+  const validator = body("nation");
+  return (optional ? validator.optional() : validator)
+    .trim()
+    .isLength({ min: 1, max: 200 })
+    .withMessage("Nation must be a non-empty string under 200 characters.");
+};
 
 export const createArmamentValidator = [
   body("title")
     .trim()
     .isLength({ min: 1, max: 500 })
     .withMessage("Title is required and must be under 500 characters."),
-  body("content")
-    .optional()
-    .trim()
-    .isLength({ max: 100000 })
-    .withMessage("Content must be under 100,000 characters."),
   body("summary")
     .optional()
     .trim()
     .isLength({ max: 2000 })
     .withMessage("Summary must be under 2,000 characters."),
-  body("year")
+  body("category")
+    .isIn(ARMAMENT_CATEGORIES)
+    .withMessage(`Category must be one of: ${ARMAMENT_CATEGORIES.join(", ")}.`),
+  nationField(false),
+  body("specs")
     .optional()
-    .isInt({ min: 1900, max: 1950 })
-    .withMessage("Year must be between 1900 and 1950."),
-  body("tags")
+    .isObject()
+    .withMessage("Specs must be an object."),
+  body("sources")
     .optional()
     .isArray()
-    .withMessage("Tags must be an array of strings."),
+    .withMessage("Sources must be an array."),
+  body("related_records")
+    .optional()
+    .isArray()
+    .withMessage("Related records must be an array."),
+  body("published")
+    .optional()
+    .isBoolean()
+    .withMessage("Published must be a boolean."),
 ];
 
 export const updateArmamentValidator = [
@@ -34,24 +52,32 @@ export const updateArmamentValidator = [
     .trim()
     .isLength({ min: 1, max: 500 })
     .withMessage("Title must be under 500 characters."),
-  body("content")
-    .optional()
-    .trim()
-    .isLength({ max: 100000 })
-    .withMessage("Content must be under 100,000 characters."),
   body("summary")
     .optional()
     .trim()
     .isLength({ max: 2000 })
     .withMessage("Summary must be under 2,000 characters."),
-  body("year")
+  body("category")
     .optional()
-    .isInt({ min: 1900, max: 1950 })
-    .withMessage("Year must be between 1900 and 1950."),
-  body("tags")
+    .isIn(ARMAMENT_CATEGORIES)
+    .withMessage(`Category must be one of: ${ARMAMENT_CATEGORIES.join(", ")}.`),
+  nationField(true),
+  body("specs")
+    .optional()
+    .isObject()
+    .withMessage("Specs must be an object."),
+  body("sources")
     .optional()
     .isArray()
-    .withMessage("Tags must be an array of strings."),
+    .withMessage("Sources must be an array."),
+  body("related_records")
+    .optional()
+    .isArray()
+    .withMessage("Related records must be an array."),
+  body("published")
+    .optional()
+    .isBoolean()
+    .withMessage("Published must be a boolean."),
 ];
 
 export const listArmamentsValidator = [
@@ -61,9 +87,6 @@ export const listArmamentsValidator = [
     .optional()
     .isIn(ARMAMENT_CATEGORIES)
     .withMessage(`Category must be one of: ${ARMAMENT_CATEGORIES.join(", ")}.`),
-  query("nation")
-    .optional()
-    .isIn(NATIONS)
-    .withMessage(`Nation must be one of: ${NATIONS.join(", ")}.`),
+  query("nation").optional().trim().isLength({ max: 200 }),
   query("search").optional().trim().isLength({ max: 200 }),
 ];

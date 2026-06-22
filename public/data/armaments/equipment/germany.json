@@ -144,8 +144,8 @@
     "related_records": [
       { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
       { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" }
+      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/gazala" },
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/britain" }
     ]
   }
 ]

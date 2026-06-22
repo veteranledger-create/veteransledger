@@ -24,7 +24,7 @@
       { "ref": "Ballard, Robert. The Discovery of the Bismarck. Hodder and Stoughton, 1990." }
     ],
     "related_records": [
-      { "id": "rheinubung", "title": "Operation Rheinübung", "type": "Campaign", "url": "/campaigns/atlantic/rheinubung" },
+      { "id": "rheinubung", "title": "Operation Rheinübung", "type": "Campaign", "url": "/campaigns/rheinubung" },
       { "id": "gunther-lutjens", "title": "Günther Lütjens", "type": "Personnel", "url": "/personnel/gunther-lutjens" },
       { "id": "tirpitz", "title": "Battleship Tirpitz", "type": "Armament", "url": "/armaments/tirpitz" }
     ]
@@ -52,7 +52,7 @@
     ],
     "related_records": [
       { "id": "bismarck", "title": "Battleship Bismarck", "type": "Armament", "url": "/armaments/bismarck" },
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
+      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic" },
       { "id": "v2-rocket", "title": "V-2 Rocket", "type": "Armament", "url": "/armaments/v2-rocket" }
     ]
   },
@@ -85,7 +85,7 @@
       { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" },
       { "id": "otto-kretschmer", "title": "Otto Kretschmer", "type": "Personnel", "url": "/personnel/otto-kretschmer" },
       { "id": "wolfgang-luth", "title": "Wolfgang Lüth", "type": "Personnel", "url": "/personnel/wolfgang-luth" },
-      { "id": "uboat-campaing", "title": "U-boat Campaign", "type": "Campaign", "url": "/campaigns/atlantic/uboat-campaing" }
+      { "id": "uboat-campaign", "title": "U-boat Campaign", "type": "Campaign", "url": "/campaigns/uboat-campaign" }
     ]
   },
   {
@@ -112,7 +112,7 @@
     "related_records": [
       { "id": "bismarck", "title": "Battleship Bismarck", "type": "Armament", "url": "/armaments/bismarck" },
       { "id": "gneisenau", "title": "Battlecruiser Gneisenau", "type": "Armament", "url": "/armaments/gneisenau" },
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" }
+      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic" }
     ]
   },
   {
@@ -140,7 +140,7 @@
     "related_records": [
       { "id": "scharnhorst", "title": "Battlecruiser Scharnhorst", "type": "Armament", "url": "/armaments/scharnhorst" },
       { "id": "bismarck", "title": "Battleship Bismarck", "type": "Armament", "url": "/armaments/bismarck" },
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
+      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic" },
       { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
     ]
   },
@@ -168,7 +168,7 @@
       { "ref": "Millington-Drake, Eugen. The Drama of Graf Spee and the Battle of the Plate: A Documentary Anthology. Peter Davies, 1964." }
     ],
     "related_records": [
-      { "id": "river-plate", "title": "Battle of the River Plate", "type": "Campaign", "url": "/campaigns/atlantic/river-plate" },
+      { "id": "river-plate", "title": "Battle of the River Plate", "type": "Campaign", "url": "/campaigns/river-plate" },
       { "id": "scharnhorst", "title": "Battlecruiser Scharnhorst", "type": "Armament", "url": "/armaments/scharnhorst" },
       { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
     ]

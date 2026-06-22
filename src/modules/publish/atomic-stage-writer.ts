@@ -32,7 +32,14 @@ export async function writeStagedFilesAtomically(
 
   try {
     for (const [filename, content] of files) {
-      await fs.writeFile(path.join(tmpDir, filename), content, "utf-8");
+      const fullPath = path.join(tmpDir, filename);
+      // Every prior consumer (Letters) only ever used flat filenames, so
+      // this was never needed until Armaments introduced nested paths
+      // (e.g. "naval/italy.json") for its category+nation grouping. A
+      // no-op for flat filenames, since the parent is just tmpDir itself,
+      // which already exists.
+      await fs.mkdir(path.dirname(fullPath), { recursive: true });
+      await fs.writeFile(fullPath, content, "utf-8");
     }
   } catch (err) {
     await fs.rm(tmpDir, { recursive: true, force: true }).catch(() => undefined);

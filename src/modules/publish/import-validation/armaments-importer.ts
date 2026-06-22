@@ -62,9 +62,11 @@ export interface ImportResult {
 // enabling one must never risk enabling another. Same two-factor design:
 // this flag AND the caller's literal-typed confirmExecution must both
 // agree.
-// ENABLED FOR PILOT — naval category, capped at 14 records.
-// Must be set back to false immediately after the pilot completes.
-const EXECUTION_ENABLED = true;
+//
+// History: briefly set to true for the naval-category pilot (14 records,
+// 4 collections, runId 53c90705-646e-4e46-96d1-4b67fc248d63), then reset
+// to false.
+const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {
   mode: ImportMode;

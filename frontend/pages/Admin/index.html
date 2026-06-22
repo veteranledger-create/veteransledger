@@ -81,6 +81,8 @@
           aria-selected="false">Media</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-publish" role="tab"
           aria-selected="false">Publish</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-armaments" role="tab"
+          aria-selected="false">Armaments</button>
       </div>
 
       <!-- Tab: Overview (activity log) -->
@@ -188,6 +190,7 @@
             <label class="contact-form__label">Content type</label>
             <select name="type" class="contact-form__input">
               <option value="letters">Letters</option>
+              <option value="armaments">Armaments</option>
             </select>
           </div>
           <button type="submit" class="btn btn-secondary" data-action="validate">Validate →</button>
@@ -200,12 +203,159 @@
         </div>
       </div>
 
+      <!-- Tab: Armaments — dedicated workflow, not the generic Record form -->
+      <div id="tab-armaments" class="admin-tab-panel" hidden role="tabpanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+          <div class="section-label" style="margin:0;">Armaments</div>
+          <button type="button" class="btn btn-primary" id="armament-new-btn">+ New Armament</button>
+        </div>
+
+        <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-6);flex-wrap:wrap;">
+          <select id="armament-filter-category" class="contact-form__input" style="max-width:200px;">
+            <option value="">All categories</option>
+            <option value="panzer">Panzer</option>
+            <option value="aircraft">Aircraft</option>
+            <option value="naval">Naval</option>
+            <option value="missiles">Missiles</option>
+            <option value="wunderwaffen">Wunderwaffen</option>
+            <option value="equipment">Equipment</option>
+          </select>
+          <input type="text" id="armament-filter-search" class="contact-form__input" placeholder="Search title…" style="max-width:240px;">
+        </div>
+
+        <div id="armament-list">
+          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
+              class="loader__dot"></span></div>
+        </div>
+
+        <!-- Create/Edit form — hidden until "New" or "Edit" is clicked -->
+        <div id="armament-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-8);">
+          <div class="section-label" id="armament-form-title" style="margin-bottom:var(--space-6);">New Armament</div>
+          <form id="armament-form">
+            <input type="hidden" name="id">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Title</label>
+                <input name="title" class="contact-form__input" required>
+              </div>
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Category</label>
+                <select name="category" class="contact-form__input" required>
+                  <option value="">— select —</option>
+                  <option value="panzer">Panzer</option>
+                  <option value="aircraft">Aircraft</option>
+                  <option value="naval">Naval</option>
+                  <option value="missiles">Missiles</option>
+                  <option value="wunderwaffen">Wunderwaffen</option>
+                  <option value="equipment">Equipment</option>
+                </select>
+              </div>
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Nation</label>
+                <input name="nation" class="contact-form__input" placeholder="e.g. Germany, or Hungary / Romania" list="armament-known-nations" required>
+                <datalist id="armament-known-nations">
+                  <option value="Germany"><option value="Italy"><option value="Japan">
+                  <option value="Romania"><option value="Hungary"><option value="Bulgaria">
+                  <option value="Finland"><option value="Croatia"><option value="Slovakia">
+                </datalist>
+              </div>
+            </div>
+
+            <div class="contact-form__group">
+              <label class="contact-form__label">Summary</label>
+              <textarea name="summary" class="contact-form__input" rows="3"></textarea>
+            </div>
+
+            <div id="armament-duplicate-warning" hidden style="background:#3a2010;border:1px solid #6a3a15;border-radius:4px;padding:var(--space-3) var(--space-4);margin-bottom:var(--space-4);font-size:var(--text-sm);color:#e0a060;"></div>
+
+            <div class="section-label" style="margin:var(--space-6) 0 var(--space-4);font-size:var(--text-sm);">Specifications</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Designation</label><input name="spec_designation" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Manufacturer</label><input name="spec_manufacturer" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Crew</label><input name="spec_crew" type="number" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Weight</label><input name="spec_weight" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Armor</label><input name="spec_armor" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Armament</label><input name="spec_armament" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Engine</label><input name="spec_engine" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Speed</label><input name="spec_speed" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Range</label><input name="spec_range" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Units produced</label><input name="spec_units_produced" type="number" class="contact-form__input"></div>
+            </div>
+            <div id="armament-extra-specs"></div>
+            <button type="button" class="btn btn-secondary" id="armament-add-spec-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Additional spec</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Sources</div>
+            <div id="armament-sources-list"></div>
+            <button type="button" class="btn btn-secondary" id="armament-add-source-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Source</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Related Records</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Selected via search only — URLs are generated automatically and can never be entered manually.</p>
+            <div id="armament-related-list"></div>
+            <button type="button" class="btn btn-secondary" id="armament-add-related-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add related record</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Media</div>
+            <div id="armament-media-list" style="margin-bottom:var(--space-3);"></div>
+            <button type="button" class="btn btn-secondary" id="armament-attach-media-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Attach media</button>
+
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-6);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);">
+                <input type="checkbox" name="published"> Published
+              </label>
+            </div>
+
+            <div style="display:flex;gap:var(--space-3);">
+              <button type="submit" class="btn btn-primary">Save →</button>
+              <button type="button" class="btn btn-secondary" id="armament-preview-btn">Preview</button>
+              <button type="button" class="btn btn-secondary" id="armament-cancel-btn">Cancel</button>
+            </div>
+            <p id="armament-form-status" style="font-size:var(--text-sm);margin-top:var(--space-3);"></p>
+          </form>
+        </div>
+      </div>
+
     </div>
 
   </main>
 
+  <!-- Related-record search-and-select modal — selection only, URLs are
+       always generated server-side, never typed. -->
+  <div id="related-record-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:560px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Select a related record</div>
+        <button type="button" id="related-record-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <input type="text" id="related-record-search-input" class="contact-form__input" placeholder="Search Personnel, Campaigns, Articles, Letters, Armaments…" style="margin-bottom:var(--space-4);">
+      <div id="related-record-search-results" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
+  <!-- Media attach modal -->
+  <div id="media-attach-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:680px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Attach media</div>
+        <button type="button" id="media-attach-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="media-attach-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-3);"></div>
+    </div>
+  </div>
+
+  <!-- Preview modal — renders the literal output of toArmamentJson(), the
+       same function the public site and publish pipeline use. -->
+  <div id="armament-preview-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:640px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Preview</div>
+        <button type="button" id="armament-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="armament-preview-content" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
   <script type="module" src="/layouts/MainLayout/layout.js"></script>
   <script type="module" src="/pages/Admin/admin.js"></script>
+  <script type="module" src="/pages/Admin/armaments-admin.js"></script>
 </body>
 
 </html>

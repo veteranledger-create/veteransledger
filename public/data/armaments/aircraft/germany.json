@@ -23,7 +23,7 @@
     "related_records": [
       { "id": "erich-hartmann", "title": "Erich Hartmann", "type": "Personnel", "url": "/personnel/erich-hartmann" },
       { "id": "gerhard-barkhorn", "title": "Gerhard Barkhorn", "type": "Personnel", "url": "/personnel/gerhard-barkhorn" },
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/britain" },
       { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" }
     ]
   },
@@ -49,7 +49,7 @@
     ],
     "related_records": [
       { "id": "adolf-galland", "title": "Adolf Galland", "type": "Personnel", "url": "/personnel/adolf-galland" },
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/britain" },
       { "id": "bf-109", "title": "Bf 109", "type": "Armament", "url": "/armaments/bf-109" }
     ]
   },
@@ -100,7 +100,7 @@
     ],
     "related_records": [
       { "id": "hans-ulrich-rudel", "title": "Hans-Ulrich Rudel", "type": "Personnel", "url": "/personnel/hans-ulrich-rudel" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" }
+      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/barbarossa" }
     ]
   },
   {
@@ -128,7 +128,7 @@
       { "ref": "Smith, J.R. and Kay, Anthony. German Aircraft of the Second World War. Putnam, 1972." }
     ],
     "related_records": [
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
+      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/britain" },
       { "id": "hugo-sperrle", "title": "Hugo Sperrle", "type": "Personnel", "url": "/personnel/hugo-sperrle" },
       { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" }
     ]
@@ -206,7 +206,7 @@
     "related_records": [
       { "id": "he-111", "title": "Heinkel He 111", "type": "Armament", "url": "/armaments/he-111" },
       { "id": "hs-293", "title": "Henschel Hs 293", "type": "Armament", "url": "/armaments/hs-293" },
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" }
+      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic" }
     ]
   }
 ]

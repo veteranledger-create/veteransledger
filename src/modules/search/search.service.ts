@@ -27,7 +27,7 @@ export class SearchService {
     };
 
     const [records, entities, total] = await Promise.all([
-      type && type !== "PERSON"
+      !type || type !== "PERSON"
         ? prisma.record.findMany({ where: recordWhere, skip, take: limit })
         : [],
       !type || type === "PERSON"
