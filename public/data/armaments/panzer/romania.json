@@ -1,0 +1,14 @@
+[
+  {
+    "crew": 3,
+    "type": "Light Tank",
+    "year": 1936,
+    "main_gun": "37mm Škoda A3",
+    "armour_mm": 25,
+    "weight_tons": 10.5,
+    "id": "r-2-lt-vz-35",
+    "name": "R-2 (LT vz. 35)",
+    "nation": "Romania",
+    "summary": "Czech-designed tank purchased by Romania. Used on the Eastern Front in 1941. Outclassed by Soviet T-34s by 1942."
+  }
+]

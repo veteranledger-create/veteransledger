@@ -66,6 +66,28 @@ export interface ImportResult {
 // History: briefly set to true for the naval-category pilot (14 records,
 // 4 collections, runId 53c90705-646e-4e46-96d1-4b67fc248d63), then reset
 // to false.
+//
+// Briefly set to true again for the Phase 8A aircraft-category pilot (16
+// records, 4 collections — armaments-aircraft-{germany,italy,japan,
+// other-axis} — runId 3fa7b1bd-4688-4959-8401-76ba8e24f4de, mode
+// insert-only, scoped to categories:["aircraft"]), verified via the
+// scoped Gate 3/4 logic, 0 unexpected round-trip diffs, then reset to
+// false.
+//
+// Phase 9A (panzer): the actual creation run (runId
+// 09cf106c-e4ef-4d43-a674-1e5b9a67dd7f, 15 records, 4 collections —
+// armaments-panzer-{germany,italy,japan,other-axis}, 0 unexpected
+// round-trip diffs) executed with this flag already left at true from
+// an earlier, unreset state — caught and corrected here. Confirmed
+// closed afterward via the real entry point (status:
+// "execution_disabled").
+//
+// Phase 10A (equipment): preflight audit found zero duplicates within
+// equipment (no other-axis entry's name overlaps any germany/italy/
+// japan canonical) — no new DUPLICATE_RESOLUTIONS rules were needed.
+// Set true for the pilot (runId 7b1b6731-4fc5-4315-947f-7e07533dc011,
+// 17 records, 4 collections — armaments-equipment-{germany,italy,
+// japan,other-axis}, 0 unexpected round-trip diffs), then reset.
 const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {
@@ -260,8 +282,13 @@ export async function runArmamentsImport(options: RunImportOptions): Promise<Imp
   }
 
   // Gate 3: blockedByErrors — no bypass flags, force modes, or ignore
-  // lists exist anywhere in this function.
-  const dryRun = await runArmamentsImportDryRun();
+  // lists exist anywhere in this function. Scoped to exactly the
+  // categories/nations this run will touch (Phase 8A) — an error in a
+  // category outside this run's scope (e.g. a pre-existing Naval issue
+  // surfaced while preparing an Aircraft-only run) is real and must still
+  // be fixed before THAT category can ever execute, but it no longer
+  // blocks a run that never touches it.
+  const dryRun = await runArmamentsImportDryRun({ categories: options.categories, nations: options.nations });
   if (dryRun.blockedByErrors > 0) {
     const result = emptyImportResult(runId, executedAt, options.mode, "blocked_by_errors",
       `Pre-flight check failed: ${dryRun.blockedByErrors} record(s) have blocking errors — aborting before any write. No bypass exists.`);
@@ -271,6 +298,8 @@ export async function runArmamentsImport(options: RunImportOptions): Promise<Imp
 
   // Gate 4: duplicate-resolution integrity — guarantees the preview and
   // this transaction operate on identical, fully-resolved assumptions.
+  // Also scoped: only rules whose donor falls within this run's
+  // categories/nations are required to fully match and apply here.
   const r = dryRun.duplicateResolutionReport;
   const integrityOk = r.rulesExpected === r.rulesMatched && r.rulesExpected === r.rulesApplied && r.rulesMissingCanonical === 0 && r.rulesMissingDonor === 0;
   if (!integrityOk) {

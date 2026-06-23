@@ -37,14 +37,10 @@ const CAMPAIGN_FILES = [
   ["atlantic", "river-plate.json"], ["atlantic", "uboat-campaing.json"],
 ];
 
-const ARMAMENT_FILES = [
-  ["panzer",      "germany"], ["panzer",      "italy"], ["panzer",      "japan"], ["panzer",      "other-axis"],
-  ["aircraft",    "germany"], ["aircraft",    "italy"], ["aircraft",    "japan"], ["aircraft",    "other-axis"],
-  ["naval",       "germany"], ["naval",       "italy"], ["naval",       "japan"], ["naval",       "other-axis"],
-  ["equipment",   "germany"], ["equipment",   "italy"], ["equipment",   "japan"], ["equipment",   "other-axis"],
-  ["missiles",    "germany"], ["missiles",    "italy"], ["missiles",    "japan"], ["missiles",    "other-axis"],
-  ["wunderwaffen","germany"], ["wunderwaffen","italy"], ["wunderwaffen","japan"], ["wunderwaffen","other-axis"],
-];
+// Armaments has no hardcoded file list — like Formations below, the real
+// (category, nation) pairs are read from index.json, regenerated at
+// publish-promotion time from an actual directory scan. A newly promoted
+// file (e.g. naval/romania.json) becomes searchable automatically.
 
 const ARTICLE_FILES = [
   ["military",  "poland-1939.json"],
@@ -125,9 +121,16 @@ async function buildIndex() {
     } catch (_) { return null; }
   };
 
-  // Load formation index first, then all formation files in parallel with everything else
+  // Load formation index and armaments index first, then all their real
+  // files in parallel with everything else — same pattern for both, since
+  // neither has a list that can be safely hardcoded.
   const formationIndex = await safeFetch("/public/data/formations/index.json");
   const formationCategories = formationIndex?.categories || [];
+
+  const armamentsIndex = await safeFetch("/public/data/armaments/index.json");
+  const armamentFiles = (armamentsIndex?.categories || []).flatMap(
+    (cat) => (cat.nations || []).map((nation) => [cat.id, nation]),
+  );
 
   const [
     personnelResults,
@@ -139,7 +142,7 @@ async function buildIndex() {
   ] = await Promise.all([
     Promise.all(PERSONNEL_FILES.map((f) => safeFetch(`/public/data/personnel/${f}`))),
     Promise.all(CAMPAIGN_FILES.map(([t, f]) => safeFetch(`/public/data/campaigns/${t}/${f}`))),
-    Promise.all(ARMAMENT_FILES.map(([c, n]) => safeFetch(`/public/data/armaments/${c}/${n}.json`))),
+    Promise.all(armamentFiles.map(([c, n]) => safeFetch(`/public/data/armaments/${c}/${n}.json`))),
     Promise.all(ARTICLE_FILES.map(([c, f]) => safeFetch(`/public/data/articles/${c}/${f}`))),
     Promise.all(LETTER_FILES.map((f) => safeFetch(`/public/data/letters/${f}`))),
     Promise.all(formationCategories.map((cat) => safeFetch(cat.file))),
@@ -194,7 +197,7 @@ async function buildIndex() {
   // whichever property actually holds an array rather than guessing.
   armamentResults.forEach((data, i) => {
     const arr = Array.isArray(data) ? data : Object.values(data || {}).find((v) => Array.isArray(v)) ?? [];
-    const [cat] = ARMAMENT_FILES[i];
+    const [cat] = armamentFiles[i];
     arr.forEach((a) => {
       // Minor-schema records have no stable id in the static source data
       // — without one there's no working /armaments/:id destination to

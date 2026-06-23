@@ -1,0 +1,12 @@
+[
+  {
+    "type": "Destroyer",
+    "armament": "4× 120mm guns, torpedo tubes",
+    "commissioned": 1920,
+    "displacement_tons": 1400,
+    "id": "marasti",
+    "name": "Marasti",
+    "nation": "Romania",
+    "summary": "Romania's most capable warship. Operated in the Black Sea against Soviet forces, conducting minelaying operations and shore bombardment in support of Axis advances in 1941–1942."
+  }
+]

@@ -25,3 +25,30 @@ publishRoutes.post(
   handleValidation,
   ctrl.run.bind(ctrl),
 );
+
+publishRoutes.get(
+  "/:type/history",
+  authenticate,
+  requireAdmin,
+  publishTypeValidator,
+  handleValidation,
+  ctrl.history.bind(ctrl),
+);
+
+publishRoutes.post(
+  "/:type/promote",
+  authenticate,
+  requireAdmin,
+  publishTypeValidator,
+  handleValidation,
+  ctrl.promote.bind(ctrl),
+);
+
+publishRoutes.post(
+  "/:type/rollback",
+  authenticate,
+  requireAdmin,
+  publishTypeValidator,
+  handleValidation,
+  ctrl.rollback.bind(ctrl),
+);

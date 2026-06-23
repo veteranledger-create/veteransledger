@@ -1,0 +1,378 @@
+{
+  "runId": "7b1b6731-4fc5-4315-947f-7e07533dc011",
+  "executedAt": "2026-06-23T00:30:15.587Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 112,
+    "collectionCount": 27,
+    "existingArmamentSlugs": [
+      "bismarck",
+      "tirpitz",
+      "type-viic-uboat",
+      "scharnhorst",
+      "gneisenau",
+      "admiral-graf-spee",
+      "littorio-later-italia",
+      "vittorio-veneto",
+      "zara",
+      "adua-submarine",
+      "yamato",
+      "shokaku",
+      "i-400-class-submarine",
+      "marasti",
+      "sdkfz-251",
+      "bf-109",
+      "jagdpanther",
+      "fw-190",
+      "me-262",
+      "ju-87-stuka",
+      "he-111",
+      "m13-40",
+      "he-219-uhu",
+      "ta-152",
+      "he-177-greif",
+      "mc-202-folgore",
+      "sm-79-sparviero",
+      "a6m-zero",
+      "ki-43-hayabusa",
+      "ki-84-hayate",
+      "fiat-cr-42-falco",
+      "kawasaki-ki-61-hien",
+      "iar-80",
+      "pz-iv",
+      "pz-vi-tiger",
+      "pz-v-panther",
+      "pz-vi-b-tiger-ii",
+      "stug-iii",
+      "p40-heavy-tank",
+      "type-97-chi-ha",
+      "type-95-ha-go",
+      "type-94-tankette",
+      "type-3-chi-nu",
+      "r-2-lt-vz-35",
+      "toldi-ii"
+    ]
+  },
+  "preview": {
+    "generatedAt": "2026-06-23T00:30:15.702Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "v1",
+      "v2",
+      "hs-293",
+      "motobomba-fff",
+      "breda-20-65-mod-35",
+      "type-93-long-lance-torpedo",
+      "kaiten-type-1",
+      "antonescu-anti-tank-grenade-og-43",
+      "type-4-anti-tank-grenade-japan",
+      "spoleto-45-5",
+      "v1-flying-bomb",
+      "v2-rocket",
+      "me-163-komet",
+      "schwerer-gustav",
+      "v3-supergun",
+      "siluro-a-lenta-corsa-slc-maiale",
+      "barchina-esplosiva-mtm",
+      "gamma-class-frogman-suit",
+      "fu-go-fire-balloon",
+      "ohka-model-11",
+      "kaiten",
+      "shinyo-suicide-boat",
+      "fukuryu-crouching-dragon",
+      "ab-250-2-italian-air-torpedo-variant",
+      "romanian-oil-field-demolition-systems",
+      "a-stoff-c-stoff-rocket-fuel-hungarian-supplied",
+      "mg-42",
+      "stg-44",
+      "panzerfaust",
+      "mp-40",
+      "kar-98k",
+      "flak-88",
+      "carcano-m91-38",
+      "beretta-mab-38",
+      "breda-m30",
+      "breda-m37",
+      "arisaka-type-38",
+      "arisaka-type-99",
+      "type-96-light-machine-gun",
+      "type-11-grenade-discharger",
+      "zb-vz-26",
+      "pusca-mitraliera-md-1939-zb-30",
+      "mannlicher-m1895-repetier-gewehr-m-95"
+    ],
+    "recordsToUpdate": [
+      "jagdpanther",
+      "pz-iv",
+      "pz-v-panther",
+      "pz-vi-tiger",
+      "pz-vi-b-tiger-ii",
+      "sdkfz-251",
+      "stug-iii",
+      "m13-40",
+      "p40-heavy-tank",
+      "type-3-chi-nu",
+      "type-94-tankette",
+      "type-95-ha-go",
+      "type-97-chi-ha",
+      "fw-190",
+      "ta-152",
+      "he-111",
+      "he-177-greif",
+      "he-219-uhu",
+      "ju-87-stuka",
+      "bf-109",
+      "me-262",
+      "fiat-cr-42-falco",
+      "mc-202-folgore",
+      "sm-79-sparviero",
+      "kawasaki-ki-61-hien",
+      "a6m-zero",
+      "ki-43-hayabusa",
+      "ki-84-hayate",
+      "gneisenau",
+      "scharnhorst",
+      "bismarck",
+      "tirpitz",
+      "admiral-graf-spee",
+      "type-viic-uboat",
+      "adua-submarine",
+      "littorio-later-italia",
+      "vittorio-veneto",
+      "zara",
+      "yamato",
+      "shokaku",
+      "i-400-class-submarine",
+      "i-400-class-submarine",
+      "marasti"
+    ],
+    "collectionsToCreate": [
+      "armaments-missiles-germany",
+      "armaments-missiles-italy",
+      "armaments-missiles-japan",
+      "armaments-missiles-other-axis",
+      "armaments-wunderwaffen-germany",
+      "armaments-wunderwaffen-italy",
+      "armaments-wunderwaffen-japan",
+      "armaments-wunderwaffen-other-axis",
+      "armaments-equipment-germany",
+      "armaments-equipment-italy",
+      "armaments-equipment-japan",
+      "armaments-equipment-other-axis"
+    ],
+    "collectionsExisting": [
+      "armaments-naval-germany",
+      "armaments-naval-italy",
+      "armaments-naval-japan",
+      "armaments-naval-other-axis",
+      "armaments-aircraft-germany",
+      "armaments-aircraft-italy",
+      "armaments-aircraft-japan",
+      "armaments-panzer-germany",
+      "armaments-panzer-italy",
+      "armaments-panzer-japan"
+    ],
+    "synthesizedIdCount": 31,
+    "duplicateResolutionReport": {
+      "rulesExpected": 9,
+      "rulesMatched": 4,
+      "rulesMissingCanonical": 0,
+      "rulesMissingDonor": 5,
+      "rulesApplied": 4,
+      "outcomes": [
+        {
+          "description": "Yamato -> yamato",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Shōkaku -> shokaku",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Siluro a Lenta Corsa (SLC) / 'Maiale' -> Siluro a Lenta Corsa (SLC) 'Maiale'",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Ohka Model 11 -> Ohka Model 11",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Macchi C.202 Folgore -> mc-202-folgore",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "Mitsubishi A6M Zero -> a6m-zero",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "Nakajima Ki-43 Hayabusa -> ki-43-hayabusa",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "Carro Armato M13/40 -> m13-40",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "Carro Armato P26/40 -> p40-heavy-tank",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        }
+      ]
+    }
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqpwr2cm000671udlypcy5oe",
+      "slug": "mg-42",
+      "category": "equipment",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqpwr2cx000871udnwupsw7z",
+      "slug": "stg-44",
+      "category": "equipment",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqpwr2d0000a71ud6id2cajn",
+      "slug": "panzerfaust",
+      "category": "equipment",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqpwr2d2000c71udmjxhj1dp",
+      "slug": "mp-40",
+      "category": "equipment",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqpwr2d5000e71udd2piadrh",
+      "slug": "kar-98k",
+      "category": "equipment",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqpwr2d7000g71udmwi6h66e",
+      "slug": "flak-88",
+      "category": "equipment",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqpwr2dg000i71udafti2sqs",
+      "slug": "carcano-m91-38",
+      "category": "equipment",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqpwr2di000k71udztg4n892",
+      "slug": "beretta-mab-38",
+      "category": "equipment",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqpwr2dk000m71udb6nur5rp",
+      "slug": "breda-m30",
+      "category": "equipment",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqpwr2dn000o71udpuftp7dq",
+      "slug": "breda-m37",
+      "category": "equipment",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqpwr2dp000q71udoh9rfr4w",
+      "slug": "arisaka-type-38",
+      "category": "equipment",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqpwr2dr000s71udcpj347sq",
+      "slug": "arisaka-type-99",
+      "category": "equipment",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqpwr2dt000u71uduq8v38xu",
+      "slug": "type-96-light-machine-gun",
+      "category": "equipment",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqpwr2dv000w71udixxuvmzk",
+      "slug": "type-11-grenade-discharger",
+      "category": "equipment",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqpwr2dx000y71udslid4sbh",
+      "slug": "zb-vz-26",
+      "category": "equipment",
+      "fileNation": "other-axis"
+    },
+    {
+      "id": "cmqpwr2dz001071ud6ky2gwe6",
+      "slug": "pusca-mitraliera-md-1939-zb-30",
+      "category": "equipment",
+      "fileNation": "other-axis"
+    },
+    {
+      "id": "cmqpwr2e1001271ud7ln3k6ge",
+      "slug": "mannlicher-m1895-repetier-gewehr-m-95",
+      "category": "equipment",
+      "fileNation": "other-axis"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "armaments-equipment-germany",
+      "id": "cmqpwr2cf000171udq49iokp8"
+    },
+    {
+      "slug": "armaments-equipment-italy",
+      "id": "cmqpwr2ch000271ud24xafggf"
+    },
+    {
+      "slug": "armaments-equipment-japan",
+      "id": "cmqpwr2ci000371udlci51uor"
+    },
+    {
+      "slug": "armaments-equipment-other-axis",
+      "id": "cmqpwr2ck000471udnq2gmy8u"
+    }
+  ],
+  "recordsSkipped": [],
+  "verification": {
+    "recordsCompared": 17,
+    "expectedDifferences": [],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

@@ -105,6 +105,52 @@ export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [
     canonical: { category: "wunderwaffen", fileNation: "japan", name: "Ohka Model 11" },
     fieldsToMerge: ["length_m", "wingspan_m", "max_speed_kmh"],
   },
+  // Phase 8A — aircraft/other-axis.json carries six minor-schema entries;
+  // three are donors duplicating an existing full-schema canonical record
+  // (Italy/Japan), three (Fiat CR.42 Falco, Kawasaki Ki-61 Hien, IAR 80)
+  // are genuinely unique to other-axis and are NOT donors. Only "engine"
+  // is merged — every canonical lacks it entirely, so fill-if-missing
+  // applies cleanly. range_km and every other field are deliberately
+  // excluded: Ki-43's donor range_km (3200) conflicts with its canonical's
+  // (1760) — a known discrepancy to leave visible, never merged or
+  // overwritten.
+  {
+    donor: { category: "aircraft", fileNation: "other-axis", name: "Macchi C.202 Folgore" },
+    canonicalId: "mc-202-folgore",
+    fieldsToMerge: ["engine"],
+  },
+  {
+    donor: { category: "aircraft", fileNation: "other-axis", name: "Mitsubishi A6M Zero" },
+    canonicalId: "a6m-zero",
+    fieldsToMerge: ["engine"],
+  },
+  {
+    donor: { category: "aircraft", fileNation: "other-axis", name: "Nakajima Ki-43 Hayabusa" },
+    canonicalId: "ki-43-hayabusa",
+    fieldsToMerge: ["engine"],
+  },
+  // Phase 9A — panzer/other-axis.json carries four minor-schema entries;
+  // two (Carro Armato M13/40, Carro Armato P26/40) duplicate an existing
+  // full-schema Italy canonical record; two (R-2/LT vz. 35 Romania, Toldi
+  // II Hungary) are genuinely unique to other-axis and are NOT donors.
+  // Only "year" is merged — both canonicals lack it entirely (they only
+  // carry a years_of_service range), so fill-if-missing applies cleanly.
+  // Every other donor field is a differently-schemaed duplicate of data
+  // the canonical already has under a different key (weight_tons vs
+  // weight_tonnes, armour_mm vs armor_mm, max_speed_kmh vs speed_kmh,
+  // main_gun vs armament.primary) and sometimes conflicts in value
+  // (e.g. P26/40's armour_mm 60 vs canonical armor_mm.hull_front 50) —
+  // deliberately excluded, left as a known discrepancy, never merged.
+  {
+    donor: { category: "panzer", fileNation: "other-axis", name: "Carro Armato M13/40" },
+    canonicalId: "m13-40",
+    fieldsToMerge: ["year"],
+  },
+  {
+    donor: { category: "panzer", fileNation: "other-axis", name: "Carro Armato P26/40" },
+    canonicalId: "p40-heavy-tank",
+    fieldsToMerge: ["year"],
+  },
 ];
 
 export interface DuplicateResolutionOutcome {

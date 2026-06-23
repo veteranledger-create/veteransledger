@@ -1,0 +1,246 @@
+[
+  {
+    "runId": "c8aea22d-3e40-4132-a120-2b5b15b4c5ef",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-22T23:16:20.693Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "naval\\germany.json",
+      "naval\\italy.json",
+      "naval\\japan.json",
+      "naval\\romania.json"
+    ]
+  },
+  {
+    "runId": "cbdf64e7-6ab3-47a3-8e59-70b80501c0c1",
+    "action": "rollback",
+    "type": "armaments",
+    "timestamp": "2026-06-22T23:16:20.721Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "naval\\germany.json",
+      "naval\\italy.json",
+      "naval\\japan.json",
+      "naval\\romania.json"
+    ],
+    "restoredFromRunId": "c8aea22d-3e40-4132-a120-2b5b15b4c5ef"
+  },
+  {
+    "runId": "1f46e3ec-cbb4-4d8d-b133-2261d0fa0ae5",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-22T23:17:10.074Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "naval\\germany.json",
+      "naval\\italy.json",
+      "naval\\japan.json",
+      "naval\\romania.json"
+    ]
+  },
+  {
+    "runId": "0a355136-c0c7-40a5-85a5-c956a9eeb127",
+    "action": "rollback",
+    "type": "armaments",
+    "timestamp": "2026-06-22T23:19:31.907Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "naval\\germany.json",
+      "naval\\italy.json",
+      "naval\\japan.json",
+      "naval\\romania.json"
+    ],
+    "restoredFromRunId": "1f46e3ec-cbb4-4d8d-b133-2261d0fa0ae5"
+  },
+  {
+    "runId": "102913ed-a96e-49cc-9e00-b6dff1b5726d",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-22T23:33:52.473Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "naval\\germany.json",
+      "naval\\italy.json",
+      "naval\\japan.json",
+      "naval\\romania.json",
+      "index.json"
+    ]
+  },
+  {
+    "runId": "d9489d78-8ff3-4193-992a-8946375c4fcc",
+    "action": "rollback",
+    "type": "armaments",
+    "timestamp": "2026-06-22T23:34:23.512Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "naval\\germany.json",
+      "naval\\italy.json",
+      "naval\\japan.json",
+      "naval\\romania.json",
+      "index.json"
+    ],
+    "restoredFromRunId": "102913ed-a96e-49cc-9e00-b6dff1b5726d"
+  },
+  {
+    "runId": "e665f896-93ff-4efa-b2e7-ff67ecf1404c",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-22T23:34:50.441Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "naval\\germany.json",
+      "naval\\italy.json",
+      "naval\\japan.json",
+      "naval\\romania.json",
+      "index.json"
+    ]
+  },
+  {
+    "runId": "352a671c-4e26-40d6-8b25-dcea4df35f66",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:00:31.528Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "aircraft\\germany.json",
+      "aircraft\\italy.json",
+      "aircraft\\japan.json",
+      "aircraft\\romania.json",
+      "aircraft/other-axis.json",
+      "index.json"
+    ]
+  },
+  {
+    "runId": "67214a5f-23d4-4817-ad13-4df211d0e73f",
+    "action": "rollback",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:01:15.109Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "aircraft\\germany.json",
+      "aircraft\\italy.json",
+      "aircraft\\japan.json",
+      "aircraft\\romania.json",
+      "aircraft/other-axis.json",
+      "index.json"
+    ],
+    "restoredFromRunId": "352a671c-4e26-40d6-8b25-dcea4df35f66"
+  },
+  {
+    "runId": "d96734d7-8ff7-4e02-9736-e13283ce9e18",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:01:34.759Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "aircraft\\germany.json",
+      "aircraft\\italy.json",
+      "aircraft\\japan.json",
+      "aircraft\\romania.json",
+      "aircraft/other-axis.json",
+      "index.json"
+    ]
+  },
+  {
+    "runId": "49ea6691-df9e-4151-b4ae-adbc4b2052e8",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:22:17.692Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "panzer\\germany.json",
+      "panzer\\hungary.json",
+      "panzer\\italy.json",
+      "panzer\\japan.json",
+      "panzer\\romania.json",
+      "panzer/other-axis.json",
+      "index.json"
+    ]
+  },
+  {
+    "runId": "c9d3dfc2-eada-45f6-88c1-41f79042d044",
+    "action": "rollback",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:22:51.347Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "panzer\\germany.json",
+      "panzer\\hungary.json",
+      "panzer\\italy.json",
+      "panzer\\japan.json",
+      "panzer\\romania.json",
+      "panzer/other-axis.json",
+      "index.json"
+    ],
+    "restoredFromRunId": "49ea6691-df9e-4151-b4ae-adbc4b2052e8"
+  },
+  {
+    "runId": "c5763466-4fd9-4130-9d16-161788e80bed",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:23:12.765Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "panzer\\germany.json",
+      "panzer\\hungary.json",
+      "panzer\\italy.json",
+      "panzer\\japan.json",
+      "panzer\\romania.json",
+      "panzer/other-axis.json",
+      "index.json"
+    ]
+  },
+  {
+    "runId": "7195e208-98a7-4c1f-977a-1f913904f6bd",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:31:57.456Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "equipment\\czechoslovakia-germany-captured.json",
+      "equipment\\germany.json",
+      "equipment\\hungary-romania-bulgaria.json",
+      "equipment\\italy.json",
+      "equipment\\japan.json",
+      "equipment\\romania.json",
+      "equipment/other-axis.json",
+      "index.json"
+    ]
+  },
+  {
+    "runId": "4da5381a-8586-45d4-9502-58c63ba5c99a",
+    "action": "rollback",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:32:41.284Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "equipment\\czechoslovakia-germany-captured.json",
+      "equipment\\germany.json",
+      "equipment\\hungary-romania-bulgaria.json",
+      "equipment\\italy.json",
+      "equipment\\japan.json",
+      "equipment\\romania.json",
+      "equipment/other-axis.json",
+      "index.json"
+    ],
+    "restoredFromRunId": "7195e208-98a7-4c1f-977a-1f913904f6bd"
+  },
+  {
+    "runId": "73f62ddd-5734-49ff-ae03-efbb9e6f885e",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-23T00:33:02.164Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "equipment\\czechoslovakia-germany-captured.json",
+      "equipment\\germany.json",
+      "equipment\\hungary-romania-bulgaria.json",
+      "equipment\\italy.json",
+      "equipment\\japan.json",
+      "equipment\\romania.json",
+      "equipment/other-axis.json",
+      "index.json"
+    ]
+  }
+]

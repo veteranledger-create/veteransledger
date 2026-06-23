@@ -1,0 +1,12 @@
+[
+  {
+    "type": "Light Machine Gun",
+    "calibre": "7.92×57mm",
+    "magazine": "20-round box magazine",
+    "weight_kg": 9.6,
+    "id": "pusca-mitraliera-md-1939-zb-30",
+    "name": "Puşcă Mitralieră md. 1939 (ZB-30)",
+    "nation": "Romania",
+    "summary": "Romanian-licence-produced ZB-30. Standard squad automatic weapon of the Romanian Army."
+  }
+]

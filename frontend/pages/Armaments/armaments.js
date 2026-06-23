@@ -15,7 +15,22 @@ const CATEGORIES = [
   { id: "equipment",    path: "equipment" },
 ];
 
-const NATION_FILES = ["germany", "italy", "japan", "other-axis"];
+// No hardcoded nation-file list — which (category, nation) files actually
+// exist is read from index.json, regenerated at publish-promotion time
+// from a real directory scan (see promotion.service.ts). A newly
+// promoted file (e.g. naval/romania.json, from an admin-published record
+// whose real nation isn't one of the four legacy migration folders)
+// becomes visible here automatically, with no frontend edit required.
+let manifestPromise = null;
+async function loadManifest() {
+  if (!manifestPromise) {
+    manifestPromise = fetch("/public/data/armaments/index.json")
+      .then((r) => (r.ok ? r.json() : { categories: [] }))
+      .catch(() => ({ categories: [] }));
+  }
+  return manifestPromise;
+}
+
 // Keyed by the real per-record nation (lowercased), not the source folder
 // — "other-axis" is a folder label grouping several real nations
 // (Romania, Hungary, etc.), never a nation to show a flag for itself.
@@ -117,8 +132,11 @@ async function loadCategory(catId) {
   const cat = CATEGORIES.find((c) => c.id === catId);
   if (!cat) { cache[catId] = []; return; }
 
+  const manifest = await loadManifest();
+  const nationFiles = manifest.categories?.find((c) => c.id === catId)?.nations ?? [];
+
   const results = await Promise.allSettled(
-    NATION_FILES.map((nation) =>
+    nationFiles.map((nation) =>
       fetch(`/public/data/armaments/${cat.path}/${nation}.json`)
         .then((r) => (r.ok ? r.json() : null))
         .then((data) => {

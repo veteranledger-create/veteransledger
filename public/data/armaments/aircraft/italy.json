@@ -1,32 +1,51 @@
 [
   {
+    "type": "Biplane Fighter",
+    "year": 1939,
+    "engine": "Fiat A.74 RC.38, 840 hp",
+    "armament": "2× 12.7mm Breda-SAFAT machine guns",
+    "range_km": 775,
+    "max_speed_kmh": 441,
+    "id": "fiat-cr-42-falco",
+    "name": "Fiat CR.42 Falco",
+    "nation": "Italy",
+    "summary": "The last major biplane fighter to see combat, the CR.42 was Italy's frontline fighter at war's start. Outclassed by monoplane opponents, it transitioned to ground-attack and night harassment roles."
+  },
+  {
+    "crew": 1,
+    "role": "Air superiority fighter",
+    "type": "Fighter",
+    "engine": "Alfa Romeo RA.1000 RC.41 (Daimler-Benz DB 601A licence), 1,175 hp",
+    "armament": [
+      "2× 12.7mm Breda-SAFAT machine guns",
+      "2× 7.7mm machine guns"
+    ],
+    "range_km": 765,
+    "manufacturer": "Macchi",
+    "max_speed_kmh": 595,
+    "units_produced": 1220,
+    "years_of_service": "1941–1945",
     "id": "mc-202-folgore",
     "name": "Macchi C.202 Folgore",
-    "type": "Fighter",
     "nation": "Italy",
-    "role": "Air superiority fighter",
-    "years_of_service": "1941–1945",
-    "manufacturer": "Macchi",
-    "crew": 1,
-    "max_speed_kmh": 595,
-    "range_km": 765,
-    "armament": ["2× 12.7mm Breda-SAFAT machine guns", "2× 7.7mm machine guns"],
-    "units_produced": 1220,
     "summary": "The finest Italian fighter of the war. Armed with a German Daimler-Benz DB 601 engine (as used in the Bf 109E), the Folgore was surprisingly competitive with contemporary Allied fighters, though Italian production constraints limited its numbers. It fought effectively in North Africa and the Mediterranean."
   },
   {
+    "crew": 5,
+    "role": "Maritime strike / bomber",
+    "type": "Torpedo Bomber / Medium Bomber",
+    "armament": [
+      "3× 12.7mm machine guns",
+      "2× 450mm torpedoes or 1,250kg bombs"
+    ],
+    "range_km": 1900,
+    "manufacturer": "Savoia-Marchetti",
+    "max_speed_kmh": 430,
+    "units_produced": 1217,
+    "years_of_service": "1936–1945",
     "id": "sm-79-sparviero",
     "name": "Savoia-Marchetti SM.79 Sparviero",
-    "type": "Torpedo Bomber / Medium Bomber",
     "nation": "Italy",
-    "role": "Maritime strike / bomber",
-    "years_of_service": "1936–1945",
-    "manufacturer": "Savoia-Marchetti",
-    "crew": 5,
-    "max_speed_kmh": 430,
-    "range_km": 1900,
-    "armament": ["3× 12.7mm machine guns", "2× 450mm torpedoes or 1,250kg bombs"],
-    "units_produced": 1217,
     "summary": "The SM.79, known as the 'Hunchback' for its distinctive dorsal hump, was the most successful Italian aircraft of the war in its torpedo bomber role. Italian torpedo bomber pilots — the Aerosiluranti — achieved remarkable results against Allied shipping in the Mediterranean, sinking several warships including cruisers."
   }
 ]

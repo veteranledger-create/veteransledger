@@ -1,0 +1,13 @@
+[
+  {
+    "type": "Light Machine Gun",
+    "calibre": "7.92×57mm",
+    "magazine": "20 or 30-round box magazine",
+    "weight_kg": 9.6,
+    "rate_of_fire": "500 rpm",
+    "id": "zb-vz-26",
+    "name": "ZB vz. 26",
+    "nation": "Czechoslovakia/Germany (captured)",
+    "summary": "Czech-designed light machine gun widely used by German forces after the occupation of Czechoslovakia. The design directly influenced the British Bren gun."
+  }
+]

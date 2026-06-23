@@ -1,212 +1,390 @@
 [
   {
-    "id": "bf-109",
-    "name": "Messerschmitt Bf 109",
-    "type": "Fighter",
-    "nation": "Germany",
-    "role": "Single-engine fighter / interceptor",
-    "image": "/storage/images/armaments/aircraft/bf109.jpg",
-    "years_of_service": "1937–1945",
-    "manufacturer": "Bayerische Flugzeugwerke / Messerschmitt AG",
     "crew": 1,
-    "max_speed_kmh": 640,
-    "range_km": 850,
-    "ceiling_m": 12000,
-    "armament": ["2× 13mm MG 131 machine guns", "1× 20mm MG 151 cannon"],
-    "units_produced": 33984,
-    "summary": "The Messerschmitt Bf 109 was the primary German fighter of World War II and was produced in greater numbers than any other aircraft in history. It equipped the Luftwaffe from the Spanish Civil War through the war's end and was flown by the most successful fighter aces of the conflict, including Erich Hartmann (352 victories) and Gerhard Barkhorn (301 victories). Despite its age by 1944–45, it remained competitive when upgraded.",
-    "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RL 3/1447: Technisches Amt — Bf 109 production and testing records." },
-      { "ref": "Price, Alfred. Spitfire vs Bf 109: Battle of Britain. Osprey, 2007." },
-      { "ref": "Weal, John. Messerschmitt Bf 109 Aces of the Russian Front. Osprey, 1998." }
-    ],
-    "related_records": [
-      { "id": "erich-hartmann", "title": "Erich Hartmann", "type": "Personnel", "url": "/personnel/erich-hartmann" },
-      { "id": "gerhard-barkhorn", "title": "Gerhard Barkhorn", "type": "Personnel", "url": "/personnel/gerhard-barkhorn" },
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/britain" },
-      { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" }
-    ]
-  },
-  {
-    "id": "fw-190",
-    "name": "Focke-Wulf Fw 190",
-    "type": "Fighter / Fighter-Bomber",
-    "nation": "Germany",
     "role": "Multi-role fighter",
-    "image": "/storage/images/armaments/aircraft/fw190.jpg",
-    "years_of_service": "1941–1945",
-    "manufacturer": "Focke-Wulf Flugzeugbau",
-    "crew": 1,
-    "max_speed_kmh": 685,
+    "type": "Fighter / Fighter-Bomber",
+    "armament": [
+      "4× 20mm MG 151 cannon",
+      "2× 13mm MG 131 machine guns"
+    ],
     "range_km": 800,
     "ceiling_m": 12000,
-    "armament": ["4× 20mm MG 151 cannon", "2× 13mm MG 131 machine guns"],
-    "units_produced": 20001,
-    "summary": "When the Fw 190 appeared over the English Channel in late 1941, it shocked the RAF — it outperformed the Spitfire V in almost every measure. A robust and versatile design, the Fw 190 served as a fighter, ground-attack aircraft, torpedo bomber, and night fighter. The long-nosed Fw 190 D-9 variant, introduced in 1944, was regarded as one of the finest piston-engine fighters of the war.",
-    "sources": [
-      { "ref": "Weal, John. Focke-Wulf Fw 190 Aces of the Western Front. Osprey, 1996." },
-      { "ref": "Forsyth, Robert. Fw 190 Defence of the Reich Aces. Osprey, 2006." }
-    ],
-    "related_records": [
-      { "id": "adolf-galland", "title": "Adolf Galland", "type": "Personnel", "url": "/personnel/adolf-galland" },
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/britain" },
-      { "id": "bf-109", "title": "Bf 109", "type": "Armament", "url": "/armaments/bf-109" }
-    ]
-  },
-  {
-    "id": "me-262",
-    "name": "Messerschmitt Me 262",
-    "type": "Jet Fighter / Fighter-Bomber",
-    "nation": "Germany",
-    "role": "Interceptor / ground attack",
-    "image": "/storage/images/armaments/aircraft/me262.jpg",
-    "years_of_service": "1944–1945",
-    "manufacturer": "Messerschmitt AG",
-    "crew": 1,
-    "max_speed_kmh": 900,
-    "range_km": 1050,
-    "ceiling_m": 11450,
-    "armament": ["4× 30mm MK 108 cannon", "optional R4M rockets"],
-    "units_produced": 1430,
-    "summary": "The Me 262 was the world's first operational jet-powered combat aircraft. Its 900 km/h top speed made it virtually uncatchable by Allied piston-engine fighters. Hitler's insistence on using it primarily as a 'Blitz-Bomber' rather than as a pure interceptor delayed its deployment and reduced its impact. Despite claiming over 500 Allied aircraft, it could not be produced or deployed in numbers sufficient to affect the war's outcome.",
-    "sources": [
-      { "ref": "Caldwell, Donald and Muller, Richard. The Luftwaffe over Germany: Defense of the Reich. Greenhill, 2007." },
-      { "ref": "Boyne, Walter. The Influence of Air Power upon History. Pelican, 2003." }
-    ],
-    "related_records": [
-      { "id": "adolf-galland", "title": "Adolf Galland", "type": "Personnel", "url": "/personnel/adolf-galland" },
-      { "id": "walter-nowotny", "title": "Walter Nowotny", "type": "Personnel", "url": "/personnel/walter-nowotny" },
-      { "id": "me-163-komet", "title": "Me 163 Komet", "type": "Armament", "url": "/armaments/me-163-komet" }
-    ]
-  },
-  {
-    "id": "ju-87-stuka",
-    "name": "Junkers Ju 87 Stuka",
-    "type": "Dive Bomber",
-    "nation": "Germany",
-    "role": "Ground attack / dive bombing / anti-tank",
-    "image": "/storage/images/armaments/aircraft/ju87.jpg",
-    "years_of_service": "1936–1945",
-    "manufacturer": "Junkers Flugzeug- und Motorenwerke AG",
-    "crew": 2,
-    "max_speed_kmh": 380,
-    "range_km": 600,
-    "ceiling_m": 8000,
-    "armament": ["2× 7.92mm MG 17 wing guns", "1× 7.92mm MG 15 rear gun", "up to 1800kg bomb load"],
-    "units_produced": 6000,
-    "summary": "The Ju 87 Stuka, with its distinctive inverted gull wings and fixed undercarriage, became one of the iconic images of the Blitzkrieg. Its screaming Jericho Trumpet sirens provided psychological terror as much as physical damage. Devastating in the early campaigns when German air superiority was established, it proved extremely vulnerable to modern fighters. Hans-Ulrich Rudel flew it exclusively, claiming 519 tank kills.",
-    "sources": [
-      { "ref": "Weal, John. Junkers Ju 87 Stukageschwader of the Russian Front. Osprey, 2008." }
-    ],
-    "related_records": [
-      { "id": "hans-ulrich-rudel", "title": "Hans-Ulrich Rudel", "type": "Personnel", "url": "/personnel/hans-ulrich-rudel" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/barbarossa" }
-    ]
-  },
-  {
-    "id": "he-111",
-    "name": "Heinkel He 111",
-    "type": "Medium Bomber",
-    "nation": "Germany",
-    "role": "Medium bomber / torpedo bomber / transport",
-    "image": "/storage/images/armaments/aircraft/he111.jpg",
-    "years_of_service": "1935–1945",
-    "manufacturer": "Heinkel",
-    "crew": 5,
-    "max_speed_kmh": 440,
-    "range_km": 2300,
-    "ceiling_m": 8500,
-    "armament": ["up to 7× MG 15/17 defensive guns", "2500kg bomb load"],
-    "units_produced": 7300,
-    "summary": "The He 111 was the backbone of the Luftwaffe's bombing fleet during the early war and the primary aircraft used in the Battle of Britain and the Blitz. Originally disguised as a commercial transport, it served in all theaters but was increasingly outclassed by British and Soviet fighters.",
-    "dossier": {
-      "photos": [
-        { "type": "image", "images": [ { "src": "/public/images/armaments/aircraft/he-111/photos/he-111.webp", "caption": "Heinkel He 111 medium bomber", "type": "photograph", "historical_status": "Source Unverified — Pending Archival Review", "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed." } ] }
-      ]
-    },
-    "sources": [
-      { "ref": "Smith, J.R. and Kay, Anthony. German Aircraft of the Second World War. Putnam, 1972." }
-    ],
-    "related_records": [
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/britain" },
-      { "id": "hugo-sperrle", "title": "Hugo Sperrle", "type": "Personnel", "url": "/personnel/hugo-sperrle" },
-      { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" }
-    ]
-  },
-  {
-    "id": "he-219-uhu",
-    "name": "Heinkel He 219 Uhu",
-    "type": "Night Fighter",
-    "nation": "Germany",
-    "role": "Heavy night fighter / interceptor",
-    "image": "/storage/images/armaments/aircraft/he219.jpg",
-    "years_of_service": "1943–1945",
-    "manufacturer": "Heinkel",
-    "crew": 2,
-    "max_speed_kmh": 665,
-    "range_km": 1540,
-    "ceiling_m": 9300,
-    "armament": ["2× 30mm MK 108 cannon (Schräge Musik upward-firing)", "2× 20mm MG 151 forward", "2× 30mm MK 108 forward"],
-    "units_produced": 294,
-    "summary": "The He 219 Uhu (Eagle Owl) was the most capable German night fighter of the war — the only Luftwaffe aircraft capable of catching and destroying the de Havilland Mosquito. Its innovations included a nose-wheel undercarriage (the first in a German combat aircraft), ejection seats, and the revolutionary 'Schräge Musik' upward-firing cannon installation that allowed night fighters to attack below bomber formations without entering defensive fire. Political battles within the Luftwaffe limited production to only 294 aircraft; with greater numbers it might have significantly reduced RAF Bomber Command's effectiveness.",
-    "sources": [
-      { "ref": "Price, Alfred. Instruments of Darkness: The History of Electronic Warfare 1939–1945. William Kimber, 1967." },
-      { "ref": "Held, Werner and Nauroth, Holger. The Defense of the Reich: Hitler's Nightfighter Planes and Pilots. Arco, 1982." }
-    ],
-    "related_records": [
-      { "id": "joseph-kammhuber", "title": "Josef Kammhuber", "type": "Personnel", "url": "/personnel/joseph-kammhuber" },
-      { "id": "me-262", "title": "Messerschmitt Me 262", "type": "Armament", "url": "/armaments/me-262" }
-    ]
-  },
-  {
-    "id": "ta-152",
-    "name": "Focke-Wulf Ta 152 H",
-    "type": "High-Altitude Fighter",
-    "nation": "Germany",
-    "role": "High-altitude interceptor",
-    "image": "/storage/images/armaments/aircraft/ta152.jpg",
-    "years_of_service": "1945",
     "manufacturer": "Focke-Wulf Flugzeugbau",
+    "max_speed_kmh": 685,
+    "units_produced": 20001,
+    "years_of_service": "1941–1945",
+    "id": "fw-190",
+    "name": "Focke-Wulf Fw 190",
+    "nation": "Germany",
+    "summary": "When the Fw 190 appeared over the English Channel in late 1941, it shocked the RAF — it outperformed the Spitfire V in almost every measure. A robust and versatile design, the Fw 190 served as a fighter, ground-attack aircraft, torpedo bomber, and night fighter. The long-nosed Fw 190 D-9 variant, introduced in 1944, was regarded as one of the finest piston-engine fighters of the war.",
+    "image": "/storage/images/armaments/aircraft/fw190.jpg",
+    "sources": [
+      {
+        "ref": "Weal, John. Focke-Wulf Fw 190 Aces of the Western Front. Osprey, 1996."
+      },
+      {
+        "ref": "Forsyth, Robert. Fw 190 Defence of the Reich Aces. Osprey, 2006."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "adolf-galland",
+        "url": "/personnel/adolf-galland",
+        "type": "Personnel",
+        "title": "Adolf Galland"
+      },
+      {
+        "id": "britain",
+        "url": "/campaigns/britain",
+        "type": "Campaign",
+        "title": "Battle of Britain"
+      },
+      {
+        "id": "bf-109",
+        "url": "/armaments/bf-109",
+        "type": "Armament",
+        "title": "Bf 109"
+      }
+    ]
+  },
+  {
     "crew": 1,
-    "max_speed_kmh": 755,
+    "role": "High-altitude interceptor",
+    "type": "High-Altitude Fighter",
+    "armament": [
+      "1× 30mm MK 108 cannon",
+      "2× 20mm MG 151 cannon"
+    ],
     "range_km": 1990,
     "ceiling_m": 14800,
-    "armament": ["1× 30mm MK 108 cannon", "2× 20mm MG 151 cannon"],
+    "manufacturer": "Focke-Wulf Flugzeugbau",
+    "max_speed_kmh": 755,
     "units_produced": 150,
+    "years_of_service": "1945",
+    "id": "ta-152",
+    "name": "Focke-Wulf Ta 152 H",
+    "nation": "Germany",
     "summary": "Developed from the Fw 190 by Kurt Tank, the Ta 152 H was the fastest piston-engine fighter to reach operational service in the war, with a maximum speed of 755 km/h at altitude — faster than most Allied fighters. Its pressurised cockpit allowed it to operate at altitudes other aircraft could not reach. Kurt Tank himself used a prototype to escape pursuing Allied fighters. Arriving too late in the war with too few numbers, the Ta 152 represents the pinnacle of German piston-engine fighter development.",
+    "image": "/storage/images/armaments/aircraft/ta152.jpg",
     "sources": [
-      { "ref": "Kosin, Rüdiger. The German Fighter since 1915. Putnam, 1988." },
-      { "ref": "Brown, Eric. Wings of the Luftwaffe: Flying German Aircraft of the Second World War. Airlife, 1987." }
+      {
+        "ref": "Kosin, Rüdiger. The German Fighter since 1915. Putnam, 1988."
+      },
+      {
+        "ref": "Brown, Eric. Wings of the Luftwaffe: Flying German Aircraft of the Second World War. Airlife, 1987."
+      }
     ],
     "related_records": [
-      { "id": "fw-190", "title": "Focke-Wulf Fw 190", "type": "Armament", "url": "/armaments/fw-190" },
-      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" }
+      {
+        "id": "fw-190",
+        "url": "/armaments/fw-190",
+        "type": "Armament",
+        "title": "Focke-Wulf Fw 190"
+      },
+      {
+        "id": "bf-109",
+        "url": "/armaments/bf-109",
+        "type": "Armament",
+        "title": "Messerschmitt Bf 109"
+      }
     ]
   },
   {
-    "id": "he-177-greif",
-    "name": "Heinkel He 177 Greif",
-    "type": "Heavy Bomber",
-    "nation": "Germany",
-    "role": "Strategic bomber / maritime patrol",
-    "image": "/storage/images/armaments/aircraft/he177.jpg",
-    "years_of_service": "1942–1945",
+    "crew": 5,
+    "role": "Medium bomber / torpedo bomber / transport",
+    "type": "Medium Bomber",
+    "dossier": {
+      "photos": [
+        {
+          "type": "image",
+          "images": [
+            {
+              "src": "/public/images/armaments/aircraft/he-111/photos/he-111.webp",
+              "type": "photograph",
+              "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed.",
+              "caption": "Heinkel He 111 medium bomber",
+              "historical_status": "Source Unverified — Pending Archival Review"
+            }
+          ]
+        }
+      ]
+    },
+    "armament": [
+      "up to 7× MG 15/17 defensive guns",
+      "2500kg bomb load"
+    ],
+    "range_km": 2300,
+    "ceiling_m": 8500,
     "manufacturer": "Heinkel",
-    "crew": 6,
-    "max_speed_kmh": 488,
-    "range_km": 5600,
-    "ceiling_m": 8000,
-    "armament": ["multiple defensive gun positions", "up to 7200kg bomb load (internal + external)"],
-    "units_produced": 1169,
-    "summary": "Germany's only operational four-engine-equivalent heavy bomber — though it actually used paired engines driving single propellers, a configuration that was technically innovative but highly prone to engine fires, earning it the nickname 'the Luftwaffe's flying lighter'. The requirement to perform dive bombing (imposed by Göring) prevented proper aerodynamic design. Despite these problems, the He 177 saw action on the Eastern Front, against Atlantic convoys, and in the 'Baby Blitz' raids on Britain in early 1944. Its chronic unreliability prevented it from serving as the strategic bombing platform Germany needed.",
+    "max_speed_kmh": 440,
+    "units_produced": 7300,
+    "years_of_service": "1935–1945",
+    "id": "he-111",
+    "name": "Heinkel He 111",
+    "nation": "Germany",
+    "summary": "The He 111 was the backbone of the Luftwaffe's bombing fleet during the early war and the primary aircraft used in the Battle of Britain and the Blitz. Originally disguised as a commercial transport, it served in all theaters but was increasingly outclassed by British and Soviet fighters.",
+    "image": "/storage/images/armaments/aircraft/he111.jpg",
     "sources": [
-      { "ref": "Griehl, Manfred and Dressel, Joachim. Heinkel He 177-277-274. Airlife, 1998." },
-      { "ref": "Overy, Richard. The Air War 1939–1945. Stein and Day, 1980." }
+      {
+        "ref": "Smith, J.R. and Kay, Anthony. German Aircraft of the Second World War. Putnam, 1972."
+      }
     ],
     "related_records": [
-      { "id": "he-111", "title": "Heinkel He 111", "type": "Armament", "url": "/armaments/he-111" },
-      { "id": "hs-293", "title": "Henschel Hs 293", "type": "Armament", "url": "/armaments/hs-293" },
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic" }
+      {
+        "id": "britain",
+        "url": "/campaigns/britain",
+        "type": "Campaign",
+        "title": "Battle of Britain"
+      },
+      {
+        "id": "hugo-sperrle",
+        "url": "/personnel/hugo-sperrle",
+        "type": "Personnel",
+        "title": "Hugo Sperrle"
+      },
+      {
+        "id": "rearmament",
+        "url": "/articles/military/rearmament",
+        "type": "Article",
+        "title": "German Rearmament 1933–1939"
+      }
+    ]
+  },
+  {
+    "crew": 6,
+    "role": "Strategic bomber / maritime patrol",
+    "type": "Heavy Bomber",
+    "armament": [
+      "multiple defensive gun positions",
+      "up to 7200kg bomb load (internal + external)"
+    ],
+    "range_km": 5600,
+    "ceiling_m": 8000,
+    "manufacturer": "Heinkel",
+    "max_speed_kmh": 488,
+    "units_produced": 1169,
+    "years_of_service": "1942–1945",
+    "id": "he-177-greif",
+    "name": "Heinkel He 177 Greif",
+    "nation": "Germany",
+    "summary": "Germany's only operational four-engine-equivalent heavy bomber — though it actually used paired engines driving single propellers, a configuration that was technically innovative but highly prone to engine fires, earning it the nickname 'the Luftwaffe's flying lighter'. The requirement to perform dive bombing (imposed by Göring) prevented proper aerodynamic design. Despite these problems, the He 177 saw action on the Eastern Front, against Atlantic convoys, and in the 'Baby Blitz' raids on Britain in early 1944. Its chronic unreliability prevented it from serving as the strategic bombing platform Germany needed.",
+    "image": "/storage/images/armaments/aircraft/he177.jpg",
+    "sources": [
+      {
+        "ref": "Griehl, Manfred and Dressel, Joachim. Heinkel He 177-277-274. Airlife, 1998."
+      },
+      {
+        "ref": "Overy, Richard. The Air War 1939–1945. Stein and Day, 1980."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "he-111",
+        "url": "/armaments/he-111",
+        "type": "Armament",
+        "title": "Heinkel He 111"
+      },
+      {
+        "id": "hs-293",
+        "url": "/armaments/hs-293",
+        "type": "Armament",
+        "title": "Henschel Hs 293"
+      },
+      {
+        "id": "atlantic",
+        "url": "/campaigns/atlantic",
+        "type": "Campaign",
+        "title": "Battle of the Atlantic"
+      }
+    ]
+  },
+  {
+    "crew": 2,
+    "role": "Heavy night fighter / interceptor",
+    "type": "Night Fighter",
+    "armament": [
+      "2× 30mm MK 108 cannon (Schräge Musik upward-firing)",
+      "2× 20mm MG 151 forward",
+      "2× 30mm MK 108 forward"
+    ],
+    "range_km": 1540,
+    "ceiling_m": 9300,
+    "manufacturer": "Heinkel",
+    "max_speed_kmh": 665,
+    "units_produced": 294,
+    "years_of_service": "1943–1945",
+    "id": "he-219-uhu",
+    "name": "Heinkel He 219 Uhu",
+    "nation": "Germany",
+    "summary": "The He 219 Uhu (Eagle Owl) was the most capable German night fighter of the war — the only Luftwaffe aircraft capable of catching and destroying the de Havilland Mosquito. Its innovations included a nose-wheel undercarriage (the first in a German combat aircraft), ejection seats, and the revolutionary 'Schräge Musik' upward-firing cannon installation that allowed night fighters to attack below bomber formations without entering defensive fire. Political battles within the Luftwaffe limited production to only 294 aircraft; with greater numbers it might have significantly reduced RAF Bomber Command's effectiveness.",
+    "image": "/storage/images/armaments/aircraft/he219.jpg",
+    "sources": [
+      {
+        "ref": "Price, Alfred. Instruments of Darkness: The History of Electronic Warfare 1939–1945. William Kimber, 1967."
+      },
+      {
+        "ref": "Held, Werner and Nauroth, Holger. The Defense of the Reich: Hitler's Nightfighter Planes and Pilots. Arco, 1982."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "joseph-kammhuber",
+        "url": "/personnel/joseph-kammhuber",
+        "type": "Personnel",
+        "title": "Josef Kammhuber"
+      },
+      {
+        "id": "me-262",
+        "url": "/armaments/me-262",
+        "type": "Armament",
+        "title": "Messerschmitt Me 262"
+      }
+    ]
+  },
+  {
+    "crew": 2,
+    "role": "Ground attack / dive bombing / anti-tank",
+    "type": "Dive Bomber",
+    "armament": [
+      "2× 7.92mm MG 17 wing guns",
+      "1× 7.92mm MG 15 rear gun",
+      "up to 1800kg bomb load"
+    ],
+    "range_km": 600,
+    "ceiling_m": 8000,
+    "manufacturer": "Junkers Flugzeug- und Motorenwerke AG",
+    "max_speed_kmh": 380,
+    "units_produced": 6000,
+    "years_of_service": "1936–1945",
+    "id": "ju-87-stuka",
+    "name": "Junkers Ju 87 Stuka",
+    "nation": "Germany",
+    "summary": "The Ju 87 Stuka, with its distinctive inverted gull wings and fixed undercarriage, became one of the iconic images of the Blitzkrieg. Its screaming Jericho Trumpet sirens provided psychological terror as much as physical damage. Devastating in the early campaigns when German air superiority was established, it proved extremely vulnerable to modern fighters. Hans-Ulrich Rudel flew it exclusively, claiming 519 tank kills.",
+    "image": "/storage/images/armaments/aircraft/ju87.jpg",
+    "sources": [
+      {
+        "ref": "Weal, John. Junkers Ju 87 Stukageschwader of the Russian Front. Osprey, 2008."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "hans-ulrich-rudel",
+        "url": "/personnel/hans-ulrich-rudel",
+        "type": "Personnel",
+        "title": "Hans-Ulrich Rudel"
+      },
+      {
+        "id": "barbarossa",
+        "url": "/campaigns/barbarossa",
+        "type": "Campaign",
+        "title": "Operation Barbarossa"
+      }
+    ]
+  },
+  {
+    "crew": 1,
+    "role": "Single-engine fighter / interceptor",
+    "type": "Fighter",
+    "armament": [
+      "2× 13mm MG 131 machine guns",
+      "1× 20mm MG 151 cannon"
+    ],
+    "range_km": 850,
+    "ceiling_m": 12000,
+    "manufacturer": "Bayerische Flugzeugwerke / Messerschmitt AG",
+    "max_speed_kmh": 640,
+    "units_produced": 33984,
+    "years_of_service": "1937–1945",
+    "id": "bf-109",
+    "name": "Messerschmitt Bf 109",
+    "nation": "Germany",
+    "summary": "The Messerschmitt Bf 109 was the primary German fighter of World War II and was produced in greater numbers than any other aircraft in history. It equipped the Luftwaffe from the Spanish Civil War through the war's end and was flown by the most successful fighter aces of the conflict, including Erich Hartmann (352 victories) and Gerhard Barkhorn (301 victories). Despite its age by 1944–45, it remained competitive when upgraded.",
+    "image": "/storage/images/armaments/aircraft/bf109.jpg",
+    "sources": [
+      {
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RL 3/1447: Technisches Amt — Bf 109 production and testing records.",
+        "type": "primary"
+      },
+      {
+        "ref": "Price, Alfred. Spitfire vs Bf 109: Battle of Britain. Osprey, 2007."
+      },
+      {
+        "ref": "Weal, John. Messerschmitt Bf 109 Aces of the Russian Front. Osprey, 1998."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "erich-hartmann",
+        "url": "/personnel/erich-hartmann",
+        "type": "Personnel",
+        "title": "Erich Hartmann"
+      },
+      {
+        "id": "gerhard-barkhorn",
+        "url": "/personnel/gerhard-barkhorn",
+        "type": "Personnel",
+        "title": "Gerhard Barkhorn"
+      },
+      {
+        "id": "britain",
+        "url": "/campaigns/britain",
+        "type": "Campaign",
+        "title": "Battle of Britain"
+      },
+      {
+        "id": "rearmament",
+        "url": "/articles/military/rearmament",
+        "type": "Article",
+        "title": "German Rearmament 1933–1939"
+      }
+    ]
+  },
+  {
+    "crew": 1,
+    "role": "Interceptor / ground attack",
+    "type": "Jet Fighter / Fighter-Bomber",
+    "armament": [
+      "4× 30mm MK 108 cannon",
+      "optional R4M rockets"
+    ],
+    "range_km": 1050,
+    "ceiling_m": 11450,
+    "manufacturer": "Messerschmitt AG",
+    "max_speed_kmh": 900,
+    "units_produced": 1430,
+    "years_of_service": "1944–1945",
+    "id": "me-262",
+    "name": "Messerschmitt Me 262",
+    "nation": "Germany",
+    "summary": "The Me 262 was the world's first operational jet-powered combat aircraft. Its 900 km/h top speed made it virtually uncatchable by Allied piston-engine fighters. Hitler's insistence on using it primarily as a 'Blitz-Bomber' rather than as a pure interceptor delayed its deployment and reduced its impact. Despite claiming over 500 Allied aircraft, it could not be produced or deployed in numbers sufficient to affect the war's outcome.",
+    "image": "/storage/images/armaments/aircraft/me262.jpg",
+    "sources": [
+      {
+        "ref": "Caldwell, Donald and Muller, Richard. The Luftwaffe over Germany: Defense of the Reich. Greenhill, 2007."
+      },
+      {
+        "ref": "Boyne, Walter. The Influence of Air Power upon History. Pelican, 2003."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "adolf-galland",
+        "url": "/personnel/adolf-galland",
+        "type": "Personnel",
+        "title": "Adolf Galland"
+      },
+      {
+        "id": "walter-nowotny",
+        "url": "/personnel/walter-nowotny",
+        "type": "Personnel",
+        "title": "Walter Nowotny"
+      },
+      {
+        "id": "me-163-komet",
+        "url": "/armaments/me-163-komet",
+        "type": "Armament",
+        "title": "Me 163 Komet"
+      }
     ]
   }
 ]

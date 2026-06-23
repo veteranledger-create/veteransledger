@@ -1,0 +1,22 @@
+{
+  "runId": "355b6067-4ff0-447e-a3d1-b21c5e63e753",
+  "type": "armaments",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-22T23:16:20.657Z",
+  "recordsChecked": 14,
+  "valid": 14,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\armaments\\naval\\italy.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\armaments\\naval\\germany.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\armaments\\naval\\japan.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\armaments\\naval\\romania.json"
+  ]
+}

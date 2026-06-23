@@ -1,0 +1,12 @@
+[
+  {
+    "type": "Bolt-Action Rifle",
+    "calibre": "8×50mmR",
+    "length_mm": 1272,
+    "weight_kg": 3.77,
+    "id": "mannlicher-m1895-repetier-gewehr-m-95",
+    "name": "Mannlicher M1895 (Repetier-Gewehr M.95)",
+    "nation": "Hungary / Romania / Bulgaria",
+    "summary": "World War I-era Austro-Hungarian rifle retained by successor states. Straight-pull bolt action allowed fast reloading. Still in service with minor Axis partners in 1939–45."
+  }
+]

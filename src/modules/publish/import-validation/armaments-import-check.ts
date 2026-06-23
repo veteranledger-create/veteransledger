@@ -33,6 +33,18 @@ export interface DuplicateResolutionReport {
   outcomes: DuplicateResolutionOutcome[];
 }
 
+// Phase 8A: lets Gate 3 (blockedByErrors) and Gate 4 (duplicate-resolution
+// integrity) evaluate only the categories/nations actually being executed,
+// instead of the entire archive. Duplicate resolution itself is NEVER
+// scoped before this point — some rules cross categories (e.g. a missiles
+// donor merging into a wunderwaffen canonical), so resolution must always
+// see the complete, unscoped dataset. Scoping is applied only afterward,
+// to which already-resolved records/rules are allowed to block execution.
+export interface ImportScope {
+  categories?: string[];
+  nations?: string[];
+}
+
 export interface ArmamentImportSummary {
   generatedAt: string;
   mode: "dry-run";
@@ -60,7 +72,19 @@ export async function loadAllArmaments(): Promise<LoadedArmament[]> {
   for (const category of CATEGORIES) {
     for (const fileNation of NATIONS) {
       const filePath = path.join(ARMAMENTS_DIR, category, `${fileNation}.json`);
-      const raw = JSON.parse(await fs.readFile(filePath, "utf-8"));
+      let raw: unknown;
+      try {
+        raw = JSON.parse(await fs.readFile(filePath, "utf-8"));
+      } catch (err) {
+        // A category/fileNation combination is no longer guaranteed to
+        // exist on disk — Phase 8A's promotion can legitimately delete
+        // <category>/other-axis.json once every record under it has been
+        // republished under its real nation (see promotion.service.ts's
+        // orphan-pruning). A missing file here means "zero records for
+        // this combination right now," not an error.
+        if ((err as NodeJS.ErrnoException).code === "ENOENT") continue;
+        throw err;
+      }
       const { items, schemaType } = extractItems(raw, category);
       for (const item of items) out.push({ category, fileNation, schemaType, item });
     }
@@ -68,10 +92,29 @@ export async function loadAllArmaments(): Promise<LoadedArmament[]> {
   return out;
 }
 
-export async function runArmamentsImportDryRun(): Promise<ArmamentImportSummary> {
-  const loadedRaw = await loadAllArmaments();
-  const { resolved, outcomes } = applyDuplicateResolutions(loadedRaw);
-  const assigned = assignIds(resolved);
+export async function runArmamentsImportDryRun(scope?: ImportScope): Promise<ArmamentImportSummary> {
+  const loadedRawAll = await loadAllArmaments();
+  // Always run resolution against the FULL, unscoped dataset first — a
+  // donor's canonical can live in a different category/fileNation than
+  // the donor itself, so resolving against an already-scoped subset could
+  // silently miss a canonical that's outside the requested scope.
+  const { resolved: resolvedAll, outcomes: outcomesAll } = applyDuplicateResolutions(loadedRawAll);
+  const assignedAll = assignIds(resolvedAll);
+
+  const inScope = (categoryOf: { category: string; fileNation: string }) =>
+    (!scope?.categories || scope.categories.includes(categoryOf.category)) &&
+    (!scope?.nations || scope.nations.includes(categoryOf.fileNation));
+
+  const loadedRaw = loadedRawAll.filter(inScope);
+  const assigned = assignedAll.filter(inScope);
+  // A rule is in-scope for gating purposes when its donor's category/
+  // fileNation falls inside the requested scope — every current rule's
+  // canonical shares the donor's category, so this single check covers
+  // both sides without needing the canonical's own location.
+  const scopedOutcomes = DUPLICATE_RESOLUTIONS
+    .map((rule, i) => ({ rule, outcome: outcomesAll[i] }))
+    .filter(({ rule }) => inScope({ category: rule.donor.category, fileNation: rule.donor.fileNation }))
+    .map(({ outcome }) => outcome);
 
   const existingIdCount = loadedRaw.filter((l) => !!l.item.id).length;
   // Re-derived from the post-resolution set, not the raw pre-resolution
@@ -111,23 +154,46 @@ export async function runArmamentsImportDryRun(): Promise<ArmamentImportSummary>
 
   // Explicit, named confirmation that each of the four approved
   // resolutions actually took effect — not just trusting
-  // applyDuplicateResolutions ran without error.
+  // applyDuplicateResolutions ran without error. Always checked against
+  // the full, unscoped dataset (assignedAll) — this is a diagnostic, not
+  // a gate, so it should never silently read "absent" just because a
+  // scoped run excluded that rule's category.
   const resolvedDuplicateChecks: ResolvedDuplicateCheck[] = [
     {
       description: "naval/other-axis.json 'Yamato' excluded (canonical: naval/japan.json id=yamato)",
-      stillPresentAsIndependentRecord: assigned.some((a) => a.category === "naval" && a.fileNation === "other-axis" && a.item.name === "Yamato"),
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "naval" && a.fileNation === "other-axis" && a.item.name === "Yamato"),
     },
     {
       description: "naval/other-axis.json 'Shōkaku' excluded (canonical: naval/japan.json id=shokaku)",
-      stillPresentAsIndependentRecord: assigned.some((a) => a.category === "naval" && a.fileNation === "other-axis" && a.item.name === "Shōkaku"),
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "naval" && a.fileNation === "other-axis" && a.item.name === "Shōkaku"),
     },
     {
       description: "missiles/italy.json Maiale donor excluded (canonical: wunderwaffen/italy.json)",
-      stillPresentAsIndependentRecord: assigned.some((a) => a.category === "missiles" && a.fileNation === "italy" && a.item.name === "Siluro a Lenta Corsa (SLC) / 'Maiale'"),
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "italy" && a.item.name === "Siluro a Lenta Corsa (SLC) / 'Maiale'"),
     },
     {
       description: "missiles/japan.json Ohka Model 11 donor excluded (canonical: wunderwaffen/japan.json)",
-      stillPresentAsIndependentRecord: assigned.some((a) => a.category === "missiles" && a.fileNation === "japan" && a.item.name === "Ohka Model 11"),
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "japan" && a.item.name === "Ohka Model 11"),
+    },
+    {
+      description: "aircraft/other-axis.json 'Macchi C.202 Folgore' donor excluded (canonical: aircraft/italy.json id=mc-202-folgore)",
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "aircraft" && a.fileNation === "other-axis" && a.item.name === "Macchi C.202 Folgore"),
+    },
+    {
+      description: "aircraft/other-axis.json 'Mitsubishi A6M Zero' donor excluded (canonical: aircraft/japan.json id=a6m-zero)",
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "aircraft" && a.fileNation === "other-axis" && a.item.name === "Mitsubishi A6M Zero"),
+    },
+    {
+      description: "aircraft/other-axis.json 'Nakajima Ki-43 Hayabusa' donor excluded (canonical: aircraft/japan.json id=ki-43-hayabusa)",
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "aircraft" && a.fileNation === "other-axis" && a.item.name === "Nakajima Ki-43 Hayabusa"),
+    },
+    {
+      description: "panzer/other-axis.json 'Carro Armato M13/40' donor excluded (canonical: panzer/italy.json id=m13-40)",
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "panzer" && a.fileNation === "other-axis" && a.item.name === "Carro Armato M13/40"),
+    },
+    {
+      description: "panzer/other-axis.json 'Carro Armato P26/40' donor excluded (canonical: panzer/italy.json id=p40-heavy-tank)",
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "panzer" && a.fileNation === "other-axis" && a.item.name === "Carro Armato P26/40"),
     },
   ];
 
@@ -138,7 +204,7 @@ export async function runArmamentsImportDryRun(): Promise<ArmamentImportSummary>
   // apply any field is an error — that combination means something is
   // structurally wrong (stale fieldsToMerge, unexpected data shape), not
   // just a resolved-elsewhere case.
-  for (const outcome of outcomes) {
+  for (const outcome of scopedOutcomes) {
     if (!outcome.canonicalFound) {
       allIssues.push({
         recordId: outcome.description,
@@ -168,13 +234,18 @@ export async function runArmamentsImportDryRun(): Promise<ArmamentImportSummary>
     }
   }
 
+  // Scoped to the requested categories/nations — rulesExpected is the
+  // count of rules actually relevant to this run, not the full archive's
+  // rule table. An out-of-scope rule (e.g. a Naval rule during an
+  // Aircraft-only run) is invisible here entirely: neither required nor
+  // counted against this run's integrity gate.
   const duplicateResolutionReport: DuplicateResolutionReport = {
-    rulesExpected: DUPLICATE_RESOLUTIONS.length,
-    rulesMatched: outcomes.filter((o) => o.canonicalFound && o.donorFound).length,
-    rulesMissingCanonical: outcomes.filter((o) => !o.canonicalFound).length,
-    rulesMissingDonor: outcomes.filter((o) => !o.donorFound).length,
-    rulesApplied: outcomes.filter((o) => o.mergeApplied).length,
-    outcomes,
+    rulesExpected: scopedOutcomes.length,
+    rulesMatched: scopedOutcomes.filter((o) => o.canonicalFound && o.donorFound).length,
+    rulesMissingCanonical: scopedOutcomes.filter((o) => !o.canonicalFound).length,
+    rulesMissingDonor: scopedOutcomes.filter((o) => !o.donorFound).length,
+    rulesApplied: scopedOutcomes.filter((o) => o.mergeApplied).length,
+    outcomes: scopedOutcomes,
   };
 
   const issuesByField: Record<string, number> = {};

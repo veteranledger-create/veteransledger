@@ -1,48 +1,53 @@
-{
-  "category": "Armoured Vehicles — Japan",
-  "vehicles": [
-    {
-      "name": "Type 97 Chi-Ha",
-      "type": "Medium Tank",
-      "year": 1937,
-      "weight_tons": 15.0,
-      "crew": 4,
-      "armour_mm": 25,
-      "main_gun": "57mm Type 97 (short-barrelled) or 47mm Type 1 (anti-tank variant)",
-      "engine": "Mitsubishi SA12200VD diesel, 170 hp",
-      "max_speed_kmh": 38,
-      "notes": "Japan's most-produced tank of the war. Effective against Chinese infantry in 1937; completely outclassed by Soviet armour at Khalkhyn Gol (1939) and by US M4 Shermans in the Pacific."
-    },
-    {
-      "name": "Type 95 Ha-Go",
-      "type": "Light Tank",
-      "year": 1935,
-      "weight_tons": 7.4,
-      "crew": 3,
-      "armour_mm": 12,
-      "main_gun": "37mm Type 94",
-      "max_speed_kmh": 45,
-      "notes": "Japan's main light tank. Thin armour made it vulnerable to .50 calibre machine guns at close range. Used throughout the Pacific on jungle and island campaigns."
-    },
-    {
-      "name": "Type 94 Tankette",
-      "type": "Tankette",
-      "year": 1935,
-      "weight_tons": 3.4,
-      "crew": 2,
-      "armour_mm": 8,
-      "armament": "1× 6.5mm Type 91 machine gun",
-      "notes": "Used extensively in China. Provided infantry support and logistic towing but was poorly armed and vulnerable to almost any anti-armour weapon."
-    },
-    {
-      "name": "Type 3 Chi-Nu",
-      "type": "Medium Tank",
-      "year": 1943,
-      "weight_tons": 18.8,
-      "crew": 5,
-      "armour_mm": 50,
-      "main_gun": "75mm Type 3",
-      "notes": "Japan's best mass-produced tank, capable of engaging the M4 Sherman on more equal terms. Held in reserve for the anticipated Allied invasion of the Home Islands that never came."
-    }
-  ]
-}
+[
+  {
+    "crew": 5,
+    "type": "Medium Tank",
+    "year": 1943,
+    "main_gun": "75mm Type 3",
+    "armour_mm": 50,
+    "weight_tons": 18.8,
+    "id": "type-3-chi-nu",
+    "name": "Type 3 Chi-Nu",
+    "nation": "Japan",
+    "summary": "Japan's best mass-produced tank, capable of engaging the M4 Sherman on more equal terms. Held in reserve for the anticipated Allied invasion of the Home Islands that never came."
+  },
+  {
+    "crew": 2,
+    "type": "Tankette",
+    "year": 1935,
+    "armament": "1× 6.5mm Type 91 machine gun",
+    "armour_mm": 8,
+    "weight_tons": 3.4,
+    "id": "type-94-tankette",
+    "name": "Type 94 Tankette",
+    "nation": "Japan",
+    "summary": "Used extensively in China. Provided infantry support and logistic towing but was poorly armed and vulnerable to almost any anti-armour weapon."
+  },
+  {
+    "crew": 3,
+    "type": "Light Tank",
+    "year": 1935,
+    "main_gun": "37mm Type 94",
+    "armour_mm": 12,
+    "weight_tons": 7.4,
+    "max_speed_kmh": 45,
+    "id": "type-95-ha-go",
+    "name": "Type 95 Ha-Go",
+    "nation": "Japan",
+    "summary": "Japan's main light tank. Thin armour made it vulnerable to .50 calibre machine guns at close range. Used throughout the Pacific on jungle and island campaigns."
+  },
+  {
+    "crew": 4,
+    "type": "Medium Tank",
+    "year": 1937,
+    "engine": "Mitsubishi SA12200VD diesel, 170 hp",
+    "main_gun": "57mm Type 97 (short-barrelled) or 47mm Type 1 (anti-tank variant)",
+    "armour_mm": 25,
+    "weight_tons": 15,
+    "max_speed_kmh": 38,
+    "id": "type-97-chi-ha",
+    "name": "Type 97 Chi-Ha",
+    "nation": "Japan",
+    "summary": "Japan's most-produced tank of the war. Effective against Chinese infantry in 1937; completely outclassed by Soviet armour at Khalkhyn Gol (1939) and by US M4 Shermans in the Pacific."
+  }
+]
