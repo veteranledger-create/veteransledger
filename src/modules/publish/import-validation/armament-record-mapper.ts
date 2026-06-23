@@ -1,7 +1,14 @@
 import { RecordLike } from "../publish.types";
 import { pick } from "./text-utils";
 
-export const CATEGORIES = ["panzer", "aircraft", "naval", "missiles", "wunderwaffen", "equipment"] as const;
+export const CATEGORIES = [
+  "panzer",
+  "aircraft",
+  "naval",
+  "missiles",
+  "wunderwaffen",
+  "equipment",
+] as const;
 export const NATIONS = ["germany", "italy", "japan", "other-axis"] as const;
 
 // Confirmed directly against every real file — minor-schema files wrap
@@ -51,13 +58,18 @@ export interface LoadedArmament {
 // Pure — takes already-parsed JSON, never touches the filesystem itself
 // (the actual fs.readFile loop lives in armaments-import-check.ts, same
 // separation of concerns as every prior mapper).
-export function extractItems(raw: unknown, category: string): { items: LegacyArmament[]; schemaType: SchemaType } {
+export function extractItems(
+  raw: unknown,
+  category: string,
+): { items: LegacyArmament[]; schemaType: SchemaType } {
   if (Array.isArray(raw)) {
     return { items: raw as LegacyArmament[], schemaType: "full" };
   }
   const obj = raw as Record<string, unknown>;
   const wrapperKey = WRAPPER_KEY_BY_CATEGORY[category];
-  const arr = Array.isArray(obj[wrapperKey]) ? (obj[wrapperKey] as LegacyArmament[]) : [];
+  const arr = Array.isArray(obj[wrapperKey])
+    ? (obj[wrapperKey] as LegacyArmament[])
+    : [];
   return { items: arr, schemaType: "minor" };
 }
 
@@ -96,13 +108,25 @@ export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [
     overwriteFields: true,
   },
   {
-    donor: { category: "missiles", fileNation: "italy", name: "Siluro a Lenta Corsa (SLC) / 'Maiale'" },
-    canonical: { category: "wunderwaffen", fileNation: "italy", name: "Siluro a Lenta Corsa (SLC) 'Maiale'" },
+    donor: {
+      category: "missiles",
+      fileNation: "italy",
+      name: "Siluro a Lenta Corsa (SLC) / 'Maiale'",
+    },
+    canonical: {
+      category: "wunderwaffen",
+      fileNation: "italy",
+      name: "Siluro a Lenta Corsa (SLC) 'Maiale'",
+    },
     fieldsToMerge: ["length_m", "warhead_kg"],
   },
   {
     donor: { category: "missiles", fileNation: "japan", name: "Ohka Model 11" },
-    canonical: { category: "wunderwaffen", fileNation: "japan", name: "Ohka Model 11" },
+    canonical: {
+      category: "wunderwaffen",
+      fileNation: "japan",
+      name: "Ohka Model 11",
+    },
     fieldsToMerge: ["length_m", "wingspan_m", "max_speed_kmh"],
   },
   // Phase 8A — aircraft/other-axis.json carries six minor-schema entries;
@@ -115,17 +139,29 @@ export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [
   // (1760) — a known discrepancy to leave visible, never merged or
   // overwritten.
   {
-    donor: { category: "aircraft", fileNation: "other-axis", name: "Macchi C.202 Folgore" },
+    donor: {
+      category: "aircraft",
+      fileNation: "other-axis",
+      name: "Macchi C.202 Folgore",
+    },
     canonicalId: "mc-202-folgore",
     fieldsToMerge: ["engine"],
   },
   {
-    donor: { category: "aircraft", fileNation: "other-axis", name: "Mitsubishi A6M Zero" },
+    donor: {
+      category: "aircraft",
+      fileNation: "other-axis",
+      name: "Mitsubishi A6M Zero",
+    },
     canonicalId: "a6m-zero",
     fieldsToMerge: ["engine"],
   },
   {
-    donor: { category: "aircraft", fileNation: "other-axis", name: "Nakajima Ki-43 Hayabusa" },
+    donor: {
+      category: "aircraft",
+      fileNation: "other-axis",
+      name: "Nakajima Ki-43 Hayabusa",
+    },
     canonicalId: "ki-43-hayabusa",
     fieldsToMerge: ["engine"],
   },
@@ -142,14 +178,59 @@ export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [
   // (e.g. P26/40's armour_mm 60 vs canonical armor_mm.hull_front 50) —
   // deliberately excluded, left as a known discrepancy, never merged.
   {
-    donor: { category: "panzer", fileNation: "other-axis", name: "Carro Armato M13/40" },
+    donor: {
+      category: "panzer",
+      fileNation: "other-axis",
+      name: "Carro Armato M13/40",
+    },
     canonicalId: "m13-40",
     fieldsToMerge: ["year"],
   },
   {
-    donor: { category: "panzer", fileNation: "other-axis", name: "Carro Armato P26/40" },
+    donor: {
+      category: "panzer",
+      fileNation: "other-axis",
+      name: "Carro Armato P26/40",
+    },
     canonicalId: "p40-heavy-tank",
     fieldsToMerge: ["year"],
+  },
+  {
+    donor: {
+      category: "missiles",
+      fileNation: "germany",
+      name: "V-1 Flying Bomb (Fieseler Fi 103)",
+    },
+    canonical: {
+      category: "wunderwaffen",
+      fileNation: "germany",
+      name: "Fieseler Fi 103 / V-1 Flying Bomb",
+    },
+    fieldsToMerge: [],
+  },
+
+  {
+    donor: {
+      category: "missiles",
+      fileNation: "germany",
+      name: "V-2 Rocket (Aggregat A-4)",
+    },
+    canonical: {
+      category: "wunderwaffen",
+      fileNation: "germany",
+      name: "Aggregat 4 / V-2 Rocket",
+    },
+    fieldsToMerge: [],
+  },
+
+  {
+    donor: { category: "missiles", fileNation: "japan", name: "Kaiten Type 1" },
+    canonical: {
+      category: "wunderwaffen",
+      fileNation: "japan",
+      name: "Kaiten",
+    },
+    fieldsToMerge: ["length_m", "speed_knots"],
   },
 ];
 
@@ -162,7 +243,8 @@ export interface DuplicateResolutionOutcome {
 }
 
 function describeRule(rule: DuplicateResolutionRule): string {
-  const canonicalLabel = rule.canonicalId ?? rule.canonical?.name ?? "(unknown canonical)";
+  const canonicalLabel =
+    rule.canonicalId ?? rule.canonical?.name ?? "(unknown canonical)";
   return `${rule.donor.name} -> ${canonicalLabel}`;
 }
 
@@ -171,13 +253,19 @@ function describeRule(rule: DuplicateResolutionRule): string {
 // doesn't (a donor renamed, removed, or a canonical renamed) is exactly the
 // failure mode the Phase 5C verification flagged as currently invisible —
 // this makes it observable in the dry-run report rather than failing silent.
-export function applyDuplicateResolutions(all: LoadedArmament[]): { resolved: LoadedArmament[]; outcomes: DuplicateResolutionOutcome[] } {
+export function applyDuplicateResolutions(all: LoadedArmament[]): {
+  resolved: LoadedArmament[];
+  outcomes: DuplicateResolutionOutcome[];
+} {
   const result = [...all];
   const outcomes: DuplicateResolutionOutcome[] = [];
 
   for (const rule of DUPLICATE_RESOLUTIONS) {
     const donorIndex = result.findIndex(
-      (l) => l.category === rule.donor.category && l.fileNation === rule.donor.fileNation && l.item.name === rule.donor.name,
+      (l) =>
+        l.category === rule.donor.category &&
+        l.fileNation === rule.donor.fileNation &&
+        l.item.name === rule.donor.name,
     );
     const donorFound = donorIndex !== -1;
 
@@ -186,7 +274,10 @@ export function applyDuplicateResolutions(all: LoadedArmament[]): { resolved: Lo
       canonicalIndex = result.findIndex((l) => l.item.id === rule.canonicalId);
     } else if (rule.canonical) {
       canonicalIndex = result.findIndex(
-        (l) => l.category === rule.canonical!.category && l.fileNation === rule.canonical!.fileNation && l.item.name === rule.canonical!.name,
+        (l) =>
+          l.category === rule.canonical!.category &&
+          l.fileNation === rule.canonical!.fileNation &&
+          l.item.name === rule.canonical!.name,
       );
     }
     const canonicalFound = canonicalIndex !== -1;
@@ -201,7 +292,8 @@ export function applyDuplicateResolutions(all: LoadedArmament[]): { resolved: Lo
       for (const field of rule.fieldsToMerge) {
         const shouldApply = rule.overwriteFields
           ? donor.item[field] !== undefined
-          : canonical.item[field] === undefined && donor.item[field] !== undefined;
+          : canonical.item[field] === undefined &&
+            donor.item[field] !== undefined;
         if (shouldApply) {
           canonical.item[field] = donor.item[field];
           anyFieldApplied = true;
@@ -215,7 +307,13 @@ export function applyDuplicateResolutions(all: LoadedArmament[]): { resolved: Lo
       donorExcluded = true;
     }
 
-    outcomes.push({ description: describeRule(rule), canonicalFound, donorFound, mergeApplied, donorExcluded });
+    outcomes.push({
+      description: describeRule(rule),
+      canonicalFound,
+      donorFound,
+      mergeApplied,
+      donorExcluded,
+    });
   }
 
   return { resolved: result, outcomes };
@@ -225,7 +323,8 @@ export function applyDuplicateResolutions(all: LoadedArmament[]): { resolved: Lo
 export function slugify(name: string): string {
   return name
     .toLowerCase()
-    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
@@ -247,7 +346,9 @@ export interface IdCollision {
   occurrences: { category: string; fileNation: string; name: string }[];
 }
 
-export function detectIdCollisions(assigned: AssignedArmament[]): IdCollision[] {
+export function detectIdCollisions(
+  assigned: AssignedArmament[],
+): IdCollision[] {
   const byId = new Map<string, AssignedArmament[]>();
   for (const a of assigned) {
     const list = byId.get(a.id) ?? [];
@@ -256,14 +357,33 @@ export function detectIdCollisions(assigned: AssignedArmament[]): IdCollision[] 
   }
   return [...byId.entries()]
     .filter(([, list]) => list.length > 1)
-    .map(([id, list]) => ({ id, occurrences: list.map((l) => ({ category: l.category, fileNation: l.fileNation, name: l.item.name })) }));
+    .map(([id, list]) => ({
+      id,
+      occurrences: list.map((l) => ({
+        category: l.category,
+        fileNation: l.fileNation,
+        name: l.item.name,
+      })),
+    }));
 }
 
 // ── Record mapping ────────────────────────────────────────────────────────
-const KNOWN_FIELDS = new Set(["id", "name", "nation", "summary", "notes", "description", "sources", "related_records", "image"]);
+const KNOWN_FIELDS = new Set([
+  "id",
+  "name",
+  "nation",
+  "summary",
+  "notes",
+  "description",
+  "sources",
+  "related_records",
+  "image",
+]);
 
 function extractExtras(item: LegacyArmament): Record<string, unknown> {
-  return Object.fromEntries(Object.entries(item).filter(([key]) => !KNOWN_FIELDS.has(key)));
+  return Object.fromEntries(
+    Object.entries(item).filter(([key]) => !KNOWN_FIELDS.has(key)),
+  );
 }
 
 // Minor-schema files use either `notes` or `description` for their prose
@@ -274,10 +394,16 @@ function deriveSummary(item: LegacyArmament): string | null {
 }
 
 function capitalizeFileNation(fileNation: string): string {
-  return fileNation.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
+  return fileNation
+    .split("-")
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join(" ");
 }
 
-export function toRecordCreateInput(loaded: AssignedArmament, collectionId: string) {
+export function toRecordCreateInput(
+  loaded: AssignedArmament,
+  collectionId: string,
+) {
   const { category, fileNation, schemaType, item, id } = loaded;
   const extras = extractExtras(item);
   // Nation fallback applies ONLY when the record has no real nation field
