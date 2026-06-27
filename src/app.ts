@@ -29,6 +29,7 @@ import { mediaRoutes } from "./modules/media/media.routes";
 import { searchRoutes } from "./modules/search/search.routes";
 import { contactRoutes } from "./modules/contact/contact.routes";
 import { publishRoutes } from "./modules/publish/publish.routes";
+import { siteContentRoutes } from "./modules/site-content/site-content.routes";
 
 export function createApp(): Application {
   const app = express();
@@ -87,6 +88,7 @@ export function createApp(): Application {
   app.use("/api/search", searchRoutes);
   app.use("/api/contact", contactRoutes);
   app.use("/api/publish", publishRoutes);
+  app.use("/api/site-content", siteContentRoutes);
 
   // ── Frontend page routes ──────────────────────────────────────────────────
   const pagesDir = path.join(config.paths.frontend, "pages");

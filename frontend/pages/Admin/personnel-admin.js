@@ -1,40 +1,23 @@
+import { initMediaAdmin, registerCallbacks } from "./admin-media.js";
+import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn } from "./admin-utils.js";
+import { initRelatedModal, openRelatedModal } from "./admin-related.js";
+import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn, renderStringList } from "./admin-form.js";
+import { uploadFile, handleUpload, wireSectionActions, renderGallery, renderDocuments } from "./admin-media-sections.js";
+
 /**
  * VeteransLedger · Admin — Personnel
- * Dedicated workflow for the Personnel content type. Personnel use the Entity
- * model (not Record), so fields differ from other content types: name,
- * nationality, birthDate, deathDate, biography, summary at the top level;
- * rank, branch, service, birthplace, portrait, commands, awards, campaigns,
- * gallery, documents in metadata.
+ * Personnel-specific logic only (Entity model, portrait, commands/awards/campaigns).
+ * All shared infrastructure lives in the admin-utils / admin-related / admin-form /
+ * admin-media-sections modules.
  */
 
-import {
-  initMediaAdmin, registerCallbacks, mediaItemControls, updateSectionCount,
-  wireMediaItemControls, clearSectionAttribution, validateMediaUrls, DOC_TYPE_OPTIONS,
-} from "./admin-media.js";
-
-function authHeader() {
-  const token = sessionStorage.getItem("vl_admin_token");
-  return token ? { Authorization: `Bearer ${token}` } : {};
-}
-
-function escHtml(str = "") {
-  return String(str).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-}
-
-function debounce(fn, ms) {
-  let t;
-  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
-}
-
 const BRANCH_OPTIONS = [
-  { value: "army",        label: "Army" },
+  { value: "army",         label: "Army" },
   { value: "kriegsmarine", label: "Kriegsmarine" },
-  { value: "luftwaffe",   label: "Luftwaffe" },
-  { value: "waffen-ss",   label: "Waffen-SS" },
-  { value: "foreign",     label: "Foreign / Other" },
+  { value: "luftwaffe",    label: "Luftwaffe" },
+  { value: "waffen-ss",    label: "Waffen-SS" },
+  { value: "foreign",      label: "Foreign / Other" },
 ];
-
-const TYPE_LABEL_MAP = { PERSON: "Personnel", LETTER: "Letter", ARTICLE: "Article", CAMPAIGN: "Campaign", ARMAMENT: "Armament" };
 
 let currentPage = 1;
 let editingId = null;
@@ -46,13 +29,25 @@ let relatedDraft = [];
 let galleryDraft = [];
 let documentsDraft = [];
 
+const setStatus = makeStatusFn("personnel-form-status");
+
+// ── Local thin wrappers ───────────────────────────────────────
+function renderCommands() { renderStringList("personnel-commands-list", commandsDraft, "cmd", "Command / unit"); }
+function renderAwards() { renderStringList("personnel-awards-list", awardsDraft, "award", "Award / decoration"); }
+function renderCampaigns() { renderStringList("personnel-campaigns-list", campaignsDraft, "campaign", "Campaign / theatre"); }
+function renderSources() { renderSourcesFn("personnel-sources-list", sourcesDraft, renderSources); }
+function renderRelated() { renderRelatedFn("personnel-related-list", relatedDraft, renderRelated); }
+function renderGalleryAdmin() { renderGallery("personnel-gallery-list", "personnel-gallery-count", galleryDraft, renderGalleryAdmin); }
+function renderDocumentsAdmin() { renderDocuments("personnel-documents-list", "personnel-documents-count", documentsDraft, renderDocumentsAdmin); }
+
 function init() {
   initMediaAdmin();
-  registerCallbacks(uploadMediaFile, setFormStatus);
+  initRelatedModal();
+  registerCallbacks(uploadFile, setStatus);
 
   document.getElementById("admin-tabs")?.addEventListener("click", (e) => {
     if (e.target.closest('[data-tab="tab-personnel"]')) {
-      registerCallbacks(uploadMediaFile, setFormStatus);
+      registerCallbacks(uploadFile, setStatus);
       loadPersonnel(1);
     }
   });
@@ -69,47 +64,27 @@ function init() {
   document.getElementById("personnel-add-award-btn")?.addEventListener("click", () => { awardsDraft.push(""); renderAwards(); });
   document.getElementById("personnel-add-campaign-btn")?.addEventListener("click", () => { campaignsDraft.push(""); renderCampaigns(); });
   document.getElementById("personnel-add-source-btn")?.addEventListener("click", () => { sourcesDraft.push({ ref: "", type: "" }); renderSources(); });
-  document.getElementById("personnel-add-related-btn")?.addEventListener("click", openRelatedModal);
-  document.getElementById("related-record-modal-close")?.addEventListener("click", () => toggleModal("related-record-modal", false));
-  document.getElementById("related-record-search-input")?.addEventListener("input", debounce(runRelatedSearch, 350));
+  document.getElementById("personnel-add-related-btn")?.addEventListener("click", () => openRelatedModal(pickRelated));
 
   document.getElementById("personnel-portrait-upload")?.addEventListener("change", async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    setFormStatus("Uploading portrait…", false);
+    setStatus("Uploading portrait…", false);
     try {
-      const asset = await uploadMediaFile(file);
+      const asset = await uploadFile(file);
       document.getElementById("personnel-portrait-url").value = asset.url;
       e.target.value = "";
-      setFormStatus("Portrait uploaded. Save to persist.", false);
+      setStatus("Portrait uploaded. Save to persist.", false);
     } catch (_) {
-      setFormStatus("Portrait upload failed.", true);
+      setStatus("Portrait upload failed.", true);
     }
   });
 
-  document.getElementById("personnel-gallery-upload")?.addEventListener("change", (e) => handleMediaUpload(e.target.files, "gallery"));
-  document.getElementById("personnel-documents-upload")?.addEventListener("change", (e) => handleMediaUpload(e.target.files, "documents"));
+  document.getElementById("personnel-gallery-upload")?.addEventListener("change", (e) => handleUpload(e.target.files, "personnel-gallery-upload", galleryDraft, renderGalleryAdmin, setStatus));
+  document.getElementById("personnel-documents-upload")?.addEventListener("change", (e) => handleUpload(e.target.files, "personnel-documents-upload", documentsDraft, renderDocumentsAdmin, setStatus));
 
-  document.getElementById("personnel-gallery-check-urls")?.addEventListener("click", () => validateMediaUrls(galleryDraft, renderGalleryAdmin));
-  document.getElementById("personnel-gallery-clear-attr")?.addEventListener("click", () => clearSectionAttribution(galleryDraft, renderGalleryAdmin, "image"));
-  document.getElementById("personnel-gallery-delete-all")?.addEventListener("click", () => {
-    if (!galleryDraft.length) return;
-    if (!confirm(`Remove all ${galleryDraft.length} gallery image(s)?`)) return;
-    galleryDraft.length = 0; renderGalleryAdmin();
-  });
-
-  document.getElementById("personnel-documents-check-urls")?.addEventListener("click", () => validateMediaUrls(documentsDraft, renderDocumentsAdmin));
-  document.getElementById("personnel-documents-clear-attr")?.addEventListener("click", () => clearSectionAttribution(documentsDraft, renderDocumentsAdmin, "document"));
-  document.getElementById("personnel-documents-delete-all")?.addEventListener("click", () => {
-    if (!documentsDraft.length) return;
-    if (!confirm(`Remove all ${documentsDraft.length} document(s)?`)) return;
-    documentsDraft.length = 0; renderDocumentsAdmin();
-  });
-}
-
-function toggleModal(id, show) {
-  const el = document.getElementById(id);
-  if (el) el.hidden = !show;
+  wireSectionActions("personnel", "gallery", galleryDraft, renderGalleryAdmin, "image");
+  wireSectionActions("personnel", "documents", documentsDraft, renderDocumentsAdmin, "document");
 }
 
 // ── List ──────────────────────────────────────────────────────
@@ -117,7 +92,7 @@ async function loadPersonnel(page = 1) {
   currentPage = page;
   const container = document.getElementById("personnel-list");
   if (!container) return;
-  container.innerHTML = `<div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span></div>`;
+  container.innerHTML = loader();
 
   const branch = document.getElementById("personnel-filter-branch")?.value || "";
   const search = document.getElementById("personnel-filter-search")?.value || "";
@@ -190,20 +165,15 @@ async function deletePersonnel(id) {
 // ── Form ──────────────────────────────────────────────────────
 function openForm(id) {
   editingId = id;
-  commandsDraft = [];
-  awardsDraft = [];
-  campaignsDraft = [];
-  sourcesDraft = [];
-  relatedDraft = [];
-  galleryDraft = [];
-  documentsDraft = [];
+  commandsDraft = []; awardsDraft = []; campaignsDraft = [];
+  sourcesDraft = []; relatedDraft = []; galleryDraft = []; documentsDraft = [];
   document.getElementById("personnel-form")?.reset();
   document.getElementById("personnel-form-title").textContent = id ? "Edit Personnel Record" : "New Personnel Record";
   document.getElementById("personnel-form-panel").hidden = false;
   renderCommands(); renderAwards(); renderCampaigns();
   renderSources(); renderRelated();
   renderGalleryAdmin(); renderDocumentsAdmin();
-  setFormStatus("", false);
+  setStatus("", false);
   if (id) loadPersonnelIntoForm(id);
 }
 
@@ -245,196 +215,14 @@ async function loadPersonnelIntoForm(id) {
     renderSources(); renderRelated();
     renderGalleryAdmin(); renderDocumentsAdmin();
   } catch (_) {
-    setFormStatus("Failed to load personnel record.", true);
+    setStatus("Failed to load personnel record.", true);
   }
 }
 
-// ── Dynamic string lists (commands / awards / campaigns) ──────
-function renderStringList(containerId, draft, dataAttr, label) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-  container.innerHTML = draft.map((val, i) => `
-    <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-2);">
-      <input class="contact-form__input" placeholder="${escHtml(label)}" value="${escHtml(val)}" data-${dataAttr}="${i}" style="flex:1;">
-      <button type="button" class="btn btn-secondary" data-${dataAttr}-remove="${i}" style="font-size:11px;">✕</button>
-    </div>`).join("");
-  container.querySelectorAll(`[data-${dataAttr}]`).forEach((el) => el.addEventListener("input", (e) => { draft[+el.dataset[dataAttr]] = e.target.value; }));
-  container.querySelectorAll(`[data-${dataAttr}-remove]`).forEach((el) => el.addEventListener("click", () => { draft.splice(+el.dataset[`${dataAttr}Remove`], 1); renderStringList(containerId, draft, dataAttr, label); }));
-}
-
-function renderCommands() { renderStringList("personnel-commands-list", commandsDraft, "cmd", "Command / unit"); }
-function renderAwards() { renderStringList("personnel-awards-list", awardsDraft, "award", "Award / decoration"); }
-function renderCampaigns() { renderStringList("personnel-campaigns-list", campaignsDraft, "campaign", "Campaign / theatre"); }
-
-// ── Sources ───────────────────────────────────────────────────
-function renderSources() {
-  const container = document.getElementById("personnel-sources-list");
-  if (!container) return;
-  container.innerHTML = sourcesDraft.map((s, i) => `
-    <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-2);">
-      <input class="contact-form__input" placeholder="Reference" value="${escHtml(s.ref)}" data-source-ref="${i}" style="flex:2;">
-      <input class="contact-form__input" placeholder="Type (e.g. primary)" value="${escHtml(s.type)}" data-source-type="${i}" style="flex:1;">
-      <button type="button" class="btn btn-secondary" data-source-remove="${i}" style="font-size:11px;">✕</button>
-    </div>`).join("");
-  container.querySelectorAll("[data-source-ref]").forEach((el) => el.addEventListener("input", (e) => { sourcesDraft[+el.dataset.sourceRef].ref = e.target.value; }));
-  container.querySelectorAll("[data-source-type]").forEach((el) => el.addEventListener("input", (e) => { sourcesDraft[+el.dataset.sourceType].type = e.target.value; }));
-  container.querySelectorAll("[data-source-remove]").forEach((el) => el.addEventListener("click", () => { sourcesDraft.splice(+el.dataset.sourceRemove, 1); renderSources(); }));
-}
-
-// ── Related records ───────────────────────────────────────────
-function renderRelated() {
-  const container = document.getElementById("personnel-related-list");
-  if (!container) return;
-  if (!relatedDraft.length) {
-    container.innerHTML = `<p style="font-size:var(--text-sm);color:var(--text-muted);">None selected.</p>`;
-    return;
-  }
-  container.innerHTML = relatedDraft.map((r, i) => `
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) var(--space-3);background:rgba(255,255,255,0.03);border-radius:4px;margin-bottom:var(--space-2);font-size:var(--text-sm);">
-      <span><span class="badge" style="margin-right:var(--space-2);">${escHtml(r.type)}</span>${escHtml(r.title)} <span style="color:var(--text-muted);">(${escHtml(r.url || r.id)})</span></span>
-      <button type="button" class="btn btn-secondary" data-related-remove="${i}" style="font-size:11px;">✕</button>
-    </div>`).join("");
-  container.querySelectorAll("[data-related-remove]").forEach((el) => el.addEventListener("click", () => { relatedDraft.splice(+el.dataset.relatedRemove, 1); renderRelated(); }));
-}
-
-function openRelatedModal() {
-  toggleModal("related-record-modal", true);
-  document.getElementById("related-record-search-input").value = "";
-  document.getElementById("related-record-search-results").innerHTML = "";
-}
-
-async function runRelatedSearch(e) {
-  const query = e.target.value.trim();
-  const resultsEl = document.getElementById("related-record-search-results");
-  if (query.length < 2) { resultsEl.innerHTML = ""; return; }
-  resultsEl.innerHTML = `<p style="color:var(--text-muted);">Searching…</p>`;
-  try {
-    const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    const items = [
-      ...(data.entities || []).map((p) => ({ id: p.id, slug: p.slug, title: p.name, type: "PERSON" })),
-      ...(data.records || []).map((r) => ({ id: r.id, slug: r.slug, title: r.title, type: r.type })),
-    ];
-    if (!items.length) { resultsEl.innerHTML = `<p style="color:var(--text-muted);">No results.</p>`; return; }
-    resultsEl.innerHTML = items.map((item, i) => `
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--border-dim);cursor:pointer;" data-pick="${i}">
-        <span><span class="badge" style="margin-right:var(--space-2);">${escHtml(item.type)}</span>${escHtml(item.title)}</span>
-      </div>`).join("");
-    resultsEl.querySelectorAll("[data-pick]").forEach((el) => el.addEventListener("click", () => pickRelated(items[+el.dataset.pick])));
-  } catch (_) {
-    resultsEl.innerHTML = `<p style="color:var(--text-muted);">Search failed.</p>`;
-  }
-}
-
-async function pickRelated(item) {
-  const type = TYPE_LABEL_MAP[item.type] || item.type;
-  const slugOrId = item.slug || item.id;
-  let url = null;
-  try {
-    const res = await fetch(`/api/armaments/resolve-url?type=${encodeURIComponent(type)}&id=${encodeURIComponent(slugOrId)}`, { headers: authHeader() });
-    url = (await res.json()).url;
-  } catch (_) {}
-  relatedDraft.push({ id: slugOrId, title: item.title, type, url });
+// ── Related pick callback ─────────────────────────────────────
+function pickRelated(item) {
+  relatedDraft.push(item);
   renderRelated();
-  toggleModal("related-record-modal", false);
-}
-
-// ── Media upload ──────────────────────────────────────────────
-async function uploadMediaFile(file) {
-  const fd = new FormData();
-  fd.append("file", file);
-  const res = await fetch("/api/media/upload", { method: "POST", headers: authHeader(), body: fd });
-  if (!res.ok) throw new Error(`Upload failed (${res.status})`);
-  return await res.json();
-}
-
-async function handleMediaUpload(files, section) {
-  if (!files || !files.length) return;
-  const draft = section === "gallery" ? galleryDraft : documentsDraft;
-  const renderFn = section === "gallery" ? renderGalleryAdmin : renderDocumentsAdmin;
-  setFormStatus(`Uploading ${files.length} file(s)…`, false);
-
-  const errors = [];
-  for (const file of files) {
-    try {
-      const asset = await uploadMediaFile(file);
-      const item = { file: asset.url, title: file.name.replace(/\.[^.]+$/, "").replace(/[-_]/g, " "), caption: "", source: "" };
-      draft.push(item);
-    } catch (_) {
-      errors.push(file.name);
-    }
-  }
-
-  const input = document.getElementById(`personnel-${section}-upload`);
-  if (input) input.value = "";
-  renderFn();
-  if (errors.length) setFormStatus(`Upload failed for: ${errors.join(", ")}. Others saved.`, true);
-  else setFormStatus(`${files.length} file(s) uploaded. Save the form to persist.`, false);
-}
-
-// ── Gallery ───────────────────────────────────────────────────
-function renderGalleryAdmin() {
-  const container = document.getElementById("personnel-gallery-list");
-  if (!container) return;
-  updateSectionCount("personnel-gallery-count", galleryDraft.length, "image", "images");
-  if (!galleryDraft.length) {
-    container.innerHTML = `<p class="media-empty-state">No gallery images yet.</p>`;
-    return;
-  }
-  container.innerHTML = galleryDraft.map((g, i) => `
-    <div class="media-card">
-      <div class="media-card__body">
-        <img class="media-card__thumb" src="${escHtml(g.file)}" alt="" onerror="this.style.opacity='0.25'">
-        <div class="media-card__fields">
-          <input class="contact-form__input" placeholder="Title" value="${escHtml(g.title || "")}" data-gallery-title="${i}">
-          <div class="media-card__row2">
-            <input class="contact-form__input" placeholder="Caption" value="${escHtml(g.caption || "")}" data-gallery-caption="${i}">
-            <input class="contact-form__input" placeholder="Source / citation" value="${escHtml(g.source || "")}" data-gallery-source="${i}">
-          </div>
-          <div class="media-card__url">${escHtml(g.file)}</div>
-        </div>
-      </div>
-      ${mediaItemControls(galleryDraft, i, renderGalleryAdmin, "image")}
-    </div>`).join("");
-  container.querySelectorAll("[data-gallery-title]").forEach((el) => el.addEventListener("input", () => { galleryDraft[+el.dataset.galleryTitle].title = el.value; }));
-  container.querySelectorAll("[data-gallery-caption]").forEach((el) => el.addEventListener("input", () => { galleryDraft[+el.dataset.galleryCaption].caption = el.value; }));
-  container.querySelectorAll("[data-gallery-source]").forEach((el) => el.addEventListener("input", () => { galleryDraft[+el.dataset.gallerySource].source = el.value; }));
-  wireMediaItemControls(container, galleryDraft, renderGalleryAdmin, "image");
-}
-
-// ── Documents ─────────────────────────────────────────────────
-function renderDocumentsAdmin() {
-  const container = document.getElementById("personnel-documents-list");
-  if (!container) return;
-  updateSectionCount("personnel-documents-count", documentsDraft.length, "document", "documents");
-  if (!documentsDraft.length) {
-    container.innerHTML = `<p class="media-empty-state">No documents yet.</p>`;
-    return;
-  }
-  container.innerHTML = documentsDraft.map((d, i) => `
-    <div class="media-card">
-      <div class="media-card__body">
-        <div class="media-card__icon" title="${escHtml(d.file)}">
-          <img src="/public/images/icons/ui/file.svg" alt="" width="28" height="28" style="opacity:0.7;" onerror="this.parentElement.textContent='📄'">
-        </div>
-        <div class="media-card__fields">
-          <input class="contact-form__input" placeholder="Title" value="${escHtml(d.title || "")}" data-doc-title="${i}">
-          <div class="media-card__row2">
-            <select class="contact-form__input" data-doc-type="${i}">
-              ${DOC_TYPE_OPTIONS.map((o) => `<option value="${o.value}"${d.type === o.value ? " selected" : ""}>${o.label}</option>`).join("")}
-            </select>
-            <input class="contact-form__input" placeholder="Caption / description" value="${escHtml(d.caption || "")}" data-doc-caption="${i}">
-          </div>
-          <div class="media-card__url">${escHtml(d.file)}</div>
-        </div>
-      </div>
-      ${mediaItemControls(documentsDraft, i, renderDocumentsAdmin, "document")}
-    </div>`).join("");
-  container.querySelectorAll("[data-doc-title]").forEach((el) => el.addEventListener("input", () => { documentsDraft[+el.dataset.docTitle].title = el.value; }));
-  container.querySelectorAll("[data-doc-type]").forEach((el) => el.addEventListener("change", () => { documentsDraft[+el.dataset.docType].type = el.value; }));
-  container.querySelectorAll("[data-doc-caption]").forEach((el) => el.addEventListener("input", () => { documentsDraft[+el.dataset.docCaption].caption = el.value; }));
-  wireMediaItemControls(container, documentsDraft, renderDocumentsAdmin, "document");
 }
 
 // ── Preview ───────────────────────────────────────────────────
@@ -464,11 +252,6 @@ async function showPreview() {
 }
 
 // ── Submit ────────────────────────────────────────────────────
-function setFormStatus(msg, isError) {
-  const el = document.getElementById("personnel-form-status");
-  if (el) { el.textContent = msg; el.style.color = isError ? "#e06060" : "#60c060"; }
-}
-
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
@@ -495,7 +278,6 @@ async function handleSubmit(e) {
     },
   };
 
-  // Include date fields only when non-empty so Prisma doesn't try to parse ""
   const birthDateVal = form.querySelector("[name='birthDate']").value.trim();
   const deathDateVal = form.querySelector("[name='deathDate']").value.trim();
   if (birthDateVal) body.birthDate = birthDateVal;
@@ -513,12 +295,12 @@ async function handleSubmit(e) {
     }
     const saved = await res.json();
     editingId = saved.id;
-    setFormStatus("Saved.", false);
+    setStatus("Saved.", false);
     loadPersonnel(currentPage);
 
     if (!document.getElementById("personnel-preview-modal")?.hidden) showPreview();
   } catch (err) {
-    setFormStatus(err.message || "Save failed. Try again.", true);
+    setStatus(err.message || "Save failed. Try again.", true);
   }
 }
 

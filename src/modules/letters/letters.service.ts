@@ -1,5 +1,8 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { toRecordLike } from "../publish/publish.service";
+import { toLetterJson } from "../publish/generators/letters.generator";
+import { checkLetterRecord } from "../publish/validators/letters.conformance";
 
 interface ListOptions { page: number; limit: number; language?: string; search?: string; }
 
@@ -34,5 +37,11 @@ export class LettersService {
 
   async delete(id: string) {
     await prisma.record.delete({ where: { id } });
+  }
+
+  async preview(id: string) {
+    const record = await this.getById(id);
+    const candidate = toRecordLike(record);
+    return { rendered: toLetterJson(candidate), issues: checkLetterRecord(candidate) };
   }
 }

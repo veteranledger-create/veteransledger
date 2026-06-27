@@ -1,5 +1,8 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { toRecordLike } from "../publish/publish.service";
+import { toCampaignJson } from "../publish/generators/campaigns.generator";
+import { checkCampaignRecord } from "../publish/validators/campaigns.conformance";
 
 interface ListOptions { page: number; limit: number; theater?: string; search?: string; }
 
@@ -37,5 +40,11 @@ export class CampaignsService {
 
   async delete(id: string) {
     await prisma.record.delete({ where: { id } });
+  }
+
+  async preview(id: string) {
+    const record = await this.getById(id);
+    const candidate = toRecordLike(record);
+    return { rendered: toCampaignJson(candidate), issues: checkCampaignRecord(candidate) };
   }
 }

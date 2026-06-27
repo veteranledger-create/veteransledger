@@ -110,12 +110,34 @@
           aria-selected="false">Armaments</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-personnel" role="tab"
           aria-selected="false">Personnel</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-letters" role="tab"
+          aria-selected="false">Letters</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-campaigns" role="tab"
+          aria-selected="false">Campaigns</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-articles" role="tab"
+          aria-selected="false">Articles</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-timeline" role="tab"
           aria-selected="false">Timeline</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-nsdap" role="tab"
+          aria-selected="false">NSDAP</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-formations" role="tab"
+          aria-selected="false">Formations</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-awards" role="tab"
+          aria-selected="false">Awards</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-maps" role="tab"
+          aria-selected="false">Maps</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-poldocs" role="tab"
+          aria-selected="false">Political Docs</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-media" role="tab"
           aria-selected="false">Media</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-publish" role="tab"
           aria-selected="false">Publish</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-navigation" role="tab"
+          aria-selected="false">Navigation</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-settings" role="tab"
+          aria-selected="false">Settings</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-pages" role="tab"
+          aria-selected="false">Pages</button>
       </div>
 
       <!-- Tab: Overview (activity log) -->
@@ -163,33 +185,220 @@
       </div>
 
       <!-- Tab: Timeline -->
+      <!-- Tab: Timeline — full CRUD -->
       <div id="tab-timeline" class="admin-tab-panel" hidden role="tabpanel">
-        <div class="section-label" style="margin-bottom:var(--space-6);">Add Timeline Event</div>
-        <form id="create-event-form"
-          style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:var(--space-3);align-items:end;margin-bottom:var(--space-8);">
-          <div class="contact-form__group" style="margin:0;">
-            <label class="contact-form__label">Date</label>
-            <input name="date" type="date" class="contact-form__input" required>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-3);">
+          <div class="section-label" style="margin:0;">Timeline Events</div>
+          <div style="display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap;">
+            <input id="timeline-filter-year" class="contact-form__input" placeholder="Filter by year" style="width:120px;">
+            <select id="timeline-filter-category" class="contact-form__input" style="width:150px;">
+              <option value="">All categories</option>
+              <option value="political">Political</option>
+              <option value="military">Military</option>
+              <option value="economic">Economic</option>
+              <option value="social">Social</option>
+              <option value="diplomatic">Diplomatic</option>
+              <option value="other">Other</option>
+            </select>
+            <button id="timeline-new-btn" type="button" class="btn btn-primary">+ New Event</button>
           </div>
-          <div class="contact-form__group" style="margin:0;">
-            <label class="contact-form__label">Title</label>
-            <input name="title" class="contact-form__input" placeholder="Event title" required>
+        </div>
+        <div id="timeline-list"><div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span></div></div>
+        <div id="timeline-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+            <div id="timeline-form-title" class="section-label" style="margin:0;">New Event</div>
+            <div style="display:flex;gap:var(--space-3);">
+              <button id="timeline-delete-btn" type="button" class="btn btn-secondary" hidden style="color:#e06060;border-color:#4a1515;">Delete</button>
+              <button id="timeline-cancel-btn" type="button" class="btn btn-secondary">Cancel</button>
+            </div>
           </div>
-          <div class="contact-form__group" style="margin:0;">
-            <label class="contact-form__label">Category</label>
-            <input name="category" class="contact-form__input" placeholder="military / political…">
-          </div>
-          <div class="contact-form__group" style="margin:0;">
-            <label class="contact-form__label">Summary</label>
-            <input name="summary" class="contact-form__input" placeholder="Brief summary">
-          </div>
-          <button type="submit" class="btn btn-primary" style="white-space:nowrap;">Add →</button>
-        </form>
+          <form id="timeline-form">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+              <div class="contact-form__group"><label class="contact-form__label">Year</label><input name="year" class="contact-form__input" placeholder="1939" type="number"></div>
+              <div class="contact-form__group"><label class="contact-form__label">Date (optional)</label><input name="date" type="date" class="contact-form__input"></div>
+              <div class="contact-form__group"><label class="contact-form__label">Category</label>
+                <select name="category" class="contact-form__input">
+                  <option value="">—</option>
+                  <option value="political">Political</option>
+                  <option value="military">Military</option>
+                  <option value="economic">Economic</option>
+                  <option value="social">Social</option>
+                  <option value="diplomatic">Diplomatic</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="contact-form__group"><label class="contact-form__label">Title</label><input name="title" class="contact-form__input" placeholder="Event title" required></div>
+            <div class="contact-form__group"><label class="contact-form__label">Summary</label><textarea name="summary" class="contact-form__input" rows="3" placeholder="Brief description of the event"></textarea></div>
+            <div class="contact-form__group"><label class="contact-form__label">Location</label><input name="location" class="contact-form__input" placeholder="City, Country"></div>
+            <div style="display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-6);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);">
+                <input type="checkbox" name="published"> Published
+              </label>
+              <button type="submit" class="btn btn-primary">Save Event</button>
+              <span id="timeline-form-status" style="font-size:var(--text-sm);"></span>
+            </div>
+          </form>
+        </div>
+      </div>
 
-        <div class="section-label" style="margin-bottom:var(--space-6);">Timeline Events</div>
-        <div id="timeline-list">
-          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
-              class="loader__dot"></span></div>
+      <!-- Tab: NSDAP — file-based JSON editor -->
+      <div id="tab-nsdap" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">NSDAP Content</div>
+        <div style="display:grid;grid-template-columns:220px 1fr;gap:var(--space-6);min-height:500px;">
+          <div id="nsdap-file-list" style="border-right:1px solid var(--border-dim);padding-right:var(--space-4);overflow-y:auto;"></div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div id="nsdap-editor-title" style="font-size:var(--text-sm);font-weight:600;color:var(--text-primary);">Select a file →</div>
+              <div style="display:flex;gap:var(--space-3);align-items:center;">
+                <span id="nsdap-form-status" style="font-size:var(--text-sm);"></span>
+                <button id="nsdap-save-btn" type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+            <textarea id="nsdap-editor" class="contact-form__input" rows="28" style="font-family:monospace;font-size:12px;resize:vertical;" disabled placeholder="Select a file from the sidebar to begin editing."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Formations — file-based JSON editor -->
+      <div id="tab-formations" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Units &amp; Formations</div>
+        <div style="display:grid;grid-template-columns:220px 1fr;gap:var(--space-6);min-height:500px;">
+          <div id="formations-file-list" style="border-right:1px solid var(--border-dim);padding-right:var(--space-4);overflow-y:auto;"></div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div id="formations-editor-title" style="font-size:var(--text-sm);font-weight:600;color:var(--text-primary);">Select a file →</div>
+              <div style="display:flex;gap:var(--space-3);align-items:center;">
+                <span id="formations-form-status" style="font-size:var(--text-sm);"></span>
+                <button id="formations-save-btn" type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+            <textarea id="formations-editor" class="contact-form__input" rows="28" style="font-family:monospace;font-size:12px;resize:vertical;" disabled placeholder="Select a file from the sidebar to begin editing."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Awards -->
+      <div id="tab-awards" class="admin-tab-panel" hidden role="tabpanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-3);">
+          <div class="section-label" style="margin:0;">Awards &amp; Decorations</div>
+          <div style="display:flex;gap:var(--space-3);align-items:center;">
+            <input id="award-filter-search" class="contact-form__input" placeholder="Search awards…" style="width:200px;">
+            <button id="award-new-btn" type="button" class="btn btn-primary">+ New Award</button>
+          </div>
+        </div>
+        <div id="award-list"><div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span></div></div>
+        <div id="award-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+            <div id="award-form-title" class="section-label" style="margin:0;">New Award</div>
+            <button id="award-cancel-btn" type="button" class="btn btn-secondary">Cancel</button>
+          </div>
+          <form id="award-form">
+            <div class="contact-form__group"><label class="contact-form__label">Title</label><input name="title" class="contact-form__input" placeholder="Award name" required></div>
+            <div class="contact-form__group"><label class="contact-form__label">Summary</label><textarea name="summary" class="contact-form__input" rows="3" placeholder="Brief description"></textarea></div>
+            <div class="contact-form__group"><label class="contact-form__label">Nation</label><input name="nation" class="contact-form__input" placeholder="e.g. Germany"></div>
+            <div class="section-label" style="margin:var(--space-6) 0 var(--space-3);">Sources</div>
+            <div id="award-sources-list"></div>
+            <button type="button" id="award-add-source-btn" class="btn btn-secondary" style="margin-bottom:var(--space-6);">+ Add Source</button>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Related Records</div>
+            <div id="award-related-list"></div>
+            <button type="button" id="award-add-related-btn" class="btn btn-secondary" style="margin-bottom:var(--space-6);">+ Add Related</button>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Gallery</div>
+            <div class="media-section-toolbar"><span id="award-gallery-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Images<input id="award-gallery-upload" type="file" accept="image/*" multiple style="display:none;"></label><button type="button" id="award-gallery-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="award-gallery-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="award-gallery-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
+            <div id="award-gallery-list" style="margin-bottom:var(--space-6);"></div>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Documents</div>
+            <div class="media-section-toolbar"><span id="award-documents-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Documents<input id="award-documents-upload" type="file" accept=".pdf,.doc,.docx" multiple style="display:none;"></label><button type="button" id="award-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="award-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="award-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
+            <div id="award-documents-list" style="margin-bottom:var(--space-6);"></div>
+            <div style="display:flex;align-items:center;gap:var(--space-4);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);"><input type="checkbox" name="published"> Published</label>
+              <button type="submit" class="btn btn-primary">Save Award</button>
+              <span id="award-form-status" style="font-size:var(--text-sm);"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tab: Maps -->
+      <div id="tab-maps" class="admin-tab-panel" hidden role="tabpanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-3);">
+          <div class="section-label" style="margin:0;">Maps</div>
+          <div style="display:flex;gap:var(--space-3);align-items:center;">
+            <input id="map-filter-search" class="contact-form__input" placeholder="Search maps…" style="width:200px;">
+            <button id="map-new-btn" type="button" class="btn btn-primary">+ New Map</button>
+          </div>
+        </div>
+        <div id="map-list"><div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span></div></div>
+        <div id="map-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+            <div id="map-form-title" class="section-label" style="margin:0;">New Map</div>
+            <button id="map-cancel-btn" type="button" class="btn btn-secondary">Cancel</button>
+          </div>
+          <form id="map-form">
+            <div class="contact-form__group"><label class="contact-form__label">Title</label><input name="title" class="contact-form__input" placeholder="Map title" required></div>
+            <div class="contact-form__group"><label class="contact-form__label">Summary</label><textarea name="summary" class="contact-form__input" rows="3"></textarea></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+              <div class="contact-form__group"><label class="contact-form__label">Theater</label><input name="theater" class="contact-form__input" placeholder="e.g. Eastern Front"></div>
+              <div class="contact-form__group"><label class="contact-form__label">Year</label><input name="year" class="contact-form__input" placeholder="1944" type="number"></div>
+            </div>
+            <div class="section-label" style="margin:var(--space-6) 0 var(--space-3);">Sources</div>
+            <div id="map-sources-list"></div>
+            <button type="button" id="map-add-source-btn" class="btn btn-secondary" style="margin-bottom:var(--space-6);">+ Add Source</button>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Related Records</div>
+            <div id="map-related-list"></div>
+            <button type="button" id="map-add-related-btn" class="btn btn-secondary" style="margin-bottom:var(--space-6);">+ Add Related</button>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Gallery</div>
+            <div class="media-section-toolbar"><span id="map-gallery-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Images<input id="map-gallery-upload" type="file" accept="image/*" multiple style="display:none;"></label><button type="button" id="map-gallery-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="map-gallery-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="map-gallery-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
+            <div id="map-gallery-list" style="margin-bottom:var(--space-6);"></div>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Documents</div>
+            <div class="media-section-toolbar"><span id="map-documents-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Documents<input id="map-documents-upload" type="file" accept=".pdf,.doc,.docx" multiple style="display:none;"></label><button type="button" id="map-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="map-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="map-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
+            <div id="map-documents-list" style="margin-bottom:var(--space-6);"></div>
+            <div style="display:flex;align-items:center;gap:var(--space-4);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);"><input type="checkbox" name="published"> Published</label>
+              <button type="submit" class="btn btn-primary">Save Map</button>
+              <span id="map-form-status" style="font-size:var(--text-sm);"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tab: Political Documents -->
+      <div id="tab-poldocs" class="admin-tab-panel" hidden role="tabpanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-3);">
+          <div class="section-label" style="margin:0;">Political Documents</div>
+          <div style="display:flex;gap:var(--space-3);align-items:center;">
+            <input id="poldoc-filter-search" class="contact-form__input" placeholder="Search documents…" style="width:200px;">
+            <button id="poldoc-new-btn" type="button" class="btn btn-primary">+ New Document</button>
+          </div>
+        </div>
+        <div id="poldoc-list"><div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span></div></div>
+        <div id="poldoc-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+            <div id="poldoc-form-title" class="section-label" style="margin:0;">New Political Document</div>
+            <button id="poldoc-cancel-btn" type="button" class="btn btn-secondary">Cancel</button>
+          </div>
+          <form id="poldoc-form">
+            <div class="contact-form__group"><label class="contact-form__label">Title</label><input name="title" class="contact-form__input" placeholder="Document title" required></div>
+            <div class="contact-form__group"><label class="contact-form__label">Date</label><input name="date" type="date" class="contact-form__input"></div>
+            <div class="contact-form__group"><label class="contact-form__label">Summary</label><textarea name="summary" class="contact-form__input" rows="3"></textarea></div>
+            <div class="contact-form__group"><label class="contact-form__label">Signatories (one per line)</label><textarea name="signatories" class="contact-form__input" rows="4" placeholder="Adolf Hitler&#10;Joachim von Ribbentrop"></textarea></div>
+            <div class="section-label" style="margin:var(--space-6) 0 var(--space-3);">Sources</div>
+            <div id="poldoc-sources-list"></div>
+            <button type="button" id="poldoc-add-source-btn" class="btn btn-secondary" style="margin-bottom:var(--space-6);">+ Add Source</button>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Related Records</div>
+            <div id="poldoc-related-list"></div>
+            <button type="button" id="poldoc-add-related-btn" class="btn btn-secondary" style="margin-bottom:var(--space-6);">+ Add Related</button>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Gallery</div>
+            <div class="media-section-toolbar"><span id="poldoc-gallery-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Images<input id="poldoc-gallery-upload" type="file" accept="image/*" multiple style="display:none;"></label><button type="button" id="poldoc-gallery-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="poldoc-gallery-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="poldoc-gallery-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
+            <div id="poldoc-gallery-list" style="margin-bottom:var(--space-6);"></div>
+            <div class="section-label" style="margin-bottom:var(--space-3);">Documents</div>
+            <div class="media-section-toolbar"><span id="poldoc-documents-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Documents<input id="poldoc-documents-upload" type="file" accept=".pdf,.doc,.docx" multiple style="display:none;"></label><button type="button" id="poldoc-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="poldoc-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="poldoc-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
+            <div id="poldoc-documents-list" style="margin-bottom:var(--space-6);"></div>
+            <div style="display:flex;align-items:center;gap:var(--space-4);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);"><input type="checkbox" name="published"> Published</label>
+              <button type="submit" class="btn btn-primary">Save Document</button>
+              <span id="poldoc-form-status" style="font-size:var(--text-sm);"></span>
+            </div>
+          </form>
         </div>
       </div>
 
@@ -282,6 +491,75 @@
           <p style="font-size:var(--text-sm);color:var(--text-muted);">Select a content section and run a step above.</p>
         </div>
 
+      </div>
+
+      <!-- Tab: Navigation -->
+      <div id="tab-navigation" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Navigation</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-6);">
+          <div>
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);">Brand</div>
+            <div class="contact-form__group"><label class="contact-form__label">Site Name</label><input id="nav-brand-name" class="contact-form__input" placeholder="VeteransLedger"></div>
+            <div class="contact-form__group"><label class="contact-form__label">Tagline</label><input id="nav-brand-tagline" class="contact-form__input" placeholder="Tagline shown in nav"></div>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);">Social Links</div>
+            <div class="contact-form__group"><label class="contact-form__label">GitHub URL</label><input id="nav-social-github" class="contact-form__input" placeholder="https://github.com/…"></div>
+            <div class="contact-form__group"><label class="contact-form__label">Twitter/X URL</label><input id="nav-social-twitter" class="contact-form__input" placeholder="https://x.com/…"></div>
+          </div>
+        </div>
+        <div class="contact-form__group">
+          <label class="contact-form__label">Navigation Items (JSON array)</label>
+          <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-2);">Edit the full navigation items/sections array. Each entry may have <code>label</code>, <code>href</code>, and/or <code>children</code>.</p>
+          <textarea id="nav-items-json" class="contact-form__input" rows="16" style="font-family:monospace;font-size:12px;resize:vertical;" placeholder="Loading…"></textarea>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-4);">
+          <button id="nav-save-btn" type="button" class="btn btn-primary">Save Navigation</button>
+          <span id="nav-form-status" style="font-size:var(--text-sm);"></span>
+        </div>
+      </div>
+
+      <!-- Tab: Site Settings -->
+      <div id="tab-settings" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Site Settings</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-6);">
+          <div>
+            <div class="contact-form__group"><label class="contact-form__label">Site Name</label><input id="settings-site-name" class="contact-form__input" placeholder="VeteransLedger"></div>
+            <div class="contact-form__group"><label class="contact-form__label">Tagline</label><input id="settings-tagline" class="contact-form__input" placeholder="Short tagline"></div>
+            <div class="contact-form__group"><label class="contact-form__label">Contact Email</label><input id="settings-contact-email" type="email" class="contact-form__input" placeholder="contact@example.com"></div>
+          </div>
+          <div>
+            <div class="contact-form__group"><label class="contact-form__label">Description</label><textarea id="settings-description" class="contact-form__input" rows="3" placeholder="Site meta description"></textarea></div>
+            <div class="contact-form__group"><label class="contact-form__label">Disclaimer</label><textarea id="settings-disclaimer" class="contact-form__input" rows="3" placeholder="Legal disclaimer shown in footer/about"></textarea></div>
+          </div>
+        </div>
+        <div class="contact-form__group">
+          <label class="contact-form__label">Advanced — Full JSON</label>
+          <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-2);">The structured fields above are merged over this JSON on save. Edit here to set fields not covered above.</p>
+          <textarea id="settings-raw-json" class="contact-form__input" rows="12" style="font-family:monospace;font-size:12px;resize:vertical;" placeholder="Loading…"></textarea>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-4);">
+          <button id="settings-save-btn" type="button" class="btn btn-primary">Save Settings</button>
+          <span id="settings-form-status" style="font-size:var(--text-sm);"></span>
+        </div>
+      </div>
+
+      <!-- Tab: Pages — JSON editor for About / Policies / Legal -->
+      <div id="tab-pages" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Content Pages</div>
+        <div style="display:grid;grid-template-columns:200px 1fr;gap:var(--space-6);min-height:500px;">
+          <div id="pages-file-list" style="border-right:1px solid var(--border-dim);padding-right:var(--space-4);overflow-y:auto;"></div>
+          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div id="pages-editor-title" style="font-size:var(--text-sm);font-weight:600;color:var(--text-primary);">Select a page →</div>
+              <div style="display:flex;gap:var(--space-3);align-items:center;">
+                <span id="pages-form-status" style="font-size:var(--text-sm);"></span>
+                <button id="pages-save-btn" type="button" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+            <textarea id="pages-editor" class="contact-form__input" rows="28" style="font-family:monospace;font-size:12px;resize:vertical;" disabled placeholder="Select a page from the sidebar to begin editing."></textarea>
+          </div>
+        </div>
       </div>
 
       <!-- Tab: Armaments — dedicated workflow, not the generic Record form -->
@@ -619,6 +897,328 @@
         </div>
       </div>
 
+      <!-- Tab: Letters -->
+      <div id="tab-letters" class="admin-tab-panel" hidden role="tabpanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+          <div class="section-label">Letters</div>
+          <button type="button" class="btn btn-primary" id="letter-new-btn">+ New Letter</button>
+        </div>
+        <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-6);">
+          <select id="letter-filter-collection" class="contact-form__input" style="width:180px;">
+            <option value="">All collections</option>
+            <option value="german">German</option>
+            <option value="italian">Italian</option>
+            <option value="japanese">Japanese</option>
+            <option value="polish">Polish</option>
+            <option value="british">British</option>
+            <option value="volunteers">Volunteers</option>
+          </select>
+          <input type="text" id="letter-filter-search" class="contact-form__input" placeholder="Search letters…" style="flex:1;">
+        </div>
+        <div id="letter-list"></div>
+
+        <div id="letter-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-8);">
+          <div class="section-label" id="letter-form-title" style="margin-bottom:var(--space-6);">New Letter</div>
+          <form id="letter-form" style="max-width:720px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+              <div>
+                <label class="contact-form__label">Sender (From)</label>
+                <input type="text" name="from" class="contact-form__input" placeholder="e.g. Hauptmann Friedrich Müller">
+              </div>
+              <div>
+                <label class="contact-form__label">Recipient (To)</label>
+                <input type="text" name="to" class="contact-form__input" placeholder="e.g. Familie Müller">
+              </div>
+            </div>
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Title (optional override)</label>
+              <input type="text" name="title" class="contact-form__input" placeholder="Leave blank to auto-generate from sender">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+              <div>
+                <label class="contact-form__label">Date</label>
+                <input type="date" name="date" class="contact-form__input">
+              </div>
+              <div>
+                <label class="contact-form__label">Collection</label>
+                <select name="collection" class="contact-form__input">
+                  <option value="german">German</option>
+                  <option value="italian">Italian</option>
+                  <option value="japanese">Japanese</option>
+                  <option value="polish">Polish</option>
+                  <option value="british">British</option>
+                  <option value="volunteers">Volunteers</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Summary / Excerpt</label>
+              <textarea name="summary" class="contact-form__input" rows="3" placeholder="Brief excerpt shown in search results"></textarea>
+            </div>
+            <div style="margin-bottom:var(--space-6);">
+              <label class="contact-form__label">Full Text</label>
+              <textarea name="full_text" class="contact-form__input" rows="10" placeholder="Complete translated letter text"></textarea>
+            </div>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Sources</div>
+            <div id="letter-sources-list"></div>
+            <button type="button" class="btn btn-secondary" id="letter-add-source-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Source</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Related Records</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Selected via search only — URLs are generated automatically.</p>
+            <div id="letter-related-list"></div>
+            <button type="button" class="btn btn-secondary" id="letter-add-related-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add related record</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Gallery</div>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="letter-gallery-count">—</span>
+              <button type="button" id="letter-gallery-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button>
+              <button type="button" id="letter-gallery-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button>
+              <button type="button" id="letter-gallery-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button>
+            </div>
+            <div id="letter-gallery-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload gallery image
+              <input type="file" id="letter-gallery-upload" accept="image/*" style="display:none;" multiple>
+            </label>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Documents</div>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="letter-documents-count">—</span>
+              <button type="button" id="letter-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button>
+              <button type="button" id="letter-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button>
+              <button type="button" id="letter-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button>
+            </div>
+            <div id="letter-documents-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload document
+              <input type="file" id="letter-documents-upload" accept=".pdf,.doc,.docx" style="display:none;" multiple>
+            </label>
+
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);">
+                <input type="checkbox" name="published"> Published
+              </label>
+            </div>
+            <div style="display:flex;gap:var(--space-3);">
+              <button type="submit" class="btn btn-primary">Save →</button>
+              <button type="button" class="btn btn-secondary" id="letter-preview-btn">Preview</button>
+              <button type="button" class="btn btn-secondary" id="letter-cancel-btn">Cancel</button>
+            </div>
+            <p id="letter-form-status" style="font-size:var(--text-sm);margin-top:var(--space-3);"></p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tab: Campaigns -->
+      <div id="tab-campaigns" class="admin-tab-panel" hidden role="tabpanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+          <div class="section-label">Campaigns</div>
+          <button type="button" class="btn btn-primary" id="campaign-new-btn">+ New Campaign</button>
+        </div>
+        <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-6);">
+          <select id="campaign-filter-theater" class="contact-form__input" style="width:180px;">
+            <option value="">All theaters</option>
+            <option value="africa">North Africa</option>
+            <option value="atlantic">Atlantic</option>
+            <option value="eastern-front">Eastern Front</option>
+            <option value="italy">Italy</option>
+            <option value="western-front">Western Front</option>
+          </select>
+          <input type="text" id="campaign-filter-search" class="contact-form__input" placeholder="Search campaigns…" style="flex:1;">
+        </div>
+        <div id="campaign-list"></div>
+
+        <div id="campaign-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-8);">
+          <div class="section-label" id="campaign-form-title" style="margin-bottom:var(--space-6);">New Campaign</div>
+          <form id="campaign-form" style="max-width:720px;">
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Title</label>
+              <input type="text" name="title" class="contact-form__input" required placeholder="e.g. Operation Barbarossa">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+              <div>
+                <label class="contact-form__label">Theater</label>
+                <select name="theater" class="contact-form__input">
+                  <option value="">— Select —</option>
+                  <option value="africa">North Africa</option>
+                  <option value="atlantic">Atlantic</option>
+                  <option value="eastern-front">Eastern Front</option>
+                  <option value="italy">Italy</option>
+                  <option value="western-front">Western Front</option>
+                </select>
+              </div>
+              <div>
+                <label class="contact-form__label">Start Date</label>
+                <input type="date" name="startDate" class="contact-form__input">
+              </div>
+              <div>
+                <label class="contact-form__label">End Date</label>
+                <input type="date" name="endDate" class="contact-form__input">
+              </div>
+            </div>
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Summary</label>
+              <textarea name="summary" class="contact-form__input" rows="3" placeholder="Brief overview shown in search results and timeline"></textarea>
+            </div>
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Historical Context</label>
+              <textarea name="context" class="contact-form__input" rows="4" placeholder="Strategic and political background"></textarea>
+            </div>
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Significance</label>
+              <textarea name="significance" class="contact-form__input" rows="3" placeholder="Why this campaign mattered"></textarea>
+            </div>
+            <div style="margin-bottom:var(--space-6);">
+              <label class="contact-form__label">Outcome</label>
+              <textarea name="outcome" class="contact-form__input" rows="3" placeholder="Result of the campaign"></textarea>
+            </div>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Sources</div>
+            <div id="campaign-sources-list"></div>
+            <button type="button" class="btn btn-secondary" id="campaign-add-source-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Source</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Related Records</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Selected via search only — URLs are generated automatically.</p>
+            <div id="campaign-related-list"></div>
+            <button type="button" class="btn btn-secondary" id="campaign-add-related-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add related record</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Gallery</div>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="campaign-gallery-count">—</span>
+              <button type="button" id="campaign-gallery-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button>
+              <button type="button" id="campaign-gallery-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button>
+              <button type="button" id="campaign-gallery-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button>
+            </div>
+            <div id="campaign-gallery-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload gallery image
+              <input type="file" id="campaign-gallery-upload" accept="image/*" style="display:none;" multiple>
+            </label>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Documents</div>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="campaign-documents-count">—</span>
+              <button type="button" id="campaign-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button>
+              <button type="button" id="campaign-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button>
+              <button type="button" id="campaign-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button>
+            </div>
+            <div id="campaign-documents-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload document
+              <input type="file" id="campaign-documents-upload" accept=".pdf,.doc,.docx" style="display:none;" multiple>
+            </label>
+
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);">
+                <input type="checkbox" name="published"> Published
+              </label>
+            </div>
+            <div style="display:flex;gap:var(--space-3);">
+              <button type="submit" class="btn btn-primary">Save →</button>
+              <button type="button" class="btn btn-secondary" id="campaign-preview-btn">Preview</button>
+              <button type="button" class="btn btn-secondary" id="campaign-cancel-btn">Cancel</button>
+            </div>
+            <p id="campaign-form-status" style="font-size:var(--text-sm);margin-top:var(--space-3);"></p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tab: Articles -->
+      <div id="tab-articles" class="admin-tab-panel" hidden role="tabpanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+          <div class="section-label">Articles</div>
+          <button type="button" class="btn btn-primary" id="article-new-btn">+ New Article</button>
+        </div>
+        <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-6);">
+          <select id="article-filter-category" class="contact-form__input" style="width:180px;">
+            <option value="">All categories</option>
+            <option value="military">Military</option>
+            <option value="political">Political</option>
+            <option value="economy">Economy</option>
+            <option value="legal">Legal</option>
+          </select>
+          <input type="text" id="article-filter-search" class="contact-form__input" placeholder="Search articles…" style="flex:1;">
+        </div>
+        <div id="article-list"></div>
+
+        <div id="article-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-8);">
+          <div class="section-label" id="article-form-title" style="margin-bottom:var(--space-6);">New Article</div>
+          <form id="article-form" style="max-width:720px;">
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Title</label>
+              <input type="text" name="title" class="contact-form__input" required placeholder="Article headline">
+            </div>
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Category</label>
+              <select name="category" class="contact-form__input" style="max-width:240px;">
+                <option value="">— Select —</option>
+                <option value="military">Military</option>
+                <option value="political">Political</option>
+                <option value="economy">Economy</option>
+                <option value="legal">Legal</option>
+              </select>
+            </div>
+            <div style="margin-bottom:var(--space-4);">
+              <label class="contact-form__label">Summary</label>
+              <textarea name="summary" class="contact-form__input" rows="3" placeholder="Brief description shown in search results"></textarea>
+            </div>
+            <div style="margin-bottom:var(--space-6);">
+              <label class="contact-form__label">Body</label>
+              <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-2);">Separate paragraphs with a blank line. Each block becomes a paragraph in published JSON.</p>
+              <textarea name="body" class="contact-form__input" rows="16" placeholder="Write article body here.&#10;&#10;Separate paragraphs with a blank line."></textarea>
+            </div>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Sources</div>
+            <div id="article-sources-list"></div>
+            <button type="button" class="btn btn-secondary" id="article-add-source-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Source</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Related Records</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Selected via search only — URLs are generated automatically.</p>
+            <div id="article-related-list"></div>
+            <button type="button" class="btn btn-secondary" id="article-add-related-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add related record</button>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Gallery</div>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="article-gallery-count">—</span>
+              <button type="button" id="article-gallery-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button>
+              <button type="button" id="article-gallery-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button>
+              <button type="button" id="article-gallery-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button>
+            </div>
+            <div id="article-gallery-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload gallery image
+              <input type="file" id="article-gallery-upload" accept="image/*" style="display:none;" multiple>
+            </label>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Documents</div>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="article-documents-count">—</span>
+              <button type="button" id="article-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button>
+              <button type="button" id="article-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button>
+              <button type="button" id="article-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button>
+            </div>
+            <div id="article-documents-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload document
+              <input type="file" id="article-documents-upload" accept=".pdf,.doc,.docx" style="display:none;" multiple>
+            </label>
+
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);">
+                <input type="checkbox" name="published"> Published
+              </label>
+            </div>
+            <div style="display:flex;gap:var(--space-3);">
+              <button type="submit" class="btn btn-primary">Save →</button>
+              <button type="button" class="btn btn-secondary" id="article-preview-btn">Preview</button>
+              <button type="button" class="btn btn-secondary" id="article-cancel-btn">Cancel</button>
+            </div>
+            <p id="article-form-status" style="font-size:var(--text-sm);margin-top:var(--space-3);"></p>
+          </form>
+        </div>
+      </div>
+
     </div>
 
   </main>
@@ -667,6 +1267,39 @@
         <button type="button" id="personnel-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
       </div>
       <div id="personnel-preview-content" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
+  <!-- Letter preview modal -->
+  <div id="letter-preview-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:640px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Preview</div>
+        <button type="button" id="letter-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="letter-preview-content" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
+  <!-- Campaign preview modal -->
+  <div id="campaign-preview-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:640px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Preview</div>
+        <button type="button" id="campaign-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="campaign-preview-content" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
+  <!-- Article preview modal -->
+  <div id="article-preview-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:640px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Preview</div>
+        <button type="button" id="article-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="article-preview-content" style="font-size:var(--text-sm);"></div>
     </div>
   </div>
 
@@ -798,6 +1431,18 @@
   <script type="module" src="/pages/Admin/admin.js"></script>
   <script type="module" src="/pages/Admin/armaments-admin.js"></script>
   <script type="module" src="/pages/Admin/personnel-admin.js"></script>
+  <script type="module" src="/pages/Admin/letters-admin.js"></script>
+  <script type="module" src="/pages/Admin/campaigns-admin.js"></script>
+  <script type="module" src="/pages/Admin/articles-admin.js"></script>
+  <script type="module" src="/pages/Admin/timeline-admin.js"></script>
+  <script type="module" src="/pages/Admin/nsdap-admin.js"></script>
+  <script type="module" src="/pages/Admin/formations-admin.js"></script>
+  <script type="module" src="/pages/Admin/awards-admin.js"></script>
+  <script type="module" src="/pages/Admin/maps-admin.js"></script>
+  <script type="module" src="/pages/Admin/political-docs-admin.js"></script>
+  <script type="module" src="/pages/Admin/navigation-admin.js"></script>
+  <script type="module" src="/pages/Admin/site-settings-admin.js"></script>
+  <script type="module" src="/pages/Admin/pages-admin.js"></script>
 </body>
 
 </html>

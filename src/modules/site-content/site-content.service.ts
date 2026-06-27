@@ -1,0 +1,62 @@
+import path from "path";
+import fs from "fs/promises";
+import { config } from "../../config/app";
+import { AppError } from "../../middleware/error.middleware";
+
+// Relative paths (within public/data/) that the Admin is allowed to read/write.
+// Prefix matching: a key is allowed if it exactly matches one of these, or starts
+// with one of these followed by '/'.
+const ALLOWED_PREFIXES = [
+  "navigation.json",
+  "site-settings.json",
+  "about",
+  "legal",
+  "site-policies",
+  "nsdap",
+  "formations",
+];
+
+function validateKey(key: string): void {
+  if (!key || typeof key !== "string") throw new AppError(400, "key is required");
+  // Block path traversal and absolute paths
+  if (key.includes("..") || path.isAbsolute(key) || key.includes("\\")) {
+    throw new AppError(400, "Invalid key");
+  }
+  // Must end in .json
+  if (!key.endsWith(".json")) throw new AppError(400, "key must reference a .json file");
+  // Must match an allowed prefix
+  const allowed = ALLOWED_PREFIXES.some((prefix) => key === prefix || key.startsWith(prefix + "/"));
+  if (!allowed) throw new AppError(403, `Key '${key}' is not editable via this API`);
+}
+
+function resolvedPath(key: string): string {
+  const dataDir = path.join(config.paths.public, "data");
+  const resolved = path.resolve(dataDir, key);
+  // Double-check the resolved path stays within data dir (defence-in-depth)
+  if (!resolved.startsWith(dataDir + path.sep) && resolved !== dataDir) {
+    throw new AppError(400, "Invalid key");
+  }
+  return resolved;
+}
+
+export class SiteContentService {
+  async read(key: string): Promise<unknown> {
+    validateKey(key);
+    const filePath = resolvedPath(key);
+    try {
+      const raw = await fs.readFile(filePath, "utf-8");
+      return JSON.parse(raw);
+    } catch (err: unknown) {
+      if ((err as NodeJS.ErrnoException).code === "ENOENT") throw new AppError(404, `Not found: ${key}`);
+      throw new AppError(500, "Failed to read site content");
+    }
+  }
+
+  async write(key: string, content: unknown): Promise<void> {
+    validateKey(key);
+    const filePath = resolvedPath(key);
+    // Ensure parent directory exists
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.writeFile(filePath, JSON.stringify(content, null, 2) + "\n", "utf-8");
+  }
+}

@@ -1,5 +1,8 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { toRecordLike } from "../publish/publish.service";
+import { toArticleJson } from "../publish/generators/articles.generator";
+import { checkArticleRecord } from "../publish/validators/articles.conformance";
 
 interface ListOptions { page: number; limit: number; category?: string; search?: string; }
 
@@ -34,5 +37,11 @@ export class ArticlesService {
 
   async delete(id: string) {
     await prisma.record.delete({ where: { id } });
+  }
+
+  async preview(id: string) {
+    const record = await this.getById(id);
+    const candidate = toRecordLike(record);
+    return { rendered: toArticleJson(candidate), issues: checkArticleRecord(candidate) };
   }
 }

@@ -11,13 +11,17 @@ import { checkArmamentRecord } from "./validators/armaments.conformance";
 import { toArmamentJson } from "./generators/armaments.generator";
 import { checkPersonnelRecord } from "./validators/personnel.conformance";
 import { toPersonnelJson } from "./generators/personnel.generator";
+import { checkCampaignRecord } from "./validators/campaigns.conformance";
+import { toCampaignJson } from "./generators/campaigns.generator";
+import { checkArticleRecord } from "./validators/articles.conformance";
+import { toArticleJson } from "./generators/articles.generator";
 import { PERSONNEL_FILES, RelatedRecordEntry } from "./import-validation/personnel-entity-mapper";
 import { writeStagedFilesAtomically } from "./atomic-stage-writer";
 import { normalizeArmamentName } from "../armaments/admin-duplicate-check";
 
 // See src/validators/publish.validator.ts for the allow-list that gates
 // which `:type` values reach this service at all — keep both in sync.
-const SUPPORTED_TYPES = ["letters", "armaments", "personnel"] as const;
+const SUPPORTED_TYPES = ["letters", "armaments", "personnel", "campaigns", "articles"] as const;
 type SupportedType = (typeof SUPPORTED_TYPES)[number];
 
 // Narrow row shape returned by the personnel Prisma query — includes the
@@ -94,6 +98,36 @@ export class PublishService {
       orderBy: { title: "asc" },
     });
     return rows.map(toRecordLike);
+  }
+
+  private async loadPublishedCampaigns(): Promise<RecordLike[]> {
+    const rows = await prisma.record.findMany({
+      where: { type: "CAMPAIGN", published: true },
+      orderBy: { startDate: "asc" },
+    });
+    return rows.map(toRecordLike);
+  }
+
+  private async loadPublishedArticles(): Promise<RecordLike[]> {
+    const rows = await prisma.record.findMany({
+      where: { type: "ARTICLE", published: true },
+      orderBy: { createdAt: "desc" },
+    });
+    return rows.map(toRecordLike);
+  }
+
+  private checkAllRecords(
+    records: RecordLike[],
+    checkFn: (r: RecordLike) => ValidationIssue[],
+  ): { valid: RecordLike[]; issues: ValidationIssue[] } {
+    const issues: ValidationIssue[] = [];
+    const valid: RecordLike[] = [];
+    for (const record of records) {
+      const recordIssues = checkFn(record);
+      issues.push(...recordIssues);
+      if (!recordIssues.some((i) => i.severity === "error")) valid.push(record);
+    }
+    return { valid, issues };
   }
 
   // Only error-severity issues exclude a record from generation — warnings
@@ -226,6 +260,16 @@ export class PublishService {
       const { valid, issues } = this.checkAllArmaments(records);
       return { records, valid, issues };
     }
+    if (type === "campaigns") {
+      const records = await this.loadPublishedCampaigns();
+      const { valid, issues } = this.checkAllRecords(records, checkCampaignRecord);
+      return { records, valid, issues };
+    }
+    if (type === "articles") {
+      const records = await this.loadPublishedArticles();
+      const { valid, issues } = this.checkAllRecords(records, checkArticleRecord);
+      return { records, valid, issues };
+    }
     const records = await this.loadPublishedLetters();
     const { valid, issues } = this.checkAll(records);
     return { records, valid, issues };
@@ -249,8 +293,7 @@ export class PublishService {
       validCount = result.valid.length;
       issues = result.issues;
     } else {
-      const supported = type as "letters" | "armaments";
-      const res = await this.loadAndCheck(supported);
+      const res = await this.loadAndCheck(type as SupportedType);
       recordsChecked = res.records.length;
       validCount = res.valid.length;
       issues = res.issues;
@@ -293,6 +336,36 @@ export class PublishService {
       return filesToWrite;
     }
 
+    if (type === "campaigns") {
+      const byTheater = new Map<string, unknown[]>();
+      for (const record of valid) {
+        const theater = (record.metadata?.theater as string) ?? "uncategorized";
+        const json = toCampaignJson(record);
+        const group = byTheater.get(theater) ?? [];
+        group.push(json);
+        byTheater.set(theater, group);
+      }
+      for (const [theater, entries] of byTheater) {
+        filesToWrite.set(`${theater}.json`, JSON.stringify(entries, null, 2));
+      }
+      return filesToWrite;
+    }
+
+    if (type === "articles") {
+      const byCategory = new Map<string, unknown[]>();
+      for (const record of valid) {
+        const category = (record.metadata?.category as string) ?? "uncategorized";
+        const json = toArticleJson(record);
+        const group = byCategory.get(category) ?? [];
+        group.push(json);
+        byCategory.set(category, group);
+      }
+      for (const [category, entries] of byCategory) {
+        filesToWrite.set(`${category}.json`, JSON.stringify(entries, null, 2));
+      }
+      return filesToWrite;
+    }
+
     const byCollection = new Map<string, unknown[]>();
     for (const record of valid) {
       const collection = resolveCollectionKey(record);
@@ -328,12 +401,11 @@ export class PublishService {
       issues = result.issues;
       filesToWrite = this.generatePersonnelFiles(result.valid);
     } else {
-      const supported = type as "letters" | "armaments";
-      const res = await this.loadAndCheck(supported);
+      const res = await this.loadAndCheck(type as SupportedType);
       recordsChecked = res.records.length;
       validCount = res.valid.length;
       issues = res.issues;
-      filesToWrite = this.generateFiles(supported, res.valid);
+      filesToWrite = this.generateFiles(type as SupportedType, res.valid);
     }
 
     const outDir = path.join(storageConfig.directories.publishStaging, type);
