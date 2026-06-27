@@ -1,0 +1,54 @@
+[
+  {
+    "crew": 2767,
+    "fate": "Sunk 7 April 1945 by US aircraft (386 aircraft) during Operation Ten-Go",
+    "type": "Battleship",
+    "class": "Yamato-class",
+    "armament": {
+      "main": "9× 46cm/45 Type 94 guns (3 triple turrets)",
+      "secondary": [
+        "12× 15.5cm guns (removed 1944)",
+        "24× 127mm AA guns",
+        "152× 25mm AA guns"
+      ]
+    },
+    "armor_mm": {
+      "belt": 410,
+      "deck": 200,
+      "turret_face": 650
+    },
+    "length_m": 263,
+    "speed_knots": 27,
+    "commissioned": "1941-12-16",
+    "displacement_tonnes": 72810,
+    "id": "yamato",
+    "name": "Battleship Yamato",
+    "nation": "Japan",
+    "summary": "The Yamato was the largest and most powerfully armed battleship ever built, carrying the largest guns ever fitted to a warship. Yet she was largely ineffective in combat — the era of the battleship had given way to the aircraft carrier. She was sunk by American carrier aircraft during Operation Ten-Go on 7 April 1945, on a suicide mission to Okinawa with fuel for only a one-way trip."
+  },
+  {
+    "crew": 1660,
+    "fate": "Sunk 19 June 1944 by USS Cavalla (submarine) at Battle of the Philippine Sea",
+    "type": "Fleet Carrier",
+    "class": "Shōkaku-class",
+    "length_m": 257.5,
+    "speed_knots": 34.2,
+    "commissioned": "1941-08-08",
+    "aircraft_capacity": 84,
+    "displacement_tonnes": 32105,
+    "id": "shokaku",
+    "name": "Fleet Carrier Shōkaku",
+    "nation": "Japan",
+    "summary": "One of Japan's finest fleet carriers and veteran of Pearl Harbor, the Coral Sea, and Santa Cruz. Shōkaku and her sister Zuikaku were the premier carrier strike force of the Imperial Japanese Navy. She was sunk by US submarine Cavalla during the Battle of the Philippine Sea ('The Marianas Turkey Shoot')."
+  },
+  {
+    "type": "Submarine Aircraft Carrier",
+    "aircraft": "3× Aichi M6A Seiran torpedo bombers",
+    "commissioned": 1944,
+    "displacement_tons": 6500,
+    "id": "i-400-class-submarine",
+    "name": "I-400 class submarine",
+    "nation": "Japan",
+    "summary": "The largest submarines built before nuclear-powered boats. Designed to launch aircraft for strikes on the US mainland (Panama Canal, US East Coast cities). Surrendered before their missions could be executed."
+  }
+]

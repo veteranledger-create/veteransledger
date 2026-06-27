@@ -100,6 +100,7 @@ export function createApp(): Application {
   app.get("/personnel", servePage("Personnel"));
   app.get("/personnel/:id", servePage("Personnel", "record.html"));
   app.get("/armaments", servePage("Armaments"));
+  app.get("/armaments/:id/gallery", servePage("Armaments", "gallery.html"));
   app.get("/armaments/:id", servePage("Armaments", "record.html"));
   app.get("/letters", servePage("Letters"));
   app.get("/letters/:id", servePage("Letters", "record.html"));

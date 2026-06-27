@@ -23,7 +23,7 @@ const CONTENT_PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 let _attributionSeq = 0;
 const _attributionRegistry = new Map();
 
-function registerAttribution(img) {
+export function registerAttribution(img) {
   const id = String(_attributionSeq++);
   _attributionRegistry.set(id, img);
   return id;
@@ -324,7 +324,7 @@ export function attachMediaFallbacks(root) {
   // Larger dossier content images (photos, scans, maps) — fall back to the
   // archive's standard "file not available" placeholder instead of just
   // vanishing, since a missing photo should still read as a labelled gap.
-  root.querySelectorAll(".record-image-item__img, .record-gallery__item img, .record-document__img").forEach((img) => {
+  root.querySelectorAll(".record-image-item__img, .record-gallery__item img, .record-document__img, .record-media-item img").forEach((img) => {
     img.addEventListener("error", () => { img.src = CONTENT_PLACEHOLDER; }, { once: true });
   });
 }
@@ -438,6 +438,13 @@ function openAttributionModal(id) {
     buildModalRow("Usage Rights", data.usage_rights),
     buildModalRow("Copyright Status", modalCopyrightStatus(data), "attribution-modal__row--status"),
     buildModalRow("Notes", modalNotes(data), "attribution-modal__row--status"),
+    buildModalRow("Location", data.location),
+    buildModalRow("Scale", data.scale),
+    buildModalRow("Resolution", data.resolution),
+    buildModalRow("Codec", data.codec),
+    buildModalRow("File Size", data.file_size),
+    buildModalRow("Manufacturer", data.manufacturer),
+    buildModalRow("Language", data.language),
   ].join("");
 
   body.innerHTML = rows
@@ -593,7 +600,7 @@ export function initImageLightbox() {
   // or in the future, without each one needing its own listener.
   document.body.addEventListener("click", (e) => {
     if (e.target.closest(".attribution-trigger")) return;
-    const clicked = e.target.closest(".record-image-item__img, .record-gallery__item img, .record-document__img");
+    const clicked = e.target.closest(".record-image-item__img, .record-gallery__item img, .record-document__img, .record-media-item img");
     if (clicked) openImageLightbox(clicked.src, clicked.alt);
   });
 }

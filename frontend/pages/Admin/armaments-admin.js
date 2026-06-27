@@ -1,3 +1,8 @@
+import {
+  initMediaAdmin, registerCallbacks, mediaItemControls, updateSectionCount,
+  wireMediaItemControls, clearSectionAttribution, validateMediaUrls, DOC_TYPE_OPTIONS,
+} from "./admin-media.js";
+
 /**
  * VeteransLedger · Admin — Armaments
  * Dedicated workflow for the Armaments content type, separate from the
@@ -24,16 +29,26 @@ function debounce(fn, ms) {
 const SPEC_FIELDS = ["designation", "manufacturer", "crew", "weight", "armor", "armament", "engine", "speed", "range", "units_produced"];
 const TYPE_LABEL_MAP = { PERSON: "Personnel", LETTER: "Letter", ARTICLE: "Article", CAMPAIGN: "Campaign", ARMAMENT: "Armament" };
 
+
 let currentPage = 1;
 let editingId = null;
 let extraSpecs = [];
 let sourcesDraft = [];
 let relatedDraft = [];
 let mediaDraft = [];
-
+let galleryDraft = [];
+let blueprintsDraft = [];
+let videosDraft = [];
+let documentsDraft = [];
 function init() {
+  initMediaAdmin();
+  registerCallbacks(uploadMediaFile, setFormStatus);
+
   document.getElementById("admin-tabs")?.addEventListener("click", (e) => {
-    if (e.target.closest('[data-tab="tab-armaments"]')) loadArmaments(1);
+    if (e.target.closest('[data-tab="tab-armaments"]')) {
+      registerCallbacks(uploadMediaFile, setFormStatus);
+      loadArmaments(1);
+    }
   });
 
   document.getElementById("armament-new-btn")?.addEventListener("click", () => openForm(null));
@@ -51,6 +66,46 @@ function init() {
   document.getElementById("media-attach-modal-close")?.addEventListener("click", () => toggleModal("media-attach-modal", false));
   document.getElementById("armament-preview-modal-close")?.addEventListener("click", () => toggleModal("armament-preview-modal", false));
   document.getElementById("related-record-search-input")?.addEventListener("input", debounce(runRelatedSearch, 350));
+
+  document.getElementById("armament-gallery-upload")?.addEventListener("change", (e) => handleMediaUpload(e.target.files, "gallery"));
+  document.getElementById("armament-blueprints-upload")?.addEventListener("change", (e) => handleMediaUpload(e.target.files, "blueprints"));
+  document.getElementById("armament-videos-upload")?.addEventListener("change", (e) => handleMediaUpload(e.target.files, "videos"));
+  document.getElementById("armament-documents-upload")?.addEventListener("change", (e) => handleMediaUpload(e.target.files, "documents"));
+
+  // ── Section action buttons — wired once, closures read current draft ──
+  document.getElementById("armament-gallery-delete-all")?.addEventListener("click", () => {
+    if (!galleryDraft.length) return;
+    if (!confirm(`Remove all ${galleryDraft.length} gallery image(s)? Unsaved changes will be lost.`)) return;
+    galleryDraft.length = 0;
+    renderGalleryAdmin();
+  });
+  document.getElementById("armament-gallery-clear-attr")?.addEventListener("click", () => clearSectionAttribution(galleryDraft, renderGalleryAdmin, "image"));
+  document.getElementById("armament-gallery-check-urls")?.addEventListener("click", () => validateMediaUrls(galleryDraft, renderGalleryAdmin));
+
+  document.getElementById("armament-blueprints-delete-all")?.addEventListener("click", () => {
+    if (!blueprintsDraft.length) return;
+    if (!confirm(`Remove all ${blueprintsDraft.length} blueprint(s)?`)) return;
+    blueprintsDraft.length = 0;
+    renderBlueprintsAdmin();
+  });
+  document.getElementById("armament-blueprints-clear-attr")?.addEventListener("click", () => clearSectionAttribution(blueprintsDraft, renderBlueprintsAdmin, "blueprint"));
+  document.getElementById("armament-blueprints-check-urls")?.addEventListener("click", () => validateMediaUrls(blueprintsDraft, renderBlueprintsAdmin));
+
+  document.getElementById("armament-videos-delete-all")?.addEventListener("click", () => {
+    if (!videosDraft.length) return;
+    if (!confirm(`Remove all ${videosDraft.length} video(s)?`)) return;
+    videosDraft.length = 0;
+    renderVideosAdmin();
+  });
+  document.getElementById("armament-videos-clear-attr")?.addEventListener("click", () => clearSectionAttribution(videosDraft, renderVideosAdmin, "video"));
+
+  document.getElementById("armament-documents-delete-all")?.addEventListener("click", () => {
+    if (!documentsDraft.length) return;
+    if (!confirm(`Remove all ${documentsDraft.length} document(s)?`)) return;
+    documentsDraft.length = 0;
+    renderDocumentsAdmin();
+  });
+  document.getElementById("armament-documents-clear-attr")?.addEventListener("click", () => clearSectionAttribution(documentsDraft, renderDocumentsAdmin, "document"));
 }
 
 function toggleModal(id, show) {
@@ -140,6 +195,10 @@ function openForm(id) {
   sourcesDraft = [];
   relatedDraft = [];
   mediaDraft = [];
+  galleryDraft = [];
+  blueprintsDraft = [];
+  videosDraft = [];
+  documentsDraft = [];
   document.getElementById("armament-form")?.reset();
   document.getElementById("armament-form-title").textContent = id ? "Edit Armament" : "New Armament";
   document.getElementById("armament-form-panel").hidden = false;
@@ -148,6 +207,10 @@ function openForm(id) {
   renderSources();
   renderRelated();
   renderMedia();
+  renderGalleryAdmin();
+  renderBlueprintsAdmin();
+  renderVideosAdmin();
+  renderDocumentsAdmin();
   setFormStatus("", false);
   if (id) loadArmamentIntoForm(id);
 }
@@ -176,18 +239,26 @@ async function loadArmamentIntoForm(id) {
       if (input && meta[field] !== undefined) input.value = typeof meta[field] === "object" ? JSON.stringify(meta[field]) : meta[field];
     }
 
-    const knownKeys = new Set(["category", "nation", "sources", "related_records", "importRunId", "fileNation", "schemaType", ...SPEC_FIELDS]);
+    const knownKeys = new Set(["category", "nation", "sources", "related_records", "importRunId", "fileNation", "schemaType", "gallery", "blueprints", "videos", "documents", ...SPEC_FIELDS]);
     extraSpecs = Object.entries(meta)
       .filter(([k]) => !knownKeys.has(k))
       .map(([key, value]) => ({ key, value: typeof value === "object" ? JSON.stringify(value) : String(value) }));
     sourcesDraft = Array.isArray(meta.sources) ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" })) : [];
     relatedDraft = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
     mediaDraft = Array.isArray(r.media) ? [...r.media] : [];
+    galleryDraft = Array.isArray(meta.gallery) ? meta.gallery.map((g) => ({ ...g })) : [];
+    blueprintsDraft = Array.isArray(meta.blueprints) ? meta.blueprints.map((b) => ({ ...b })) : [];
+    videosDraft = Array.isArray(meta.videos) ? meta.videos.map((v) => ({ ...v })) : [];
+    documentsDraft = Array.isArray(meta.documents) ? meta.documents.map((d) => ({ ...d })) : [];
 
     renderExtraSpecs();
     renderSources();
     renderRelated();
     renderMedia();
+    renderGalleryAdmin();
+    renderBlueprintsAdmin();
+    renderVideosAdmin();
+    renderDocumentsAdmin();
   } catch (_) {
     setFormStatus("Failed to load armament.", true);
   }
@@ -298,6 +369,171 @@ async function pickRelated(item) {
   toggleModal("related-record-modal", false);
 }
 
+// ── Gallery / Blueprints / Videos / Documents ─────────────────
+
+async function uploadMediaFile(file) {
+  const fd = new FormData();
+  fd.append("file", file);
+  const res = await fetch("/api/media/upload", { method: "POST", headers: authHeader(), body: fd });
+  if (!res.ok) throw new Error(`Upload failed (${res.status})`);
+  return await res.json();
+}
+
+async function handleMediaUpload(files, section) {
+  if (!files || !files.length) return;
+  const draft = section === "gallery" ? galleryDraft : section === "blueprints" ? blueprintsDraft : section === "videos" ? videosDraft : documentsDraft;
+  const renderFn = section === "gallery" ? renderGalleryAdmin : section === "blueprints" ? renderBlueprintsAdmin : section === "videos" ? renderVideosAdmin : renderDocumentsAdmin;
+  setFormStatus(`Uploading ${files.length} file(s)…`, false);
+
+  const errors = [];
+  for (const file of files) {
+    try {
+      const asset = await uploadMediaFile(file);
+      const item = { file: asset.url, title: file.name.replace(/\.[^.]+$/, "").replace(/[-_]/g, " "), caption: "", source: "" };
+      if (section === "videos") { item.thumbnail = asset.thumbnailUrl || ""; item.duration = ""; }
+      draft.push(item);
+    } catch (err) {
+      errors.push(file.name);
+    }
+  }
+
+  const inputId = `armament-${section}-upload`;
+  const input = document.getElementById(inputId);
+  if (input) input.value = "";
+
+  renderFn();
+  if (errors.length) { setFormStatus(`Upload failed for: ${errors.join(", ")}. Others saved.`, true); }
+  else { setFormStatus(`${files.length} file(s) uploaded. Save the form to persist.`, false); }
+}
+
+// ── Render functions ──────────────────────────────────────────
+// Each section shows only the essential fields inline (title, caption, source
+// or type-specific quick fields). All attribution metadata (photographer,
+// archive, license, capture_date, etc.) lives in the shared ℹ modal, keeping
+// the list rows compact and scannable.
+
+function renderGalleryAdmin() {
+  const container = document.getElementById("armament-gallery-list");
+  if (!container) return;
+  updateSectionCount("armament-gallery-count", galleryDraft.length, "image", "images");
+  if (!galleryDraft.length) {
+    container.innerHTML = `<p class="media-empty-state">No gallery images yet.</p>`;
+    return;
+  }
+  container.innerHTML = galleryDraft.map((g, i) => `
+    <div class="media-card">
+      <div class="media-card__body">
+        <img class="media-card__thumb" src="${escHtml(g.file)}" alt="" onerror="this.style.opacity='0.25'">
+        <div class="media-card__fields">
+          <input class="contact-form__input" placeholder="Title" value="${escHtml(g.title || "")}" data-gallery-title="${i}">
+          <div class="media-card__row2">
+            <input class="contact-form__input" placeholder="Caption" value="${escHtml(g.caption || "")}" data-gallery-caption="${i}">
+            <input class="contact-form__input" placeholder="Source / citation" value="${escHtml(g.source || "")}" data-gallery-source="${i}">
+          </div>
+          <div class="media-card__url">${escHtml(g.file)}</div>
+        </div>
+      </div>
+      ${mediaItemControls(galleryDraft, i, renderGalleryAdmin, "image")}
+    </div>`).join("");
+  container.querySelectorAll("[data-gallery-title]").forEach((el) => el.addEventListener("input", () => { galleryDraft[+el.dataset.galleryTitle].title = el.value; }));
+  container.querySelectorAll("[data-gallery-caption]").forEach((el) => el.addEventListener("input", () => { galleryDraft[+el.dataset.galleryCaption].caption = el.value; }));
+  container.querySelectorAll("[data-gallery-source]").forEach((el) => el.addEventListener("input", () => { galleryDraft[+el.dataset.gallerySource].source = el.value; }));
+  wireMediaItemControls(container, galleryDraft, renderGalleryAdmin, "image");
+}
+
+function renderBlueprintsAdmin() {
+  const container = document.getElementById("armament-blueprints-list");
+  if (!container) return;
+  updateSectionCount("armament-blueprints-count", blueprintsDraft.length, "blueprint", "blueprints");
+  if (!blueprintsDraft.length) {
+    container.innerHTML = `<p class="media-empty-state">No blueprints yet.</p>`;
+    return;
+  }
+  container.innerHTML = blueprintsDraft.map((b, i) => `
+    <div class="media-card">
+      <div class="media-card__body">
+        <img class="media-card__thumb media-card__thumb--contain" src="${escHtml(b.file)}" alt="" onerror="this.style.opacity='0.25'">
+        <div class="media-card__fields">
+          <input class="contact-form__input" placeholder="Title (e.g. Side elevation)" value="${escHtml(b.title || "")}" data-bp-title="${i}">
+          <div class="media-card__row2">
+            <input class="contact-form__input" placeholder="Caption" value="${escHtml(b.caption || "")}" data-bp-caption="${i}">
+            <input class="contact-form__input" placeholder="Source / citation" value="${escHtml(b.source || "")}" data-bp-source="${i}">
+          </div>
+          <div class="media-card__url">${escHtml(b.file)}</div>
+        </div>
+      </div>
+      ${mediaItemControls(blueprintsDraft, i, renderBlueprintsAdmin, "blueprint")}
+    </div>`).join("");
+  container.querySelectorAll("[data-bp-title]").forEach((el) => el.addEventListener("input", () => { blueprintsDraft[+el.dataset.bpTitle].title = el.value; }));
+  container.querySelectorAll("[data-bp-caption]").forEach((el) => el.addEventListener("input", () => { blueprintsDraft[+el.dataset.bpCaption].caption = el.value; }));
+  container.querySelectorAll("[data-bp-source]").forEach((el) => el.addEventListener("input", () => { blueprintsDraft[+el.dataset.bpSource].source = el.value; }));
+  wireMediaItemControls(container, blueprintsDraft, renderBlueprintsAdmin, "blueprint");
+}
+
+function renderVideosAdmin() {
+  const container = document.getElementById("armament-videos-list");
+  if (!container) return;
+  updateSectionCount("armament-videos-count", videosDraft.length, "video", "videos");
+  if (!videosDraft.length) {
+    container.innerHTML = `<p class="media-empty-state">No videos yet.</p>`;
+    return;
+  }
+  container.innerHTML = videosDraft.map((v, i) => `
+    <div class="media-card">
+      <div class="media-card__body">
+        <div class="media-card__icon" title="${escHtml(v.file)}">▶</div>
+        <div class="media-card__fields">
+          <input class="contact-form__input" placeholder="Title" value="${escHtml(v.title || "")}" data-vid-title="${i}">
+          <div class="media-card__row2">
+            <input class="contact-form__input" placeholder="Duration (e.g. 2:14)" value="${escHtml(v.duration || "")}" data-vid-duration="${i}">
+            <input class="contact-form__input" placeholder="Caption" value="${escHtml(v.caption || "")}" data-vid-caption="${i}">
+          </div>
+          <input class="contact-form__input" placeholder="Poster thumbnail URL (optional)" value="${escHtml(v.thumbnail || "")}" data-vid-thumb="${i}">
+          <div class="media-card__url">${escHtml(v.file)}</div>
+        </div>
+      </div>
+      ${mediaItemControls(videosDraft, i, renderVideosAdmin, "video")}
+    </div>`).join("");
+  container.querySelectorAll("[data-vid-title]").forEach((el) => el.addEventListener("input", () => { videosDraft[+el.dataset.vidTitle].title = el.value; }));
+  container.querySelectorAll("[data-vid-duration]").forEach((el) => el.addEventListener("input", () => { videosDraft[+el.dataset.vidDuration].duration = el.value; }));
+  container.querySelectorAll("[data-vid-caption]").forEach((el) => el.addEventListener("input", () => { videosDraft[+el.dataset.vidCaption].caption = el.value; }));
+  container.querySelectorAll("[data-vid-thumb]").forEach((el) => el.addEventListener("input", () => { videosDraft[+el.dataset.vidThumb].thumbnail = el.value; }));
+  wireMediaItemControls(container, videosDraft, renderVideosAdmin, "video");
+}
+
+function renderDocumentsAdmin() {
+  const container = document.getElementById("armament-documents-list");
+  if (!container) return;
+  updateSectionCount("armament-documents-count", documentsDraft.length, "document", "documents");
+  if (!documentsDraft.length) {
+    container.innerHTML = `<p class="media-empty-state">No documents yet.</p>`;
+    return;
+  }
+  container.innerHTML = documentsDraft.map((d, i) => `
+    <div class="media-card">
+      <div class="media-card__body">
+        <div class="media-card__icon" title="${escHtml(d.file)}">
+          <img src="/public/images/icons/ui/file.svg" alt="" width="28" height="28" style="opacity:0.7;" onerror="this.parentElement.textContent='📄'">
+        </div>
+        <div class="media-card__fields">
+          <input class="contact-form__input" placeholder="Title" value="${escHtml(d.title || "")}" data-doc-title="${i}">
+          <div class="media-card__row2">
+            <select class="contact-form__input" data-doc-type="${i}">
+              ${DOC_TYPE_OPTIONS.map((o) => `<option value="${o.value}"${d.type === o.value ? " selected" : ""}>${o.label}</option>`).join("")}
+            </select>
+            <input class="contact-form__input" placeholder="Caption / description" value="${escHtml(d.caption || "")}" data-doc-caption="${i}">
+          </div>
+          <div class="media-card__url">${escHtml(d.file)}</div>
+        </div>
+      </div>
+      ${mediaItemControls(documentsDraft, i, renderDocumentsAdmin, "document")}
+    </div>`).join("");
+  container.querySelectorAll("[data-doc-title]").forEach((el) => el.addEventListener("input", () => { documentsDraft[+el.dataset.docTitle].title = el.value; }));
+  container.querySelectorAll("[data-doc-type]").forEach((el) => el.addEventListener("change", () => { documentsDraft[+el.dataset.docType].type = el.value; }));
+  container.querySelectorAll("[data-doc-caption]").forEach((el) => el.addEventListener("input", () => { documentsDraft[+el.dataset.docCaption].caption = el.value; }));
+  wireMediaItemControls(container, documentsDraft, renderDocumentsAdmin, "document");
+}
+
 // ── Media attach modal ────────────────────────────────────────
 async function openMediaModal() {
   toggleModal("media-attach-modal", true);
@@ -405,6 +641,10 @@ async function handleSubmit(e) {
     specs,
     sources: sourcesDraft.filter((s) => s.ref),
     related_records: relatedDraft,
+    gallery: galleryDraft.filter((g) => g.file),
+    blueprints: blueprintsDraft.filter((b) => b.file),
+    videos: videosDraft.filter((v) => v.file),
+    documents: documentsDraft.filter((d) => d.file),
     published: form.querySelector("[name='published']").checked,
   };
 
@@ -429,6 +669,11 @@ async function handleSubmit(e) {
 
     setFormStatus("Saved.", false);
     loadArmaments(currentPage);
+
+    // Auto-refresh preview if it's currently open
+    if (!document.getElementById("armament-preview-modal")?.hidden) {
+      showPreview();
+    }
   } catch (_) {
     setFormStatus("Save failed. Try again.", true);
   }

@@ -16,6 +16,10 @@ export interface ArmamentInput {
   specs?: Record<string, unknown>;
   sources?: unknown[];
   related_records?: unknown[];
+  gallery?: unknown[];
+  blueprints?: unknown[];
+  videos?: unknown[];
+  documents?: unknown[];
   published?: boolean;
 }
 
@@ -31,7 +35,7 @@ export interface ArmamentInput {
 // slug. checkArmamentRecord() requires it for every record regardless of
 // how the record was created.
 function buildRecordData(input: Partial<ArmamentInput>, slug?: string) {
-  const { title, summary, category, nation, specs, sources, related_records, published } = input;
+  const { title, summary, category, nation, specs, sources, related_records, gallery, blueprints, videos, documents, published } = input;
   return {
     type: "ARMAMENT",
     ...(slug && { slug }),
@@ -46,6 +50,10 @@ function buildRecordData(input: Partial<ArmamentInput>, slug?: string) {
       nation,
       sources: sources ?? null,
       related_records: related_records ?? null,
+      gallery: gallery ?? null,
+      blueprints: blueprints ?? null,
+      videos: videos ?? null,
+      documents: documents ?? null,
     },
   };
 }
@@ -106,6 +114,10 @@ export class ArmamentsService {
       specs: input.specs ?? existingMeta,
       sources: input.sources ?? (existingMeta.sources as unknown[]),
       related_records: input.related_records ?? (existingMeta.related_records as unknown[]),
+      gallery: input.gallery !== undefined ? input.gallery : (existingMeta.gallery as unknown[] | undefined),
+      blueprints: input.blueprints !== undefined ? input.blueprints : (existingMeta.blueprints as unknown[] | undefined),
+      videos: input.videos !== undefined ? input.videos : (existingMeta.videos as unknown[] | undefined),
+      documents: input.documents !== undefined ? input.documents : (existingMeta.documents as unknown[] | undefined),
       published: input.published ?? existing.published,
     };
 

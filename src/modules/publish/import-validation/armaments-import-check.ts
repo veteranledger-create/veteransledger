@@ -195,6 +195,18 @@ export async function runArmamentsImportDryRun(scope?: ImportScope): Promise<Arm
       description: "panzer/other-axis.json 'Carro Armato P26/40' donor excluded (canonical: panzer/italy.json id=p40-heavy-tank)",
       stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "panzer" && a.fileNation === "other-axis" && a.item.name === "Carro Armato P26/40"),
     },
+    {
+      description: "missiles/germany.json 'V-1 Flying Bomb (Fieseler Fi 103)' donor excluded (canonical: wunderwaffen/germany.json 'Fieseler Fi 103 / V-1 Flying Bomb')",
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "germany" && a.item.name === "V-1 Flying Bomb (Fieseler Fi 103)"),
+    },
+    {
+      description: "missiles/germany.json 'V-2 Rocket (Aggregat A-4)' donor excluded (canonical: wunderwaffen/germany.json 'Aggregat 4 / V-2 Rocket')",
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "germany" && a.item.name === "V-2 Rocket (Aggregat A-4)"),
+    },
+    {
+      description: "missiles/japan.json 'Kaiten Type 1' donor excluded (canonical: wunderwaffen/japan.json 'Kaiten')",
+      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "japan" && a.item.name === "Kaiten Type 1"),
+    },
   ];
 
   // Validation behavior: missing canonical/donor is a warning (the

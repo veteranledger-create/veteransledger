@@ -1,0 +1,320 @@
+[
+  {
+    "crew": 1669,
+    "fate": "Scuttled 27 March 1945, Gdynia; wreck cleared 1951",
+    "type": "Battlecruiser",
+    "class": "Scharnhorst-class",
+    "armament": {
+      "main": "9× 28 cm SK C/34 guns (3 triple turrets)",
+      "secondary": [
+        "12× 15 cm guns",
+        "14× 10.5 cm AA guns"
+      ]
+    },
+    "length_m": 235.4,
+    "speed_knots": 32,
+    "commissioned": "1938-05-21",
+    "displacement_tonnes": 38900,
+    "id": "gneisenau",
+    "name": "Battlecruiser Gneisenau",
+    "nation": "Germany",
+    "summary": "Sister ship to the Scharnhorst, the Gneisenau conducted Operation Berlin alongside her in 1941, accounting for 22 Allied ships. She was severely damaged by RAF bombing at Brest in 1942 during the 'Thousand Bomber' attacks and the famous Channel Dash. Struck so often by mines and torpedoes that her crew nicknamed her the 'cellar dweller', she was eventually decommissioned and her guns transferred to shore batteries. She was scuttled as a blockship at Gdynia in March 1945.",
+    "image": "/storage/images/armaments/naval/gneisenau.jpg",
+    "sources": [
+      {
+        "ref": "Groner, Erich. German Warships 1815–1945. Naval Institute Press, 1990."
+      },
+      {
+        "ref": "Bekker, Cajus. Hitler's Naval War. Macdonald, 1974."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "scharnhorst",
+        "url": "/armaments/scharnhorst",
+        "type": "Armament",
+        "title": "Battlecruiser Scharnhorst"
+      },
+      {
+        "id": "bismarck",
+        "url": "/armaments/bismarck",
+        "type": "Armament",
+        "title": "Battleship Bismarck"
+      },
+      {
+        "id": "atlantic",
+        "url": "/campaigns/atlantic/atlantic",
+        "type": "Campaign",
+        "title": "Battle of the Atlantic"
+      },
+      {
+        "id": "erich-raeder",
+        "url": "/personnel/erich-raeder",
+        "type": "Personnel",
+        "title": "Erich Raeder"
+      }
+    ]
+  },
+  {
+    "crew": 1968,
+    "fate": "Sunk 26 December 1943 (Battle of North Cape)",
+    "type": "Battlecruiser",
+    "class": "Scharnhorst-class",
+    "armament": {
+      "main": "9× 28 cm SK C/34 guns (3 triple turrets)",
+      "secondary": [
+        "12× 15 cm guns",
+        "14× 10.5 cm AA guns"
+      ]
+    },
+    "length_m": 234.9,
+    "speed_knots": 31.5,
+    "commissioned": "1939-01-07",
+    "displacement_tonnes": 38100,
+    "id": "scharnhorst",
+    "name": "Battlecruiser Scharnhorst",
+    "nation": "Germany",
+    "summary": "The Scharnhorst and her sister Gneisenau conducted the most successful German surface raider sortie of the war (Operation Berlin, 1941), sinking 22 Allied ships totalling 115,000 tonnes. She was sunk during the Battle of the North Cape on 26 December 1943 by HMS Duke of York and escorting destroyers while attacking convoy JW 55B, with the loss of all but 36 of her crew of 1,968.",
+    "image": "/storage/images/armaments/naval/scharnhorst.jpg",
+    "sources": [
+      {
+        "ref": "Haarr, Geirr. The Sinking of the Scharnhorst. Seaforth, 2013."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "bismarck",
+        "url": "/armaments/bismarck",
+        "type": "Armament",
+        "title": "Battleship Bismarck"
+      },
+      {
+        "id": "gneisenau",
+        "url": "/armaments/gneisenau",
+        "type": "Armament",
+        "title": "Battlecruiser Gneisenau"
+      },
+      {
+        "id": "atlantic",
+        "url": "/campaigns/atlantic/atlantic",
+        "type": "Campaign",
+        "title": "Battle of the Atlantic"
+      }
+    ]
+  },
+  {
+    "crew": 2092,
+    "fate": "Sunk 27 May 1941",
+    "type": "Battleship",
+    "class": "Bismarck-class",
+    "armament": {
+      "main": "8× 38 cm SK C/34 guns (4 twin turrets)",
+      "aircraft": "4× Arado Ar 196 floatplanes",
+      "secondary": [
+        "12× 15 cm guns",
+        "16× 10.5 cm guns",
+        "16× 3.7 cm AA guns"
+      ]
+    },
+    "armor_mm": {
+      "belt": 320,
+      "deck": 80,
+      "turret_face": 360
+    },
+    "length_m": 251,
+    "speed_knots": 30.1,
+    "commissioned": "1940-08-24",
+    "displacement_tonnes": 50300,
+    "id": "bismarck",
+    "name": "Battleship Bismarck",
+    "nation": "Germany",
+    "summary": "The Bismarck was the largest warship Germany had ever built. During her only operational sortie (Operation Rheinübung, May 1941), she sank the battlecruiser HMS Hood — Britain's most famous warship — with the loss of all but 3 of her 1,418 crew. She was sunk three days later after being hunted down by the Royal Navy.",
+    "image": "/storage/images/armaments/naval/bismarck.jpg",
+    "sources": [
+      {
+        "ref": "Kennedy, Ludovic. Pursuit: The Chase and Sinking of the Bismarck. Collins, 1974."
+      },
+      {
+        "ref": "Ballard, Robert. The Discovery of the Bismarck. Hodder and Stoughton, 1990."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "rheinubung",
+        "url": "/campaigns/atlantic/rheinubung",
+        "type": "Campaign",
+        "title": "Operation Rheinübung"
+      },
+      {
+        "id": "gunther-lutjens",
+        "url": "/personnel/gunther-lutjens",
+        "type": "Personnel",
+        "title": "Günther Lütjens"
+      },
+      {
+        "id": "tirpitz",
+        "url": "/armaments/tirpitz",
+        "type": "Armament",
+        "title": "Battleship Tirpitz"
+      }
+    ]
+  },
+  {
+    "crew": 2608,
+    "fate": "Sunk by RAF Tallboy bombs, 12 November 1944",
+    "type": "Battleship",
+    "class": "Bismarck-class",
+    "armament": {
+      "main": "8× 38 cm SK C/34 guns",
+      "secondary": [
+        "12× 15 cm guns",
+        "16× 10.5 cm guns"
+      ]
+    },
+    "length_m": 251,
+    "speed_knots": 30.8,
+    "commissioned": "1941-02-25",
+    "displacement_tonnes": 52600,
+    "id": "tirpitz",
+    "name": "Battleship Tirpitz",
+    "nation": "Germany",
+    "summary": "The Tirpitz spent most of the war anchored in Norwegian fjords as a 'fleet in being', threatening Allied convoys to the Soviet Union without ever engaging in a major surface action. RAF Lancaster bombers of 617 and 9 Squadrons used 12,000-pound Tallboy bombs to finally sink her at Tromsø on 12 November 1944, with the loss of approximately 1,000 men.",
+    "image": "/storage/images/armaments/naval/tirpitz.jpg",
+    "sources": [
+      {
+        "ref": "Woodward, David. The Tirpitz and the Battle for Norway. Norton, 1953."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "bismarck",
+        "url": "/armaments/bismarck",
+        "type": "Armament",
+        "title": "Battleship Bismarck"
+      },
+      {
+        "id": "atlantic",
+        "url": "/campaigns/atlantic/atlantic",
+        "type": "Campaign",
+        "title": "Battle of the Atlantic"
+      },
+      {
+        "id": "v2-rocket",
+        "url": "/armaments/v2-rocket",
+        "type": "Armament",
+        "title": "V-2 Rocket"
+      }
+    ]
+  },
+  {
+    "crew": 1150,
+    "fate": "Scuttled 17 December 1939, mouth of River Plate",
+    "type": "Heavy Cruiser / Panzerschiff",
+    "class": "Deutschland-class",
+    "armament": {
+      "main": "6× 28 cm SK C/28 guns (2 triple turrets)",
+      "secondary": [
+        "8× 15 cm guns",
+        "6× 10.5 cm AA guns"
+      ]
+    },
+    "length_m": 186,
+    "speed_knots": 28.5,
+    "commissioned": "1936-01-06",
+    "displacement_tonnes": 16020,
+    "id": "admiral-graf-spee",
+    "name": "Pocket Battleship Admiral Graf Spee",
+    "nation": "Germany",
+    "summary": "The Admiral Graf Spee was one of Germany's three 'pocket battleships' — vessels designed to outgun any cruiser and outrun any battleship within treaty limits. She sank nine Allied merchant ships totalling 50,000 tonnes during her commerce-raiding cruise in the South Atlantic and Indian Ocean before being brought to action at the Battle of the River Plate (13 December 1939) by three British cruisers. Damaged, she took refuge in Montevideo. Facing international pressure to leave and believing a superior British force waited outside, Captain Hans Langsdorff scuttled her on 17 December 1939 and shot himself three days later.",
+    "image": "/storage/images/armaments/naval/graf-spee.jpg",
+    "sources": [
+      {
+        "ref": "National Archives (UK). ADM 234/155: Battle of the River Plate — Official Despatches, December 1939.",
+        "type": "primary"
+      },
+      {
+        "ref": "Pope, Dudley. The Battle of the River Plate. Kimber, 1956.",
+        "note": "The classic account of the hunt and scuttling."
+      },
+      {
+        "ref": "Millington-Drake, Eugen. The Drama of Graf Spee and the Battle of the Plate: A Documentary Anthology. Peter Davies, 1964."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "river-plate",
+        "url": "/campaigns/atlantic/river-plate",
+        "type": "Campaign",
+        "title": "Battle of the River Plate"
+      },
+      {
+        "id": "scharnhorst",
+        "url": "/armaments/scharnhorst",
+        "type": "Armament",
+        "title": "Battlecruiser Scharnhorst"
+      },
+      {
+        "id": "erich-raeder",
+        "url": "/personnel/erich-raeder",
+        "type": "Personnel",
+        "title": "Erich Raeder"
+      }
+    ]
+  },
+  {
+    "crew": 44,
+    "type": "Submarine",
+    "armament": {
+      "gun": "1× 88 mm deck gun",
+      "torpedoes": "14× G7a/G7e torpedoes (5 tubes: 4 bow, 1 stern)"
+    },
+    "length_m": 67.1,
+    "range_km": 14800,
+    "manufacturer": "Multiple yards",
+    "units_produced": 568,
+    "years_of_service": "1940–1945",
+    "max_speed_surfaced_knots": 17.7,
+    "max_speed_submerged_knots": 7.6,
+    "displacement_surfaced_tonnes": 769,
+    "displacement_submerged_tonnes": 871,
+    "id": "type-viic-uboat",
+    "name": "Type VIIC U-boat",
+    "nation": "Germany",
+    "summary": "The Type VIIC was the backbone of the U-boat campaign — the most produced German submarine of the war. These boats conducted the Battle of the Atlantic, sinking millions of tonnes of Allied shipping. Of the 568 Type VIIC boats built, 429 were lost — a casualty rate of over 75%. Their crews faced the highest fatality rate of any service in any country during the war.",
+    "image": "/storage/images/armaments/naval/type-viic.jpg",
+    "sources": [
+      {
+        "ref": "Kemp, Paul. U-Boats Destroyed: German Submarine Losses in the World Wars. Arms and Armour, 1997."
+      },
+      {
+        "ref": "Rossler, Eberhard. The U-boat: The Evolution and Technical History of German Submarines. Arms and Armour, 1981."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "karl-donitz",
+        "url": "/personnel/karl-donitz",
+        "type": "Personnel",
+        "title": "Karl Dönitz"
+      },
+      {
+        "id": "otto-kretschmer",
+        "url": "/personnel/otto-kretschmer",
+        "type": "Personnel",
+        "title": "Otto Kretschmer"
+      },
+      {
+        "id": "wolfgang-luth",
+        "url": "/personnel/wolfgang-luth",
+        "type": "Personnel",
+        "title": "Wolfgang Lüth"
+      },
+      {
+        "id": "uboat-campaing",
+        "url": "/campaigns/atlantic/uboat-campaing",
+        "type": "Campaign",
+        "title": "U-boat Campaign"
+      }
+    ]
+  }
+]

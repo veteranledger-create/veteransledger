@@ -195,6 +195,18 @@ export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [
     canonicalId: "p40-heavy-tank",
     fieldsToMerge: ["year"],
   },
+  // Phase 11A — missiles/germany.json carries V-1 and V-2 entries that
+  // duplicate richer Wunderwaffen canonicals by the same weapon systems
+  // under different name strings (missiles: "V-1 Flying Bomb (Fieseler
+  // Fi 103)" / "V-2 Rocket (Aggregat A-4)"; wunderwaffen: "Fieseler Fi
+  // 103 / V-1 Flying Bomb" / "Aggregat 4 / V-2 Rocket"). missiles/
+  // japan.json's "Kaiten Type 1" similarly duplicates wunderwaffen/
+  // japan.json's "Kaiten". All three Wunderwaffen entries are richer
+  // (image, designation, manufacturer, longer summary); the missiles
+  // donors add only: guidance (V-1/V-2) and length_m+speed_knots
+  // (Kaiten) — genuinely absent from the canonicals, so fill-if-missing
+  // applies cleanly. Every other missiles field is either already present
+  // in Wunderwaffen or conflicts with richer canonical data — excluded.
   {
     donor: {
       category: "missiles",
@@ -206,9 +218,8 @@ export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [
       fileNation: "germany",
       name: "Fieseler Fi 103 / V-1 Flying Bomb",
     },
-    fieldsToMerge: [],
+    fieldsToMerge: ["guidance"],
   },
-
   {
     donor: {
       category: "missiles",
@@ -220,9 +231,8 @@ export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [
       fileNation: "germany",
       name: "Aggregat 4 / V-2 Rocket",
     },
-    fieldsToMerge: [],
+    fieldsToMerge: ["guidance"],
   },
-
   {
     donor: { category: "missiles", fileNation: "japan", name: "Kaiten Type 1" },
     canonical: {

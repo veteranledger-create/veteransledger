@@ -8,8 +8,9 @@ import { handleValidation } from "../../utilities/validation";
 export const personnelRoutes = Router();
 const ctrl = new PersonnelController();
 
-personnelRoutes.get("/",    listPersonnelValidator,  handleValidation, ctrl.list.bind(ctrl));
-personnelRoutes.get("/:id", ctrl.get.bind(ctrl));
+personnelRoutes.get("/",          listPersonnelValidator, handleValidation, ctrl.list.bind(ctrl));
+personnelRoutes.get("/:id/preview", authenticate, requireAdmin, ctrl.preview.bind(ctrl));
+personnelRoutes.get("/:id",         ctrl.get.bind(ctrl));
 personnelRoutes.post("/",   authenticate, requireAdmin, createPersonnelValidator, handleValidation, ctrl.create.bind(ctrl));
 personnelRoutes.put("/:id", authenticate, requireAdmin, updatePersonnelValidator, handleValidation, ctrl.update.bind(ctrl));
 personnelRoutes.delete("/:id", authenticate, requireAdmin, ctrl.remove.bind(ctrl));

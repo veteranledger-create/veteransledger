@@ -40,6 +40,22 @@ export const createArmamentValidator = [
     .optional()
     .isArray()
     .withMessage("Related records must be an array."),
+  body("gallery")
+    .optional()
+    .isArray()
+    .withMessage("Gallery must be an array."),
+  body("blueprints")
+    .optional()
+    .isArray()
+    .withMessage("Blueprints must be an array."),
+  body("videos")
+    .optional()
+    .isArray()
+    .withMessage("Videos must be an array."),
+  body("documents")
+    .optional()
+    .isArray()
+    .withMessage("Documents must be an array."),
   body("published")
     .optional()
     .isBoolean()
@@ -74,6 +90,22 @@ export const updateArmamentValidator = [
     .optional()
     .isArray()
     .withMessage("Related records must be an array."),
+  body("gallery")
+    .optional()
+    .isArray()
+    .withMessage("Gallery must be an array."),
+  body("blueprints")
+    .optional()
+    .isArray()
+    .withMessage("Blueprints must be an array."),
+  body("videos")
+    .optional()
+    .isArray()
+    .withMessage("Videos must be an array."),
+  body("documents")
+    .optional()
+    .isArray()
+    .withMessage("Documents must be an array."),
   body("published")
     .optional()
     .isBoolean()

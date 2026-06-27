@@ -1,0 +1,461 @@
+{
+  "runId": "3e399fc7-95cd-471a-a2a4-7b462a5c3936",
+  "executedAt": "2026-06-26T21:17:39.912Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 129,
+    "collectionCount": 31,
+    "existingArmamentSlugs": [
+      "bismarck",
+      "tirpitz",
+      "type-viic-uboat",
+      "scharnhorst",
+      "gneisenau",
+      "admiral-graf-spee",
+      "littorio-later-italia",
+      "vittorio-veneto",
+      "zara",
+      "adua-submarine",
+      "yamato",
+      "shokaku",
+      "i-400-class-submarine",
+      "marasti",
+      "sdkfz-251",
+      "bf-109",
+      "jagdpanther",
+      "fw-190",
+      "me-262",
+      "ju-87-stuka",
+      "he-111",
+      "m13-40",
+      "he-219-uhu",
+      "ta-152",
+      "he-177-greif",
+      "mc-202-folgore",
+      "sm-79-sparviero",
+      "a6m-zero",
+      "ki-43-hayabusa",
+      "ki-84-hayate",
+      "fiat-cr-42-falco",
+      "kawasaki-ki-61-hien",
+      "iar-80",
+      "pz-iv",
+      "pz-vi-tiger",
+      "pz-v-panther",
+      "pz-vi-b-tiger-ii",
+      "stug-iii",
+      "breda-m30",
+      "p40-heavy-tank",
+      "type-97-chi-ha",
+      "type-95-ha-go",
+      "type-94-tankette",
+      "type-3-chi-nu",
+      "r-2-lt-vz-35",
+      "toldi-ii",
+      "mg-42",
+      "stg-44",
+      "panzerfaust",
+      "mp-40",
+      "kar-98k",
+      "flak-88",
+      "carcano-m91-38",
+      "beretta-mab-38",
+      "breda-m37",
+      "arisaka-type-38",
+      "arisaka-type-99",
+      "type-96-light-machine-gun",
+      "type-11-grenade-discharger",
+      "zb-vz-26",
+      "pusca-mitraliera-md-1939-zb-30",
+      "mannlicher-m1895-repetier-gewehr-m-95"
+    ]
+  },
+  "preview": {
+    "generatedAt": "2026-06-26T21:17:40.138Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "hs-293",
+      "motobomba-fff",
+      "breda-20-65-mod-35",
+      "type-93-long-lance-torpedo",
+      "antonescu-anti-tank-grenade-og-43",
+      "type-4-anti-tank-grenade-japan",
+      "spoleto-45-5",
+      "v1-flying-bomb",
+      "v2-rocket",
+      "me-163-komet",
+      "schwerer-gustav",
+      "v3-supergun",
+      "siluro-a-lenta-corsa-slc-maiale",
+      "barchina-esplosiva-mtm",
+      "gamma-class-frogman-suit",
+      "fu-go-fire-balloon",
+      "ohka-model-11",
+      "kaiten",
+      "shinyo-suicide-boat",
+      "fukuryu-crouching-dragon",
+      "ab-250-2-italian-air-torpedo-variant",
+      "romanian-oil-field-demolition-systems",
+      "a-stoff-c-stoff-rocket-fuel-hungarian-supplied"
+    ],
+    "recordsToUpdate": [
+      "jagdpanther",
+      "pz-iv",
+      "pz-v-panther",
+      "pz-vi-tiger",
+      "pz-vi-b-tiger-ii",
+      "sdkfz-251",
+      "stug-iii",
+      "m13-40",
+      "p40-heavy-tank",
+      "type-3-chi-nu",
+      "type-94-tankette",
+      "type-95-ha-go",
+      "type-97-chi-ha",
+      "fw-190",
+      "ta-152",
+      "he-111",
+      "he-177-greif",
+      "he-219-uhu",
+      "ju-87-stuka",
+      "bf-109",
+      "me-262",
+      "fiat-cr-42-falco",
+      "mc-202-folgore",
+      "sm-79-sparviero",
+      "kawasaki-ki-61-hien",
+      "a6m-zero",
+      "ki-43-hayabusa",
+      "ki-84-hayate",
+      "gneisenau",
+      "scharnhorst",
+      "bismarck",
+      "tirpitz",
+      "admiral-graf-spee",
+      "type-viic-uboat",
+      "adua-submarine",
+      "littorio-later-italia",
+      "vittorio-veneto",
+      "zara",
+      "yamato",
+      "shokaku",
+      "i-400-class-submarine",
+      "i-400-class-submarine",
+      "marasti",
+      "flak-88",
+      "kar-98k",
+      "mg-42",
+      "mp-40",
+      "panzerfaust",
+      "stg-44",
+      "beretta-mab-38",
+      "breda-m30",
+      "breda-m37",
+      "carcano-m91-38",
+      "arisaka-type-38",
+      "arisaka-type-99",
+      "type-11-grenade-discharger",
+      "type-96-light-machine-gun"
+    ],
+    "collectionsToCreate": [
+      "armaments-missiles-germany",
+      "armaments-missiles-italy",
+      "armaments-missiles-japan",
+      "armaments-missiles-other-axis",
+      "armaments-wunderwaffen-germany",
+      "armaments-wunderwaffen-italy",
+      "armaments-wunderwaffen-japan",
+      "armaments-wunderwaffen-other-axis"
+    ],
+    "collectionsExisting": [
+      "armaments-naval-germany",
+      "armaments-naval-italy",
+      "armaments-naval-japan",
+      "armaments-naval-other-axis",
+      "armaments-aircraft-germany",
+      "armaments-aircraft-italy",
+      "armaments-aircraft-japan",
+      "armaments-panzer-germany",
+      "armaments-panzer-italy",
+      "armaments-panzer-japan",
+      "armaments-equipment-germany",
+      "armaments-equipment-italy",
+      "armaments-equipment-japan"
+    ],
+    "synthesizedIdCount": 19,
+    "duplicateResolutionReport": {
+      "rulesExpected": 12,
+      "rulesMatched": 7,
+      "rulesMissingCanonical": 0,
+      "rulesMissingDonor": 5,
+      "rulesApplied": 7,
+      "outcomes": [
+        {
+          "description": "Yamato -> yamato",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Shōkaku -> shokaku",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Siluro a Lenta Corsa (SLC) / 'Maiale' -> Siluro a Lenta Corsa (SLC) 'Maiale'",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Ohka Model 11 -> Ohka Model 11",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Macchi C.202 Folgore -> mc-202-folgore",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "Mitsubishi A6M Zero -> a6m-zero",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "Nakajima Ki-43 Hayabusa -> ki-43-hayabusa",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "Carro Armato M13/40 -> m13-40",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "Carro Armato P26/40 -> p40-heavy-tank",
+          "canonicalFound": true,
+          "donorFound": false,
+          "mergeApplied": false,
+          "donorExcluded": false
+        },
+        {
+          "description": "V-1 Flying Bomb (Fieseler Fi 103) -> Fieseler Fi 103 / V-1 Flying Bomb",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "V-2 Rocket (Aggregat A-4) -> Aggregat 4 / V-2 Rocket",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        },
+        {
+          "description": "Kaiten Type 1 -> Kaiten",
+          "canonicalFound": true,
+          "donorFound": true,
+          "mergeApplied": true,
+          "donorExcluded": true
+        }
+      ]
+    }
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqvfmspb000aob0hwbygakbp",
+      "slug": "hs-293",
+      "category": "missiles",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqvfmspv000cob0hnuoi16b3",
+      "slug": "motobomba-fff",
+      "category": "missiles",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqvfmspz000eob0hfq7kplsf",
+      "slug": "breda-20-65-mod-35",
+      "category": "missiles",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqvfmsq1000gob0h40dhyofb",
+      "slug": "type-93-long-lance-torpedo",
+      "category": "missiles",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqvfmsq5000iob0hd2j9b0rn",
+      "slug": "antonescu-anti-tank-grenade-og-43",
+      "category": "missiles",
+      "fileNation": "other-axis"
+    },
+    {
+      "id": "cmqvfmsq7000kob0ho2ru7rsy",
+      "slug": "type-4-anti-tank-grenade-japan",
+      "category": "missiles",
+      "fileNation": "other-axis"
+    },
+    {
+      "id": "cmqvfmsqa000mob0hyjbxxr13",
+      "slug": "spoleto-45-5",
+      "category": "missiles",
+      "fileNation": "other-axis"
+    },
+    {
+      "id": "cmqvfmsqc000oob0hxqf0nxh0",
+      "slug": "v1-flying-bomb",
+      "category": "wunderwaffen",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqvfmsqf000qob0hazrfi9m1",
+      "slug": "v2-rocket",
+      "category": "wunderwaffen",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqvfmsqj000sob0h6mhtv6yl",
+      "slug": "me-163-komet",
+      "category": "wunderwaffen",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqvfmsqm000uob0hgpbswr6e",
+      "slug": "schwerer-gustav",
+      "category": "wunderwaffen",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqvfmsqo000wob0hyotrsgqi",
+      "slug": "v3-supergun",
+      "category": "wunderwaffen",
+      "fileNation": "germany"
+    },
+    {
+      "id": "cmqvfmsqq000yob0hx0ga0x55",
+      "slug": "siluro-a-lenta-corsa-slc-maiale",
+      "category": "wunderwaffen",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqvfmsqs0010ob0hwviip8tr",
+      "slug": "barchina-esplosiva-mtm",
+      "category": "wunderwaffen",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqvfmsqw0012ob0h9b6f8deu",
+      "slug": "gamma-class-frogman-suit",
+      "category": "wunderwaffen",
+      "fileNation": "italy"
+    },
+    {
+      "id": "cmqvfmsqz0014ob0hngkrt4nl",
+      "slug": "fu-go-fire-balloon",
+      "category": "wunderwaffen",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqvfmsr10016ob0hg3z79x98",
+      "slug": "ohka-model-11",
+      "category": "wunderwaffen",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqvfmsr30018ob0hov7a2wub",
+      "slug": "kaiten",
+      "category": "wunderwaffen",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqvfmsr5001aob0hbc0a1gf4",
+      "slug": "shinyo-suicide-boat",
+      "category": "wunderwaffen",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqvfmsr7001cob0hdb5f93p7",
+      "slug": "fukuryu-crouching-dragon",
+      "category": "wunderwaffen",
+      "fileNation": "japan"
+    },
+    {
+      "id": "cmqvfmsr9001eob0hf0biuky4",
+      "slug": "ab-250-2-italian-air-torpedo-variant",
+      "category": "wunderwaffen",
+      "fileNation": "other-axis"
+    },
+    {
+      "id": "cmqvfmsrc001gob0hjycq7czx",
+      "slug": "romanian-oil-field-demolition-systems",
+      "category": "wunderwaffen",
+      "fileNation": "other-axis"
+    },
+    {
+      "id": "cmqvfmsre001iob0hnoakrnzx",
+      "slug": "a-stoff-c-stoff-rocket-fuel-hungarian-supplied",
+      "category": "wunderwaffen",
+      "fileNation": "other-axis"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "armaments-missiles-germany",
+      "id": "cmqvfmsov0001ob0hf84lzdmj"
+    },
+    {
+      "slug": "armaments-missiles-italy",
+      "id": "cmqvfmsp10002ob0hepbjhyes"
+    },
+    {
+      "slug": "armaments-missiles-japan",
+      "id": "cmqvfmsp30003ob0hv0ehzwbg"
+    },
+    {
+      "slug": "armaments-missiles-other-axis",
+      "id": "cmqvfmsp40004ob0hz81543wm"
+    },
+    {
+      "slug": "armaments-wunderwaffen-germany",
+      "id": "cmqvfmsp50005ob0huiqem9xr"
+    },
+    {
+      "slug": "armaments-wunderwaffen-italy",
+      "id": "cmqvfmsp60006ob0hgx39pp4b"
+    },
+    {
+      "slug": "armaments-wunderwaffen-japan",
+      "id": "cmqvfmsp80007ob0hsvdnyfbl"
+    },
+    {
+      "slug": "armaments-wunderwaffen-other-axis",
+      "id": "cmqvfmsp90008ob0h0zv71arr"
+    }
+  ],
+  "recordsSkipped": [],
+  "verification": {
+    "recordsCompared": 23,
+    "expectedDifferences": [],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

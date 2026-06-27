@@ -96,6 +96,117 @@
   overflow: hidden;
 }
 
+/* ── Media Gallery page (/armaments/:id/gallery) ── */
+.armament-gallery-page { max-width: 1200px; margin: 0 auto; padding: var(--space-8) var(--space-6); }
+.armament-gallery-page .record-breadcrumb { margin-bottom: var(--space-6); }
+
+.armament-gallery-tabs {
+  display: flex;
+  gap: var(--space-1);
+  border-bottom: 1px solid var(--border-dim);
+  margin-bottom: var(--space-8);
+  overflow-x: auto;
+}
+.armament-gallery-tab {
+  flex-shrink: 0;
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-sm);
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color var(--transition-base), border-color var(--transition-base);
+}
+.armament-gallery-tab:hover { color: var(--text-secondary); }
+.armament-gallery-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.armament-gallery-tab[hidden] { display: none; }
+
+.armament-gallery-panel { display: none; }
+.armament-gallery-panel.active { display: block; }
+
+.armament-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+}
+@media (max-width: 640px) {
+  .armament-gallery-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  .armament-gallery-page { padding: var(--space-5) var(--space-4); }
+}
+
+.armament-gallery-figure {
+  margin: 0;
+  position: relative;
+}
+.armament-gallery-figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-dim);
+  display: block;
+  cursor: zoom-in;
+  transition: border-color var(--transition-base);
+}
+.armament-gallery-figure img:hover { border-color: var(--border-accent); }
+.armament-gallery-figure--blueprint img { object-fit: contain; background: var(--bg-card); }
+
+.armament-gallery-figcaption {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.4;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.armament-gallery-figcaption strong {
+  display: block;
+  color: var(--text-secondary);
+  font-style: normal;
+  margin-bottom: 2px;
+}
+.armament-gallery-source {
+  display: block;
+  color: var(--gold-dim);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.armament-gallery-video-player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-dim);
+  background: #000;
+  display: block;
+}
+.armament-gallery-duration {
+  display: inline-block;
+  color: var(--gold-dim);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.armament-gallery-empty {
+  padding: var(--space-10) 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+.armament-gallery-count {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-5);
+  letter-spacing: 0.04em;
+}
+
 /* ── Mobile compact layout ── */
 @media (max-width: 640px) {
   .armaments-grid {

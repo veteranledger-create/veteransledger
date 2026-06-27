@@ -109,6 +109,15 @@ export interface PromotionResult {
 // categories untouched, then re-promoted (runId
 // 73f62ddd-5734-49ff-ae03-efbb9e6f885e) as the final, intentionally-
 // kept live state. Reset to false afterward.
+//
+// Phase 11A (full finalization): all 6 categories published from DB
+// and promoted together (runId 50dce0eb-7e97-4df7-80ee-4b517cb61f5a
+// — 28 staged files + 3 orphan deletions (missiles/naval/wunderwaffen
+// other-axis.json) + index.json). Rolled back (runId
+// 5be6789d-de2b-4370-8e29-e6c24dbae653), confirmed all 32 files
+// restored byte-for-byte. Re-promoted (runId
+// 6a7105d0-7823-4742-b942-b4bf8016aa45) as the final, intentionally-
+// kept live state. Reset to false afterward.
 const PROMOTION_ENABLED = false;
 
 function publicDataDir(type: string): string {

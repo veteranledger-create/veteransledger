@@ -1,0 +1,73 @@
+[
+  {
+    "type": "Army Fighter",
+    "year": 1942,
+    "engine": "Kawasaki Ha-40 (Daimler-Benz DB 601 licence), 1,175 hp",
+    "armament": "2× 20mm Ho-5 cannon, 2× 12.7mm Ho-103 machine guns",
+    "range_km": 1800,
+    "max_speed_kmh": 591,
+    "id": "kawasaki-ki-61-hien",
+    "name": "Kawasaki Ki-61 Hien",
+    "nation": "Japan",
+    "summary": "Japan's only liquid-cooled engine fighter of the war. Mistaken by Allied pilots for a Bf 109. Engine reliability was poor."
+  },
+  {
+    "crew": 1,
+    "role": "Carrier-based fighter",
+    "type": "Fighter",
+    "engine": "Nakajima NK1C Sakae 12, 940 hp",
+    "armament": [
+      "2× 20mm Type 99 cannon",
+      "2× 7.7mm Type 97 machine guns"
+    ],
+    "range_km": 3105,
+    "ceiling_m": 10000,
+    "manufacturer": "Mitsubishi",
+    "max_speed_kmh": 534,
+    "units_produced": 10939,
+    "years_of_service": "1940–1945",
+    "id": "a6m-zero",
+    "name": "Mitsubishi A6M Zero",
+    "nation": "Japan",
+    "summary": "The A6M Zero was the finest carrier-based fighter in the world at the time of its introduction and came as a complete shock to Allied pilots in 1941. Its extraordinary range and manoeuvrability — achieved by sacrificing pilot armour and self-sealing fuel tanks — made it initially dominant. By 1943, improved Allied fighters and tactics had overcome its advantages, and its lack of protection made it increasingly deadly to its own pilots.",
+    "image": "/storage/images/armaments/aircraft/a6m-zero.jpg"
+  },
+  {
+    "crew": 1,
+    "role": "Army air superiority fighter",
+    "type": "Fighter",
+    "engine": "Nakajima Ha-115, 1,150 hp",
+    "armament": [
+      "2× 12.7mm Ho-103 machine guns"
+    ],
+    "range_km": 1760,
+    "manufacturer": "Nakajima",
+    "max_speed_kmh": 530,
+    "units_produced": 5919,
+    "years_of_service": "1941–1945",
+    "id": "ki-43-hayabusa",
+    "name": "Nakajima Ki-43 Hayabusa",
+    "nation": "Japan",
+    "summary": "The Imperial Japanese Army Air Force's primary fighter, known to Allied pilots as 'Oscar'. Like the Zero, it prioritised manoeuvrability over protection. The most numerous Japanese army fighter of the war, it served on every front from China to Burma and the Pacific.",
+    "image": "/storage/images/armaments/aircraft/ki43.jpg"
+  },
+  {
+    "crew": 1,
+    "role": "Multi-role fighter",
+    "type": "Fighter",
+    "armament": [
+      "2× 20mm Ho-5 cannon",
+      "2× 12.7mm Ho-103 machine guns"
+    ],
+    "range_km": 2168,
+    "manufacturer": "Nakajima",
+    "max_speed_kmh": 631,
+    "units_produced": 3514,
+    "years_of_service": "1944–1945",
+    "id": "ki-84-hayate",
+    "name": "Nakajima Ki-84 Hayate",
+    "nation": "Japan",
+    "summary": "Considered the best Japanese fighter of the war. The Ki-84 Hayate ('Gale') could match or outperform the P-51D Mustang at lower altitudes and represented Japan's last serious attempt to produce a competitive front-line fighter. Material shortages and poor-quality fuel limited its operational effectiveness in the war's final year.",
+    "image": "/storage/images/armaments/aircraft/ki84.jpg"
+  }
+]

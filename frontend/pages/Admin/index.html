@@ -16,6 +16,39 @@
   <link rel="stylesheet" href="/styles/archive.css">
   <link rel="stylesheet" href="/styles/footer.css">
   <link rel="stylesheet" href="/styles/contact-modal.css">
+  <style>
+    [hidden] { display: none !important; }
+    /* ── Admin · Media Management ──────────────────────────────────── */
+    .media-card { background:rgba(255,255,255,.03);border:1px solid var(--border-dim);border-radius:6px;margin-bottom:var(--space-3);overflow:hidden; }
+    .media-card__body { display:flex;gap:var(--space-4);padding:var(--space-4); }
+    .media-card__thumb { flex-shrink:0;width:88px;height:66px;object-fit:cover;border-radius:4px;border:1px solid var(--border-dim);display:block; }
+    .media-card__thumb--contain { object-fit:contain;background:#0d0d0d; }
+    .media-card__icon { flex-shrink:0;width:56px;height:66px;background:#0d0d0d;border-radius:4px;border:1px solid var(--border-dim);display:flex;align-items:center;justify-content:center;font-size:24px; }
+    .media-card__fields { flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--space-2); }
+    .media-card__row2 { display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2); }
+    .media-card__url { font-size:10px;color:var(--text-muted);word-break:break-all;line-height:1.4;margin-top:2px; }
+    .media-card__actions { display:flex;align-items:center;gap:var(--space-2);padding:6px var(--space-4);border-top:1px solid rgba(255,255,255,.05);background:rgba(0,0,0,.18);flex-wrap:wrap; }
+    .media-action-sep { width:1px;height:14px;background:rgba(255,255,255,.12);flex-shrink:0;margin:0 2px; }
+    .media-action-btn { font-size:11px;padding:3px 10px;line-height:1.4; }
+    .media-action-btn--attr-active { color:var(--gold,#d4a849);border-color:var(--gold,#d4a849); }
+    .media-action-btn--danger { color:#e06060;border-color:#4a1515; }
+    .media-section-toolbar { display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-3);flex-wrap:wrap; }
+    .media-section-count { font-size:var(--text-xs);color:var(--text-muted);flex:1;min-width:80px; }
+    .media-empty-state { font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-2); }
+    /* ── Admin · Attribution Modal ─────────────────────────────────── */
+    .attr-grid-2 { display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4); }
+    .attr-grid-3 { display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-4); }
+    .attr-section-title { font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);padding-bottom:var(--space-2);border-bottom:1px solid rgba(255,255,255,.06);display:block; }
+    .attr-details > summary { list-style:none; }
+    .attr-details > summary::-webkit-details-marker { display:none; }
+    #admin-attr-technical-arrow { display:inline-block;transition:transform .15s;font-size:8px;margin-right:4px; }
+    @media (max-width:640px) {
+      .media-card__body { flex-direction:column; }
+      .media-card__thumb, .media-card__icon { width:100%;height:100px; }
+      .media-card__row2 { grid-template-columns:1fr; }
+      .attr-grid-2, .attr-grid-3 { grid-template-columns:1fr; }
+    }
+  </style>
 </head>
 
 <body>
@@ -73,16 +106,16 @@
         id="admin-tabs" role="tablist">
         <button type="button" class="admin-tab-btn category-tab is-active" data-tab="tab-overview" role="tab"
           aria-selected="true">Overview</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-records" role="tab"
-          aria-selected="false">Records</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-armaments" role="tab"
+          aria-selected="false">Armaments</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-personnel" role="tab"
+          aria-selected="false">Personnel</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-timeline" role="tab"
           aria-selected="false">Timeline</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-media" role="tab"
           aria-selected="false">Media</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-publish" role="tab"
           aria-selected="false">Publish</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-armaments" role="tab"
-          aria-selected="false">Armaments</button>
       </div>
 
       <!-- Tab: Overview (activity log) -->
@@ -178,29 +211,77 @@
         </div>
       </div>
 
-      <!-- Tab: Publish (Phase 0 — writes to storage/publish-staging only, never public/data) -->
+      <!-- Tab: Publish — full pipeline dashboard for all content sections -->
       <div id="tab-publish" class="admin-tab-panel" hidden role="tabpanel">
-        <div class="section-label" style="margin-bottom:var(--space-6);">Publish Pipeline</div>
-        <p style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-6);max-width:640px;">
-          Validates published Letter records and generates the legacy JSON shape into a staging directory.
-          This does not touch the live archive JSON yet.
-        </p>
-        <form id="publish-form" style="display:flex;gap:var(--space-3);align-items:end;margin-bottom:var(--space-8);flex-wrap:wrap;">
-          <div class="contact-form__group" style="margin:0;">
-            <label class="contact-form__label">Content type</label>
-            <select name="type" class="contact-form__input">
-              <option value="letters">Letters</option>
+
+        <!-- Header -->
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:var(--space-6);flex-wrap:wrap;gap:var(--space-4);">
+          <div>
+            <div class="section-label" style="margin:0 0 var(--space-2);">Publish Pipeline</div>
+            <p style="font-size:var(--text-sm);color:var(--text-muted);margin:0;max-width:580px;">Validate records, stage output files, then promote to the live archive. Use Rollback to restore the previous snapshot if something goes wrong.</p>
+          </div>
+          <div class="contact-form__group" style="margin:0;min-width:180px;">
+            <label class="contact-form__label">Content section</label>
+            <select id="publish-type-select" class="contact-form__input">
               <option value="armaments">Armaments</option>
+              <option value="personnel">Personnel</option>
+              <option value="campaigns">Campaigns</option>
+              <option value="letters">Letters</option>
+              <option value="articles">Articles</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-secondary" data-action="validate">Validate →</button>
-          <button type="submit" class="btn btn-primary" data-action="run">Validate &amp; Publish to Staging →</button>
-        </form>
-
-        <div class="section-label" style="margin-bottom:var(--space-6);">Last Result</div>
-        <div id="publish-result">
-          <p style="font-size:var(--text-sm);color:var(--text-muted);">No publish run yet.</p>
         </div>
+
+        <!-- Pipeline steps -->
+        <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-8);flex-wrap:wrap;align-items:stretch;">
+
+          <!-- Step 1: Validate -->
+          <div style="flex:1;min-width:160px;border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);">Step 1</div>
+            <div style="font-size:var(--text-sm);font-weight:600;color:var(--text-primary);">Validate</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;flex:1;">Check all published records for conformance issues before writing any files.</p>
+            <button type="button" id="publish-btn-validate" class="btn btn-secondary" style="width:100%;">Validate →</button>
+          </div>
+
+          <div style="display:flex;align-items:center;color:var(--text-muted);font-size:18px;padding:0 var(--space-1);">›</div>
+
+          <!-- Step 2: Stage -->
+          <div style="flex:1;min-width:160px;border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);">Step 2</div>
+            <div style="font-size:var(--text-sm);font-weight:600;color:var(--text-primary);">Stage</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;flex:1;">Validate and write output JSON to the staging directory. Does not touch live files.</p>
+            <button type="button" id="publish-btn-run" class="btn btn-secondary" style="width:100%;">Stage →</button>
+          </div>
+
+          <div style="display:flex;align-items:center;color:var(--text-muted);font-size:18px;padding:0 var(--space-1);">›</div>
+
+          <!-- Step 3: Promote -->
+          <div style="flex:1;min-width:160px;border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);">Step 3</div>
+            <div style="font-size:var(--text-sm);font-weight:600;color:var(--text-primary);">Promote</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;flex:1;">Atomically swap staged files into the live archive. Public site reflects changes immediately.</p>
+            <button type="button" id="publish-btn-promote" class="btn btn-primary" style="width:100%;">Promote to Live →</button>
+          </div>
+
+          <!-- Rollback (separate) -->
+          <div style="flex:1;min-width:160px;border:1px solid rgba(160,60,60,0.3);border-radius:6px;padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);">
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);">Recovery</div>
+            <div style="font-size:var(--text-sm);font-weight:600;color:var(--text-primary);">Rollback</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin:0;flex:1;">Restore the previous promoted snapshot. Use only if the current live version has a problem.</p>
+            <button type="button" id="publish-btn-rollback" class="btn btn-secondary" style="width:100%;color:#e06060;border-color:#4a1515;">← Rollback</button>
+          </div>
+
+        </div>
+
+        <!-- History + Result -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+          <div class="section-label" style="margin:0;">Result</div>
+          <button type="button" id="publish-btn-history" class="btn btn-secondary" style="font-size:11px;">View History</button>
+        </div>
+        <div id="publish-result">
+          <p style="font-size:var(--text-sm);color:var(--text-muted);">Select a content section and run a step above.</p>
+        </div>
+
       </div>
 
       <!-- Tab: Armaments — dedicated workflow, not the generic Record form -->
@@ -293,7 +374,62 @@
             <div id="armament-related-list"></div>
             <button type="button" class="btn btn-secondary" id="armament-add-related-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add related record</button>
 
-            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Media</div>
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Gallery</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Historical, museum, and interior photographs. Each item needs a file (uploaded image URL), optional title, caption, and source.</p>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="armament-gallery-count">—</span>
+              <button type="button" id="armament-gallery-check-urls" class="btn btn-secondary media-action-btn" title="HEAD-check all file URLs for broken links">Check URLs</button>
+              <button type="button" id="armament-gallery-clear-attr" class="btn btn-secondary media-action-btn" title="Remove attribution from all gallery items">Clear Attribution</button>
+              <button type="button" id="armament-gallery-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger" title="Remove all images">Delete All</button>
+            </div>
+            <div id="armament-gallery-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload gallery image
+              <input type="file" id="armament-gallery-upload" accept="image/*" style="display:none;" multiple>
+            </label>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Blueprints &amp; Technical Drawings</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Technical drawings, cutaway diagrams, schematics, exploded views. Same fields as gallery.</p>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="armament-blueprints-count">—</span>
+              <button type="button" id="armament-blueprints-check-urls" class="btn btn-secondary media-action-btn" title="HEAD-check all file URLs for broken links">Check URLs</button>
+              <button type="button" id="armament-blueprints-clear-attr" class="btn btn-secondary media-action-btn" title="Remove attribution from all blueprints">Clear Attribution</button>
+              <button type="button" id="armament-blueprints-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger" title="Remove all blueprints">Delete All</button>
+            </div>
+            <div id="armament-blueprints-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload blueprint
+              <input type="file" id="armament-blueprints-upload" accept="image/*" style="display:none;" multiple>
+            </label>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Archive Footage (Local Video)</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Self-hosted video files only — no YouTube or external embeds. Accepts MP4 and WebM. A poster thumbnail is generated automatically from uploaded images, or you can paste an image URL.</p>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="armament-videos-count">—</span>
+              <button type="button" id="armament-videos-clear-attr" class="btn btn-secondary media-action-btn" title="Remove attribution from all videos">Clear Attribution</button>
+              <button type="button" id="armament-videos-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger" title="Remove all videos">Delete All</button>
+            </div>
+            <div id="armament-videos-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload video
+              <input type="file" id="armament-videos-upload" accept="video/mp4,video/webm" style="display:none;" multiple>
+            </label>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Documents &amp; Manuals</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">PDF manuals, technical documents, crew manuals, field manuals, original documents. Displayed as a downloadable list on the record page.</p>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="armament-documents-count">—</span>
+              <button type="button" id="armament-documents-clear-attr" class="btn btn-secondary media-action-btn" title="Remove attribution from all documents">Clear Attribution</button>
+              <button type="button" id="armament-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger" title="Remove all documents">Delete All</button>
+            </div>
+            <div id="armament-documents-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload document
+              <input type="file" id="armament-documents-upload" accept=".pdf,.doc,.docx,application/pdf,application/msword" style="display:none;" multiple>
+            </label>
+
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Media (Library)</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">General media attachments from the media library (not gallery/blueprints/videos).</p>
             <div id="armament-media-list" style="margin-bottom:var(--space-3);"></div>
             <button type="button" class="btn btn-secondary" id="armament-attach-media-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Attach media</button>
 
@@ -309,6 +445,176 @@
               <button type="button" class="btn btn-secondary" id="armament-cancel-btn">Cancel</button>
             </div>
             <p id="armament-form-status" style="font-size:var(--text-sm);margin-top:var(--space-3);"></p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tab: Personnel — dedicated workflow using the Entity model -->
+      <div id="tab-personnel" class="admin-tab-panel" hidden role="tabpanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-6);">
+          <div class="section-label" style="margin:0;">Personnel</div>
+          <button type="button" class="btn btn-primary" id="personnel-new-btn">+ New Personnel Record</button>
+        </div>
+
+        <div style="display:flex;gap:var(--space-3);margin-bottom:var(--space-6);flex-wrap:wrap;">
+          <select id="personnel-filter-branch" class="contact-form__input" style="max-width:200px;">
+            <option value="">All branches</option>
+            <option value="army">Army</option>
+            <option value="kriegsmarine">Kriegsmarine</option>
+            <option value="luftwaffe">Luftwaffe</option>
+            <option value="waffen-ss">Waffen-SS</option>
+            <option value="foreign">Foreign</option>
+          </select>
+          <input type="text" id="personnel-filter-search" class="contact-form__input" placeholder="Search name…" style="max-width:240px;">
+        </div>
+
+        <div id="personnel-list">
+          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span></div>
+        </div>
+
+        <!-- Create/Edit form — hidden until "New" or "Edit" is clicked -->
+        <div id="personnel-form-panel" hidden style="margin-top:var(--space-8);border-top:1px solid var(--border-dim);padding-top:var(--space-8);">
+          <div class="section-label" id="personnel-form-title" style="margin-bottom:var(--space-6);">New Personnel Record</div>
+          <form id="personnel-form">
+
+            <!-- Core identity fields -->
+            <div style="display:grid;grid-template-columns:2fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Name <span style="color:#e06060;">*</span></label>
+                <input name="name" class="contact-form__input" required placeholder="Full name">
+              </div>
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Branch</label>
+                <select name="branch" class="contact-form__input">
+                  <option value="">— select —</option>
+                  <option value="army">Army</option>
+                  <option value="kriegsmarine">Kriegsmarine</option>
+                  <option value="luftwaffe">Luftwaffe</option>
+                  <option value="waffen-ss">Waffen-SS</option>
+                  <option value="foreign">Foreign / Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Nation</label>
+                <input name="nationality" class="contact-form__input" placeholder="e.g. Germany, Italy">
+              </div>
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Rank</label>
+                <input name="rank" class="contact-form__input" placeholder="e.g. Generalfeldmarschall">
+              </div>
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Service / Unit</label>
+                <input name="service" class="contact-form__input" placeholder="e.g. Wehrmacht, 6th Army">
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Born</label>
+                <input name="birthDate" class="contact-form__input" placeholder="YYYY-MM-DD (leave blank if unknown)">
+              </div>
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Died</label>
+                <input name="deathDate" class="contact-form__input" placeholder="YYYY-MM-DD (leave blank if unknown)">
+              </div>
+              <div class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Birthplace</label>
+                <input name="birthplace" class="contact-form__input" placeholder="City, Country">
+              </div>
+            </div>
+
+            <div class="contact-form__group">
+              <label class="contact-form__label">Summary</label>
+              <textarea name="summary" class="contact-form__input" rows="2" placeholder="One-paragraph summary for list views"></textarea>
+            </div>
+
+            <div class="contact-form__group">
+              <label class="contact-form__label">Biography <span style="color:#e06060;">*</span></label>
+              <textarea name="biography" class="contact-form__input" rows="8" placeholder="Full biography text (required for publish)"></textarea>
+            </div>
+
+            <!-- Portrait -->
+            <div class="section-label" style="margin:var(--space-6) 0 var(--space-4);font-size:var(--text-sm);">Portrait</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Single portrait image — displayed as the primary photo on the record page.</p>
+            <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-6);align-items:center;">
+              <input id="personnel-portrait-url" class="contact-form__input" placeholder="Portrait image URL" style="flex:1;">
+              <label class="btn btn-secondary" style="font-size:11px;cursor:pointer;white-space:nowrap;">
+                Upload portrait
+                <input type="file" id="personnel-portrait-upload" accept="image/*" style="display:none;">
+              </label>
+            </div>
+
+            <!-- Commands -->
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Commands</div>
+            <div id="personnel-commands-list"></div>
+            <button type="button" class="btn btn-secondary" id="personnel-add-command-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add command</button>
+
+            <!-- Awards -->
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Awards &amp; Decorations</div>
+            <div id="personnel-awards-list"></div>
+            <button type="button" class="btn btn-secondary" id="personnel-add-award-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add award</button>
+
+            <!-- Campaigns -->
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Campaigns &amp; Theatres</div>
+            <div id="personnel-campaigns-list"></div>
+            <button type="button" class="btn btn-secondary" id="personnel-add-campaign-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add campaign</button>
+
+            <!-- Sources -->
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Sources</div>
+            <div id="personnel-sources-list"></div>
+            <button type="button" class="btn btn-secondary" id="personnel-add-source-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Source</button>
+
+            <!-- Related Records -->
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Related Records</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Selected via search only — URLs are generated automatically and can never be entered manually.</p>
+            <div id="personnel-related-list"></div>
+            <button type="button" class="btn btn-secondary" id="personnel-add-related-btn" style="font-size:11px;margin-bottom:var(--space-6);">+ Add related record</button>
+
+            <!-- Gallery -->
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Gallery</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Historical, archive, and supplementary photographs. Each item needs a file (uploaded image URL), optional title, caption, and source.</p>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="personnel-gallery-count">—</span>
+              <button type="button" id="personnel-gallery-check-urls" class="btn btn-secondary media-action-btn" title="HEAD-check all file URLs for broken links">Check URLs</button>
+              <button type="button" id="personnel-gallery-clear-attr" class="btn btn-secondary media-action-btn" title="Remove attribution from all gallery items">Clear Attribution</button>
+              <button type="button" id="personnel-gallery-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger" title="Remove all images">Delete All</button>
+            </div>
+            <div id="personnel-gallery-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload gallery image
+              <input type="file" id="personnel-gallery-upload" accept="image/*" style="display:none;" multiple>
+            </label>
+
+            <!-- Documents -->
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Documents</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Orders, decorations, personnel files, or other primary documents.</p>
+            <div class="media-section-toolbar">
+              <span class="media-section-count" id="personnel-documents-count">—</span>
+              <button type="button" id="personnel-documents-check-urls" class="btn btn-secondary media-action-btn" title="HEAD-check all file URLs for broken links">Check URLs</button>
+              <button type="button" id="personnel-documents-clear-attr" class="btn btn-secondary media-action-btn" title="Remove attribution from all documents">Clear Attribution</button>
+              <button type="button" id="personnel-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger" title="Remove all documents">Delete All</button>
+            </div>
+            <div id="personnel-documents-list" style="margin-bottom:var(--space-3);"></div>
+            <label class="btn btn-secondary" style="font-size:11px;margin-bottom:var(--space-6);cursor:pointer;">
+              + Upload document
+              <input type="file" id="personnel-documents-upload" accept=".pdf,.doc,.docx,application/pdf,application/msword" style="display:none;" multiple>
+            </label>
+
+            <div style="display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-6);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);">
+                <input type="checkbox" name="published"> Published
+              </label>
+            </div>
+
+            <div style="display:flex;gap:var(--space-3);">
+              <button type="submit" class="btn btn-primary">Save →</button>
+              <button type="button" class="btn btn-secondary" id="personnel-preview-btn">Preview</button>
+              <button type="button" class="btn btn-secondary" id="personnel-cancel-btn">Cancel</button>
+            </div>
+            <p id="personnel-form-status" style="font-size:var(--text-sm);margin-top:var(--space-3);"></p>
           </form>
         </div>
       </div>
@@ -353,9 +659,145 @@
     </div>
   </div>
 
+  <!-- Personnel preview modal -->
+  <div id="personnel-preview-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:640px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Preview</div>
+        <button type="button" id="personnel-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="personnel-preview-content" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
+  <!-- Admin Source & Attribution modal — large, two-column, organized into
+       logical sections. Fields shown/hidden per media type by armaments-admin.js.
+       z-index 1100 sits above other modals (z-index 1000). -->
+  <div id="admin-attribution-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1100;display:flex;align-items:center;justify-content:center;padding:var(--space-4);">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:8px;width:100%;max-width:920px;max-height:92vh;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.6);">
+
+      <!-- Header -->
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:var(--space-6) var(--space-8);border-bottom:1px solid var(--border-dim);flex-shrink:0;">
+        <div>
+          <div class="section-label" id="admin-attr-modal-heading" style="margin:0;">Source &amp; Attribution</div>
+          <p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:var(--space-1);margin-bottom:0;">Provenance, copyright, and technical metadata for this media item.</p>
+        </div>
+        <button type="button" id="admin-attr-modal-close" class="btn btn-secondary" style="font-size:11px;flex-shrink:0;margin-left:var(--space-6);">✕ Close</button>
+      </div>
+
+      <!-- Scrollable body -->
+      <div style="overflow-y:auto;padding:var(--space-6) var(--space-8);flex:1;">
+
+        <!-- ── Provenance ─────────────────────────────────────── -->
+        <div style="margin-bottom:var(--space-7);">
+          <span class="attr-section-title">Provenance</span>
+          <div class="attr-grid-2">
+            <div id="admin-attr-row-photographer" class="contact-form__group" style="margin:0;">
+              <label class="contact-form__label">Photographer / Creator</label>
+              <input id="admin-attr-photographer" class="contact-form__input" placeholder="Name or unknown">
+            </div>
+            <div id="admin-attr-row-archive" class="contact-form__group" style="margin:0;">
+              <label class="contact-form__label">Archive / Collection</label>
+              <input id="admin-attr-archive" class="contact-form__input" placeholder="e.g. Bundesarchiv, NARA, IWM">
+            </div>
+            <div id="admin-attr-row-license" class="contact-form__group" style="margin:0;">
+              <label class="contact-form__label">License / Copyright</label>
+              <input id="admin-attr-license" class="contact-form__input" placeholder="e.g. Public Domain, CC BY" list="admin-attr-license-list">
+              <datalist id="admin-attr-license-list">
+                <option value="Public Domain"><option value="CC BY"><option value="CC BY-SA">
+                <option value="CC BY-NC"><option value="Rights Reserved"><option value="Archive Permission">
+                <option value="AI Generated Illustration">
+              </datalist>
+            </div>
+            <div id="admin-attr-row-capture_date" class="contact-form__group" style="margin:0;">
+              <label class="contact-form__label">Capture Date</label>
+              <input id="admin-attr-capture_date" class="contact-form__input" placeholder="e.g. 1943-07-15 or July 1943">
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Location & Context (hidden for documents) ─────── -->
+        <div id="admin-attr-section-location" style="margin-bottom:var(--space-7);">
+          <span class="attr-section-title">Location &amp; Context</span>
+          <div class="attr-grid-2">
+            <div id="admin-attr-row-location" class="contact-form__group" style="margin:0;">
+              <label class="contact-form__label">Location</label>
+              <input id="admin-attr-location" class="contact-form__input" placeholder="e.g. Eastern Front, Kursk salient">
+            </div>
+            <div id="admin-attr-row-scale" class="contact-form__group" style="margin:0;">
+              <label class="contact-form__label">Scale</label>
+              <input id="admin-attr-scale" class="contact-form__input" placeholder="e.g. 1:35">
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Technical Metadata (collapsible) ──────────────── -->
+        <div style="margin-bottom:var(--space-7);">
+          <details id="admin-attr-technical-details" class="attr-details">
+            <summary style="cursor:pointer;display:flex;align-items:center;gap:4px;margin-bottom:0;">
+              <span class="attr-section-title" style="margin-bottom:0;padding-bottom:0;border-bottom:none;display:inline;">
+                <span id="admin-attr-technical-arrow">▶</span> Technical Metadata
+              </span>
+              <span style="font-size:9px;color:var(--text-muted);margin-left:4px;font-weight:400;text-transform:none;letter-spacing:0;">(resolution, codec, file size)</span>
+            </summary>
+            <div style="border-bottom:1px solid rgba(255,255,255,.06);margin:var(--space-2) 0 var(--space-4);"></div>
+            <div class="attr-grid-3">
+              <div id="admin-attr-row-resolution" class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Resolution</label>
+                <input id="admin-attr-resolution" class="contact-form__input" placeholder="e.g. 4032×3024">
+              </div>
+              <div id="admin-attr-row-codec" class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">Codec</label>
+                <input id="admin-attr-codec" class="contact-form__input" placeholder="e.g. H.264, H.265">
+              </div>
+              <div id="admin-attr-row-file_size" class="contact-form__group" style="margin:0;">
+                <label class="contact-form__label">File Size</label>
+                <input id="admin-attr-file_size" class="contact-form__input" placeholder="e.g. 12.4 MB">
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <!-- ── Publishing (documents only) ───────────────────── -->
+        <div id="admin-attr-section-publishing" style="margin-bottom:var(--space-7);">
+          <span class="attr-section-title">Publishing</span>
+          <div class="attr-grid-2">
+            <div id="admin-attr-row-manufacturer" class="contact-form__group" style="margin:0;">
+              <label class="contact-form__label">Manufacturer / Publisher</label>
+              <input id="admin-attr-manufacturer" class="contact-form__input" placeholder="e.g. Henschel &amp; Sohn AG">
+            </div>
+            <div id="admin-attr-row-language" class="contact-form__group" style="margin:0;">
+              <label class="contact-form__label">Language</label>
+              <input id="admin-attr-language" class="contact-form__input" placeholder="e.g. German, English, Japanese">
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Notes (full width) ─────────────────────────────── -->
+        <div id="admin-attr-row-notes" class="contact-form__group" style="margin:0;">
+          <label class="contact-form__label">Notes</label>
+          <textarea id="admin-attr-notes" class="contact-form__input" rows="3" placeholder="Additional provenance, context, or condition notes"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-4) var(--space-8);border-top:1px solid var(--border-dim);flex-shrink:0;">
+        <button type="button" id="admin-attr-modal-clear" class="btn btn-secondary" style="font-size:var(--text-sm);">Clear All Fields</button>
+        <div style="flex:1;"></div>
+        <button type="button" id="admin-attr-modal-save" class="btn btn-primary" style="font-size:var(--text-sm);padding:var(--space-2) var(--space-6);">Save Attribution →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Hidden shared file input used to replace an existing media file in-place -->
+  <input type="file" id="admin-replace-file-input" style="display:none;" accept="*">
+
   <script type="module" src="/layouts/MainLayout/layout.js"></script>
   <script type="module" src="/pages/Admin/admin.js"></script>
   <script type="module" src="/pages/Admin/armaments-admin.js"></script>
+  <script type="module" src="/pages/Admin/personnel-admin.js"></script>
 </body>
 
 </html>

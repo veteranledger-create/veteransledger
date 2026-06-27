@@ -26,4 +26,8 @@ export class PersonnelController {
   async remove(req: Request, res: Response, next: NextFunction): Promise<void> {
     try { await service.delete(req.params.id); res.status(204).send(); } catch (err) { next(err); }
   }
+
+  async preview(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try { res.json(await service.preview(req.params.id)); } catch (err) { next(err); }
+  }
 }

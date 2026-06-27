@@ -88,6 +88,14 @@ export interface ImportResult {
 // Set true for the pilot (runId 7b1b6731-4fc5-4315-947f-7e07533dc011,
 // 17 records, 4 collections — armaments-equipment-{germany,italy,
 // japan,other-axis}, 0 unexpected round-trip diffs), then reset.
+//
+// Phase 11A (missiles+wunderwaffen): three cross-category rules added
+// (V-1/V-2/Kaiten — Wunderwaffen wins, donors excluded with guidance/
+// length_m/speed_knots merged). Set true for the pilot (runId
+// 3e399fc7-95cd-471a-a2a4-7b462a5c3936, 23 records, 8 collections —
+// armaments-missiles-{germany,italy,japan,other-axis} +
+// armaments-wunderwaffen-{germany,italy,japan,other-axis}, 0
+// unexpected round-trip diffs), then reset.
 const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {

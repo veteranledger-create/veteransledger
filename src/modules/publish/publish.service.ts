@@ -9,13 +9,26 @@ import { checkLetterRecord } from "./validators/letters.conformance";
 import { toLetterJson, resolveCollectionKey } from "./generators/letters.generator";
 import { checkArmamentRecord } from "./validators/armaments.conformance";
 import { toArmamentJson } from "./generators/armaments.generator";
+import { checkPersonnelRecord } from "./validators/personnel.conformance";
+import { toPersonnelJson } from "./generators/personnel.generator";
+import { PERSONNEL_FILES, RelatedRecordEntry } from "./import-validation/personnel-entity-mapper";
 import { writeStagedFilesAtomically } from "./atomic-stage-writer";
 import { normalizeArmamentName } from "../armaments/admin-duplicate-check";
 
 // See src/validators/publish.validator.ts for the allow-list that gates
 // which `:type` values reach this service at all — keep both in sync.
-const SUPPORTED_TYPES = ["letters", "armaments"] as const;
+const SUPPORTED_TYPES = ["letters", "armaments", "personnel"] as const;
 type SupportedType = (typeof SUPPORTED_TYPES)[number];
+
+// Narrow row shape returned by the personnel Prisma query — includes the
+// relation rows needed by toPersonnelJson to resolve Personnel-to-Personnel links.
+// The Relationship model uses `to` (not `toEntity`) — see prisma/schema.prisma.
+type PersonnelRow = {
+  id: string; name: string; slug: string | null; nationality: string | null;
+  birthDate: Date | null; deathDate: Date | null; biography: string | null;
+  summary: string | null; tags: string[]; metadata: unknown; published: boolean;
+  relationsFrom: Array<{ to: { id: string; slug: string | null; name: string } }>;
+};
 
 // Exported — generic across content types, not Letters-specific. Reused
 // directly by the Armaments admin preview endpoint so preview renders via
@@ -139,6 +152,60 @@ export class PublishService {
     return { valid: records.filter((r) => !errorIds.has(r.id)), issues };
   }
 
+  private async loadPublishedPersonnel(): Promise<PersonnelRow[]> {
+    return prisma.entity.findMany({
+      where: { type: "PERSON", published: true },
+      orderBy: { name: "asc" },
+      include: { relationsFrom: { include: { to: true } } },
+    }) as unknown as Promise<PersonnelRow[]>;
+  }
+
+  private checkAllPersonnel(entities: PersonnelRow[]): { valid: PersonnelRow[]; issues: ValidationIssue[] } {
+    const issues: ValidationIssue[] = [];
+    const valid: PersonnelRow[] = [];
+    for (const entity of entities) {
+      const entityLike = {
+        id: entity.id, slug: entity.slug, name: entity.name,
+        nationality: entity.nationality, birthDate: entity.birthDate,
+        deathDate: entity.deathDate, biography: entity.biography,
+        summary: entity.summary, tags: entity.tags,
+        metadata: (entity.metadata as Record<string, unknown>) ?? null,
+        published: entity.published,
+      };
+      const recordIssues = checkPersonnelRecord(entityLike);
+      issues.push(...recordIssues);
+      if (!recordIssues.some((i) => i.severity === "error")) valid.push(entity);
+    }
+    return { valid, issues };
+  }
+
+  private generatePersonnelFiles(entities: PersonnelRow[]): Map<string, string> {
+    const byBranch = new Map<string, unknown[]>();
+    for (const entity of entities) {
+      const branch = ((entity.metadata as Record<string, unknown>)?.branch as string) ?? "foreign";
+      const fileName = PERSONNEL_FILES[branch] ?? PERSONNEL_FILES.foreign;
+      const branchKey = fileName.replace(".json", "");
+      const entityLike = {
+        id: entity.id, slug: entity.slug, name: entity.name,
+        nationality: entity.nationality, birthDate: entity.birthDate,
+        deathDate: entity.deathDate, biography: entity.biography,
+        summary: entity.summary, tags: entity.tags,
+        metadata: (entity.metadata as Record<string, unknown>) ?? null,
+        published: entity.published,
+      };
+      const links: RelatedRecordEntry[] = entity.relationsFrom
+        .map((r) => ({ id: r.to.slug ?? r.to.id, title: r.to.name, type: "Personnel" as const, url: undefined }));
+      const group = byBranch.get(branchKey) ?? [];
+      group.push(toPersonnelJson(entityLike, links));
+      byBranch.set(branchKey, group);
+    }
+    const filesToWrite = new Map<string, string>();
+    for (const [key, entries] of byBranch) {
+      filesToWrite.set(`${key}.json`, JSON.stringify(entries, null, 2));
+    }
+    return filesToWrite;
+  }
+
   private async persistReport(report: PublishReport): Promise<void> {
     const reportsDir = path.join(storageConfig.directories.publishReports, report.type);
     await fs.mkdir(reportsDir, { recursive: true });
@@ -168,22 +235,32 @@ export class PublishService {
   // Still persists its report and logs an audit entry — a validation pass
   // is part of the publish history too.
   async validate(type: string, userId: string): Promise<PublishReport> {
-    const supported = this.assertSupported(type);
+    this.assertSupported(type);
     const runId = randomUUID();
-    const { records, valid, issues } = await this.loadAndCheck(supported);
+
+    let recordsChecked: number;
+    let validCount: number;
+    let issues: ValidationIssue[];
+
+    if (type === "personnel") {
+      const entities = await this.loadPublishedPersonnel();
+      const result = this.checkAllPersonnel(entities);
+      recordsChecked = entities.length;
+      validCount = result.valid.length;
+      issues = result.issues;
+    } else {
+      const supported = type as "letters" | "armaments";
+      const res = await this.loadAndCheck(supported);
+      recordsChecked = res.records.length;
+      validCount = res.valid.length;
+      issues = res.issues;
+    }
 
     const report: PublishReport = {
-      runId,
-      type,
-      mode: "validate",
-      status: "success",
+      runId, type, mode: "validate", status: "success",
       generatedAt: new Date().toISOString(),
-      recordsChecked: records.length,
-      valid: valid.length,
-      invalid: records.length - valid.length,
-      issues,
-      stats: computeStats(issues),
-      staged: [],
+      recordsChecked, valid: validCount, invalid: recordsChecked - validCount,
+      issues, stats: computeStats(issues), staged: [],
     };
 
     await this.persistReport(report);
@@ -235,11 +312,29 @@ export class PublishService {
   // failed write leaves any previous staged output exactly as it was
   // rather than half-overwritten. Same guarantee for every onboarded type.
   async run(type: string, userId: string): Promise<PublishReport> {
-    const supported = this.assertSupported(type);
+    this.assertSupported(type);
     const runId = randomUUID();
-    const { records, valid, issues } = await this.loadAndCheck(supported);
 
-    const filesToWrite = this.generateFiles(supported, valid);
+    let recordsChecked: number;
+    let validCount: number;
+    let issues: ValidationIssue[];
+    let filesToWrite: Map<string, string>;
+
+    if (type === "personnel") {
+      const entities = await this.loadPublishedPersonnel();
+      const result = this.checkAllPersonnel(entities);
+      recordsChecked = entities.length;
+      validCount = result.valid.length;
+      issues = result.issues;
+      filesToWrite = this.generatePersonnelFiles(result.valid);
+    } else {
+      const supported = type as "letters" | "armaments";
+      const res = await this.loadAndCheck(supported);
+      recordsChecked = res.records.length;
+      validCount = res.valid.length;
+      issues = res.issues;
+      filesToWrite = this.generateFiles(supported, res.valid);
+    }
 
     const outDir = path.join(storageConfig.directories.publishStaging, type);
 
@@ -254,18 +349,11 @@ export class PublishService {
     }
 
     const report: PublishReport = {
-      runId,
-      type,
-      mode: "run",
-      status,
+      runId, type, mode: "run", status,
       ...(error ? { error } : {}),
       generatedAt: new Date().toISOString(),
-      recordsChecked: records.length,
-      valid: valid.length,
-      invalid: records.length - valid.length,
-      issues,
-      stats: computeStats(issues),
-      staged,
+      recordsChecked, valid: validCount, invalid: recordsChecked - validCount,
+      issues, stats: computeStats(issues), staged,
     };
 
     await this.persistReport(report);

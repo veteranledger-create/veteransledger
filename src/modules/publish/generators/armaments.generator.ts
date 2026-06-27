@@ -9,6 +9,10 @@ export interface ArmamentJson {
   image?: string;
   sources?: unknown;
   related_records?: unknown;
+  gallery?: unknown[];
+  blueprints?: unknown[];
+  videos?: unknown[];
+  documents?: unknown[];
   // One-off extension fields (designation, crew, weight_tonnes, armament,
   // armor_mm, engine, speed_kmh, class, commissioned, fate, length_m,
   // wingspan_m, warhead_kg, ...) pass through here, untyped — see
@@ -16,7 +20,7 @@ export interface ArmamentJson {
   [key: string]: unknown;
 }
 
-const EXPLICIT_FIELDS = new Set(["category", "fileNation", "schemaType", "image", "sources", "related_records"]);
+const EXPLICIT_FIELDS = new Set(["category", "fileNation", "schemaType", "image", "sources", "related_records", "gallery", "blueprints", "videos", "documents"]);
 
 function meta(record: RecordLike, key: string): unknown {
   return record.metadata ? record.metadata[key] : undefined;
@@ -34,6 +38,8 @@ export function toArmamentJson(record: RecordLike): ArmamentJson {
     }
   }
 
+  const asArrayOrUndef = (v: unknown) => (Array.isArray(v) && v.length > 0 ? v : undefined);
+
   return {
     ...extras,
     id: record.slug ?? record.id,
@@ -43,6 +49,10 @@ export function toArmamentJson(record: RecordLike): ArmamentJson {
     image: asString(meta(record, "image")),
     sources: meta(record, "sources") ?? undefined,
     related_records: meta(record, "related_records") ?? undefined,
+    gallery: asArrayOrUndef(meta(record, "gallery")),
+    blueprints: asArrayOrUndef(meta(record, "blueprints")),
+    videos: asArrayOrUndef(meta(record, "videos")),
+    documents: asArrayOrUndef(meta(record, "documents")),
   };
 }
 

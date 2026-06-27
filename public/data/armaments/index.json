@@ -28,7 +28,6 @@
         "germany",
         "italy",
         "japan",
-        "other-axis",
         "romania"
       ]
     },
@@ -39,7 +38,7 @@
         "germany",
         "italy",
         "japan",
-        "other-axis"
+        "romania"
       ]
     },
     {
@@ -47,9 +46,10 @@
       "label": "Wunderwaffen",
       "nations": [
         "germany",
+        "hungary",
         "italy",
         "japan",
-        "other-axis"
+        "romania"
       ]
     },
     {

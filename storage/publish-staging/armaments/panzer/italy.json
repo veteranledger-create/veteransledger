@@ -1,0 +1,49 @@
+[
+  {
+    "crew": 4,
+    "type": "Medium Tank",
+    "year": 1940,
+    "armament": {
+      "primary": "47mm Cannone da 47/32 M35",
+      "secondary": [
+        "4× 8mm Breda 38 machine guns"
+      ]
+    },
+    "armor_mm": {
+      "hull_side": 15,
+      "hull_front": 30
+    },
+    "speed_kmh": 32,
+    "manufacturer": "Fiat-Ansaldo",
+    "weight_tonnes": 14,
+    "units_produced": 799,
+    "years_of_service": "1940–1943",
+    "id": "m13-40",
+    "name": "Carro Armato M13/40",
+    "nation": "Italy",
+    "summary": "The M13/40 was Italy's principal tank during the North African campaign. Though technically inferior to contemporary German and British designs, it gave reasonable service in the desert when properly maintained. Its 47mm gun could penetrate early British tanks, but its thin armour, unreliable diesel engine, and cramped interior were serious weaknesses."
+  },
+  {
+    "crew": 4,
+    "type": "Heavy Tank",
+    "year": 1943,
+    "armament": {
+      "primary": "75mm Cannone da 75/34 M42",
+      "secondary": [
+        "8mm Breda 38 machine gun"
+      ]
+    },
+    "armor_mm": {
+      "hull_front": 50
+    },
+    "speed_kmh": 40,
+    "manufacturer": "Fiat-Ansaldo",
+    "weight_tonnes": 26,
+    "units_produced": 103,
+    "years_of_service": "1943–1945",
+    "id": "p40-heavy-tank",
+    "name": "Carro Armato P26/40",
+    "nation": "Italy",
+    "summary": "Italy's most capable tank, comparable to the mid-war Panzer IV. Unfortunately, it appeared too late, in too few numbers, and under German rather than Italian control following the armistice of September 1943. Only about 103 were ever completed."
+  }
+]

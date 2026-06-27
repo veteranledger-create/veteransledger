@@ -3,7 +3,7 @@ import { param } from "express-validator";
 // Onboarding a second type to the publish pipeline means adding it here
 // (this is checked again, independently, by PublishService — see
 // SUPPORTED_TYPES there) and shipping its generator + conformance validator.
-const SUPPORTED_TYPES = ["letters", "armaments"];
+const SUPPORTED_TYPES = ["letters", "armaments", "personnel"];
 
 export const publishTypeValidator = [
   param("type")

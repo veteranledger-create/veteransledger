@@ -1,0 +1,14 @@
+[
+  {
+    "type": "Fighter",
+    "year": 1941,
+    "engine": "IAR K14-III C32 (Gnome-Rhône 14K licence), 1,025 hp",
+    "armament": "6× 7.92mm FN Browning machine guns",
+    "range_km": 900,
+    "max_speed_kmh": 510,
+    "id": "iar-80",
+    "name": "IAR 80",
+    "nation": "Romania",
+    "summary": "Romania's indigenous fighter design, competitive at its introduction. Used effectively on the Eastern Front defending Romanian oil fields at Ploiești."
+  }
+]

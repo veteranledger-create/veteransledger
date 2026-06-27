@@ -40,5 +40,22 @@ export function checkArmamentRecord(record: RecordLike): ValidationIssue[] {
     }
   }
 
+  for (const field of ["gallery", "blueprints", "videos", "documents"] as const) {
+    const raw = record.metadata ? record.metadata[field] : undefined;
+    if (raw !== null && raw !== undefined) {
+      if (!Array.isArray(raw)) {
+        pushWarning(field, `metadata.${field} must be an array when present.`);
+      } else {
+        raw.forEach((entry, i) => {
+          if (!entry || typeof entry !== "object") {
+            pushWarning(field, `${field}[${i}] must be an object with at least a file field.`);
+          } else if (!isNonEmptyString((entry as { file?: unknown }).file)) {
+            pushWarning(field, `${field}[${i}] is missing a non-empty file field.`);
+          }
+        });
+      }
+    }
+  }
+
   return issues;
 }

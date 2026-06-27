@@ -29,10 +29,8 @@ async function init() {
     document
       .querySelectorAll(".admin-tab-panel")
       .forEach((p) => (p.hidden = p.id !== panel));
-    if (panel === "tab-records") loadRecords();
     if (panel === "tab-timeline") loadTimelineEvents();
     if (panel === "tab-media") loadMedia();
-    if (panel === "tab-publish") renderPublishResult(lastPublishReport);
   });
 }
 
@@ -443,97 +441,152 @@ document
     }
   });
 
-// ── Publish pipeline (Phase 0 — writes to storage/publish-staging only) ──
-let lastPublishReport = null;
+// ── Publish pipeline ─────────────────────────────────────────
 
-document
-  .getElementById("publish-form")
-  ?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const action = e.submitter?.dataset.action === "run" ? "run" : "validate";
-    const type = form.querySelector("[name='type']")?.value;
-    if (!type) return;
+function publishType() {
+  return document.getElementById("publish-type-select")?.value || "armaments";
+}
 
-    const resultEl = document.getElementById("publish-result");
-    if (resultEl) resultEl.innerHTML = loader();
-    const buttons = form.querySelectorAll("[type='submit']");
-    buttons.forEach((b) => (b.disabled = true));
-
-    try {
-      const method = action === "run" ? "POST" : "GET";
-      const res = await fetch(`/api/publish/${type}/${action}`, {
-        method,
-        headers: authHeader(),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Request failed.");
-      lastPublishReport = data;
-      renderPublishResult(data);
-    } catch (err) {
-      if (resultEl) {
-        resultEl.innerHTML = `<p style="color:#e06060;">${escHtml(err.message || "Publish request failed.")}</p>`;
-      }
-    } finally {
-      buttons.forEach((b) => (b.disabled = false));
-    }
+function publishSetLoading(busy) {
+  ["validate", "run", "promote", "rollback", "history"].forEach((a) => {
+    const btn = document.getElementById(`publish-btn-${a}`);
+    if (btn) btn.disabled = busy;
   });
+  const resultEl = document.getElementById("publish-result");
+  if (busy && resultEl) resultEl.innerHTML = loader();
+}
 
-function renderPublishResult(report) {
-  const container = document.getElementById("publish-result");
-  if (!container) return;
-  if (!report) {
-    container.innerHTML = `<p style="color:var(--text-muted)">No publish run yet.</p>`;
-    return;
+async function runPublishAction(action) {
+  const type = publishType();
+  publishSetLoading(true);
+  const resultEl = document.getElementById("publish-result");
+  try {
+    const isGet = action === "validate" || action === "history";
+    const res = await fetch(`/api/publish/${type}/${action}`, {
+      method: isGet ? "GET" : "POST",
+      headers: authHeader(),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `${action} failed.`);
+    if (action === "history") {
+      renderPublishHistory(data, type);
+    } else {
+      renderPublishResult(data, action, type);
+    }
+  } catch (err) {
+    if (resultEl) resultEl.innerHTML = `<p style="color:#e06060;">${escHtml(err.message || "Request failed.")}</p>`;
+  } finally {
+    publishSetLoading(false);
   }
+}
 
-  const statusColor = report.invalid > 0 ? "#e0a060" : "#60c060";
-  container.innerHTML = `
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:var(--space-4);margin-bottom:var(--space-6);">
+document.getElementById("publish-btn-validate")?.addEventListener("click", () => runPublishAction("validate"));
+document.getElementById("publish-btn-run")?.addEventListener("click", () => {
+  if (!confirm(`Stage the ${publishType()} section? This writes output to the staging directory.`)) return;
+  runPublishAction("run");
+});
+document.getElementById("publish-btn-promote")?.addEventListener("click", () => {
+  if (!confirm(`Promote ${publishType()} to the live archive? The public site will reflect this immediately.`)) return;
+  runPublishAction("promote");
+});
+document.getElementById("publish-btn-rollback")?.addEventListener("click", () => {
+  if (!confirm(`Roll back ${publishType()} to the previous snapshot? This will overwrite the current live files.`)) return;
+  runPublishAction("rollback");
+});
+document.getElementById("publish-btn-history")?.addEventListener("click", () => runPublishAction("history"));
+
+function renderPublishResult(report, action, type) {
+  const container = document.getElementById("publish-result");
+  if (!container || !report) return;
+
+  const actionLabel = { validate: "Validation", run: "Staging", promote: "Promotion", rollback: "Rollback" }[action] || action;
+  const hasIssues = Array.isArray(report.issues) && report.issues.length;
+  const statusColor = (report.invalid > 0 || hasIssues) ? "#e0a060" : "#60c060";
+  const statusText = (report.invalid > 0 || hasIssues) ? "Completed with issues" : "Completed successfully";
+
+  const statCards = typeof report.recordsChecked === "number" ? `
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:var(--space-3);margin-bottom:var(--space-6);">
       <div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);padding:var(--space-4);">
-        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--gold);">${report.recordsChecked}</div>
+        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--gold);">${report.recordsChecked ?? "—"}</div>
         <div style="font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;">Checked</div>
       </div>
       <div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);padding:var(--space-4);">
-        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:#60c060;">${report.valid}</div>
+        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:#60c060;">${report.valid ?? "—"}</div>
         <div style="font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;">Valid</div>
       </div>
       <div style="background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);padding:var(--space-4);">
-        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:${statusColor};">${report.invalid}</div>
+        <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:${statusColor};">${report.invalid ?? "—"}</div>
         <div style="font-size:10px;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;">Invalid</div>
       </div>
+    </div>` : "";
+
+  const issuesList = hasIssues ? `
+    <div style="margin-bottom:var(--space-6);">
+      <p style="font-size:var(--text-xs);color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-3);">Issues</p>
+      <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+        ${report.issues.map((i) => `
+          <div style="padding:var(--space-3);background:var(--bg-card);border:1px solid #4a1515;border-radius:var(--radius);font-size:var(--text-sm);">
+            <span class="badge">${escHtml(i.field || i.severity || "issue")}</span>
+            <span style="color:var(--text-muted);margin-left:var(--space-2);">${escHtml(i.recordId || "")}</span>
+            <p style="color:var(--text-secondary);margin-top:var(--space-1);">${escHtml(i.message)}</p>
+          </div>`).join("")}
+      </div>
+    </div>` : "";
+
+  const stagedList = Array.isArray(report.staged) ? `
+    <div>
+      <p style="font-size:var(--text-xs);color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-3);">Staged Files</p>
+      ${report.staged.length
+        ? `<ul style="font-size:var(--text-sm);color:var(--text-secondary);padding-left:var(--space-5);">${report.staged.map((s) => `<li>${escHtml(s)}</li>`).join("")}</ul>`
+        : `<p style="color:var(--text-muted);">Nothing staged — no valid records to publish.</p>`}
+    </div>` : "";
+
+  const message = report.message ? `<p style="font-size:var(--text-sm);color:var(--text-secondary);margin-bottom:var(--space-4);">${escHtml(report.message)}</p>` : "";
+
+  container.innerHTML = `
+    <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);margin-bottom:var(--space-5);">
+      <span class="badge">${escHtml(type)}</span>
+      <span style="font-size:var(--text-sm);color:var(--text-secondary);">${actionLabel}</span>
+      <span style="font-size:var(--text-xs);color:${statusColor};margin-left:auto;">${statusText}</span>
     </div>
-    ${
-      report.issues.length
-        ? `<div style="margin-bottom:var(--space-6);">
-        <p style="font-size:var(--text-xs);color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-3);">Issues</p>
-        <div style="display:flex;flex-direction:column;gap:var(--space-2);">
-          ${report.issues
-            .map(
-              (i) => `
-            <div style="padding:var(--space-3);background:var(--bg-card);border:1px solid #4a1515;border-radius:var(--radius);font-size:var(--text-sm);">
-              <span class="badge">${escHtml(i.field)}</span>
-              <span style="color:var(--text-muted);margin-left:var(--space-2);">${escHtml(i.recordId)}</span>
-              <p style="color:var(--text-secondary);margin-top:var(--space-1);">${escHtml(i.message)}</p>
-            </div>`,
-            )
-            .join("")}
-        </div>
-      </div>`
-        : ""
-    }
-    ${
-      report.mode === "run"
-        ? `<div>
-        <p style="font-size:var(--text-xs);color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-3);">Staged Files</p>
-        ${
-          report.staged.length
-            ? `<ul style="font-size:var(--text-sm);color:var(--text-secondary);padding-left:var(--space-5);">${report.staged.map((s) => `<li>${escHtml(s)}</li>`).join("")}</ul>`
-            : `<p style="color:var(--text-muted);">Nothing staged — no valid records to publish.</p>`
-        }
-      </div>`
-        : ""
-    }`;
+    ${message}${statCards}${issuesList}${stagedList}`;
+}
+
+function renderPublishHistory(entries, type) {
+  const container = document.getElementById("publish-result");
+  if (!container) return;
+  const list = Array.isArray(entries) ? entries : (entries?.history || []);
+  if (!list.length) {
+    container.innerHTML = `
+      <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);margin-bottom:var(--space-5);">
+        <span class="badge">${escHtml(type)}</span>
+        <span style="font-size:var(--text-sm);color:var(--text-secondary);">History</span>
+      </div>
+      <p style="color:var(--text-muted);font-size:var(--text-sm);">No publish history yet.</p>`;
+    return;
+  }
+  container.innerHTML = `
+    <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);margin-bottom:var(--space-5);">
+      <span class="badge">${escHtml(type)}</span>
+      <span style="font-size:var(--text-sm);color:var(--text-secondary);">History — ${list.length} run(s)</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+      ${list.map((entry) => {
+        const ts = entry.timestamp || entry.createdAt || entry.runAt;
+        const date = ts ? new Date(ts).toLocaleString() : "Unknown date";
+        const mode = entry.mode || entry.action || "run";
+        const valid = entry.valid ?? entry.validCount ?? "—";
+        const invalid = entry.invalid ?? entry.invalidCount ?? "—";
+        return `
+        <div style="padding:var(--space-3) var(--space-4);background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-sm);">
+          <span class="badge">${escHtml(mode)}</span>
+          <span style="color:var(--text-secondary);">${escHtml(date)}</span>
+          <span style="color:#60c060;">${valid} valid</span>
+          ${+invalid > 0 ? `<span style="color:#e0a060;">${invalid} invalid</span>` : ""}
+          ${entry.id ? `<span style="color:var(--text-muted);font-size:11px;font-family:monospace;margin-left:auto;">${entry.id.slice(0, 8)}…</span>` : ""}
+        </div>`;
+      }).join("")}
+    </div>`;
 }
 
 // ── Helpers ─────────────────────────────────────────────────

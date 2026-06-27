@@ -1,0 +1,51 @@
+[
+  {
+    "fate": "Sunk 15 November 1942",
+    "type": "Submarine",
+    "class": "Adua class (600-series)",
+    "armament": "6× 533mm torpedo tubes, 1× 100mm deck gun",
+    "commissioned": 1936,
+    "displacement_tons": 695,
+    "id": "adua-submarine",
+    "name": "Adua (submarine)",
+    "nation": "Italy",
+    "summary": "Representative of Italy's large submarine fleet — over 100 boats at war's start. Italian submarines operated extensively in the Mediterranean and Atlantic; they sank over 500,000 GRT of Allied shipping."
+  },
+  {
+    "fate": "Survived war; scuttled at La Spezia 1948",
+    "type": "Battleship",
+    "class": "Littorio class",
+    "armament": "9× 381mm guns, 12× 152mm guns, extensive AA",
+    "length_m": 237.8,
+    "commissioned": 1940,
+    "displacement_tons": 45236,
+    "id": "littorio-later-italia",
+    "name": "Littorio (later Italia)",
+    "nation": "Italy",
+    "summary": "Italy's most powerful battleship. Damaged twice by British torpedoes at Taranto (1940) and by a torpedo-bomber attack (1941). Renamed Italia in 1943 after Mussolini's fall; surrendered to the Allies."
+  },
+  {
+    "fate": "Survived war; scrapped 1950",
+    "type": "Battleship",
+    "class": "Littorio class",
+    "armament": "9× 381mm guns",
+    "commissioned": 1940,
+    "displacement_tons": 45752,
+    "id": "vittorio-veneto",
+    "name": "Vittorio Veneto",
+    "nation": "Italy",
+    "summary": "Participated in the Battle of Cape Matapan (1941) where it was torpedoed and barely escaped. Surrendered at Malta in September 1943."
+  },
+  {
+    "fate": "Sunk 29 March 1941",
+    "type": "Heavy Cruiser",
+    "class": "Zara class",
+    "armament": "8× 203mm guns",
+    "commissioned": 1931,
+    "displacement_tons": 14530,
+    "id": "zara",
+    "name": "Zara",
+    "nation": "Italy",
+    "summary": "Sunk by British destroyers at the Battle of Cape Matapan after being disabled. The battle was a decisive Italian defeat — three heavy cruisers and two destroyers lost in a night action."
+  }
+]
