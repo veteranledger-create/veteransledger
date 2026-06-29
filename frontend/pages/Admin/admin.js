@@ -1,3 +1,5 @@
+import { authHeader, escHtml, loader } from "./admin-utils.js";
+
 /**
  * VeteransLedger · Admin Dashboard
  * Handles login, dashboard stats, activity log, and CRUD management.
@@ -29,7 +31,6 @@ async function init() {
     document
       .querySelectorAll(".admin-tab-panel")
       .forEach((p) => (p.hidden = p.id !== panel));
-    if (panel === "tab-timeline") loadTimelineEvents();
     if (panel === "tab-media") loadMedia();
   });
 }
@@ -128,216 +129,6 @@ async function loadActivity() {
     activityLog.innerHTML = `<p style="color:var(--text-muted)">Activity log unavailable — database not connected.</p>`;
   }
 }
-
-// ── Records CRUD ────────────────────────────────────────────
-let recordsPage = 1;
-
-async function loadRecords(page = 1) {
-  recordsPage = page;
-  const container = document.getElementById("records-list");
-  if (!container) return;
-  container.innerHTML = loader();
-  try {
-    const res = await fetch(`/api/records?page=${page}&limit=20`, {
-      headers: authHeader(),
-    });
-    if (!res.ok) throw new Error();
-    const { data, total, pages } = await res.json();
-    renderRecordsTable(container, data, total, pages);
-  } catch (_) {
-    container.innerHTML = `<p style="color:var(--text-muted)">Records unavailable.</p>`;
-  }
-}
-
-function renderRecordsTable(container, records, total, pages) {
-  if (!records.length) {
-    container.innerHTML = `<p style="color:var(--text-muted)">No records yet. Create one above.</p>`;
-    return;
-  }
-  container.innerHTML = `
-    <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">${total} records · page ${recordsPage} of ${pages}</p>
-    <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
-      <thead>
-        <tr style="border-bottom:1px solid var(--border-dim);color:var(--text-muted);text-align:left;">
-          <th style="padding:var(--space-3) var(--space-4);font-weight:600;letter-spacing:0.08em;">Title</th>
-          <th style="padding:var(--space-3) var(--space-4);">Type</th>
-          <th style="padding:var(--space-3) var(--space-4);">Date</th>
-          <th style="padding:var(--space-3) var(--space-4);text-align:right;">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${records
-          .map(
-            (r) => `
-          <tr style="border-bottom:1px solid var(--border-dim);" data-id="${r.id}">
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-primary);">${escHtml(r.title)}</td>
-            <td style="padding:var(--space-3) var(--space-4);"><span class="badge">${r.type}</span></td>
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-muted);">${r.date ? new Date(r.date).getFullYear() : "—"}</td>
-            <td style="padding:var(--space-3) var(--space-4);text-align:right;display:flex;gap:var(--space-2);justify-content:flex-end;">
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;" onclick="editRecord('${r.id}', this.closest('tr'))">Edit</button>
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;color:#e06060;border-color:#4a1515;" onclick="deleteRecord('${r.id}')">Delete</button>
-            </td>
-          </tr>`,
-          )
-          .join("")}
-      </tbody>
-    </table>
-    ${
-      pages > 1
-        ? `<div style="display:flex;gap:var(--space-2);margin-top:var(--space-5);">
-      ${recordsPage > 1 ? `<button class="btn btn-secondary" onclick="loadRecords(${recordsPage - 1})">← Prev</button>` : ""}
-      ${recordsPage < pages ? `<button class="btn btn-secondary" onclick="loadRecords(${recordsPage + 1})">Next →</button>` : ""}
-    </div>`
-        : ""
-    }`;
-}
-
-window.deleteRecord = async (id) => {
-  if (!confirm("Delete this record? This cannot be undone.")) return;
-  try {
-    const res = await fetch(`/api/records/${id}`, {
-      method: "DELETE",
-      headers: authHeader(),
-    });
-    if (!res.ok) throw new Error();
-    loadRecords(recordsPage);
-    loadStats();
-  } catch (_) {
-    alert("Delete failed. Try again.");
-  }
-};
-
-window.editRecord = async (id, row) => {
-  const title = prompt("New title:", row.cells[0].textContent.trim());
-  if (!title) return;
-  try {
-    const res = await fetch(`/api/records/${id}`, {
-      method: "PUT",
-      headers: { ...authHeader(), "Content-Type": "application/json" },
-      body: JSON.stringify({ title }),
-    });
-    if (!res.ok) throw new Error();
-    loadRecords(recordsPage);
-  } catch (_) {
-    alert("Update failed. Try again.");
-  }
-};
-
-// Create record form
-document
-  .getElementById("create-record-form")
-  ?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const body = {
-      title: form.querySelector("[name='title']")?.value.trim(),
-      type: form.querySelector("[name='type']")?.value,
-      content: form.querySelector("[name='content']")?.value.trim(),
-      tags: [],
-    };
-    if (!body.title || !body.type) return;
-    try {
-      const res = await fetch("/api/records", {
-        method: "POST",
-        headers: { ...authHeader(), "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) throw new Error();
-      form.reset();
-      loadRecords(1);
-      loadStats();
-    } catch (_) {
-      alert("Create failed. Try again.");
-    }
-  });
-
-// ── Timeline Events CRUD ────────────────────────────────────
-async function loadTimelineEvents() {
-  const container = document.getElementById("timeline-list");
-  if (!container) return;
-  container.innerHTML = loader();
-  try {
-    const res = await fetch("/api/timeline", { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    const events = await res.json();
-    renderTimelineTable(container, events);
-  } catch (_) {
-    container.innerHTML = `<p style="color:var(--text-muted)">Timeline events unavailable.</p>`;
-  }
-}
-
-function renderTimelineTable(container, events) {
-  if (!events.length) {
-    container.innerHTML = `<p style="color:var(--text-muted)">No events yet.</p>`;
-    return;
-  }
-  container.innerHTML = `
-    <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
-      <thead>
-        <tr style="border-bottom:1px solid var(--border-dim);color:var(--text-muted);text-align:left;">
-          <th style="padding:var(--space-3) var(--space-4);">Date</th>
-          <th style="padding:var(--space-3) var(--space-4);">Title</th>
-          <th style="padding:var(--space-3) var(--space-4);">Category</th>
-          <th style="padding:var(--space-3) var(--space-4);text-align:right;">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${events
-          .map(
-            (ev) => `
-          <tr style="border-bottom:1px solid var(--border-dim);">
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-muted);">${ev.date ? new Date(ev.date).toLocaleDateString("en-GB") : "—"}</td>
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-primary);">${escHtml(ev.title)}</td>
-            <td style="padding:var(--space-3) var(--space-4);"><span class="badge">${ev.category || "—"}</span></td>
-            <td style="padding:var(--space-3) var(--space-4);text-align:right;">
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;color:#e06060;border-color:#4a1515;" onclick="deleteTimelineEvent('${ev.id}')">Delete</button>
-            </td>
-          </tr>`,
-          )
-          .join("")}
-      </tbody>
-    </table>`;
-}
-
-window.deleteTimelineEvent = async (id) => {
-  if (!confirm("Delete this event?")) return;
-  try {
-    const res = await fetch(`/api/timeline/${id}`, {
-      method: "DELETE",
-      headers: authHeader(),
-    });
-    if (!res.ok) throw new Error();
-    loadTimelineEvents();
-  } catch (_) {
-    alert("Delete failed.");
-  }
-};
-
-document
-  .getElementById("create-event-form")
-  ?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const body = {
-      title: form.querySelector("[name='title']")?.value.trim(),
-      date: form.querySelector("[name='date']")?.value,
-      category: form.querySelector("[name='category']")?.value.trim() || null,
-      summary: form.querySelector("[name='summary']")?.value.trim() || null,
-    };
-    if (!body.title || !body.date) return;
-    try {
-      const res = await fetch("/api/timeline", {
-        method: "POST",
-        headers: { ...authHeader(), "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) throw new Error();
-      form.reset();
-      loadTimelineEvents();
-    } catch (_) {
-      alert("Create failed.");
-    }
-  });
 
 // ── Media ───────────────────────────────────────────────────
 async function loadMedia() {
@@ -590,28 +381,12 @@ function renderPublishHistory(entries, type) {
 }
 
 // ── Helpers ─────────────────────────────────────────────────
-function authHeader() {
-  return { Authorization: `Bearer ${token}` };
-}
-
 function setLoginError(msg) {
   if (!loginError) return;
   loginError.textContent = msg;
   loginError.className = msg
     ? "contact-form__status is-error"
     : "contact-form__status";
-}
-
-function loader() {
-  return `<div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span></div>`;
-}
-
-function escHtml(str = "") {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
 
 init();

@@ -1,5 +1,4 @@
 import { RecordLike } from "../publish.types";
-import { resolveRelatedUrl } from "../related-url-resolver";
 import { NormalizedCombatants, NormalizedPhase, deriveSummary } from "../import-validation/campaign-record-mapper";
 
 interface SourceEntry {
@@ -12,7 +11,6 @@ interface RelatedRecordEntry {
   id: string;
   title?: string;
   type?: string;
-  url?: string;
 }
 
 export interface CampaignJson {
@@ -74,15 +72,7 @@ export function toCampaignJson(record: RecordLike): CampaignJson {
   const related = Array.isArray(relatedRaw)
     ? relatedRaw
         .filter((r): r is { id: string; title?: string; type?: string } => !!r && typeof r.id === "string")
-        // Always regenerated, never the source's own url — real campaign
-        // data's related_records urls are theater-prefixed
-        // (/campaigns/<theater>/<id>) and 404 against the actual
-        // registered route (/campaigns/:id). Unlike Letters/Articles,
-        // which only fill in a url when the source omitted one, Campaigns
-        // must never pass a source url through unchanged — see the Phase 3
-        // decision to treat the theater-prefixed form as a pre-existing
-        // data bug, not the target format.
-        .map((r) => ({ id: r.id, title: r.title, type: r.type, url: resolveRelatedUrl(r.type, r.id) }))
+        .map((r) => ({ id: r.id, title: r.title, type: r.type }))
     : undefined;
 
   const extras: Record<string, unknown> = {};

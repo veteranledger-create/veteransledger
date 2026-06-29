@@ -6,10 +6,19 @@
     "service": "Heer",
     "type": "Army",
     "theater": "Eastern Front",
-    "active": { "from": "1939", "to": "1943-02-02" },
+    "active": {
+      "from": "1939",
+      "to": "1943-02-02"
+    },
     "commanders": [
-      { "name": "Generalfeldmarschall Walter von Reichenau", "period": "1939–Jan 1942" },
-      { "name": "Generaloberst Friedrich Paulus", "period": "Jan 1942–Feb 1943" }
+      {
+        "name": "Generalfeldmarschall Walter von Reichenau",
+        "period": "1939–Jan 1942"
+      },
+      {
+        "name": "Generaloberst Friedrich Paulus",
+        "period": "Jan 1942–Feb 1943"
+      }
     ],
     "peak_strength": "430,000 (Aug 1942)",
     "fate": "Destroyed at Stalingrad. Surrendered 2 February 1943.",
@@ -52,15 +61,38 @@
       }
     ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 20-6: 6th Army operational files, 1941–1943." },
-      { "ref": "Beevor, Antony. Stalingrad. Viking, 1998." },
-      { "ref": "Craig, William. Enemy at the Gates: The Battle for Stalingrad. Dutton, 1973." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 20-6: 6th Army operational files, 1941–1943."
+      },
+      {
+        "ref": "Beevor, Antony. Stalingrad. Viking, 1998."
+      },
+      {
+        "ref": "Craig, William. Enemy at the Gates: The Battle for Stalingrad. Dutton, 1973."
+      }
     ],
     "related_records": [
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "blue", "title": "Operation Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "de-001", "title": "Schreiber — Stalingrad (1942)", "type": "Letter", "url": "/letters/de-001" }
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "blue",
+        "title": "Operation Blue",
+        "type": "Campaign"
+      },
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "de-001",
+        "title": "Schreiber — Stalingrad (1942)",
+        "type": "Letter"
+      }
     ]
   },
   {
@@ -70,11 +102,23 @@
     "service": "Heer",
     "type": "Panzer Army",
     "theater": "Eastern Front",
-    "active": { "from": "1941-11", "to": "1945" },
+    "active": {
+      "from": "1941-11",
+      "to": "1945"
+    },
     "commanders": [
-      { "name": "Generaloberst Erich Hoepner", "period": "Nov 1941–Jan 1942" },
-      { "name": "Generaloberst Hermann Hoth", "period": "May 1942–Nov 1943" },
-      { "name": "Generaloberst Erhard Raus", "period": "Nov 1943–Aug 1944" }
+      {
+        "name": "Generaloberst Erich Hoepner",
+        "period": "Nov 1941–Jan 1942"
+      },
+      {
+        "name": "Generaloberst Hermann Hoth",
+        "period": "May 1942–Nov 1943"
+      },
+      {
+        "name": "Generaloberst Erhard Raus",
+        "period": "Nov 1943–Aug 1944"
+      }
     ],
     "peak_strength": "c. 350,000 (July 1943, Kursk)",
     "summary": "The 4th Panzer Army was Germany's premier armoured formation on the Eastern Front. Under Hoth it led the summer offensive into the Don bend and drove to within 50 kilometres of the encircled 6th Army at Stalingrad. It formed the southern arm of the Kursk offensive (Operation Citadel) in July 1943 — the largest tank battle in history.",
@@ -116,15 +160,39 @@
       }
     ],
     "sources": [
-      { "ref": "Nipe, George. Decision in the Ukraine: German Panzer Operations on the Eastern Front, Summer 1943. J.J. Fedorowicz, 1996." },
-      { "ref": "Zetterling, Niklas and Frankson, Anders. Kursk 1943: A Statistical Analysis. Frank Cass, 2000." }
+      {
+        "ref": "Nipe, George. Decision in the Ukraine: German Panzer Operations on the Eastern Front, Summer 1943. J.J. Fedorowicz, 1996."
+      },
+      {
+        "ref": "Zetterling, Niklas and Frankson, Anders. Kursk 1943: A Statistical Analysis. Frank Cass, 2000."
+      }
     ],
     "related_records": [
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "blue", "title": "Operation Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "hermann-hoth", "title": "Hermann Hoth", "type": "Personnel", "url": "/personnel/hermann-hoth" },
-      { "id": "i-ss-panzer-corps", "title": "I SS Panzer Corps", "type": "Formation", "url": "/formations/i-ss-panzer-corps" }
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "blue",
+        "title": "Operation Blue",
+        "type": "Campaign"
+      },
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "hermann-hoth",
+        "title": "Hermann Hoth",
+        "type": "Personnel"
+      },
+      {
+        "id": "i-ss-panzer-corps",
+        "title": "I SS Panzer Corps",
+        "type": "Formation"
+      }
     ]
   },
   {
@@ -134,13 +202,26 @@
     "service": "Heer",
     "type": "Panzer Group / Panzer Army",
     "theater": "Eastern Front",
-    "active": { "from": "1941-06-22", "to": "1944" },
+    "active": {
+      "from": "1941-06-22",
+      "to": "1944"
+    },
     "commanders": [
-      { "name": "Generaloberst Heinz Guderian", "period": "Jun 1941–Dec 1941" },
-      { "name": "Generaloberst Rudolf Schmidt", "period": "Dec 1941–Jul 1943" }
+      {
+        "name": "Generaloberst Heinz Guderian",
+        "period": "Jun 1941–Dec 1941"
+      },
+      {
+        "name": "Generaloberst Rudolf Schmidt",
+        "period": "Dec 1941–Jul 1943"
+      }
     ],
     "peak_strength": "c. 200,000 (June 1941)",
-    "parent_formation": { "id": "army-group-centre", "title": "Heeresgruppe Mitte (Army Group Centre)", "url": "/formations/army-group-centre" },
+    "parent_formation": {
+      "id": "army-group-centre",
+      "title": "Heeresgruppe Mitte (Army Group Centre)",
+      "url": "/formations/army-group-centre"
+    },
     "summary": "Panzer Group 2 — later redesignated 2nd Panzer Army — was Guderian's command and the instrument of the most spectacular advances in the history of armoured warfare. It encircled Soviet forces at Białystok, Minsk, Smolensk, and Kiev, advancing over 800 kilometres in the first six weeks of Barbarossa.",
     "context": "Guderian's operational methods — deep penetration ignoring flanks, crossing rivers in the teeth of opposition, maintaining momentum at all costs — defined Blitzkrieg at its most effective. Panzer Group 2's advance from the Polish border to Smolensk covered 700 kilometres in 52 days. The drive south to close the Kiev encirclement — executed against OKH orders and in direct defiance of his superior von Bock — resulted in the largest encirclement in history but cost critical time before Moscow. Guderian's subsequent drive on Moscow stalled in December 1941 when his leading elements were within 30 kilometres of the Kremlin; he was dismissed by Hitler on Christmas Day 1941 for ordering withdrawals to maintain defensive lines.",
     "overview_blocks": [
@@ -180,15 +261,40 @@
       }
     ],
     "sources": [
-      { "ref": "Guderian, Heinz. Panzer Leader. Michael Joseph, 1952.", "note": "Guderian's own account of operations." },
-      { "ref": "Glantz, David. Barbarossa: Hitler's Invasion of Russia 1941. Tempus, 2001." }
+      {
+        "ref": "Guderian, Heinz. Panzer Leader. Michael Joseph, 1952.",
+        "note": "Guderian's own account of operations."
+      },
+      {
+        "ref": "Glantz, David. Barbarossa: Hitler's Invasion of Russia 1941. Tempus, 2001."
+      }
     ],
     "related_records": [
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" },
-      { "id": "kiev", "title": "Battle of Kiev", "type": "Campaign", "url": "/campaigns/eastern-front/kiev" },
-      { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" },
-      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" }
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "moscow",
+        "title": "Battle of Moscow",
+        "type": "Campaign"
+      },
+      {
+        "id": "kiev",
+        "title": "Battle of Kiev",
+        "type": "Campaign"
+      },
+      {
+        "id": "heinz-guderian",
+        "title": "Heinz Guderian",
+        "type": "Personnel"
+      },
+      {
+        "id": "pz-v-panther",
+        "title": "Panther",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -198,13 +304,23 @@
     "service": "Heer",
     "type": "Panzer Army (Joint German-Italian)",
     "theater": "North Africa",
-    "active": { "from": "1941-02", "to": "1943-02" },
+    "active": {
+      "from": "1941-02",
+      "to": "1943-02"
+    },
     "commanders": [
-      { "name": "Generalleutnant Erwin Rommel (Deutsches Afrikakorps)", "period": "Feb 1941–Feb 1943" }
+      {
+        "name": "Generalleutnant Erwin Rommel (Deutsches Afrikakorps)",
+        "period": "Feb 1941–Feb 1943"
+      }
     ],
     "peak_strength": "c. 100,000 German + 90,000 Italian (June 1942)",
     "constituent_divisions": [
-      { "id": "deutsches-afrikakorps", "title": "Deutsches Afrikakorps (DAK)", "url": "/formations/deutsches-afrikakorps" }
+      {
+        "id": "deutsches-afrikakorps",
+        "title": "Deutsches Afrikakorps (DAK)",
+        "url": "/formations/deutsches-afrikakorps"
+      }
     ],
     "summary": "Panzerarmee Afrika was the combined German-Italian armoured force that fought the North African campaign under Rommel. Beginning as the Deutsches Afrikakorps (DAK), it executed some of the most daring armoured operations of the war, advancing twice to the Egyptian border before being decisively defeated at El Alamein in November 1942.",
     "context": "Rommel arrived in Libya in February 1941 with instructions to hold the line — and immediately attacked. His audacity, speed of decision, and willingness to lead from the front made him the most celebrated German commander of the war outside the Eastern Front. He drove the British from Cyrenaica, besieged Tobruk, was driven back, advanced again, captured Tobruk (21 June 1942), and reached El Alamein just 100 kilometres from Alexandria. At his peak strength the Afrika Korps was consuming more supply than could realistically be shipped across the Mediterranean under RAF and Royal Navy interdiction. The second Battle of El Alamein (October–November 1942) ended with a crushing defeat; Rommel conducted a fighting withdrawal across 2,000 kilometres. The army was redesignated Heeresgruppe Afrika in February 1943 and surrendered in May.",
@@ -245,17 +361,48 @@
       }
     ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VIII: Panzerarmee Afrika operational files." },
-      { "ref": "Rommel, Erwin. The Rommel Papers. Ed. B.H. Liddell Hart. Collins, 1953." },
-      { "ref": "Kitchen, Martin. Rommel's Desert War. Cambridge University Press, 2009." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VIII: Panzerarmee Afrika operational files."
+      },
+      {
+        "ref": "Rommel, Erwin. The Rommel Papers. Ed. B.H. Liddell Hart. Collins, 1953."
+      },
+      {
+        "ref": "Kitchen, Martin. Rommel's Desert War. Cambridge University Press, 2009."
+      }
     ],
     "related_records": [
-      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
-      { "id": "alamein-2", "title": "Second Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-2" },
-      { "id": "sonnenblume", "title": "Operation Sonnenblume", "type": "Campaign", "url": "/campaigns/africa/sonnenblume" },
-      { "id": "flak-88", "title": "8.8 cm Flak 88", "type": "Armament", "url": "/armaments/flak-88" },
-      { "id": "army-group-africa", "title": "Army Group Africa", "type": "Formation", "url": "/formations/army-group-africa" }
+      {
+        "id": "erwin-rommel",
+        "title": "Erwin Rommel",
+        "type": "Personnel"
+      },
+      {
+        "id": "gazala",
+        "title": "Battle of Gazala",
+        "type": "Campaign"
+      },
+      {
+        "id": "alamein-2",
+        "title": "Second Battle of El Alamein",
+        "type": "Campaign"
+      },
+      {
+        "id": "sonnenblume",
+        "title": "Operation Sonnenblume",
+        "type": "Campaign"
+      },
+      {
+        "id": "flak-88",
+        "title": "8.8 cm Flak 88",
+        "type": "Armament"
+      },
+      {
+        "id": "army-group-africa",
+        "title": "Army Group Africa",
+        "type": "Formation"
+      }
     ]
   }
 ]

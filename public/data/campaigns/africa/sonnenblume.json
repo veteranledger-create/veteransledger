@@ -2,40 +2,90 @@
   "id": "sonnenblume",
   "title": "Operation Sonnenblume — Rommel's Arrival in Africa",
   "theater": "africa",
-  "dates": { "start": "1941-02-06", "end": "1941-04-11" },
+  "dates": {
+    "start": "1941-02-06",
+    "end": "1941-04-11"
+  },
   "summary": "Operation Sonnenblume (Sunflower) was the deployment of the Deutsche Afrika Korps to North Africa to rescue the failing Italian Tenth Army. Rommel's aggressive advance quickly reversed the Italian defeats and pushed the British back to the Egyptian border.",
   "background": "Following the catastrophic Italian defeat in Operation Compass (December 1940–February 1941), which saw the destruction of the Italian Tenth Army and the loss of Cyrenaica, Hitler authorised a German expeditionary force under Erwin Rommel to shore up the Italian position in Libya.",
   "context": "Italy's North African adventure had collapsed spectacularly. Operation Compass, a British offensive intended as a five-day raid, had turned into a two-month pursuit that destroyed ten Italian divisions and captured 130,000 prisoners at a cost of fewer than 2,000 British casualties. Mussolini's prestige was severely damaged. Hitler decided to intervene, ordering a blocking force under Rommel — who had distinguished himself commanding the 7th Panzer Division in France — to hold Libya. Rommel, characteristically, immediately went on the offensive despite instructions to wait until his force was fully assembled.",
   "combatants": {
     "axis": {
-      "commanders": ["Erwin Rommel (Afrika Korps)", "Italo Gariboldi (Italian forces)"],
+      "commanders": [
+        "Erwin Rommel (Afrika Korps)",
+        "Italo Gariboldi (Italian forces)"
+      ],
       "strength": "5th Light Division, 15th Panzer Division (arriving); Italian forces remnants"
     },
     "allied": {
-      "commanders": ["Archibald Wavell", "Richard O'Connor (captured)", "Philip Neame"],
+      "commanders": [
+        "Archibald Wavell",
+        "Richard O'Connor (captured)",
+        "Philip Neame"
+      ],
       "strength": "Depleted Western Desert Force following Compass"
     }
   },
   "events": [
-    { "date": "14 February 1941", "event": "First elements of Afrika Korps unload at Tripoli" },
-    { "date": "31 March 1941", "event": "Rommel launches surprise offensive, defying orders to wait — his corps is not yet fully assembled" },
-    { "date": "3–4 April 1941", "event": "Benghazi falls; British forces in disorganised retreat" },
-    { "date": "6 April 1941", "event": "General O'Connor and General Neame captured by German reconnaissance patrol — a massive Allied intelligence loss" },
-    { "date": "11 April 1941", "event": "Rommel reaches the Egyptian border at Sollum; Tobruk bypassed and surrounded" }
+    {
+      "date": "14 February 1941",
+      "event": "First elements of Afrika Korps unload at Tripoli"
+    },
+    {
+      "date": "31 March 1941",
+      "event": "Rommel launches surprise offensive, defying orders to wait — his corps is not yet fully assembled"
+    },
+    {
+      "date": "3–4 April 1941",
+      "event": "Benghazi falls; British forces in disorganised retreat"
+    },
+    {
+      "date": "6 April 1941",
+      "event": "General O'Connor and General Neame captured by German reconnaissance patrol — a massive Allied intelligence loss"
+    },
+    {
+      "date": "11 April 1941",
+      "event": "Rommel reaches the Egyptian border at Sollum; Tobruk bypassed and surrounded"
+    }
   ],
   "outcome": "Major Axis success. Within five weeks of arriving in Africa, Rommel had reversed all British gains from Operation Compass and pushed to the Egyptian border. Only the besieged garrison at Tobruk held out behind German lines.",
   "image": "/storage/images/campaigns/sonnenblume.jpg",
   "significance": "Established Rommel's reputation as the 'Desert Fox' and began the North African campaign's pendulum of advances and retreats. The siege of Tobruk would last 241 days.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VIII: Afrikakorps War Diary, February–April 1941." },
-    { "ref": "Rommel, Erwin. The Rommel Papers. Edited by B.H. Liddell Hart. Collins, 1953." },
-    { "ref": "Heckmann, Wolf. Rommel's War in Africa. Granada, 1981." },
-    { "ref": "Fennell, Jonathan. Combat and Morale in the North African Campaign. Cambridge University Press, 2011." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VIII: Afrikakorps War Diary, February–April 1941."
+    },
+    {
+      "ref": "Rommel, Erwin. The Rommel Papers. Edited by B.H. Liddell Hart. Collins, 1953."
+    },
+    {
+      "ref": "Heckmann, Wolf. Rommel's War in Africa. Granada, 1981."
+    },
+    {
+      "ref": "Fennell, Jonathan. Combat and Morale in the North African Campaign. Cambridge University Press, 2011."
+    }
   ],
   "related_records": [
-    { "id": "tobruk", "title": "Siege of Tobruk", "type": "Campaign", "url": "/campaigns/africa/tobruk" },
-    { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
-    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-    { "id": "rodolfo-graziani", "title": "Rodolfo Graziani", "type": "Personnel", "url": "/personnel/rodolfo-graziani" }
+    {
+      "id": "tobruk",
+      "title": "Siege of Tobruk",
+      "type": "Campaign"
+    },
+    {
+      "id": "gazala",
+      "title": "Battle of Gazala",
+      "type": "Campaign"
+    },
+    {
+      "id": "erwin-rommel",
+      "title": "Erwin Rommel",
+      "type": "Personnel"
+    },
+    {
+      "id": "rodolfo-graziani",
+      "title": "Rodolfo Graziani",
+      "type": "Personnel"
+    }
   ]
 }

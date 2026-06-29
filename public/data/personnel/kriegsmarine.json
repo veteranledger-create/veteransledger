@@ -9,19 +9,51 @@
     "died": "1980-12-24",
     "birthplace": "Grünau bei Berlin",
     "biography": "Commander of the U-boat arm and later Commander-in-Chief of the Kriegsmarine, then Reich President following Hitler's suicide. He developed the Wolfpack (Rudeltaktik) submarine strategy that brought Britain close to defeat before being countered by Allied technology.",
-    "commands": ["U-boat Command (BdU)", "Commander-in-Chief Kriegsmarine", "Reich President"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["atlantic", "convoy-war"],
+    "commands": [
+      "U-boat Command (BdU)",
+      "Commander-in-Chief Kriegsmarine",
+      "Reich President"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
+    "campaigns": [
+      "atlantic",
+      "convoy-war"
+    ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 7: Seekriegsleitung War Diary; RM 87: BdU operational logs." },
-      { "ref": "Dönitz, Karl. Memoirs: Ten Years and Twenty Days. Weidenfeld and Nicolson, 1958." },
-      { "ref": "Blair, Clay. Hitler's U-boat War: The Hunters 1939–1942. Random House, 1996." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 7: Seekriegsleitung War Diary; RM 87: BdU operational logs."
+      },
+      {
+        "ref": "Dönitz, Karl. Memoirs: Ten Years and Twenty Days. Weidenfeld and Nicolson, 1958."
+      },
+      {
+        "ref": "Blair, Clay. Hitler's U-boat War: The Hunters 1939–1942. Random House, 1996."
+      }
     ],
     "related_records": [
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
-      { "id": "uboat-campaing", "title": "U-boat Campaign", "type": "Campaign", "url": "/campaigns/atlantic/uboat-campaing" },
-      { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" },
-      { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" }
+      {
+        "id": "atlantic",
+        "title": "Battle of the Atlantic",
+        "type": "Campaign"
+      },
+      {
+        "id": "uboat-campaing",
+        "title": "U-boat Campaign",
+        "type": "Campaign"
+      },
+      {
+        "id": "type-viic-uboat",
+        "title": "Type VIIC U-boat",
+        "type": "Armament"
+      },
+      {
+        "id": "nuremberg",
+        "title": "The Nuremberg Trials",
+        "type": "Article"
+      }
     ]
   },
   {
@@ -34,18 +66,46 @@
     "died": "1960-11-06",
     "birthplace": "Wandsbek, Schleswig-Holstein",
     "biography": "Commander-in-Chief of the German Navy from 1928 to 1943. He rebuilt the Kriegsmarine from treaty limitations and oversaw Operation Weserübung (the invasion of Norway) and the surface commerce raider campaign. Sentenced to life imprisonment at Nuremberg, released in 1955.",
-    "commands": ["Commander-in-Chief Kriegsmarine"],
-    "awards": ["Grand Cross of the Iron Cross"],
-    "campaigns": ["norway", "atlantic", "rheinubung"],
+    "commands": [
+      "Commander-in-Chief Kriegsmarine"
+    ],
+    "awards": [
+      "Grand Cross of the Iron Cross"
+    ],
+    "campaigns": [
+      "norway",
+      "atlantic",
+      "rheinubung"
+    ],
     "sources": [
-      { "ref": "Raeder, Erich. Grand Admiral. United States Naval Institute Press, 2001." },
-      { "ref": "Thomas, Charles. The German Navy in the Nazi Era. Unwin Hyman, 1990." }
+      {
+        "ref": "Raeder, Erich. Grand Admiral. United States Naval Institute Press, 2001."
+      },
+      {
+        "ref": "Thomas, Charles. The German Navy in the Nazi Era. Unwin Hyman, 1990."
+      }
     ],
     "related_records": [
-      { "id": "norway", "title": "Norwegian Campaign", "type": "Campaign", "url": "/campaigns/western-front/norway" },
-      { "id": "rheinubung", "title": "Operation Rheinübung", "type": "Campaign", "url": "/campaigns/atlantic/rheinubung" },
-      { "id": "bismarck", "title": "Battleship Bismarck", "type": "Armament", "url": "/armaments/bismarck" },
-      { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" }
+      {
+        "id": "norway",
+        "title": "Norwegian Campaign",
+        "type": "Campaign"
+      },
+      {
+        "id": "rheinubung",
+        "title": "Operation Rheinübung",
+        "type": "Campaign"
+      },
+      {
+        "id": "bismarck",
+        "title": "Battleship Bismarck",
+        "type": "Armament"
+      },
+      {
+        "id": "nuremberg",
+        "title": "The Nuremberg Trials",
+        "type": "Article"
+      }
     ]
   },
   {
@@ -58,19 +118,43 @@
     "died": "1998-08-05",
     "birthplace": "Heidau, Silesia",
     "biography": "Known as 'The Tonnage King', Kretschmer was the most successful U-boat commander, sinking 47 ships totalling 274,333 tonnes. His tactic of attacking convoys on the surface at night became standard doctrine. Captured when U-99 was sunk in March 1941.",
-    "commands": ["U-23", "U-99"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
+    "commands": [
+      "U-23",
+      "U-99"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
     "ships_sunk": 47,
     "tonnage_sunk": 274333,
-    "campaigns": ["atlantic", "convoy-war"],
+    "campaigns": [
+      "atlantic",
+      "convoy-war"
+    ],
     "sources": [
-      { "ref": "Kretschmer, Otto and Robertson, Terence. Night Raider of the Atlantic. Nelson, 1956." },
-      { "ref": "Gannon, Michael. Black May: The Epic Story of the Allies' Defeat of the German U-boats in May 1943. HarperCollins, 1998." }
+      {
+        "ref": "Kretschmer, Otto and Robertson, Terence. Night Raider of the Atlantic. Nelson, 1956."
+      },
+      {
+        "ref": "Gannon, Michael. Black May: The Epic Story of the Allies' Defeat of the German U-boats in May 1943. HarperCollins, 1998."
+      }
     ],
     "related_records": [
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
-      { "id": "convoy-war", "title": "Convoy War", "type": "Campaign", "url": "/campaigns/atlantic/convoy-war" },
-      { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" }
+      {
+        "id": "atlantic",
+        "title": "Battle of the Atlantic",
+        "type": "Campaign"
+      },
+      {
+        "id": "convoy-war",
+        "title": "Convoy War",
+        "type": "Campaign"
+      },
+      {
+        "id": "type-viic-uboat",
+        "title": "Type VIIC U-boat",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -83,19 +167,42 @@
     "died": "1941-03-08",
     "birthplace": "Osterfeld, Thuringia",
     "biography": "Dubbed the 'Bull of Scapa Flow' after penetrating the Royal Navy anchorage on 13–14 October 1939 and sinking the battleship HMS Royal Oak with the loss of 833 lives. Killed when U-47 was sunk with all hands by HMS Wolverine in March 1941.",
-    "commands": ["U-47"],
-    "awards": ["Knight's Cross with Oak Leaves"],
+    "commands": [
+      "U-47"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves"
+    ],
     "ships_sunk": 31,
     "tonnage_sunk": 162000,
-    "campaigns": ["atlantic", "convoy-war"],
+    "campaigns": [
+      "atlantic",
+      "convoy-war"
+    ],
     "sources": [
-      { "ref": "Prien, Günther. Mein Weg nach Scapa Flow. Deutscher Verlag, 1940." },
-      { "ref": "Hadley, Michael. Count Not the Dead: The Popular Image of the German Submarine. McGill-Queen's University Press, 1995." }
+      {
+        "ref": "Prien, Günther. Mein Weg nach Scapa Flow. Deutscher Verlag, 1940."
+      },
+      {
+        "ref": "Hadley, Michael. Count Not the Dead: The Popular Image of the German Submarine. McGill-Queen's University Press, 1995."
+      }
     ],
     "related_records": [
-      { "id": "convoy-war", "title": "Convoy War", "type": "Campaign", "url": "/campaigns/atlantic/convoy-war" },
-      { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" },
-      { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" }
+      {
+        "id": "convoy-war",
+        "title": "Convoy War",
+        "type": "Campaign"
+      },
+      {
+        "id": "type-viic-uboat",
+        "title": "Type VIIC U-boat",
+        "type": "Armament"
+      },
+      {
+        "id": "karl-donitz",
+        "title": "Karl Dönitz",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -108,17 +215,40 @@
     "died": "1941-05-27",
     "birthplace": "Wiesbaden, Hesse-Nassau",
     "biography": "Fleet commander aboard the battleship Bismarck during Operation Rheinübung. After the Bismarck sank HMS Hood, Lütjens was hunted down and killed when Bismarck was sunk on 27 May 1941. Known for personal integrity and reported dislike of National Socialism.",
-    "commands": ["Fleet Commander Kriegsmarine"],
-    "awards": ["Knight's Cross"],
-    "campaigns": ["atlantic", "rheinubung"],
+    "commands": [
+      "Fleet Commander Kriegsmarine"
+    ],
+    "awards": [
+      "Knight's Cross"
+    ],
+    "campaigns": [
+      "atlantic",
+      "rheinubung"
+    ],
     "sources": [
-      { "ref": "Ballard, Robert. The Discovery of the Bismarck. Hodder and Stoughton, 1990." },
-      { "ref": "Kennedy, Ludovic. Pursuit: The Chase and Sinking of the Bismarck. Collins, 1974." }
+      {
+        "ref": "Ballard, Robert. The Discovery of the Bismarck. Hodder and Stoughton, 1990."
+      },
+      {
+        "ref": "Kennedy, Ludovic. Pursuit: The Chase and Sinking of the Bismarck. Collins, 1974."
+      }
     ],
     "related_records": [
-      { "id": "rheinubung", "title": "Operation Rheinübung", "type": "Campaign", "url": "/campaigns/atlantic/rheinubung" },
-      { "id": "bismarck", "title": "Battleship Bismarck", "type": "Armament", "url": "/armaments/bismarck" },
-      { "id": "tirpitz", "title": "Battleship Tirpitz", "type": "Armament", "url": "/armaments/tirpitz" }
+      {
+        "id": "rheinubung",
+        "title": "Operation Rheinübung",
+        "type": "Campaign"
+      },
+      {
+        "id": "bismarck",
+        "title": "Battleship Bismarck",
+        "type": "Armament"
+      },
+      {
+        "id": "tirpitz",
+        "title": "Battleship Tirpitz",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -131,18 +261,40 @@
     "died": "2005-05-26",
     "birthplace": "Hannover",
     "biography": "Third most successful U-boat commander, sinking 35 ships totalling 197,460 tonnes aboard U-552, the 'Red Devil Boat'. Survived the war and later served in the West German Bundesmarine, writing extensively about his wartime experiences.",
-    "commands": ["U-57", "U-552"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
+    "commands": [
+      "U-57",
+      "U-552"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
     "ships_sunk": 35,
     "tonnage_sunk": 197460,
-    "campaigns": ["atlantic", "convoy-war"],
+    "campaigns": [
+      "atlantic",
+      "convoy-war"
+    ],
     "sources": [
-      { "ref": "Topp, Erich. The Odyssey of a U-boat Commander: Recollections of Erich Topp. Praeger, 1992." }
+      {
+        "ref": "Topp, Erich. The Odyssey of a U-boat Commander: Recollections of Erich Topp. Praeger, 1992."
+      }
     ],
     "related_records": [
-      { "id": "uboat-campaing", "title": "U-boat Campaign", "type": "Campaign", "url": "/campaigns/atlantic/uboat-campaing" },
-      { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" },
-      { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" }
+      {
+        "id": "uboat-campaing",
+        "title": "U-boat Campaign",
+        "type": "Campaign"
+      },
+      {
+        "id": "type-viic-uboat",
+        "title": "Type VIIC U-boat",
+        "type": "Armament"
+      },
+      {
+        "id": "karl-donitz",
+        "title": "Karl Dönitz",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -155,21 +307,56 @@
     "died": "1945-05-14",
     "birthplace": "Riga, Russian Empire (now Latvia)",
     "biography": "The second most successful U-boat commander by tonnage sunk, with 46 ships totalling 225,204 tonnes. He commanded U-9, U-138, U-43, and U-181, conducting patrols in the Mediterranean, Atlantic, and Indian Ocean. Awarded the Knight's Cross with Oak Leaves, Swords, and Diamonds — only one of two U-boat commanders to receive Germany's highest decoration. Tragically killed by a German sentry's accidental shot at Flensburg Mürwik on 14 May 1945 — four days after the German surrender.",
-    "commands": ["U-9", "U-138", "U-43", "U-181", "Naval Academy Mürwik"],
-    "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
+    "commands": [
+      "U-9",
+      "U-138",
+      "U-43",
+      "U-181",
+      "Naval Academy Mürwik"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves, Swords, and Diamonds"
+    ],
     "ships_sunk": 46,
     "tonnage_sunk": 225204,
-    "campaigns": ["atlantic", "convoy-war"],
+    "campaigns": [
+      "atlantic",
+      "convoy-war"
+    ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 98/73: U-181 War Diary, Indian Ocean patrol, 1943." },
-      { "ref": "Lüth, Wolfgang and Tröbst, Claus. Boot Greift Wieder An. Franz Steiner Verlag, 1944.", "note": "Lüth's own account of his patrols; one of the most important personal accounts by a U-boat commander." },
-      { "ref": "Jordan, Roger. The World's Merchant Fleets 1939. Naval Institute Press, 1999." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 98/73: U-181 War Diary, Indian Ocean patrol, 1943."
+      },
+      {
+        "ref": "Lüth, Wolfgang and Tröbst, Claus. Boot Greift Wieder An. Franz Steiner Verlag, 1944.",
+        "note": "Lüth's own account of his patrols; one of the most important personal accounts by a U-boat commander."
+      },
+      {
+        "ref": "Jordan, Roger. The World's Merchant Fleets 1939. Naval Institute Press, 1999."
+      }
     ],
     "related_records": [
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
-      { "id": "uboat-campaing", "title": "U-boat Campaign", "type": "Campaign", "url": "/campaigns/atlantic/uboat-campaing" },
-      { "id": "otto-kretschmer", "title": "Otto Kretschmer", "type": "Personnel", "url": "/personnel/otto-kretschmer" },
-      { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" }
+      {
+        "id": "atlantic",
+        "title": "Battle of the Atlantic",
+        "type": "Campaign"
+      },
+      {
+        "id": "uboat-campaing",
+        "title": "U-boat Campaign",
+        "type": "Campaign"
+      },
+      {
+        "id": "otto-kretschmer",
+        "title": "Otto Kretschmer",
+        "type": "Personnel"
+      },
+      {
+        "id": "type-viic-uboat",
+        "title": "Type VIIC U-boat",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -182,20 +369,50 @@
     "died": "1941-03-17",
     "birthplace": "Flensburg, Schleswig-Holstein",
     "biography": "One of the three celebrated U-boat aces of the 'Happy Time' alongside Kretschmer and Prien — all three lost within days of each other in March 1941. Schepke sank 39 ships totalling 159,130 tonnes while commanding U-100. He was killed when HMS Vanoc rammed U-100 after being detected by the first shipborne radar used in successful anti-submarine action — a turning point in the Battle of the Atlantic that signalled the end of U-boat surface dominance.",
-    "commands": ["U-3", "U-19", "U-100"],
-    "awards": ["Knight's Cross with Oak Leaves"],
+    "commands": [
+      "U-3",
+      "U-19",
+      "U-100"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves"
+    ],
     "ships_sunk": 39,
     "tonnage_sunk": 159130,
-    "campaigns": ["atlantic", "convoy-war"],
+    "campaigns": [
+      "atlantic",
+      "convoy-war"
+    ],
     "sources": [
-      { "ref": "Macintyre, Donald. U-Boat Killer. Weidenfeld and Nicolson, 1956.", "note": "Written by the HMS Vanoc captain who sank U-100 and captured Kretschmer the same night." },
-      { "ref": "Blair, Clay. Hitler's U-boat War: The Hunters 1939–1942. Random House, 1996." }
+      {
+        "ref": "Macintyre, Donald. U-Boat Killer. Weidenfeld and Nicolson, 1956.",
+        "note": "Written by the HMS Vanoc captain who sank U-100 and captured Kretschmer the same night."
+      },
+      {
+        "ref": "Blair, Clay. Hitler's U-boat War: The Hunters 1939–1942. Random House, 1996."
+      }
     ],
     "related_records": [
-      { "id": "otto-kretschmer", "title": "Otto Kretschmer", "type": "Personnel", "url": "/personnel/otto-kretschmer" },
-      { "id": "gunther-prien", "title": "Günther Prien", "type": "Personnel", "url": "/personnel/gunther-prien" },
-      { "id": "convoy-war", "title": "Convoy War", "type": "Campaign", "url": "/campaigns/atlantic/convoy-war" },
-      { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" }
+      {
+        "id": "otto-kretschmer",
+        "title": "Otto Kretschmer",
+        "type": "Personnel"
+      },
+      {
+        "id": "gunther-prien",
+        "title": "Günther Prien",
+        "type": "Personnel"
+      },
+      {
+        "id": "convoy-war",
+        "title": "Convoy War",
+        "type": "Campaign"
+      },
+      {
+        "id": "type-viic-uboat",
+        "title": "Type VIIC U-boat",
+        "type": "Armament"
+      }
     ]
   }
 ]

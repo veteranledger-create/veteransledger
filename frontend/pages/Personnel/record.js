@@ -3,29 +3,42 @@
  * Reads :id from URL, searches branch files for the matching person, renders profile.
  */
 
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
-const BRANCHES = [
-  { id: "army", label: "Heer (Army)", file: "army.json" },
-  { id: "luftwaffe", label: "Luftwaffe", file: "luftwaffe.json" },
-  { id: "kriegsmarine", label: "Kriegsmarine", file: "kriegsmarine.json" },
-  { id: "waffen-ss", label: "Waffen-SS", file: "waffen-ss.json" },
-  { id: "foreign", label: "Foreign Volunteers", file: "foreign.json" },
+const _BRANCHES_FALLBACK = [
+  { id: "army",         label: "Heer (Army)",        file: "army.json" },
+  { id: "luftwaffe",    label: "Luftwaffe",           file: "luftwaffe.json" },
+  { id: "kriegsmarine", label: "Kriegsmarine",        file: "kriegsmarine.json" },
+  { id: "waffen-ss",    label: "Waffen-SS",           file: "waffen-ss.json" },
+  { id: "foreign",      label: "Foreign Volunteers",  file: "foreign.json" },
 ];
 
-const BRANCH_LABELS = Object.fromEntries(BRANCHES.map((b) => [b.id, b.label]));
+let _manifestPromise = null;
+async function loadManifest() {
+  if (!_manifestPromise) {
+    _manifestPromise = fetch("/public/data/personnel/index.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
+  }
+  return _manifestPromise;
+}
 
 async function findPerson(id) {
-  for (const branch of BRANCHES) {
+  const manifest = await loadManifest();
+  const branches = (manifest?.branches ?? _BRANCHES_FALLBACK).map((b) => ({
+    ...b,
+    file: b.file.replace("/public/data/personnel/", ""),
+  }));
+  for (const branch of branches) {
     try {
       const res = await fetch(`/public/data/personnel/${branch.file}`);
       if (!res.ok) continue;
       const data = await res.json();
-      const arr = Array.isArray(data)
-        ? data
-        : data?.personnel || data?.people || [];
+      const arr = Array.isArray(data) ? data : data?.personnel || data?.people || [];
       const person = arr.find((p) => p.id === id);
-      if (person) return { ...person, _branch: branch.id };
+      if (person) return { ...person, _branch: branch.id, _branchLabel: branch.label };
     } catch (_) {}
   }
   return null;
@@ -46,7 +59,7 @@ function formatDate(dateStr) {
 function render(root, p) {
   document.title = `${p.name} · VeteransLedger`;
 
-  const branchLabel = BRANCH_LABELS[p._branch || p.branch] || p.branch || "";
+  const branchLabel = p._branchLabel || p._branch || p.branch || "";
   const portrait = p.portrait || p.image || p.photo || PLACEHOLDER;
   const born = formatDate(p.born);
   const died = formatDate(p.died);
@@ -75,7 +88,13 @@ function render(root, p) {
       <img class="record-portrait" src="${portrait}" alt="${p.name || ""}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
     </header>
 
-    ${p.biography ? `<blockquote class="record-summary">${p.biography}</blockquote>` : ""}
+    ${p.biography ? (() => {
+      const paras = String(p.biography).split(/\n\n+/).map(s => s.trim()).filter(Boolean);
+      return `<section class="record-section record-section--biography">
+        <h2 class="record-section__title">Biography</h2>
+        <div class="record-section__body">${paras.map(t => `<p>${t}</p>`).join("")}</div>
+      </section>`;
+    })() : ""}
 
     <div class="record-two-col">
       ${
@@ -238,7 +257,7 @@ function renderRelatedRecords(rec, backPath) {
           ${related
             .map(
               (r) => `
-            <a class="record-related-card" href="${r.url || backPath + "/" + r.id}">
+            <a class="record-related-card" href="${resolveRelatedUrl(r.type, r.id)}">
               <span class="record-related-card__type">${r.type || ""}</span>
               <span class="record-related-card__title">${r.title || r.id}</span>
             </a>`,

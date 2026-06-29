@@ -2,16 +2,25 @@
   "id": "dunkirk",
   "title": "Dunkirk Evacuation (Operation Dynamo)",
   "theater": "western-front",
-  "dates": { "start": "1940-05-26", "end": "1940-06-04" },
+  "dates": {
+    "start": "1940-05-26",
+    "end": "1940-06-04"
+  },
   "summary": "Operation Dynamo was the Allied evacuation from Dunkirk following the German breakthrough at Sedan. Over nine days, 338,226 Allied soldiers were lifted from the beaches and harbour by a fleet of warships and civilian vessels — though all heavy equipment was abandoned.",
   "context": "By 20 May 1940 German Panzer forces had reached the Channel coast, cutting off the British Expeditionary Force and French First Army from the main French forces to the south. Surrounded on three sides, with the sea at their backs, the Allied armies faced destruction or surrender. The 'Halt Order' of 23–26 May — attributed to Hitler and supported by Rundstedt — paused the Panzer advance short of the Dunkirk perimeter, citing concerns about the terrain (canals, soft ground unsuitable for tanks) and Göring's promise that the Luftwaffe could destroy the trapped forces alone. The Luftwaffe's failure to carry out this promise, combined with cloud cover and RAF fighter cover, enabled Vice Admiral Ramsay to organise the largest evacuation in British history. Some 861 vessels — including 228 private civilian 'little ships' — participated. Churchill had privately hoped for 45,000 evacuations; the final figure of 338,226 was described as a 'miracle'. The evacuation preserved the British Army as a fighting force but left France without effective Allied support.",
   "combatants": {
     "axis": {
-      "commanders": ["Gerd von Rundstedt (Army Group A)", "Erich von Manstein"],
+      "commanders": [
+        "Gerd von Rundstedt (Army Group A)",
+        "Erich von Manstein"
+      ],
       "strength": "Army Group A Panzers encircling the perimeter; Luftwaffe"
     },
     "allied": {
-      "commanders": ["Bertram Ramsay (Naval Commander)", "John Gort (BEF Commander)"],
+      "commanders": [
+        "Bertram Ramsay (Naval Commander)",
+        "John Gort (BEF Commander)"
+      ],
       "strength": "~400,000 encircled (British and French)"
     }
   },
@@ -22,14 +31,37 @@
     "allied": "~68,000 killed or captured; 243 ships sunk; 177 RAF aircraft lost"
   },
   "sources": [
-    { "type": "primary", "ref": "National Archives (UK). ADM 199/786: Operation Dynamo — Naval Commander's Despatch, June 1940." },
-    { "ref": "Divine, David. The Nine Days of Dunkirk. Faber and Faber, 1959.", "note": "Classic account based on naval records and participant interviews." },
-    { "ref": "Sebag-Montefiore, Hugh. Dunkirk: Fight to the Last Man. Viking, 2006.", "note": "Comprehensive modern account drawing on previously sealed British records." },
-    { "ref": "Blaxland, Gregory. Destination Dunkirk: The Story of Gort's Army. Kimber, 1973." }
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). ADM 199/786: Operation Dynamo — Naval Commander's Despatch, June 1940."
+    },
+    {
+      "ref": "Divine, David. The Nine Days of Dunkirk. Faber and Faber, 1959.",
+      "note": "Classic account based on naval records and participant interviews."
+    },
+    {
+      "ref": "Sebag-Montefiore, Hugh. Dunkirk: Fight to the Last Man. Viking, 2006.",
+      "note": "Comprehensive modern account drawing on previously sealed British records."
+    },
+    {
+      "ref": "Blaxland, Gregory. Destination Dunkirk: The Story of Gort's Army. Kimber, 1973."
+    }
   ],
   "related_records": [
-    { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
-    { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" },
-    { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" }
+    {
+      "id": "france",
+      "title": "Fall of France",
+      "type": "Campaign"
+    },
+    {
+      "id": "gerd-von-rundstedt",
+      "title": "Gerd von Rundstedt",
+      "type": "Personnel"
+    },
+    {
+      "id": "britain",
+      "title": "Battle of Britain",
+      "type": "Campaign"
+    }
   ]
 }

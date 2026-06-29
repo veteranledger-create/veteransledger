@@ -2,25 +2,63 @@
   "id": "tobruk",
   "title": "Siege of Tobruk",
   "theater": "africa",
-  "dates": { "start": "1941-04-11", "end": "1941-11-27" },
+  "dates": {
+    "start": "1941-04-11",
+    "end": "1941-11-27"
+  },
   "summary": "The Siege of Tobruk lasted 241 days — the longest siege endured by Australian forces in the war. The Tobruk garrison, primarily Australian with British and Polish elements, held out against the Afrika Korps despite being surrounded, forcing Rommel to divert forces away from his advance toward Egypt.",
   "context": "When Rommel's rapid advance in April 1941 reached the Egyptian border, the port of Tobruk with its 30,000-strong garrison was left encircled behind German lines. Rommel made repeated attempts to storm the fortress — in April and May — but was repulsed each time. The garrison was supplied by sea (the 'Tobruk ferry'), at great cost in ships sunk by the Luftwaffe. German propaganda derided the garrison as 'Rats of Tobruk'; the defenders adopted the name with pride. The siege tied down two German and four Italian divisions that Rommel badly needed for his eastern advance. Operation Crusader finally broke through to relieve the garrison in November 1941.",
   "combatants": {
-    "axis": { "commanders": ["Erwin Rommel"], "strength": "Afrika Korps + Italian forces" },
-    "allied": { "commanders": ["Leslie Morshead"], "strength": "Primarily 9th Australian Division, 1st Polish Carpathian Brigade, British 32nd Armoured Brigade" }
+    "axis": {
+      "commanders": [
+        "Erwin Rommel"
+      ],
+      "strength": "Afrika Korps + Italian forces"
+    },
+    "allied": {
+      "commanders": [
+        "Leslie Morshead"
+      ],
+      "strength": "Primarily 9th Australian Division, 1st Polish Carpathian Brigade, British 32nd Armoured Brigade"
+    }
   },
   "significance": "The garrison's resistance earned them the nickname 'The Rats of Tobruk' — a term used mockingly by German propaganda that the defenders adopted with pride. Tobruk tied down significant Axis forces and disrupted Rommel's supply lines for eight months.",
   "outcome": "Allied victory. Tobruk was relieved on 27 November 1941 by Operation Crusader. (Note: Tobruk fell to a second Axis assault on 21 June 1942 — a separate defeat.)",
-  "casualties": { "axis": "~8,000+ killed, wounded across the siege", "allied": "~3,009 killed, wounded, or missing" },
+  "casualties": {
+    "axis": "~8,000+ killed, wounded across the siege",
+    "allied": "~3,009 killed, wounded, or missing"
+  },
   "sources": [
-    { "type": "primary", "ref": "Australian War Memorial, Canberra. AWM 54 519/7/2: 9th Australian Division, Tobruk Defence." },
-    { "ref": "Latimer, Jon. Tobruk 1941: Rommel's Opening Move. Osprey, 2001." },
-    { "ref": "Wilmot, Chester. Tobruk 1941. Angus and Robertson, 1944.", "note": "Written by a participant; valuable primary testimony." },
-    { "ref": "Heckmann, Wolf. Rommel's War in Africa. Granada, 1981." }
+    {
+      "type": "primary",
+      "ref": "Australian War Memorial, Canberra. AWM 54 519/7/2: 9th Australian Division, Tobruk Defence."
+    },
+    {
+      "ref": "Latimer, Jon. Tobruk 1941: Rommel's Opening Move. Osprey, 2001."
+    },
+    {
+      "ref": "Wilmot, Chester. Tobruk 1941. Angus and Robertson, 1944.",
+      "note": "Written by a participant; valuable primary testimony."
+    },
+    {
+      "ref": "Heckmann, Wolf. Rommel's War in Africa. Granada, 1981."
+    }
   ],
   "related_records": [
-    { "id": "sonnenblume", "title": "Operation Sonnenblume", "type": "Campaign", "url": "/campaigns/africa/sonnenblume" },
-    { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
-    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" }
+    {
+      "id": "sonnenblume",
+      "title": "Operation Sonnenblume",
+      "type": "Campaign"
+    },
+    {
+      "id": "gazala",
+      "title": "Battle of Gazala",
+      "type": "Campaign"
+    },
+    {
+      "id": "erwin-rommel",
+      "title": "Erwin Rommel",
+      "type": "Personnel"
+    }
   ]
 }

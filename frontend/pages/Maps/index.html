@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VeteransLedger Maps — Historical military maps of World War II campaigns and operations.">
+  <title>Maps · VeteransLedger</title>
+
+  <link rel="icon" type="image/png" href="/public/images/logos/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="/styles/core.css">
+  <link rel="stylesheet" href="/styles/navigation.css">
+  <link rel="stylesheet" href="/styles/footer.css">
+  <link rel="stylesheet" href="/styles/hero.css">
+  <link rel="stylesheet" href="/styles/archive.css">
+  <link rel="stylesheet" href="/styles/contact-modal.css">
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <div class="page-hero">
+      <div class="page-hero__bg" style="background-image:url('/public/images/covers/placeholder-cards.webp')"></div>
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Maps</h1>
+        <p class="page-hero__subtitle">Historical Military Cartography</p>
+      </div>
+    </div>
+
+    <div class="archive-section">
+      <div id="maps-loader" class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span class="loader__dot"></span></div>
+      <div id="maps-grid" class="archive-grid" hidden></div>
+      <p id="maps-empty" style="color:var(--text-muted);text-align:center;padding:var(--space-12) 0;" hidden>No maps published yet.</p>
+    </div>
+
+  </main>
+
+  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/pages/Maps/maps.js"></script>
+</body>
+
+</html>

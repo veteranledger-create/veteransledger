@@ -22,14 +22,35 @@
   "outcome": "British strategic victory — Graf Spee scuttled",
   "significance": "First British naval victory of WWII; demonstrated that even superior surface raiders could be forced to fight on unfavourable terms by aggressive interception.",
   "sources": [
-    { "type": "primary", "ref": "National Archives (UK). ADM 234/155: Battle Summary No. 1 — The Action with the German Pocket Battleship Graf Spee." },
-    { "ref": "Pope, Dudley. Graf Spee: The Life and Death of a Raider. Kimber, 1956." },
-    { "ref": "Millington-Drake, Eugen. The Drama of Graf Spee and the Battle of the Plate: A Documentary Anthology. Peter Davies, 1964." },
-    { "ref": "Llewelyn, Sam. Dead Reckoning. Hodder and Stoughton, 1987." }
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). ADM 234/155: Battle Summary No. 1 — The Action with the German Pocket Battleship Graf Spee."
+    },
+    {
+      "ref": "Pope, Dudley. Graf Spee: The Life and Death of a Raider. Kimber, 1956."
+    },
+    {
+      "ref": "Millington-Drake, Eugen. The Drama of Graf Spee and the Battle of the Plate: A Documentary Anthology. Peter Davies, 1964."
+    },
+    {
+      "ref": "Llewelyn, Sam. Dead Reckoning. Hodder and Stoughton, 1987."
+    }
   ],
   "related_records": [
-    { "id": "altmark", "title": "Altmark Incident", "type": "Campaign", "url": "/campaigns/atlantic/altmark" },
-    { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
-    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
+    {
+      "id": "altmark",
+      "title": "Altmark Incident",
+      "type": "Campaign"
+    },
+    {
+      "id": "atlantic",
+      "title": "Battle of the Atlantic",
+      "type": "Campaign"
+    },
+    {
+      "id": "erich-raeder",
+      "title": "Erich Raeder",
+      "type": "Personnel"
+    }
   ]
 }

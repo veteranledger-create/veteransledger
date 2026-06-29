@@ -15,13 +15,23 @@ import { checkCampaignRecord } from "./validators/campaigns.conformance";
 import { toCampaignJson } from "./generators/campaigns.generator";
 import { checkArticleRecord } from "./validators/articles.conformance";
 import { toArticleJson } from "./generators/articles.generator";
+import { checkTimelineEvent, toTimelineJson, TimelineEventRow } from "./validators/timeline.conformance";
+import { checkAwardRecord } from "./validators/awards.conformance";
+import { toAwardJson } from "./generators/awards.generator";
+import { checkMapRecord } from "./validators/maps.conformance";
+import { toMapJson } from "./generators/maps.generator";
+import { checkPoliticalDocRecord } from "./validators/political-docs.conformance";
+import { toPoliticalDocJson } from "./generators/political-docs.generator";
+import { checkFormationRecord } from "./validators/formations.conformance";
+import { toFormationJson, SECTION_TO_FILE } from "./generators/formations.generator";
+import { checkNsdapFiles } from "./validators/nsdap.conformance";
 import { PERSONNEL_FILES, RelatedRecordEntry } from "./import-validation/personnel-entity-mapper";
 import { writeStagedFilesAtomically } from "./atomic-stage-writer";
 import { normalizeArmamentName } from "../armaments/admin-duplicate-check";
 
 // See src/validators/publish.validator.ts for the allow-list that gates
 // which `:type` values reach this service at all — keep both in sync.
-const SUPPORTED_TYPES = ["letters", "armaments", "personnel", "campaigns", "articles"] as const;
+const SUPPORTED_TYPES = ["letters", "armaments", "personnel", "campaigns", "articles", "timeline", "awards", "maps", "political-docs", "formations", "nsdap"] as const;
 type SupportedType = (typeof SUPPORTED_TYPES)[number];
 
 // Narrow row shape returned by the personnel Prisma query — includes the
@@ -130,21 +140,6 @@ export class PublishService {
     return { valid, issues };
   }
 
-  // Only error-severity issues exclude a record from generation — warnings
-  // are collected for the report but a record with warnings only still
-  // publishes. See letters.conformance.ts for which checks are which.
-  private checkAll(records: RecordLike[]): { valid: RecordLike[]; issues: ValidationIssue[] } {
-    const issues: ValidationIssue[] = [];
-    const valid: RecordLike[] = [];
-    for (const record of records) {
-      const recordIssues = checkLetterRecord(record);
-      issues.push(...recordIssues);
-      const hasError = recordIssues.some((i) => i.severity === "error");
-      if (!hasError) valid.push(record);
-    }
-    return { valid, issues };
-  }
-
   // Two gates, both required: per-record conformance (checkArmamentRecord,
   // reused unchanged from the migration pipeline), and a cross-record
   // admin-duplicate scan — deliberately NOT the migration's
@@ -240,6 +235,70 @@ export class PublishService {
     return filesToWrite;
   }
 
+  private async loadPublishedAwards(): Promise<RecordLike[]> {
+    const rows = await prisma.record.findMany({ where: { type: "AWARD", published: true }, orderBy: { title: "asc" } });
+    return rows.map(toRecordLike);
+  }
+
+  private async loadPublishedMaps(): Promise<RecordLike[]> {
+    const rows = await prisma.record.findMany({ where: { type: "MAP", published: true }, orderBy: { title: "asc" } });
+    return rows.map(toRecordLike);
+  }
+
+  private async loadPublishedPoliticalDocs(): Promise<RecordLike[]> {
+    const rows = await prisma.record.findMany({ where: { type: "POLITICAL_DOCUMENT", published: true }, orderBy: { date: "asc" } });
+    return rows.map(toRecordLike);
+  }
+
+  private async loadPublishedFormations(): Promise<RecordLike[]> {
+    const rows = await prisma.record.findMany({ where: { type: "FORMATION", published: true }, orderBy: { title: "asc" } });
+    return rows.map(toRecordLike);
+  }
+
+  // Reads all NSDAP JSON files from public/data/nsdap/ for pipeline validation.
+  // Returns a Map of relPath → raw JSON string.
+  private async loadNsdapFiles(): Promise<Map<string, string>> {
+    const resolvedDir = path.resolve(process.cwd(), "public", "data", "nsdap");
+    const result = new Map<string, string>();
+    const readDir = async (dir: string, base: string) => {
+      let entries: import("fs").Dirent[];
+      try { entries = await fs.readdir(dir, { withFileTypes: true }); } catch { return; }
+      for (const e of entries) {
+        const fullPath = path.join(dir, e.name);
+        if (e.isDirectory()) { await readDir(fullPath, base); continue; }
+        if (!e.name.endsWith(".json")) continue;
+        const rel = path.relative(base, fullPath).replace(/\\/g, "/");
+        try { result.set(rel, await fs.readFile(fullPath, "utf-8")); } catch { /* skip */ }
+      }
+    };
+    await readDir(resolvedDir, resolvedDir);
+    return result;
+  }
+
+  private async loadPublishedTimeline(): Promise<TimelineEventRow[]> {
+    return prisma.timelineEvent.findMany({
+      where: { published: true },
+      orderBy: [{ year: "asc" }, { date: "asc" }, { title: "asc" }],
+    }) as unknown as Promise<TimelineEventRow[]>;
+  }
+
+  private checkAllTimeline(events: TimelineEventRow[]): { valid: TimelineEventRow[]; issues: ValidationIssue[] } {
+    const issues: ValidationIssue[] = [];
+    const valid: TimelineEventRow[] = [];
+    for (const ev of events) {
+      const evIssues = checkTimelineEvent(ev);
+      issues.push(...evIssues);
+      if (!evIssues.some((i) => i.severity === "error")) valid.push(ev);
+    }
+    return { valid, issues };
+  }
+
+  private generateTimelineFiles(events: TimelineEventRow[]): Map<string, string> {
+    const output = events.map((ev) => toTimelineJson(ev));
+    const content = JSON.stringify({ events: output, generatedAt: new Date().toISOString() }, null, 2);
+    return new Map([["events.json", content]]);
+  }
+
   private async persistReport(report: PublishReport): Promise<void> {
     const reportsDir = path.join(storageConfig.directories.publishReports, report.type);
     await fs.mkdir(reportsDir, { recursive: true });
@@ -270,8 +329,28 @@ export class PublishService {
       const { valid, issues } = this.checkAllRecords(records, checkArticleRecord);
       return { records, valid, issues };
     }
+    if (type === "awards") {
+      const records = await this.loadPublishedAwards();
+      const { valid, issues } = this.checkAllRecords(records, checkAwardRecord);
+      return { records, valid, issues };
+    }
+    if (type === "maps") {
+      const records = await this.loadPublishedMaps();
+      const { valid, issues } = this.checkAllRecords(records, checkMapRecord);
+      return { records, valid, issues };
+    }
+    if (type === "political-docs") {
+      const records = await this.loadPublishedPoliticalDocs();
+      const { valid, issues } = this.checkAllRecords(records, checkPoliticalDocRecord);
+      return { records, valid, issues };
+    }
+    if (type === "formations") {
+      const records = await this.loadPublishedFormations();
+      const { valid, issues } = this.checkAllRecords(records, checkFormationRecord);
+      return { records, valid, issues };
+    }
     const records = await this.loadPublishedLetters();
-    const { valid, issues } = this.checkAll(records);
+    const { valid, issues } = this.checkAllRecords(records, checkLetterRecord);
     return { records, valid, issues };
   }
 
@@ -292,6 +371,18 @@ export class PublishService {
       recordsChecked = entities.length;
       validCount = result.valid.length;
       issues = result.issues;
+    } else if (type === "timeline") {
+      const events = await this.loadPublishedTimeline();
+      const result = this.checkAllTimeline(events);
+      recordsChecked = events.length;
+      validCount = result.valid.length;
+      issues = result.issues;
+    } else if (type === "nsdap") {
+      const nsdapFiles = await this.loadNsdapFiles();
+      issues = checkNsdapFiles(nsdapFiles);
+      recordsChecked = nsdapFiles.size;
+      const errorFiles = new Set(issues.filter((i) => i.severity === "error").map((i) => i.recordId));
+      validCount = [...nsdapFiles.keys()].filter((f) => !errorFiles.has(f)).length;
     } else {
       const res = await this.loadAndCheck(type as SupportedType);
       recordsChecked = res.records.length;
@@ -337,31 +428,68 @@ export class PublishService {
     }
 
     if (type === "campaigns") {
-      const byTheater = new Map<string, unknown[]>();
+      // One file per campaign at {theater}/{slug}.json — matches the
+      // existing public/data/campaigns/ directory structure and the
+      // file-per-record pattern the frontend's FILE_MAP already uses.
       for (const record of valid) {
         const theater = (record.metadata?.theater as string) ?? "uncategorized";
+        const slug = record.slug ?? record.id;
         const json = toCampaignJson(record);
-        const group = byTheater.get(theater) ?? [];
-        group.push(json);
-        byTheater.set(theater, group);
-      }
-      for (const [theater, entries] of byTheater) {
-        filesToWrite.set(`${theater}.json`, JSON.stringify(entries, null, 2));
+        filesToWrite.set(`${theater}/${slug}.json`, JSON.stringify(json, null, 2));
       }
       return filesToWrite;
     }
 
     if (type === "articles") {
-      const byCategory = new Map<string, unknown[]>();
+      // One file per article at {category}/{slug}.json — matches the
+      // file-per-record pattern the frontend's CATEGORIES.files array uses.
       for (const record of valid) {
         const category = (record.metadata?.category as string) ?? "uncategorized";
+        const slug = record.slug ?? record.id;
         const json = toArticleJson(record);
-        const group = byCategory.get(category) ?? [];
-        group.push(json);
-        byCategory.set(category, group);
+        filesToWrite.set(`${category}/${slug}.json`, JSON.stringify(json, null, 2));
       }
-      for (const [category, entries] of byCategory) {
-        filesToWrite.set(`${category}.json`, JSON.stringify(entries, null, 2));
+      return filesToWrite;
+    }
+
+    if (type === "awards") {
+      for (const record of valid) {
+        const slug = record.slug ?? record.id;
+        filesToWrite.set(`${slug}.json`, JSON.stringify(toAwardJson(record), null, 2));
+      }
+      return filesToWrite;
+    }
+
+    if (type === "maps") {
+      for (const record of valid) {
+        const slug = record.slug ?? record.id;
+        filesToWrite.set(`${slug}.json`, JSON.stringify(toMapJson(record), null, 2));
+      }
+      return filesToWrite;
+    }
+
+    if (type === "political-docs") {
+      for (const record of valid) {
+        const slug = record.slug ?? record.id;
+        filesToWrite.set(`${slug}.json`, JSON.stringify(toPoliticalDocJson(record), null, 2));
+      }
+      return filesToWrite;
+    }
+
+    if (type === "formations") {
+      // Group by section → category file (e.g. germany/army-groups.json).
+      // Categories with no valid records produce empty arrays — this ensures
+      // previously-populated files get cleared if all their records are removed.
+      const byFile = new Map<string, unknown[]>();
+      for (const record of valid) {
+        const section = (record.metadata?.section as string) ?? "unknown";
+        const file = SECTION_TO_FILE[section] ?? `germany/${section}.json`;
+        const group = byFile.get(file) ?? [];
+        group.push(toFormationJson(record));
+        byFile.set(file, group);
+      }
+      for (const [file, entries] of byFile) {
+        filesToWrite.set(file, JSON.stringify(entries, null, 2));
       }
       return filesToWrite;
     }
@@ -400,6 +528,23 @@ export class PublishService {
       validCount = result.valid.length;
       issues = result.issues;
       filesToWrite = this.generatePersonnelFiles(result.valid);
+    } else if (type === "timeline") {
+      const events = await this.loadPublishedTimeline();
+      const result = this.checkAllTimeline(events);
+      recordsChecked = events.length;
+      validCount = result.valid.length;
+      issues = result.issues;
+      filesToWrite = this.generateTimelineFiles(result.valid);
+    } else if (type === "nsdap") {
+      // File-based type: read live NSDAP files, validate, then stage byte-for-byte
+      // copies (snapshot). Promote copies staged → live (no-op if unchanged).
+      // Primary value is the snapshot which enables rollback.
+      const nsdapFiles = await this.loadNsdapFiles();
+      issues = checkNsdapFiles(nsdapFiles);
+      recordsChecked = nsdapFiles.size;
+      const errorFiles = new Set(issues.filter((i) => i.severity === "error").map((i) => i.recordId));
+      validCount = [...nsdapFiles.keys()].filter((f) => !errorFiles.has(f)).length;
+      filesToWrite = new Map(nsdapFiles);
     } else {
       const res = await this.loadAndCheck(type as SupportedType);
       recordsChecked = res.records.length;

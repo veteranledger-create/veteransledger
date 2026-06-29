@@ -6,7 +6,13 @@
   "date_published": "2024-02-01",
   "author": "VeteransLedger Archive",
   "image": "/storage/images/articles/rise-nsdap.jpg",
-  "tags": ["NSDAP", "Weimar Republic", "Hitler", "political history", "1930s"],
+  "tags": [
+    "NSDAP",
+    "Weimar Republic",
+    "Hitler",
+    "political history",
+    "1930s"
+  ],
   "summary": "The National Socialist German Workers' Party rose from a minor Munich extremist group in 1919 to seize power in Germany by January 1933, exploiting the economic and political crises of the Weimar Republic.",
   "body": [
     {
@@ -60,14 +66,38 @@
   ],
   "archival_note": "The primary archival record for the NSDAP's rise is in the Bundesarchiv Berlin-Lichterfelde (NS 1–26: NSDAP party records) and the Institut für Zeitgeschichte, Munich (F 19/1: Hitler's early speeches; Db 15.01: Beer Hall Putsch documentation). Reichstag election results are in the Statistisches Reichsamt publications, 1928–1933.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv Berlin-Lichterfelde. NS 26/4: NSDAP Hauptarchiv — Founding documents and early party records, 1919–1923." },
-    { "ref": "Kershaw, Ian. Hitler 1889–1936: Hubris. Allen Lane, 1998.", "note": "The definitive biography of Hitler's rise; uses German-language primary sources throughout." },
-    { "ref": "Evans, Richard. The Coming of the Third Reich. Penguin Press, 2003.", "note": "First volume of the definitive English-language history of the Third Reich." },
-    { "ref": "Bracher, Karl Dietrich. The German Dictatorship. Praeger, 1970.", "note": "The foundational scholarly analysis of NSDAP political strategy." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv Berlin-Lichterfelde. NS 26/4: NSDAP Hauptarchiv — Founding documents and early party records, 1919–1923."
+    },
+    {
+      "ref": "Kershaw, Ian. Hitler 1889–1936: Hubris. Allen Lane, 1998.",
+      "note": "The definitive biography of Hitler's rise; uses German-language primary sources throughout."
+    },
+    {
+      "ref": "Evans, Richard. The Coming of the Third Reich. Penguin Press, 2003.",
+      "note": "First volume of the definitive English-language history of the Third Reich."
+    },
+    {
+      "ref": "Bracher, Karl Dietrich. The German Dictatorship. Praeger, 1970.",
+      "note": "The foundational scholarly analysis of NSDAP political strategy."
+    }
   ],
   "related_records": [
-    { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" },
-    { "id": "anschluss", "title": "The Anschluss", "type": "Article", "url": "/articles/political/anschluss" },
-    { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" }
+    {
+      "id": "rearmament",
+      "title": "German Rearmament 1933–1939",
+      "type": "Article"
+    },
+    {
+      "id": "anschluss",
+      "title": "The Anschluss",
+      "type": "Article"
+    },
+    {
+      "id": "nuremberg",
+      "title": "The Nuremberg Trials",
+      "type": "Article"
+    }
   ]
 }

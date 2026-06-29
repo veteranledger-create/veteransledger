@@ -6,13 +6,31 @@
     "service": "Heer",
     "type": "Army Group",
     "theater": "Eastern Front",
-    "active": { "from": "1941-06-22", "to": "1945-01" },
+    "active": {
+      "from": "1941-06-22",
+      "to": "1945-01"
+    },
     "commanders": [
-      { "name": "Generalfeldmarschall Wilhelm Ritter von Leeb", "period": "Jun–Jan 1942" },
-      { "name": "Generalfeldmarschall Georg von Küchler", "period": "Jan 1942–Jan 1944" },
-      { "name": "Generalfeldmarschall Walter Model", "period": "Jan–Mar 1944" },
-      { "name": "Generaloberst Georg Lindemann", "period": "Mar–Jul 1944" },
-      { "name": "Generalfeldmarschall Ferdinand Schörner", "period": "Jul 1944–Jan 1945" }
+      {
+        "name": "Generalfeldmarschall Wilhelm Ritter von Leeb",
+        "period": "Jun–Jan 1942"
+      },
+      {
+        "name": "Generalfeldmarschall Georg von Küchler",
+        "period": "Jan 1942–Jan 1944"
+      },
+      {
+        "name": "Generalfeldmarschall Walter Model",
+        "period": "Jan–Mar 1944"
+      },
+      {
+        "name": "Generaloberst Georg Lindemann",
+        "period": "Mar–Jul 1944"
+      },
+      {
+        "name": "Generalfeldmarschall Ferdinand Schörner",
+        "period": "Jul 1944–Jan 1945"
+      }
     ],
     "peak_strength": "725,000 (June 1941)",
     "summary": "Army Group North was one of three army groups that invaded the Soviet Union on 22 June 1941. Its objective was the Baltic states and ultimately Leningrad — cradle of the Russian Revolution and second city of the Soviet Union. It reached the outskirts of Leningrad in September 1941 and maintained the siege for 872 days.",
@@ -49,15 +67,38 @@
       }
     ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 III: Army Group North operational files, 1941–1944." },
-      { "ref": "Glantz, David. The Siege of Leningrad, 1941–1944: 900 Days of Terror. Cassell, 2001." },
-      { "ref": "Ziemke, Earl. Stalingrad to Berlin: The German Defeat in the East. Army Historical Series, 1968." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 III: Army Group North operational files, 1941–1944."
+      },
+      {
+        "ref": "Glantz, David. The Siege of Leningrad, 1941–1944: 900 Days of Terror. Cassell, 2001."
+      },
+      {
+        "ref": "Ziemke, Earl. Stalingrad to Berlin: The German Defeat in the East. Army Historical Series, 1968."
+      }
     ],
     "related_records": [
-      { "id": "leningrad", "title": "Siege of Leningrad", "type": "Campaign", "url": "/campaigns/eastern-front/leningrad" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
-      { "id": "carl-mannerheim", "title": "Carl Mannerheim", "type": "Personnel", "url": "/personnel/carl-mannerheim" }
+      {
+        "id": "leningrad",
+        "title": "Siege of Leningrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "walter-model",
+        "title": "Walter Model",
+        "type": "Personnel"
+      },
+      {
+        "id": "carl-mannerheim",
+        "title": "Carl Mannerheim",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -67,17 +108,39 @@
     "service": "Heer",
     "type": "Army Group",
     "theater": "Eastern Front",
-    "active": { "from": "1941-06-22", "to": "1945-04" },
+    "active": {
+      "from": "1941-06-22",
+      "to": "1945-04"
+    },
     "commanders": [
-      { "name": "Generalfeldmarschall Fedor von Bock", "period": "Jun–Dec 1941" },
-      { "name": "Generalfeldmarschall Günther von Kluge", "period": "Dec 1941–Oct 1943" },
-      { "name": "Generalfeldmarschall Ernst Busch", "period": "Oct 1943–Jun 1944" },
-      { "name": "Generalfeldmarschall Walter Model", "period": "Jun–Aug 1944" },
-      { "name": "Generalfeldmarschall Ferdinand Schörner / others", "period": "1944–1945" }
+      {
+        "name": "Generalfeldmarschall Fedor von Bock",
+        "period": "Jun–Dec 1941"
+      },
+      {
+        "name": "Generalfeldmarschall Günther von Kluge",
+        "period": "Dec 1941–Oct 1943"
+      },
+      {
+        "name": "Generalfeldmarschall Ernst Busch",
+        "period": "Oct 1943–Jun 1944"
+      },
+      {
+        "name": "Generalfeldmarschall Walter Model",
+        "period": "Jun–Aug 1944"
+      },
+      {
+        "name": "Generalfeldmarschall Ferdinand Schörner / others",
+        "period": "1944–1945"
+      }
     ],
     "peak_strength": "1,800,000 (June 1941)",
     "constituent_divisions": [
-      { "id": "panzergruppe-2", "title": "Panzergruppe 2 (Guderian)", "url": "/formations/panzergruppe-2" }
+      {
+        "id": "panzergruppe-2",
+        "title": "Panzergruppe 2 (Guderian)",
+        "url": "/formations/panzergruppe-2"
+      }
     ],
     "summary": "Army Group Centre was the largest and most powerful of the three army groups in Operation Barbarossa, with the primary objective of capturing Moscow. It achieved the greatest encirclements in the history of warfare — at Białystok-Minsk and Vyazma-Bryansk — before being halted 30 kilometres from Moscow in December 1941. It was catastrophically destroyed in Operation Bagration (June–August 1944), the greatest single defeat of the Wehrmacht.",
     "context": "Army Group Centre's advance in 1941 was staggering in scope. The Białystok-Minsk encirclement (June–July 1941) captured 290,000 prisoners; Smolensk (July–August) yielded 310,000; Vyazma-Bryansk (October) added another 663,000. By the time the army group stood before Moscow in December 1941, it had advanced 1,000 kilometres and captured over 1.5 million prisoners — but had also suffered 400,000 casualties it could not fully replace. The Soviet counteroffensive of December 1941 drove it back 100–300 kilometres. It remained on the offensive again in 1943 but was never able to replicate its 1941 successes. Operation Bagration (23 June–19 August 1944) destroyed 28 of its 34 divisions, killed or captured 300,000 German troops, and is considered the greatest military catastrophe in German history — larger than Stalingrad.",
@@ -113,16 +176,43 @@
       }
     ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 II: Army Group Centre operational files, 1941–1944." },
-      { "ref": "Glantz, David and House, Jonathan. When Titans Clashed: How the Red Army Stopped Hitler. University Press of Kansas, 1995." },
-      { "ref": "Megargee, Geoffrey. War of Annihilation: Combat and Genocide on the Eastern Front, 1941. Rowman and Littlefield, 2006." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 II: Army Group Centre operational files, 1941–1944."
+      },
+      {
+        "ref": "Glantz, David and House, Jonathan. When Titans Clashed: How the Red Army Stopped Hitler. University Press of Kansas, 1995."
+      },
+      {
+        "ref": "Megargee, Geoffrey. War of Annihilation: Combat and Genocide on the Eastern Front, 1941. Rowman and Littlefield, 2006."
+      }
     ],
     "related_records": [
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" },
-      { "id": "fedor-von-bock", "title": "Fedor von Bock", "type": "Personnel", "url": "/personnel/fedor-von-bock" },
-      { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
-      { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" }
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "moscow",
+        "title": "Battle of Moscow",
+        "type": "Campaign"
+      },
+      {
+        "id": "fedor-von-bock",
+        "title": "Fedor von Bock",
+        "type": "Personnel"
+      },
+      {
+        "id": "walter-model",
+        "title": "Walter Model",
+        "type": "Personnel"
+      },
+      {
+        "id": "heinz-guderian",
+        "title": "Heinz Guderian",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -132,13 +222,31 @@
     "service": "Heer",
     "type": "Army Group",
     "theater": "Eastern Front",
-    "active": { "from": "1941-06-22", "to": "1944-04" },
+    "active": {
+      "from": "1941-06-22",
+      "to": "1944-04"
+    },
     "commanders": [
-      { "name": "Generalfeldmarschall Gerd von Rundstedt", "period": "Jun–Dec 1941" },
-      { "name": "Generalfeldmarschall Walter von Reichenau", "period": "Dec 1941–Jan 1942" },
-      { "name": "Generalfeldmarschall Fedor von Bock", "period": "Jan–Jul 1942" },
-      { "name": "Generalfeldmarschall Erich von Manstein", "period": "Feb 1943–Mar 1944" },
-      { "name": "Generalfeldmarschall Walter Model", "period": "Mar–Apr 1944 (renamed Army Group North Ukraine)" }
+      {
+        "name": "Generalfeldmarschall Gerd von Rundstedt",
+        "period": "Jun–Dec 1941"
+      },
+      {
+        "name": "Generalfeldmarschall Walter von Reichenau",
+        "period": "Dec 1941–Jan 1942"
+      },
+      {
+        "name": "Generalfeldmarschall Fedor von Bock",
+        "period": "Jan–Jul 1942"
+      },
+      {
+        "name": "Generalfeldmarschall Erich von Manstein",
+        "period": "Feb 1943–Mar 1944"
+      },
+      {
+        "name": "Generalfeldmarschall Walter Model",
+        "period": "Mar–Apr 1944 (renamed Army Group North Ukraine)"
+      }
     ],
     "peak_strength": "780,000 (June 1941)",
     "summary": "Army Group South drove through Ukraine in 1941, encircling and destroying Soviet forces at Kiev in the largest encirclement battle in history. It was subsequently split and reconstituted in multiple configurations as operations evolved. Under Manstein in 1943 it achieved the stunning Third Battle of Kharkov — the last major German victory on the Eastern Front.",
@@ -180,19 +288,59 @@
       }
     ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 I: Army Group South operational files, 1941–1944." },
-      { "ref": "Manstein, Erich von. Lost Victories. Methuen, 1958.", "note": "Manstein's own account of his command of AGS." },
-      { "ref": "Nipe, George. Decision in the Ukraine. J.J. Fedorowicz, 1996." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 I: Army Group South operational files, 1941–1944."
+      },
+      {
+        "ref": "Manstein, Erich von. Lost Victories. Methuen, 1958.",
+        "note": "Manstein's own account of his command of AGS."
+      },
+      {
+        "ref": "Nipe, George. Decision in the Ukraine. J.J. Fedorowicz, 1996."
+      }
     ],
     "related_records": [
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "kiev", "title": "Battle of Kiev", "type": "Campaign", "url": "/campaigns/eastern-front/kiev" },
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" },
-      { "id": "erich-von-manstein", "title": "Erich von Manstein", "type": "Personnel", "url": "/personnel/erich-von-manstein" },
-      { "id": "fedor-von-bock", "title": "Fedor von Bock", "type": "Personnel", "url": "/personnel/fedor-von-bock" },
-      { "id": "hermann-hoth", "title": "Hermann Hoth", "type": "Personnel", "url": "/personnel/hermann-hoth" }
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "kiev",
+        "title": "Battle of Kiev",
+        "type": "Campaign"
+      },
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "gerd-von-rundstedt",
+        "title": "Gerd von Rundstedt",
+        "type": "Personnel"
+      },
+      {
+        "id": "erich-von-manstein",
+        "title": "Erich von Manstein",
+        "type": "Personnel"
+      },
+      {
+        "id": "fedor-von-bock",
+        "title": "Fedor von Bock",
+        "type": "Personnel"
+      },
+      {
+        "id": "hermann-hoth",
+        "title": "Hermann Hoth",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -202,9 +350,15 @@
     "service": "Heer",
     "type": "Army Group",
     "theater": "North Africa",
-    "active": { "from": "1943-02-23", "to": "1943-05-13" },
+    "active": {
+      "from": "1943-02-23",
+      "to": "1943-05-13"
+    },
     "commanders": [
-      { "name": "Generaloberst Hans-Jürgen von Arnim", "period": "Mar–May 1943" }
+      {
+        "name": "Generaloberst Hans-Jürgen von Arnim",
+        "period": "Mar–May 1943"
+      }
     ],
     "predecessor": "Panzerarmee Afrika (Rommel)",
     "peak_strength": "275,000 (Axis total; includes Italian forces)",
@@ -233,14 +387,34 @@
       }
     ],
     "sources": [
-      { "ref": "Howe, George. Northwest Africa: Seizing the Initiative in the West. Center of Military History, 1957." },
-      { "ref": "Mitcham, Samuel and von Stauffenberg, Friedrich. The Battle of Sicily. Orion, 1991." }
+      {
+        "ref": "Howe, George. Northwest Africa: Seizing the Initiative in the West. Center of Military History, 1957."
+      },
+      {
+        "ref": "Mitcham, Samuel and von Stauffenberg, Friedrich. The Battle of Sicily. Orion, 1991."
+      }
     ],
     "related_records": [
-      { "id": "hans-jurgen-von-arnim", "title": "Hans-Jürgen von Arnim", "type": "Personnel", "url": "/personnel/hans-jurgen-von-arnim" },
-      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-      { "id": "alamein-2", "title": "Second Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-2" },
-      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" }
+      {
+        "id": "hans-jurgen-von-arnim",
+        "title": "Hans-Jürgen von Arnim",
+        "type": "Personnel"
+      },
+      {
+        "id": "erwin-rommel",
+        "title": "Erwin Rommel",
+        "type": "Personnel"
+      },
+      {
+        "id": "alamein-2",
+        "title": "Second Battle of El Alamein",
+        "type": "Campaign"
+      },
+      {
+        "id": "gazala",
+        "title": "Battle of Gazala",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -250,11 +424,23 @@
     "service": "Heer",
     "type": "Army Group",
     "theater": "Western Front",
-    "active": { "from": "1943-07", "to": "1945-04-21" },
+    "active": {
+      "from": "1943-07",
+      "to": "1945-04-21"
+    },
     "commanders": [
-      { "name": "Generalfeldmarschall Erwin Rommel", "period": "Nov 1943–Jul 1944 (Normandy)" },
-      { "name": "Generalfeldmarschall Günther von Kluge", "period": "Jul–Aug 1944" },
-      { "name": "Generalfeldmarschall Walter Model", "period": "Aug 1944–Apr 1945" }
+      {
+        "name": "Generalfeldmarschall Erwin Rommel",
+        "period": "Nov 1943–Jul 1944 (Normandy)"
+      },
+      {
+        "name": "Generalfeldmarschall Günther von Kluge",
+        "period": "Jul–Aug 1944"
+      },
+      {
+        "name": "Generalfeldmarschall Walter Model",
+        "period": "Aug 1944–Apr 1945"
+      }
     ],
     "peak_strength": "c. 800,000 (June 1944, all theater)",
     "summary": "Army Group B commanded German forces in France and the Low Countries, including during the Normandy landings, the retreat through France, Operation Market Garden, and the Ardennes offensive. Its last commander, Model, held the Ruhr pocket until his suicide on 21 April 1945.",
@@ -291,17 +477,48 @@
       }
     ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 IX: Army Group B (West) operational records, 1944–1945." },
-      { "ref": "Beevor, Antony. D-Day: The Battle for Normandy. Viking, 2009." },
-      { "ref": "Kershaw, Robert. It Never Snows in September. Ian Allen, 1990." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 IX: Army Group B (West) operational records, 1944–1945."
+      },
+      {
+        "ref": "Beevor, Antony. D-Day: The Battle for Normandy. Viking, 2009."
+      },
+      {
+        "ref": "Kershaw, Robert. It Never Snows in September. Ian Allen, 1990."
+      }
     ],
     "related_records": [
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
-      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" },
-      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
-      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-      { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
-      { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" }
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      },
+      {
+        "id": "market-garden",
+        "title": "Operation Market Garden",
+        "type": "Campaign"
+      },
+      {
+        "id": "bulge",
+        "title": "Battle of the Bulge",
+        "type": "Campaign"
+      },
+      {
+        "id": "erwin-rommel",
+        "title": "Erwin Rommel",
+        "type": "Personnel"
+      },
+      {
+        "id": "walter-model",
+        "title": "Walter Model",
+        "type": "Personnel"
+      },
+      {
+        "id": "gerd-von-rundstedt",
+        "title": "Gerd von Rundstedt",
+        "type": "Personnel"
+      }
     ]
   }
 ]

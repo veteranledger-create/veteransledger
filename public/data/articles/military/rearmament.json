@@ -6,7 +6,13 @@
   "date_published": "2024-01-20",
   "author": "VeteransLedger Archive",
   "image": "/storage/images/articles/rearmament.jpg",
-  "tags": ["rearmament", "Wehrmacht", "Luftwaffe", "Kriegsmarine", "Versailles"],
+  "tags": [
+    "rearmament",
+    "Wehrmacht",
+    "Luftwaffe",
+    "Kriegsmarine",
+    "Versailles"
+  ],
   "summary": "Between 1933 and 1939, Nazi Germany systematically dismantled the military restrictions imposed by the Treaty of Versailles and rebuilt its armed forces into the most powerful war machine in Europe — partly in secret, partly in open defiance.",
   "body": [
     {
@@ -44,16 +50,47 @@
   ],
   "archival_note": "German rearmament documents are distributed across the Bundesarchiv (Koblenz) for civilian production records and Bundesarchiv-Militärarchiv (Freiburg) for Wehrmacht planning. The Nuremberg Trials produced extensive documentation (RG 238) on economic rearmament. The Institut für Zeitgeschichte (Munich) holds supplementary party and SS records.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv, Koblenz. R 2: Reich Finance Ministry — Defence Expenditure Records, 1933–1939." },
-    { "ref": "Müller, Klaus-Jürgen. The Army, Politics and Society in Germany, 1933–1945. Manchester University Press, 1987." },
-    { "ref": "Overy, Richard. War and Economy in the Third Reich. Oxford University Press, 1994.", "note": "The definitive economic history of German rearmament and war production." },
-    { "ref": "Deist, Wilhelm. The Wehrmacht and German Rearmament. Macmillan, 1981.", "note": "Part of the German Research Institute for Military History's official series." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv, Koblenz. R 2: Reich Finance Ministry — Defence Expenditure Records, 1933–1939."
+    },
+    {
+      "ref": "Müller, Klaus-Jürgen. The Army, Politics and Society in Germany, 1933–1945. Manchester University Press, 1987."
+    },
+    {
+      "ref": "Overy, Richard. War and Economy in the Third Reich. Oxford University Press, 1994.",
+      "note": "The definitive economic history of German rearmament and war production."
+    },
+    {
+      "ref": "Deist, Wilhelm. The Wehrmacht and German Rearmament. Macmillan, 1981.",
+      "note": "Part of the German Research Institute for Military History's official series."
+    }
   ],
   "related_records": [
-    { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
-    { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" },
-    { "id": "pz-iv", "title": "Panzerkampfwagen IV", "type": "Armament", "url": "/armaments/pz-iv" },
-    { "id": "he-111", "title": "Heinkel He 111", "type": "Armament", "url": "/armaments/he-111" },
-    { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" }
+    {
+      "id": "rise-nsdap",
+      "title": "Rise of the NSDAP",
+      "type": "Article"
+    },
+    {
+      "id": "bf-109",
+      "title": "Messerschmitt Bf 109",
+      "type": "Armament"
+    },
+    {
+      "id": "pz-iv",
+      "title": "Panzerkampfwagen IV",
+      "type": "Armament"
+    },
+    {
+      "id": "he-111",
+      "title": "Heinkel He 111",
+      "type": "Armament"
+    },
+    {
+      "id": "type-viic-uboat",
+      "title": "Type VIIC U-boat",
+      "type": "Armament"
+    }
   ]
 }

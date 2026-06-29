@@ -216,6 +216,218 @@ async function regenerateArmamentsIndex(targetDir: string): Promise<{ relPath: s
   return { relPath: "index.json", content };
 }
 
+// Generic helper — reads a JSON file from disk, returns null on any error.
+async function readJsonFile<T>(filePath: string): Promise<T | null> {
+  try { return JSON.parse(await fs.readFile(filePath, "utf-8")) as T; } catch { return null; }
+}
+
+// Regenerates personnel/index.json after a personnel promotion.
+// Preserves existing branch labels; detects which branch files are
+// actually present on disk so new branches appear automatically.
+async function regeneratePersonnelIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
+  const indexPath = path.join(targetDir, "index.json");
+  interface PersonnelIndex { branches: Array<{ id: string; label: string; file: string; [k: string]: unknown }>; [k: string]: unknown }
+  const current = await readJsonFile<PersonnelIndex>(indexPath);
+  const existing = new Map((current?.branches ?? []).map((b) => [b.id, b]));
+
+  const defaultBranches = [
+    { id: "army",         label: "Heer (Army)",        file: "" },
+    { id: "luftwaffe",    label: "Luftwaffe",           file: "" },
+    { id: "kriegsmarine", label: "Kriegsmarine",        file: "" },
+    { id: "waffen-ss",    label: "Waffen-SS",           file: "" },
+    { id: "foreign",      label: "Foreign Volunteers",  file: "" },
+  ];
+
+  const knownIds = new Set(defaultBranches.map((b) => b.id));
+  const branches = existing.size > 0 ? [...existing.values()] : defaultBranches;
+
+  // Discover any new branch files not yet in the index
+  let entries: import("fs").Dirent[];
+  try { entries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { entries = []; }
+  for (const e of entries) {
+    if (!e.isFile() || !e.name.endsWith(".json") || e.name === "index.json") continue;
+    const id = e.name.slice(0, -".json".length);
+    if (!existing.has(id) && !knownIds.has(id)) {
+      branches.push({ id, label: id, file: `/public/data/personnel/${e.name}` });
+    }
+  }
+
+  const rebuilt = branches.map((b) => ({
+    ...b,
+    file: `/public/data/personnel/${b.id}.json`,
+  }));
+
+  const newIndex = { ...(current ?? {}), branches: rebuilt };
+  const content = JSON.stringify(newIndex, null, 2);
+  const existingRaw = await readJsonFile<unknown>(indexPath);
+  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
+  return { relPath: "index.json", content };
+}
+
+// Regenerates letters/index.json after a letters promotion.
+async function regenerateLettersIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
+  const indexPath = path.join(targetDir, "index.json");
+  interface LettersIndex { collections: Array<{ id: string; label: string; file: string; [k: string]: unknown }>; [k: string]: unknown }
+  const current = await readJsonFile<LettersIndex>(indexPath);
+  const existing = new Map((current?.collections ?? []).map((c) => [c.id, c]));
+
+  let entries: import("fs").Dirent[];
+  try { entries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { entries = []; }
+
+  const collections = [...existing.values()];
+  const seenIds = new Set(collections.map((c) => c.id));
+
+  for (const e of entries) {
+    if (!e.isFile() || !e.name.endsWith(".json") || e.name === "index.json") continue;
+    const id = e.name.slice(0, -".json".length);
+    if (!seenIds.has(id)) {
+      const label = id.charAt(0).toUpperCase() + id.slice(1);
+      collections.push({ id, label, file: `/public/data/letters/${e.name}` });
+    } else {
+      // Update file path on existing entry (preserves label and other fields)
+      const c = existing.get(id)!;
+      existing.set(id, { ...c, file: `/public/data/letters/${e.name}` });
+    }
+  }
+
+  const rebuilt = collections.map((c) => ({ ...existing.get(c.id) ?? c }));
+  const newIndex = { ...(current ?? {}), collections: rebuilt };
+  const content = JSON.stringify(newIndex, null, 2);
+  const existingRaw = await readJsonFile<unknown>(indexPath);
+  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
+  return { relPath: "index.json", content };
+}
+
+// Regenerates campaigns/index.json after a campaigns promotion.
+// Scans theater subdirectories for campaign files to keep the campaigns[]
+// list in sync with what is actually on disk.
+async function regenerateCampaignsIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
+  const indexPath = path.join(targetDir, "index.json");
+  interface CampaignsIndex { theaters: Array<{ id: string; label: string; campaigns: string[]; [k: string]: unknown }>; [k: string]: unknown }
+  const current = await readJsonFile<CampaignsIndex>(indexPath);
+  const existing = new Map((current?.theaters ?? []).map((t) => [t.id, t]));
+
+  let topEntries: import("fs").Dirent[];
+  try { topEntries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { topEntries = []; }
+
+  const theaterDirs = topEntries.filter((e) => e.isDirectory());
+  const rebuilt = [];
+
+  for (const dir of theaterDirs) {
+    const theaterId = dir.name;
+    let files: import("fs").Dirent[];
+    try { files = await fs.readdir(path.join(targetDir, theaterId), { withFileTypes: true }); } catch { files = []; }
+    const campaigns = files
+      .filter((f) => f.isFile() && f.name.endsWith(".json"))
+      .map((f) => f.name.slice(0, -".json".length))
+      .sort();
+    const prev = existing.get(theaterId);
+    rebuilt.push({ ...prev, id: theaterId, label: prev?.label ?? theaterId, campaigns });
+  }
+
+  // Preserve theaters in the existing index that have no directory yet (empty theaters)
+  for (const [id, t] of existing) {
+    if (!rebuilt.find((r) => r.id === id)) rebuilt.push({ ...t, campaigns: t.campaigns ?? [] });
+  }
+
+  const newIndex = { ...(current ?? {}), theaters: rebuilt };
+  const content = JSON.stringify(newIndex, null, 2);
+  const existingRaw = await readJsonFile<unknown>(indexPath);
+  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
+  return { relPath: "index.json", content };
+}
+
+// Regenerates articles/index.json after an articles promotion.
+// Scans category subdirectories for article files; preserves existing labels.
+async function regenerateArticlesIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
+  const indexPath = path.join(targetDir, "index.json");
+  interface ArticlesIndex { categories: Array<{ id: string; label: string; files: string[]; [k: string]: unknown }>; [k: string]: unknown }
+  const current = await readJsonFile<ArticlesIndex>(indexPath);
+  const existing = new Map((current?.categories ?? []).map((c) => [c.id, c]));
+
+  let topEntries: import("fs").Dirent[];
+  try { topEntries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { topEntries = []; }
+
+  const categoryDirs = topEntries.filter((e) => e.isDirectory());
+  const rebuilt = [];
+
+  for (const dir of categoryDirs) {
+    const categoryId = dir.name;
+    let files: import("fs").Dirent[];
+    try { files = await fs.readdir(path.join(targetDir, categoryId), { withFileTypes: true }); } catch { files = []; }
+    const filePaths = files
+      .filter((f) => f.isFile() && f.name.endsWith(".json"))
+      .map((f) => `/public/data/articles/${categoryId}/${f.name}`)
+      .sort();
+    const prev = existing.get(categoryId);
+    const label = prev?.label ?? (categoryId.charAt(0).toUpperCase() + categoryId.slice(1));
+    rebuilt.push({ ...prev, id: categoryId, label, files: filePaths });
+  }
+
+  for (const [id, c] of existing) {
+    if (!rebuilt.find((r) => r.id === id)) rebuilt.push({ ...c, files: c.files ?? [] });
+  }
+
+  const newIndex = { ...(current ?? {}), categories: rebuilt };
+  const content = JSON.stringify(newIndex, null, 2);
+  const existingRaw = await readJsonFile<unknown>(indexPath);
+  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
+  return { relPath: "index.json", content };
+}
+
+// Regenerates a flat index.json for Awards, Maps, or Political Documents
+// after a promotion. Scans the target directory for record files, reads
+// the key display fields from each, and rebuilds the records[] array.
+// The index is the only discovery mechanism for these types on the public site.
+async function regenerateFlatIndex(
+  targetDir: string,
+  pickFields: (raw: Record<string, unknown>) => Record<string, unknown>,
+): Promise<{ relPath: string; content: string } | null> {
+  const indexPath = path.join(targetDir, "index.json");
+  let entries: import("fs").Dirent[];
+  try { entries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { return null; }
+
+  const records: Record<string, unknown>[] = [];
+  for (const e of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+    if (!e.isFile() || !e.name.endsWith(".json") || e.name === "index.json") continue;
+    try {
+      const raw = JSON.parse(await fs.readFile(path.join(targetDir, e.name), "utf-8")) as Record<string, unknown>;
+      records.push(pickFields(raw));
+    } catch { /* skip malformed files */ }
+  }
+
+  const newIndex = { records };
+  const content = JSON.stringify(newIndex, null, 2);
+  const existingRaw = await readJsonFile<unknown>(indexPath);
+  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
+  return { relPath: "index.json", content };
+}
+
+async function regenerateAwardsIndex(targetDir: string) {
+  return regenerateFlatIndex(targetDir, (r) => ({
+    id: r.id, title: r.title,
+    ...(r.nation ? { nation: r.nation } : {}),
+    ...(r.summary ? { summary: r.summary } : {}),
+    ...(r.image ? { image: r.image } : {}),
+  }));
+}
+async function regenerateMapsIndex(targetDir: string) {
+  return regenerateFlatIndex(targetDir, (r) => ({
+    id: r.id, title: r.title,
+    ...(r.theater ? { theater: r.theater } : {}),
+    ...(r.year ? { year: r.year } : {}),
+    ...(r.image ? { image: r.image } : {}),
+  }));
+}
+async function regeneratePoliticalDocsIndex(targetDir: string) {
+  return regenerateFlatIndex(targetDir, (r) => ({
+    id: r.id, title: r.title,
+    ...(r.date ? { date: r.date } : {}),
+    ...(r.summary ? { summary: r.summary } : {}),
+    ...(r.image ? { image: r.image } : {}),
+  }));
+}
+
 // Phase 8A: "other-axis" is a migration-source folder concept, not a
 // published-data concept — once a category's records are grouped by real
 // nationality (see publish.service.ts's generateFiles), there is no
@@ -234,6 +446,24 @@ function categoriesInBatch(relPaths: string[]): Set<string> {
       .map((p) => p.replace(/\\/g, "/").split("/")[0])
       .filter((c) => c && c !== "index.json"),
   );
+}
+
+// Finds JSON files sitting directly in targetDir root (not in subdirs, not
+// index.json). For campaigns and articles these are old per-theater/per-category
+// aggregate files generated by the previous pipeline format (e.g.
+// eastern-front.json, military.json). The new pipeline only writes to
+// {theater}/{slug}.json or {category}/{slug}.json subdirectories, so any
+// root-level .json file other than index.json is an orphaned aggregate.
+async function findOrphanedRootJsonFiles(targetDir: string): Promise<Map<string, null>> {
+  const toDelete = new Map<string, null>();
+  let entries: import("fs").Dirent[];
+  try { entries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { return toDelete; }
+  for (const entry of entries) {
+    if (entry.isFile() && entry.name.endsWith(".json") && entry.name !== "index.json") {
+      toDelete.set(entry.name, null);
+    }
+  }
+  return toDelete;
 }
 
 async function findOrphanedOtherAxisFiles(
@@ -312,27 +542,50 @@ export class PromotionService {
     let filesAffected = promoted;
     let fullSnapshot = snapshot;
 
-    // Armaments-only: the frontend discovers nation files dynamically via
-    // index.json (see armaments.js / search.js), so the manifest must be
-    // regenerated from the real post-promotion directory state every time —
-    // otherwise a newly promoted file (e.g. naval/romania.json) would be on
-    // disk but invisible to the live site. If this step fails, the staged
-    // promotion above is rolled back too, so no partial state can remain.
-    if (type === "armaments") {
-      try {
-        // Orphan pruning runs BEFORE manifest regeneration, scoped only to
-        // this batch's categories, so the manifest scan below sees the
-        // already-correct directory state (no stale other-axis.json).
-        const touchedCategories = categoriesInBatch(promoted);
-        const orphanDeletions = await findOrphanedOtherAxisFiles(targetDir, touchedCategories, promoted);
+    // After every promotion, regenerate the section's index.json so that
+    // any new files added to the directory are immediately discoverable by
+    // the frontend without requiring a source-code change. Each regenerator
+    // preserves existing labels and only writes if something actually changed.
+    // If this step fails, the staged promotion above is rolled back too so no
+    // partial state can remain.
+    const indexRegenerator: (() => Promise<{ relPath: string; content: string } | null>) | null =
+      type === "armaments"      ? () => regenerateArmamentsIndex(targetDir)      :
+      type === "personnel"      ? () => regeneratePersonnelIndex(targetDir)      :
+      type === "letters"        ? () => regenerateLettersIndex(targetDir)        :
+      type === "campaigns"      ? () => regenerateCampaignsIndex(targetDir)      :
+      type === "articles"       ? () => regenerateArticlesIndex(targetDir)       :
+      type === "awards"         ? () => regenerateAwardsIndex(targetDir)         :
+      type === "maps"           ? () => regenerateMapsIndex(targetDir)           :
+      type === "political-docs" ? () => regeneratePoliticalDocsIndex(targetDir)  :
+      // formations: index.json is static structural config (category paths never change) — no regeneration needed.
+      // nsdap: files are promoted as-is; no index.json to update.
+      null;
 
-        if (orphanDeletions.size > 0) {
-          const { applied: orphanApplied, snapshot: orphanSnapshot } = await applyFileChangesAtomically(targetDir, orphanDeletions);
-          filesAffected = [...filesAffected, ...orphanApplied];
-          fullSnapshot = { ...fullSnapshot, ...orphanSnapshot };
+    if (indexRegenerator) {
+      try {
+        if (type === "armaments") {
+          // Armaments prunes orphaned other-axis.json files (per-nation migration artifact).
+          const touchedCategories = categoriesInBatch(promoted);
+          const orphanDeletions = await findOrphanedOtherAxisFiles(targetDir, touchedCategories, promoted);
+          if (orphanDeletions.size > 0) {
+            const { applied: orphanApplied, snapshot: orphanSnapshot } = await applyFileChangesAtomically(targetDir, orphanDeletions);
+            filesAffected = [...filesAffected, ...orphanApplied];
+            fullSnapshot = { ...fullSnapshot, ...orphanSnapshot };
+          }
+        } else if (type === "campaigns" || type === "articles") {
+          // Campaigns and articles prune old per-theater/per-category aggregate
+          // JSON files at the root of the data directory (e.g. eastern-front.json,
+          // military.json). These were written by the old pipeline and are now
+          // superseded by per-record files in {theater|category}/{slug}.json subdirs.
+          const orphanDeletions = await findOrphanedRootJsonFiles(targetDir);
+          if (orphanDeletions.size > 0) {
+            const { applied: orphanApplied, snapshot: orphanSnapshot } = await applyFileChangesAtomically(targetDir, orphanDeletions);
+            filesAffected = [...filesAffected, ...orphanApplied];
+            fullSnapshot = { ...fullSnapshot, ...orphanSnapshot };
+          }
         }
 
-        const indexChange = await regenerateArmamentsIndex(targetDir);
+        const indexChange = await indexRegenerator();
         if (indexChange) {
           const { applied: indexApplied, snapshot: indexSnapshot } = await applyFileChangesAtomically(
             targetDir,

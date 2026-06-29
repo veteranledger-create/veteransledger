@@ -3,17 +3,25 @@
   "title": "Warsaw Uprising",
   "subtitle": "The Polish Home Army's Battle for Liberation",
   "theater": "western-front",
-  "dates": { "start": "1944-08-01", "end": "1944-10-02" },
+  "dates": {
+    "start": "1944-08-01",
+    "end": "1944-10-02"
+  },
   "date_start": "1944-08-01",
   "date_end": "1944-10-02",
   "theatre": "Warsaw, German-Occupied Poland",
   "combatants": {
     "axis": {
-      "commanders": ["Erich von dem Bach-Zelewski (SS)", "Heinz Reinefarth (SS)"],
+      "commanders": [
+        "Erich von dem Bach-Zelewski (SS)",
+        "Heinz Reinefarth (SS)"
+      ],
       "strength": "SS-RONA Brigade, Dirlewanger Brigade, Wehrmacht and SS units"
     },
     "allied": {
-      "commanders": ["Tadeusz Bór-Komorowski (AK Commander)"],
+      "commanders": [
+        "Tadeusz Bór-Komorowski (AK Commander)"
+      ],
       "strength": "~50,000 Polish Home Army (Armia Krajowa) fighters"
     }
   },
@@ -26,14 +34,37 @@
   "outcome": "German victory; Warsaw razed on Hitler's direct orders. 85% of the city deliberately destroyed.",
   "significance": "One of the greatest urban battles and tragedies of the war. The Soviet halt across the Vistula — whether strategic or political — remains deeply controversial and is central to Polish historical memory.",
   "sources": [
-    { "type": "primary", "ref": "Instytut Pamięci Narodowej (IPN), Warsaw. File IPN BU 1572: Documentation of the Warsaw Uprising and post-uprising destruction." },
-    { "ref": "Bór-Komorowski, Tadeusz. The Secret Army. Gryf, 1950.", "note": "Memoir by the AK commander; the foundational first-person account." },
-    { "ref": "Borodziej, Włodzimierz. The Warsaw Uprising of 1944. University of Wisconsin Press, 2006.", "note": "The definitive scholarly account drawing on Polish, German, and Soviet archives." },
-    { "ref": "Davies, Norman. Rising '44: The Battle for Warsaw. Macmillan, 2003." }
+    {
+      "type": "primary",
+      "ref": "Instytut Pamięci Narodowej (IPN), Warsaw. File IPN BU 1572: Documentation of the Warsaw Uprising and post-uprising destruction."
+    },
+    {
+      "ref": "Bór-Komorowski, Tadeusz. The Secret Army. Gryf, 1950.",
+      "note": "Memoir by the AK commander; the foundational first-person account."
+    },
+    {
+      "ref": "Borodziej, Włodzimierz. The Warsaw Uprising of 1944. University of Wisconsin Press, 2006.",
+      "note": "The definitive scholarly account drawing on Polish, German, and Soviet archives."
+    },
+    {
+      "ref": "Davies, Norman. Rising '44: The Battle for Warsaw. Macmillan, 2003."
+    }
   ],
   "related_records": [
-    { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
-    { "id": "otto-skorzeny", "title": "Otto Skorzeny", "type": "Personnel", "url": "/personnel/otto-skorzeny" },
-    { "id": "jochen-peiper", "title": "Jochen Peiper", "type": "Personnel", "url": "/personnel/jochen-peiper" }
+    {
+      "id": "poland",
+      "title": "Invasion of Poland",
+      "type": "Campaign"
+    },
+    {
+      "id": "otto-skorzeny",
+      "title": "Otto Skorzeny",
+      "type": "Personnel"
+    },
+    {
+      "id": "jochen-peiper",
+      "title": "Jochen Peiper",
+      "type": "Personnel"
+    }
   ]
 }

@@ -1,36 +1,49 @@
 /**
  * VeteransLedger · Campaigns page
  * Theater-tab switching with pagination (10 per page).
+ * Filter definitions loaded from campaigns/index.json — no hardcoded arrays.
  */
 
 import { createPaginator } from "/pages/shared/paginator.js";
-
-const THEATERS = [
-  { id: "eastern-front", label: "Eastern Front",  path: "eastern-front" },
-  { id: "western-front", label: "Western Front",  path: "western-front" },
-  { id: "africa",        label: "North Africa",   path: "africa" },
-  { id: "italy",         label: "Italy",          path: "italy" },
-  { id: "atlantic",      label: "Atlantic",       path: "atlantic" },
-];
-
-const FILE_MAP = {
-  "eastern-front": ["barbarossa.json","blue.json","caucasus.json","kharkov.json",
-                    "kiev.json","leningrad.json","moscow.json","stalingrad.json"],
-  "western-front": ["britain.json","bulge.json","bzura.json","dieppe.json","dunkirk.json",
-                    "france.json","market-garden.json","normandy.json","norway.json",
-                    "poland.json","warsaw.json"],
-  africa:          ["alamein-1.json","alamein-2.json","gazala.json","sonnenblume.json","tobruk.json"],
-  italy:           ["cassino.json","crete.json","gothic-line.json","sicily.json","taranto.json"],
-  atlantic:        ["altmark.json","atlantic.json","convoy-war.json","rheinubung.json",
-                    "river-plate.json","uboat-campaing.json"],
-};
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
 const PAGE_SIZE   = 10;
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
+let THEATERS      = [];
+let FILE_MAP      = {};
 let activeTheater = "eastern-front";
 const cache       = {};
 let paginator     = null;
+
+async function loadManifest() {
+  try {
+    const res = await fetch("/public/data/campaigns/index.json");
+    const data = res.ok ? await res.json() : null;
+    const theaters = data?.theaters ?? [];
+    THEATERS = theaters.map((t) => ({ id: t.id, label: t.label, path: t.id }));
+    FILE_MAP  = Object.fromEntries(
+      theaters.map((t) => [t.id, (t.campaigns || []).map((c) => `${c}.json`)]),
+    );
+    if (theaters.length) activeTheater = theaters[0].id;
+  } catch (_) {
+    // fallback defaults if manifest unavailable
+    THEATERS = [
+      { id: "eastern-front", label: "Eastern Front", path: "eastern-front" },
+      { id: "western-front", label: "Western Front", path: "western-front" },
+      { id: "africa",        label: "North Africa",  path: "africa" },
+      { id: "italy",         label: "Italy",         path: "italy" },
+      { id: "atlantic",      label: "Atlantic",      path: "atlantic" },
+    ];
+    FILE_MAP = {
+      "eastern-front": ["barbarossa.json","blue.json","caucasus.json","kharkov.json","kiev.json","leningrad.json","moscow.json","stalingrad.json"],
+      "western-front": ["britain.json","bulge.json","bzura.json","dieppe.json","dunkirk.json","france.json","market-garden.json","normandy.json","norway.json","poland.json","warsaw.json"],
+      africa:          ["alamein-1.json","alamein-2.json","gazala.json","sonnenblume.json","tobruk.json"],
+      italy:           ["cassino.json","crete.json","gothic-line.json","sicily.json","taranto.json"],
+      atlantic:        ["altmark.json","atlantic.json","convoy-war.json","rheinubung.json","river-plate.json","uboat-campaing.json"],
+    };
+  }
+}
 
 const grid    = document.getElementById("campaigns-grid");
 const pagerEl = (() => {
@@ -40,15 +53,42 @@ const pagerEl = (() => {
   return el;
 })();
 
-document.getElementById("theater-nav")?.addEventListener("click", (e) => {
-  const btn = e.target.closest(".nation-tab");
-  if (!btn) return;
-  const theater = btn.dataset.theater;
-  if (!theater) return;
-  document.querySelectorAll(".nation-tab")
-    .forEach((b) => b.classList.toggle("is-active", b === btn));
-  switchTheater(theater);
-});
+function renderTheaterNav() {
+  const nav = document.getElementById("theater-nav");
+  if (!nav || !THEATERS.length) return;
+  nav.innerHTML = THEATERS.map((t, i) =>
+    `<button type="button" class="nation-tab${i === 0 ? " is-active" : ""}" data-theater="${t.id}">${t.label}</button>`,
+  ).join("");
+}
+
+async function init() {
+  await loadManifest();
+  renderTheaterNav();
+
+  const hash  = location.hash.replace("#", "");
+  const match = THEATERS.find((t) => t.id === hash);
+  if (match) {
+    activeTheater = match.id;
+    document.querySelectorAll(".nation-tab")
+      .forEach((b) => b.classList.toggle("is-active", b.dataset.theater === match.id));
+  } else {
+    document.querySelector(`[data-theater="${activeTheater}"]`)?.classList.add("is-active");
+  }
+
+  document.getElementById("theater-nav")?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".nation-tab");
+    if (!btn) return;
+    const theater = btn.dataset.theater;
+    if (!theater) return;
+    document.querySelectorAll(".nation-tab")
+      .forEach((b) => b.classList.toggle("is-active", b === btn));
+    switchTheater(theater);
+  });
+
+  switchTheater(activeTheater);
+}
+
+init();
 
 async function switchTheater(theaterId) {
   activeTheater = theaterId;
@@ -97,7 +137,7 @@ function renderCampaigns(container, campaigns) {
   campaigns.forEach((c) => {
     const card = document.createElement("a");
     card.className = "record-card";
-    card.href = `/campaigns/${c.id}`;
+    card.href = resolveRelatedUrl("Campaign", c.id);
 
     const imgSrc  = c.image || PLACEHOLDER;
     const dateStr = c.startDate || c.date || c.year || "";
@@ -135,16 +175,3 @@ function renderCampaigns(container, campaigns) {
   });
 }
 
-// Boot
-(function initFromHash() {
-  const hash  = location.hash.replace("#", "");
-  const match = THEATERS.find((t) => t.id === hash);
-  if (match) {
-    activeTheater = match.id;
-    document.querySelectorAll(".nation-tab")
-      .forEach((b) => b.classList.toggle("is-active", b.dataset.theater === match.id));
-  } else {
-    document.querySelector(`[data-theater="${activeTheater}"]`)?.classList.add("is-active");
-  }
-  switchTheater(activeTheater);
-})();

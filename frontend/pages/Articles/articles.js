@@ -1,16 +1,13 @@
 /**
  * VeteransLedger · Articles page
  * Category filter + pagination (9 per page).
+ * Category definitions loaded from articles/index.json — no hardcoded arrays.
  */
 
 import { createPaginator } from "/pages/shared/paginator.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
-const CATEGORIES = [
-  { id: "military",  path: "military",  files: ["poland-1939.json","rearmament.json","berlin-1945.json"] },
-  { id: "political", path: "political", files: ["anschluss.json","july-20.json","rise-nsdap.json","occupation.json"] },
-  { id: "economy",   path: "economy",   files: [] },
-  { id: "legal",     path: "legal",     files: ["nuremberg.json"] },
-];
+let CATEGORIES = [];
 
 const PAGE_SIZE   = 9;
 const PLACEHOLDER = "/public/images/covers/articles-cover.webp";
@@ -28,7 +25,41 @@ const pagerEl  = (() => {
   return el;
 })();
 
+async function loadManifest() {
+  try {
+    const res = await fetch("/public/data/articles/index.json");
+    const data = res.ok ? await res.json() : null;
+    CATEGORIES = (data?.categories ?? []).map((c) => ({
+      id:    c.id,
+      label: c.label,
+      path:  c.id,
+      files: (c.files || []).map((f) => f.split("/").pop()),
+    }));
+  } catch (_) {}
+  if (!CATEGORIES.length) {
+    CATEGORIES = [
+      { id: "military",  label: "Military",  path: "military",  files: ["poland-1939.json","rearmament.json","berlin-1945.json"] },
+      { id: "political", label: "Political", path: "political", files: ["anschluss.json","july-20.json","rise-nsdap.json","occupation.json"] },
+      { id: "economy",   label: "Economy",   path: "economy",   files: [] },
+      { id: "legal",     label: "Legal",     path: "legal",     files: ["nuremberg.json"] },
+    ];
+  }
+}
+
+function renderCategoryTabs() {
+  const tabs = document.getElementById("category-tabs");
+  if (!tabs || !CATEGORIES.length) return;
+  tabs.innerHTML =
+    `<button type="button" class="category-tab is-active" role="tab" data-category="all">All</button>` +
+    CATEGORIES.map((c) =>
+      `<button type="button" class="category-tab" role="tab" data-category="${c.id}">${c.label}</button>`,
+    ).join("");
+}
+
 async function init() {
+  await loadManifest();
+  renderCategoryTabs();
+
   document.getElementById("category-tabs")?.addEventListener("click", (e) => {
     const btn = e.target.closest(".category-tab");
     if (!btn) return;
@@ -92,7 +123,7 @@ function renderArticles(container, articles) {
   articles.forEach((article) => {
     const el = document.createElement("a");
     el.className = "article-preview";
-    el.href = `/articles/${article.id}`;
+    el.href = resolveRelatedUrl("Article", article.id);
 
     const imgs = article.images || [];
     const img  = imgs[0] || PLACEHOLDER;

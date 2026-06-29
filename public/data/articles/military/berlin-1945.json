@@ -78,18 +78,55 @@
   ],
   "archival_note": "Bundesarchiv-Militärarchiv, Freiburg. RH 2/2616: Army High Command — Berlin defence files, April 1945. Russian State Military Archive (RGVA), Moscow: Frontal operational records, 1st Belorussian Front, April–May 1945. Gedenkstätte Deutscher Widerstand, Berlin.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 2/2616: OKH Berlin defence records." },
-    { "type": "primary", "ref": "Russian State Military Archive (RGVA), Moscow. 1st Belorussian Front operational files, April–May 1945." },
-    { "ref": "Beevor, Antony. Berlin: The Downfall 1945. Viking, 2002.", "note": "The most comprehensive Western account." },
-    { "ref": "Le Tissier, Tony. The Battle of Berlin 1945. Jonathan Cape, 1988." },
-    { "ref": "Duffy, Christopher. Red Storm on the Reich: The Soviet March on Germany 1945. Routledge, 1991." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 2/2616: OKH Berlin defence records."
+    },
+    {
+      "type": "primary",
+      "ref": "Russian State Military Archive (RGVA), Moscow. 1st Belorussian Front operational files, April–May 1945."
+    },
+    {
+      "ref": "Beevor, Antony. Berlin: The Downfall 1945. Viking, 2002.",
+      "note": "The most comprehensive Western account."
+    },
+    {
+      "ref": "Le Tissier, Tony. The Battle of Berlin 1945. Jonathan Cape, 1988."
+    },
+    {
+      "ref": "Duffy, Christopher. Red Storm on the Reich: The Soviet March on Germany 1945. Routledge, 1991."
+    }
   ],
   "related_records": [
-    { "id": "gotthard-heinrici", "title": "Gotthard Heinrici", "type": "Personnel", "url": "/personnel/gotthard-heinrici" },
-    { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
-    { "id": "felix-steiner", "title": "Felix Steiner", "type": "Personnel", "url": "/personnel/felix-steiner" },
-    { "id": "panzerfaust", "title": "Panzerfaust", "type": "Armament", "url": "/armaments/panzerfaust" },
-    { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
-    { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" }
+    {
+      "id": "gotthard-heinrici",
+      "title": "Gotthard Heinrici",
+      "type": "Personnel"
+    },
+    {
+      "id": "walter-model",
+      "title": "Walter Model",
+      "type": "Personnel"
+    },
+    {
+      "id": "felix-steiner",
+      "title": "Felix Steiner",
+      "type": "Personnel"
+    },
+    {
+      "id": "panzerfaust",
+      "title": "Panzerfaust",
+      "type": "Armament"
+    },
+    {
+      "id": "rise-nsdap",
+      "title": "Rise of the NSDAP",
+      "type": "Article"
+    },
+    {
+      "id": "nuremberg",
+      "title": "The Nuremberg Trials",
+      "type": "Article"
+    }
   ]
 }

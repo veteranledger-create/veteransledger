@@ -2,25 +2,53 @@
   "id": "france",
   "title": "Fall of France (Fall Gelb / Fall Rot)",
   "theater": "western-front",
-  "dates": { "start": "1940-05-10", "end": "1940-06-25" },
+  "dates": {
+    "start": "1940-05-10",
+    "end": "1940-06-25"
+  },
   "summary": "The German campaign in the West resulted in the rapid defeat of France, Belgium, Luxembourg, and the Netherlands in just six weeks. The campaign featured the Ardennes breakthrough designed by Erich von Manstein and executed by Heinz Guderian's Panzer forces.",
   "background": "After the 'Phoney War' winter of 1939–1940, Hitler launched Fall Gelb on 10 May 1940. Erich von Manstein's radical Sichelschnitt ('Sickle Cut') plan thrust Panzer forces through the 'impassable' Ardennes forest to cut off Allied forces in Belgium.",
   "context": "The Fall of France was one of the most stunning military victories of the modern era, defeating in six weeks armies that had fought Germany to a standstill for four years in 1914–1918. The decisive factor was the Manstein Plan: while the Allied command sent its best mechanised forces north into Belgium (as German planners intended), Guderian's XIX Panzer Corps crossed the Meuse at Sedan on 13 May and raced to the Channel coast, severing the Allied supply lines. French and British commanders failed to respond with sufficient speed, partly because the scale of the breakthrough was incomprehensible to military doctrine built on 1918 experience. Rommel's 7th Panzer Division advanced so fast it was described in German press as the 'Ghost Division.' The Halt Order that allowed the Dunkirk evacuation saved the British Army; France, denied Allied ground forces, signed an armistice on 22 June 1940 at Compiègne — in the same railway car used for the 1918 armistice. The German letter home from Paris, de-003, was written during the occupation that followed.",
   "combatants": {
     "axis": {
-      "commanders": ["Gerd von Rundstedt (Army Group A)", "Fedor von Bock (Army Group B)", "Heinz Guderian (XIX Panzer Corps)", "Erwin Rommel (7th Panzer Division)"],
+      "commanders": [
+        "Gerd von Rundstedt (Army Group A)",
+        "Fedor von Bock (Army Group B)",
+        "Heinz Guderian (XIX Panzer Corps)",
+        "Erwin Rommel (7th Panzer Division)"
+      ],
       "strength": "2,445,000 troops, 2,445 tanks, 7,378 artillery pieces"
     },
     "allied": {
-      "commanders": ["Maurice Gamelin", "Maxime Weygand", "John Gort (BEF)"],
+      "commanders": [
+        "Maurice Gamelin",
+        "Maxime Weygand",
+        "John Gort (BEF)"
+      ],
       "strength": "2,862,000 troops (France, UK, Belgium, Netherlands), 3,383 tanks"
     }
   },
   "phases": [
-    { "name": "Fall Gelb — Phase One", "dates": "10–21 May 1940", "description": "Army Group B attacks through Belgium and the Netherlands, drawing Allied forces north. Army Group A's Panzers cross the Ardennes and emerge at Sedan on 13 May." },
-    { "name": "The Drive to the Channel", "dates": "21–28 May 1940", "description": "German Panzers race to the English Channel, cutting off Allied forces in Belgium. The 'Halt Order' pauses Panzers short of Dunkirk." },
-    { "name": "Dunkirk Evacuation", "dates": "26 May – 4 June 1940", "description": "Operation Dynamo evacuates 338,226 Allied troops from Dunkirk beaches, though all heavy equipment is abandoned." },
-    { "name": "Fall Rot", "dates": "5–25 June 1940", "description": "Germany turns south against remaining French forces. Paris falls 14 June. France signs armistice 22 June 1940 at Compiègne." }
+    {
+      "name": "Fall Gelb — Phase One",
+      "dates": "10–21 May 1940",
+      "description": "Army Group B attacks through Belgium and the Netherlands, drawing Allied forces north. Army Group A's Panzers cross the Ardennes and emerge at Sedan on 13 May."
+    },
+    {
+      "name": "The Drive to the Channel",
+      "dates": "21–28 May 1940",
+      "description": "German Panzers race to the English Channel, cutting off Allied forces in Belgium. The 'Halt Order' pauses Panzers short of Dunkirk."
+    },
+    {
+      "name": "Dunkirk Evacuation",
+      "dates": "26 May – 4 June 1940",
+      "description": "Operation Dynamo evacuates 338,226 Allied troops from Dunkirk beaches, though all heavy equipment is abandoned."
+    },
+    {
+      "name": "Fall Rot",
+      "dates": "5–25 June 1940",
+      "description": "Germany turns south against remaining French forces. Paris falls 14 June. France signs armistice 22 June 1940 at Compiègne."
+    }
   ],
   "outcome": "Total German victory. France signed an armistice on 22 June 1940. Northern and western France came under direct German occupation; southern France became 'Vichy France' under Marshal Pétain.",
   "casualties": {
@@ -30,17 +58,52 @@
   "image": "/storage/images/campaigns/france.jpg",
   "significance": "The fall of France in six weeks shocked the world and left Britain alone against Germany. The campaign validated Blitzkrieg doctrine and established German dominance over Western Europe for four years.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 21-1: XIX Armeekorps (mot.) War Diary, May–June 1940." },
-    { "ref": "Frieser, Karl-Heinz. The Blitzkrieg Legend: The 1940 Campaign in the West. Naval Institute Press, 2005.", "note": "Definitive German staff history drawing on previously inaccessible Wehrmacht records." },
-    { "ref": "Jackson, Julian. The Fall of France: The Nazi Invasion of 1940. Oxford University Press, 2003." },
-    { "ref": "Horne, Alistair. To Lose a Battle: France 1940. Macmillan, 1969.", "note": "The classic English-language account; remains the most readable narrative." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 21-1: XIX Armeekorps (mot.) War Diary, May–June 1940."
+    },
+    {
+      "ref": "Frieser, Karl-Heinz. The Blitzkrieg Legend: The 1940 Campaign in the West. Naval Institute Press, 2005.",
+      "note": "Definitive German staff history drawing on previously inaccessible Wehrmacht records."
+    },
+    {
+      "ref": "Jackson, Julian. The Fall of France: The Nazi Invasion of 1940. Oxford University Press, 2003."
+    },
+    {
+      "ref": "Horne, Alistair. To Lose a Battle: France 1940. Macmillan, 1969.",
+      "note": "The classic English-language account; remains the most readable narrative."
+    }
   ],
   "related_records": [
-    { "id": "dunkirk", "title": "Dunkirk Evacuation", "type": "Campaign", "url": "/campaigns/western-front/dunkirk" },
-    { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" },
-    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-    { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" },
-    { "id": "de-003", "title": "Von Schiller — Paris (1940)", "type": "Letter", "url": "/letters/de-003" },
-    { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" }
+    {
+      "id": "dunkirk",
+      "title": "Dunkirk Evacuation",
+      "type": "Campaign"
+    },
+    {
+      "id": "heinz-guderian",
+      "title": "Heinz Guderian",
+      "type": "Personnel"
+    },
+    {
+      "id": "erwin-rommel",
+      "title": "Erwin Rommel",
+      "type": "Personnel"
+    },
+    {
+      "id": "gerd-von-rundstedt",
+      "title": "Gerd von Rundstedt",
+      "type": "Personnel"
+    },
+    {
+      "id": "de-003",
+      "title": "Von Schiller — Paris (1940)",
+      "type": "Letter"
+    },
+    {
+      "id": "britain",
+      "title": "Battle of Britain",
+      "type": "Campaign"
+    }
   ]
 }

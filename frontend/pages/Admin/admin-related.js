@@ -12,6 +12,7 @@
  */
 
 import { authHeader, escHtml, debounce } from "./admin-utils.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
 const TYPE_LABEL_MAP = {
   PERSON: "Personnel",
@@ -19,6 +20,7 @@ const TYPE_LABEL_MAP = {
   ARTICLE: "Article",
   CAMPAIGN: "Campaign",
   ARMAMENT: "Armament",
+  FORMATION: "Formation",
 };
 
 let _initialized = false;
@@ -82,15 +84,7 @@ async function runSearch(e) {
         const item = items[+el.dataset.pick];
         const type = TYPE_LABEL_MAP[item.type] || item.type;
         const slugOrId = item.slug || item.id;
-        let url = null;
-        try {
-          const r = await fetch(
-            `/api/armaments/resolve-url?type=${encodeURIComponent(type)}&id=${encodeURIComponent(slugOrId)}`,
-            { headers: authHeader() },
-          );
-          url = (await r.json()).url;
-        } catch (_) {}
-        _onPick?.({ id: slugOrId, title: item.title, type, url });
+        _onPick?.({ id: slugOrId, title: item.title, type });
         closeRelatedModal();
       }),
     );

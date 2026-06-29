@@ -37,25 +37,21 @@
     "related_records": [
       {
         "id": "pz-v-panther",
-        "url": "/armaments/pz-v-panther",
         "type": "Armament",
         "title": "Panther"
       },
       {
         "id": "stug-iii",
-        "url": "/armaments/stug-iii",
         "type": "Armament",
         "title": "StuG III"
       },
       {
         "id": "bulge",
-        "url": "/campaigns/bulge",
         "type": "Campaign",
         "title": "Battle of the Bulge"
       },
       {
         "id": "market-garden",
-        "url": "/campaigns/market-garden",
         "type": "Campaign",
         "title": "Operation Market Garden"
       }
@@ -103,19 +99,16 @@
     "related_records": [
       {
         "id": "pz-v-panther",
-        "url": "/armaments/pz-v-panther",
         "type": "Armament",
         "title": "Panther"
       },
       {
         "id": "michael-wittmann",
-        "url": "/personnel/michael-wittmann",
         "type": "Personnel",
         "title": "Michael Wittmann"
       },
       {
         "id": "rearmament",
-        "url": "/articles/military/rearmament",
         "type": "Article",
         "title": "German Rearmament 1933–1939"
       }
@@ -159,25 +152,21 @@
     "related_records": [
       {
         "id": "kursk",
-        "url": "/campaigns/eastern-front/kursk",
         "type": "Campaign",
         "title": "Battle of Kursk"
       },
       {
         "id": "pz-vi-tiger",
-        "url": "/armaments/pz-vi-tiger",
         "type": "Armament",
         "title": "Tiger I"
       },
       {
         "id": "normandy",
-        "url": "/campaigns/normandy",
         "type": "Campaign",
         "title": "Battle of Normandy"
       },
       {
         "id": "wilhelm-bittrich",
-        "url": "/personnel/wilhelm-bittrich",
         "type": "Personnel",
         "title": "Wilhelm Bittrich"
       }
@@ -221,25 +210,21 @@
     "related_records": [
       {
         "id": "michael-wittmann",
-        "url": "/personnel/michael-wittmann",
         "type": "Personnel",
         "title": "Michael Wittmann"
       },
       {
         "id": "flak-88",
-        "url": "/armaments/flak-88",
         "type": "Armament",
         "title": "8.8 cm Flak 88"
       },
       {
         "id": "kursk",
-        "url": "/campaigns/eastern-front/kursk",
         "type": "Campaign",
         "title": "Battle of Kursk"
       },
       {
         "id": "paul-hausser",
-        "url": "/personnel/paul-hausser",
         "type": "Personnel",
         "title": "Paul Hausser"
       }
@@ -280,19 +265,16 @@
     "related_records": [
       {
         "id": "jochen-peiper",
-        "url": "/personnel/jochen-peiper",
         "type": "Personnel",
         "title": "Jochen Peiper"
       },
       {
         "id": "bulge",
-        "url": "/campaigns/bulge",
         "type": "Campaign",
         "title": "Battle of the Bulge"
       },
       {
         "id": "pz-vi-tiger",
-        "url": "/armaments/pz-vi-tiger",
         "type": "Armament",
         "title": "Tiger I"
       }
@@ -361,25 +343,21 @@
     "related_records": [
       {
         "id": "pz-v-panther",
-        "url": "/armaments/pz-v-panther",
         "type": "Armament",
         "title": "Panther"
       },
       {
         "id": "barbarossa",
-        "url": "/campaigns/barbarossa",
         "type": "Campaign",
         "title": "Operation Barbarossa"
       },
       {
         "id": "france",
-        "url": "/campaigns/france",
         "type": "Campaign",
         "title": "Fall of France"
       },
       {
         "id": "heinz-guderian",
-        "url": "/personnel/heinz-guderian",
         "type": "Personnel",
         "title": "Heinz Guderian"
       }
@@ -420,13 +398,11 @@
     "related_records": [
       {
         "id": "pz-iv",
-        "url": "/armaments/pz-iv",
         "type": "Armament",
         "title": "Panzer IV"
       },
       {
         "id": "barbarossa",
-        "url": "/campaigns/barbarossa",
         "type": "Campaign",
         "title": "Operation Barbarossa"
       }

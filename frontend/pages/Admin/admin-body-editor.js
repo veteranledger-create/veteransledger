@@ -1,0 +1,184 @@
+import { escHtml } from "./admin-utils.js";
+
+/**
+ * VeteransLedger · Admin — Block-based body editor
+ * Shared component for structured content authoring.
+ *
+ * API:
+ *   initBodyEditor(containerId, blocks)  — renders editor into #containerId
+ *   readBodyBlocks(containerId)          — reads current blocks as JSON array
+ *
+ * Block schema (stored in metadata.body):
+ *   { type: "paragraph"|"heading"|"quote"|"list"|"numbered-list"|"image", text: "…" }
+ *   Image also accepts: { url, caption, source }
+ *   List types: text is newline-separated items (compatible with existing data)
+ */
+
+const BLOCK_TYPES = [
+  { value: "paragraph",     label: "Paragraph" },
+  { value: "heading",       label: "Heading" },
+  { value: "quote",         label: "Quote" },
+  { value: "list",          label: "Bullet List" },
+  { value: "numbered-list", label: "Numbered List" },
+  { value: "image",         label: "Image" },
+];
+
+const PLACEHOLDERS = {
+  paragraph:       "Paragraph text…",
+  heading:         "Section heading…",
+  quote:           "Quote or excerpt…",
+  list:            "Item 1\nItem 2\nItem 3",
+  "numbered-list": "Step 1\nStep 2\nStep 3",
+  image:           "Image URL (https://…)",
+};
+
+const ROWS = {
+  paragraph:       5,
+  heading:         1,
+  quote:           3,
+  list:            4,
+  "numbered-list": 4,
+  image:           1,
+};
+
+function typeOptions(selected) {
+  return BLOCK_TYPES.map(
+    (t) => `<option value="${t.value}"${selected === t.value ? " selected" : ""}>${t.label}</option>`,
+  ).join("");
+}
+
+function blockHtml(block) {
+  const type = block.type || "paragraph";
+  const isImage = type === "image";
+  const isList = type === "list" || type === "numbered-list";
+  let textVal = isImage
+    ? (block.url || block.src || "")
+    : isList && Array.isArray(block.items)
+      ? block.items.join("\n")
+      : (block.text || "");
+
+  return `
+    <div class="body-block">
+      <div class="body-block__header">
+        <select class="body-block__type contact-form__input" style="flex:0 0 auto;width:auto;padding:3px 6px;font-size:var(--text-xs);">${typeOptions(type)}</select>
+        <span style="flex:1"></span>
+        <button type="button" class="btn btn-secondary body-block__up"     style="padding:2px 8px;font-size:11px;" title="Move up">↑</button>
+        <button type="button" class="btn btn-secondary body-block__down"   style="padding:2px 8px;font-size:11px;" title="Move down">↓</button>
+        <button type="button" class="btn btn-secondary body-block__delete" style="padding:2px 8px;font-size:11px;color:#e06060;border-color:#4a1515;" title="Remove">✕</button>
+      </div>
+      <textarea class="body-block__text contact-form__input" rows="${ROWS[type] || 3}"
+        placeholder="${escHtml(PLACEHOLDERS[type] || "")}"
+        style="margin-top:var(--space-2);resize:vertical;">${escHtml(textVal)}</textarea>
+      ${isImage ? `
+      <div class="body-block__img-extras" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-top:var(--space-2);">
+        <input class="body-block__caption contact-form__input" type="text" placeholder="Caption (optional)" value="${escHtml(block.caption || "")}" style="font-size:var(--text-xs);">
+        <input class="body-block__source contact-form__input"  type="text" placeholder="Source attribution (optional)" value="${escHtml(block.source || "")}" style="font-size:var(--text-xs);">
+      </div>` : ""}
+      ${isList ? `<p class="body-block__hint">One item per line</p>` : ""}
+    </div>`;
+}
+
+function attachBlockEvents(el) {
+  el.querySelector(".body-block__up").addEventListener("click", () => {
+    const prev = el.previousElementSibling;
+    if (prev) el.parentNode.insertBefore(el, prev);
+  });
+  el.querySelector(".body-block__down").addEventListener("click", () => {
+    const next = el.nextElementSibling;
+    if (next) next.after(el);
+  });
+  el.querySelector(".body-block__delete").addEventListener("click", () => el.remove());
+  el.querySelector(".body-block__type").addEventListener("change", (e) => {
+    const type = e.target.value;
+    const isImage = type === "image";
+    const isList = type === "list" || type === "numbered-list";
+    const textarea = el.querySelector(".body-block__text");
+    textarea.placeholder = PLACEHOLDERS[type] || "";
+    textarea.rows = ROWS[type] || 3;
+
+    let imgExtras = el.querySelector(".body-block__img-extras");
+    if (isImage && !imgExtras) {
+      imgExtras = document.createElement("div");
+      imgExtras.className = "body-block__img-extras";
+      imgExtras.style.cssText = "display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);margin-top:var(--space-2);";
+      imgExtras.innerHTML = `
+        <input class="body-block__caption contact-form__input" type="text" placeholder="Caption (optional)" style="font-size:var(--text-xs);">
+        <input class="body-block__source contact-form__input"  type="text" placeholder="Source attribution (optional)" style="font-size:var(--text-xs);">`;
+      textarea.after(imgExtras);
+    } else if (!isImage && imgExtras) {
+      imgExtras.remove();
+    }
+
+    let hint = el.querySelector(".body-block__hint");
+    if (isList && !hint) {
+      hint = document.createElement("p");
+      hint.className = "body-block__hint";
+      hint.textContent = "One item per line";
+      el.appendChild(hint);
+    } else if (!isList && hint) {
+      hint.remove();
+    }
+  });
+}
+
+function makeBlockEl(block) {
+  const wrap = document.createElement("div");
+  wrap.innerHTML = blockHtml(block).trim();
+  const el = wrap.firstElementChild;
+  attachBlockEvents(el);
+  return el;
+}
+
+export function initBodyEditor(containerId, blocks = []) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = "";
+
+  const list = document.createElement("div");
+  list.className = "body-editor__blocks";
+
+  const toolbar = document.createElement("div");
+  toolbar.className = "body-editor__toolbar";
+  toolbar.innerHTML = `
+    <button type="button" class="btn btn-secondary" data-add="paragraph"     style="font-size:11px;">+ Paragraph</button>
+    <button type="button" class="btn btn-secondary" data-add="heading"       style="font-size:11px;">+ Heading</button>
+    <button type="button" class="btn btn-secondary" data-add="list"          style="font-size:11px;">+ List</button>
+    <button type="button" class="btn btn-secondary" data-add="quote"         style="font-size:11px;">+ Quote</button>
+    <button type="button" class="btn btn-secondary" data-add="image"         style="font-size:11px;">+ Image</button>`;
+
+  container.appendChild(list);
+  container.appendChild(toolbar);
+
+  toolbar.addEventListener("click", (e) => {
+    const type = e.target.closest("[data-add]")?.dataset.add;
+    if (!type) return;
+    const el = makeBlockEl({ type });
+    list.appendChild(el);
+    el.querySelector(".body-block__text")?.focus();
+    el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
+  blocks.forEach((block) => list.appendChild(makeBlockEl(block)));
+}
+
+export function readBodyBlocks(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return [];
+  const blocks = [];
+  container.querySelectorAll(".body-block").forEach((el) => {
+    const type    = el.querySelector(".body-block__type")?.value    || "paragraph";
+    const text    = el.querySelector(".body-block__text")?.value?.trim()    || "";
+    const caption = el.querySelector(".body-block__caption")?.value?.trim() || "";
+    const source  = el.querySelector(".body-block__source")?.value?.trim()  || "";
+    if (!text) return;
+    if (type === "image") {
+      const block = { type, url: text };
+      if (caption) block.caption = caption;
+      if (source)  block.source  = source;
+      blocks.push(block);
+    } else {
+      blocks.push({ type, text });
+    }
+  });
+  return blocks;
+}

@@ -2,16 +2,25 @@
   "id": "bzura",
   "title": "Battle of Bzura",
   "theater": "western-front",
-  "dates": { "start": "1939-09-09", "end": "1939-09-22" },
+  "dates": {
+    "start": "1939-09-09",
+    "end": "1939-09-22"
+  },
   "summary": "The Battle of Bzura was the largest single battle of the September 1939 campaign and the most significant Polish counteroffensive. The Poznań and Pomeranian Armies launched a surprise flank attack against the German 8th Army, briefly pushing it back before being encircled and destroyed.",
   "context": "As German forces converged on Warsaw in early September 1939, the Poznań Army under General Kutrzeba remained relatively intact in central Poland, having avoided the initial German thrusts. Kutrzeba recognised that the exposed southern flank of the German 8th Army offered an opportunity for a counterstroke. On 9 September his forces crossed the Bzura river and struck the German flank, achieving complete tactical surprise and pushing back the 8th Army's rear divisions. The attack was the largest counteroffensive of the entire Polish campaign and temporarily disrupted German communications. Rundstedt responded by diverting Panzer forces from the Warsaw advance to encircle the Polish armies. Luftwaffe interdiction cut off Polish supply and communications. By 22 September the pocket was crushed, though some Polish forces broke through to Warsaw. The battle demonstrated that Polish forces, given opportunities for manoeuvre, could inflict serious damage on German formations.",
   "combatants": {
     "axis": {
-      "commanders": ["Johannes Blaskowitz (8th Army)", "Gerd von Rundstedt (Army Group South)"],
+      "commanders": [
+        "Johannes Blaskowitz (8th Army)",
+        "Gerd von Rundstedt (Army Group South)"
+      ],
       "strength": "Reinforced 8th Army plus Panzer forces diverted from Warsaw advance"
     },
     "allied": {
-      "commanders": ["Tadeusz Kutrzeba (Poznań Army)", "Edmund Knoll-Kownacki (Pomeranian Army)"],
+      "commanders": [
+        "Tadeusz Kutrzeba (Poznań Army)",
+        "Edmund Knoll-Kownacki (Pomeranian Army)"
+      ],
       "strength": "Poznań Army + Pomeranian Army, ~225,000 troops"
     }
   },
@@ -22,14 +31,36 @@
   },
   "significance": "Demonstrated that Polish forces were capable of effective offensive action. The battle required Germany to divert significant forces from the Warsaw assault and temporarily disrupted the timetable of conquest.",
   "sources": [
-    { "type": "primary", "ref": "Centralne Archiwum Wojskowe, Warsaw. Akta Armii Poznań — Battle of Bzura operational records, September 1939." },
-    { "ref": "Zaloga, Steven and Madej, Victor. The Polish Campaign 1939. Hippocrene, 1985." },
-    { "ref": "Kennedy, Robert. The German Campaign in Poland, 1939. Department of the Army Pamphlet 20-255, 1956." },
-    { "ref": "Kirchmayer, Jerzy. Kampania Wrześniowa. Książka i Wiedza, 1946.", "note": "Polish General Staff post-war analysis of the 1939 campaign." }
+    {
+      "type": "primary",
+      "ref": "Centralne Archiwum Wojskowe, Warsaw. Akta Armii Poznań — Battle of Bzura operational records, September 1939."
+    },
+    {
+      "ref": "Zaloga, Steven and Madej, Victor. The Polish Campaign 1939. Hippocrene, 1985."
+    },
+    {
+      "ref": "Kennedy, Robert. The German Campaign in Poland, 1939. Department of the Army Pamphlet 20-255, 1956."
+    },
+    {
+      "ref": "Kirchmayer, Jerzy. Kampania Wrześniowa. Książka i Wiedza, 1946.",
+      "note": "Polish General Staff post-war analysis of the 1939 campaign."
+    }
   ],
   "related_records": [
-    { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
-    { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" },
-    { "id": "warsaw", "title": "Warsaw Uprising", "type": "Campaign", "url": "/campaigns/western-front/warsaw" }
+    {
+      "id": "poland",
+      "title": "Invasion of Poland",
+      "type": "Campaign"
+    },
+    {
+      "id": "gerd-von-rundstedt",
+      "title": "Gerd von Rundstedt",
+      "type": "Personnel"
+    },
+    {
+      "id": "warsaw",
+      "title": "Warsaw Uprising",
+      "type": "Campaign"
+    }
   ]
 }

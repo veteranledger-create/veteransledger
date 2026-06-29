@@ -7,6 +7,7 @@ import { authHeader, escHtml, makeStatusFn } from "./admin-utils.js";
  */
 
 const PAGE_FILES = [
+  { key: "homepage.json",                        label: "Homepage" },
   { key: "about/about.json",                    label: "About — Main" },
   { key: "about/mission.json",                  label: "About — Mission" },
   { key: "about/sources.json",                  label: "About — Sources" },
@@ -14,6 +15,7 @@ const PAGE_FILES = [
   { key: "site-policies/terms-of-use.json",     label: "Terms of Use" },
   { key: "site-policies/disclaimer.json",       label: "Disclaimer" },
   { key: "site-policies/copyright-policy.json", label: "Copyright Policy" },
+  { key: "site-policies/removal-requests.json", label: "Removal Requests" },
   { key: "legal/privacy-policy.json",           label: "Legal: Privacy Policy" },
   { key: "legal/terms-of-use.json",             label: "Legal: Terms of Use" },
   { key: "legal/cookie-policy.json",            label: "Legal: Cookie Policy" },

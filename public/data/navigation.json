@@ -256,6 +256,21 @@
       "href": "/about#sources"
     },
     {
+      "id": "awards-decs",
+      "label": "AWARDS",
+      "href": "/awards"
+    },
+    {
+      "id": "hist-maps",
+      "label": "MAPS",
+      "href": "/maps"
+    },
+    {
+      "id": "pol-docs",
+      "label": "POLITICAL DOCUMENTS",
+      "href": "/political-documents"
+    },
+    {
       "id": "theme",
       "type": "action",
       "action": "toggle-theme",
@@ -264,6 +279,38 @@
   ],
 
   "footer": {
+    "aboutText": "A historical archive documenting personnel, campaigns, formations, letters, armaments, and primary-source material related to the Second World War.",
+    "signature": "— VeteransLedger Archive Team",
+    "educationalBadge": "Educational Use Only",
+    "statsHeading": "Archive Status",
+    "stats": [
+      { "label": "Records",         "value": "500+" },
+      { "label": "Collections",     "value": "8" },
+      { "label": "Coverage Period", "value": "1933–1945" },
+      { "label": "Last Updated",    "value": "2026" }
+    ],
+    "quickLinksHeading": "Quick Links",
+    "archiveInfo": {
+      "heading": "✰ Archive Information",
+      "items": [
+        { "label": "Project", "value": "VeteransLedger Archive" },
+        { "label": "Type",    "value": "Historical Documentation" },
+        { "label": "License", "value": "Educational Use Only" }
+      ]
+    },
+    "legalHeading": "Legal",
+    "legalLinks": [
+      { "label": "Archive Disclaimer",  "href": "/site-policies#disclaimer" },
+      { "label": "Privacy Policy",      "href": "/site-policies#privacy" },
+      { "label": "Terms of Use",        "href": "/site-policies#terms" },
+      { "label": "Removal Requests",    "href": "/site-policies#removal" },
+      { "label": "Copyright Policy",    "href": "/site-policies#copyright" }
+    ],
+    "connect": {
+      "heading": "Connect",
+      "prompt": "For inquiries, corrections, or contributions:",
+      "email": "veteransledger@gmail.com"
+    },
     "columns": [
       {
         "heading": "EXPLORE",
@@ -275,7 +322,7 @@
       },
       {
         "heading": "RESEARCH",
-        "items": ["sources-methodology", "about-mission"]
+        "items": ["sources-methodology", "about-mission", "awards-decs", "hist-maps", "pol-docs"]
       }
     ],
     "social": [

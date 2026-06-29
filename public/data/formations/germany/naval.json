@@ -6,10 +6,19 @@
     "service": "Kriegsmarine",
     "type": "Naval Command",
     "theater": "Atlantic / Arctic / Mediterranean",
-    "active": { "from": "1939-09-01", "to": "1945-05-08" },
+    "active": {
+      "from": "1939-09-01",
+      "to": "1945-05-08"
+    },
     "commanders": [
-      { "name": "Vizeadmiral Karl Dönitz", "period": "Sep 1939–Jan 1943 (then Grossadmiral, Commander-in-Chief Kriegsmarine)" },
-      { "name": "Vizeadmiral Eberhard Godt (acting BdU)", "period": "1943–1945" }
+      {
+        "name": "Vizeadmiral Karl Dönitz",
+        "period": "Sep 1939–Jan 1943 (then Grossadmiral, Commander-in-Chief Kriegsmarine)"
+      },
+      {
+        "name": "Vizeadmiral Eberhard Godt (acting BdU)",
+        "period": "1943–1945"
+      }
     ],
     "peak_strength": "c. 400 operational U-boats (1943)",
     "statistics": {
@@ -59,19 +68,60 @@
       }
     ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 87: BdU Kriegstagebuch (War Diary) 1939–1945.", "note": "The most important primary source for U-boat operations." },
-      { "ref": "Blair, Clay. Hitler's U-boat War. 2 vols. Random House, 1996–1998.", "note": "The definitive English-language history." },
-      { "ref": "Dönitz, Karl. Memoirs: Ten Years and Twenty Days. Weidenfeld and Nicolson, 1959." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 87: BdU Kriegstagebuch (War Diary) 1939–1945.",
+        "note": "The most important primary source for U-boat operations."
+      },
+      {
+        "ref": "Blair, Clay. Hitler's U-boat War. 2 vols. Random House, 1996–1998.",
+        "note": "The definitive English-language history."
+      },
+      {
+        "ref": "Dönitz, Karl. Memoirs: Ten Years and Twenty Days. Weidenfeld and Nicolson, 1959."
+      }
     ],
     "related_records": [
-      { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" },
-      { "id": "otto-kretschmer", "title": "Otto Kretschmer", "type": "Personnel", "url": "/personnel/otto-kretschmer" },
-      { "id": "gunther-prien", "title": "Günther Prien", "type": "Personnel", "url": "/personnel/gunther-prien" },
-      { "id": "joachim-schepke", "title": "Joachim Schepke", "type": "Personnel", "url": "/personnel/joachim-schepke" },
-      { "id": "wolfgang-luth", "title": "Wolfgang Lüth", "type": "Personnel", "url": "/personnel/wolfgang-luth" },
-      { "id": "uboat-campaing", "title": "U-boat Campaign", "type": "Campaign", "url": "/campaigns/atlantic/uboat-campaing" },
-      { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
-      { "id": "type-viic-uboat", "title": "Type VIIC U-boat", "type": "Armament", "url": "/armaments/type-viic-uboat" }
+      {
+        "id": "karl-donitz",
+        "title": "Karl Dönitz",
+        "type": "Personnel"
+      },
+      {
+        "id": "otto-kretschmer",
+        "title": "Otto Kretschmer",
+        "type": "Personnel"
+      },
+      {
+        "id": "gunther-prien",
+        "title": "Günther Prien",
+        "type": "Personnel"
+      },
+      {
+        "id": "joachim-schepke",
+        "title": "Joachim Schepke",
+        "type": "Personnel"
+      },
+      {
+        "id": "wolfgang-luth",
+        "title": "Wolfgang Lüth",
+        "type": "Personnel"
+      },
+      {
+        "id": "uboat-campaing",
+        "title": "U-boat Campaign",
+        "type": "Campaign"
+      },
+      {
+        "id": "atlantic",
+        "title": "Battle of the Atlantic",
+        "type": "Campaign"
+      },
+      {
+        "id": "type-viic-uboat",
+        "title": "Type VIIC U-boat",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -81,12 +131,28 @@
     "service": "Kriegsmarine",
     "type": "Naval Command",
     "theater": "Atlantic / Arctic / Baltic",
-    "active": { "from": "1935", "to": "1945-05" },
+    "active": {
+      "from": "1935",
+      "to": "1945-05"
+    },
     "commanders": [
-      { "name": "Grossadmiral Erich Raeder (Oberbefehlshaber der Kriegsmarine)", "period": "1928–Jan 1943" },
-      { "name": "Grossadmiral Karl Dönitz", "period": "Jan 1943–May 1945" }
+      {
+        "name": "Grossadmiral Erich Raeder (Oberbefehlshaber der Kriegsmarine)",
+        "period": "1928–Jan 1943"
+      },
+      {
+        "name": "Grossadmiral Karl Dönitz",
+        "period": "Jan 1943–May 1945"
+      }
     ],
-    "major_vessels": ["Bismarck", "Tirpitz", "Scharnhorst", "Gneisenau", "Admiral Graf Spee", "Lützow"],
+    "major_vessels": [
+      "Bismarck",
+      "Tirpitz",
+      "Scharnhorst",
+      "Gneisenau",
+      "Admiral Graf Spee",
+      "Lützow"
+    ],
     "summary": "The Kriegsmarine's surface fleet conducted commerce raiding, threatened Allied convoys as a 'fleet in being', and supported land operations in Norway and the Baltic. Its most famous engagement was the sinking of HMS Hood by Bismarck in May 1941. The surface fleet was largely neutralised by late 1942, with capital ships confined to Norwegian fjords.",
     "context": "Raeder's surface fleet strategy was based on commerce raiding — using capital ships to threaten Atlantic convoys. The Scharnhorst and Gneisenau raided shipping in Operation Berlin (January–March 1941), sinking 22 ships. The Bismarck sortie (Operation Rheinübung) sank HMS Hood but was hunted down and sunk three days later. After the Bismarck disaster and the fiasco of the Channel Dash, Hitler's confidence in surface ships collapsed. His order to scrap the remaining capital ships in December 1942 prompted Raeder's resignation. The Tirpitz spent most of the war in Norwegian fjords as a 'fleet in being', tying down substantial British naval resources without engaging in battle, until sunk by RAF Tallboy bombs in November 1944.",
     "overview_blocks": [
@@ -121,16 +187,44 @@
       }
     ],
     "sources": [
-      { "ref": "Raeder, Erich. My Life. United States Naval Institute, 1960." },
-      { "ref": "Bekker, Cajus. Hitler's Naval War. Macdonald, 1974." }
+      {
+        "ref": "Raeder, Erich. My Life. United States Naval Institute, 1960."
+      },
+      {
+        "ref": "Bekker, Cajus. Hitler's Naval War. Macdonald, 1974."
+      }
     ],
     "related_records": [
-      { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" },
-      { "id": "bismarck", "title": "Battleship Bismarck", "type": "Armament", "url": "/armaments/bismarck" },
-      { "id": "tirpitz", "title": "Battleship Tirpitz", "type": "Armament", "url": "/armaments/tirpitz" },
-      { "id": "scharnhorst", "title": "Battlecruiser Scharnhorst", "type": "Armament", "url": "/armaments/scharnhorst" },
-      { "id": "admiral-graf-spee", "title": "Admiral Graf Spee", "type": "Armament", "url": "/armaments/admiral-graf-spee" },
-      { "id": "rheinubung", "title": "Operation Rheinübung", "type": "Campaign", "url": "/campaigns/atlantic/rheinubung" }
+      {
+        "id": "erich-raeder",
+        "title": "Erich Raeder",
+        "type": "Personnel"
+      },
+      {
+        "id": "bismarck",
+        "title": "Battleship Bismarck",
+        "type": "Armament"
+      },
+      {
+        "id": "tirpitz",
+        "title": "Battleship Tirpitz",
+        "type": "Armament"
+      },
+      {
+        "id": "scharnhorst",
+        "title": "Battlecruiser Scharnhorst",
+        "type": "Armament"
+      },
+      {
+        "id": "admiral-graf-spee",
+        "title": "Admiral Graf Spee",
+        "type": "Armament"
+      },
+      {
+        "id": "rheinubung",
+        "title": "Operation Rheinübung",
+        "type": "Campaign"
+      }
     ]
   }
 ]

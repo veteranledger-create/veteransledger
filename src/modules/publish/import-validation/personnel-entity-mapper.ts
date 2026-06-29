@@ -16,7 +16,6 @@ export interface RelatedRecordEntry {
   id: string;
   title?: string;
   type?: string;
-  url?: string;
 }
 
 export interface LegacyPersonnel {
@@ -70,8 +69,7 @@ export function splitRelatedRecords(related: unknown): SplitRelatedRecords {
     if (type === "Personnel") {
       personnelLinks.push({ id: entry.id, title });
     } else {
-      const url = typeof entry.url === "string" ? entry.url : undefined;
-      otherLinks.push({ id: entry.id, title, type, url });
+      otherLinks.push({ id: entry.id, title, type });
     }
   }
   return { personnelLinks, otherLinks };

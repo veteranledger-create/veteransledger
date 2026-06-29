@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "VeteransLedger · Axis History Archive 1933–1945",
+    "description": "VeteransLedger — A comprehensive archive dedicated to preserving the history, documents, letters, armaments, and personnel of the Axis forces during World War II."
+  },
+  "hero": {
+    "eyebrow": "Educational Historical Archive",
+    "title": "Welcome to VeteransLedger",
+    "subtitle": "Axis History Archive",
+    "description": "A comprehensive archive dedicated to preserving the history, documents, letters, armaments, and personnel of the Axis forces during World War II.",
+    "primaryCta": { "label": "EXPLORE ARCHIVE →", "href": "/campaigns" },
+    "secondaryCta": { "label": "CONTACT", "action": "open-contact" }
+  },
+  "browseSectionLabel": "Browse Archive",
+  "archiveCards": [
+    {
+      "href": "/timeline",
+      "icon": "/public/images/icons/navigation/timeline.svg",
+      "title": "Timeline",
+      "desc": "Explore events chronologically through the war."
+    },
+    {
+      "href": "/campaigns",
+      "icon": "/public/images/icons/navigation/campaigns.svg",
+      "title": "Campaigns",
+      "desc": "Detailed archives of major operations and battles."
+    },
+    {
+      "href": "/armaments",
+      "icon": "/public/images/icons/navigation/armaments.svg",
+      "title": "Armaments",
+      "desc": "Tanks, aircraft, ships, weapons and secret projects."
+    },
+    {
+      "href": "/personnel",
+      "icon": "/public/images/icons/navigation/personnel.svg",
+      "title": "Personnel",
+      "desc": "Profiles, units, and biographies of military personnel."
+    },
+    {
+      "href": "/letters",
+      "icon": "/public/images/icons/navigation/letters.svg",
+      "title": "Letters",
+      "desc": "Personal letters from soldiers and volunteers."
+    }
+  ]
+}

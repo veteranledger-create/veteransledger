@@ -9,19 +9,53 @@
     "died": "1944-10-14",
     "birthplace": "Heidenheim, Württemberg",
     "biography": "Known as 'The Desert Fox', Rommel commanded the Afrika Korps with tactical brilliance, earning respect from both Allied and Axis commanders. He later commanded Army Group B in France before his forced suicide following association with the July 20 plot against Hitler.",
-    "commands": ["7th Panzer Division", "Afrika Korps", "Panzerarmee Afrika", "Army Group B"],
-    "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
-    "campaigns": ["france", "north-africa", "normandy"],
+    "commands": [
+      "7th Panzer Division",
+      "Afrika Korps",
+      "Panzerarmee Afrika",
+      "Army Group B"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves, Swords, and Diamonds"
+    ],
+    "campaigns": [
+      "france",
+      "north-africa",
+      "normandy"
+    ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 117: Nachlass Rommel — personal papers and campaign diaries." },
-      { "ref": "Rommel, Erwin (ed. Basil Liddell Hart). The Rommel Papers. Harcourt Brace, 1953." },
-      { "ref": "Fraser, David. Knight's Cross: A Life of Field Marshal Erwin Rommel. HarperCollins, 1993." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 117: Nachlass Rommel — personal papers and campaign diaries."
+      },
+      {
+        "ref": "Rommel, Erwin (ed. Basil Liddell Hart). The Rommel Papers. Harcourt Brace, 1953."
+      },
+      {
+        "ref": "Fraser, David. Knight's Cross: A Life of Field Marshal Erwin Rommel. HarperCollins, 1993."
+      }
     ],
     "related_records": [
-      { "id": "july-20", "title": "The July 20 Plot", "type": "Article", "url": "/articles/political/july-20" },
-      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
-      { "id": "pz-iv", "title": "Panzerkampfwagen IV", "type": "Armament", "url": "/armaments/pz-iv" }
+      {
+        "id": "july-20",
+        "title": "The July 20 Plot",
+        "type": "Article"
+      },
+      {
+        "id": "gazala",
+        "title": "Battle of Gazala",
+        "type": "Campaign"
+      },
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      },
+      {
+        "id": "pz-iv",
+        "title": "Panzerkampfwagen IV",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -34,18 +68,47 @@
     "died": "1954-05-14",
     "birthplace": "Kulm, West Prussia",
     "biography": "Credited as the father of modern armored warfare and the Blitzkrieg doctrine. His development of Panzer tactics revolutionized land warfare. He led Panzer Group Guderian during Barbarossa and later served as Chief of the Army General Staff from 1944 to 1945.",
-    "commands": ["XIX Panzer Corps", "Panzer Group 2"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["poland", "france", "barbarossa"],
+    "commands": [
+      "XIX Panzer Corps",
+      "Panzer Group 2"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
+    "campaigns": [
+      "poland",
+      "france",
+      "barbarossa"
+    ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 802: Nachlass Guderian." },
-      { "ref": "Guderian, Heinz. Panzer Leader. Michael Joseph, 1952.", "note": "Guderian's own memoir, foundational to understanding Blitzkrieg doctrine." },
-      { "ref": "Macksey, Kenneth. Guderian: Creator of the Blitzkrieg. Military Heritage Press, 1975." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 802: Nachlass Guderian."
+      },
+      {
+        "ref": "Guderian, Heinz. Panzer Leader. Michael Joseph, 1952.",
+        "note": "Guderian's own memoir, foundational to understanding Blitzkrieg doctrine."
+      },
+      {
+        "ref": "Macksey, Kenneth. Guderian: Creator of the Blitzkrieg. Military Heritage Press, 1975."
+      }
     ],
     "related_records": [
-      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "pz-iv", "title": "Panzerkampfwagen IV", "type": "Armament", "url": "/armaments/pz-iv" }
+      {
+        "id": "france",
+        "title": "Fall of France",
+        "type": "Campaign"
+      },
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "pz-iv",
+        "title": "Panzerkampfwagen IV",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -58,18 +121,49 @@
     "died": "1973-06-09",
     "birthplace": "Berlin",
     "biography": "Widely considered the most talented operational commander in the Wehrmacht. Architect of the Sichelschnitt plan that defeated France in 1940, he commanded Army Group Don's relief attempt at Stalingrad and executed the 'backhand blow' at Third Kharkov.",
-    "commands": ["11th Army", "Army Group Don", "Army Group South"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["france", "leningrad", "stalingrad", "kharkov"],
+    "commands": [
+      "11th Army",
+      "Army Group Don",
+      "Army Group South"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
+    "campaigns": [
+      "france",
+      "leningrad",
+      "stalingrad",
+      "kharkov"
+    ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 507: Nachlass Manstein." },
-      { "ref": "Manstein, Erich von. Lost Victories. Methuen, 1958.", "note": "Manstein's memoir; essential reading on the Kharkov counter-offensive and Stalingrad relief." },
-      { "ref": "Melvin, Mungo. Manstein: Hitler's Greatest General. Weidenfeld and Nicolson, 2010." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 507: Nachlass Manstein."
+      },
+      {
+        "ref": "Manstein, Erich von. Lost Victories. Methuen, 1958.",
+        "note": "Manstein's memoir; essential reading on the Kharkov counter-offensive and Stalingrad relief."
+      },
+      {
+        "ref": "Melvin, Mungo. Manstein: Hitler's Greatest General. Weidenfeld and Nicolson, 2010."
+      }
     ],
     "related_records": [
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" }
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "france",
+        "title": "Fall of France",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -82,17 +176,44 @@
     "died": "1953-02-24",
     "birthplace": "Aschersleben, Province of Saxony",
     "biography": "Considered the elder statesman of the German military. He commanded Army Group A in France, Army Group South in Barbarossa, and was twice recalled from retirement to command in the west.",
-    "commands": ["Army Group A", "Army Group South", "OB West"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["poland", "france", "barbarossa", "normandy"],
+    "commands": [
+      "Army Group A",
+      "Army Group South",
+      "OB West"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
+    "campaigns": [
+      "poland",
+      "france",
+      "barbarossa",
+      "normandy"
+    ],
     "sources": [
-      { "ref": "Messenger, Charles. The Last Prussian: A Biography of Field Marshal Gerd von Rundstedt. Brassey's, 1991." },
-      { "ref": "Blumentritt, Günther. Von Rundstedt: The Soldier and the Man. Odhams, 1952." }
+      {
+        "ref": "Messenger, Charles. The Last Prussian: A Biography of Field Marshal Gerd von Rundstedt. Brassey's, 1991."
+      },
+      {
+        "ref": "Blumentritt, Günther. Von Rundstedt: The Soldier and the Man. Odhams, 1952."
+      }
     ],
     "related_records": [
-      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
-      { "id": "dunkirk", "title": "Dunkirk Evacuation", "type": "Campaign", "url": "/campaigns/western-front/dunkirk" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" }
+      {
+        "id": "france",
+        "title": "Fall of France",
+        "type": "Campaign"
+      },
+      {
+        "id": "dunkirk",
+        "title": "Dunkirk Evacuation",
+        "type": "Campaign"
+      },
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -105,17 +226,45 @@
     "died": "1945-04-21",
     "birthplace": "Genthin, Brandenburg",
     "biography": "Known as Hitler's 'Fireman' for his skill in stabilizing desperate defensive situations. Repeatedly stabilizing crumbling fronts in the East and West, he committed suicide in the Ruhr Pocket in April 1945 rather than surrender.",
-    "commands": ["9th Army", "Army Group North", "Army Group Centre", "Army Group B"],
-    "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
-    "campaigns": ["france", "barbarossa", "normandy", "market-garden"],
+    "commands": [
+      "9th Army",
+      "Army Group North",
+      "Army Group Centre",
+      "Army Group B"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves, Swords, and Diamonds"
+    ],
+    "campaigns": [
+      "france",
+      "barbarossa",
+      "normandy",
+      "market-garden"
+    ],
     "sources": [
-      { "ref": "Mitcham, Samuel. The Desert Fox in Normandy: Rommel's Defense of Fortress Europe. Praeger, 1997." },
-      { "ref": "Battistelli, Pier Paolo. Field Marshal Walter Model. Pen and Sword, 2020." }
+      {
+        "ref": "Mitcham, Samuel. The Desert Fox in Normandy: Rommel's Defense of Fortress Europe. Praeger, 1997."
+      },
+      {
+        "ref": "Battistelli, Pier Paolo. Field Marshal Walter Model. Pen and Sword, 2020."
+      }
     ],
     "related_records": [
-      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" },
-      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" }
+      {
+        "id": "market-garden",
+        "title": "Operation Market Garden",
+        "type": "Campaign"
+      },
+      {
+        "id": "bulge",
+        "title": "Battle of the Bulge",
+        "type": "Campaign"
+      },
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -128,17 +277,42 @@
     "died": "1978-07-01",
     "birthplace": "Birkholz, Brandenburg",
     "biography": "Father of German airborne forces. He commanded the capture of Eben-Emael fortress and the conquest of Crete in 1941 — the first primarily airborne invasion in history — at such cost that Hitler forbade further large-scale airborne operations.",
-    "commands": ["7th Flieger Division", "XI Flieger Corps", "1st Fallschirm Army"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["crete", "normandy"],
+    "commands": [
+      "7th Flieger Division",
+      "XI Flieger Corps",
+      "1st Fallschirm Army"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
+    "campaigns": [
+      "crete",
+      "normandy"
+    ],
     "sources": [
-      { "ref": "Quarrie, Bruce. Fallschirmjäger: German Paratroopers 1936–45. Osprey, 2001." },
-      { "ref": "Beevor, Antony. Crete: The Battle and the Resistance. Murray, 1991." }
+      {
+        "ref": "Quarrie, Bruce. Fallschirmjäger: German Paratroopers 1936–45. Osprey, 2001."
+      },
+      {
+        "ref": "Beevor, Antony. Crete: The Battle and the Resistance. Murray, 1991."
+      }
     ],
     "related_records": [
-      { "id": "crete", "title": "Battle of Crete", "type": "Campaign", "url": "/campaigns/italy/crete" },
-      { "id": "norway", "title": "Norwegian Campaign", "type": "Campaign", "url": "/campaigns/western-front/norway" },
-      { "id": "cassino", "title": "Battles of Monte Cassino", "type": "Campaign", "url": "/campaigns/italy/cassino" }
+      {
+        "id": "crete",
+        "title": "Battle of Crete",
+        "type": "Campaign"
+      },
+      {
+        "id": "norway",
+        "title": "Norwegian Campaign",
+        "type": "Campaign"
+      },
+      {
+        "id": "cassino",
+        "title": "Battles of Monte Cassino",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -151,17 +325,41 @@
     "died": "1957-02-01",
     "birthplace": "Breitenau, Hesse-Nassau",
     "biography": "Commanded the German 6th Army at the Battle of Stalingrad. Promoted to Generalfeldmarschall by Hitler the day before the surrender, he became the first German field marshal taken prisoner. He later testified for the prosecution at Nuremberg.",
-    "commands": ["6th Army"],
-    "awards": ["Knight's Cross"],
-    "campaigns": ["barbarossa", "stalingrad"],
+    "commands": [
+      "6th Army"
+    ],
+    "awards": [
+      "Knight's Cross"
+    ],
+    "campaigns": [
+      "barbarossa",
+      "stalingrad"
+    ],
     "sources": [
-      { "ref": "Beevor, Antony. Stalingrad. Viking, 1998." },
-      { "ref": "Wieder, Joachim and von Einsiedel, Heinrich Graf. Stalingrad: Memories and Reassessments. Arms and Armour, 1995.", "note": "Eyewitness account by survivors of the 6th Army." }
+      {
+        "ref": "Beevor, Antony. Stalingrad. Viking, 1998."
+      },
+      {
+        "ref": "Wieder, Joachim and von Einsiedel, Heinrich Graf. Stalingrad: Memories and Reassessments. Arms and Armour, 1995.",
+        "note": "Eyewitness account by survivors of the 6th Army."
+      }
     ],
     "related_records": [
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "blue", "title": "Case Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
-      { "id": "de-002", "title": "Müller — Stalingrad Pocket (1942)", "type": "Letter", "url": "/letters/de-002" }
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "blue",
+        "title": "Case Blue",
+        "type": "Campaign"
+      },
+      {
+        "id": "de-002",
+        "title": "Müller — Stalingrad Pocket (1942)",
+        "type": "Letter"
+      }
     ]
   },
   {
@@ -174,16 +372,36 @@
     "died": "1966-11-05",
     "birthplace": "Wiese, Kingdom of Saxony",
     "biography": "The last German military governor of Paris. Despite Hitler's orders to destroy the city, he surrendered Paris intact to the Free French forces on 25 August 1944, saving its monuments and population from destruction.",
-    "commands": ["Paris Garrison"],
-    "awards": ["Knight's Cross with Oak Leaves"],
-    "campaigns": ["france", "stalingrad", "crete"],
+    "commands": [
+      "Paris Garrison"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves"
+    ],
+    "campaigns": [
+      "france",
+      "stalingrad",
+      "crete"
+    ],
     "sources": [
-      { "ref": "Choltitz, Dietrich von. Un soldat parmi des soldats. Aubanel, 1964." },
-      { "ref": "Collins, Larry and Lapierre, Dominique. Is Paris Burning? Simon and Schuster, 1965." }
+      {
+        "ref": "Choltitz, Dietrich von. Un soldat parmi des soldats. Aubanel, 1964."
+      },
+      {
+        "ref": "Collins, Larry and Lapierre, Dominique. Is Paris Burning? Simon and Schuster, 1965."
+      }
     ],
     "related_records": [
-      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" }
+      {
+        "id": "france",
+        "title": "Fall of France",
+        "type": "Campaign"
+      },
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -196,19 +414,57 @@
     "died": "1960-07-16",
     "birthplace": "Marktsteft, Bavaria",
     "biography": "One of Germany's most versatile commanders, Kesselring served in both the Luftwaffe and army command. As Commander-in-Chief South and Italy, he masterminded the defence of Italy from 1943 to 1945 — fighting a masterful delaying action up the peninsula against numerically superior Allied forces. Convicted of war crimes in 1947, his death sentence was commuted to life imprisonment; he was released in 1952.",
-    "commands": ["Luftflotte 2", "Air Fleet Command Middle East", "OB South", "OB Southwest (Italy)", "OB West"],
-    "awards": ["Knight's Cross with Oak Leaves, Swords, and Diamonds"],
-    "campaigns": ["france", "britain", "africa", "cassino", "gothic-line"],
+    "commands": [
+      "Luftflotte 2",
+      "Air Fleet Command Middle East",
+      "OB South",
+      "OB Southwest (Italy)",
+      "OB West"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves, Swords, and Diamonds"
+    ],
+    "campaigns": [
+      "france",
+      "britain",
+      "africa",
+      "cassino",
+      "gothic-line"
+    ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 23: Nachlass Kesselring." },
-      { "ref": "Kesselring, Albert. The Memoirs of Field-Marshal Kesselring. Greenhill Books, 1988.", "note": "Kesselring's own account; covers the Italian campaign in detail." },
-      { "ref": "Williamson, Gordon. Kesselring: A Soldier's Record. Presidio, 1990." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 23: Nachlass Kesselring."
+      },
+      {
+        "ref": "Kesselring, Albert. The Memoirs of Field-Marshal Kesselring. Greenhill Books, 1988.",
+        "note": "Kesselring's own account; covers the Italian campaign in detail."
+      },
+      {
+        "ref": "Williamson, Gordon. Kesselring: A Soldier's Record. Presidio, 1990."
+      }
     ],
     "related_records": [
-      { "id": "cassino", "title": "Battles of Monte Cassino", "type": "Campaign", "url": "/campaigns/italy/cassino" },
-      { "id": "gothic-line", "title": "Battle of the Gothic Line", "type": "Campaign", "url": "/campaigns/italy/gothic-line" },
-      { "id": "sicily", "title": "Allied Invasion of Sicily", "type": "Campaign", "url": "/campaigns/italy/sicily" },
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" }
+      {
+        "id": "cassino",
+        "title": "Battles of Monte Cassino",
+        "type": "Campaign"
+      },
+      {
+        "id": "gothic-line",
+        "title": "Battle of the Gothic Line",
+        "type": "Campaign"
+      },
+      {
+        "id": "sicily",
+        "title": "Allied Invasion of Sicily",
+        "type": "Campaign"
+      },
+      {
+        "id": "britain",
+        "title": "Battle of Britain",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -221,19 +477,54 @@
     "died": "1945-05-04",
     "birthplace": "Küstrin, Brandenburg",
     "biography": "Commanded Army Group North in Poland, Army Group B in France, and Army Group Centre during Operation Barbarossa — the largest command in military history. He drove Army Group Centre to the gates of Moscow before being relieved in December 1941 citing ill health. Recalled for the Case Blue offensive in 1942, he was again relieved after clashing with Hitler. Killed by RAF strafing near Oldenburg on 4 May 1945, the day the Hamburg ceasefire was signed.",
-    "commands": ["Army Group North (Poland)", "Army Group B (France)", "Army Group Centre (Barbarossa)", "Army Group South (Case Blue)"],
-    "awards": ["Knight's Cross with Oak Leaves"],
-    "campaigns": ["poland", "france", "barbarossa", "moscow"],
+    "commands": [
+      "Army Group North (Poland)",
+      "Army Group B (France)",
+      "Army Group Centre (Barbarossa)",
+      "Army Group South (Case Blue)"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves"
+    ],
+    "campaigns": [
+      "poland",
+      "france",
+      "barbarossa",
+      "moscow"
+    ],
     "sources": [
-      { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 22: Tagebuch Bock — War diary covering Poland, France, and the Eastern Front." },
-      { "ref": "von Bock, Fedor (ed. Klaus Gerbet). The War Diary, 1939–1945. Schiffer Military History, 1996." },
-      { "ref": "Mitcham, Samuel. Hitler's Field Marshals and Their Battles. Guild Publishing, 1988." }
+      {
+        "type": "primary",
+        "ref": "Bundesarchiv-Militärarchiv, Freiburg. N 22: Tagebuch Bock — War diary covering Poland, France, and the Eastern Front."
+      },
+      {
+        "ref": "von Bock, Fedor (ed. Klaus Gerbet). The War Diary, 1939–1945. Schiffer Military History, 1996."
+      },
+      {
+        "ref": "Mitcham, Samuel. Hitler's Field Marshals and Their Battles. Guild Publishing, 1988."
+      }
     ],
     "related_records": [
-      { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
-      { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "blue", "title": "Case Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" }
+      {
+        "id": "poland",
+        "title": "Invasion of Poland",
+        "type": "Campaign"
+      },
+      {
+        "id": "moscow",
+        "title": "Battle of Moscow",
+        "type": "Campaign"
+      },
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "blue",
+        "title": "Case Blue",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -246,18 +537,52 @@
     "died": "1971-01-25",
     "birthplace": "Neuruppin, Brandenburg",
     "biography": "One of the premier Panzer commanders of the war. He led Panzer Group 3 in Barbarossa, driving toward Moscow via Smolensk. At Stalingrad he commanded the 4th Panzer Army's relief attempt (Operation Winter Storm), coming to within 48 km of the pocket before being halted. He commanded the 4th Panzer Army at Kursk in 1943, making the deepest German penetration of the Soviet defences. Convicted of war crimes at the Nuremberg High Command Trial in 1948; released in 1954.",
-    "commands": ["XV Corps", "Panzer Group 3", "17th Army", "4th Panzer Army"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["france", "barbarossa", "moscow", "stalingrad", "kharkov"],
+    "commands": [
+      "XV Corps",
+      "Panzer Group 3",
+      "17th Army",
+      "4th Panzer Army"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
+    "campaigns": [
+      "france",
+      "barbarossa",
+      "moscow",
+      "stalingrad",
+      "kharkov"
+    ],
     "sources": [
-      { "ref": "Nipe, George. Decision in the Ukraine: German Panzer Operations on the Eastern Front, Summer 1943. J.J. Fedorowicz, 1996." },
-      { "ref": "Newton, Steven. Panzer Operations: The Eastern Front Memoir of General Raus, 1941–1945. Da Capo, 2003.", "note": "Covers the same operational context from a corps commander's perspective." }
+      {
+        "ref": "Nipe, George. Decision in the Ukraine: German Panzer Operations on the Eastern Front, Summer 1943. J.J. Fedorowicz, 1996."
+      },
+      {
+        "ref": "Newton, Steven. Panzer Operations: The Eastern Front Memoir of General Raus, 1941–1945. Da Capo, 2003.",
+        "note": "Covers the same operational context from a corps commander's perspective."
+      }
     ],
     "related_records": [
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "blue", "title": "Case Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" }
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "blue",
+        "title": "Case Blue",
+        "type": "Campaign"
+      },
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "pz-vi-tiger",
+        "title": "Tiger I",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -270,18 +595,47 @@
     "died": "1971-12-13",
     "birthplace": "Gumbinnen, East Prussia",
     "biography": "Considered the German Army's foremost defensive specialist. His elastic defence techniques — withdrawing from forward positions just before Soviet artillery barrages, then counterattacking into the disorganised assault troops — inflicted disproportionate casualties on the Red Army throughout the Eastern Front. Appointed to command Army Group Vistula in March 1945, he conducted the last coherent German defensive battle at the Seelow Heights before Berlin. Relieved by Hitler days before the city fell for recommending withdrawal.",
-    "commands": ["XXXV Corps", "4th Army", "1st Panzer Army", "Army Group Vistula"],
-    "awards": ["Knight's Cross with Oak Leaves and Swords"],
-    "campaigns": ["barbarossa", "moscow", "eastern-front"],
+    "commands": [
+      "XXXV Corps",
+      "4th Army",
+      "1st Panzer Army",
+      "Army Group Vistula"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves and Swords"
+    ],
+    "campaigns": [
+      "barbarossa",
+      "moscow",
+      "eastern-front"
+    ],
     "sources": [
-      { "ref": "Duffy, Christopher. Red Storm on the Reich: The Soviet March on Germany, 1945. Routledge, 1991." },
-      { "ref": "Le Tissier, Tony. Zhukov at the Oder: The Decisive Battle for Berlin. Praeger, 1996." },
-      { "ref": "Isaev, Aleksei. Berlin 1945. Yauza/Eksmo, 2007." }
+      {
+        "ref": "Duffy, Christopher. Red Storm on the Reich: The Soviet March on Germany, 1945. Routledge, 1991."
+      },
+      {
+        "ref": "Le Tissier, Tony. Zhukov at the Oder: The Decisive Battle for Berlin. Praeger, 1996."
+      },
+      {
+        "ref": "Isaev, Aleksei. Berlin 1945. Yauza/Eksmo, 2007."
+      }
     ],
     "related_records": [
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" },
-      { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" }
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "moscow",
+        "title": "Battle of Moscow",
+        "type": "Campaign"
+      },
+      {
+        "id": "walter-model",
+        "title": "Walter Model",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -294,17 +648,43 @@
     "died": "1962-09-01",
     "birthplace": "Ernsdorf, Silesia",
     "biography": "Succeeded Rommel as commander of Heeresgruppe Afrika in March 1943 and became the last Axis commander in North Africa. On 12 May 1943, the final Axis forces in Tunisia surrendered — 275,000 troops captured — in what Allied commanders called a greater disaster than Stalingrad. Held as a prisoner in Britain until 1947, he was reputedly the only Axis prisoner to decline an invitation to watch a V-1 flying bomb demonstration for psychological effect.",
-    "commands": ["5th Panzer Army", "Heeresgruppe Afrika"],
-    "awards": ["Knight's Cross with Oak Leaves"],
-    "campaigns": ["france", "eastern-front", "africa"],
+    "commands": [
+      "5th Panzer Army",
+      "Heeresgruppe Afrika"
+    ],
+    "awards": [
+      "Knight's Cross with Oak Leaves"
+    ],
+    "campaigns": [
+      "france",
+      "eastern-front",
+      "africa"
+    ],
     "sources": [
-      { "ref": "Howe, George. Northwest Africa: Seizing the Initiative in the West. Center of Military History, 1957.", "note": "US Army official history of the North Africa campaign including the final Tunisian phase." },
-      { "ref": "Mitcham, Samuel and von Stauffenberg, Friedrich. The Battle of Sicily. Orion Books, 1991." }
+      {
+        "ref": "Howe, George. Northwest Africa: Seizing the Initiative in the West. Center of Military History, 1957.",
+        "note": "US Army official history of the North Africa campaign including the final Tunisian phase."
+      },
+      {
+        "ref": "Mitcham, Samuel and von Stauffenberg, Friedrich. The Battle of Sicily. Orion Books, 1991."
+      }
     ],
     "related_records": [
-      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-      { "id": "alamein-2", "title": "Second Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-2" },
-      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" }
+      {
+        "id": "erwin-rommel",
+        "title": "Erwin Rommel",
+        "type": "Personnel"
+      },
+      {
+        "id": "alamein-2",
+        "title": "Second Battle of El Alamein",
+        "type": "Campaign"
+      },
+      {
+        "id": "gazala",
+        "title": "Battle of Gazala",
+        "type": "Campaign"
+      }
     ]
   }
 ]

@@ -3,11 +3,12 @@ import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn } from
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
 import { uploadFile, handleUpload, wireSectionActions, renderGallery, renderDocuments } from "./admin-media-sections.js";
+import { initBodyEditor, readBodyBlocks } from "./admin-body-editor.js";
 
 /**
  * VeteransLedger · Admin — Articles
- * Article-specific logic only. Body textarea is split by double-newlines
- * into paragraph blocks on submit and rejoined on load.
+ * Article-specific logic only. Body is managed by the block editor (admin-body-editor.js)
+ * which serialises to/from the metadata.body array.
  */
 
 const KNOWN_CATEGORIES = [
@@ -144,6 +145,7 @@ function openForm(id) {
   document.getElementById("article-form")?.reset();
   document.getElementById("article-form-title").textContent = id ? "Edit Article" : "New Article";
   document.getElementById("article-form-panel").hidden = false;
+  initBodyEditor("article-body-editor", []);
   renderSources(); renderRelated(); renderGalleryAdmin(); renderDocumentsAdmin();
   setStatus("", false);
   if (id) loadArticleIntoForm(id);
@@ -165,11 +167,8 @@ async function loadArticleIntoForm(id) {
     form.querySelector("[name='title']").value = r.title || "";
     form.querySelector("[name='category']").value = meta.category || "";
     form.querySelector("[name='summary']").value = r.summary || "";
-    const bodyText = Array.isArray(meta.body)
-      ? meta.body.map((b) => (b && b.text) || "").filter(Boolean).join("\n\n")
-      : r.content || "";
-    form.querySelector("[name='body']").value = bodyText;
     form.querySelector("[name='published']").checked = !!r.published;
+    initBodyEditor("article-body-editor", Array.isArray(meta.body) ? meta.body : []);
 
     sourcesDraft = Array.isArray(meta.sources) ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" })) : [];
     relatedDraft = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
@@ -211,20 +210,13 @@ async function showPreview() {
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
-  const bodyText = form.querySelector("[name='body']").value.trim();
-  const bodyBlocks = bodyText
-    .split(/\n\n+/)
-    .map((p) => p.trim())
-    .filter(Boolean)
-    .map((text) => ({ type: "paragraph", text }));
-
   const body = {
     title: form.querySelector("[name='title']").value.trim(),
     summary: form.querySelector("[name='summary']").value.trim() || undefined,
     published: form.querySelector("[name='published']").checked,
     metadata: {
       category: form.querySelector("[name='category']").value || undefined,
-      body: bodyBlocks,
+      body: readBodyBlocks("article-body-editor"),
       sources: sourcesDraft.filter((s) => s.ref),
       related_records: relatedDraft,
       gallery: galleryDraft.filter((g) => g.file),

@@ -2,7 +2,10 @@
   "id": "convoy-war",
   "title": "The Convoy War — U-boat Campaign Against Allied Shipping",
   "theater": "atlantic",
-  "dates": { "start": "1939-09-03", "end": "1945-05-07" },
+  "dates": {
+    "start": "1939-09-03",
+    "end": "1945-05-07"
+  },
   "summary": "The U-boat campaign against Allied convoy routes was the central strategic struggle of the Battle of the Atlantic. German submarines, operating in coordinated Wolfpack attacks, sank over 2,700 Allied merchant vessels, threatening to strangle Britain before Allied countermeasures — radar, ULTRA decrypts, and long-range aircraft — turned the tide.",
   "context": "Admiral Karl Dönitz's concept for the U-boat war had been developed in the 1930s: concentrated 'wolfpack' (Rudeltaktik) attacks would overwhelm convoy escorts and achieve the tonnage sinkings necessary to starve Britain. He had calculated that he needed 300 operational submarines to execute this strategy, but started the war with only 57, of which typically only a third were at sea at any time. Despite these limitations, the first 'Happy Time' of 1940–1941 was devastating. The critical technological battle was over intelligence: when the Allies broke the German Naval Enigma (particularly Cipher Shark in December 1942), convoy routing could be adjusted to avoid U-boat patrol lines, and when the Germans were reading Allied codes, they could direct wolfpacks against convoys. ULTRA ultimately proved decisive.",
   "wolfpack_tactics": "Dönitz's Rudeltaktik ('Wolf Pack') coordinated multiple U-boats against a single convoy. Boats shadowed the convoy during daylight, then converged for coordinated night surface attacks — when submerged sonar was ineffective. The tactic was devastating until radio direction-finding allowed escorts to vector onto surfacing submarines.",
@@ -16,17 +19,52 @@
   "turning_point": "May 1943 ('Black May'): 43 U-boats sunk in one month. Dönitz withdrew remaining boats from the North Atlantic on 24 May, conceding the campaign. Centimetric radar, Hedgehog ahead-throwing weapons, and ULTRA intelligence had transformed the balance.",
   "outcome": "Allied victory. Despite inflicting enormous losses, U-boats failed to cut the Atlantic lifeline. The campaign cost Germany 783 submarines and ~28,000 crewmen — a casualty rate exceeding 70%.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 7/845: BdU (U-Boat Command) War Diary, 1939–1945." },
-    { "ref": "Dönitz, Karl. Memoirs: Ten Years and Twenty Days. Weidenfeld and Nicolson, 1959.", "note": "Dönitz's own account; self-serving but invaluable for command thinking." },
-    { "ref": "Roskill, S.W. The War at Sea, 1939–1945 (3 vols). HMSO, 1954–1961.", "note": "British official history." },
-    { "ref": "Syrett, David. The Defeat of the German U-Boats: The Battle of the Atlantic. University of South Carolina Press, 1994." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 7/845: BdU (U-Boat Command) War Diary, 1939–1945."
+    },
+    {
+      "ref": "Dönitz, Karl. Memoirs: Ten Years and Twenty Days. Weidenfeld and Nicolson, 1959.",
+      "note": "Dönitz's own account; self-serving but invaluable for command thinking."
+    },
+    {
+      "ref": "Roskill, S.W. The War at Sea, 1939–1945 (3 vols). HMSO, 1954–1961.",
+      "note": "British official history."
+    },
+    {
+      "ref": "Syrett, David. The Defeat of the German U-Boats: The Battle of the Atlantic. University of South Carolina Press, 1994."
+    }
   ],
   "related_records": [
-    { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
-    { "id": "uboat-campaign", "title": "U-Boat Campaign", "type": "Campaign", "url": "/campaigns/atlantic/uboat-campaing" },
-    { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" },
-    { "id": "otto-kretschmer", "title": "Otto Kretschmer", "type": "Personnel", "url": "/personnel/otto-kretschmer" },
-    { "id": "gunther-prien", "title": "Günther Prien", "type": "Personnel", "url": "/personnel/gunther-prien" },
-    { "id": "type-viic-uboat", "title": "Type VIIC U-Boat", "type": "Armament", "url": "/armaments/type-viic-uboat" }
+    {
+      "id": "atlantic",
+      "title": "Battle of the Atlantic",
+      "type": "Campaign"
+    },
+    {
+      "id": "uboat-campaign",
+      "title": "U-Boat Campaign",
+      "type": "Campaign"
+    },
+    {
+      "id": "karl-donitz",
+      "title": "Karl Dönitz",
+      "type": "Personnel"
+    },
+    {
+      "id": "otto-kretschmer",
+      "title": "Otto Kretschmer",
+      "type": "Personnel"
+    },
+    {
+      "id": "gunther-prien",
+      "title": "Günther Prien",
+      "type": "Personnel"
+    },
+    {
+      "id": "type-viic-uboat",
+      "title": "Type VIIC U-Boat",
+      "type": "Armament"
+    }
   ]
 }

@@ -2,33 +2,75 @@
   "id": "kharkov",
   "title": "Third Battle of Kharkov — The 'Backhand Blow'",
   "theater": "eastern-front",
-  "dates": { "start": "1943-02-19", "end": "1943-03-15" },
+  "dates": {
+    "start": "1943-02-19",
+    "end": "1943-03-15"
+  },
   "summary": "The Third Battle of Kharkov was Manstein's brilliant counteroffensive following the fall of Stalingrad. When Soviet forces overextended themselves after recapturing Kharkov, Manstein's Army Group South allowed them to advance, then struck their exposed flanks, recapturing Kharkov and stabilising the Eastern Front.",
   "context": "Following the German catastrophe at Stalingrad (February 1943), Soviet forces launched Operation Star and Operation Gallop, driving westward in a broad offensive that recaptured Kharkov and threatened to unravel the entire German southern front. Manstein persuaded Hitler to give him operational freedom rather than insisting on fixed defence. His concept — the 'backhand blow' — was to trade space for time, allow Soviet spearheads to overextend beyond their logistics, then counterattack with concentrated mobile forces against their exposed flanks. The SS Panzer Corps (Leibstandarte, Das Reich, Totenkopf divisions) provided the armoured striking power. The operation was the last major German offensive success on the Eastern Front and created the Kursk salient that defined the summer 1943 campaign.",
   "combatants": {
     "axis": {
-      "commanders": ["Erich von Manstein (Army Group South)", "Paul Hausser (SS Panzer Corps)"],
+      "commanders": [
+        "Erich von Manstein (Army Group South)",
+        "Paul Hausser (SS Panzer Corps)"
+      ],
       "strength": "4 Panzer corps, SS Panzer Divisions (Leibstandarte, Das Reich, Totenkopf)"
     },
     "allied": {
-      "commanders": ["Nikolai Vatutin (Voronezh Front)", "Filipp Golikov"],
+      "commanders": [
+        "Nikolai Vatutin (Voronezh Front)",
+        "Filipp Golikov"
+      ],
       "strength": "Overextended Soviet forces after Operation Star"
     }
   },
   "manstein_concept": "Manstein's 'backhand blow' (Gegenschlag) concept: allow Soviet forces to advance until their logistics failed, then counterattack with concentrated mobile forces against exhausted, overextended enemy spearheads.",
   "outcome": "Major German victory. Kharkov recaptured on 15 March 1943. Soviet 3rd Tank Army destroyed; ~50,000 Soviet troops killed or captured. The victory stabilised the Eastern Front south of Kursk and created the Kursk salient.",
-  "casualties": { "germany": "~11,500 killed", "soviet": "~50,000+ killed or captured; 600+ tanks destroyed" },
+  "casualties": {
+    "germany": "~11,500 killed",
+    "soviet": "~50,000+ killed or captured; 600+ tanks destroyed"
+  },
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VI/42: Heeresgruppe Don/Süd War Diary, February–March 1943." },
-    { "ref": "Manstein, Erich von. Lost Victories. Edited by Anthony Powell. Methuen, 1958.", "note": "Manstein's own account; a key primary source despite its self-serving aspects." },
-    { "ref": "Nipe, George M. Decision in the Ukraine: German Panzer Operations on the Eastern Front, Summer 1943. J.J. Fedorowicz, 1996." },
-    { "ref": "Healy, Mark. Kursk 1943: The Tide Turns in the East. Osprey, 1992." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VI/42: Heeresgruppe Don/Süd War Diary, February–March 1943."
+    },
+    {
+      "ref": "Manstein, Erich von. Lost Victories. Edited by Anthony Powell. Methuen, 1958.",
+      "note": "Manstein's own account; a key primary source despite its self-serving aspects."
+    },
+    {
+      "ref": "Nipe, George M. Decision in the Ukraine: German Panzer Operations on the Eastern Front, Summer 1943. J.J. Fedorowicz, 1996."
+    },
+    {
+      "ref": "Healy, Mark. Kursk 1943: The Tide Turns in the East. Osprey, 1992."
+    }
   ],
   "related_records": [
-    { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-    { "id": "erich-von-manstein", "title": "Erich von Manstein", "type": "Personnel", "url": "/personnel/erich-von-manstein" },
-    { "id": "paul-hausser", "title": "Paul Hausser", "type": "Personnel", "url": "/personnel/paul-hausser" },
-    { "id": "pz-vi-tiger", "title": "Tiger I Tank", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
-    { "id": "pz-v-panther", "title": "Panther Tank", "type": "Armament", "url": "/armaments/pz-v-panther" }
+    {
+      "id": "stalingrad",
+      "title": "Battle of Stalingrad",
+      "type": "Campaign"
+    },
+    {
+      "id": "erich-von-manstein",
+      "title": "Erich von Manstein",
+      "type": "Personnel"
+    },
+    {
+      "id": "paul-hausser",
+      "title": "Paul Hausser",
+      "type": "Personnel"
+    },
+    {
+      "id": "pz-vi-tiger",
+      "title": "Tiger I Tank",
+      "type": "Armament"
+    },
+    {
+      "id": "pz-v-panther",
+      "title": "Panther Tank",
+      "type": "Armament"
+    }
   ]
 }

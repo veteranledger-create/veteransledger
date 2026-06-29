@@ -15,13 +15,28 @@
     "notes": "De Groot was wounded at Kharkov in 1943 and repatriated to the Netherlands. He faced collaboration charges after the war and served three years imprisonment. In later life he refused to discuss his service.",
     "archive_source": "Netherlands Institute for War Documentation (NIOD), Amsterdam",
     "sources": [
-      { "type": "primary", "ref": "Original letter, NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies, Amsterdam. Collection 188, inv. nr. 4." },
-      { "ref": "Littlejohn, David. The Patriotic Traitors: A History of Collaboration in German-Occupied Europe, 1940–1945. Heinemann, 1972." },
-      { "ref": "Stein, George H. The Waffen SS: Hitler's Elite Guard at War, 1939–1945. Cornell University Press, 1966." }
+      {
+        "type": "primary",
+        "ref": "Original letter, NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies, Amsterdam. Collection 188, inv. nr. 4."
+      },
+      {
+        "ref": "Littlejohn, David. The Patriotic Traitors: A History of Collaboration in German-Occupied Europe, 1940–1945. Heinemann, 1972."
+      },
+      {
+        "ref": "Stein, George H. The Waffen SS: Hitler's Elite Guard at War, 1939–1945. Cornell University Press, 1966."
+      }
     ],
     "related_records": [
-      { "id": "vol-002", "title": "Bergström — Hanko, Finland (1941)", "type": "Volunteers Collection" },
-      { "id": "vol-003", "title": "Dupont — Eastern Front (1943)", "type": "Volunteers Collection" }
+      {
+        "id": "vol-002",
+        "title": "Bergström — Hanko, Finland (1941)",
+        "type": "Volunteers Collection"
+      },
+      {
+        "id": "vol-003",
+        "title": "Dupont — Eastern Front (1943)",
+        "type": "Volunteers Collection"
+      }
     ]
   },
   {
@@ -40,13 +55,28 @@
     "notes": "Bergström served with the Swedish Volunteer Corps during the Continuation War. He returned to Sweden in early 1942 and was never prosecuted, as Sweden recognised the distinction between service in Finland and service in the Wehrmacht.",
     "archive_source": "Swedish National Archives (Riksarkivet), Stockholm",
     "sources": [
-      { "type": "primary", "ref": "Original letter, Riksarkivet, Stockholm. Samling: Svenska frivilligkåren, Volym 12." },
-      { "ref": "Lundin, C. Leonard. Finland in the Second World War. Indiana University Press, 1957." },
-      { "ref": "Ohman Nielsen, May-Brith. Scandinavia in the Second World War. Palgrave Macmillan, 2014." }
+      {
+        "type": "primary",
+        "ref": "Original letter, Riksarkivet, Stockholm. Samling: Svenska frivilligkåren, Volym 12."
+      },
+      {
+        "ref": "Lundin, C. Leonard. Finland in the Second World War. Indiana University Press, 1957."
+      },
+      {
+        "ref": "Ohman Nielsen, May-Brith. Scandinavia in the Second World War. Palgrave Macmillan, 2014."
+      }
     ],
     "related_records": [
-      { "id": "vol-001", "title": "De Groot — Eastern Front (1942)", "type": "Volunteers Collection" },
-      { "id": "vol-004", "title": "Van Damme — Belgium, SS (1944)", "type": "Volunteers Collection" }
+      {
+        "id": "vol-001",
+        "title": "De Groot — Eastern Front (1942)",
+        "type": "Volunteers Collection"
+      },
+      {
+        "id": "vol-004",
+        "title": "Van Damme — Belgium, SS (1944)",
+        "type": "Volunteers Collection"
+      }
     ]
   },
   {
@@ -66,13 +96,29 @@
     "notes": "Sous-Lieutenant Dupont survived the Eastern Front and served with the Charlemagne Division in the final defence of Berlin in April 1945. He surrendered to French forces, was tried for collaboration, and sentenced to twenty years' imprisonment. He was released in 1958 under a general amnesty.",
     "archive_source": "Service Historique de la Défense, Vincennes (France)",
     "sources": [
-      { "type": "primary", "ref": "Original letter (French), Service Historique de la Défense, Vincennes. Série GR 28P7, dossier 14." },
-      { "ref": "Forbes, Robert. For Europe: The French Volunteers of the Waffen-SS. Helion, 2006." },
-      { "ref": "Mabire, Jean. La Division Charlemagne. Fayard, 1974.", "note": "Sympathetic account by a participant; use with source-critical awareness." }
+      {
+        "type": "primary",
+        "ref": "Original letter (French), Service Historique de la Défense, Vincennes. Série GR 28P7, dossier 14."
+      },
+      {
+        "ref": "Forbes, Robert. For Europe: The French Volunteers of the Waffen-SS. Helion, 2006."
+      },
+      {
+        "ref": "Mabire, Jean. La Division Charlemagne. Fayard, 1974.",
+        "note": "Sympathetic account by a participant; use with source-critical awareness."
+      }
     ],
     "related_records": [
-      { "id": "vol-001", "title": "De Groot — Eastern Front (1942)", "type": "Volunteers Collection" },
-      { "id": "vol-004", "title": "Van Damme — Belgium, SS (1944)", "type": "Volunteers Collection" }
+      {
+        "id": "vol-001",
+        "title": "De Groot — Eastern Front (1942)",
+        "type": "Volunteers Collection"
+      },
+      {
+        "id": "vol-004",
+        "title": "Van Damme — Belgium, SS (1944)",
+        "type": "Volunteers Collection"
+      }
     ]
   },
   {
@@ -91,13 +137,28 @@
     "notes": "SS-Unterscharführer Van Damme was wounded near Narva in October 1944 and transferred to a training depot. He surrendered to British forces in Germany in May 1945 and was repatriated to Belgium. He was sentenced to life imprisonment in 1946 but released in 1951 under Belgian amnesty provisions. He emigrated to Argentina.",
     "archive_source": "Studie- en Documentatiecentrum Oorlog en Hedendaagse Maatschappij (SOMA/CEGES), Brussels",
     "sources": [
-      { "type": "primary", "ref": "Original letter (Flemish Dutch), SOMA/CEGES Brussels. Fonds Langemarck, inv. 2309." },
-      { "ref": "Williamson, Gordon. The Waffen-SS (4): 24. to 38. Divisions, & Volunteer Legions. Osprey Publishing, 2004." },
-      { "ref": "Byers, Daniel. 'Belgian Volunteers in the Waffen-SS.' Journal of Military History, vol. 68, no. 3 (2004)." }
+      {
+        "type": "primary",
+        "ref": "Original letter (Flemish Dutch), SOMA/CEGES Brussels. Fonds Langemarck, inv. 2309."
+      },
+      {
+        "ref": "Williamson, Gordon. The Waffen-SS (4): 24. to 38. Divisions, & Volunteer Legions. Osprey Publishing, 2004."
+      },
+      {
+        "ref": "Byers, Daniel. 'Belgian Volunteers in the Waffen-SS.' Journal of Military History, vol. 68, no. 3 (2004)."
+      }
     ],
     "related_records": [
-      { "id": "vol-001", "title": "De Groot — Eastern Front (1942)", "type": "Volunteers Collection" },
-      { "id": "vol-003", "title": "Dupont — France, Eastern Front (1943)", "type": "Volunteers Collection" }
+      {
+        "id": "vol-001",
+        "title": "De Groot — Eastern Front (1942)",
+        "type": "Volunteers Collection"
+      },
+      {
+        "id": "vol-003",
+        "title": "Dupont — France, Eastern Front (1943)",
+        "type": "Volunteers Collection"
+      }
     ]
   }
 ]

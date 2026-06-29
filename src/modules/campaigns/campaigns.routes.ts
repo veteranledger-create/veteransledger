@@ -8,9 +8,9 @@ import { handleValidation } from "../../utilities/validation";
 export const campaignsRoutes = Router();
 const ctrl = new CampaignsController();
 
-campaignsRoutes.get("/",           listCampaignsValidator, handleValidation, ctrl.list.bind(ctrl));
+campaignsRoutes.get("/",           authenticate, requireAdmin, listCampaignsValidator, handleValidation, ctrl.list.bind(ctrl));
 campaignsRoutes.get("/:id/preview", authenticate, requireAdmin, ctrl.preview.bind(ctrl));
-campaignsRoutes.get("/:id",         ctrl.get.bind(ctrl));
+campaignsRoutes.get("/:id",         authenticate, requireAdmin, ctrl.get.bind(ctrl));
 campaignsRoutes.post("/",   authenticate, requireAdmin, createCampaignValidator, handleValidation, ctrl.create.bind(ctrl));
 campaignsRoutes.put("/:id", authenticate, requireAdmin, updateCampaignValidator, handleValidation, ctrl.update.bind(ctrl));
 campaignsRoutes.delete("/:id", authenticate, requireAdmin, ctrl.remove.bind(ctrl));

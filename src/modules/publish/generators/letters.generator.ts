@@ -1,5 +1,4 @@
 import { RecordLike } from "../publish.types";
-import { resolveRelatedUrl } from "../related-url-resolver";
 
 // The six real letters/<file>.json collections. Not an enforced enum — the
 // conformance validator only warns on an unrecognized value, so a future
@@ -16,7 +15,6 @@ interface RelatedRecordEntry {
   id: string;
   title?: string;
   type?: string;
-  url?: string;
 }
 
 export interface LetterJson {
@@ -94,7 +92,6 @@ export function toLetterJson(record: RecordLike): LetterJson {
           id: r.id,
           title: r.title,
           type: r.type,
-          url: r.url ?? resolveRelatedUrl(r.type, r.id),
         }))
     : undefined;
 

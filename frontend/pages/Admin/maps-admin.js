@@ -1,4 +1,4 @@
-import { authHeader, escHtml, debounce, loader, makeStatusFn } from "./admin-utils.js";
+import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn } from "./admin-utils.js";
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
 import { uploadFile, handleUpload, wireSectionActions, renderGallery, renderDocuments } from "./admin-media-sections.js";
@@ -38,6 +38,8 @@ function init() {
   document.getElementById("map-cancel-btn")?.addEventListener("click", closeForm);
   document.getElementById("map-filter-search")?.addEventListener("input", debounce(() => loadRecords(1), 350));
   document.getElementById("map-form")?.addEventListener("submit", handleSubmit);
+  document.getElementById("map-preview-btn")?.addEventListener("click", showPreview);
+  document.getElementById("map-preview-modal-close")?.addEventListener("click", () => toggleModal("map-preview-modal", false));
   document.getElementById("map-add-source-btn")?.addEventListener("click", () => { sourcesDraft.push({ ref: "", type: "" }); renderSources(); });
   document.getElementById("map-add-related-btn")?.addEventListener("click", () => openRelatedModal((item) => { relatedDraft.push(item); renderRelated(); }));
 
@@ -139,6 +141,30 @@ async function loadIntoForm(id) {
   } catch (_) { setStatus("Failed to load map.", true); }
 }
 
+async function showPreview() {
+  if (!editingId) { alert("Save the map first, then Preview."); return; }
+  toggleModal("map-preview-modal", true);
+  const content = document.getElementById("map-preview-content");
+  content.innerHTML = `<p style="color:var(--text-muted);">Loading…</p>`;
+  try {
+    const res = await fetch(`/api/records/${editingId}/preview`, { headers: authHeader() });
+    if (!res.ok) throw new Error();
+    const { rendered, issues } = await res.json();
+    const errors = issues.filter((i) => i.severity === "error");
+    content.innerHTML = `
+      ${errors.length ? `<div style="background:#3a1515;border:1px solid #6a2020;border-radius:4px;padding:var(--space-3);margin-bottom:var(--space-4);color:#e06060;font-size:var(--text-sm);">
+        <strong>Cannot publish — ${errors.length} blocking issue(s):</strong>
+        <ul style="margin:var(--space-2) 0 0 var(--space-4);">${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
+      </div>` : ""}
+      <h3 style="font-family:var(--font-display);margin-bottom:var(--space-2);">${escHtml(rendered.title || "—")}</h3>
+      <p style="color:var(--text-muted);margin-bottom:var(--space-2);">${[rendered.theater, rendered.year].filter(Boolean).join(" · ")}</p>
+      ${rendered.summary ? `<p style="margin-bottom:var(--space-4);">${escHtml(rendered.summary.slice(0, 200))}</p>` : ""}
+      <pre style="font-size:11px;background:rgba(255,255,255,0.03);padding:var(--space-3);border-radius:4px;overflow-x:auto;">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
+  } catch (_) {
+    content.innerHTML = `<p style="color:var(--text-muted);">Preview unavailable.</p>`;
+  }
+}
+
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
@@ -168,6 +194,7 @@ async function handleSubmit(e) {
     editingId = saved.id;
     setStatus("Saved.", false);
     loadRecords(currentPage);
+    if (!document.getElementById("map-preview-modal")?.hidden) showPreview();
   } catch (_) { setStatus("Save failed. Try again.", true); }
 }
 

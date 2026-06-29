@@ -59,6 +59,9 @@ model Record {
   citations  Citation[]
   media      MediaAsset[] @relation("RecordMedia")
 
+  @@index([type])
+  @@index([type, published])
+  @@index([createdAt])
   @@map("records")
 }
 
@@ -84,6 +87,8 @@ model Entity {
   citations     Citation[]
   media         MediaAsset[]   @relation("EntityMedia")
 
+  @@index([type])
+  @@index([type, published])
   @@map("entities")
 }
 
@@ -113,18 +118,19 @@ model Relationship {
 }
 
 model TimelineEvent {
-  id          String   @id @default(cuid())
-  date        DateTime
-  endDate     DateTime?
-  title       String
-  summary     String?
-  category    String?
-  location    String?
+  id           String    @id @default(cuid())
+  year         Int?
+  date         DateTime?
+  endDate      DateTime?
+  title        String
+  summary      String?
+  category     String?
+  location     String?
   significance String?
-  metadata    Json?
-  published   Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  metadata     Json?
+  published    Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 
   @@map("timeline_events")
 }
@@ -193,6 +199,8 @@ model AuditLog {
 
   user User @relation(fields: [userId], references: [id])
 
+  @@index([userId])
+  @@index([createdAt])
   @@map("audit_logs")
 }
 

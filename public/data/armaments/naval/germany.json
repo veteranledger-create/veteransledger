@@ -31,25 +31,21 @@
     "related_records": [
       {
         "id": "scharnhorst",
-        "url": "/armaments/scharnhorst",
         "type": "Armament",
         "title": "Battlecruiser Scharnhorst"
       },
       {
         "id": "bismarck",
-        "url": "/armaments/bismarck",
         "type": "Armament",
         "title": "Battleship Bismarck"
       },
       {
         "id": "atlantic",
-        "url": "/campaigns/atlantic/atlantic",
         "type": "Campaign",
         "title": "Battle of the Atlantic"
       },
       {
         "id": "erich-raeder",
-        "url": "/personnel/erich-raeder",
         "type": "Personnel",
         "title": "Erich Raeder"
       }
@@ -84,19 +80,16 @@
     "related_records": [
       {
         "id": "bismarck",
-        "url": "/armaments/bismarck",
         "type": "Armament",
         "title": "Battleship Bismarck"
       },
       {
         "id": "gneisenau",
-        "url": "/armaments/gneisenau",
         "type": "Armament",
         "title": "Battlecruiser Gneisenau"
       },
       {
         "id": "atlantic",
-        "url": "/campaigns/atlantic/atlantic",
         "type": "Campaign",
         "title": "Battle of the Atlantic"
       }
@@ -141,19 +134,16 @@
     "related_records": [
       {
         "id": "rheinubung",
-        "url": "/campaigns/atlantic/rheinubung",
         "type": "Campaign",
         "title": "Operation Rheinübung"
       },
       {
         "id": "gunther-lutjens",
-        "url": "/personnel/gunther-lutjens",
         "type": "Personnel",
         "title": "Günther Lütjens"
       },
       {
         "id": "tirpitz",
-        "url": "/armaments/tirpitz",
         "type": "Armament",
         "title": "Battleship Tirpitz"
       }
@@ -188,19 +178,16 @@
     "related_records": [
       {
         "id": "bismarck",
-        "url": "/armaments/bismarck",
         "type": "Armament",
         "title": "Battleship Bismarck"
       },
       {
         "id": "atlantic",
-        "url": "/campaigns/atlantic/atlantic",
         "type": "Campaign",
         "title": "Battle of the Atlantic"
       },
       {
         "id": "v2-rocket",
-        "url": "/armaments/v2-rocket",
         "type": "Armament",
         "title": "V-2 Rocket"
       }
@@ -243,19 +230,16 @@
     "related_records": [
       {
         "id": "river-plate",
-        "url": "/campaigns/atlantic/river-plate",
         "type": "Campaign",
         "title": "Battle of the River Plate"
       },
       {
         "id": "scharnhorst",
-        "url": "/armaments/scharnhorst",
         "type": "Armament",
         "title": "Battlecruiser Scharnhorst"
       },
       {
         "id": "erich-raeder",
-        "url": "/personnel/erich-raeder",
         "type": "Personnel",
         "title": "Erich Raeder"
       }
@@ -293,25 +277,21 @@
     "related_records": [
       {
         "id": "karl-donitz",
-        "url": "/personnel/karl-donitz",
         "type": "Personnel",
         "title": "Karl Dönitz"
       },
       {
         "id": "otto-kretschmer",
-        "url": "/personnel/otto-kretschmer",
         "type": "Personnel",
         "title": "Otto Kretschmer"
       },
       {
         "id": "wolfgang-luth",
-        "url": "/personnel/wolfgang-luth",
         "type": "Personnel",
         "title": "Wolfgang Lüth"
       },
       {
         "id": "uboat-campaing",
-        "url": "/campaigns/atlantic/uboat-campaing",
         "type": "Campaign",
         "title": "U-boat Campaign"
       }

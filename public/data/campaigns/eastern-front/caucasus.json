@@ -2,25 +2,64 @@
   "id": "caucasus",
   "title": "Caucasus Campaign (Case Blue — Army Group A)",
   "theater": "eastern-front",
-  "dates": { "start": "1942-07-25", "end": "1943-01-04" },
+  "dates": {
+    "start": "1942-07-25",
+    "end": "1943-01-04"
+  },
   "summary": "The Caucasus campaign was the southern half of Germany's 1942 summer offensive, aimed at capturing the Soviet oilfields at Baku, Maikop, and Grozny. Army Group A advanced rapidly but was stopped short of its objectives by terrain, distance, and the diversion of forces to Stalingrad.",
   "context": "Germany's dependence on Romanian oilfields at Ploiești made the Caucasus campaign existentially important: capturing Soviet oil while denying it to the Red Army could have ended Soviet industrial capacity to wage war. Army Group A drove 500 km in four weeks and captured Maikop on 9 August 1942 — only to find the Soviets had systematically destroyed every oil installation before retreating. The further advance stalled in the Caucasus mountain passes as German troops ran out of fuel and their supply lines, now 2,000 km long, could no longer sustain the pace of advance. The Stalingrad catastrophe forced withdrawal from the Caucasus in January 1943 to avoid a second encirclement.",
   "objectives": "Germany consumed 80% of its domestic oil supply annually; capturing Caucasus oilfields would both deny them to the Soviet Union and alleviate Germany's own critical oil shortage.",
   "combatants": {
-    "axis": { "commanders": ["Wilhelm List", "Ewald von Kleist"], "strength": "Army Group A: 1st Panzer Army, 17th Army" },
-    "allied": { "commanders": ["Semyon Budyonny", "Ivan Tyulenev"], "strength": "Transcaucasus Front" }
+    "axis": {
+      "commanders": [
+        "Wilhelm List",
+        "Ewald von Kleist"
+      ],
+      "strength": "Army Group A: 1st Panzer Army, 17th Army"
+    },
+    "allied": {
+      "commanders": [
+        "Semyon Budyonny",
+        "Ivan Tyulenev"
+      ],
+      "strength": "Transcaucasus Front"
+    }
   },
   "outcome": "Failure. Maikop oilfields captured but destroyed before seizure; Grozny and Baku never reached. German advance halted in the Caucasus mountains, denied by terrain, overextended supply lines, and the catastrophe at Stalingrad which forced withdrawal.",
-  "casualties": { "axis": "~270,000 killed, wounded, missing", "soviet": "~590,000 killed, wounded, missing during the campaign" },
+  "casualties": {
+    "axis": "~270,000 killed, wounded, missing",
+    "soviet": "~590,000 killed, wounded, missing during the campaign"
+  },
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VI: Heeresgruppe A War Diary, 1942." },
-    { "ref": "Mitcham, Samuel W. Crumbling Empire: The German Defeat in the East, 1944. Praeger, 2001." },
-    { "ref": "Tieke, Wilhelm. The Caucasus and the Oil: The German-Soviet War in the Caucasus, 1942/43. J.J. Fedorowicz, 1995." },
-    { "ref": "Glantz, David M. and House, Jonathan. When Titans Clashed. University Press of Kansas, 1995." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 VI: Heeresgruppe A War Diary, 1942."
+    },
+    {
+      "ref": "Mitcham, Samuel W. Crumbling Empire: The German Defeat in the East, 1944. Praeger, 2001."
+    },
+    {
+      "ref": "Tieke, Wilhelm. The Caucasus and the Oil: The German-Soviet War in the Caucasus, 1942/43. J.J. Fedorowicz, 1995."
+    },
+    {
+      "ref": "Glantz, David M. and House, Jonathan. When Titans Clashed. University Press of Kansas, 1995."
+    }
   ],
   "related_records": [
-    { "id": "blue", "title": "Case Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
-    { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-    { "id": "erich-von-manstein", "title": "Erich von Manstein", "type": "Personnel", "url": "/personnel/erich-von-manstein" }
+    {
+      "id": "blue",
+      "title": "Case Blue",
+      "type": "Campaign"
+    },
+    {
+      "id": "stalingrad",
+      "title": "Battle of Stalingrad",
+      "type": "Campaign"
+    },
+    {
+      "id": "erich-von-manstein",
+      "title": "Erich von Manstein",
+      "type": "Personnel"
+    }
   ]
 }

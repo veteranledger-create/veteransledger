@@ -4,6 +4,7 @@
  */
 
 import { renderDossierSection, renderHistoricalPhotographsSection, attachMediaFallbacks, initAttributionModal, initImageLightbox, heroImageCandidates, isAiGeneratedImageSrc, registerAttribution } from "/pages/shared/media-blocks.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
@@ -288,7 +289,7 @@ function renderRelatedRecords(rec, backPath) {
           ${related
             .map(
               (r) => `
-            <a class="record-related-card" href="${r.url || backPath + "/" + r.id}">
+            <a class="record-related-card" href="${resolveRelatedUrl(r.type, r.id)}">
               <span class="record-related-card__type">${r.type || ""}</span>
               <span class="record-related-card__title">${r.title || r.id}</span>
             </a>`,

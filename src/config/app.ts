@@ -82,3 +82,10 @@ export const config = {
 };
 
 export type Config = typeof config;
+
+if (process.env.NODE_ENV === "production") {
+  const WEAK = ["dev-secret-change-in-production", "dev-jwt-secret-change-in-production", "change-me"];
+  if (WEAK.includes(config.session.secret)) throw new Error("SESSION_SECRET must be set in production");
+  if (WEAK.includes(config.jwt.secret))     throw new Error("JWT_SECRET must be set in production");
+  if (WEAK.includes(config.admin.password)) throw new Error("ADMIN_PASSWORD must be set in production");
+}

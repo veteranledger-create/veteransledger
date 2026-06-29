@@ -2,25 +2,55 @@
   "id": "barbarossa",
   "title": "Operation Barbarossa",
   "theater": "eastern-front",
-  "dates": { "start": "1941-06-22", "end": "1941-12-05" },
+  "dates": {
+    "start": "1941-06-22",
+    "end": "1941-12-05"
+  },
   "summary": "The largest military operation in history, Operation Barbarossa was the German invasion of the Soviet Union, opening the Eastern Front of the Second World War. Three million German and Axis troops advanced on a front stretching 2,900 km, achieving stunning initial victories before being halted before Moscow.",
   "background": "Despite the Molotov–Ribbentrop Pact of 1939, Hitler had always viewed the Soviet Union as the ideological and racial enemy he intended to destroy. Planning began in December 1940 with Directive 21. The operation aimed to destroy Soviet forces west of the Dvina–Dnieper rivers before autumn.",
   "context": "Barbarossa was more than a military campaign: it was a racial and ideological war of annihilation. The Commissar Order mandated the execution of captured Soviet political officers. The Einsatzgruppen — SS mobile killing units — followed the army and began the mass murder of Jews, communist officials, and others. Army Group Centre's encirclement battles at Białystok, Minsk, Smolensk, and Vyazma-Bryansk produced the largest prisoner hauls in military history, yet Soviet resistance did not collapse as Hitler had anticipated. The six-week delay caused by the Balkans campaign (April–May 1941) meant Barbarossa began too late to avoid the Russian winter — a delay that may have cost Germany Moscow and the war.",
   "combatants": {
     "axis": {
-      "commanders": ["Gerd von Rundstedt", "Fedor von Bock", "Wilhelm Ritter von Leeb"],
+      "commanders": [
+        "Gerd von Rundstedt",
+        "Fedor von Bock",
+        "Wilhelm Ritter von Leeb"
+      ],
       "strength": "3,000,000 troops, 3,580 tanks, 7,184 artillery pieces",
-      "nations": ["Germany", "Romania", "Hungary", "Italy", "Finland", "Slovakia"]
+      "nations": [
+        "Germany",
+        "Romania",
+        "Hungary",
+        "Italy",
+        "Finland",
+        "Slovakia"
+      ]
     },
     "allied": {
-      "commanders": ["Georgy Zhukov", "Semyon Timoshenko", "Kliment Voroshilov"],
+      "commanders": [
+        "Georgy Zhukov",
+        "Semyon Timoshenko",
+        "Kliment Voroshilov"
+      ],
       "strength": "2,680,000 troops (front-line), 15,000+ tanks"
     }
   },
   "phases": [
-    { "name": "Army Group North", "objective": "Leningrad", "result": "Advanced 900 km in 18 days; surrounded but did not capture Leningrad" },
-    { "name": "Army Group Centre", "objective": "Moscow", "result": "Encirclements at Białystok, Minsk, Smolensk, Vyazma-Bryansk; largest encirclements in history" },
-    { "name": "Army Group South", "objective": "Ukraine and Caucasus", "result": "Captured Kiev; 660,000 Soviet prisoners taken in Kiev encirclement" }
+    {
+      "name": "Army Group North",
+      "objective": "Leningrad",
+      "result": "Advanced 900 km in 18 days; surrounded but did not capture Leningrad"
+    },
+    {
+      "name": "Army Group Centre",
+      "objective": "Moscow",
+      "result": "Encirclements at Białystok, Minsk, Smolensk, Vyazma-Bryansk; largest encirclements in history"
+    },
+    {
+      "name": "Army Group South",
+      "objective": "Ukraine and Caucasus",
+      "result": "Captured Kiev; 660,000 Soviet prisoners taken in Kiev encirclement"
+    }
   ],
   "outcome": "Initial German successes were extraordinary, destroying four Soviet army groups and capturing over 3 million prisoners by December 1941. However, the operation failed to achieve its strategic objective of destroying Soviet resistance before winter. The Wehrmacht was halted before Moscow in December 1941, beginning a war of attrition Germany could not win.",
   "casualties": {
@@ -30,18 +60,55 @@
   "image": "/storage/images/campaigns/barbarossa.jpg",
   "significance": "Marked the beginning of the war's largest theater. The failure to defeat the USSR in 1941 fundamentally altered the course of the war, transforming it from a series of limited campaigns into a total war of attrition that Germany and the Axis could not sustain.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 2/1328: OKH War Diary, Operation Barbarossa." },
-    { "ref": "Glantz, David M. Barbarossa: Hitler's Invasion of Russia 1941. Tempus, 2001." },
-    { "ref": "Stahel, David. Operation Barbarossa and Germany's Defeat in the East. Cambridge University Press, 2009." },
-    { "ref": "Megargee, Geoffrey. War of Annihilation: Combat and Genocide on the Eastern Front, 1941. Rowman and Littlefield, 2006." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 2/1328: OKH War Diary, Operation Barbarossa."
+    },
+    {
+      "ref": "Glantz, David M. Barbarossa: Hitler's Invasion of Russia 1941. Tempus, 2001."
+    },
+    {
+      "ref": "Stahel, David. Operation Barbarossa and Germany's Defeat in the East. Cambridge University Press, 2009."
+    },
+    {
+      "ref": "Megargee, Geoffrey. War of Annihilation: Combat and Genocide on the Eastern Front, 1941. Rowman and Littlefield, 2006."
+    }
   ],
   "related_records": [
-    { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" },
-    { "id": "leningrad", "title": "Siege of Leningrad", "type": "Campaign", "url": "/campaigns/eastern-front/leningrad" },
-    { "id": "kiev", "title": "Battle of Kiev", "type": "Campaign", "url": "/campaigns/eastern-front/kiev" },
-    { "id": "gerd-von-rundstedt", "title": "Gerd von Rundstedt", "type": "Personnel", "url": "/personnel/gerd-von-rundstedt" },
-    { "id": "heinz-guderian", "title": "Heinz Guderian", "type": "Personnel", "url": "/personnel/heinz-guderian" },
-    { "id": "de-001", "title": "Becker — Eastern Front (1941)", "type": "Letter", "url": "/letters/de-001" },
-    { "id": "pz-iv", "title": "Panzerkampfwagen IV", "type": "Armament", "url": "/armaments/pz-iv" }
+    {
+      "id": "moscow",
+      "title": "Battle of Moscow",
+      "type": "Campaign"
+    },
+    {
+      "id": "leningrad",
+      "title": "Siege of Leningrad",
+      "type": "Campaign"
+    },
+    {
+      "id": "kiev",
+      "title": "Battle of Kiev",
+      "type": "Campaign"
+    },
+    {
+      "id": "gerd-von-rundstedt",
+      "title": "Gerd von Rundstedt",
+      "type": "Personnel"
+    },
+    {
+      "id": "heinz-guderian",
+      "title": "Heinz Guderian",
+      "type": "Personnel"
+    },
+    {
+      "id": "de-001",
+      "title": "Becker — Eastern Front (1941)",
+      "type": "Letter"
+    },
+    {
+      "id": "pz-iv",
+      "title": "Panzerkampfwagen IV",
+      "type": "Armament"
+    }
   ]
 }

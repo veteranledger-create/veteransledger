@@ -1,6 +1,13 @@
 import { Prisma } from "@prisma/client";
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { toRecordLike } from "../publish/publish.service";
+import { toAwardJson } from "../publish/generators/awards.generator";
+import { toMapJson } from "../publish/generators/maps.generator";
+import { toPoliticalDocJson } from "../publish/generators/political-docs.generator";
+import { checkAwardRecord } from "../publish/validators/awards.conformance";
+import { checkMapRecord } from "../publish/validators/maps.conformance";
+import { checkPoliticalDocRecord } from "../publish/validators/political-docs.conformance";
 
 interface ListOptions { page: number; limit: number; type?: string; search?: string; }
 
@@ -49,5 +56,20 @@ export class RecordsService {
       throw err;
     }
     await prisma.auditLog.create({ data: { userId, action: "DELETE", entity: "Record", entityId: id } });
+  }
+
+  async preview(id: string) {
+    const record = await this.getById(id);
+    const candidate = toRecordLike(record);
+    switch (record.type) {
+      case "AWARD":
+        return { rendered: toAwardJson(candidate), issues: checkAwardRecord(candidate) };
+      case "MAP":
+        return { rendered: toMapJson(candidate), issues: checkMapRecord(candidate) };
+      case "POLITICAL_DOCUMENT":
+        return { rendered: toPoliticalDocJson(candidate), issues: checkPoliticalDocRecord(candidate) };
+      default:
+        throw new AppError(400, `No preview available for record type ${record.type}`);
+    }
   }
 }

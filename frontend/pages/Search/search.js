@@ -3,6 +3,8 @@
  * Full client-side search across all JSON data files.
  */
 
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+
 const form = document.getElementById("search-form");
 const input = document.getElementById("search-input");
 const results = document.getElementById("search-results");
@@ -14,45 +16,51 @@ let activeType = "all";
 let searchIndex = null;
 
 // ── Data source manifests ──────────────────────────────────────
+// All file lists are derived at runtime from each section's index.json.
+// Armaments and Formations have always been dynamic; the remaining
+// sections now follow the same pattern so adding a new file on the
+// admin side automatically makes it searchable on the next page load.
 
-const CAMPAIGN_FILES = [
-  ["eastern-front", "barbarossa.json"], ["eastern-front", "blue.json"],
-  ["eastern-front", "caucasus.json"],   ["eastern-front", "kharkov.json"],
-  ["eastern-front", "kiev.json"],       ["eastern-front", "leningrad.json"],
-  ["eastern-front", "moscow.json"],     ["eastern-front", "stalingrad.json"],
-  ["western-front", "britain.json"],    ["western-front", "bulge.json"],
-  ["western-front", "bzura.json"],      ["western-front", "dieppe.json"],
-  ["western-front", "dunkirk.json"],    ["western-front", "france.json"],
-  ["western-front", "market-garden.json"], ["western-front", "normandy.json"],
-  ["western-front", "norway.json"],     ["western-front", "poland.json"],
-  ["western-front", "warsaw.json"],
-  ["africa",   "alamein-1.json"], ["africa",   "alamein-2.json"],
-  ["africa",   "gazala.json"],    ["africa",   "sonnenblume.json"],
-  ["africa",   "tobruk.json"],
-  ["italy",    "cassino.json"],   ["italy",    "crete.json"],
-  ["italy",    "gothic-line.json"], ["italy",  "sicily.json"],
-  ["italy",    "taranto.json"],
-  ["atlantic", "altmark.json"],   ["atlantic", "atlantic.json"],
-  ["atlantic", "convoy-war.json"], ["atlantic", "rheinubung.json"],
-  ["atlantic", "river-plate.json"], ["atlantic", "uboat-campaing.json"],
+// Fallback lists used only when the index.json fetch fails.
+const _CAMPAIGN_FILES_FALLBACK = [
+  ["eastern-front","barbarossa.json"],["eastern-front","blue.json"],["eastern-front","caucasus.json"],["eastern-front","kharkov.json"],["eastern-front","kiev.json"],["eastern-front","leningrad.json"],["eastern-front","moscow.json"],["eastern-front","stalingrad.json"],
+  ["western-front","britain.json"],["western-front","bulge.json"],["western-front","bzura.json"],["western-front","dieppe.json"],["western-front","dunkirk.json"],["western-front","france.json"],["western-front","market-garden.json"],["western-front","normandy.json"],["western-front","norway.json"],["western-front","poland.json"],["western-front","warsaw.json"],
+  ["africa","alamein-1.json"],["africa","alamein-2.json"],["africa","gazala.json"],["africa","sonnenblume.json"],["africa","tobruk.json"],
+  ["italy","cassino.json"],["italy","crete.json"],["italy","gothic-line.json"],["italy","sicily.json"],["italy","taranto.json"],
+  ["atlantic","altmark.json"],["atlantic","atlantic.json"],["atlantic","convoy-war.json"],["atlantic","rheinubung.json"],["atlantic","river-plate.json"],["atlantic","uboat-campaing.json"],
 ];
+const _ARTICLE_FILES_FALLBACK  = [["military","poland-1939.json"],["military","rearmament.json"],["political","anschluss.json"],["political","july-20.json"],["political","rise-nsdap.json"],["legal","nuremberg.json"]];
+const _LETTER_FILES_FALLBACK   = ["german.json","italian.json","japanese.json","volunteers.json"];
+const _PERSONNEL_FILES_FALLBACK = ["army.json","luftwaffe.json","kriegsmarine.json","waffen-ss.json","foreign.json"];
 
-// Armaments has no hardcoded file list — like Formations below, the real
-// (category, nation) pairs are read from index.json, regenerated at
-// publish-promotion time from an actual directory scan. A newly promoted
-// file (e.g. naval/romania.json) becomes searchable automatically.
+async function loadSectionManifests(safeFetch) {
+  const [campaignsIdx, articlesIdx, lettersIdx, personnelIdx] = await Promise.all([
+    safeFetch("/public/data/campaigns/index.json"),
+    safeFetch("/public/data/articles/index.json"),
+    safeFetch("/public/data/letters/index.json"),
+    safeFetch("/public/data/personnel/index.json"),
+  ]);
 
-const ARTICLE_FILES = [
-  ["military",  "poland-1939.json"],
-  ["military",  "rearmament.json"],
-  ["political", "anschluss.json"],
-  ["political", "july-20.json"],
-  ["political", "rise-nsdap.json"],
-  ["legal",     "nuremberg.json"],
-];
+  const CAMPAIGN_FILES = campaignsIdx?.theaters
+    ? campaignsIdx.theaters.flatMap((t) => (t.campaigns || []).map((c) => [t.id, `${c}.json`]))
+    : _CAMPAIGN_FILES_FALLBACK;
 
-const LETTER_FILES     = ["german.json", "italian.json", "japanese.json", "volunteers.json"];
-const PERSONNEL_FILES  = ["army.json", "luftwaffe.json", "kriegsmarine.json", "waffen-ss.json", "foreign.json"];
+  const ARTICLE_FILES = articlesIdx?.categories
+    ? articlesIdx.categories.flatMap((c) =>
+        (c.files || []).map((f) => [c.id, f.split("/").pop()]),
+      )
+    : _ARTICLE_FILES_FALLBACK;
+
+  const LETTER_FILES = lettersIdx?.collections
+    ? lettersIdx.collections.map((c) => c.file.replace("/public/data/letters/", ""))
+    : _LETTER_FILES_FALLBACK;
+
+  const PERSONNEL_FILES = personnelIdx?.branches
+    ? personnelIdx.branches.map((b) => b.file.replace("/public/data/personnel/", ""))
+    : _PERSONNEL_FILES_FALLBACK;
+
+  return { CAMPAIGN_FILES, ARTICLE_FILES, LETTER_FILES, PERSONNEL_FILES };
+}
 
 // Formations loaded dynamically from index.json
 
@@ -121,9 +129,12 @@ async function buildIndex() {
     } catch (_) { return null; }
   };
 
-  // Load formation index and armaments index first, then all their real
-  // files in parallel with everything else — same pattern for both, since
-  // neither has a list that can be safely hardcoded.
+  // Load all section manifests dynamically — file lists come from index.json
+  // for every section, so a newly published file becomes searchable on the
+  // next page load without any source-code change.
+  const { CAMPAIGN_FILES, ARTICLE_FILES, LETTER_FILES, PERSONNEL_FILES } =
+    await loadSectionManifests(safeFetch);
+
   const formationIndex = await safeFetch("/public/data/formations/index.json");
   const formationCategories = formationIndex?.categories || [];
 
@@ -158,7 +169,7 @@ async function buildIndex() {
         title: p.name || p.fullName || "Unknown",
         summary: p.summary || p.biography || "",
         image: p.portrait || p.image || p.photo || null,
-        url: `/personnel/${p.id}`,
+        url: resolveRelatedUrl("PERSON", p.id),
         category: "Personnel",
         searchText: [
           p.name, p.fullName, p.rank, p.title, p.nation, p.nationality,
@@ -181,7 +192,7 @@ async function buildIndex() {
       title: data.title || "Unknown",
       summary: data.summary || "",
       image: data.image || null,
-      url: `/campaigns/${data.id}`,
+      url: resolveRelatedUrl("CAMPAIGN", data.id),
       category: data.theater || "Campaign",
       searchText: [
         data.title, data.summary, data.theater, data.location, data.id,
@@ -210,7 +221,7 @@ async function buildIndex() {
         title: a.name || "Unknown",
         summary: a.summary || "",
         image: a.image || null,
-        url: `/armaments/${a.id}`,
+        url: resolveRelatedUrl("ARMAMENT", a.id),
         category: cat.charAt(0).toUpperCase() + cat.slice(1),
         searchText: [
           a.name, a.type, a.nation, a.designation, a.summary,
@@ -233,7 +244,7 @@ async function buildIndex() {
       title: data.title || "Unknown",
       summary,
       image: data.image || (Array.isArray(data.images) ? data.images[0] : null) || null,
-      url: `/articles/${data.id}`,
+      url: resolveRelatedUrl("ARTICLE", data.id),
       category: (data.category || "Article").replace(/-/g, " "),
       searchText: [
         data.title, data.subtitle, data.summary, data.author, data.id,
@@ -253,7 +264,7 @@ async function buildIndex() {
         title: l.subject || `Letter from ${l.from || "Unknown"}`,
         summary: l.excerpt || (typeof l.full_text === "string" ? l.full_text.slice(0, 160) : ""),
         image: null,
-        url: `/letters/${l.id}`,
+        url: resolveRelatedUrl("LETTER", l.id),
         category: "Letter",
         searchText: normalise([
           l.subject, l.from, l.from_unit, l.to, l.location_written,
@@ -281,7 +292,7 @@ async function buildIndex() {
         summary: f.summary || "",
         image: null,
         icon: getSearchFormationIcon(f, section),
-        url: `/formations/${f.id}`,
+        url: resolveRelatedUrl("FORMATION", f.id),
         category: f.service || f.type || "Formation",
         searchText: normalise([
           f.name, f.type, f.service, f.nation, f.theater, f.region,

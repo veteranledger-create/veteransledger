@@ -1,19 +1,14 @@
 /**
  * VeteransLedger · Letters page
  * Loads letter collections, normalises dual schemas, renders list + inline viewer.
+ * Collection definitions loaded from letters/index.json — no hardcoded arrays.
  * Pagination: 12 letters per page; preserved when filter changes.
  */
 
 import { createPaginator } from "/pages/shared/paginator.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
-const COLLECTIONS = [
-  { id: "german",     label: "German",     file: "german.json" },
-  { id: "italian",    label: "Italian",    file: "italian.json" },
-  { id: "japanese",   label: "Japanese",   file: "japanese.json" },
-  { id: "volunteers", label: "Volunteers", file: "volunteers.json" },
-  { id: "british",    label: "British",    file: "british.json" },
-  { id: "polish",     label: "Polish",     file: "polish.json" },
-];
+let COLLECTIONS = [];
 
 const PAGE_SIZE = 12;
 
@@ -51,7 +46,40 @@ function normalise(letter) {
   };
 }
 
+async function loadManifest() {
+  try {
+    const res = await fetch("/public/data/letters/index.json");
+    const data = res.ok ? await res.json() : null;
+    COLLECTIONS = (data?.collections ?? []).map((c) => ({
+      id:   c.id,
+      label: c.label,
+      file: c.file.replace("/public/data/letters/", ""),
+    }));
+  } catch (_) {}
+  if (!COLLECTIONS.length) {
+    COLLECTIONS = [
+      { id: "german",     label: "German",     file: "german.json" },
+      { id: "italian",    label: "Italian",    file: "italian.json" },
+      { id: "japanese",   label: "Japanese",   file: "japanese.json" },
+      { id: "volunteers", label: "Volunteers", file: "volunteers.json" },
+      { id: "british",    label: "British",    file: "british.json" },
+      { id: "polish",     label: "Polish",     file: "polish.json" },
+    ];
+  }
+}
+
+function renderCollectionFilter() {
+  const bar = document.querySelector(".filter-bar");
+  if (!bar || !COLLECTIONS.length) return;
+  bar.innerHTML =
+    `<button type="button" class="filter-btn is-active" data-lang="all">All</button>` +
+    COLLECTIONS.map((c) => `<button type="button" class="filter-btn" data-lang="${c.id}">${c.label}</button>`).join("");
+}
+
 async function init() {
+  await loadManifest();
+  renderCollectionFilter();
+
   const results = await Promise.allSettled(
     COLLECTIONS.map((c) =>
       fetch(`/public/data/letters/${c.file}`)
@@ -132,7 +160,7 @@ function renderLetters(letters) {
         <span class="letter-card__date">${letter.date || letter.year || ""}</span>
       </div>
       ${excerpt ? `<p class="letter-card__excerpt">"${excerpt}${excerpt.length >= 200 ? "…" : ""}"</p>` : ""}
-      ${letter.id ? `<a class="letter-card__deep-link" href="/letters/${letter.id}" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--gold-dim);text-decoration:none;letter-spacing:0.06em;" onclick="event.stopPropagation()">Read full letter →</a>` : ""}`;
+      ${letter.id ? `<a class="letter-card__deep-link" href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--gold-dim);text-decoration:none;letter-spacing:0.06em;" onclick="event.stopPropagation()">Read full letter →</a>` : ""}`;
 
     card.addEventListener("click", () => openLetter(letter));
     card.addEventListener("keydown", (e) => {
@@ -156,7 +184,7 @@ function openLetter(letter) {
     <div class="letter-viewer__body">${bodyHtml}</div>
     ${letter._original ? `<div class="letter-viewer__original"><strong>Original (${letter.language || "source language"}):</strong><br>${letter._original.replace(/\n/g, "<br>")}</div>` : ""}
     ${letter.translator_note ? `<p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:var(--space-3);font-style:italic">${letter.translator_note}</p>` : ""}
-    ${letter.id ? `<a href="/letters/${letter.id}" style="display:inline-block;margin-top:var(--space-4);font-size:var(--text-xs);color:var(--gold);text-decoration:none;letter-spacing:0.06em;">Read full record with sources →</a>` : ""}`;
+    ${letter.id ? `<a href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-block;margin-top:var(--space-4);font-size:var(--text-xs);color:var(--gold);text-decoration:none;letter-spacing:0.06em;">Read full record with sources →</a>` : ""}`;
 
   viewerEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }

@@ -4,6 +4,7 @@
  */
 
 import { renderBlock, renderDossierSection, attachMediaFallbacks, initAttributionModal, initImageLightbox } from "/pages/shared/media-blocks.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
 const INDEX_URL = "/public/data/formations/index.json";
 
@@ -335,7 +336,7 @@ function renderRelatedRecords(rec) {
           const target = r.type === "Formation" ? formationsById.get(r.id) : null;
           const icon = target ? getFormationIcon(target, target._category?.section) : null;
           return `
-          <a class="record-related-card" href="${r.url || "/formations/" + r.id}">
+          <a class="record-related-card" href="${resolveRelatedUrl(r.type, r.id)}">
             <span class="record-related-card__type">
               ${icon ? `<img class="record-card__icon" src="${icon.src}" alt="${icon.alt}">` : ""}
               ${r.type || ""}

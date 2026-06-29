@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { config } from "../config/app";
 import { AppError } from "./error.middleware";
+import { logger } from "./logger.middleware";
 
 export interface AuthPayload {
   userId: string;
@@ -22,6 +23,7 @@ export function authenticate(req: Request, _res: Response, next: NextFunction): 
   const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
 
   if (!token) {
+    logger.warn("Auth: missing token", { ip: req.ip, url: req.originalUrl, method: req.method });
     next(new AppError(401, "Authentication required"));
     return;
   }
@@ -31,6 +33,7 @@ export function authenticate(req: Request, _res: Response, next: NextFunction): 
     req.user = payload;
     next();
   } catch {
+    logger.warn("Auth: invalid or expired token", { ip: req.ip, url: req.originalUrl, method: req.method });
     next(new AppError(401, "Invalid or expired token"));
   }
 }

@@ -22,6 +22,13 @@ export interface ArmamentJson {
 
 const EXPLICIT_FIELDS = new Set(["category", "fileNation", "schemaType", "image", "sources", "related_records", "gallery", "blueprints", "videos", "documents"]);
 
+function rebuildRelatedRecords(raw: unknown): unknown[] | undefined {
+  if (!Array.isArray(raw) || raw.length === 0) return undefined;
+  return raw
+    .filter((r): r is { id: string; title?: string; type?: string } => !!r && typeof r.id === "string")
+    .map((r) => ({ id: r.id, title: r.title, type: r.type }));
+}
+
 function meta(record: RecordLike, key: string): unknown {
   return record.metadata ? record.metadata[key] : undefined;
 }
@@ -48,7 +55,7 @@ export function toArmamentJson(record: RecordLike): ArmamentJson {
     summary: asString(record.summary),
     image: asString(meta(record, "image")),
     sources: meta(record, "sources") ?? undefined,
-    related_records: meta(record, "related_records") ?? undefined,
+    related_records: rebuildRelatedRecords(meta(record, "related_records")),
     gallery: asArrayOrUndef(meta(record, "gallery")),
     blueprints: asArrayOrUndef(meta(record, "blueprints")),
     videos: asArrayOrUndef(meta(record, "videos")),

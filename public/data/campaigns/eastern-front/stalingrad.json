@@ -2,25 +2,52 @@
   "id": "stalingrad",
   "title": "Battle of Stalingrad",
   "theater": "eastern-front",
-  "dates": { "start": "1942-08-23", "end": "1943-02-02" },
+  "dates": {
+    "start": "1942-08-23",
+    "end": "1943-02-02"
+  },
   "summary": "The Battle of Stalingrad was a major battle on the Eastern Front in which Germany and its Axis allies fought the Soviet Union for control of the city of Stalingrad. It was the largest single battle in history and marked the turning point of the war in Europe.",
   "background": "Following the failure of Barbarossa in 1941, Germany launched Case Blue (Fall Blau) in summer 1942 aiming for the Caucasus oilfields and the Volga river. Stalingrad — named for the Soviet leader — became a symbolic prize for both sides.",
   "context": "What began as a strategic objective — reaching the Volga to cut Soviet supply lines — became a battle of symbolic significance that Hitler and Stalin both refused to abandon regardless of military logic. The city bore Stalin's name; Hitler would not countenance its non-capture. Soviet defenders held buildings and cellars under continuous aerial and ground assault while Chuikov's 62nd Army clung to a strip of riverbank sometimes only 100 metres wide. Operation Uranus — prepared in secret by Zhukov and Vasilevsky — struck the weak Romanian and Italian flanks north and south of the city on 19 November, encircling the 6th Army in five days. The subsequent failure of the Luftwaffe airlift (which promised but delivered only a quarter of required supplies) and of Operation Winter Storm (Manstein's relief attempt, halted 48 km from the pocket) sealed the 6th Army's fate.",
   "combatants": {
     "axis": {
-      "commanders": ["Friedrich Paulus", "Erich von Manstein (relief)", "Hermann Hoth"],
+      "commanders": [
+        "Friedrich Paulus",
+        "Erich von Manstein (relief)",
+        "Hermann Hoth"
+      ],
       "strength": "270,000 in 6th Army (at encirclement); 330,000 total Axis force"
     },
     "allied": {
-      "commanders": ["Vasily Chuikov", "Aleksandr Vasilevsky", "Georgy Zhukov"],
+      "commanders": [
+        "Vasily Chuikov",
+        "Aleksandr Vasilevsky",
+        "Georgy Zhukov"
+      ],
       "strength": "187,000 at start; reinforced to over 1 million for Operation Uranus"
     }
   },
   "phases": [
-    { "name": "German Advance", "dates": "August–November 1942", "description": "The 6th Army drove to the Volga and began urban combat in the city, where Soviet resistance was fierce. Street fighting reduced advances to metres per day." },
-    { "name": "Operation Uranus", "dates": "November 19–23, 1942", "description": "Soviet pincer attack encircled the 6th Army in the Stalingrad pocket. Romanian and Italian flanks collapsed within days." },
-    { "name": "Operation Winter Storm", "dates": "December 1942", "description": "Manstein's relief attempt came within 48 km of the pocket before being halted. Paulus refused to break out without Hitler's permission." },
-    { "name": "Operation Ring", "dates": "January 10 – February 2, 1943", "description": "Soviet forces compressed the pocket. The northern and southern pockets surrendered separately, with Paulus surrendering on 31 January 1943." }
+    {
+      "name": "German Advance",
+      "dates": "August–November 1942",
+      "description": "The 6th Army drove to the Volga and began urban combat in the city, where Soviet resistance was fierce. Street fighting reduced advances to metres per day."
+    },
+    {
+      "name": "Operation Uranus",
+      "dates": "November 19–23, 1942",
+      "description": "Soviet pincer attack encircled the 6th Army in the Stalingrad pocket. Romanian and Italian flanks collapsed within days."
+    },
+    {
+      "name": "Operation Winter Storm",
+      "dates": "December 1942",
+      "description": "Manstein's relief attempt came within 48 km of the pocket before being halted. Paulus refused to break out without Hitler's permission."
+    },
+    {
+      "name": "Operation Ring",
+      "dates": "January 10 – February 2, 1943",
+      "description": "Soviet forces compressed the pocket. The northern and southern pockets surrendered separately, with Paulus surrendering on 31 January 1943."
+    }
   ],
   "outcome": "German defeat. The encircled 6th Army surrendered — the greatest defeat in German military history. Of approximately 800,000 Axis personnel engaged, some 750,000 became casualties. Only 6,000 of the 91,000 German prisoners returned home after the war.",
   "casualties": {
@@ -30,17 +57,52 @@
   "image": "/storage/images/campaigns/stalingrad.jpg",
   "significance": "The psychological turning point of the war in Europe. The surrender of the 6th Army shattered the myth of German invincibility and demonstrated that the Wehrmacht could be defeated in large-scale operations. German strategic initiative on the Eastern Front was permanently lost.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. MSg 2/2763: Letters from the Stalingrad pocket. RH 20-6: 6th Army War Diary." },
-    { "ref": "Beevor, Antony. Stalingrad. Viking, 1998.", "note": "The definitive English-language history; drew on previously inaccessible Soviet archives." },
-    { "ref": "Craig, William. Enemy at the Gates: The Battle for Stalingrad. Dutton, 1973." },
-    { "ref": "Chuikov, Vasily. The Battle for Stalingrad. Holt, Rinehart and Winston, 1964.", "note": "First-hand Soviet account by the 62nd Army commander." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. MSg 2/2763: Letters from the Stalingrad pocket. RH 20-6: 6th Army War Diary."
+    },
+    {
+      "ref": "Beevor, Antony. Stalingrad. Viking, 1998.",
+      "note": "The definitive English-language history; drew on previously inaccessible Soviet archives."
+    },
+    {
+      "ref": "Craig, William. Enemy at the Gates: The Battle for Stalingrad. Dutton, 1973."
+    },
+    {
+      "ref": "Chuikov, Vasily. The Battle for Stalingrad. Holt, Rinehart and Winston, 1964.",
+      "note": "First-hand Soviet account by the 62nd Army commander."
+    }
   ],
   "related_records": [
-    { "id": "blue", "title": "Case Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
-    { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-    { "id": "friedrich-paulus", "title": "Friedrich Paulus", "type": "Personnel", "url": "/personnel/friedrich-paulus" },
-    { "id": "erich-von-manstein", "title": "Erich von Manstein", "type": "Personnel", "url": "/personnel/erich-von-manstein" },
-    { "id": "de-002", "title": "Müller — Stalingrad Pocket (1942)", "type": "Letter", "url": "/letters/de-002" },
-    { "id": "pz-iv", "title": "Panzerkampfwagen IV", "type": "Armament", "url": "/armaments/pz-iv" }
+    {
+      "id": "blue",
+      "title": "Case Blue",
+      "type": "Campaign"
+    },
+    {
+      "id": "kharkov",
+      "title": "Third Battle of Kharkov",
+      "type": "Campaign"
+    },
+    {
+      "id": "friedrich-paulus",
+      "title": "Friedrich Paulus",
+      "type": "Personnel"
+    },
+    {
+      "id": "erich-von-manstein",
+      "title": "Erich von Manstein",
+      "type": "Personnel"
+    },
+    {
+      "id": "de-002",
+      "title": "Müller — Stalingrad Pocket (1942)",
+      "type": "Letter"
+    },
+    {
+      "id": "pz-iv",
+      "title": "Panzerkampfwagen IV",
+      "type": "Armament"
+    }
   ]
 }

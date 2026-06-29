@@ -2,17 +2,28 @@
   "id": "leningrad",
   "title": "Siege of Leningrad",
   "theater": "eastern-front",
-  "dates": { "start": "1941-09-08", "end": "1944-01-27" },
+  "dates": {
+    "start": "1941-09-08",
+    "end": "1944-01-27"
+  },
   "summary": "The Siege of Leningrad was one of the longest and most destructive sieges in history, lasting 872 days. German and Finnish forces encircled the city from September 1941 without capturing it, while the civilian population endured starvation, intense artillery bombardment, and extreme cold.",
   "background": "Leningrad — the former imperial capital and the Soviet Union's second city — was Army Group North's primary objective in Operation Barbarossa. Hitler decreed that the city should be starved into submission and then razed to the ground; it was never to be allowed to fall to German ground assault.",
   "context": "Hitler's directive explicitly stated that Leningrad should not be captured — he wanted the city destroyed and its population killed rather than taken prisoner. The Wehrmacht's decision not to storm the city in September 1941 (when it was possible) and instead to starve it was therefore deliberate policy, not operational caution. The civilian death toll — estimated at 800,000 to 1.1 million from starvation, cold, and bombardment — exceeded Britain's and America's combined military and civilian losses for the entire war. The 'Road of Life' across frozen Lake Ladoga was the only supply route for nearly two years, sustaining a beleaguered city under perpetual bombardment.",
   "combatants": {
     "axis": {
-      "commanders": ["Wilhelm Ritter von Leeb (Army Group North)", "Georg von Küchler (later)", "Finnish forces under Mannerheim (north)"],
+      "commanders": [
+        "Wilhelm Ritter von Leeb (Army Group North)",
+        "Georg von Küchler (later)",
+        "Finnish forces under Mannerheim (north)"
+      ],
       "strength": "725,000 German troops; Finnish forces in the north"
     },
     "allied": {
-      "commanders": ["Georgy Zhukov (briefly)", "Kirill Meretskov", "Leonid Govorov"],
+      "commanders": [
+        "Georgy Zhukov (briefly)",
+        "Kirill Meretskov",
+        "Leonid Govorov"
+      ],
       "strength": "450,000 military defenders (varying); 2.5 million civilians"
     }
   },
@@ -30,13 +41,31 @@
   "image": "/storage/images/campaigns/leningrad.jpg",
   "significance": "The Siege of Leningrad became a symbol of Soviet resistance and suffering. The civilian death toll — primarily from starvation — was greater than the total military and civilian losses of Britain or the United States in the entire war.",
   "sources": [
-    { "type": "primary", "ref": "Central State Archive of Historical-Political Documents, St Petersburg. Leningrad Front documents, 1941–1944." },
-    { "ref": "Salisbury, Harrison. The 900 Days: The Siege of Leningrad. Harper and Row, 1969.", "note": "The foundational English-language account, drawing on Soviet and survivor testimonies." },
-    { "ref": "Bidlack, Richard and Lomagin, Nikita. The Leningrad Blockade, 1941–1944: A New Documentary History. Yale University Press, 2012." },
-    { "ref": "Glantz, David M. The Siege of Leningrad 1941–1944. Cassell, 2001." }
+    {
+      "type": "primary",
+      "ref": "Central State Archive of Historical-Political Documents, St Petersburg. Leningrad Front documents, 1941–1944."
+    },
+    {
+      "ref": "Salisbury, Harrison. The 900 Days: The Siege of Leningrad. Harper and Row, 1969.",
+      "note": "The foundational English-language account, drawing on Soviet and survivor testimonies."
+    },
+    {
+      "ref": "Bidlack, Richard and Lomagin, Nikita. The Leningrad Blockade, 1941–1944: A New Documentary History. Yale University Press, 2012."
+    },
+    {
+      "ref": "Glantz, David M. The Siege of Leningrad 1941–1944. Cassell, 2001."
+    }
   ],
   "related_records": [
-    { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-    { "id": "moscow", "title": "Battle of Moscow", "type": "Campaign", "url": "/campaigns/eastern-front/moscow" }
+    {
+      "id": "barbarossa",
+      "title": "Operation Barbarossa",
+      "type": "Campaign"
+    },
+    {
+      "id": "moscow",
+      "title": "Battle of Moscow",
+      "type": "Campaign"
+    }
   ]
 }

@@ -6,10 +6,16 @@
     "service": "National Armed Forces",
     "type": "National Army",
     "theater": "Eastern Front (Finnish sector)",
-    "active": { "from": "1939-11-30", "to": "1944-09-19" },
+    "active": {
+      "from": "1939-11-30",
+      "to": "1944-09-19"
+    },
     "flag": "/public/images/flags/finland.svg",
     "commanders": [
-      { "name": "Marshal Carl Gustaf Emil Mannerheim (Supreme Commander)", "period": "Nov 1939–Aug 1944" }
+      {
+        "name": "Marshal Carl Gustaf Emil Mannerheim (Supreme Commander)",
+        "period": "Nov 1939–Aug 1944"
+      }
     ],
     "peak_strength": "500,000 (Continuation War, 1941)",
     "summary": "The Finnish Defence Forces conducted two wars against the Soviet Union: the Winter War (1939–1940) and the Continuation War (1941–1944). Under Mannerheim they resisted the Soviet Union to a negotiated peace in both cases, preserving Finnish independence. Finland fought alongside Germany but maintained a distinct war aim — recovery of territory lost in 1940 — and refused German requests to advance on Leningrad.",
@@ -22,7 +28,11 @@
       {
         "type": "image",
         "images": [
-          { "src": "/public/images/flags/finland.svg", "caption": "Flag of Finland", "description": "Finnish forces fought the Soviet Union in two separate wars between 1939 and 1944 while maintaining political distance from the wider Axis alliance." }
+          {
+            "src": "/public/images/flags/finland.svg",
+            "caption": "Flag of Finland",
+            "description": "Finnish forces fought the Soviet Union in two separate wars between 1939 and 1944 while maintaining political distance from the wider Axis alliance."
+          }
         ]
       },
       {
@@ -48,15 +58,38 @@
       }
     ],
     "sources": [
-      { "type": "primary", "ref": "Suomen Sota 1941–1945. Finnish General Staff, 1958–1994. 9 vols." },
-      { "ref": "Screen, J.E.O. Mannerheim: The Finnish Years. Hurst, 2000." },
-      { "ref": "Trotter, William. A Frozen Hell: The Russo-Finnish Winter War of 1939–40. Algonquin, 1991." }
+      {
+        "type": "primary",
+        "ref": "Suomen Sota 1941–1945. Finnish General Staff, 1958–1994. 9 vols."
+      },
+      {
+        "ref": "Screen, J.E.O. Mannerheim: The Finnish Years. Hurst, 2000."
+      },
+      {
+        "ref": "Trotter, William. A Frozen Hell: The Russo-Finnish Winter War of 1939–40. Algonquin, 1991."
+      }
     ],
     "related_records": [
-      { "id": "carl-mannerheim", "title": "Carl Mannerheim", "type": "Personnel", "url": "/personnel/carl-mannerheim" },
-      { "id": "leningrad", "title": "Siege of Leningrad", "type": "Campaign", "url": "/campaigns/eastern-front/leningrad" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "vol-002", "title": "Bergström — Hanko, Finland (1941)", "type": "Letter", "url": "/letters/vol-002" }
+      {
+        "id": "carl-mannerheim",
+        "title": "Carl Mannerheim",
+        "type": "Personnel"
+      },
+      {
+        "id": "leningrad",
+        "title": "Siege of Leningrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "vol-002",
+        "title": "Bergström — Hanko, Finland (1941)",
+        "type": "Letter"
+      }
     ]
   },
   {
@@ -66,11 +99,20 @@
     "service": "Regio Esercito",
     "type": "Army",
     "theater": "North Africa",
-    "active": { "from": "1940-06", "to": "1941-02" },
+    "active": {
+      "from": "1940-06",
+      "to": "1941-02"
+    },
     "flag": "/public/images/flags/italy.svg",
     "commanders": [
-      { "name": "Generale d'Armata Mario Berti", "period": "Jun–Dec 1940" },
-      { "name": "Generale d'Armata Italo Gariboldi", "period": "Dec 1940–Feb 1941" }
+      {
+        "name": "Generale d'Armata Mario Berti",
+        "period": "Jun–Dec 1940"
+      },
+      {
+        "name": "Generale d'Armata Italo Gariboldi",
+        "period": "Dec 1940–Feb 1941"
+      }
     ],
     "peak_strength": "236,000 (Jan 1941)",
     "fate": "Destroyed at Beda Fomm, February 1941.",
@@ -84,7 +126,11 @@
       {
         "type": "image",
         "images": [
-          { "src": "/public/images/flags/italy.svg", "caption": "Flag of Fascist Italy", "description": "Germany's principal Axis partner and the originator of the North African campaign the 10th Army's destruction effectively ended." }
+          {
+            "src": "/public/images/flags/italy.svg",
+            "caption": "Flag of Fascist Italy",
+            "description": "Germany's principal Axis partner and the originator of the North African campaign the 10th Army's destruction effectively ended."
+          }
         ]
       },
       {
@@ -110,13 +156,29 @@
       }
     ],
     "sources": [
-      { "ref": "Bierman, John and Smith, Colin. War Without Hate. Penguin, 2002." },
-      { "ref": "O'Connor, Richard. Papers. Churchill College, Cambridge." }
+      {
+        "ref": "Bierman, John and Smith, Colin. War Without Hate. Penguin, 2002."
+      },
+      {
+        "ref": "O'Connor, Richard. Papers. Churchill College, Cambridge."
+      }
     ],
     "related_records": [
-      { "id": "rodolfo-graziani", "title": "Rodolfo Graziani", "type": "Personnel", "url": "/personnel/rodolfo-graziani" },
-      { "id": "sonnenblume", "title": "Operation Sonnenblume", "type": "Campaign", "url": "/campaigns/africa/sonnenblume" },
-      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" }
+      {
+        "id": "rodolfo-graziani",
+        "title": "Rodolfo Graziani",
+        "type": "Personnel"
+      },
+      {
+        "id": "sonnenblume",
+        "title": "Operation Sonnenblume",
+        "type": "Campaign"
+      },
+      {
+        "id": "erwin-rommel",
+        "title": "Erwin Rommel",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -126,10 +188,16 @@
     "service": "Armata Română",
     "type": "Army",
     "theater": "Eastern Front",
-    "active": { "from": "1942-08", "to": "1942-11" },
+    "active": {
+      "from": "1942-08",
+      "to": "1942-11"
+    },
     "flag": "/public/images/flags/romania.svg",
     "commanders": [
-      { "name": "General Petre Dumitrescu", "period": "Aug–Nov 1942" }
+      {
+        "name": "General Petre Dumitrescu",
+        "period": "Aug–Nov 1942"
+      }
     ],
     "peak_strength": "152,000 (November 1942)",
     "fate": "Destroyed by Soviet Operation Uranus, 19–23 November 1942.",
@@ -143,7 +211,11 @@
       {
         "type": "image",
         "images": [
-          { "src": "/public/images/flags/romania.svg", "caption": "Flag of Romania", "description": "Romania's 3rd and 4th Armies held the flanks of the German 6th Army at Stalingrad and bore the brunt of the Soviet encirclement that destroyed it." }
+          {
+            "src": "/public/images/flags/romania.svg",
+            "caption": "Flag of Romania",
+            "description": "Romania's 3rd and 4th Armies held the flanks of the German 6th Army at Stalingrad and bore the brunt of the Soviet encirclement that destroyed it."
+          }
         ]
       },
       {
@@ -169,12 +241,26 @@
       }
     ],
     "sources": [
-      { "ref": "Axworthy, Mark, Scafes, Cornel and Craciunoiu, Cristian. Third Axis, Fourth Ally: Romanian Armed Forces in the European War. Arms and Armour, 1995." }
+      {
+        "ref": "Axworthy, Mark, Scafes, Cornel and Craciunoiu, Cristian. Third Axis, Fourth Ally: Romanian Armed Forces in the European War. Arms and Armour, 1995."
+      }
     ],
     "related_records": [
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "6th-army", "title": "6th Army", "type": "Formation", "url": "/formations/6th-army" },
-      { "id": "blue", "title": "Operation Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" }
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "6th-army",
+        "title": "6th Army",
+        "type": "Formation"
+      },
+      {
+        "id": "blue",
+        "title": "Operation Blue",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -184,10 +270,16 @@
     "service": "Magyar Királyi Honvédség",
     "type": "Army",
     "theater": "Eastern Front",
-    "active": { "from": "1942-04", "to": "1943-02" },
+    "active": {
+      "from": "1942-04",
+      "to": "1943-02"
+    },
     "flag": "/public/images/flags/hungary.svg",
     "commanders": [
-      { "name": "Vezérezredes Gusztáv Jány", "period": "Apr 1942–Feb 1943" }
+      {
+        "name": "Vezérezredes Gusztáv Jány",
+        "period": "Apr 1942–Feb 1943"
+      }
     ],
     "peak_strength": "207,000",
     "fate": "Destroyed in Soviet Ostrogozhsk–Rossosh offensive, January 1943.",
@@ -201,7 +293,11 @@
       {
         "type": "image",
         "images": [
-          { "src": "/public/images/flags/hungary.svg", "caption": "Flag of Hungary", "description": "Hungary's 2nd Army suffered the greatest single military catastrophe in the country's history during the Soviet offensive of January 1943." }
+          {
+            "src": "/public/images/flags/hungary.svg",
+            "caption": "Flag of Hungary",
+            "description": "Hungary's 2nd Army suffered the greatest single military catastrophe in the country's history during the Soviet offensive of January 1943."
+          }
         ]
       },
       {
@@ -227,12 +323,26 @@
       }
     ],
     "sources": [
-      { "ref": "Ungváry, Krisztián. Battle for Budapest: 100 Days in World War II. I.B. Tauris, 2003." }
+      {
+        "ref": "Ungváry, Krisztián. Battle for Budapest: 100 Days in World War II. I.B. Tauris, 2003."
+      }
     ],
     "related_records": [
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "romanian-3rd-army", "title": "Romanian 3rd Army", "type": "Formation", "url": "/formations/romanian-3rd-army" },
-      { "id": "blue", "title": "Operation Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" }
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "romanian-3rd-army",
+        "title": "Romanian 3rd Army",
+        "type": "Formation"
+      },
+      {
+        "id": "blue",
+        "title": "Operation Blue",
+        "type": "Campaign"
+      }
     ]
   }
 ]

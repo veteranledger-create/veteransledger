@@ -6,6 +6,7 @@
  */
 
 import { escHtml } from "./admin-utils.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
 // Source reference list: { ref, type } pairs. onUpdate is called after
 // removal so the module's wrapper can re-invoke renderSources.
@@ -71,7 +72,7 @@ export function renderRelated(containerId, relatedDraft, onUpdate) {
     .map(
       (r, i) => `
     <div style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) var(--space-3);background:rgba(255,255,255,0.03);border-radius:4px;margin-bottom:var(--space-2);font-size:var(--text-sm);">
-      <span><span class="badge" style="margin-right:var(--space-2);">${escHtml(r.type)}</span>${escHtml(r.title)} <span style="color:var(--text-muted);">(${escHtml(r.url || r.id)})</span></span>
+      <span><span class="badge" style="margin-right:var(--space-2);">${escHtml(r.type)}</span>${escHtml(r.title)} <span style="color:var(--text-muted);">(${escHtml(resolveRelatedUrl(r.type, r.id))})</span></span>
       <button type="button" class="btn btn-secondary" data-related-remove="${i}" style="font-size:11px;">✕</button>
     </div>`,
     )

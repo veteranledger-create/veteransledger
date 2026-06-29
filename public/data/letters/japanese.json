@@ -15,13 +15,28 @@
     "notes": "Ensign Yamada died on 7 April 1945 during the Kikusui No. 1 operation, targeting Allied shipping near Okinawa. He was 20 years old. His letter was among 1,036 farewell letters preserved at the Chiran Peace Museum.",
     "archive_source": "Chiran Peace Museum, Kagoshima Prefecture",
     "sources": [
-      { "type": "primary", "ref": "Original letter, Chiran Tokkou Heiwa Kaikan (Chiran Peace Museum), Kagoshima. Document No. CHM-1945-0407." },
-      { "ref": "Naito, Hatsuho. Thunder Gods: The Kamikaze Pilots Tell Their Story. Kodansha International, 1989." },
-      { "ref": "Sheftall, Mordecai George. Blossoms in the Wind: Human Legacies of the Kamikaze. NAL Caliber, 2005." }
+      {
+        "type": "primary",
+        "ref": "Original letter, Chiran Tokkou Heiwa Kaikan (Chiran Peace Museum), Kagoshima. Document No. CHM-1945-0407."
+      },
+      {
+        "ref": "Naito, Hatsuho. Thunder Gods: The Kamikaze Pilots Tell Their Story. Kodansha International, 1989."
+      },
+      {
+        "ref": "Sheftall, Mordecai George. Blossoms in the Wind: Human Legacies of the Kamikaze. NAL Caliber, 2005."
+      }
     ],
     "related_records": [
-      { "id": "jp-002", "title": "Nakamura — Midway (1942)", "type": "Japanese Collection" },
-      { "id": "jp-003", "title": "Tanaka — Guadalcanal (1942)", "type": "Japanese Collection" }
+      {
+        "id": "jp-002",
+        "title": "Nakamura — Midway (1942)",
+        "type": "Japanese Collection"
+      },
+      {
+        "id": "jp-003",
+        "title": "Tanaka — Guadalcanal (1942)",
+        "type": "Japanese Collection"
+      }
     ]
   },
   {
@@ -40,13 +55,28 @@
     "notes": "Petty Officer Nakamura was killed on 4 June 1942 when IJN Hiryū was fatally damaged during the Battle of Midway. The ship sank in the early hours of 5 June. Of the approximately 2,500 men lost at Midway across all four Japanese carriers, fewer than 200 letters were recovered.",
     "archive_source": "Imperial Japanese Navy Memorial Museum, Kure",
     "sources": [
-      { "type": "primary", "ref": "Original letter, Kure Kaigun Kinenkan (Naval Museum Kure). Document KNK-1942-MID-022." },
-      { "ref": "Prange, Gordon W. Miracle at Midway. McGraw-Hill, 1982." },
-      { "ref": "Parshall, Jonathan and Tully, Anthony. Shattered Sword: The Untold Story of the Battle of Midway. Potomac Books, 2005." }
+      {
+        "type": "primary",
+        "ref": "Original letter, Kure Kaigun Kinenkan (Naval Museum Kure). Document KNK-1942-MID-022."
+      },
+      {
+        "ref": "Prange, Gordon W. Miracle at Midway. McGraw-Hill, 1982."
+      },
+      {
+        "ref": "Parshall, Jonathan and Tully, Anthony. Shattered Sword: The Untold Story of the Battle of Midway. Potomac Books, 2005."
+      }
     ],
     "related_records": [
-      { "id": "jp-001", "title": "Yamada — Kamikaze Mission (1945)", "type": "Japanese Collection" },
-      { "id": "jp-004", "title": "Ishikawa — Leyte Gulf (1944)", "type": "Japanese Collection" }
+      {
+        "id": "jp-001",
+        "title": "Yamada — Kamikaze Mission (1945)",
+        "type": "Japanese Collection"
+      },
+      {
+        "id": "jp-004",
+        "title": "Ishikawa — Leyte Gulf (1944)",
+        "type": "Japanese Collection"
+      }
     ]
   },
   {
@@ -65,13 +95,28 @@
     "notes": "Lance Corporal Tanaka died of dysentery and malnutrition on 14 January 1943. His body was never recovered. Of his section of twelve men, three survived to be evacuated in February 1943. His letter was carried off the island by a survivor and returned to his family after the war.",
     "archive_source": "National Showa Memorial Museum (Showa-kan), Tokyo",
     "sources": [
-      { "type": "primary", "ref": "Original letter, Showa-kan Shiryo Center, Tokyo. Document SHK-2004-0881." },
-      { "ref": "Frank, Richard B. Guadalcanal: The Definitive Account of the Landmark Battle. Random House, 1990." },
-      { "ref": "Hayashi, Saburo and Cox, Alvin D. Kogun: The Japanese Army in the Pacific War. Marine Corps Association, 1959." }
+      {
+        "type": "primary",
+        "ref": "Original letter, Showa-kan Shiryo Center, Tokyo. Document SHK-2004-0881."
+      },
+      {
+        "ref": "Frank, Richard B. Guadalcanal: The Definitive Account of the Landmark Battle. Random House, 1990."
+      },
+      {
+        "ref": "Hayashi, Saburo and Cox, Alvin D. Kogun: The Japanese Army in the Pacific War. Marine Corps Association, 1959."
+      }
     ],
     "related_records": [
-      { "id": "jp-002", "title": "Nakamura — Midway (1942)", "type": "Japanese Collection" },
-      { "id": "jp-001", "title": "Yamada — Kamikaze Mission (1945)", "type": "Japanese Collection" }
+      {
+        "id": "jp-002",
+        "title": "Nakamura — Midway (1942)",
+        "type": "Japanese Collection"
+      },
+      {
+        "id": "jp-001",
+        "title": "Yamada — Kamikaze Mission (1945)",
+        "type": "Japanese Collection"
+      }
     ]
   },
   {
@@ -90,13 +135,28 @@
     "notes": "Commander Ishikawa survived the Battle of Leyte Gulf. He remained with Yamato until her final sortie to Okinawa in April 1945, when the ship was sunk by American aircraft with the loss of 2,498 men. He was one of approximately 280 survivors.",
     "archive_source": "National Museum of the Pacific War, Fredericksburg, Texas (loan from Yamato Museum, Kure)",
     "sources": [
-      { "type": "primary", "ref": "Original letter, Yamato Museum (Kure Shi Kaigun Rekishi Kagakukan). On loan to National Museum of the Pacific War." },
-      { "ref": "Cutler, Thomas J. The Battle of Leyte Gulf. HarperCollins, 1994." },
-      { "ref": "Stille, Mark. The Imperial Japanese Navy in the Pacific War. Osprey Publishing, 2014." }
+      {
+        "type": "primary",
+        "ref": "Original letter, Yamato Museum (Kure Shi Kaigun Rekishi Kagakukan). On loan to National Museum of the Pacific War."
+      },
+      {
+        "ref": "Cutler, Thomas J. The Battle of Leyte Gulf. HarperCollins, 1994."
+      },
+      {
+        "ref": "Stille, Mark. The Imperial Japanese Navy in the Pacific War. Osprey Publishing, 2014."
+      }
     ],
     "related_records": [
-      { "id": "jp-002", "title": "Nakamura — Midway (1942)", "type": "Japanese Collection" },
-      { "id": "jp-003", "title": "Tanaka — Guadalcanal (1942)", "type": "Japanese Collection" }
+      {
+        "id": "jp-002",
+        "title": "Nakamura — Midway (1942)",
+        "type": "Japanese Collection"
+      },
+      {
+        "id": "jp-003",
+        "title": "Tanaka — Guadalcanal (1942)",
+        "type": "Japanese Collection"
+      }
     ]
   }
 ]

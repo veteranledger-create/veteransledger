@@ -1,15 +1,16 @@
 <!--
   VeteransLedger · Cookie Consent Banner
   Shown until user accepts. State stored in localStorage.
+  Text hydrated from /public/data/site-settings.json by settings.js.
 -->
 <div id="cookie-banner" class="cookie-banner" hidden>
-  <p class="cookie-banner__text">
+  <p class="cookie-banner__text" id="cookie-banner-text">
     This archive uses only essential session cookies for navigation and theme preferences.
     No tracking or analytics cookies are used.
-    <a href="/site-policies#privacy" style="color:var(--gold)">Privacy Policy</a>
+    <a id="cookie-privacy-link" href="/site-policies#privacy" style="color:var(--gold)">Privacy Policy</a>
   </p>
   <div class="cookie-banner__actions">
-    <button type="button" class="btn btn-primary" data-cookie-action="accept">Accept</button>
-    <button type="button" class="btn btn-secondary" data-cookie-action="dismiss">Dismiss</button>
+    <button id="cookie-accept-btn" type="button" class="btn btn-primary" data-cookie-action="accept">Accept</button>
+    <button id="cookie-dismiss-btn" type="button" class="btn btn-secondary" data-cookie-action="dismiss">Dismiss</button>
   </div>
 </div>

@@ -2,16 +2,26 @@
   "id": "norway",
   "title": "Norwegian Campaign (Operation Weserübung)",
   "theater": "western-front",
-  "dates": { "start": "1940-04-09", "end": "1940-06-10" },
+  "dates": {
+    "start": "1940-04-09",
+    "end": "1940-06-10"
+  },
   "summary": "Operation Weserübung was the German invasion of Denmark and Norway, launched simultaneously on 9 April 1940. Despite British and French intervention and fierce Norwegian resistance, Germany secured both countries within two months, gaining strategically vital North Sea bases and iron ore transit routes.",
   "context": "The German occupation of Norway was driven by two strategic imperatives: securing the iron ore route from the Swedish mines at Kiruna (shipped via the Norwegian port of Narvik, then through neutral Norwegian waters) and preventing Britain from using Norway as a base to threaten Germany's northern flank. Grand Admiral Raeder had been pressing for a Norwegian operation since October 1939. The British had been planning their own mining of Norwegian waters (Operation Wilfred) — both operations launched almost simultaneously on 9 April, with Germany moving hours before the British. The simultaneous assault on Denmark (completed in a single day) and on six Norwegian ports via naval and airborne forces was an unprecedented combined-arms operation at extreme range. The Kriegsmarine paid a heavy price — three cruisers and ten destroyers sunk — damage that crippled German surface fleet operations for years. British and French forces landed at Narvik and Namsos but were outfought by German mountain troops and forced to re-embark in June. The campaign contributed directly to Neville Chamberlain's resignation and Churchill's appointment as Prime Minister on 10 May 1940.",
   "combatants": {
     "axis": {
-      "commanders": ["Nikolaus von Falkenhorst (ground forces)", "Erich Raeder (Kriegsmarine)"],
+      "commanders": [
+        "Nikolaus von Falkenhorst (ground forces)",
+        "Erich Raeder (Kriegsmarine)"
+      ],
       "strength": "100,000 troops, 1 battleship, 2 battlecruisers, 8 cruisers, 14 destroyers"
     },
     "allied": {
-      "commanders": ["Claude Auchinleck", "Otto Ruge (Norwegian Army)", "Albert Carton de Wiart (Namsos)"],
+      "commanders": [
+        "Claude Auchinleck",
+        "Otto Ruge (Norwegian Army)",
+        "Albert Carton de Wiart (Namsos)"
+      ],
       "strength": "British, French, Polish, Norwegian forces"
     }
   },
@@ -22,15 +32,42 @@
     "allied": "~5,500 killed; Norwegian merchant navy suffered continuous losses throughout occupation"
   },
   "sources": [
-    { "type": "primary", "ref": "National Archives (UK). ADM 199/474: Naval Operations — Norway Campaign, April–June 1940." },
-    { "ref": "Derry, T.K. The Campaign in Norway. HMSO, 1952.", "note": "The official British military history of the Norwegian campaign." },
-    { "ref": "Kersaudy, François. Norway 1940. Collins, 1990.", "note": "Draws on German, British, Norwegian, and French records." },
-    { "ref": "Ziemke, Earl. The German Northern Theater of Operations, 1940–1945. Department of the Army, 1959." }
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). ADM 199/474: Naval Operations — Norway Campaign, April–June 1940."
+    },
+    {
+      "ref": "Derry, T.K. The Campaign in Norway. HMSO, 1952.",
+      "note": "The official British military history of the Norwegian campaign."
+    },
+    {
+      "ref": "Kersaudy, François. Norway 1940. Collins, 1990.",
+      "note": "Draws on German, British, Norwegian, and French records."
+    },
+    {
+      "ref": "Ziemke, Earl. The German Northern Theater of Operations, 1940–1945. Department of the Army, 1959."
+    }
   ],
   "related_records": [
-    { "id": "altmark", "title": "Altmark Incident", "type": "Campaign", "url": "/campaigns/atlantic/altmark" },
-    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" },
-    { "id": "kurt-student", "title": "Kurt Student", "type": "Personnel", "url": "/personnel/kurt-student" },
-    { "id": "crete", "title": "Battle of Crete", "type": "Campaign", "url": "/campaigns/italy/crete" }
+    {
+      "id": "altmark",
+      "title": "Altmark Incident",
+      "type": "Campaign"
+    },
+    {
+      "id": "erich-raeder",
+      "title": "Erich Raeder",
+      "type": "Personnel"
+    },
+    {
+      "id": "kurt-student",
+      "title": "Kurt Student",
+      "type": "Personnel"
+    },
+    {
+      "id": "crete",
+      "title": "Battle of Crete",
+      "type": "Campaign"
+    }
   ]
 }

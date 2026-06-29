@@ -48,6 +48,174 @@
       .media-card__row2 { grid-template-columns:1fr; }
       .attr-grid-2, .attr-grid-3 { grid-template-columns:1fr; }
     }
+    /* ── Admin · Block Body Editor ─────────────────────────────────── */
+    .body-editor__blocks { display:flex;flex-direction:column;gap:var(--space-2);margin-bottom:var(--space-3);min-height:40px; }
+    .body-editor__toolbar { display:flex;gap:var(--space-2);flex-wrap:wrap; }
+    .body-block { background:rgba(255,255,255,.02);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-3); }
+    .body-block:focus-within { border-color:rgba(255,255,255,.2); }
+    .body-block__header { display:flex;align-items:center;gap:var(--space-2); }
+    .body-block__hint { font-size:10px;color:var(--text-muted);margin:4px 0 0; }
+
+    /* ── Admin · Login page — cinematic redesign ───────────── */
+    .al-page {
+      position:relative;display:flex;align-items:center;justify-content:center;
+      min-height:100vh;padding:24px;background:#060a0f;overflow:hidden;
+    }
+    .al-bg {
+      position:absolute;inset:0;z-index:0;
+      background:
+        linear-gradient(rgba(212,168,73,.022) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(212,168,73,.022) 1px,transparent 1px),
+        linear-gradient(rgba(212,168,73,.048) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(212,168,73,.048) 1px,transparent 1px),
+        radial-gradient(ellipse 110% 90% at 50% 40%,#0d1b2a 0%,#060a0f 100%);
+      background-size:20px 20px,20px 20px,100px 100px,100px 100px,100% 100%;
+    }
+    .al-bg__camera {
+      position:absolute;top:-15px;right:4%;width:360px;height:270px;
+      opacity:.05;pointer-events:none;transform:rotate(6deg);
+    }
+    .al-bg__scanlines {
+      position:absolute;inset:0;
+      background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.06) 3px,rgba(0,0,0,.06) 4px);
+      pointer-events:none;
+    }
+    .al-bg__vignette {
+      position:absolute;inset:0;
+      background:radial-gradient(ellipse 78% 78% at 50% 50%,transparent 28%,rgba(0,0,0,.76) 100%);
+      pointer-events:none;
+    }
+    .al-hud {
+      position:absolute;display:flex;align-items:center;gap:7px;
+      z-index:1;pointer-events:none;
+    }
+    .al-hud--tl{top:18px;left:18px;}
+    .al-hud--tr{top:18px;right:18px;flex-direction:row-reverse;}
+    .al-hud--bl{bottom:18px;left:18px;}
+    .al-hud--br{bottom:18px;right:18px;flex-direction:row-reverse;}
+    .al-hud__corner {
+      display:block;width:16px;height:16px;
+      border-color:rgba(212,168,73,.26);border-style:solid;border-width:0;flex-shrink:0;
+    }
+    .al-hud__corner--tl{border-top-width:1.5px;border-left-width:1.5px;}
+    .al-hud__corner--tr{border-top-width:1.5px;border-right-width:1.5px;}
+    .al-hud__corner--bl{border-bottom-width:1.5px;border-left-width:1.5px;}
+    .al-hud__corner--br{border-bottom-width:1.5px;border-right-width:1.5px;}
+    .al-hud__label {
+      font-family:'Courier New',Courier,monospace;font-size:9px;
+      letter-spacing:.14em;text-transform:uppercase;color:rgba(212,168,73,.24);
+    }
+    .al-rec {
+      position:absolute;top:36px;right:20px;z-index:1;
+      display:flex;align-items:center;gap:5px;
+      font-family:'Courier New',Courier,monospace;font-size:9px;
+      letter-spacing:.12em;color:rgba(180,38,38,.44);pointer-events:none;
+    }
+    .al-rec__dot {
+      width:6px;height:6px;border-radius:50%;
+      background:rgba(190,40,40,.52);
+      animation:al-rec-blink 1.4s ease-in-out infinite;
+    }
+    @keyframes al-rec-blink{0%,100%{opacity:1}50%{opacity:.15}}
+    .al-reticle {
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:520px;height:520px;border-radius:50%;
+      border:1px solid rgba(212,168,73,.028);pointer-events:none;
+    }
+    .al-reticle::before {
+      content:'';position:absolute;inset:58px;border-radius:50%;
+      border:1px solid rgba(212,168,73,.02);
+    }
+    .al-card {
+      position:relative;z-index:2;width:100%;max-width:400px;
+      background:rgba(5,9,17,.91);border:1px solid rgba(212,168,73,.16);
+      border-radius:3px;padding:40px 36px 34px;
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+      box-shadow:0 0 0 1px rgba(0,0,0,.5),0 28px 72px rgba(0,0,0,.68),0 0 120px rgba(212,168,73,.02);
+    }
+    .al-card__header{text-align:center;margin-bottom:28px;}
+    .al-logo{display:block;margin:0 auto 14px;width:40px;height:40px;filter:brightness(0) invert(1);}
+    .al-title {
+      font-family:var(--font-display);font-size:var(--text-xl);
+      letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary);margin:0 0 7px;
+    }
+    .al-subtitle {
+      font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+      color:rgba(212,168,73,.34);margin:0;
+    }
+    .al-form{display:flex;flex-direction:column;gap:16px;}
+    .al-field{display:flex;flex-direction:column;gap:5px;}
+    .al-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);}
+    .al-input-wrap{position:relative;display:flex;align-items:center;}
+    .al-field-icon {
+      position:absolute;left:11px;display:flex;align-items:center;
+      justify-content:center;pointer-events:none;color:rgba(212,168,73,.3);z-index:1;
+    }
+    .al-input {
+      width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);
+      border-radius:2px;color:var(--text-primary);font-size:var(--text-sm);font-family:inherit;
+      padding:11px 14px 11px 38px;outline:none;
+      transition:border-color .15s,background .15s,box-shadow .15s;-webkit-appearance:none;
+    }
+    .al-input::placeholder{color:rgba(255,255,255,.13);font-size:12px;}
+    .al-input:focus{
+      border-color:rgba(212,168,73,.42);background:rgba(255,255,255,.05);
+      box-shadow:0 0 0 1px rgba(212,168,73,.08);
+    }
+    .al-input--pw{padding-right:42px;}
+    .al-eye-btn {
+      position:absolute;right:0;top:0;bottom:0;width:40px;
+      display:flex;align-items:center;justify-content:center;
+      background:transparent;border:none;color:rgba(212,168,73,.26);
+      cursor:pointer;border-radius:0 2px 2px 0;transition:color .15s;padding:0;
+    }
+    .al-eye-btn:hover{color:rgba(212,168,73,.6);}
+    .al-eye-btn:focus-visible{outline:1px solid rgba(212,168,73,.3);outline-offset:-1px;}
+    .al-submit {
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      width:100%;margin-top:4px;padding:13px 20px;
+      background:rgba(212,168,73,.08);border:1px solid rgba(212,168,73,.34);
+      border-radius:2px;color:#c49838;font-family:var(--font-display);
+      font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+      cursor:pointer;transition:background .15s,border-color .15s,color .15s;
+    }
+    .al-submit:hover{background:rgba(212,168,73,.14);border-color:rgba(212,168,73,.56);color:#d4a849;}
+    .al-submit:active{background:rgba(212,168,73,.05);}
+    .al-submit:disabled{opacity:.45;cursor:not-allowed;}
+    .al-error{
+      font-size:var(--text-xs);color:#b84040;min-height:18px;
+      text-align:center;letter-spacing:.04em;
+    }
+    /* ── Mobile ≤ 480px ──────────────────────────────────── */
+    @media(max-width:480px){
+      /* Lighter vignette so grid + camera read through */
+      .al-bg__vignette{opacity:.55;}
+      /* Camera: smaller, partially cropped at top-right */
+      .al-bg__camera{
+        display:block;width:210px;height:158px;
+        top:-8px;right:-18px;transform:rotate(8deg);opacity:.07;
+      }
+      /* Reticle: scaled down so rings peek out from behind the card */
+      .al-reticle{
+        display:block;width:360px;height:360px;
+      }
+      /* HUD: show top corners only at reduced scale; hide bottom pair */
+      .al-hud{display:flex;}
+      .al-hud--bl,.al-hud--br{display:none;}
+      .al-hud__corner{width:11px;height:11px;}
+      .al-hud__label{font-size:7px;letter-spacing:.10em;}
+      /* REC: keep visible, slightly smaller */
+      .al-rec{display:flex;top:30px;right:14px;font-size:7px;}
+      .al-rec__dot{width:5px;height:5px;}
+      /* Card: tighter padding */
+      .al-card{padding:28px 18px 24px;}
+    }
+    /* ── Very small screens ≤ 360px ─────────────────────── */
+    @media(max-width:360px){
+      .al-page{padding:14px;}
+      .al-card{padding:24px 14px 20px;}
+      .al-bg__camera{width:170px;height:127px;right:-14px;}
+    }
   </style>
 </head>
 
@@ -56,34 +224,167 @@
   <main id="main-content">
 
     <!-- ── Login panel ─────────────────────────────────────── -->
-    <div id="admin-login"
-      style="display:flex;align-items:center;justify-content:center;min-height:80vh;padding:var(--space-8);">
-      <div style="width:100%;max-width:400px;">
-        <div style="text-align:center;margin-bottom:var(--space-8);">
-          <img src="/public/images/logos/eagle.png" alt="" aria-hidden="true" class="site-logo"
-            style="display:block;margin:0 auto var(--space-4);width:48px;height:48px;">
-          <h1
-            style="font-family:var(--font-display);font-size:var(--text-xl);letter-spacing:0.1em;text-transform:uppercase;color:var(--text-primary);">
-            Archive Admin</h1>
-          <p style="font-size:var(--text-sm);color:var(--text-muted);margin-top:var(--space-2);">Restricted access —
-            authorised personnel only</p>
+    <div id="admin-login" class="al-page">
+
+      <!-- Cinematic background -->
+      <div class="al-bg" aria-hidden="true">
+
+        <!-- CCTV bullet-camera silhouette -->
+        <svg class="al-bg__camera" viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <!-- Wall-mount arm -->
+          <rect x="213" y="0" width="54" height="72" rx="7" fill="#d4a849"/>
+          <!-- Mount base plate -->
+          <rect x="168" y="62" width="144" height="26" rx="6" fill="#d4a849"/>
+          <!-- Camera housing body -->
+          <path d="M148 88 Q148 80 158 80 L322 80 Q332 80 332 88 L365 132 L365 198 Q365 206 355 206 L125 206 Q115 206 115 198 L115 88 Z" fill="#b8882a"/>
+          <!-- Back end-cap -->
+          <rect x="115" y="80" width="44" height="126" rx="6" fill="#c99030"/>
+          <!-- Lens barrel -->
+          <rect x="318" y="106" width="108" height="74" rx="11" fill="#9a7020"/>
+          <!-- Lens front ring outer -->
+          <circle cx="424" cy="143" r="38" fill="#7a5010"/>
+          <!-- Lens ring -->
+          <circle cx="424" cy="143" r="25" fill="#5a3c08"/>
+          <!-- Lens aperture -->
+          <circle cx="424" cy="143" r="13" fill="#1a0e00"/>
+          <!-- Lens glass glint -->
+          <ellipse cx="416" cy="136" rx="6" ry="4" fill="rgba(255,255,255,0.14)"/>
+          <!-- IR emitters -->
+          <circle cx="342" cy="110" r="5" fill="#a07028"/>
+          <circle cx="342" cy="176" r="5" fill="#a07028"/>
+          <circle cx="384" cy="106" r="5" fill="#a07028"/>
+          <circle cx="384" cy="180" r="5" fill="#a07028"/>
+          <!-- Status LED -->
+          <circle cx="136" cy="120" r="6" fill="#1a3a18"/>
+          <!-- Cable exit -->
+          <rect x="150" y="195" width="14" height="40" rx="4" fill="#9a7020"/>
+        </svg>
+
+        <div class="al-bg__scanlines"></div>
+        <div class="al-bg__vignette"></div>
+
+        <!-- HUD corner markers -->
+        <div class="al-hud al-hud--tl">
+          <span class="al-hud__corner al-hud__corner--tl"></span>
+          <span class="al-hud__label">Secure Channel · Classified</span>
+        </div>
+        <div class="al-hud al-hud--tr">
+          <span class="al-hud__corner al-hud__corner--tr"></span>
+          <span class="al-hud__label" id="al-timestamp">CAM-01 · 00:00:00</span>
+        </div>
+        <div class="al-hud al-hud--bl">
+          <span class="al-hud__corner al-hud__corner--bl"></span>
+          <span class="al-hud__label">VeteransLedger Admin</span>
+        </div>
+        <div class="al-hud al-hud--br">
+          <span class="al-hud__corner al-hud__corner--br"></span>
+          <span class="al-hud__label">Restricted Access</span>
         </div>
 
-        <form id="login-form" novalidate>
-          <div class="contact-form__group">
-            <label class="contact-form__label" for="admin-email">Email</label>
-            <input type="email" id="admin-email" name="email" class="contact-form__input" required autocomplete="email">
+        <!-- REC indicator -->
+        <div class="al-rec">
+          <span class="al-rec__dot"></span>
+          REC
+        </div>
+
+        <!-- Background reticle -->
+        <div class="al-reticle"></div>
+      </div>
+
+      <!-- Login card -->
+      <div class="al-card">
+        <div class="al-card__header">
+          <img src="/public/images/logos/eagle.png" alt="" aria-hidden="true" class="al-logo">
+          <h1 class="al-title">Archive Admin</h1>
+          <p class="al-subtitle">Restricted access — authorised personnel only</p>
+        </div>
+
+        <form id="login-form" class="al-form" novalidate>
+
+          <!-- Email field -->
+          <div class="al-field">
+            <label class="al-label" for="admin-email">Email</label>
+            <div class="al-input-wrap">
+              <span class="al-field-icon" aria-hidden="true">
+                <!-- /public/images/icons/admin/email.svg — fill changed to currentColor -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 1025 768" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M960.5 768h-896q-26 0-45-19t-19-45V64q0-27 19-45.5T64.5 0h896q26 0 45 18.5t19 45.5v640q0 26-19 45t-45 19zm-800-128h256q13 0 22.5-9.5t9.5-22.5t-9.5-22.5t-22.5-9.5h-256q-13 0-22.5 9.5t-9.5 22.5t9.5 22.5t22.5 9.5zm320-320h-320q-13 0-22.5 9.5t-9.5 22.5t9.5 22.5t22.5 9.5h320q13 0 22.5-9.5t9.5-22.5t-9.5-22.5t-22.5-9.5zm0 128h-320q-13 0-22.5 9.5t-9.5 22.5t9.5 22.5t22.5 9.5h320q13 0 22.5-9.5t9.5-22.5t-9.5-22.5t-22.5-9.5zm416-288q0-13-9.5-22.5t-22.5-9.5h-192q-13 0-22.5 9.5t-9.5 22.5v192q0 13 9.5 22.5t22.5 9.5h192q13 0 22.5-9.5t9.5-22.5V160z"/>
+                </svg>
+              </span>
+              <input type="email" id="admin-email" name="email" class="al-input" required autocomplete="email" placeholder="admin@veteransledger.com">
+            </div>
           </div>
-          <div class="contact-form__group">
-            <label class="contact-form__label" for="admin-password">Password</label>
-            <input type="password" id="admin-password" name="password" class="contact-form__input" required
-              autocomplete="current-password">
+
+          <!-- Password field -->
+          <div class="al-field">
+            <label class="al-label" for="admin-password">Password</label>
+            <div class="al-input-wrap">
+              <span class="al-field-icon" aria-hidden="true">
+                <!-- /public/images/icons/admin/password.svg — fill changed to currentColor -->
+                <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M39,18H35V13A11,11,0,0,0,24,2H22A11,11,0,0,0,11,13v5H7a2,2,0,0,0-2,2V44a2,2,0,0,0,2,2H39a2,2,0,0,0,2-2V20A2,2,0,0,0,39,18ZM15,13a7,7,0,0,1,7-7h2a7,7,0,0,1,7,7v5H15ZM14,35a3,3,0,1,1,3-3A2.9,2.9,0,0,1,14,35Zm9,0a3,3,0,1,1,3-3A2.9,2.9,0,0,1,23,35Zm9,0a3,3,0,1,1,3-3A2.9,2.9,0,0,1,32,35Z"/>
+                </svg>
+              </span>
+              <input type="password" id="admin-password" name="password" class="al-input al-input--pw" required autocomplete="current-password" placeholder="••••••••••••">
+              <!-- /public/images/icons/admin/eye.svg and eye-off.svg -->
+              <button type="button" class="al-eye-btn" id="al-eye-btn" aria-label="Show password" aria-pressed="false">
+                <svg class="al-eye-show" xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M3 12c5.4-8 12.6-8 18 0-5.4 8-12.6 8-18 0z"/>
+                  <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                </svg>
+                <svg class="al-eye-off" xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="display:none">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10a13.358 13.358 0 0 0 3 2.685M21 10a13.358 13.358 0 0 1-3 2.685m-8 1.624L9.5 16.5m.5-2.19a10.59 10.59 0 0 0 4 0m-4 0a11.275 11.275 0 0 1-4-1.625m8 1.624.5 2.191m-.5-2.19a11.275 11.275 0 0 0 4-1.625m0 0 1.5 1.815M6 12.685 4.5 14.5"/>
+                </svg>
+              </button>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:var(--space-2);">SIGN IN →</button>
-          <div id="login-error" class="contact-form__status" role="alert"></div>
+
+          <!-- Submit -->
+          <button type="submit" class="al-submit">
+            <!-- /public/images/icons/admin/sign-in.svg — fill changed to currentColor -->
+            <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" width="15" height="15" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M144.48633,136.48438l-41.98926,42a12.0001,12.0001,0,0,1-16.97266-16.96875L107.03467,140H24a12,12,0,0,1,0-24h83.03467L85.52441,94.48438a12.0001,12.0001,0,0,1,16.97266-16.96875l41.98926,42A12.00093,12.00093,0,0,1,144.48633,136.48438ZM192,28H136a12,12,0,0,0,0,24h52V204H136a12,12,0,0,0,0,24h56a20.02229,20.02229,0,0,0,20-20V48A20.02229,20.02229,0,0,0,192,28Z"/>
+            </svg>
+            Sign In
+          </button>
+
+          <div id="login-error" class="al-error" role="alert"></div>
         </form>
       </div>
+
     </div>
+
+    <script>
+      (function () {
+        // Eye toggle
+        var eyeBtn  = document.getElementById('al-eye-btn');
+        var pwInput = document.getElementById('admin-password');
+        if (eyeBtn && pwInput) {
+          eyeBtn.addEventListener('click', function () {
+            var showing = pwInput.type === 'text';
+            pwInput.type = showing ? 'password' : 'text';
+            eyeBtn.querySelector('.al-eye-show').style.display = showing ? '' : 'none';
+            eyeBtn.querySelector('.al-eye-off').style.display  = showing ? 'none' : '';
+            eyeBtn.setAttribute('aria-label',   showing ? 'Show password' : 'Hide password');
+            eyeBtn.setAttribute('aria-pressed', String(!showing));
+            pwInput.focus();
+          });
+        }
+        // Live timestamp in HUD
+        var ts = document.getElementById('al-timestamp');
+        if (ts) {
+          function tick() {
+            var n = new Date();
+            var h = String(n.getHours()).padStart(2, '0');
+            var m = String(n.getMinutes()).padStart(2, '0');
+            var s = String(n.getSeconds()).padStart(2, '0');
+            ts.textContent = 'CAM-01 · ' + h + ':' + m + ':' + s;
+          }
+          tick();
+          setInterval(tick, 1000);
+        }
+      })();
+    </script>
 
     <!-- ── Dashboard ───────────────────────────────────────── -->
     <div id="admin-dashboard" hidden style="padding:var(--space-8) var(--space-10);">
@@ -138,47 +439,16 @@
           aria-selected="false">Settings</button>
         <button type="button" class="admin-tab-btn category-tab" data-tab="tab-pages" role="tab"
           aria-selected="false">Pages</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-homepage" role="tab"
+          aria-selected="false">Homepage</button>
+        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-page-content" role="tab"
+          aria-selected="false">Page Content</button>
       </div>
 
       <!-- Tab: Overview (activity log) -->
       <div id="tab-overview" class="admin-tab-panel" role="tabpanel">
         <div class="section-label" style="margin-bottom:var(--space-6);">Recent Activity</div>
         <div id="activity-log">
-          <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
-              class="loader__dot"></span></div>
-        </div>
-      </div>
-
-      <!-- Tab: Records -->
-      <div id="tab-records" class="admin-tab-panel" hidden role="tabpanel">
-        <div class="section-label" style="margin-bottom:var(--space-6);">Create Record</div>
-        <form id="create-record-form"
-          style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:var(--space-3);align-items:end;margin-bottom:var(--space-8);">
-          <div class="contact-form__group" style="margin:0;">
-            <label class="contact-form__label">Title</label>
-            <input name="title" class="contact-form__input" placeholder="Record title" required>
-          </div>
-          <div class="contact-form__group" style="margin:0;">
-            <label class="contact-form__label">Type</label>
-            <select name="type" class="contact-form__input" required>
-              <option value="">— select —</option>
-              <option value="CAMPAIGN">Campaign</option>
-              <option value="ARMAMENT">Armament</option>
-              <option value="LETTER">Letter</option>
-              <option value="ARTICLE">Article</option>
-              <option value="TIMELINE_EVENT">Timeline Event</option>
-              <option value="DOCUMENT">Document</option>
-            </select>
-          </div>
-          <div class="contact-form__group" style="margin:0;">
-            <label class="contact-form__label">Content (optional)</label>
-            <input name="content" class="contact-form__input" placeholder="Brief description">
-          </div>
-          <button type="submit" class="btn btn-primary" style="white-space:nowrap;">Create →</button>
-        </form>
-
-        <div class="section-label" style="margin-bottom:var(--space-6);">All Records</div>
-        <div id="records-list">
           <div class="loader"><span class="loader__dot"></span><span class="loader__dot"></span><span
               class="loader__dot"></span></div>
         </div>
@@ -213,10 +483,12 @@
             </div>
           </div>
           <form id="timeline-form">
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
-              <div class="contact-form__group"><label class="contact-form__label">Year</label><input name="year" class="contact-form__input" placeholder="1939" type="number"></div>
-              <div class="contact-form__group"><label class="contact-form__label">Date (optional)</label><input name="date" type="date" class="contact-form__input"></div>
-              <div class="contact-form__group"><label class="contact-form__label">Category</label>
+            <!-- Row 1: Year / Start Date / End Date / Category -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:var(--space-3);margin-bottom:var(--space-4);">
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Year <span style="color:#e06060;">*</span></label><input name="year" class="contact-form__input" placeholder="1939" type="number" min="1900" max="2100"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Start Date</label><input name="date" type="date" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">End Date</label><input name="endDate" type="date" class="contact-form__input"></div>
+              <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Category</label>
                 <select name="category" class="contact-form__input">
                   <option value="">—</option>
                   <option value="political">Political</option>
@@ -228,12 +500,26 @@
                 </select>
               </div>
             </div>
-            <div class="contact-form__group"><label class="contact-form__label">Title</label><input name="title" class="contact-form__input" placeholder="Event title" required></div>
-            <div class="contact-form__group"><label class="contact-form__label">Summary</label><textarea name="summary" class="contact-form__input" rows="3" placeholder="Brief description of the event"></textarea></div>
-            <div class="contact-form__group"><label class="contact-form__label">Location</label><input name="location" class="contact-form__input" placeholder="City, Country"></div>
-            <div style="display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-6);">
+
+            <div class="contact-form__group"><label class="contact-form__label">Title <span style="color:#e06060;">*</span></label><input name="title" class="contact-form__input" placeholder="Event title" required></div>
+            <div class="contact-form__group"><label class="contact-form__label">Location</label><input name="location" class="contact-form__input" placeholder="City, Country or Region"></div>
+            <div class="contact-form__group"><label class="contact-form__label">Summary</label><textarea name="summary" class="contact-form__input" rows="3" placeholder="Concise description of the event for the public timeline"></textarea></div>
+            <div class="contact-form__group"><label class="contact-form__label">Significance / Notes</label><textarea name="significance" class="contact-form__input" rows="2" placeholder="Historical significance, editorial notes, or additional context (not shown publicly unless the frontend renders it)"></textarea></div>
+
+            <!-- Sources -->
+            <div class="section-label" style="margin:var(--space-5) 0 var(--space-3);font-size:var(--text-sm);">Sources</div>
+            <div id="timeline-sources-list"></div>
+            <button type="button" class="btn btn-secondary" id="timeline-add-source-btn" style="font-size:11px;margin-bottom:var(--space-5);">+ Add Source</button>
+
+            <!-- Related Records -->
+            <div class="section-label" style="margin:var(--space-2) 0 var(--space-3);font-size:var(--text-sm);">Related Records</div>
+            <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Selected via search — URLs are generated automatically.</p>
+            <div id="timeline-related-list"></div>
+            <button type="button" class="btn btn-secondary" id="timeline-add-related-btn" style="font-size:11px;margin-bottom:var(--space-5);">+ Add Related Record</button>
+
+            <div style="display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-4);">
               <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);">
-                <input type="checkbox" name="published"> Published
+                <input type="checkbox" name="published" checked> Published
               </label>
               <button type="submit" class="btn btn-primary">Save Event</button>
               <span id="timeline-form-status" style="font-size:var(--text-sm);"></span>
@@ -242,7 +528,7 @@
         </div>
       </div>
 
-      <!-- Tab: NSDAP — file-based JSON editor -->
+      <!-- Tab: NSDAP — structured forms + textarea fallback -->
       <div id="tab-nsdap" class="admin-tab-panel" hidden role="tabpanel">
         <div class="section-label" style="margin-bottom:var(--space-6);">NSDAP Content</div>
         <div style="display:grid;grid-template-columns:220px 1fr;gap:var(--space-6);min-height:500px;">
@@ -255,25 +541,215 @@
                 <button id="nsdap-save-btn" type="button" class="btn btn-primary">Save</button>
               </div>
             </div>
+
+            <!-- Structured editor: Overview -->
+            <div id="nsdap-structured-overview" hidden style="display:grid;gap:var(--space-4);">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);">
+                <div><label class="label">Full Name</label><input id="nsdap-ov-name" class="input" placeholder="Nationalsozialistische Deutsche Arbeiterpartei"></div>
+                <div><label class="label">Name (English)</label><input id="nsdap-ov-name-en" class="input" placeholder="National Socialist German Workers' Party"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);">
+                <div><label class="label">Abbreviation</label><input id="nsdap-ov-abbr" class="input" placeholder="NSDAP"></div>
+                <div><label class="label">Founded</label><input id="nsdap-ov-founded" class="input" placeholder="24 February 1920"></div>
+                <div><label class="label">Dissolved</label><input id="nsdap-ov-dissolved" class="input" placeholder="10 October 1945"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);">
+                <div><label class="label">Leader</label><input id="nsdap-ov-leader" class="input" placeholder="Adolf Hitler (1921–1945)"></div>
+                <div><label class="label">Peak Membership</label><input id="nsdap-ov-membership" class="input" placeholder="8,500,000 (1945)"></div>
+              </div>
+              <div><label class="label">Ideology</label><input id="nsdap-ov-ideology" class="input" placeholder="National Socialism, Fascism…"></div>
+              <div><label class="label">Headquarters</label><input id="nsdap-ov-hq" class="input" placeholder="Munich, Bavaria"></div>
+              <div>
+                <label class="label">Description</label>
+                <textarea id="nsdap-ov-description" class="input" rows="8" placeholder="Overview description…"></textarea>
+              </div>
+              <div><label class="label">Editorial Note</label><input id="nsdap-ov-note" class="input" placeholder="Educational disclaimer…"></div>
+            </div>
+
+            <!-- Structured editor: Timeline -->
+            <div id="nsdap-structured-timeline" hidden style="display:flex;flex-direction:column;gap:var(--space-4);">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:var(--text-sm);color:var(--text-muted);">Add or edit timeline events. Each event needs a year, title, and description.</span>
+                <button id="nsdap-timeline-add-btn" type="button" class="btn btn-secondary" style="font-size:var(--text-xs);">+ Add Event</button>
+              </div>
+              <div id="nsdap-timeline-list" style="display:flex;flex-direction:column;gap:var(--space-3);"></div>
+            </div>
+
+            <!-- Structured editor: Glossary -->
+            <div id="nsdap-structured-glossary" hidden style="display:flex;flex-direction:column;gap:var(--space-4);">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:var(--text-sm);color:var(--text-muted);">Each entry needs a term and definition.</span>
+                <button id="nsdap-glossary-add-btn" type="button" class="btn btn-secondary" style="font-size:var(--text-xs);">+ Add Entry</button>
+              </div>
+              <div id="nsdap-glossary-list" style="display:flex;flex-direction:column;gap:var(--space-3);"></div>
+            </div>
+
+            <!-- Raw JSON fallback (all other files) -->
             <textarea id="nsdap-editor" class="contact-form__input" rows="28" style="font-family:monospace;font-size:12px;resize:vertical;" disabled placeholder="Select a file from the sidebar to begin editing."></textarea>
           </div>
         </div>
       </div>
 
-      <!-- Tab: Formations — file-based JSON editor -->
+      <!-- Tab: Formations — DB-backed CRUD -->
       <div id="tab-formations" class="admin-tab-panel" hidden role="tabpanel">
         <div class="section-label" style="margin-bottom:var(--space-6);">Units &amp; Formations</div>
-        <div style="display:grid;grid-template-columns:220px 1fr;gap:var(--space-6);min-height:500px;">
-          <div id="formations-file-list" style="border-right:1px solid var(--border-dim);padding-right:var(--space-4);overflow-y:auto;"></div>
-          <div style="display:flex;flex-direction:column;gap:var(--space-4);">
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <div id="formations-editor-title" style="font-size:var(--text-sm);font-weight:600;color:var(--text-primary);">Select a file →</div>
-              <div style="display:flex;gap:var(--space-3);align-items:center;">
-                <span id="formations-form-status" style="font-size:var(--text-sm);"></span>
-                <button id="formations-save-btn" type="button" class="btn btn-primary">Save</button>
+
+        <!-- Toolbar -->
+        <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-5);">
+          <button id="formation-new-btn" type="button" class="btn btn-primary">+ New Formation</button>
+          <select id="formation-filter-section" class="input" style="max-width:200px;">
+            <option value="">All Sections</option>
+            <option value="army-groups">Army Groups</option>
+            <option value="armies">Armies</option>
+            <option value="corps">Corps</option>
+            <option value="divisions">Divisions</option>
+            <option value="waffen-ss">Waffen-SS</option>
+            <option value="luftwaffe">Luftwaffe</option>
+            <option value="kriegsmarine">Kriegsmarine</option>
+            <option value="brigades">Brigades</option>
+            <option value="regiments">Regiments</option>
+            <option value="battalions">Battalions</option>
+            <option value="companies">Companies</option>
+            <option value="volunteers">Volunteer Formations</option>
+            <option value="allies">Axis Allies</option>
+          </select>
+          <input id="formation-filter-search" type="search" class="input" placeholder="Search formations…" style="max-width:260px;">
+        </div>
+
+        <!-- List -->
+        <div id="formation-list" style="margin-bottom:var(--space-6);"></div>
+
+        <!-- Form panel -->
+        <div id="formation-form-panel" hidden style="border-top:1px solid var(--border-dim);padding-top:var(--space-6);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
+            <h3 id="formation-form-title" class="section-label" style="margin:0;">New Formation</h3>
+            <div style="display:flex;gap:var(--space-3);align-items:center;">
+              <span id="formation-form-status" style="font-size:var(--text-sm);"></span>
+              <button id="formation-preview-btn" type="button" class="btn btn-secondary">Preview</button>
+              <button id="formation-cancel-btn" type="button" class="btn btn-secondary">Cancel</button>
+            </div>
+          </div>
+
+          <form id="formation-form" style="display:grid;gap:var(--space-5);">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+              <div>
+                <label class="label">Name *</label>
+                <input name="title" class="input" required placeholder="e.g. Heeresgruppe Nord (Army Group North)">
+              </div>
+              <div>
+                <label class="label">ID / Slug *</label>
+                <input name="slug" class="input" required placeholder="e.g. army-group-north">
+                <p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:4px;">Unique identifier. Use lowercase-dashes.</p>
               </div>
             </div>
-            <textarea id="formations-editor" class="contact-form__input" rows="28" style="font-family:monospace;font-size:12px;resize:vertical;" disabled placeholder="Select a file from the sidebar to begin editing."></textarea>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);">
+              <div>
+                <label class="label">Section *</label>
+                <select name="section" class="input" required>
+                  <option value="">— choose —</option>
+                  <option value="army-groups">Army Groups</option>
+                  <option value="armies">Armies</option>
+                  <option value="corps">Corps</option>
+                  <option value="divisions">Divisions</option>
+                  <option value="waffen-ss">Waffen-SS</option>
+                  <option value="luftwaffe">Luftwaffe</option>
+                  <option value="kriegsmarine">Kriegsmarine</option>
+                  <option value="brigades">Brigades</option>
+                  <option value="regiments">Regiments</option>
+                  <option value="battalions">Battalions</option>
+                  <option value="companies">Companies</option>
+                  <option value="volunteers">Volunteer Formations</option>
+                  <option value="allies">Axis Allies</option>
+                </select>
+              </div>
+              <div>
+                <label class="label">Formation Type</label>
+                <input name="formation_type" class="input" placeholder="e.g. Army Group, Panzer Army">
+              </div>
+              <div>
+                <label class="label">Nation</label>
+                <input name="nation" class="input" placeholder="Germany" value="Germany">
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);">
+              <div>
+                <label class="label">Service Branch</label>
+                <input name="service" class="input" placeholder="e.g. Heer, Luftwaffe">
+              </div>
+              <div>
+                <label class="label">Theater</label>
+                <input name="theater" class="input" placeholder="e.g. Eastern Front">
+              </div>
+              <div>
+                <label class="label">Peak Strength</label>
+                <input name="peak_strength" class="input" placeholder="e.g. 725,000 (June 1941)">
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);">
+              <div>
+                <label class="label">Active From</label>
+                <input name="active_from" class="input" placeholder="e.g. 1941-06-22">
+              </div>
+              <div>
+                <label class="label">Active To</label>
+                <input name="active_to" class="input" placeholder="e.g. 1945-05">
+              </div>
+            </div>
+
+            <div>
+              <label class="label">Summary</label>
+              <textarea name="summary" class="input" rows="4" placeholder="One-paragraph overview for cards and the record overview section."></textarea>
+            </div>
+            <div>
+              <label class="label">Historical Context</label>
+              <textarea name="context" class="input" rows="6" placeholder="Longer narrative context for the Historical Context section."></textarea>
+            </div>
+
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3);">
+                <label class="label" style="margin:0;">Commanders</label>
+                <button id="formation-add-commander-btn" type="button" class="btn btn-secondary" style="font-size:var(--text-xs);">+ Add Commander</button>
+              </div>
+              <div id="formation-commanders-list"></div>
+            </div>
+
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3);">
+                <label class="label" style="margin:0;">Sources &amp; References</label>
+                <button id="formation-add-source-btn" type="button" class="btn btn-secondary" style="font-size:var(--text-xs);">+ Add Source</button>
+              </div>
+              <div id="formation-sources-list"></div>
+            </div>
+
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3);">
+                <label class="label" style="margin:0;">Related Records</label>
+                <button id="formation-add-related-btn" type="button" class="btn btn-secondary" style="font-size:var(--text-xs);">+ Add Related</button>
+              </div>
+              <div id="formation-related-list"></div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:var(--space-3);padding-top:var(--space-4);border-top:1px solid var(--border-dim);">
+              <label style="display:flex;align-items:center;gap:var(--space-2);cursor:pointer;">
+                <input name="published" type="checkbox"> Published
+              </label>
+              <button type="submit" class="btn btn-primary">Save Formation</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Preview modal -->
+        <div id="formation-preview-modal" class="modal" hidden>
+          <div class="modal__backdrop"></div>
+          <div class="modal__box" style="max-width:760px;max-height:80vh;overflow-y:auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-5);">
+              <h3 style="font-family:var(--font-display);margin:0;">Formation Preview</h3>
+              <button id="formation-preview-modal-close" type="button" class="btn btn-secondary">Close</button>
+            </div>
+            <div id="formation-preview-content"></div>
           </div>
         </div>
       </div>
@@ -309,9 +785,10 @@
             <div class="section-label" style="margin-bottom:var(--space-3);">Documents</div>
             <div class="media-section-toolbar"><span id="award-documents-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Documents<input id="award-documents-upload" type="file" accept=".pdf,.doc,.docx" multiple style="display:none;"></label><button type="button" id="award-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="award-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="award-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
             <div id="award-documents-list" style="margin-bottom:var(--space-6);"></div>
-            <div style="display:flex;align-items:center;gap:var(--space-4);">
+            <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;">
               <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);"><input type="checkbox" name="published"> Published</label>
               <button type="submit" class="btn btn-primary">Save Award</button>
+              <button type="button" class="btn btn-secondary" id="award-preview-btn">Preview</button>
               <span id="award-form-status" style="font-size:var(--text-sm);"></span>
             </div>
           </form>
@@ -352,9 +829,10 @@
             <div class="section-label" style="margin-bottom:var(--space-3);">Documents</div>
             <div class="media-section-toolbar"><span id="map-documents-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Documents<input id="map-documents-upload" type="file" accept=".pdf,.doc,.docx" multiple style="display:none;"></label><button type="button" id="map-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="map-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="map-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
             <div id="map-documents-list" style="margin-bottom:var(--space-6);"></div>
-            <div style="display:flex;align-items:center;gap:var(--space-4);">
+            <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;">
               <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);"><input type="checkbox" name="published"> Published</label>
               <button type="submit" class="btn btn-primary">Save Map</button>
+              <button type="button" class="btn btn-secondary" id="map-preview-btn">Preview</button>
               <span id="map-form-status" style="font-size:var(--text-sm);"></span>
             </div>
           </form>
@@ -393,9 +871,10 @@
             <div class="section-label" style="margin-bottom:var(--space-3);">Documents</div>
             <div class="media-section-toolbar"><span id="poldoc-documents-count" class="media-section-count"></span><label class="btn btn-secondary" style="cursor:pointer;">Upload Documents<input id="poldoc-documents-upload" type="file" accept=".pdf,.doc,.docx" multiple style="display:none;"></label><button type="button" id="poldoc-documents-check-urls" class="btn btn-secondary media-action-btn">Check URLs</button><button type="button" id="poldoc-documents-clear-attr" class="btn btn-secondary media-action-btn">Clear Attribution</button><button type="button" id="poldoc-documents-delete-all" class="btn btn-secondary media-action-btn media-action-btn--danger">Delete All</button></div>
             <div id="poldoc-documents-list" style="margin-bottom:var(--space-6);"></div>
-            <div style="display:flex;align-items:center;gap:var(--space-4);">
+            <div style="display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;">
               <label style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);"><input type="checkbox" name="published"> Published</label>
               <button type="submit" class="btn btn-primary">Save Document</button>
+              <button type="button" class="btn btn-secondary" id="poldoc-preview-btn">Preview</button>
               <span id="poldoc-form-status" style="font-size:var(--text-sm);"></span>
             </div>
           </form>
@@ -437,6 +916,12 @@
               <option value="campaigns">Campaigns</option>
               <option value="letters">Letters</option>
               <option value="articles">Articles</option>
+              <option value="timeline">Timeline</option>
+              <option value="awards">Awards</option>
+              <option value="maps">Maps</option>
+              <option value="political-docs">Political Documents</option>
+              <option value="formations">Formations</option>
+              <option value="nsdap">NSDAP</option>
             </select>
           </div>
         </div>
@@ -496,23 +981,70 @@
       <!-- Tab: Navigation -->
       <div id="tab-navigation" class="admin-tab-panel" hidden role="tabpanel">
         <div class="section-label" style="margin-bottom:var(--space-6);">Navigation</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-6);">
-          <div>
-            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);">Brand</div>
-            <div class="contact-form__group"><label class="contact-form__label">Site Name</label><input id="nav-brand-name" class="contact-form__input" placeholder="VeteransLedger"></div>
-            <div class="contact-form__group"><label class="contact-form__label">Tagline</label><input id="nav-brand-tagline" class="contact-form__input" placeholder="Tagline shown in nav"></div>
-          </div>
-          <div>
-            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);">Social Links</div>
-            <div class="contact-form__group"><label class="contact-form__label">GitHub URL</label><input id="nav-social-github" class="contact-form__input" placeholder="https://github.com/…"></div>
-            <div class="contact-form__group"><label class="contact-form__label">Twitter/X URL</label><input id="nav-social-twitter" class="contact-form__input" placeholder="https://x.com/…"></div>
-          </div>
+
+        <!-- Brand -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);">Brand</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Site Name</label><input id="nav-brand-name" class="contact-form__input" placeholder="VeteransLedger"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Tagline</label><input id="nav-brand-tagline" class="contact-form__input" placeholder="Tagline shown in nav"></div>
+        </div>
+
+        <!-- Footer — top band -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Footer — Top Band</div>
+        <div class="contact-form__group"><label class="contact-form__label">About Text</label><textarea id="nav-footer-about" class="contact-form__input" rows="2" placeholder="Short description shown in footer left column"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Signature</label><input id="nav-footer-signature" class="contact-form__input" placeholder="— Archive Team"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Educational Badge</label><input id="nav-footer-badge" class="contact-form__input" placeholder="Educational Use Only"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Stats Heading</label><input id="nav-footer-stats-heading" class="contact-form__input" placeholder="Archive Status"></div>
         </div>
         <div class="contact-form__group">
+          <label class="contact-form__label">Archive Stats (JSON array of {label, value})</label>
+          <textarea id="nav-footer-stats-json" class="contact-form__input" rows="6" style="font-family:monospace;font-size:12px;resize:vertical;"></textarea>
+        </div>
+
+        <!-- Footer — bottom band -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Footer — Bottom Band</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Quick Links Heading</label><input id="nav-footer-quicklinks" class="contact-form__input" placeholder="Quick Links"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Archive Info Heading</label><input id="nav-footer-info-heading" class="contact-form__input" placeholder="✰ Archive Information"></div>
+        </div>
+        <div class="contact-form__group">
+          <label class="contact-form__label">Archive Info Items (JSON array of {label, value})</label>
+          <textarea id="nav-footer-info-items" class="contact-form__input" rows="5" style="font-family:monospace;font-size:12px;resize:vertical;"></textarea>
+        </div>
+        <div class="contact-form__group">
+          <label class="contact-form__label">Legal Links (JSON array of {label, href})</label>
+          <textarea id="nav-footer-legal-links" class="contact-form__input" rows="8" style="font-family:monospace;font-size:12px;resize:vertical;"></textarea>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Legal Section Heading</label><input id="nav-footer-legal-heading" class="contact-form__input" placeholder="Legal"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Connect Heading</label><input id="nav-footer-connect-heading" class="contact-form__input" placeholder="Connect"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Connect Email</label><input id="nav-footer-connect-email" type="email" class="contact-form__input" placeholder="contact@example.com"></div>
+        </div>
+        <div class="contact-form__group"><label class="contact-form__label">Connect Prompt Text</label><input id="nav-footer-connect-prompt" class="contact-form__input" placeholder="For inquiries, corrections, or contributions:"></div>
+
+        <!-- Footer — legal strip -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Footer — Legal Strip</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Legal Line</label><input id="nav-footer-legal-line" class="contact-form__input" placeholder="HISTORY IS NOT TO BE HIDDEN…"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Copyright</label><input id="nav-footer-copyright" class="contact-form__input" placeholder="© 2026 VETERANSLEDGER…"></div>
+        </div>
+
+        <!-- Social Links -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Social Links</div>
+        <div class="contact-form__group">
+          <label class="contact-form__label">Social Links (JSON array of {id, label, href, icon})</label>
+          <textarea id="nav-social-json" class="contact-form__input" rows="10" style="font-family:monospace;font-size:12px;resize:vertical;"></textarea>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Navigation Menu</div>
+        <div class="contact-form__group">
           <label class="contact-form__label">Navigation Items (JSON array)</label>
-          <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-2);">Edit the full navigation items/sections array. Each entry may have <code>label</code>, <code>href</code>, and/or <code>children</code>.</p>
+          <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-2);">Each entry may have <code>label</code>, <code>href</code>, <code>icon</code>, and/or <code>children</code>.</p>
           <textarea id="nav-items-json" class="contact-form__input" rows="16" style="font-family:monospace;font-size:12px;resize:vertical;" placeholder="Loading…"></textarea>
         </div>
+
         <div style="display:flex;align-items:center;gap:var(--space-4);">
           <button id="nav-save-btn" type="button" class="btn btn-primary">Save Navigation</button>
           <span id="nav-form-status" style="font-size:var(--text-sm);"></span>
@@ -522,7 +1054,10 @@
       <!-- Tab: Site Settings -->
       <div id="tab-settings" class="admin-tab-panel" hidden role="tabpanel">
         <div class="section-label" style="margin-bottom:var(--space-6);">Site Settings</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);margin-bottom:var(--space-6);">
+
+        <!-- General -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);">General</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6);">
           <div>
             <div class="contact-form__group"><label class="contact-form__label">Site Name</label><input id="settings-site-name" class="contact-form__input" placeholder="VeteransLedger"></div>
             <div class="contact-form__group"><label class="contact-form__label">Tagline</label><input id="settings-tagline" class="contact-form__input" placeholder="Short tagline"></div>
@@ -533,9 +1068,37 @@
             <div class="contact-form__group"><label class="contact-form__label">Disclaimer</label><textarea id="settings-disclaimer" class="contact-form__input" rows="3" placeholder="Legal disclaimer shown in footer/about"></textarea></div>
           </div>
         </div>
+
+        <!-- Contact Modal -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Contact Modal</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Modal Title</label><input id="settings-contact-modal-title" class="contact-form__input" placeholder="Contact The Archive"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">To Address (displayed)</label><input id="settings-contact-to" type="email" class="contact-form__input" placeholder="support@example.com"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Contact Email (mailto)</label><input id="settings-contact-email-addr" type="email" class="contact-form__input" placeholder="support@example.com"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Email Label</label><input id="settings-contact-email-label" class="contact-form__input" placeholder="Archive Email"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Info Heading</label><input id="settings-contact-info-heading" class="contact-form__input" placeholder="Direct Communication"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Info Text</label><input id="settings-contact-info-text" class="contact-form__input" placeholder="For inquiries…"></div>
+        </div>
+        <div class="contact-form__group" style="margin-bottom:var(--space-6);"><label class="contact-form__label">Form Guidance Text</label><textarea id="settings-contact-guidance" class="contact-form__input" rows="2" placeholder="Please provide a detailed message…"></textarea></div>
+
+        <!-- Cookie Banner -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Cookie Banner</div>
+        <div class="contact-form__group"><label class="contact-form__label">Banner Text</label><textarea id="settings-cookie-text" class="contact-form__input" rows="2" placeholder="This archive uses only essential session cookies…"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Privacy Label</label><input id="settings-cookie-privacy-label" class="contact-form__input" placeholder="Privacy Policy"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Privacy Link</label><input id="settings-cookie-privacy-href" class="contact-form__input" placeholder="/site-policies#privacy"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Accept Button</label><input id="settings-cookie-accept" class="contact-form__input" placeholder="Accept"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Dismiss Button</label><input id="settings-cookie-dismiss" class="contact-form__input" placeholder="Dismiss"></div>
+        </div>
+
+        <!-- Advanced JSON -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Advanced — Full JSON</div>
         <div class="contact-form__group">
-          <label class="contact-form__label">Advanced — Full JSON</label>
-          <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-2);">The structured fields above are merged over this JSON on save. Edit here to set fields not covered above.</p>
+          <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-2);">Structured fields above are merged over this JSON on save.</p>
           <textarea id="settings-raw-json" class="contact-form__input" rows="12" style="font-family:monospace;font-size:12px;resize:vertical;" placeholder="Loading…"></textarea>
         </div>
         <div style="display:flex;align-items:center;gap:var(--space-4);">
@@ -559,6 +1122,120 @@
             </div>
             <textarea id="pages-editor" class="contact-form__input" rows="28" style="font-family:monospace;font-size:12px;resize:vertical;" disabled placeholder="Select a page from the sidebar to begin editing."></textarea>
           </div>
+        </div>
+      </div>
+
+      <!-- Tab: Homepage — structured editor for homepage.json -->
+      <div id="tab-homepage" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Homepage</div>
+
+        <!-- Hero Section -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);">Hero Section</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-2);">
+          <div class="contact-form__group"><label class="contact-form__label">Eyebrow Text</label><input id="hp-hero-eyebrow" class="contact-form__input" placeholder="Educational Historical Archive"></div>
+          <div class="contact-form__group"><label class="contact-form__label">Subtitle</label><input id="hp-hero-subtitle" class="contact-form__input" placeholder="Axis History Archive"></div>
+        </div>
+        <div class="contact-form__group"><label class="contact-form__label">Hero Title</label><input id="hp-hero-title" class="contact-form__input" placeholder="Welcome to VeteransLedger"></div>
+        <div class="contact-form__group"><label class="contact-form__label">Hero Description</label><textarea id="hp-hero-description" class="contact-form__input" rows="2" placeholder="A comprehensive archive dedicated to…"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Primary CTA Label</label><input id="hp-hero-cta-primary" class="contact-form__input" placeholder="EXPLORE ARCHIVE →"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Primary CTA Link</label><input id="hp-hero-cta-href" class="contact-form__input" placeholder="/campaigns"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Secondary CTA Label</label><input id="hp-hero-cta-secondary" class="contact-form__input" placeholder="CONTACT"></div>
+        </div>
+
+        <!-- Browse Section -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Browse Section</div>
+        <div class="contact-form__group" style="max-width:320px;"><label class="contact-form__label">Section Heading</label><input id="hp-browse-label" class="contact-form__input" placeholder="Browse Archive"></div>
+
+        <!-- Archive Cards -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Archive Cards</div>
+        <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+          <div style="display:grid;grid-template-columns:2fr 3fr 1fr;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-dim);border-radius:6px;">
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Card 1 Title</label><input id="hp-card-title-0" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Description</label><input id="hp-card-desc-0" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Link</label><input id="hp-card-href-0" class="contact-form__input" placeholder="/section"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 3fr 1fr;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-dim);border-radius:6px;">
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Card 2 Title</label><input id="hp-card-title-1" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Description</label><input id="hp-card-desc-1" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Link</label><input id="hp-card-href-1" class="contact-form__input" placeholder="/section"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 3fr 1fr;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-dim);border-radius:6px;">
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Card 3 Title</label><input id="hp-card-title-2" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Description</label><input id="hp-card-desc-2" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Link</label><input id="hp-card-href-2" class="contact-form__input" placeholder="/section"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 3fr 1fr;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-dim);border-radius:6px;">
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Card 4 Title</label><input id="hp-card-title-3" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Description</label><input id="hp-card-desc-3" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Link</label><input id="hp-card-href-3" class="contact-form__input" placeholder="/section"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 3fr 1fr;gap:var(--space-3);padding:var(--space-4);border:1px solid var(--border-dim);border-radius:6px;">
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Card 5 Title</label><input id="hp-card-title-4" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Description</label><input id="hp-card-desc-4" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Link</label><input id="hp-card-href-4" class="contact-form__input" placeholder="/section"></div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-6);">
+          <button id="homepage-save-btn" type="button" class="btn btn-primary">Save Homepage</button>
+          <span id="homepage-form-status" style="font-size:var(--text-sm);"></span>
+        </div>
+      </div>
+
+      <!-- Tab: Page Content — hero & meta editor for every public page -->
+      <div id="tab-page-content" class="admin-tab-panel" hidden role="tabpanel">
+        <div class="section-label" style="margin-bottom:var(--space-6);">Page Content</div>
+
+        <div class="contact-form__group" style="max-width:280px;margin-bottom:var(--space-6);">
+          <label class="contact-form__label">Page</label>
+          <select id="pce-page-select" class="contact-form__input">
+            <option value="">Select page…</option>
+            <option value="about">About</option>
+            <option value="timeline">Timeline</option>
+            <option value="campaigns">Campaigns</option>
+            <option value="armaments">Armaments</option>
+            <option value="personnel">Personnel</option>
+            <option value="letters">Letters</option>
+            <option value="formations">Formations</option>
+            <option value="nsdap">NSDAP</option>
+            <option value="articles">Articles</option>
+            <option value="policies">Site Policies</option>
+            <option value="search">Search</option>
+          </select>
+        </div>
+
+        <!-- Meta -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);">Meta Tags</div>
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:var(--space-4);margin-bottom:var(--space-6);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Page Title</label><input id="pce-meta-title" class="contact-form__input" placeholder="Page · VeteransLedger"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Meta Description</label><input id="pce-meta-desc" class="contact-form__input" placeholder="Short description for search engines (150–160 chars)"></div>
+        </div>
+
+        <!-- Hero -->
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Hero Section</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6);">
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Hero Title</label><input id="pce-hero-title" class="contact-form__input"></div>
+          <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Hero Subtitle</label><input id="pce-hero-subtitle" class="contact-form__input"></div>
+        </div>
+
+        <!-- Archive Info (About page only) -->
+        <div id="pce-archiveinfo-section" hidden>
+          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:var(--space-4);border-top:1px solid var(--border-dim);padding-top:var(--space-6);">Archive Info Sidebar (About page)</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-4);">
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Project</label><input id="pce-info-project" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Period</label><input id="pce-info-period" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Type</label><input id="pce-info-type" class="contact-form__input"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-6);">
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">License</label><input id="pce-info-license" class="contact-form__input"></div>
+            <div class="contact-form__group" style="margin:0;"><label class="contact-form__label">Last Updated</label><input id="pce-info-lastUpdated" class="contact-form__input" placeholder="2026"></div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-2);">
+          <button id="pce-save-btn" type="button" class="btn btn-primary">Save Page Content</button>
+          <span id="pce-form-status" style="font-size:var(--text-sm);"></span>
         </div>
       </div>
 
@@ -811,7 +1488,8 @@
 
             <div class="contact-form__group">
               <label class="contact-form__label">Biography <span style="color:#e06060;">*</span></label>
-              <textarea name="biography" class="contact-form__input" rows="8" placeholder="Full biography text (required for publish)"></textarea>
+              <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Build the biography with structured blocks. At least one paragraph is required for publish.</p>
+              <div id="personnel-biography-editor"></div>
             </div>
 
             <!-- Portrait -->
@@ -1165,8 +1843,8 @@
             </div>
             <div style="margin-bottom:var(--space-6);">
               <label class="contact-form__label">Body</label>
-              <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-2);">Separate paragraphs with a blank line. Each block becomes a paragraph in published JSON.</p>
-              <textarea name="body" class="contact-form__input" rows="16" placeholder="Write article body here.&#10;&#10;Separate paragraphs with a blank line."></textarea>
+              <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-3);">Build the article with structured content blocks: paragraphs, headings, quotes, lists, and images.</p>
+              <div id="article-body-editor"></div>
             </div>
 
             <div class="section-label" style="margin:var(--space-2) 0 var(--space-4);font-size:var(--text-sm);">Sources</div>
@@ -1300,6 +1978,39 @@
         <button type="button" id="article-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
       </div>
       <div id="article-preview-content" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
+  <!-- Award preview modal -->
+  <div id="award-preview-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:640px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Award Preview</div>
+        <button type="button" id="award-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="award-preview-content" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
+  <!-- Map preview modal -->
+  <div id="map-preview-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:640px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Map Preview</div>
+        <button type="button" id="map-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="map-preview-content" style="font-size:var(--text-sm);"></div>
+    </div>
+  </div>
+
+  <!-- Political Document preview modal -->
+  <div id="poldoc-preview-modal" hidden style="position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;">
+    <div style="background:var(--bg-panel,#1a1a1a);border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-6);width:90%;max-width:640px;max-height:80vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-4);">
+        <div class="section-label" style="margin:0;">Document Preview</div>
+        <button type="button" id="poldoc-preview-modal-close" class="btn btn-secondary" style="font-size:11px;">✕</button>
+      </div>
+      <div id="poldoc-preview-content" style="font-size:var(--text-sm);"></div>
     </div>
   </div>
 
@@ -1443,6 +2154,8 @@
   <script type="module" src="/pages/Admin/navigation-admin.js"></script>
   <script type="module" src="/pages/Admin/site-settings-admin.js"></script>
   <script type="module" src="/pages/Admin/pages-admin.js"></script>
+  <script type="module" src="/pages/Admin/homepage-admin.js"></script>
+  <script type="module" src="/pages/Admin/page-content-admin.js"></script>
 </body>
 
 </html>

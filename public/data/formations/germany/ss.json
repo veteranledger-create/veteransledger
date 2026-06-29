@@ -6,12 +6,28 @@
     "service": "Waffen-SS",
     "type": "Panzer Division",
     "theater": "Western Front / Eastern Front",
-    "active": { "from": "1933", "to": "1945-05" },
-    "parent_formation": { "id": "i-ss-panzer-corps", "title": "I. SS-Panzerkorps", "url": "/formations/i-ss-panzer-corps" },
+    "active": {
+      "from": "1933",
+      "to": "1945-05"
+    },
+    "parent_formation": {
+      "id": "i-ss-panzer-corps",
+      "title": "I. SS-Panzerkorps",
+      "url": "/formations/i-ss-panzer-corps"
+    },
     "commanders": [
-      { "name": "SS-Oberstgruppenführer Sepp Dietrich", "period": "1933–Jul 1943" },
-      { "name": "SS-Brigadeführer Theodor Wisch", "period": "Jul 1943–Aug 1944" },
-      { "name": "SS-Brigadeführer Wilhelm Mohnke / others", "period": "1944–1945" }
+      {
+        "name": "SS-Oberstgruppenführer Sepp Dietrich",
+        "period": "1933–Jul 1943"
+      },
+      {
+        "name": "SS-Brigadeführer Theodor Wisch",
+        "period": "Jul 1943–Aug 1944"
+      },
+      {
+        "name": "SS-Brigadeführer Wilhelm Mohnke / others",
+        "period": "1944–1945"
+      }
     ],
     "peak_strength": "c. 21,000 (1944)",
     "summary": "Hitler's personal bodyguard unit, grown into an elite armoured division. The Leibstandarte fought in Poland, France, the Balkans, Greece, Barbarossa, Kharkov, Kursk, Normandy, and the Ardennes. Its members were implicated in numerous war crimes including the Malmedy Massacre (via Jochen Peiper's Kampfgruppe).",
@@ -48,16 +64,44 @@
       }
     ],
     "sources": [
-      { "ref": "Lehmann, Rudolf. The Leibstandarte. J.J. Fedorowicz, 1977–1990. 4 vols." },
-      { "ref": "Messenger, Charles. Hitler's Gladiator. Brassey's, 1988." }
+      {
+        "ref": "Lehmann, Rudolf. The Leibstandarte. J.J. Fedorowicz, 1977–1990. 4 vols."
+      },
+      {
+        "ref": "Messenger, Charles. Hitler's Gladiator. Brassey's, 1988."
+      }
     ],
     "related_records": [
-      { "id": "sepp-dietrich", "title": "Sepp Dietrich", "type": "Personnel", "url": "/personnel/sepp-dietrich" },
-      { "id": "jochen-peiper", "title": "Jochen Peiper", "type": "Personnel", "url": "/personnel/jochen-peiper" },
-      { "id": "michael-wittmann", "title": "Michael Wittmann", "type": "Personnel", "url": "/personnel/michael-wittmann" },
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" },
-      { "id": "i-ss-panzer-corps", "title": "I SS Panzer Corps", "type": "Formation", "url": "/formations/i-ss-panzer-corps" }
+      {
+        "id": "sepp-dietrich",
+        "title": "Sepp Dietrich",
+        "type": "Personnel"
+      },
+      {
+        "id": "jochen-peiper",
+        "title": "Jochen Peiper",
+        "type": "Personnel"
+      },
+      {
+        "id": "michael-wittmann",
+        "title": "Michael Wittmann",
+        "type": "Personnel"
+      },
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "bulge",
+        "title": "Battle of the Bulge",
+        "type": "Campaign"
+      },
+      {
+        "id": "i-ss-panzer-corps",
+        "title": "I SS Panzer Corps",
+        "type": "Formation"
+      }
     ]
   },
   {
@@ -67,11 +111,24 @@
     "service": "Waffen-SS",
     "type": "Panzer Division",
     "theater": "Western Front / Eastern Front",
-    "active": { "from": "1939", "to": "1945-05" },
-    "parent_formation": { "id": "i-ss-panzer-corps", "title": "I. SS-Panzerkorps", "url": "/formations/i-ss-panzer-corps" },
+    "active": {
+      "from": "1939",
+      "to": "1945-05"
+    },
+    "parent_formation": {
+      "id": "i-ss-panzer-corps",
+      "title": "I. SS-Panzerkorps",
+      "url": "/formations/i-ss-panzer-corps"
+    },
     "commanders": [
-      { "name": "SS-Gruppenführer Paul Hausser", "period": "1939–1941" },
-      { "name": "Multiple commanders", "period": "1941–1945" }
+      {
+        "name": "SS-Gruppenführer Paul Hausser",
+        "period": "1939–1941"
+      },
+      {
+        "name": "Multiple commanders",
+        "period": "1941–1945"
+      }
     ],
     "peak_strength": "c. 19,000 (1943)",
     "summary": "Das Reich fought in France (1940), Yugoslavia (1941), and Barbarossa. At Kharkov it played a central role in the 'backhand blow'. In France (1944) the division's march from Toulouse to Normandy was marked by the massacre of 642 civilians at Oradour-sur-Glane — one of the worst war crimes committed in Western Europe.",
@@ -113,13 +170,31 @@
       }
     ],
     "sources": [
-      { "ref": "Hastings, Max. Das Reich: Resistance and the March of the 2nd SS Panzer Division through France, June 1944. Michael Joseph, 1981." }
+      {
+        "ref": "Hastings, Max. Das Reich: Resistance and the March of the 2nd SS Panzer Division through France, June 1944. Michael Joseph, 1981."
+      }
     ],
     "related_records": [
-      { "id": "paul-hausser", "title": "Paul Hausser", "type": "Personnel", "url": "/personnel/paul-hausser" },
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
-      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" }
+      {
+        "id": "paul-hausser",
+        "title": "Paul Hausser",
+        "type": "Personnel"
+      },
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      },
+      {
+        "id": "france",
+        "title": "Fall of France",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -129,11 +204,24 @@
     "service": "Waffen-SS",
     "type": "Panzer Division",
     "theater": "Western Front / Eastern Front",
-    "active": { "from": "1939", "to": "1945-05" },
-    "parent_formation": { "id": "i-ss-panzer-corps", "title": "I. SS-Panzerkorps", "url": "/formations/i-ss-panzer-corps" },
+    "active": {
+      "from": "1939",
+      "to": "1945-05"
+    },
+    "parent_formation": {
+      "id": "i-ss-panzer-corps",
+      "title": "I. SS-Panzerkorps",
+      "url": "/formations/i-ss-panzer-corps"
+    },
     "commanders": [
-      { "name": "SS-Obergruppenführer Theodor Eicke", "period": "Nov 1939–Feb 1943 (KIA)" },
-      { "name": "SS-Brigadeführer Hermann Priess / others", "period": "1943–1945" }
+      {
+        "name": "SS-Obergruppenführer Theodor Eicke",
+        "period": "Nov 1939–Feb 1943 (KIA)"
+      },
+      {
+        "name": "SS-Brigadeführer Hermann Priess / others",
+        "period": "1943–1945"
+      }
     ],
     "peak_strength": "c. 19,000 (1943)",
     "summary": "Formed from SS concentration camp guards by Eicke, the Totenkopf Division fought in France (1940), where it massacred 97 British prisoners of the Royal Norfolk Regiment at Le Paradis, and on the Eastern Front throughout 1941–1945. Its origins in the concentration camp system made it one of the most ideologically extreme Waffen-SS divisions.",
@@ -170,14 +258,36 @@
       }
     ],
     "sources": [
-      { "ref": "Sydnor, Charles. Soldiers of Destruction: The SS Death's Head Division, 1933–1945. Princeton University Press, 1977." }
+      {
+        "ref": "Sydnor, Charles. Soldiers of Destruction: The SS Death's Head Division, 1933–1945. Princeton University Press, 1977."
+      }
     ],
     "related_records": [
-      { "id": "theodor-eicke", "title": "Theodor Eicke", "type": "Personnel", "url": "/personnel/theodor-eicke" },
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
-      { "id": "i-ss-panzer-corps", "title": "I SS Panzer Corps", "type": "Formation", "url": "/formations/i-ss-panzer-corps" }
+      {
+        "id": "theodor-eicke",
+        "title": "Theodor Eicke",
+        "type": "Personnel"
+      },
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "france",
+        "title": "Fall of France",
+        "type": "Campaign"
+      },
+      {
+        "id": "i-ss-panzer-corps",
+        "title": "I SS Panzer Corps",
+        "type": "Formation"
+      }
     ]
   },
   {
@@ -187,10 +297,19 @@
     "service": "Waffen-SS",
     "type": "Panzer Division",
     "theater": "Eastern Front",
-    "active": { "from": "1940", "to": "1945-05" },
+    "active": {
+      "from": "1940",
+      "to": "1945-05"
+    },
     "commanders": [
-      { "name": "SS-Obergruppenführer Felix Steiner", "period": "Dec 1940–May 1943" },
-      { "name": "SS-Brigadeführer Herbert Gille", "period": "May 1943–Aug 1944" }
+      {
+        "name": "SS-Obergruppenführer Felix Steiner",
+        "period": "Dec 1940–May 1943"
+      },
+      {
+        "name": "SS-Brigadeführer Herbert Gille",
+        "period": "May 1943–Aug 1944"
+      }
     ],
     "peak_strength": "c. 19,000 (1943)",
     "summary": "The Wiking Division was unique among Waffen-SS formations as it was composed largely of volunteer Germanic conscripts from Norway, Denmark, the Netherlands, Finland, and Belgium. It fought almost exclusively on the Eastern Front from 1941 to 1945, serving in the Caucasus, Ukraine, and Poland. It was encircled at the Cherkassy Pocket in 1944 but broke out with significant losses.",
@@ -227,13 +346,29 @@
       }
     ],
     "sources": [
-      { "ref": "Strassner, Peter. European Volunteers: The 5th SS Panzer Division Wiking. J.J. Fedorowicz, 1988." },
-      { "ref": "Yerger, Mark C. Waffen-SS Commanders. Schiffer, 1997." }
+      {
+        "ref": "Strassner, Peter. European Volunteers: The 5th SS Panzer Division Wiking. J.J. Fedorowicz, 1988."
+      },
+      {
+        "ref": "Yerger, Mark C. Waffen-SS Commanders. Schiffer, 1997."
+      }
     ],
     "related_records": [
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "caucasus", "title": "Caucasus Campaign", "type": "Campaign", "url": "/campaigns/eastern-front/caucasus" },
-      { "id": "i-ss-panzer-corps", "title": "I SS Panzer Corps", "type": "Formation", "url": "/formations/i-ss-panzer-corps" }
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "caucasus",
+        "title": "Caucasus Campaign",
+        "type": "Campaign"
+      },
+      {
+        "id": "i-ss-panzer-corps",
+        "title": "I SS Panzer Corps",
+        "type": "Formation"
+      }
     ]
   }
 ]

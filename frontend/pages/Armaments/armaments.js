@@ -5,14 +5,19 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { cardImageCandidates, isAiGeneratedImageSrc } from "/pages/shared/media-blocks.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
-const CATEGORIES = [
-  { id: "panzer",       path: "panzer" },
-  { id: "aircraft",     path: "aircraft" },
-  { id: "naval",        path: "naval" },
-  { id: "missiles",     path: "missiles" },
-  { id: "wunderwaffen", path: "wunderwaffen" },
-  { id: "equipment",    path: "equipment" },
+// CATEGORIES is built dynamically from armaments/index.json so that adding
+// or renaming a category in the manifest is reflected immediately without a
+// source-code change. Fallback to the known historical set if the fetch fails.
+let CATEGORIES = [];
+const CATEGORIES_FALLBACK = [
+  { id: "panzer",       label: "Panzers",              path: "panzer" },
+  { id: "aircraft",     label: "Aircraft",              path: "aircraft" },
+  { id: "naval",        label: "Naval",                 path: "naval" },
+  { id: "missiles",     label: "Missiles & Artillery",  path: "missiles" },
+  { id: "wunderwaffen", label: "Wunderwaffen",          path: "wunderwaffen" },
+  { id: "equipment",    label: "Equipment",             path: "equipment" },
 ];
 
 // No hardcoded nation-file list — which (category, nation) files actually
@@ -29,6 +34,39 @@ async function loadManifest() {
       .catch(() => ({ categories: [] }));
   }
   return manifestPromise;
+}
+
+async function initCategories() {
+  const manifest = await loadManifest();
+  const cats = manifest.categories ?? [];
+  if (cats.length) {
+    CATEGORIES = cats.map((c) => ({ id: c.id, label: c.label ?? c.id, path: c.id }));
+  } else {
+    CATEGORIES = CATEGORIES_FALLBACK;
+  }
+}
+
+function renderCategoryTabs() {
+  const tabs = document.getElementById("category-tabs");
+  if (!tabs || !CATEGORIES.length) return;
+  tabs.innerHTML = CATEGORIES.map((c, i) =>
+    `<button type="button" class="category-tab${i === 0 ? " is-active" : ""}" role="tab" data-category="${c.id}">${c.label}</button>`,
+  ).join("");
+}
+
+function ensureCategorySections() {
+  const container = document.querySelector(".archive-section") ?? document.querySelector("main");
+  if (!container) return;
+  for (const cat of CATEGORIES) {
+    if (!document.getElementById(cat.id)) {
+      const sec = document.createElement("div");
+      sec.id = cat.id;
+      sec.className = "anchor-section armaments-category";
+      sec.dataset.catId = cat.id;
+      sec.hidden = true;
+      container.appendChild(sec);
+    }
+  }
 }
 
 // Keyed by the real per-record nation (lowercased), not the source folder
@@ -55,6 +93,11 @@ const cache        = {};
 const paginators   = {};
 
 async function init() {
+  // Build CATEGORIES from manifest, render tabs, ensure section containers exist
+  await initCategories();
+  renderCategoryTabs();
+  ensureCategorySections();
+
   // Category tab clicks
   document.getElementById("category-tabs")?.addEventListener("click", (e) => {
     const btn = e.target.closest(".category-tab");
@@ -79,11 +122,11 @@ async function init() {
   // Handle hash on load (e.g. /armaments#aircraft)
   const hash  = location.hash.replace("#", "");
   const match = CATEGORIES.find((c) => c.id === hash);
-  const startCat = match ? match.id : "panzer";
+  const startCat = match ? match.id : (CATEGORIES[0]?.id ?? "panzer");
 
   if (match) {
     document.querySelector(`[data-category="${startCat}"]`)?.classList.add("is-active");
-    document.querySelector(`[data-category="panzer"]`)?.classList.remove("is-active");
+    document.querySelector(`[data-category="${CATEGORIES[0]?.id}"]`)?.classList.remove("is-active");
   }
 
   await loadCategory(startCat);
@@ -222,7 +265,7 @@ function renderArmaments(container, items, catId) {
 
     const card = document.createElement(hasId ? "a" : "div");
     card.className = "armament-card" + (hasId ? "" : " armament-card--pending");
-    if (hasId) card.href = `/armaments/${item.id}`;
+    if (hasId) card.href = resolveRelatedUrl("Armament", item.id);
 
     // Build image with DOM method so error handler attaches before src fires.
     // On failure, advance to the next candidate instead of jumping straight

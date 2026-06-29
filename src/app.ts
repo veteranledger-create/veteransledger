@@ -30,6 +30,7 @@ import { searchRoutes } from "./modules/search/search.routes";
 import { contactRoutes } from "./modules/contact/contact.routes";
 import { publishRoutes } from "./modules/publish/publish.routes";
 import { siteContentRoutes } from "./modules/site-content/site-content.routes";
+import { formationsRoutes } from "./modules/formations/formations.routes";
 
 export function createApp(): Application {
   const app = express();
@@ -43,8 +44,10 @@ export function createApp(): Application {
   app.use("/api", rateLimit(securityConfig.rateLimit));
 
   // ── Body parsing ─────────────────────────────────────────────────────────
-  app.use(express.json({ limit: "10mb" }));
-  app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+  // 1 MB covers any JSON admin payload. File uploads use multer (multipart)
+  // and bypass this entirely — reducing this does not affect upload functionality.
+  app.use(express.json({ limit: "1mb" }));
+  app.use(express.urlencoded({ extended: true, limit: "1mb" }));
   app.use(cookieParser());
   app.use(compression());
 
@@ -69,10 +72,18 @@ export function createApp(): Application {
   app.use("/components", express.static(path.join(config.paths.frontend, "components")));
   app.use("/layouts", express.static(path.join(config.paths.frontend, "layouts")));
   app.use("/pages", express.static(path.join(config.paths.frontend, "pages")));
-  app.use(
-    "/storage",
-    express.static(config.paths.storage, { maxAge: "7d", etag: true })
-  );
+  // SVG and HTML files served from /storage must not execute in-browser.
+  // Content-Disposition: attachment forces download; nosniff is also set
+  // globally by Helmet, but this middleware makes intent explicit.
+  const EXECUTABLE_EXTS = new Set([".svg", ".html", ".htm", ".xhtml"]);
+  app.use("/storage", (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    const ext = path.extname(req.path).toLowerCase();
+    if (EXECUTABLE_EXTS.has(ext)) {
+      res.setHeader("Content-Disposition", "attachment");
+      res.setHeader("Content-Type", "application/octet-stream");
+    }
+    next();
+  }, express.static(config.paths.storage, { maxAge: "7d", etag: true }));
 
   // ── API Routes ───────────────────────────────────────────────────────────
   app.use("/api/auth", authRoutes);
@@ -89,6 +100,7 @@ export function createApp(): Application {
   app.use("/api/contact", contactRoutes);
   app.use("/api/publish", publishRoutes);
   app.use("/api/site-content", siteContentRoutes);
+  app.use("/api/formations", formationsRoutes);
 
   // ── Frontend page routes ──────────────────────────────────────────────────
   const pagesDir = path.join(config.paths.frontend, "pages");
@@ -110,6 +122,12 @@ export function createApp(): Application {
   app.get("/articles/:id", servePage("Articles", "record.html"));
   app.get("/formations", servePage("Formations"));
   app.get("/formations/:id", servePage("Formations", "record.html"));
+  app.get("/awards", servePage("Awards"));
+  app.get("/awards/:id", servePage("Awards", "record.html"));
+  app.get("/maps", servePage("Maps"));
+  app.get("/maps/:id", servePage("Maps", "record.html"));
+  app.get("/political-documents", servePage("PoliticalDocs"));
+  app.get("/political-documents/:id", servePage("PoliticalDocs", "record.html"));
   app.get("/nsdap", servePage("Nsdap"));
   app.get("/about", servePage("About"));
   app.get("/search", servePage("Search"));

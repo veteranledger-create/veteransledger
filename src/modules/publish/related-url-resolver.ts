@@ -1,22 +1,17 @@
-// Maps a related_records entry's `type` to the URL prefix that type's
-// record pages actually live at. Real letter data's related_records aren't
-// all same-type — british.json's letters point at Campaigns, for example —
-// so a single same-type guess (which is all Phase 0 needed for the
-// german-only pilot) isn't enough once all six collections are involved.
-// Anything unrecognized — including the nation-collection labels real
-// letter data also uses today, e.g. "German Collection" — falls back to
-// /letters/<id>, since every same-type letter-to-letter reference observed
-// in real data behaves that way.
-const TYPE_TO_PATH: Record<string, string> = {
-  Campaign: "/campaigns",
-  Personnel: "/personnel",
-  Armament: "/armaments",
-  Formation: "/formations",
-  Article: "/articles",
-  Letter: "/letters",
-};
+import { ROUTE_MAP, TYPE_ALIASES, CanonicalType } from "../../shared/route-definitions";
+
+export function normalizeType(type: string | undefined): CanonicalType | string {
+  if (!type) return "Letter";
+  return TYPE_ALIASES[type] ?? type;
+}
 
 export function resolveRelatedUrl(type: string | undefined, id: string): string {
-  const prefix = (type && TYPE_TO_PATH[type]) || "/letters";
+  const canonical = normalizeType(type);
+  const prefix = (ROUTE_MAP as Record<string, string>)[canonical] ?? "/letters";
   return `${prefix}/${id}`;
 }
+
+// Re-export the canonical definitions so callers that need the raw map
+// (e.g. tests, admin endpoints) don't need a second import.
+export { ROUTE_MAP, TYPE_ALIASES };
+export type { CanonicalType };

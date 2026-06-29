@@ -1,33 +1,30 @@
 /**
  * VeteransLedger · Site Policies page
  * Loads policy JSON files and renders content sections.
+ * Policy list loaded from site-policies/index.json — no hardcoded arrays.
  * Also highlights the TOC link as user scrolls.
  */
 
-const POLICIES = [
-  {
-    id: "terms",
-    file: "/public/data/site-policies/terms-of-use.json",
-    bodyId: "terms-body",
-  },
-  {
-    id: "privacy",
-    file: "/public/data/site-policies/privacy-policy.json",
-    bodyId: "privacy-body",
-  },
-  {
-    id: "disclaimer",
-    file: "/public/data/site-policies/disclaimer.json",
-    bodyId: "disclaimer-body",
-  },
-  {
-    id: "copyright",
-    file: "/public/data/site-policies/copyright-policy.json",
-    bodyId: "copyright-body",
-  },
-];
+let POLICIES = [];
+
+async function loadManifest() {
+  try {
+    const res = await fetch("/public/data/site-policies/index.json");
+    const data = res.ok ? await res.json() : null;
+    POLICIES = data?.policies ?? [];
+  } catch (_) {}
+  if (!POLICIES.length) {
+    POLICIES = [
+      { id: "terms",      file: "/public/data/site-policies/terms-of-use.json",    bodyId: "terms-body" },
+      { id: "privacy",    file: "/public/data/site-policies/privacy-policy.json",  bodyId: "privacy-body" },
+      { id: "disclaimer", file: "/public/data/site-policies/disclaimer.json",      bodyId: "disclaimer-body" },
+      { id: "copyright",  file: "/public/data/site-policies/copyright-policy.json","bodyId": "copyright-body" },
+    ];
+  }
+}
 
 async function init() {
+  await loadManifest();
   await Promise.allSettled(POLICIES.map(loadPolicy));
   initScrollSpy();
   initContactTrigger();
@@ -57,12 +54,12 @@ function renderPolicy(container, id, data) {
     container.innerHTML = `<p>${content.replace(/\n\n/g, "</p><p>")}</p>`;
   } else if (Array.isArray(content)) {
     container.innerHTML = content
-      .map(
-        (section) => `
-      ${section.heading ? `<h3>${section.heading}</h3>` : ""}
-      <p>${section.text || section.body || ""}</p>
-    `,
-      )
+      .map((section) => {
+        if (section.list && Array.isArray(section.list)) {
+          return `<ul>${section.list.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+        }
+        return `${section.heading ? `<h3>${section.heading}</h3>` : ""}<p>${section.text || section.body || ""}</p>`;
+      })
       .join("");
   } else {
     container.innerHTML = defaultPolicy(id);
@@ -79,6 +76,14 @@ function defaultPolicy(id) {
       <p>Historical accuracy is prioritised. Where errors are identified, corrections are welcomed via the contact form.</p>`,
     copyright: `<p>Historical documents, photographs, and records in the public domain are reproduced for educational purposes under fair use provisions. Where copyright is held by third parties, material is cited accordingly.</p>
       <p>Original editorial content, translations, and annotations are © VeteransLedger. Contact us for reproduction permissions.</p>`,
+    removal: `<p>If you are the subject of, or hold rights to, any content on this archive and wish to request its removal, please contact us directly.</p>
+      <p>All removal requests are reviewed within 14 days. Please include:</p>
+      <ul>
+        <li>Your full name and relationship to the content</li>
+        <li>A specific description of the content to be removed</li>
+        <li>The URL or page where it appears</li>
+        <li>The legal or personal basis for the removal request</li>
+      </ul>`,
   };
   return defaults[id] || "<p>Policy content is being prepared.</p>";
 }

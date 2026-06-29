@@ -15,14 +15,33 @@
     "historical_context": "No. 303 Squadron was the highest-scoring RAF squadron in the Battle of Britain despite entering combat late in the campaign, on 31 August 1940. Polish pilots, many of them veterans of the September 1939 campaign and the Battle of France, brought combat experience that made them formidable. The 15 September 1940 — 'Battle of Britain Day' — saw 303 Squadron heavily engaged. Many Polish airmen never returned home; postwar Poland fell under Soviet control, and those who had fought in the West were viewed with suspicion.",
     "archival_note": "Polish Institute and Sikorski Museum, London. Collection A.V.20/10/19: No. 303 Squadron personal correspondence 1940–1941.",
     "sources": [
-      { "type": "primary", "ref": "Polish Institute and Sikorski Museum, London. Collection A.V.20/10/19." },
-      { "ref": "Olson, Lynne and Cloud, Stanley. A Question of Honor: The Kosciuszko Squadron — Forgotten Heroes of World War II. Knopf, 2003." },
-      { "ref": "Zamoyski, Adam. The Forgotten Few: The Polish Air Force in the Second World War. John Murray, 1995." }
+      {
+        "type": "primary",
+        "ref": "Polish Institute and Sikorski Museum, London. Collection A.V.20/10/19."
+      },
+      {
+        "ref": "Olson, Lynne and Cloud, Stanley. A Question of Honor: The Kosciuszko Squadron — Forgotten Heroes of World War II. Knopf, 2003."
+      },
+      {
+        "ref": "Zamoyski, Adam. The Forgotten Few: The Polish Air Force in the Second World War. John Murray, 1995."
+      }
     ],
     "related_records": [
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
-      { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
-      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" }
+      {
+        "id": "britain",
+        "title": "Battle of Britain",
+        "type": "Campaign"
+      },
+      {
+        "id": "poland",
+        "title": "Invasion of Poland",
+        "type": "Campaign"
+      },
+      {
+        "id": "bf-109",
+        "title": "Messerschmitt Bf 109",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -41,14 +60,33 @@
     "historical_context": "The 2nd Polish Corps under General Władysław Anders assaulted Monte Cassino on the night of 11–12 May 1944 as part of Operation Diadem. After savage fighting on the surrounding peaks, they captured the ruins of the monastery on 18 May 1944, raising the Polish regimental flag at 10:20. The II Corps had been formed largely from Poles released from Soviet labour camps under the Sikorski-Maisky agreement. Many soldiers like Kmiecik came from areas of eastern Poland (Lwów/Lviv) that were incorporated into the Soviet Union after the war — meaning that victory at Cassino could not be followed by a homecoming.",
     "archival_note": "General Sikorski Historical Institute, London. Collection B.I.62/B: Personal correspondence — II Polish Corps Italy campaign 1943–1945.",
     "sources": [
-      { "type": "primary", "ref": "General Sikorski Historical Institute, London. Collection B.I.62/B." },
-      { "ref": "Hapgood, David and Richardson, David. Monte Cassino. Congdon and Weed, 1984." },
-      { "ref": "Parker, Matthew. Monte Cassino: The Story of the Hardest-Fought Battle of World War Two. Headline, 2003." }
+      {
+        "type": "primary",
+        "ref": "General Sikorski Historical Institute, London. Collection B.I.62/B."
+      },
+      {
+        "ref": "Hapgood, David and Richardson, David. Monte Cassino. Congdon and Weed, 1984."
+      },
+      {
+        "ref": "Parker, Matthew. Monte Cassino: The Story of the Hardest-Fought Battle of World War Two. Headline, 2003."
+      }
     ],
     "related_records": [
-      { "id": "cassino", "title": "Battle of Monte Cassino", "type": "Campaign", "url": "/campaigns/italy/cassino" },
-      { "id": "albert-kesselring", "title": "Albert Kesselring", "type": "Personnel", "url": "/personnel/albert-kesselring" },
-      { "id": "gothic-line", "title": "Gothic Line", "type": "Campaign", "url": "/campaigns/italy/gothic-line" }
+      {
+        "id": "cassino",
+        "title": "Battle of Monte Cassino",
+        "type": "Campaign"
+      },
+      {
+        "id": "albert-kesselring",
+        "title": "Albert Kesselring",
+        "type": "Personnel"
+      },
+      {
+        "id": "gothic-line",
+        "title": "Gothic Line",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -67,14 +105,34 @@
     "historical_context": "The Warsaw Uprising began on 1 August 1944 (W-Hour, 17:00) and continued for 63 days until capitulation on 2 October. The letter's reference to Soviet aircraft circling without dropping supplies reflects the contested and deeply debated Soviet decision not to provide meaningful air support during the critical phase. The Home Army fought with captured and parachuted weapons; the sewers (kanały) were used for movement and communication between sectors. 'Danuta's' survival is not documented; approximately 200,000 Warsaw civilians died during the uprising and its aftermath. Norwid (Cyprian Kamil Norwid) was a 19th-century Polish Romantic poet widely read in the underground.",
     "archival_note": "Warsaw Rising Museum. Document Collections — Recovered manuscripts, Mokotów sector. Accession 2001/P/034.",
     "sources": [
-      { "type": "primary", "ref": "Warsaw Rising Museum. Recovered Manuscripts — Mokotów sector. Accession 2001/P/034." },
-      { "ref": "Bór-Komorowski, Tadeusz. The Secret Army. Gryf Publications, 1950.", "note": "Memoir of the AK commander during the Uprising." },
-      { "ref": "Davies, Norman. Rising '44: The Battle for Warsaw. Macmillan, 2003." }
+      {
+        "type": "primary",
+        "ref": "Warsaw Rising Museum. Recovered Manuscripts — Mokotów sector. Accession 2001/P/034."
+      },
+      {
+        "ref": "Bór-Komorowski, Tadeusz. The Secret Army. Gryf Publications, 1950.",
+        "note": "Memoir of the AK commander during the Uprising."
+      },
+      {
+        "ref": "Davies, Norman. Rising '44: The Battle for Warsaw. Macmillan, 2003."
+      }
     ],
     "related_records": [
-      { "id": "warsaw", "title": "Warsaw Uprising", "type": "Campaign", "url": "/campaigns/western-front/warsaw" },
-      { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
-      { "id": "otto-skorzeny", "title": "Otto Skorzeny", "type": "Personnel", "url": "/personnel/otto-skorzeny" }
+      {
+        "id": "warsaw",
+        "title": "Warsaw Uprising",
+        "type": "Campaign"
+      },
+      {
+        "id": "poland",
+        "title": "Invasion of Poland",
+        "type": "Campaign"
+      },
+      {
+        "id": "otto-skorzeny",
+        "title": "Otto Skorzeny",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -93,14 +151,33 @@
     "historical_context": "Oflag VII-A Murnau was an officer prisoner-of-war camp in Bavaria holding primarily Polish and later Allied officers. Major Szymański was among the Polish officers captured in the September 1939 campaign. The letter's careful language reflects awareness of German censorship. His reference to 'things moving' in January 1944 likely refers to the Allied advances in Italy and Soviet pressure in the East. The camp was liberated by the US Army in April 1945. Whether Major Szymański was reunited with his family in Warsaw — by 1945 devastated and under Soviet control — is not recorded.",
     "archival_note": "Centralne Archiwum Wojskowe (Central Military Archive), Warsaw. Collection MiD VIII.800.130: Prisoner of war correspondence — Oflag VII-A.",
     "sources": [
-      { "type": "primary", "ref": "Centralne Archiwum Wojskowe, Warsaw. Collection MiD VIII.800.130." },
-      { "ref": "Sword, Keith. Deportation and Exile: Poles in the Soviet Union, 1939–48. Palgrave Macmillan, 1994." },
-      { "ref": "Zgórniak, Marian. Europe in the Second World War. Wydawnictwo Platan, 1994." }
+      {
+        "type": "primary",
+        "ref": "Centralne Archiwum Wojskowe, Warsaw. Collection MiD VIII.800.130."
+      },
+      {
+        "ref": "Sword, Keith. Deportation and Exile: Poles in the Soviet Union, 1939–48. Palgrave Macmillan, 1994."
+      },
+      {
+        "ref": "Zgórniak, Marian. Europe in the Second World War. Wydawnictwo Platan, 1994."
+      }
     ],
     "related_records": [
-      { "id": "poland", "title": "Invasion of Poland", "type": "Campaign", "url": "/campaigns/western-front/poland" },
-      { "id": "bzura", "title": "Battle of Bzura", "type": "Campaign", "url": "/campaigns/western-front/bzura" },
-      { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" }
+      {
+        "id": "poland",
+        "title": "Invasion of Poland",
+        "type": "Campaign"
+      },
+      {
+        "id": "bzura",
+        "title": "Battle of Bzura",
+        "type": "Campaign"
+      },
+      {
+        "id": "nuremberg",
+        "title": "The Nuremberg Trials",
+        "type": "Article"
+      }
     ]
   }
 ]

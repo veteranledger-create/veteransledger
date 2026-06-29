@@ -8,10 +8,9 @@ import { handleValidation } from "../../utilities/validation";
 export const armamentsRoutes = Router();
 const ctrl = new ArmamentsController();
 
-armamentsRoutes.get("/",    listArmamentsValidator,  handleValidation, ctrl.list.bind(ctrl));
+armamentsRoutes.get("/",    authenticate, requireAdmin, listArmamentsValidator, handleValidation, ctrl.list.bind(ctrl));
 armamentsRoutes.get("/check-duplicates", authenticate, requireAdmin, ctrl.checkDuplicates.bind(ctrl));
-armamentsRoutes.get("/resolve-url", authenticate, requireAdmin, ctrl.resolveUrl.bind(ctrl));
-armamentsRoutes.get("/:id", ctrl.get.bind(ctrl));
+armamentsRoutes.get("/:id", authenticate, requireAdmin, ctrl.get.bind(ctrl));
 armamentsRoutes.get("/:id/preview", authenticate, requireAdmin, ctrl.preview.bind(ctrl));
 armamentsRoutes.post("/",   authenticate, requireAdmin, createArmamentValidator, handleValidation, ctrl.create.bind(ctrl));
 armamentsRoutes.put("/:id", authenticate, requireAdmin, updateArmamentValidator, handleValidation, ctrl.update.bind(ctrl));

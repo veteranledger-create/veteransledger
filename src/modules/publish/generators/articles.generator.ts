@@ -11,7 +11,6 @@ interface RelatedRecordEntry {
   id: string;
   title?: string;
   type?: string;
-  url?: string;
 }
 
 export interface ArticleJson {
@@ -65,7 +64,7 @@ export function toArticleJson(record: RecordLike): ArticleJson {
   const related = Array.isArray(relatedRaw)
     ? relatedRaw
         .filter((r): r is { id: string; title?: string; type?: string; url?: string } => !!r && typeof r.id === "string")
-        .map((r) => ({ id: r.id, title: r.title, type: r.type, url: r.url }))
+        .map((r) => ({ id: r.id, title: r.title, type: r.type }))
     : undefined;
 
   // Every extension field not in EXPLICIT_FIELDS gets spread in verbatim —

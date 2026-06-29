@@ -3,17 +3,25 @@
   "title": "Battle of Taranto",
   "subtitle": "The First Carrier Airstrike in History",
   "theater": "italy",
-  "dates": { "start": "1940-11-11", "end": "1940-11-12" },
+  "dates": {
+    "start": "1940-11-11",
+    "end": "1940-11-12"
+  },
   "date_start": "1940-11-11",
   "date_end": "1940-11-12",
   "theatre": "Mediterranean — Taranto Harbour, Italy",
   "combatants": {
     "axis": {
-      "commanders": ["Inigo Campioni (Regia Marina)"],
+      "commanders": [
+        "Inigo Campioni (Regia Marina)"
+      ],
       "strength": "6 battleships, 7 cruisers, 8 destroyers in Taranto harbour"
     },
     "allied": {
-      "commanders": ["Andrew Cunningham (C-in-C Mediterranean Fleet)", "Lumley Lyster (HMS Illustrious)"],
+      "commanders": [
+        "Andrew Cunningham (C-in-C Mediterranean Fleet)",
+        "Lumley Lyster (HMS Illustrious)"
+      ],
       "strength": "HMS Illustrious — 21 Swordfish torpedo bombers in 2 waves"
     }
   },
@@ -26,14 +34,37 @@
   "outcome": "Decisive British victory. Italian fleet withdrew to Naples. Strategic balance in the Mediterranean shifted decisively in Britain's favour.",
   "significance": "The first naval battle decided exclusively by carrier air power. The attack directly influenced the Japanese planning for Pearl Harbor — the shallow-water torpedo modifications developed for Taranto were adopted by the Imperial Japanese Navy.",
   "sources": [
-    { "type": "primary", "ref": "National Archives (UK). ADM 199/832: Report of Proceedings — Attack on Italian Fleet at Taranto, November 1940." },
-    { "ref": "Wragg, David. Swordfish: The Story of the Taranto Raid. Weidenfeld and Nicolson, 2003." },
-    { "ref": "Lowry, Thomas and Wellham, John. The Attack on Taranto: Blueprint for Pearl Harbor. Stackpole, 1995.", "note": "Draws the explicit connection between Taranto and the Japanese operation." },
-    { "ref": "Cunningham, Andrew. A Sailor's Odyssey. Hutchinson, 1951.", "note": "First-hand account from the C-in-C Mediterranean." }
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). ADM 199/832: Report of Proceedings — Attack on Italian Fleet at Taranto, November 1940."
+    },
+    {
+      "ref": "Wragg, David. Swordfish: The Story of the Taranto Raid. Weidenfeld and Nicolson, 2003."
+    },
+    {
+      "ref": "Lowry, Thomas and Wellham, John. The Attack on Taranto: Blueprint for Pearl Harbor. Stackpole, 1995.",
+      "note": "Draws the explicit connection between Taranto and the Japanese operation."
+    },
+    {
+      "ref": "Cunningham, Andrew. A Sailor's Odyssey. Hutchinson, 1951.",
+      "note": "First-hand account from the C-in-C Mediterranean."
+    }
   ],
   "related_records": [
-    { "id": "isoroku-yamamoto", "title": "Isoroku Yamamoto", "type": "Personnel", "url": "/personnel/isoroku-yamamoto" },
-    { "id": "atlantic", "title": "Battle of the Atlantic", "type": "Campaign", "url": "/campaigns/atlantic/atlantic" },
-    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
+    {
+      "id": "isoroku-yamamoto",
+      "title": "Isoroku Yamamoto",
+      "type": "Personnel"
+    },
+    {
+      "id": "atlantic",
+      "title": "Battle of the Atlantic",
+      "type": "Campaign"
+    },
+    {
+      "id": "erich-raeder",
+      "title": "Erich Raeder",
+      "type": "Personnel"
+    }
   ]
 }

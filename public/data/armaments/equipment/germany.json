@@ -30,25 +30,21 @@
     "related_records": [
       {
         "id": "pz-vi-tiger",
-        "url": "/armaments/pz-vi-tiger",
         "type": "Armament",
         "title": "Tiger I"
       },
       {
         "id": "erwin-rommel",
-        "url": "/personnel/erwin-rommel",
         "type": "Personnel",
         "title": "Erwin Rommel"
       },
       {
         "id": "gazala",
-        "url": "/campaigns/gazala",
         "type": "Campaign",
         "title": "Battle of Gazala"
       },
       {
         "id": "britain",
-        "url": "/campaigns/britain",
         "type": "Campaign",
         "title": "Battle of Britain"
       }
@@ -79,19 +75,16 @@
     "related_records": [
       {
         "id": "stg-44",
-        "url": "/armaments/stg-44",
         "type": "Armament",
         "title": "Sturmgewehr 44"
       },
       {
         "id": "mg-42",
-        "url": "/armaments/mg-42",
         "type": "Armament",
         "title": "MG 42"
       },
       {
         "id": "rearmament",
-        "url": "/articles/military/rearmament",
         "type": "Article",
         "title": "German Rearmament 1933–1939"
       }
@@ -120,13 +113,11 @@
     "related_records": [
       {
         "id": "stg-44",
-        "url": "/armaments/stg-44",
         "type": "Armament",
         "title": "Sturmgewehr 44"
       },
       {
         "id": "kar-98k",
-        "url": "/armaments/kar-98k",
         "type": "Armament",
         "title": "Karabiner 98k"
       }
@@ -169,13 +160,11 @@
     "related_records": [
       {
         "id": "stg-44",
-        "url": "/armaments/stg-44",
         "type": "Armament",
         "title": "StG 44"
       },
       {
         "id": "kar-98k",
-        "url": "/armaments/kar-98k",
         "type": "Armament",
         "title": "Karabiner 98k"
       }
@@ -217,13 +206,11 @@
     "related_records": [
       {
         "id": "pz-v-panther",
-        "url": "/armaments/pz-v-panther",
         "type": "Armament",
         "title": "Panther"
       },
       {
         "id": "stg-44",
-        "url": "/armaments/stg-44",
         "type": "Armament",
         "title": "StG 44"
       }
@@ -249,13 +236,11 @@
     "related_records": [
       {
         "id": "mg-42",
-        "url": "/armaments/mg-42",
         "type": "Armament",
         "title": "MG 42"
       },
       {
         "id": "kar-98k",
-        "url": "/armaments/kar-98k",
         "type": "Armament",
         "title": "Karabiner 98k"
       }

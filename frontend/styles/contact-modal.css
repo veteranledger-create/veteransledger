@@ -1,7 +1,8 @@
 /* ============================================================
-   VeteransLedger · Contact Modal — Archival Document Style
+   VeteransLedger · Contact Modal — Historical Postcard Edition
    ============================================================ */
 
+/* ── Backdrop overlay ──────────────────────────────────────── */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -22,254 +23,274 @@
   to   { opacity: 1; }
 }
 
-/* ── Archive modal container ────────────────────────────────── */
-.archive-modal {
-  position: relative;
-  width: 100%;
-  max-width: 680px;
-  max-height: 90dvh;
-  background: #1a1208;
-  border: 1px solid #3d2a0a;
-  border-radius: var(--radius);
-  box-shadow: 0 20px 80px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,168,76,0.08);
-  overflow-y: auto;
-  animation: modal-slide-in 0.3s cubic-bezier(0.16,1,0.3,1);
-}
-
-@keyframes modal-slide-in {
-  from { opacity: 0; transform: translateY(16px) scale(0.98); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* Close button — lives inside the header grid */
+/* ── Close button (shared between contact + attribution modals) ── */
 .modal__close {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
   background: transparent;
-  border: 1px solid #3d2a0a;
+  border: 1px solid rgba(61, 42, 10, 0.7);
   cursor: pointer;
   transition: border-color var(--transition-fast);
   flex-shrink: 0;
 }
 .modal__close:hover { border-color: var(--gold-dim); }
 .modal__close-icon {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   display: block;
-  filter: brightness(0) invert(1) opacity(0.4);
+  filter: brightness(0) invert(1) opacity(0.35);
   transition: filter var(--transition-fast);
 }
 .modal__close:hover .modal__close-icon {
   filter: brightness(0) invert(1) sepia(0.6) saturate(3) hue-rotate(5deg) brightness(0.85);
 }
 
-/* ── Header: spacer | eagle + title | close button ─────────── */
-.archive-modal__header {
-  display: grid;
-  grid-template-columns: 48px 1fr 48px;
-  align-items: center;
-  gap: 0;
-  padding: var(--space-6) var(--space-6) var(--space-5);
-  border-bottom: 1px solid #2a1c06;
-  background: #141008;
+/* ── Postcard card ─────────────────────────────────────────── */
+.pc {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  background: #181006;
+  border: 1px solid #3d2a0a;
+  border-radius: var(--radius);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.92),
+    0 0 0 1px rgba(201, 168, 76, 0.06);
+  animation: pc-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.archive-modal__header-spacer { /* left counterbalance, keeps title centered */ }
-.archive-modal__header-content {
+
+@keyframes pc-slide-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* Absolute close button sits top-right of the whole card */
+.pc__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+}
+
+/* ── Two-column postcard layout ─────────────────────────────── */
+.pc__layout {
+  display: grid;
+  grid-template-columns: 250px 1px 1fr;
+  min-height: 480px;
+}
+
+/* ── LEFT: Decorative archival face ─────────────────────────── */
+.pc__face {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: 18px;
+  padding: 32px 20px 24px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      -55deg,
+      transparent 0px, transparent 7px,
+      rgba(255, 200, 120, 0.006) 7px, rgba(255, 200, 120, 0.006) 8px
+    ),
+    repeating-linear-gradient(
+      35deg,
+      transparent 0px, transparent 5px,
+      rgba(200, 160, 80, 0.004) 5px, rgba(200, 160, 80, 0.004) 6px
+    ),
+    linear-gradient(155deg, #1e1509 0%, #191007 50%, #1c1409 100%);
 }
 
-.archive-modal__eagle {
-  width: 48px;
-  height: 48px;
-  /* modal is always dark-themed; white eagle with gold glow */
-  filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(201,168,76,0.35));
+/* Postmark */
+.pc__postmark { width: 100%; }
+.pc__postmark-svg {
+  display: block;
+  width: 100%;
+  max-width: 128px;
+  height: auto;
+  margin: 0 auto;
 }
 
-.archive-modal__title {
+/* Blank ruled lines (vintage address-side detail) */
+.pc__face-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+  padding: 0 2px;
+}
+.pc__face-lines span {
+  display: block;
+  height: 1px;
+  background: #231808;
+}
+
+/* Info text (CMS-patched) */
+.pc__face-info { width: 100%; }
+
+.pc__face-heading {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #d4b86a;
+  color: #8a7040;
+  margin: 0 0 6px;
+}
+.pc__face-text {
+  font-size: 11px;
+  line-height: 1.65;
+  color: #6a5030;
   margin: 0;
 }
 
-/* ── Two-column body ────────────────────────────────────────── */
-.archive-modal__body {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 0;
-  min-height: 320px;
+/* Wax seal */
+.pc__seal { margin-top: auto; }
+.pc__seal-svg {
+  display: block;
+  width: 96px;
+  height: 96px;
 }
 
-@media (max-width: 560px) {
-  .archive-modal {
-    max-height: 88dvh;
-    margin: 0;
-  }
-  .archive-modal__body { grid-template-columns: 1fr; }
-  .archive-modal__header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-2);
-    padding: var(--space-5) 72px var(--space-4) var(--space-6);
-    position: relative;
-  }
-  .archive-modal__header-spacer { display: none; }
-  .archive-modal__header-content { gap: var(--space-2); }
-  .modal__close {
-    position: absolute;
-    top: var(--space-4);
-    right: var(--space-4);
-    transform: none;
-    width: 44px;
-    height: 44px;
-  }
-  .archive-modal__eagle {
-    width: 32px;
-    height: 32px;
-  }
-  .archive-modal__title {
-    font-size: var(--text-sm);
-    letter-spacing: 0.14em;
-  }
-  .archive-modal__info {
-    padding: var(--space-4) var(--space-4);
-    border-right: none;
-    border-bottom: 1px solid #2a1c06;
-  }
-  .archive-modal__stamp { display: none; }
-  .archive-modal__form {
-    padding: var(--space-4) var(--space-4);
-  }
-  .contact-form__group {
-    margin-bottom: var(--space-3);
-  }
-  .contact-form__textarea {
-    min-height: 70px;
-  }
+/* Bottom tag */
+.pc__face-tag {
+  font-family: var(--font-display);
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #4a3818;
+  margin: 0;
+  text-align: center;
 }
 
-/* ── Left info panel ────────────────────────────────────────── */
-.archive-modal__info {
-  padding: var(--space-6) var(--space-5);
-  border-right: 1px solid #2a1c06;
-  background: #141008;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+/* ── Perforated vertical divider ────────────────────────────── */
+.pc__divider {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 5px,
+    rgba(212, 168, 73, 0.18) 5px,
+    rgba(212, 168, 73, 0.18) 9px
+  );
+}
+
+/* ── RIGHT: Address + form panel ────────────────────────────── */
+.pc__panel {
   position: relative;
-  overflow: hidden;
+  min-height: 380px;
+  background:
+    repeating-linear-gradient(
+      transparent 0px, transparent 28px,
+      rgba(180, 140, 60, 0.032) 28px, rgba(180, 140, 60, 0.032) 29px
+    ),
+    #181006;
+  overflow-x: hidden;
 }
 
-.archive-modal__info-heading {
+/* Form content wrapper — fades when overlay is active */
+.pc__form-content {
+  padding: 28px 28px 32px;
+  transition: opacity 0.3s ease;
+}
+.pc__panel.is-processing .pc__form-content,
+.pc__panel.is-confirmed  .pc__form-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Panel title */
+.pc__panel-title {
   font-family: var(--font-display);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #8a7040;
-  margin: 0;
+  margin: 0 0 18px;
 }
 
-.archive-modal__info-text {
-  font-size: 12px;
-  line-height: 1.6;
-  color: #6a5838;
-  margin: 0;
-}
-
-.archive-modal__info-section {
-  margin-top: var(--space-2);
-}
-
-.archive-modal__info-label {
+/* TO: address block */
+.pc__address { margin-bottom: 14px; }
+.pc__address-label {
   font-family: var(--font-display);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #6a5838;
-  margin: 0 0 4px 0;
+  color: #6a5030;
+  margin: 0 0 5px;
 }
-
-.archive-modal__info-email {
-  font-size: 11px;
+.pc__address-email {
+  display: block;
+  font-size: 12px;
   color: #a08040;
   text-decoration: none;
-  word-break: break-all;
   transition: color var(--transition-fast);
 }
-.archive-modal__info-email:hover { color: var(--gold); }
+.pc__address-email:hover { color: var(--gold); }
 
-/* Vertraulich stamp */
-.archive-modal__stamp {
-  position: absolute;
-  bottom: var(--space-6);
-  left: 50%;
-  transform: translateX(-50%) rotate(-12deg);
-}
-.archive-modal__stamp span {
-  display: block;
-  padding: 4px 10px;
-  border: 2px solid #6b1a1a;
-  border-radius: 2px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #7b2020;
-  white-space: nowrap;
-  opacity: 0.7;
-  box-shadow: inset 0 0 8px rgba(107,26,26,0.2);
+/* Thin ruled separator */
+.pc__rule {
+  height: 1px;
+  background: linear-gradient(to right, #3d2a0a, #2a1c06 65%, transparent);
+  margin-bottom: 20px;
 }
 
-/* ── Right: form ────────────────────────────────────────────── */
-.archive-modal__form {
-  padding: var(--space-6) var(--space-6);
+/* ── Form ────────────────────────────────────────────────────── */
+.pc__form {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
-.contact-form__group {
-  margin-bottom: var(--space-4);
+/* FROM row: name + email side-by-side */
+.pc__from-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-.contact-form__label {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
+.pc__field { margin-bottom: 14px; }
+.pc__from-row .pc__field { margin-bottom: 0; }
+
+.pc__label {
+  display: block;
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #7a6040;
-  margin-bottom: 6px;
-}
-.contact-form__label-icon {
-  color: #6a5030;
-  font-size: 13px;
-  width: 16px;
-  text-align: center;
+  margin-bottom: 5px;
 }
 
-.contact-form__input,
-.contact-form__textarea {
+/* Guidance text nested inside the label */
+.pc__guidance {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-style: italic;
+  color: #5a4828;
+  line-height: 1.55;
+  margin-top: 3px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.pc__input,
+.pc__textarea {
   width: 100%;
-  padding: 8px var(--space-3);
-  background: #0e0c06;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  background: #0d0b05;
   border: 1px solid #2a1c06;
   border-bottom: 1px solid #3d2a0a;
   border-radius: 2px;
@@ -278,45 +299,34 @@
   font-family: var(--font-body);
   transition: border-color var(--transition-fast);
 }
-.contact-form__input::placeholder,
-.contact-form__textarea::placeholder { color: #3a2a14; }
-.contact-form__input:focus,
-.contact-form__textarea:focus {
+.pc__input::placeholder,
+.pc__textarea::placeholder { color: #3a2a14; }
+.pc__input:focus,
+.pc__textarea:focus {
   outline: none;
   border-color: #5a4020;
   border-bottom-color: #8a6030;
 }
-.contact-form__input[readonly] { color: #6a5030; cursor: default; }
-
-.contact-form__textarea {
-  min-height: 100px;
+.pc__textarea {
+  min-height: 90px;
   resize: vertical;
 }
 
-.contact-form__guidance {
-  font-size: 11px;
-  color: #5a4828;
-  line-height: 1.55;
-  margin: 0 0 6px;
-  font-style: italic;
-}
-
-.contact-form__counter {
+.pc__counter {
   font-size: 10px;
   color: #4a3820;
   text-align: right;
-  margin-top: 4px;
+  margin: 4px 0 0;
   transition: color 0.2s;
 }
 
-/* Form footer: submit button */
-.archive-modal__form-footer {
-  margin-top: var(--space-4);
+.pc__form-footer {
+  margin-top: 16px;
   display: flex;
   justify-content: flex-end;
 }
 
-.contact-form__submit {
+.pc__submit {
   background: transparent;
   border: 1px solid #5a4020;
   color: #a08040;
@@ -324,42 +334,251 @@
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  padding: 8px var(--space-6);
+  padding: 8px 20px;
   cursor: pointer;
   border-radius: 2px;
   transition: all var(--transition-base);
 }
-.contact-form__submit:hover {
-  background: rgba(160,128,64,0.1);
+.pc__submit:hover:not(:disabled) {
+  background: rgba(160, 128, 64, 0.1);
   border-color: #8a6030;
   color: #c9a84c;
 }
-.contact-form__submit:disabled { opacity: 0.4; cursor: default; }
+.pc__submit:disabled { opacity: 0.4; cursor: default; }
+.pc__submit-arrow { margin-left: 5px; }
 
-/* Status messages */
+/* Status messages (reused class; unchanged from legacy) */
 .contact-form__status {
   margin-top: var(--space-3);
-  padding: var(--space-3) var(--space-3);
+  padding: var(--space-3);
   border-radius: 2px;
   font-size: 12px;
   display: none;
 }
 .contact-form__status.is-success {
   display: block;
-  background: rgba(20,40,20,0.5);
+  background: rgba(20, 40, 20, 0.5);
   border: 1px solid #1a3a1a;
   color: #70b070;
 }
 .contact-form__status.is-error {
   display: block;
-  background: rgba(40,10,10,0.5);
+  background: rgba(40, 10, 10, 0.5);
   border: 1px solid #4a1515;
   color: #d06060;
 }
 
-/* ── Attribution modal — single-column variant of the archive modal,
-   surfacing title/source/license/credit/archive/year for a media item
-   only when its info icon is clicked. ─────────────────────────────── */
+/* ── Processing overlay ─────────────────────────────────────── */
+.pc__processing,
+.pc__confirmed {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 32px 28px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+  text-align: center;
+}
+.pc__panel.is-processing .pc__processing { opacity: 1; pointer-events: auto; }
+.pc__panel.is-confirmed  .pc__confirmed  { opacity: 1; pointer-events: auto; }
+
+/* Seal stamps down when processing activates */
+.pc__proc-seal {
+  width: 130px;
+  height: 130px;
+  flex-shrink: 0;
+}
+.pc__proc-seal svg { width: 100%; height: 100%; display: block; }
+
+.pc__panel.is-processing .pc__proc-seal {
+  animation: pc-seal-stamp 0.65s cubic-bezier(0.2, 0.8, 0.3, 1.2) forwards;
+}
+@keyframes pc-seal-stamp {
+  0%   { transform: translateY(-60px) scale(0.5)  rotate(-10deg); opacity: 0; }
+  50%  { transform: translateY(6px)   scale(1.1)  rotate(4deg);   opacity: 1; }
+  65%  { transform: translateY(-4px)  scale(0.97) rotate(-1deg);  opacity: 1; }
+  80%  { transform: translateY(2px)   scale(1.01) rotate(0.5deg); opacity: 1; }
+  100% { transform: translateY(0)     scale(1)    rotate(0deg);   opacity: 1; }
+}
+
+.pc__proc-msg {
+  font-family: var(--font-display);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a7040;
+  margin: 0;
+  max-width: 280px;
+}
+
+/* ── Confirmation state ─────────────────────────────────────── */
+.pc__conf-seal {
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+}
+.pc__conf-seal svg { width: 100%; height: 100%; display: block; }
+
+/* Gold seal pops in after the confirmed overlay fades in */
+.pc__panel.is-confirmed .pc__conf-seal {
+  animation: pc-conf-seal 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.2) forwards 0.3s;
+  opacity: 0;
+}
+@keyframes pc-conf-seal {
+  0%   { transform: scale(0.5) rotate(-8deg); opacity: 0; }
+  65%  { transform: scale(1.08) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg);    opacity: 1; }
+}
+
+.pc__conf-ref {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #7a6030;
+  margin: 0;
+}
+.pc__conf-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin: 0;
+}
+.pc__conf-body {
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #9a8a60;
+  margin: 0;
+  max-width: 300px;
+}
+.pc__conf-note {
+  font-size: 11px;
+  font-style: italic;
+  color: #6a5838;
+  margin: 0;
+  max-width: 280px;
+}
+.pc__conf-btn {
+  background: transparent;
+  border: 1px solid #5a4020;
+  color: #a08040;
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 4px;
+  transition: all var(--transition-base);
+}
+.pc__conf-btn:hover {
+  background: rgba(160, 128, 64, 0.1);
+  border-color: #8a6030;
+  color: #c9a84c;
+}
+
+/* ── Responsive: tablet ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pc__layout { grid-template-columns: 200px 1px 1fr; }
+  .pc__face { padding: 24px 14px 20px; gap: 14px; }
+  .pc__postmark-svg { max-width: 110px; }
+  .pc__seal-svg { width: 78px; height: 78px; }
+  .pc__form-content { padding: 22px 20px 26px; }
+}
+
+/* ── Responsive: mobile (single column) ─────────────────────── */
+@media (max-width: 560px) {
+  .modal-overlay { padding: var(--space-3); }
+
+  .pc { max-height: 92dvh; }
+
+  .pc__layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1px auto;
+  }
+
+  /* Compact horizontal strip on mobile */
+  .pc__face {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 12px 52px 10px 14px; /* right padding clears the close button */
+    gap: 10px;
+  }
+  .pc__postmark { flex-shrink: 0; }
+  .pc__postmark-svg { max-width: 64px; }
+  .pc__face-info { flex: 1; min-width: 0; }
+  .pc__face-heading { margin-bottom: 3px; }
+  .pc__face-text { font-size: 10px; }
+  .pc__face-lines,
+  .pc__seal { display: none; }
+  .pc__face-tag { font-size: 7px; width: 100%; margin-top: 2px; }
+
+  /* Horizontal perforated line */
+  .pc__divider {
+    background: repeating-linear-gradient(
+      to right,
+      transparent, transparent 5px,
+      rgba(212, 168, 73, 0.18) 5px, rgba(212, 168, 73, 0.18) 9px
+    );
+  }
+
+  .pc__form-content { padding: 14px 14px 18px; }
+  .pc__from-row { grid-template-columns: 1fr; gap: 0; }
+  .pc__from-row .pc__field { margin-bottom: 12px; }
+  .pc__processing,
+  .pc__confirmed { padding: 24px 16px; }
+  .pc__proc-seal { width: 100px; height: 100px; }
+}
+
+/* ── Archive modal base — used by attribution modal ─────────── */
+.archive-modal {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90dvh;
+  background: #1a1208;
+  border: 1px solid #3d2a0a;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(201, 168, 76, 0.08);
+  overflow-y: auto;
+  animation: pc-slide-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.archive-modal__header {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid #2a1c06;
+  background: #141008;
+}
+.archive-modal__header-spacer { /* counterbalance keeps title centred */ }
+.archive-modal__header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+.archive-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #d4b86a;
+  margin: 0;
+}
+
+/* ── Attribution modal (single-column archive modal variant) ── */
 .attribution-modal { max-width: 440px; }
 .attribution-modal__body {
   padding: var(--space-6) var(--space-6);
@@ -395,9 +614,7 @@
   font-style: italic;
   color: #6a5838;
 }
-/* Historical Status gets a warmer accent — it's the one row whose entire
-   purpose is to stop an AI reconstruction from being mistaken for an
-   original wartime image, so it shouldn't blend in with the rest. */
+/* Historical Status row — purposely stands out */
 .attribution-modal__row--status {
   border-left: 2px solid #8a6a30;
   padding-left: var(--space-3);
@@ -406,10 +623,7 @@
 .attribution-modal__row--status dt { color: #b08a3a; }
 .attribution-modal__row--status dd { color: #d4b86a; }
 
-/* ── Image lightbox — full-screen viewer for any dossier image, with
-   wheel-zoom and click-drag panning. Deliberately plainer than the archive
-   modal (no header bar, no card chrome) since its only job is showing the
-   picture as large and unobstructed as possible. ───────────────────── */
+/* ── Image lightbox ─────────────────────────────────────────── */
 .lightbox-overlay {
   position: fixed;
   inset: 0;
@@ -486,7 +700,7 @@
   align-items: center;
   gap: var(--space-5);
   flex-wrap: wrap;
-  box-shadow: 0 -4px 24px rgba(0,0,0,0.5);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
 }
 .cookie-banner[hidden] { display: none; }
 .cookie-banner__text {
@@ -500,4 +714,3 @@
   gap: var(--space-3);
   flex-shrink: 0;
 }
-</content>

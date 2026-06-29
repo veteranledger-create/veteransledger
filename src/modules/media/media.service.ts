@@ -74,7 +74,7 @@ export class MediaService {
     return asset;
   }
 
-  async delete(id: string) {
+  async delete(id: string, userId: string) {
     const asset = await prisma.mediaAsset.findUnique({ where: { id } });
     if (!asset) throw new AppError(404, "Media asset not found");
 
@@ -86,5 +86,20 @@ export class MediaService {
     }
 
     await prisma.mediaAsset.delete({ where: { id } });
+
+    await prisma.auditLog.create({
+      data: {
+        userId,
+        action: "DELETE",
+        entity: "MediaAsset",
+        entityId: id,
+        metadata: {
+          filename: asset.filename,
+          originalName: asset.originalName,
+          mimeType: asset.mimeType,
+          size: asset.size,
+        } as unknown as object,
+      },
+    });
   }
 }

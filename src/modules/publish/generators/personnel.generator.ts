@@ -1,6 +1,5 @@
 import { EntityLike } from "../publish.types";
 import { RelatedRecordEntry } from "../import-validation/personnel-entity-mapper";
-import { resolveRelatedUrl } from "../related-url-resolver";
 
 export interface PersonnelJson {
   id: string;
@@ -59,18 +58,8 @@ export function toPersonnelJson(entity: EntityLike, personnelLinks: RelatedRecor
     id: link.id,
     title: link.title,
     type: "Personnel",
-    url: link.url ?? resolveRelatedUrl("Personnel", link.id),
   }));
-  // Always resolved fresh, never the source's own url — Personnel's
-  // source data carries the same stale theater-prefixed Campaign urls
-  // (e.g. /campaigns/africa/gazala) that the Campaigns migration itself
-  // stopped trusting, since they 404 against the real flat route. Trusting
-  // link.url here would silently reintroduce that bug into Personnel's
-  // output even though Campaigns' own output is already fixed.
-  const resolvedOtherLinks = otherLinks.map((link) => ({
-    ...link,
-    url: resolveRelatedUrl(link.type, link.id),
-  }));
+  const resolvedOtherLinks = otherLinks.map(({ id, title, type }) => ({ id, title, type }));
 
   const extras: Record<string, unknown> = {};
   if (entity.metadata) {

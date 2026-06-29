@@ -3,20 +3,34 @@
  * Reads :id from URL, searches article category files, renders full article.
  */
 
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+
 const PLACEHOLDER = "/public/images/covers/articles-cover.webp";
 
-const ARTICLE_FILES = [
-  { cat: "military", files: ["poland-1939.json", "rearmament.json"] },
-  {
-    cat: "political",
-    files: ["anschluss.json", "july-20.json", "rise-nsdap.json"],
-  },
-  { cat: "economy", files: [] },
-  { cat: "legal", files: ["nuremberg.json"] },
+const _ARTICLE_CATEGORIES_FALLBACK = [
+  { cat: "military",  files: ["poland-1939.json", "rearmament.json"] },
+  { cat: "political", files: ["anschluss.json", "july-20.json", "rise-nsdap.json"] },
+  { cat: "economy",   files: [] },
+  { cat: "legal",     files: ["nuremberg.json"] },
 ];
 
+let _manifestPromise = null;
+async function loadManifest() {
+  if (!_manifestPromise) {
+    _manifestPromise = fetch("/public/data/articles/index.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
+  }
+  return _manifestPromise;
+}
+
 async function findArticle(id) {
-  for (const { cat, files } of ARTICLE_FILES) {
+  const manifest = await loadManifest();
+  const categories = manifest?.categories
+    ? manifest.categories.map((c) => ({ cat: c.id, files: (c.files || []).map((f) => f.split("/").pop()) }))
+    : _ARTICLE_CATEGORIES_FALLBACK;
+
+  for (const { cat, files } of categories) {
     for (const file of files) {
       try {
         const res = await fetch(`/public/data/articles/${cat}/${file}`);
@@ -49,6 +63,18 @@ function renderBody(body) {
       if (block.type === "paragraph") return `<p>${block.text}</p>`;
       if (block.type === "quote")
         return `<blockquote class="article-body__quote">${block.text}</blockquote>`;
+      if (block.type === "list") {
+        const items = Array.isArray(block.items)
+          ? block.items
+          : (block.text || "").split("\n").map((s) => s.trim()).filter(Boolean);
+        return `<ul class="article-body__list">${items.map((i) => `<li>${i}</li>`).join("")}</ul>`;
+      }
+      if (block.type === "numbered-list") {
+        const items = Array.isArray(block.items)
+          ? block.items
+          : (block.text || "").split("\n").map((s) => s.trim()).filter(Boolean);
+        return `<ol class="article-body__list">${items.map((i) => `<li>${i}</li>`).join("")}</ol>`;
+      }
       if (block.type === "image")
         return `<figure class="article-body__figure">
           <img src="${block.url || block.src || ""}" alt="${block.caption || block.alt || ""}" loading="lazy" onerror="this.onerror=null;this.src='/public/images/covers/articles-cover.webp'">
@@ -232,7 +258,7 @@ function renderRelatedRecords(rec, backPath) {
           ${related
             .map(
               (r) => `
-            <a class="record-related-card" href="${r.url || backPath + "/" + r.id}">
+            <a class="record-related-card" href="${resolveRelatedUrl(r.type, r.id)}">
               <span class="record-related-card__type">${r.type || ""}</span>
               <span class="record-related-card__title">${r.title || r.id}</span>
             </a>`,

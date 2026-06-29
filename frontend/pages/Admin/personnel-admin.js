@@ -3,6 +3,12 @@ import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn } from
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn, renderStringList } from "./admin-form.js";
 import { uploadFile, handleUpload, wireSectionActions, renderGallery, renderDocuments } from "./admin-media-sections.js";
+import { initBodyEditor, readBodyBlocks } from "./admin-body-editor.js";
+
+function textToBlocks(text) {
+  if (!text) return [];
+  return text.split(/\n\n+/).map((p) => p.trim()).filter(Boolean).map((t) => ({ type: "paragraph", text: t }));
+}
 
 /**
  * VeteransLedger · Admin — Personnel
@@ -170,6 +176,7 @@ function openForm(id) {
   document.getElementById("personnel-form")?.reset();
   document.getElementById("personnel-form-title").textContent = id ? "Edit Personnel Record" : "New Personnel Record";
   document.getElementById("personnel-form-panel").hidden = false;
+  initBodyEditor("personnel-biography-editor", []);
   renderCommands(); renderAwards(); renderCampaigns();
   renderSources(); renderRelated();
   renderGalleryAdmin(); renderDocumentsAdmin();
@@ -199,8 +206,9 @@ async function loadPersonnelIntoForm(id) {
     form.querySelector("[name='deathDate']").value = r.deathDate ? r.deathDate.slice(0, 10) : "";
     form.querySelector("[name='birthplace']").value = meta.birthplace || "";
     form.querySelector("[name='summary']").value = r.summary || "";
-    form.querySelector("[name='biography']").value = r.biography || "";
     form.querySelector("[name='published']").checked = !!r.published;
+    const bioBlocks = Array.isArray(meta.biographyBlocks) ? meta.biographyBlocks : textToBlocks(r.biography);
+    initBodyEditor("personnel-biography-editor", bioBlocks);
     document.getElementById("personnel-portrait-url").value = meta.portrait || "";
 
     commandsDraft = Array.isArray(meta.commands) ? [...meta.commands] : [];
@@ -256,10 +264,16 @@ async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
 
+  const bioBlocks = readBodyBlocks("personnel-biography-editor");
+  const biographyText = bioBlocks
+    .map((b) => b.text || b.url || "")
+    .filter(Boolean)
+    .join("\n\n");
+
   const body = {
     name: form.querySelector("[name='name']").value.trim(),
     nationality: form.querySelector("[name='nationality']").value.trim() || undefined,
-    biography: form.querySelector("[name='biography']").value.trim() || undefined,
+    biography: biographyText || undefined,
     summary: form.querySelector("[name='summary']").value.trim() || undefined,
     published: form.querySelector("[name='published']").checked,
     metadata: {
@@ -268,6 +282,7 @@ async function handleSubmit(e) {
       service: form.querySelector("[name='service']").value.trim() || undefined,
       birthplace: form.querySelector("[name='birthplace']").value.trim() || undefined,
       portrait: document.getElementById("personnel-portrait-url").value.trim() || undefined,
+      biographyBlocks: bioBlocks.length ? bioBlocks : undefined,
       commands: commandsDraft.filter(Boolean),
       awards: awardsDraft.filter(Boolean),
       campaigns: campaignsDraft.filter(Boolean),

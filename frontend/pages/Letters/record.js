@@ -5,7 +5,9 @@
  * and new schema (author/unit/body/historical_context/archival_note).
  */
 
-const COLLECTIONS = [
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+
+const _COLLECTIONS_FALLBACK = [
   { id: "german",     label: "German",     file: "german.json" },
   { id: "italian",    label: "Italian",    file: "italian.json" },
   { id: "japanese",   label: "Japanese",   file: "japanese.json" },
@@ -14,17 +16,30 @@ const COLLECTIONS = [
   { id: "polish",     label: "Polish",     file: "polish.json" },
 ];
 
-const LANG_LABELS = Object.fromEntries(COLLECTIONS.map((c) => [c.id, c.label]));
+let _manifestPromise = null;
+async function loadManifest() {
+  if (!_manifestPromise) {
+    _manifestPromise = fetch("/public/data/letters/index.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
+  }
+  return _manifestPromise;
+}
 
 async function findLetter(id) {
-  for (const col of COLLECTIONS) {
+  const manifest = await loadManifest();
+  const collections = (manifest?.collections ?? _COLLECTIONS_FALLBACK).map((c) => ({
+    ...c,
+    file: c.file.replace("/public/data/letters/", ""),
+  }));
+  for (const col of collections) {
     try {
       const res = await fetch(`/public/data/letters/${col.file}`);
       if (!res.ok) continue;
       const data = await res.json();
       const arr = Array.isArray(data) ? data : data?.letters || [];
       const letter = arr.find((l) => l.id === id);
-      if (letter) return { ...letter, _lang: col.id };
+      if (letter) return { ...letter, _lang: col.id, _langLabel: col.label };
     } catch (_) {}
   }
   return null;
@@ -55,7 +70,7 @@ function normalise(letter) {
 
 function render(root, letter) {
   const n = normalise(letter);
-  const langLabel = LANG_LABELS[letter._lang || letter.collection || letter.language] || letter.language || "";
+  const langLabel = letter._langLabel || letter.language || "";
   const dateFmt   = formatDate(letter.date);
 
   document.title = `${n.from || "Letter"} · VeteransLedger`;
@@ -170,7 +185,7 @@ function renderRelatedRecords(rec, backPath) {
       ${related.length ? `
         <div class="record-related-grid">
           ${related.map((r) => `
-            <a class="record-related-card" href="${r.url || backPath + "/" + r.id}">
+            <a class="record-related-card" href="${resolveRelatedUrl(r.type, r.id)}">
               <span class="record-related-card__type">${r.type || ""}</span>
               <span class="record-related-card__title">${r.title || r.id}</span>
             </a>`).join("")}

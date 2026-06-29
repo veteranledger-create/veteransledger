@@ -6,9 +6,15 @@
     "service": "Heer / Abwehr",
     "type": "Special Forces Division",
     "theater": "All Fronts",
-    "active": { "from": "1939-10", "to": "1945-05" },
+    "active": {
+      "from": "1939-10",
+      "to": "1945-05"
+    },
     "commanders": [
-      { "name": "Oberstleutnant Alexander von Pfuhlstein / others", "period": "1940–1944" }
+      {
+        "name": "Oberstleutnant Alexander von Pfuhlstein / others",
+        "period": "1940–1944"
+      }
     ],
     "peak_strength": "c. 17,000 (1944, as division)",
     "summary": "The Brandenburgers were Germany's elite special operations unit, trained to operate behind enemy lines in foreign uniforms, speaking enemy languages. They captured key bridges and tunnels ahead of Barbarossa, seized the Maykop oilfields in the Caucasus, and conducted sabotage, assassination, and deception operations across all theaters.",
@@ -45,12 +51,26 @@
       }
     ],
     "sources": [
-      { "ref": "Kurowski, Franz. The Brandenburgers: Global Mission. J.J. Fedorowicz, 1997." }
+      {
+        "ref": "Kurowski, Franz. The Brandenburgers: Global Mission. J.J. Fedorowicz, 1997."
+      }
     ],
     "related_records": [
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "caucasus", "title": "Caucasus Campaign", "type": "Campaign", "url": "/campaigns/eastern-front/caucasus" },
-      { "id": "otto-skorzeny", "title": "Otto Skorzeny", "type": "Personnel", "url": "/personnel/otto-skorzeny" }
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "caucasus",
+        "title": "Caucasus Campaign",
+        "type": "Campaign"
+      },
+      {
+        "id": "otto-skorzeny",
+        "title": "Otto Skorzeny",
+        "type": "Personnel"
+      }
     ]
   }
 ]

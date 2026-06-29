@@ -78,18 +78,55 @@
   ],
   "archival_note": "Bundesarchiv, Koblenz. R 70 series: Reich Security Main Office (RSHA) occupation administration records. Bundesarchiv Berlin-Lichterfelde NS 19: Himmler personal staff — Generalplan Ost. Centre for Holocaust and Genocide Studies, Amsterdam: Records of the Reichskommissariat Niederlande.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv Berlin-Lichterfelde. NS 19/1739: Generalplan Ost — draft and comments, 1941–1942." },
-    { "type": "primary", "ref": "National Archives (UK). FO 371: Foreign Office records — occupied territories reports, 1940–1945." },
-    { "ref": "Mazower, Mark. Hitler's Empire: Nazi Rule in Occupied Europe. Allen Lane, 2008.", "note": "The definitive survey of Nazi occupation policy across Europe." },
-    { "ref": "Herbert, Ulrich. Hitler's Foreign Workers: Enforced Foreign Labor in Germany under the Third Reich. Cambridge University Press, 1997." },
-    { "ref": "Browning, Christopher. Ordinary Men: Reserve Police Battalion 101 and the Final Solution in Poland. HarperCollins, 1992." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv Berlin-Lichterfelde. NS 19/1739: Generalplan Ost — draft and comments, 1941–1942."
+    },
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). FO 371: Foreign Office records — occupied territories reports, 1940–1945."
+    },
+    {
+      "ref": "Mazower, Mark. Hitler's Empire: Nazi Rule in Occupied Europe. Allen Lane, 2008.",
+      "note": "The definitive survey of Nazi occupation policy across Europe."
+    },
+    {
+      "ref": "Herbert, Ulrich. Hitler's Foreign Workers: Enforced Foreign Labor in Germany under the Third Reich. Cambridge University Press, 1997."
+    },
+    {
+      "ref": "Browning, Christopher. Ordinary Men: Reserve Police Battalion 101 and the Final Solution in Poland. HarperCollins, 1992."
+    }
   ],
   "related_records": [
-    { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
-    { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" },
-    { "id": "poland", "title": "Invasion of Poland 1939", "type": "Campaign", "url": "/campaigns/western-front/poland" },
-    { "id": "warsaw", "title": "Warsaw Uprising", "type": "Campaign", "url": "/campaigns/western-front/warsaw" },
-    { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" },
-    { "id": "theodor-eicke", "title": "Theodor Eicke", "type": "Personnel", "url": "/personnel/theodor-eicke" }
+    {
+      "id": "rise-nsdap",
+      "title": "Rise of the NSDAP",
+      "type": "Article"
+    },
+    {
+      "id": "nuremberg",
+      "title": "The Nuremberg Trials",
+      "type": "Article"
+    },
+    {
+      "id": "poland",
+      "title": "Invasion of Poland 1939",
+      "type": "Campaign"
+    },
+    {
+      "id": "warsaw",
+      "title": "Warsaw Uprising",
+      "type": "Campaign"
+    },
+    {
+      "id": "france",
+      "title": "Fall of France",
+      "type": "Campaign"
+    },
+    {
+      "id": "theodor-eicke",
+      "title": "Theodor Eicke",
+      "type": "Personnel"
+    }
   ]
 }

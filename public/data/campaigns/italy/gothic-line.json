@@ -3,17 +3,27 @@
   "title": "Battle of the Gothic Line",
   "subtitle": "The Final German Defensive Line in Italy",
   "theater": "italy",
-  "dates": { "start": "1944-08-25", "end": "1945-04-21" },
+  "dates": {
+    "start": "1944-08-25",
+    "end": "1945-04-21"
+  },
   "date_start": "1944-08-25",
   "date_end": "1945-04-21",
   "theatre": "Northern Apennines, Italy",
   "combatants": {
     "axis": {
-      "commanders": ["Albert Kesselring (to March 1945)", "Heinrich von Vietinghoff (from March 1945)"],
+      "commanders": [
+        "Albert Kesselring (to March 1945)",
+        "Heinrich von Vietinghoff (from March 1945)"
+      ],
       "strength": "Heeresgruppe C — 10th Army, 14th Army"
     },
     "allied": {
-      "commanders": ["Harold Alexander (Supreme Allied Commander Italy)", "Oliver Leese / Richard McCreery (8th Army)", "Mark Clark (5th Army)"],
+      "commanders": [
+        "Harold Alexander (Supreme Allied Commander Italy)",
+        "Oliver Leese / Richard McCreery (8th Army)",
+        "Mark Clark (5th Army)"
+      ],
       "strength": "British 8th Army, US 5th Army, Canadian, Polish, Indian, Brazilian forces"
     }
   },
@@ -26,14 +36,37 @@
   "outcome": "Allied victory (April 1945). The Gothic Line's collapse triggered the German surrender in Italy on 2 May 1945.",
   "significance": "The last of Germany's Italian defensive lines; its collapse triggered the first major German surrender of the war.",
   "sources": [
-    { "type": "primary", "ref": "National Archives (UK). WO 204/8011: Allied Force HQ — Operations on the Gothic Line, August 1944–April 1945." },
-    { "ref": "Molony, C.J.C. The Mediterranean and Middle East, Vol. VI, Part I. HMSO, 1984." },
-    { "ref": "Ellis, John. Cassino: The Hollow Victory. André Deutsch, 1984.", "note": "Covers the entire Italian campaign including the Gothic Line operations." },
-    { "ref": "Kesselring, Albert. The Memoirs of Field-Marshal Kesselring. Greenhill Books, 1988.", "note": "The German commander's own account of Italian defensive strategy." }
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). WO 204/8011: Allied Force HQ — Operations on the Gothic Line, August 1944–April 1945."
+    },
+    {
+      "ref": "Molony, C.J.C. The Mediterranean and Middle East, Vol. VI, Part I. HMSO, 1984."
+    },
+    {
+      "ref": "Ellis, John. Cassino: The Hollow Victory. André Deutsch, 1984.",
+      "note": "Covers the entire Italian campaign including the Gothic Line operations."
+    },
+    {
+      "ref": "Kesselring, Albert. The Memoirs of Field-Marshal Kesselring. Greenhill Books, 1988.",
+      "note": "The German commander's own account of Italian defensive strategy."
+    }
   ],
   "related_records": [
-    { "id": "cassino", "title": "Battles of Monte Cassino", "type": "Campaign", "url": "/campaigns/italy/cassino" },
-    { "id": "sicily", "title": "Allied Invasion of Sicily", "type": "Campaign", "url": "/campaigns/italy/sicily" },
-    { "id": "kurt-student", "title": "Kurt Student", "type": "Personnel", "url": "/personnel/kurt-student" }
+    {
+      "id": "cassino",
+      "title": "Battles of Monte Cassino",
+      "type": "Campaign"
+    },
+    {
+      "id": "sicily",
+      "title": "Allied Invasion of Sicily",
+      "type": "Campaign"
+    },
+    {
+      "id": "kurt-student",
+      "title": "Kurt Student",
+      "type": "Personnel"
+    }
   ]
 }

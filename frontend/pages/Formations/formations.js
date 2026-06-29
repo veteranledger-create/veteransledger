@@ -4,6 +4,7 @@
  */
 
 import { createPaginator } from "/pages/shared/paginator.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
 const INDEX_URL = "/public/data/formations/index.json";
 const PAGE_SIZE = 12;
@@ -205,7 +206,7 @@ function formationCard(f) {
     : "";
 
   return `
-    <a class="record-card" href="/formations/${f.id}">
+    <a class="record-card" href="${resolveRelatedUrl("Formation", f.id)}">
       <div class="record-card__body">
         <div class="record-card__header">
           <span class="record-card__type">

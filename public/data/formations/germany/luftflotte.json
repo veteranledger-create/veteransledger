@@ -6,10 +6,19 @@
     "service": "Luftwaffe",
     "type": "Air Fleet",
     "theater": "Western Front / Mediterranean",
-    "active": { "from": "1939", "to": "1945" },
+    "active": {
+      "from": "1939",
+      "to": "1945"
+    },
     "commanders": [
-      { "name": "Generalfeldmarschall Albert Kesselring", "period": "Jan 1940–Dec 1941" },
-      { "name": "Generalfeldmarschall Wolfram von Richthofen", "period": "1943–1944" }
+      {
+        "name": "Generalfeldmarschall Albert Kesselring",
+        "period": "Jan 1940–Dec 1941"
+      },
+      {
+        "name": "Generalfeldmarschall Wolfram von Richthofen",
+        "period": "1943–1944"
+      }
     ],
     "peak_strength": "c. 1,200 aircraft (Battle of Britain, August 1940)",
     "summary": "Luftflotte 2 was the primary striking force in the Battle of Britain, responsible for attacks on south-east England and London from bases in Belgium and northern France. Under Kesselring it conducted the main assault on Fighter Command and the Blitz. It was later transferred to the Mediterranean theater.",
@@ -46,15 +55,39 @@
       }
     ],
     "sources": [
-      { "ref": "Bungay, Stephen. The Most Dangerous Enemy: A History of the Battle of Britain. Aurum Press, 2000." },
-      { "ref": "Orange, Vincent. Kesselring: The Making of the Luftwaffe. Batsford, 1990." }
+      {
+        "ref": "Bungay, Stephen. The Most Dangerous Enemy: A History of the Battle of Britain. Aurum Press, 2000."
+      },
+      {
+        "ref": "Orange, Vincent. Kesselring: The Making of the Luftwaffe. Batsford, 1990."
+      }
     ],
     "related_records": [
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
-      { "id": "albert-kesselring", "title": "Albert Kesselring", "type": "Personnel", "url": "/personnel/albert-kesselring" },
-      { "id": "hermann-goring", "title": "Hermann Göring", "type": "Personnel", "url": "/personnel/hermann-goring" },
-      { "id": "he-111", "title": "Heinkel He 111", "type": "Armament", "url": "/armaments/he-111" },
-      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" }
+      {
+        "id": "britain",
+        "title": "Battle of Britain",
+        "type": "Campaign"
+      },
+      {
+        "id": "albert-kesselring",
+        "title": "Albert Kesselring",
+        "type": "Personnel"
+      },
+      {
+        "id": "hermann-goring",
+        "title": "Hermann Göring",
+        "type": "Personnel"
+      },
+      {
+        "id": "he-111",
+        "title": "Heinkel He 111",
+        "type": "Armament"
+      },
+      {
+        "id": "bf-109",
+        "title": "Messerschmitt Bf 109",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -64,9 +97,15 @@
     "service": "Luftwaffe",
     "type": "Air Fleet",
     "theater": "Western Front",
-    "active": { "from": "1939", "to": "1945" },
+    "active": {
+      "from": "1939",
+      "to": "1945"
+    },
     "commanders": [
-      { "name": "Generalfeldmarschall Hugo Sperrle", "period": "Jan 1939–Aug 1944" }
+      {
+        "name": "Generalfeldmarschall Hugo Sperrle",
+        "period": "Jan 1939–Aug 1944"
+      }
     ],
     "peak_strength": "c. 800 aircraft (Battle of Britain)",
     "summary": "Luftflotte 3 under Sperrle operated from bases in France, conducting night bombing operations against British ports and industrial cities during the Blitz. It was the western of the two main Luftwaffe air fleets in the Battle of Britain.",
@@ -103,14 +142,34 @@
       }
     ],
     "sources": [
-      { "ref": "Proctor, Raymond. Hitler's Luftwaffe in the Spanish Civil War. Greenwood, 1983." },
-      { "ref": "Bungay, Stephen. The Most Dangerous Enemy. Aurum, 2000." }
+      {
+        "ref": "Proctor, Raymond. Hitler's Luftwaffe in the Spanish Civil War. Greenwood, 1983."
+      },
+      {
+        "ref": "Bungay, Stephen. The Most Dangerous Enemy. Aurum, 2000."
+      }
     ],
     "related_records": [
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
-      { "id": "hugo-sperrle", "title": "Hugo Sperrle", "type": "Personnel", "url": "/personnel/hugo-sperrle" },
-      { "id": "he-111", "title": "Heinkel He 111", "type": "Armament", "url": "/armaments/he-111" },
-      { "id": "luftflotte-2", "title": "Luftflotte 2", "type": "Formation", "url": "/formations/luftflotte-2" }
+      {
+        "id": "britain",
+        "title": "Battle of Britain",
+        "type": "Campaign"
+      },
+      {
+        "id": "hugo-sperrle",
+        "title": "Hugo Sperrle",
+        "type": "Personnel"
+      },
+      {
+        "id": "he-111",
+        "title": "Heinkel He 111",
+        "type": "Armament"
+      },
+      {
+        "id": "luftflotte-2",
+        "title": "Luftflotte 2",
+        "type": "Formation"
+      }
     ]
   },
   {
@@ -120,10 +179,19 @@
     "service": "Luftwaffe",
     "type": "Air Fleet",
     "theater": "Eastern Front / Balkans",
-    "active": { "from": "1940", "to": "1945" },
+    "active": {
+      "from": "1940",
+      "to": "1945"
+    },
     "commanders": [
-      { "name": "Generalfeldmarschall Alexander Löhr", "period": "1940–1942 (Balkans, Ukraine)" },
-      { "name": "Generalfeldmarschall Wolfram von Richthofen", "period": "Feb 1943–Sep 1943" }
+      {
+        "name": "Generalfeldmarschall Alexander Löhr",
+        "period": "1940–1942 (Balkans, Ukraine)"
+      },
+      {
+        "name": "Generalfeldmarschall Wolfram von Richthofen",
+        "period": "Feb 1943–Sep 1943"
+      }
     ],
     "peak_strength": "c. 1,500 aircraft (Operation Blue, 1942)",
     "summary": "Luftflotte 4 provided air support for Army Group South throughout Barbarossa and Operation Blue. Its Stuka units were instrumental in the Don–Volga offensive and the attempt to supply the 6th Army at Stalingrad. Richthofen's assessment that adequate air supply was impossible was ignored by Göring.",
@@ -160,14 +228,36 @@
       }
     ],
     "sources": [
-      { "ref": "Hayward, Joel. Stopped at Stalingrad: The Luftwaffe and Hitler's Defeat in the East, 1942–1943. University Press of Kansas, 1998." }
+      {
+        "ref": "Hayward, Joel. Stopped at Stalingrad: The Luftwaffe and Hitler's Defeat in the East, 1942–1943. University Press of Kansas, 1998."
+      }
     ],
     "related_records": [
-      { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-      { "id": "blue", "title": "Operation Blue", "type": "Campaign", "url": "/campaigns/eastern-front/blue" },
-      { "id": "barbarossa", "title": "Operation Barbarossa", "type": "Campaign", "url": "/campaigns/eastern-front/barbarossa" },
-      { "id": "hermann-goring", "title": "Hermann Göring", "type": "Personnel", "url": "/personnel/hermann-goring" },
-      { "id": "ju-87-stuka", "title": "Junkers Ju 87 Stuka", "type": "Armament", "url": "/armaments/ju-87-stuka" }
+      {
+        "id": "stalingrad",
+        "title": "Battle of Stalingrad",
+        "type": "Campaign"
+      },
+      {
+        "id": "blue",
+        "title": "Operation Blue",
+        "type": "Campaign"
+      },
+      {
+        "id": "barbarossa",
+        "title": "Operation Barbarossa",
+        "type": "Campaign"
+      },
+      {
+        "id": "hermann-goring",
+        "title": "Hermann Göring",
+        "type": "Personnel"
+      },
+      {
+        "id": "ju-87-stuka",
+        "title": "Junkers Ju 87 Stuka",
+        "type": "Armament"
+      }
     ]
   }
 ]

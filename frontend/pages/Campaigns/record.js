@@ -3,57 +3,37 @@
  * Reads :id from URL, fetches the matching campaign JSON, renders details.
  */
 
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
-const THEATER_FILES = {
-  "eastern-front": [
-    "barbarossa",
-    "blue",
-    "caucasus",
-    "kharkov",
-    "kiev",
-    "leningrad",
-    "moscow",
-    "stalingrad",
-  ],
-  "western-front": [
-    "britain",
-    "bulge",
-    "bzura",
-    "dieppe",
-    "dunkirk",
-    "france",
-    "market-garden",
-    "normandy",
-    "norway",
-    "poland",
-    "warsaw",
-  ],
-  africa: ["alamein-1", "alamein-2", "gazala", "sonnenblume", "tobruk"],
-  italy: ["cassino", "crete", "gothic-line", "sicily", "taranto"],
-  atlantic: [
-    "altmark",
-    "atlantic",
-    "convoy-war",
-    "rheinubung",
-    "river-plate",
-    "uboat-campaing",
-  ],
-};
+const _THEATERS_FALLBACK = [
+  { id: "eastern-front", label: "Eastern Front", campaigns: ["barbarossa","blue","caucasus","kharkov","kiev","leningrad","moscow","stalingrad"] },
+  { id: "western-front", label: "Western Front", campaigns: ["britain","bulge","bzura","dieppe","dunkirk","france","market-garden","normandy","norway","poland","warsaw"] },
+  { id: "africa",        label: "North Africa",  campaigns: ["alamein-1","alamein-2","gazala","sonnenblume","tobruk"] },
+  { id: "italy",         label: "Italy",         campaigns: ["cassino","crete","gothic-line","sicily","taranto"] },
+  { id: "atlantic",      label: "Atlantic",      campaigns: ["altmark","atlantic","convoy-war","rheinubung","river-plate","uboat-campaing"] },
+];
 
-const THEATER_LABELS = {
-  "eastern-front": "Eastern Front",
-  "western-front": "Western Front",
-  africa: "North Africa",
-  italy: "Italy",
-  atlantic: "Atlantic",
-};
+let _manifestPromise = null;
+async function loadManifest() {
+  if (!_manifestPromise) {
+    _manifestPromise = fetch("/public/data/campaigns/index.json")
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null);
+  }
+  return _manifestPromise;
+}
 
 async function findCampaign(id) {
-  for (const [theater, files] of Object.entries(THEATER_FILES)) {
-    if (!files.includes(id)) continue;
-    const res = await fetch(`/public/data/campaigns/${theater}/${id}.json`);
-    if (res.ok) return { ...(await res.json()), _theater: theater };
+  const manifest = await loadManifest();
+  const theaters = manifest?.theaters ?? _THEATERS_FALLBACK;
+  for (const theater of theaters) {
+    if (!(theater.campaigns || []).includes(id)) continue;
+    try {
+      const res = await fetch(`/public/data/campaigns/${theater.id}/${id}.json`);
+      if (res.ok) return { ...(await res.json()), _theater: theater.id, _theaterLabel: theater.label };
+    } catch (_) {}
   }
   return null;
 }
@@ -72,7 +52,7 @@ function formatDate(dateStr) {
 
 function render(root, campaign) {
   const theater = campaign._theater || campaign.theater || "";
-  const theaterLabel = THEATER_LABELS[theater] || theater;
+  const theaterLabel = campaign._theaterLabel || theater;
   const img = campaign.image || PLACEHOLDER;
   const dateStart = formatDate(campaign.dates?.start);
   const dateEnd = formatDate(campaign.dates?.end);
@@ -311,7 +291,7 @@ function renderRelatedRecords(rec, backPath) {
           ${related
             .map(
               (r) => `
-            <a class="record-related-card" href="${r.url || backPath + "/" + r.id}">
+            <a class="record-related-card" href="${resolveRelatedUrl(r.type, r.id)}">
               <span class="record-related-card__type">${r.type || ""}</span>
               <span class="record-related-card__title">${r.title || r.id}</span>
             </a>`,

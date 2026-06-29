@@ -36,6 +36,6 @@ export function errorHandler(
   });
 }
 
-export function notFoundHandler(req: Request, res: Response): void {
-  res.status(404).json({ error: `Route not found: ${req.originalUrl}` });
+export function notFoundHandler(_req: Request, res: Response): void {
+  res.status(404).json({ error: "Not found" });
 }

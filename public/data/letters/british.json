@@ -14,13 +14,29 @@
     "historical_context": "Corporal Ashworth was evacuated on 2 June 1940 aboard the requisitioned pleasure vessel SS Medway Queen. He survived and re-joined his battalion in England. The letter is consistent with accounts of the final days of Operation Dynamo, during which 338,226 Allied soldiers were evacuated. The 'small boats' — over 700 civilian and merchant vessels — were indeed mobilised to supplement the Royal Navy.",
     "archival_note": "Imperial War Museum Department of Documents. Private Papers of T.W. Ashworth. Reference IWM 08/46/1.",
     "sources": [
-      { "type": "primary", "ref": "Imperial War Museum. Private Papers of T.W. Ashworth. IWM Documents 08/46/1." },
-      { "ref": "Divine, A.D. Dunkirk. Faber and Faber, 1945.", "note": "Contemporaneous account drawing on survivor testimonies." },
-      { "ref": "Sebag-Montefiore, Hugh. Dunkirk: Fight to the Last Man. Viking, 2006." }
+      {
+        "type": "primary",
+        "ref": "Imperial War Museum. Private Papers of T.W. Ashworth. IWM Documents 08/46/1."
+      },
+      {
+        "ref": "Divine, A.D. Dunkirk. Faber and Faber, 1945.",
+        "note": "Contemporaneous account drawing on survivor testimonies."
+      },
+      {
+        "ref": "Sebag-Montefiore, Hugh. Dunkirk: Fight to the Last Man. Viking, 2006."
+      }
     ],
     "related_records": [
-      { "id": "dunkirk", "title": "Dunkirk Evacuation", "type": "Campaign", "url": "/campaigns/western-front/dunkirk" },
-      { "id": "france", "title": "Fall of France", "type": "Campaign", "url": "/campaigns/western-front/france" }
+      {
+        "id": "dunkirk",
+        "title": "Dunkirk Evacuation",
+        "type": "Campaign"
+      },
+      {
+        "id": "france",
+        "title": "Fall of France",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -38,14 +54,33 @@
     "historical_context": "By 8 September 1940, the Luftwaffe had shifted from attacking RAF airfields to bombing London — a critical strategic error that gave Fighter Command time to recover. No. 603 Squadron was among the squadrons based in 11 Group protecting London and the south-east. The letter's reference to seven losses since August is consistent with Fighter Command's attrition rates during the critical August–September period.",
     "archival_note": "Royal Air Force Museum, Hendon. Documents Collection. Papers of Flying Officer P.R. Clements. Reference RAF MUS X004-1752.",
     "sources": [
-      { "type": "primary", "ref": "Royal Air Force Museum, Hendon. Documents Collection. Papers of P.R. Clements. X004-1752." },
-      { "ref": "Orange, Vincent. Park: The Biography of Air Chief Marshal Sir Keith Park. Grub Street, 2001." },
-      { "ref": "Bungay, Stephen. The Most Dangerous Enemy: A History of the Battle of Britain. Aurum Press, 2000." }
+      {
+        "type": "primary",
+        "ref": "Royal Air Force Museum, Hendon. Documents Collection. Papers of P.R. Clements. X004-1752."
+      },
+      {
+        "ref": "Orange, Vincent. Park: The Biography of Air Chief Marshal Sir Keith Park. Grub Street, 2001."
+      },
+      {
+        "ref": "Bungay, Stephen. The Most Dangerous Enemy: A History of the Battle of Britain. Aurum Press, 2000."
+      }
     ],
     "related_records": [
-      { "id": "britain", "title": "Battle of Britain", "type": "Campaign", "url": "/campaigns/western-front/britain" },
-      { "id": "bf-109", "title": "Messerschmitt Bf 109", "type": "Armament", "url": "/armaments/bf-109" },
-      { "id": "erich-hartmann", "title": "Erich Hartmann", "type": "Personnel", "url": "/personnel/erich-hartmann" }
+      {
+        "id": "britain",
+        "title": "Battle of Britain",
+        "type": "Campaign"
+      },
+      {
+        "id": "bf-109",
+        "title": "Messerschmitt Bf 109",
+        "type": "Armament"
+      },
+      {
+        "id": "erich-hartmann",
+        "title": "Erich Hartmann",
+        "type": "Personnel"
+      }
     ]
   },
   {
@@ -63,14 +98,33 @@
     "historical_context": "The Second Battle of El Alamein ended on 11 November 1942 with the defeat of Rommel's Panzerarmee Afrika. The 7th Armoured Division ('Desert Rats') were among the most experienced British formations in North Africa. Sergeant Haddon's reference to 'burned' Shermans reflects the tank's vulnerability — early models carried ammunition in sponsons susceptible to fire, earning the nickname 'Ronson' (lights every time). His mention of German boots was a common practice among long-service desert veterans.",
     "archival_note": "Imperial War Museum Department of Documents. Private Papers of W.J. Haddon. Reference IWM 06/102/1.",
     "sources": [
-      { "type": "primary", "ref": "Imperial War Museum. Private Papers of W.J. Haddon. IWM Documents 06/102/1." },
-      { "ref": "Barnett, Correlli. The Desert Generals. William Kimber, 1960." },
-      { "ref": "Kitchen, Martin. Rommel's Desert War: Waging World War II in North Africa 1941–1943. Cambridge University Press, 2009." }
+      {
+        "type": "primary",
+        "ref": "Imperial War Museum. Private Papers of W.J. Haddon. IWM Documents 06/102/1."
+      },
+      {
+        "ref": "Barnett, Correlli. The Desert Generals. William Kimber, 1960."
+      },
+      {
+        "ref": "Kitchen, Martin. Rommel's Desert War: Waging World War II in North Africa 1941–1943. Cambridge University Press, 2009."
+      }
     ],
     "related_records": [
-      { "id": "alamein-2", "title": "Second Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-2" },
-      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-      { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" }
+      {
+        "id": "alamein-2",
+        "title": "Second Battle of El Alamein",
+        "type": "Campaign"
+      },
+      {
+        "id": "erwin-rommel",
+        "title": "Erwin Rommel",
+        "type": "Personnel"
+      },
+      {
+        "id": "gazala",
+        "title": "Battle of Gazala",
+        "type": "Campaign"
+      }
     ]
   },
   {
@@ -88,14 +142,34 @@
     "historical_context": "Major John Frost commanded the 2nd Parachute Battalion at Arnhem — the unit that reached and held the northern end of Arnhem bridge. The presence of II SS Panzer Corps (9th and 10th SS Panzer Divisions under Bittrich) was inadequately assessed by Allied intelligence. Frost was wounded and captured on 20 September; the last survivors of his battalion were overrun the following morning. He was liberated in April 1945. The battle became one of the most celebrated last stands of the British Army.",
     "archival_note": "Airborne Assault Museum, Duxford. Frost Papers and 2nd Para Battalion records. Reference AA/2PARA/OPS/1944.",
     "sources": [
-      { "type": "primary", "ref": "Airborne Assault Museum, Duxford. 2nd Parachute Battalion operational records. AA/2PARA/OPS/1944." },
-      { "ref": "Ryan, Cornelius. A Bridge Too Far. Simon and Schuster, 1974.", "note": "Frost's account forms a central thread of this narrative history." },
-      { "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990." }
+      {
+        "type": "primary",
+        "ref": "Airborne Assault Museum, Duxford. 2nd Parachute Battalion operational records. AA/2PARA/OPS/1944."
+      },
+      {
+        "ref": "Ryan, Cornelius. A Bridge Too Far. Simon and Schuster, 1974.",
+        "note": "Frost's account forms a central thread of this narrative history."
+      },
+      {
+        "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990."
+      }
     ],
     "related_records": [
-      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" },
-      { "id": "wilhelm-bittrich", "title": "Wilhelm Bittrich", "type": "Personnel", "url": "/personnel/wilhelm-bittrich" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" }
+      {
+        "id": "market-garden",
+        "title": "Operation Market Garden",
+        "type": "Campaign"
+      },
+      {
+        "id": "wilhelm-bittrich",
+        "title": "Wilhelm Bittrich",
+        "type": "Personnel"
+      },
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      }
     ]
   }
 ]

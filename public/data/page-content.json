@@ -1,0 +1,150 @@
+{
+  "about": {
+    "meta": {
+      "title": "About · VeteransLedger",
+      "description": "About VeteransLedger — Our mission, methodology, and sources for this historical archive."
+    },
+    "hero": {
+      "title": "About the Archive",
+      "subtitle": "Mission · Methodology · Sources"
+    },
+    "archiveInfo": {
+      "project": "VeteransLedger Axis Archive",
+      "period": "1933–1945",
+      "type": "Historical Documentation",
+      "license": "Educational Use Only",
+      "lastUpdated": "2026"
+    },
+    "sectionLabels": {
+      "mission-label": "Mission",
+      "sources-label": "Sources & Methodology",
+      "archive-info-title": "☆ Archive Information"
+    }
+  },
+  "timeline": {
+    "meta": {
+      "title": "Timeline · VeteransLedger",
+      "description": "VeteransLedger Timeline — Chronological history of the Axis powers 1933–1945."
+    },
+    "hero": {
+      "title": "Timeline",
+      "subtitle": "Chronological Archive · 1933–1945"
+    }
+  },
+  "campaigns": {
+    "meta": {
+      "title": "Campaigns · VeteransLedger",
+      "description": "VeteransLedger Campaigns — Detailed archives of Axis military operations and battles across all theaters."
+    },
+    "hero": {
+      "title": "Campaigns",
+      "subtitle": "Military Operations Archive"
+    }
+  },
+  "armaments": {
+    "meta": {
+      "title": "Armaments · VeteransLedger",
+      "description": "VeteransLedger Armaments — Tanks, aircraft, ships, weapons and secret Wunderwaffen projects of the Axis powers."
+    },
+    "hero": {
+      "title": "Armaments",
+      "subtitle": "Weapons & Technology Archive"
+    }
+  },
+  "personnel": {
+    "meta": {
+      "title": "Personnel · VeteransLedger",
+      "description": "VeteransLedger Personnel — Profiles, units, and biographies of Axis military personnel."
+    },
+    "hero": {
+      "title": "Personnel",
+      "subtitle": "Military Biographical Archive"
+    }
+  },
+  "letters": {
+    "meta": {
+      "title": "Letters · VeteransLedger",
+      "description": "VeteransLedger Letters — Personal correspondence from soldiers and volunteers of the Axis forces."
+    },
+    "hero": {
+      "title": "Letters",
+      "subtitle": "Personal Correspondence Archive"
+    }
+  },
+  "formations": {
+    "meta": {
+      "title": "Formations · VeteransLedger",
+      "description": "VeteransLedger Formations — Historical archive of Axis military formations: army groups, armies, corps, divisions, fleets, and volunteer units."
+    },
+    "hero": {
+      "title": "Formations",
+      "subtitle": "Nations & Military Formations Archive"
+    }
+  },
+  "nsdap": {
+    "meta": {
+      "title": "NSDAP · VeteransLedger",
+      "description": "VeteransLedger NSDAP — Historical documentation of the National Socialist German Workers' Party, its structure, leadership, and policies. Educational use only."
+    },
+    "hero": {
+      "title": "NSDAP",
+      "subtitle": "National Socialist Party Archive · Educational Documentation"
+    }
+  },
+  "articles": {
+    "meta": {
+      "title": "Articles · VeteransLedger",
+      "description": "VeteransLedger Articles — In-depth historical analyses covering military, political, economic, and legal aspects of the Axis powers."
+    },
+    "hero": {
+      "title": "Articles",
+      "subtitle": "Historical Research & Analysis"
+    }
+  },
+  "policies": {
+    "meta": {
+      "title": "Site Policies · VeteransLedger",
+      "description": "VeteransLedger — Site policies including terms of use, privacy policy, disclaimer, and copyright information."
+    },
+    "hero": {
+      "title": "Site Policies",
+      "subtitle": "Legal & Usage Information"
+    }
+  },
+  "search": {
+    "meta": {
+      "title": "Search · VeteransLedger",
+      "description": "Search VeteransLedger — Full-text search across all campaigns, personnel, armaments, letters and articles."
+    }
+  },
+  "awards": {
+    "meta": {
+      "title": "Awards & Decorations · VeteransLedger",
+      "description": "VeteransLedger Awards — Military decorations and orders of merit from the Axis powers 1933–1945."
+    },
+    "hero": {
+      "title": "Awards & Decorations",
+      "subtitle": "Military Honours Archive"
+    }
+  },
+  "maps": {
+    "meta": {
+      "title": "Historical Maps · VeteransLedger",
+      "description": "VeteransLedger Maps — Strategic and operational maps documenting Axis campaigns and territories 1933–1945."
+    },
+    "hero": {
+      "title": "Historical Maps",
+      "subtitle": "Cartographic Archive"
+    }
+  },
+  "political-docs": {
+    "meta": {
+      "title": "Political Documents · VeteransLedger",
+      "description": "VeteransLedger Political Documents — Treaties, decrees, and official documents of the Axis powers."
+    },
+    "hero": {
+      "title": "Political Documents",
+      "subtitle": "Official Records Archive"
+    }
+  }
+}

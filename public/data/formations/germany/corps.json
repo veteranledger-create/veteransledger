@@ -6,15 +6,36 @@
     "service": "Waffen-SS",
     "type": "Panzer Corps",
     "theater": "Eastern Front / Western Front",
-    "active": { "from": "1943-07", "to": "1945-05" },
+    "active": {
+      "from": "1943-07",
+      "to": "1945-05"
+    },
     "commanders": [
-      { "name": "SS-Oberstgruppenführer Paul Hausser", "period": "Jul 1943–Jun 1944" },
-      { "name": "SS-Oberstgruppenführer Sepp Dietrich", "period": "Jun 1944–Aug 1944 (redesignated 6th SS Panzer Army)" }
+      {
+        "name": "SS-Oberstgruppenführer Paul Hausser",
+        "period": "Jul 1943–Jun 1944"
+      },
+      {
+        "name": "SS-Oberstgruppenführer Sepp Dietrich",
+        "period": "Jun 1944–Aug 1944 (redesignated 6th SS Panzer Army)"
+      }
     ],
     "constituent_divisions": [
-      { "id": "leibstandarte-ss-ah",    "title": "1st SS Panzer Division Leibstandarte", "url": "/formations/leibstandarte-ss-ah" },
-      { "id": "ss-division-das-reich",  "title": "2nd SS Panzer Division Das Reich",      "url": "/formations/ss-division-das-reich" },
-      { "id": "ss-division-totenkopf",  "title": "3rd SS Panzer Division Totenkopf",      "url": "/formations/ss-division-totenkopf" }
+      {
+        "id": "leibstandarte-ss-ah",
+        "title": "1st SS Panzer Division Leibstandarte",
+        "url": "/formations/leibstandarte-ss-ah"
+      },
+      {
+        "id": "ss-division-das-reich",
+        "title": "2nd SS Panzer Division Das Reich",
+        "url": "/formations/ss-division-das-reich"
+      },
+      {
+        "id": "ss-division-totenkopf",
+        "title": "3rd SS Panzer Division Totenkopf",
+        "url": "/formations/ss-division-totenkopf"
+      }
     ],
     "peak_strength": "c. 70,000 (July 1943)",
     "summary": "The I SS Panzer Corps was the premier German armoured formation at Kharkov and Kursk, and in Normandy. Its three constituent SS divisions constituted the most powerful armoured concentration in the Wehrmacht. Under Hausser it recaptured Kharkov in February–March 1943 and formed the SS element of the Kursk offensive. In Normandy it faced the British and Canadians south of Caen.",
@@ -51,19 +72,59 @@
       }
     ],
     "sources": [
-      { "ref": "Nipe, George. Decision in the Ukraine. J.J. Fedorowicz, 1996." },
-      { "ref": "Lehmann, Rudolf. The Leibstandarte, Vol. III. J.J. Fedorowicz, 1990." }
+      {
+        "ref": "Nipe, George. Decision in the Ukraine. J.J. Fedorowicz, 1996."
+      },
+      {
+        "ref": "Lehmann, Rudolf. The Leibstandarte, Vol. III. J.J. Fedorowicz, 1990."
+      }
     ],
     "related_records": [
-      { "id": "kharkov", "title": "Third Battle of Kharkov", "type": "Campaign", "url": "/campaigns/eastern-front/kharkov" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
-      { "id": "paul-hausser", "title": "Paul Hausser", "type": "Personnel", "url": "/personnel/paul-hausser" },
-      { "id": "sepp-dietrich", "title": "Sepp Dietrich", "type": "Personnel", "url": "/personnel/sepp-dietrich" },
-      { "id": "pz-vi-tiger", "title": "Tiger I", "type": "Armament", "url": "/armaments/pz-vi-tiger" },
-      { "id": "4th-panzer-army", "title": "4th Panzer Army", "type": "Formation", "url": "/formations/4th-panzer-army" },
-      { "id": "leibstandarte-ss-ah", "title": "1. SS-Panzer-Division Leibstandarte", "type": "Formation", "url": "/formations/leibstandarte-ss-ah" },
-      { "id": "ss-division-das-reich", "title": "2. SS-Panzer-Division Das Reich", "type": "Formation", "url": "/formations/ss-division-das-reich" },
-      { "id": "ss-division-totenkopf", "title": "3. SS-Panzer-Division Totenkopf", "type": "Formation", "url": "/formations/ss-division-totenkopf" }
+      {
+        "id": "kharkov",
+        "title": "Third Battle of Kharkov",
+        "type": "Campaign"
+      },
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      },
+      {
+        "id": "paul-hausser",
+        "title": "Paul Hausser",
+        "type": "Personnel"
+      },
+      {
+        "id": "sepp-dietrich",
+        "title": "Sepp Dietrich",
+        "type": "Personnel"
+      },
+      {
+        "id": "pz-vi-tiger",
+        "title": "Tiger I",
+        "type": "Armament"
+      },
+      {
+        "id": "4th-panzer-army",
+        "title": "4th Panzer Army",
+        "type": "Formation"
+      },
+      {
+        "id": "leibstandarte-ss-ah",
+        "title": "1. SS-Panzer-Division Leibstandarte",
+        "type": "Formation"
+      },
+      {
+        "id": "ss-division-das-reich",
+        "title": "2. SS-Panzer-Division Das Reich",
+        "type": "Formation"
+      },
+      {
+        "id": "ss-division-totenkopf",
+        "title": "3. SS-Panzer-Division Totenkopf",
+        "type": "Formation"
+      }
     ],
     "dossier": {
       "order_of_battle": [
@@ -71,9 +132,24 @@
           "type": "orbat",
           "title": "I. SS-Panzerkorps — constituent divisions",
           "rows": [
-            { "unit": "1. SS-Panzer-Division Leibstandarte", "type": "Panzer Division", "commander": "SS-Brigadeführer Theodor Wisch (from Jul 1943)", "strength": "c. 21,000 (1944)" },
-            { "unit": "2. SS-Panzer-Division Das Reich",      "type": "Panzer Division", "commander": "Multiple commanders",                       "strength": "c. 19,000 (1943)" },
-            { "unit": "3. SS-Panzer-Division Totenkopf",      "type": "Panzer Division", "commander": "SS-Brigadeführer Hermann Priess / others",   "strength": "c. 19,000 (1943)" }
+            {
+              "unit": "1. SS-Panzer-Division Leibstandarte",
+              "type": "Panzer Division",
+              "commander": "SS-Brigadeführer Theodor Wisch (from Jul 1943)",
+              "strength": "c. 21,000 (1944)"
+            },
+            {
+              "unit": "2. SS-Panzer-Division Das Reich",
+              "type": "Panzer Division",
+              "commander": "Multiple commanders",
+              "strength": "c. 19,000 (1943)"
+            },
+            {
+              "unit": "3. SS-Panzer-Division Totenkopf",
+              "type": "Panzer Division",
+              "commander": "SS-Brigadeführer Hermann Priess / others",
+              "strength": "c. 19,000 (1943)"
+            }
           ]
         }
       ],
@@ -81,11 +157,23 @@
         {
           "type": "table",
           "title": "Principal Armor, 1943–1944",
-          "headers": ["Type", "Role"],
+          "headers": [
+            "Type",
+            "Role"
+          ],
           "rows": [
-            ["Panzer VI Tiger I", "Heavy breakthrough tank, concentrated in corps-level heavy companies"],
-            ["Panzer V Panther", "Main battle tank from late 1943 onward"],
-            ["StuG III", "Assault gun / tank destroyer, issued across all three divisions"]
+            [
+              "Panzer VI Tiger I",
+              "Heavy breakthrough tank, concentrated in corps-level heavy companies"
+            ],
+            [
+              "Panzer V Panther",
+              "Main battle tank from late 1943 onward"
+            ],
+            [
+              "StuG III",
+              "Assault gun / tank destroyer, issued across all three divisions"
+            ]
           ]
         }
       ],
@@ -105,12 +193,24 @@
     "service": "Waffen-SS",
     "type": "Panzer Corps",
     "theater": "Eastern Front / Western Front",
-    "active": { "from": "1943-02", "to": "1945-05" },
+    "active": {
+      "from": "1943-02",
+      "to": "1945-05"
+    },
     "commanders": [
-      { "name": "SS-Obergruppenführer Paul Hausser", "period": "Feb–Jul 1943" },
-      { "name": "SS-Obergruppenführer Wilhelm Bittrich", "period": "Jun 1944–May 1945" }
+      {
+        "name": "SS-Obergruppenführer Paul Hausser",
+        "period": "Feb–Jul 1943"
+      },
+      {
+        "name": "SS-Obergruppenführer Wilhelm Bittrich",
+        "period": "Jun 1944–May 1945"
+      }
     ],
-    "constituent_divisions": ["9th SS Panzer Division Hohenstaufen", "10th SS Panzer Division Frundsberg"],
+    "constituent_divisions": [
+      "9th SS Panzer Division Hohenstaufen",
+      "10th SS Panzer Division Frundsberg"
+    ],
     "peak_strength": "c. 75,000 (June 1944, Normandy)",
     "summary": "The II SS Panzer Corps was refitting near Arnhem when Operation Market Garden was launched in September 1944. Its 9th and 10th SS Panzer Divisions destroyed the British 1st Airborne Division at Arnhem and turned the largest Allied airborne operation of the war into a catastrophe.",
     "context": "The corps had fought at Kharkov and Kursk before being sent to France. After the Normandy defeat it was pulled back to re-equip in the Netherlands. Allied intelligence — specifically the failure of Major Brian Urquhart to convince his superiors that aerial photographs showed SS armour near Arnhem — did not adequately account for its presence. Bittrich's rapid decision to reinforce the Arnhem bridge with the 9th SS and block approaches with the 10th SS, combined with the breakdown of British radio communications, sealed the fate of the British 1st Airborne. Frost's battalion held the north end of Arnhem bridge for four days against elements of the corps before being overwhelmed.",
@@ -146,15 +246,39 @@
       }
     ],
     "sources": [
-      { "ref": "Beevor, Antony. Arnhem: The Battle for the Bridges, 1944. Viking, 2018." },
-      { "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990." }
+      {
+        "ref": "Beevor, Antony. Arnhem: The Battle for the Bridges, 1944. Viking, 2018."
+      },
+      {
+        "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990."
+      }
     ],
     "related_records": [
-      { "id": "market-garden", "title": "Operation Market Garden", "type": "Campaign", "url": "/campaigns/western-front/market-garden" },
-      { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
-      { "id": "wilhelm-bittrich", "title": "Wilhelm Bittrich", "type": "Personnel", "url": "/personnel/wilhelm-bittrich" },
-      { "id": "brit-004", "title": "Frost — Arnhem Bridge (1944)", "type": "Letter", "url": "/letters/brit-004" },
-      { "id": "pz-v-panther", "title": "Panther", "type": "Armament", "url": "/armaments/pz-v-panther" }
+      {
+        "id": "market-garden",
+        "title": "Operation Market Garden",
+        "type": "Campaign"
+      },
+      {
+        "id": "normandy",
+        "title": "Battle of Normandy",
+        "type": "Campaign"
+      },
+      {
+        "id": "wilhelm-bittrich",
+        "title": "Wilhelm Bittrich",
+        "type": "Personnel"
+      },
+      {
+        "id": "brit-004",
+        "title": "Frost — Arnhem Bridge (1944)",
+        "type": "Letter"
+      },
+      {
+        "id": "pz-v-panther",
+        "title": "Panther",
+        "type": "Armament"
+      }
     ]
   },
   {
@@ -164,14 +288,34 @@
     "service": "Heer",
     "type": "Corps",
     "theater": "North Africa",
-    "active": { "from": "1941-02", "to": "1943-02" },
+    "active": {
+      "from": "1941-02",
+      "to": "1943-02"
+    },
     "commanders": [
-      { "name": "Generalleutnant Erwin Rommel", "period": "Feb 1941–Aug 1941" },
-      { "name": "General Ludwig Crüwell", "period": "Aug 1941–May 1942" },
-      { "name": "General Walther Nehring", "period": "May–Sep 1942" }
+      {
+        "name": "Generalleutnant Erwin Rommel",
+        "period": "Feb 1941–Aug 1941"
+      },
+      {
+        "name": "General Ludwig Crüwell",
+        "period": "Aug 1941–May 1942"
+      },
+      {
+        "name": "General Walther Nehring",
+        "period": "May–Sep 1942"
+      }
     ],
-    "constituent_divisions": ["15th Panzer Division", "21st Panzer Division", "90th Light Afrika Division"],
-    "parent_formation": { "id": "panzerarmee-afrika", "title": "Panzerarmee Afrika", "url": "/formations/panzerarmee-afrika" },
+    "constituent_divisions": [
+      "15th Panzer Division",
+      "21st Panzer Division",
+      "90th Light Afrika Division"
+    ],
+    "parent_formation": {
+      "id": "panzerarmee-afrika",
+      "title": "Panzerarmee Afrika",
+      "url": "/formations/panzerarmee-afrika"
+    },
     "peak_strength": "c. 50,000 (mid-1942)",
     "fate": "Absorbed into Panzerarmee Afrika as its German corps component; surrendered with Heeresgruppe Afrika in Tunisia, May 1943.",
     "summary": "The Deutsches Afrikakorps was the original German expeditionary force sent to North Africa in February 1941 to support the collapsing Italian position in Libya. Built initially around the 5th Light Division (later 21st Panzer) and 15th Panzer Division, it became the core of Rommel's desert army and gave its name — Afrika Korps — to the entire German presence in the theater, even after it was administratively absorbed into the larger Panzerarmee Afrika.",
@@ -208,15 +352,39 @@
       }
     ],
     "sources": [
-      { "ref": "Lewin, Ronald. The Life and Death of the Afrika Korps. Batsford, 1977." },
-      { "ref": "Rommel, Erwin. The Rommel Papers. Ed. B.H. Liddell Hart. Collins, 1953." }
+      {
+        "ref": "Lewin, Ronald. The Life and Death of the Afrika Korps. Batsford, 1977."
+      },
+      {
+        "ref": "Rommel, Erwin. The Rommel Papers. Ed. B.H. Liddell Hart. Collins, 1953."
+      }
     ],
     "related_records": [
-      { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-      { "id": "sonnenblume", "title": "Operation Sonnenblume", "type": "Campaign", "url": "/campaigns/africa/sonnenblume" },
-      { "id": "tobruk", "title": "Siege of Tobruk", "type": "Campaign", "url": "/campaigns/africa/tobruk" },
-      { "id": "panzerarmee-afrika", "title": "Panzerarmee Afrika", "type": "Formation", "url": "/formations/panzerarmee-afrika" },
-      { "id": "flak-88", "title": "8.8 cm Flak 88", "type": "Armament", "url": "/armaments/flak-88" }
+      {
+        "id": "erwin-rommel",
+        "title": "Erwin Rommel",
+        "type": "Personnel"
+      },
+      {
+        "id": "sonnenblume",
+        "title": "Operation Sonnenblume",
+        "type": "Campaign"
+      },
+      {
+        "id": "tobruk",
+        "title": "Siege of Tobruk",
+        "type": "Campaign"
+      },
+      {
+        "id": "panzerarmee-afrika",
+        "title": "Panzerarmee Afrika",
+        "type": "Formation"
+      },
+      {
+        "id": "flak-88",
+        "title": "8.8 cm Flak 88",
+        "type": "Armament"
+      }
     ]
   }
 ]

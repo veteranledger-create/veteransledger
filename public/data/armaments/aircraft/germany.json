@@ -29,19 +29,16 @@
     "related_records": [
       {
         "id": "adolf-galland",
-        "url": "/personnel/adolf-galland",
         "type": "Personnel",
         "title": "Adolf Galland"
       },
       {
         "id": "britain",
-        "url": "/campaigns/britain",
         "type": "Campaign",
         "title": "Battle of Britain"
       },
       {
         "id": "bf-109",
-        "url": "/armaments/bf-109",
         "type": "Armament",
         "title": "Bf 109"
       }
@@ -77,13 +74,11 @@
     "related_records": [
       {
         "id": "fw-190",
-        "url": "/armaments/fw-190",
         "type": "Armament",
         "title": "Focke-Wulf Fw 190"
       },
       {
         "id": "bf-109",
-        "url": "/armaments/bf-109",
         "type": "Armament",
         "title": "Messerschmitt Bf 109"
       }
@@ -132,19 +127,16 @@
     "related_records": [
       {
         "id": "britain",
-        "url": "/campaigns/britain",
         "type": "Campaign",
         "title": "Battle of Britain"
       },
       {
         "id": "hugo-sperrle",
-        "url": "/personnel/hugo-sperrle",
         "type": "Personnel",
         "title": "Hugo Sperrle"
       },
       {
         "id": "rearmament",
-        "url": "/articles/military/rearmament",
         "type": "Article",
         "title": "German Rearmament 1933–1939"
       }
@@ -180,19 +172,16 @@
     "related_records": [
       {
         "id": "he-111",
-        "url": "/armaments/he-111",
         "type": "Armament",
         "title": "Heinkel He 111"
       },
       {
         "id": "hs-293",
-        "url": "/armaments/hs-293",
         "type": "Armament",
         "title": "Henschel Hs 293"
       },
       {
         "id": "atlantic",
-        "url": "/campaigns/atlantic",
         "type": "Campaign",
         "title": "Battle of the Atlantic"
       }
@@ -229,13 +218,11 @@
     "related_records": [
       {
         "id": "joseph-kammhuber",
-        "url": "/personnel/joseph-kammhuber",
         "type": "Personnel",
         "title": "Josef Kammhuber"
       },
       {
         "id": "me-262",
-        "url": "/armaments/me-262",
         "type": "Armament",
         "title": "Messerschmitt Me 262"
       }
@@ -269,13 +256,11 @@
     "related_records": [
       {
         "id": "hans-ulrich-rudel",
-        "url": "/personnel/hans-ulrich-rudel",
         "type": "Personnel",
         "title": "Hans-Ulrich Rudel"
       },
       {
         "id": "barbarossa",
-        "url": "/campaigns/barbarossa",
         "type": "Campaign",
         "title": "Operation Barbarossa"
       }
@@ -315,25 +300,21 @@
     "related_records": [
       {
         "id": "erich-hartmann",
-        "url": "/personnel/erich-hartmann",
         "type": "Personnel",
         "title": "Erich Hartmann"
       },
       {
         "id": "gerhard-barkhorn",
-        "url": "/personnel/gerhard-barkhorn",
         "type": "Personnel",
         "title": "Gerhard Barkhorn"
       },
       {
         "id": "britain",
-        "url": "/campaigns/britain",
         "type": "Campaign",
         "title": "Battle of Britain"
       },
       {
         "id": "rearmament",
-        "url": "/articles/military/rearmament",
         "type": "Article",
         "title": "German Rearmament 1933–1939"
       }
@@ -369,19 +350,16 @@
     "related_records": [
       {
         "id": "adolf-galland",
-        "url": "/personnel/adolf-galland",
         "type": "Personnel",
         "title": "Adolf Galland"
       },
       {
         "id": "walter-nowotny",
-        "url": "/personnel/walter-nowotny",
         "type": "Personnel",
         "title": "Walter Nowotny"
       },
       {
         "id": "me-163-komet",
-        "url": "/armaments/me-163-komet",
         "type": "Armament",
         "title": "Me 163 Komet"
       }

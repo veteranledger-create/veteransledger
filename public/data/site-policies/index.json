@@ -1,0 +1,9 @@
+{
+  "policies": [
+    { "id": "terms",      "file": "/public/data/site-policies/terms-of-use.json",    "bodyId": "terms-body" },
+    { "id": "privacy",    "file": "/public/data/site-policies/privacy-policy.json",  "bodyId": "privacy-body" },
+    { "id": "disclaimer", "file": "/public/data/site-policies/disclaimer.json",      "bodyId": "disclaimer-body" },
+    { "id": "copyright",  "file": "/public/data/site-policies/copyright-policy.json","bodyId": "copyright-body" },
+    { "id": "removal",   "file": "/public/data/site-policies/removal-requests.json", "bodyId": "removal-body"   }
+  ]
+}

@@ -22,13 +22,33 @@
   "outcome": "British victory — 299 prisoners freed",
   "significance": "Contributed to the German decision to invade Norway; famous for 'The Navy's here' rescue.",
   "sources": [
-    { "type": "primary", "ref": "National Archives (UK). ADM 199/391: HMS Cossack — Report of Proceedings, Altmark Incident, February 1940." },
-    { "ref": "Haarr, Geirr. The German Invasion of Norway, April 1940. Naval Institute Press, 2009." },
-    { "ref": "Vian, Philip. Action This Day: A War Memoir. Frederick Muller, 1960.", "note": "Memoir of the commander who ordered the boarding." }
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). ADM 199/391: HMS Cossack — Report of Proceedings, Altmark Incident, February 1940."
+    },
+    {
+      "ref": "Haarr, Geirr. The German Invasion of Norway, April 1940. Naval Institute Press, 2009."
+    },
+    {
+      "ref": "Vian, Philip. Action This Day: A War Memoir. Frederick Muller, 1960.",
+      "note": "Memoir of the commander who ordered the boarding."
+    }
   ],
   "related_records": [
-    { "id": "river-plate", "title": "Battle of the River Plate", "type": "Campaign", "url": "/campaigns/atlantic/river-plate" },
-    { "id": "norway", "title": "Norwegian Campaign", "type": "Campaign", "url": "/campaigns/western-front/norway" },
-    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
+    {
+      "id": "river-plate",
+      "title": "Battle of the River Plate",
+      "type": "Campaign"
+    },
+    {
+      "id": "norway",
+      "title": "Norwegian Campaign",
+      "type": "Campaign"
+    },
+    {
+      "id": "erich-raeder",
+      "title": "Erich Raeder",
+      "type": "Personnel"
+    }
   ]
 }

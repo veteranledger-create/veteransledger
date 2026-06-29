@@ -15,13 +15,28 @@
     "notes": "Gefreiter Becker was killed in action near Rzhev in January 1942. This letter was returned to his family after the war.",
     "archive_source": "Private family collection, donated 1960",
     "sources": [
-      { "type": "primary", "ref": "Original letter, private family collection, donated to Bundesarchiv-Militärarchiv, Freiburg, 1960. Bestand RH 37/6254." },
-      { "ref": "Glantz, David M. and House, Jonathan. When Titans Clashed: How the Red Army Stopped Hitler. University Press of Kansas, 1995." },
-      { "ref": "Stahel, David. Operation Typhoon: Hitler's March on Moscow, October 1941. Cambridge University Press, 2013." }
+      {
+        "type": "primary",
+        "ref": "Original letter, private family collection, donated to Bundesarchiv-Militärarchiv, Freiburg, 1960. Bestand RH 37/6254."
+      },
+      {
+        "ref": "Glantz, David M. and House, Jonathan. When Titans Clashed: How the Red Army Stopped Hitler. University Press of Kansas, 1995."
+      },
+      {
+        "ref": "Stahel, David. Operation Typhoon: Hitler's March on Moscow, October 1941. Cambridge University Press, 2013."
+      }
     ],
     "related_records": [
-      { "id": "de-002", "title": "Müller — Stalingrad Pocket (1942)", "type": "German Collection" },
-      { "id": "de-004", "title": "Haas — Normandy (1944)", "type": "German Collection" }
+      {
+        "id": "de-002",
+        "title": "Müller — Stalingrad Pocket (1942)",
+        "type": "German Collection"
+      },
+      {
+        "id": "de-004",
+        "title": "Haas — Normandy (1944)",
+        "type": "German Collection"
+      }
     ]
   },
   {
@@ -40,13 +55,30 @@
     "notes": "Müller surrendered on 2 February 1943 and died in Soviet captivity in March 1943. This letter was part of the last mail airlift from the Stalingrad pocket.",
     "archive_source": "Bundesarchiv-Militärarchiv, Freiburg",
     "sources": [
-      { "type": "primary", "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 2/2763. Part of the Letzte Briefe aus Stalingrad collection." },
-      { "ref": "Beevor, Antony. Stalingrad. Viking, 1998.", "note": "Definitive English-language account of the battle and its human cost." },
-      { "ref": "Last Letters from Stalingrad. Translated by Franz Schneider and Charles Gullans. William Morrow, 1962.", "note": "Collected correspondence from the airlift; provides direct comparison texts." }
+      {
+        "type": "primary",
+        "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 2/2763. Part of the Letzte Briefe aus Stalingrad collection."
+      },
+      {
+        "ref": "Beevor, Antony. Stalingrad. Viking, 1998.",
+        "note": "Definitive English-language account of the battle and its human cost."
+      },
+      {
+        "ref": "Last Letters from Stalingrad. Translated by Franz Schneider and Charles Gullans. William Morrow, 1962.",
+        "note": "Collected correspondence from the airlift; provides direct comparison texts."
+      }
     ],
     "related_records": [
-      { "id": "de-001", "title": "Becker — Vyazma, Eastern Front (1941)", "type": "German Collection" },
-      { "id": "de-003", "title": "Von Schiller — Paris (1940)", "type": "German Collection" }
+      {
+        "id": "de-001",
+        "title": "Becker — Vyazma, Eastern Front (1941)",
+        "type": "German Collection"
+      },
+      {
+        "id": "de-003",
+        "title": "Von Schiller — Paris (1940)",
+        "type": "German Collection"
+      }
     ]
   },
   {
@@ -65,13 +97,29 @@
     "notes": "Von Schiller survived the war and emigrated to Argentina in 1947.",
     "archive_source": "Private collection",
     "sources": [
-      { "type": "primary", "ref": "Original letter, private collection. Photocopy held at Institut für Zeitgeschichte, Munich. ED 200/5." },
-      { "ref": "Frieser, Karl-Heinz. The Blitzkrieg Legend: The 1940 Campaign in the West. Naval Institute Press, 2005.", "note": "Definitive operational history of the French campaign based on German archives." },
-      { "ref": "Jackson, Julian. The Fall of France: The Nazi Invasion of 1940. Oxford University Press, 2003." }
+      {
+        "type": "primary",
+        "ref": "Original letter, private collection. Photocopy held at Institut für Zeitgeschichte, Munich. ED 200/5."
+      },
+      {
+        "ref": "Frieser, Karl-Heinz. The Blitzkrieg Legend: The 1940 Campaign in the West. Naval Institute Press, 2005.",
+        "note": "Definitive operational history of the French campaign based on German archives."
+      },
+      {
+        "ref": "Jackson, Julian. The Fall of France: The Nazi Invasion of 1940. Oxford University Press, 2003."
+      }
     ],
     "related_records": [
-      { "id": "de-002", "title": "Müller — Stalingrad Pocket (1942)", "type": "German Collection" },
-      { "id": "de-004", "title": "Haas — Normandy (1944)", "type": "German Collection" }
+      {
+        "id": "de-002",
+        "title": "Müller — Stalingrad Pocket (1942)",
+        "type": "German Collection"
+      },
+      {
+        "id": "de-004",
+        "title": "Haas — Normandy (1944)",
+        "type": "German Collection"
+      }
     ]
   },
   {
@@ -90,13 +138,29 @@
     "notes": "Hauptmann Haas was wounded at Falaise in August 1944 and survived the war. He became a schoolteacher in Baden-Württemberg.",
     "archive_source": "Family donation, Bundesarchiv",
     "sources": [
-      { "type": "primary", "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 1/3021. Family donation, 1972." },
-      { "ref": "Hastings, Max. Overlord: D-Day and the Battle for Normandy. Simon & Schuster, 1984." },
-      { "ref": "Meyer, Hubert. The History of the 12. SS-Panzerdivision 'Hitlerjugend'. J.J. Fedorowicz, 1994.", "note": "Unit history; use with awareness of author's participation in the events described." }
+      {
+        "type": "primary",
+        "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 1/3021. Family donation, 1972."
+      },
+      {
+        "ref": "Hastings, Max. Overlord: D-Day and the Battle for Normandy. Simon & Schuster, 1984."
+      },
+      {
+        "ref": "Meyer, Hubert. The History of the 12. SS-Panzerdivision 'Hitlerjugend'. J.J. Fedorowicz, 1994.",
+        "note": "Unit history; use with awareness of author's participation in the events described."
+      }
     ],
     "related_records": [
-      { "id": "de-001", "title": "Becker — Eastern Front (1941)", "type": "German Collection" },
-      { "id": "de-003", "title": "Von Schiller — Paris (1940)", "type": "German Collection" }
+      {
+        "id": "de-001",
+        "title": "Becker — Eastern Front (1941)",
+        "type": "German Collection"
+      },
+      {
+        "id": "de-003",
+        "title": "Von Schiller — Paris (1940)",
+        "type": "German Collection"
+      }
     ]
   }
 ]

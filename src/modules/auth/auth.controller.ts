@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { AuthService } from "./auth.service";
+import { AppError } from "../../middleware/error.middleware";
+import { logger } from "../../middleware/logger.middleware";
 
 const service = new AuthService();
 
@@ -8,15 +10,20 @@ export class AuthController {
     try {
       const { email, password } = req.body;
       const result = await service.login(email, password);
+      logger.info("Auth: login success", { email: req.body?.email, ip: req.ip });
       res.json(result);
     } catch (err) {
+      logger.warn("Auth: login failure", { email: req.body?.email, ip: req.ip });
       next(err);
     }
   }
 
   async logout(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      req.session.destroy(() => {});
+      await new Promise<void>((resolve, reject) =>
+        req.session.destroy((err) => (err ? reject(err) : resolve()))
+      );
+      res.clearCookie("vl_session");
       res.json({ message: "Logged out successfully" });
     } catch (err) {
       next(err);

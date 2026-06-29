@@ -2,25 +2,67 @@
   "id": "alamein-1",
   "title": "First Battle of El Alamein",
   "theater": "africa",
-  "dates": { "start": "1942-07-01", "end": "1942-07-27" },
+  "dates": {
+    "start": "1942-07-01",
+    "end": "1942-07-27"
+  },
   "summary": "The First Battle of El Alamein halted Rommel's advance into Egypt just 100 km from Alexandria. After Rommel's capture of Tobruk, he drove deep into Egypt before being stopped at a defensive line anchored between El Alamein on the coast and the Qattara Depression — terrain too soft for armour.",
   "context": "By July 1942, Rommel's Panzerarmee Afrika had achieved its greatest advance, driving the British 8th Army back over 500 km from Gazala to the El Alamein line following the fall of Tobruk on 21 June. The situation for the Allies was desperate: Egypt, the Suez Canal, and the entire Middle East were under threat. Rommel, recently promoted to Generalfeldmarschall, was at the extreme end of his supply lines and had lost a large proportion of his tanks and artillery. The El Alamein position — with its southern flank anchored on the impassable Qattara Depression — was the last defensible position before Alexandria and Cairo.",
   "combatants": {
-    "axis": { "commanders": ["Erwin Rommel"], "strength": "Panzerarmee Afrika (exhausted, at end of supply lines)" },
-    "allied": { "commanders": ["Claude Auchinleck"], "strength": "8th Army" }
+    "axis": {
+      "commanders": [
+        "Erwin Rommel"
+      ],
+      "strength": "Panzerarmee Afrika (exhausted, at end of supply lines)"
+    },
+    "allied": {
+      "commanders": [
+        "Claude Auchinleck"
+      ],
+      "strength": "8th Army"
+    }
   },
   "outcome": "Allied defensive success. Rommel's overextended advance was halted; this was his high-water mark in Africa. His failure to break through set the stage for the decisive Second Battle in October–November.",
-  "casualties": { "axis": "~13,000 killed, wounded, captured", "allied": "~13,250 killed, wounded, captured" },
+  "casualties": {
+    "axis": "~13,000 killed, wounded, captured",
+    "allied": "~13,250 killed, wounded, captured"
+  },
   "sources": [
-    { "type": "primary", "ref": "National Archives (UK). WO 201/429: 8th Army Operations, July 1942." },
-    { "ref": "Playfair, I.S.O. The Mediterranean and Middle East, Vol. III. HMSO, 1960." },
-    { "ref": "Carver, Michael. El Alamein. Batsford, 1962.", "note": "Carver commanded an armoured brigade in the battle." },
-    { "ref": "Bierman, John and Smith, Colin. Alamein: War Without Hate. Viking, 2002." }
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). WO 201/429: 8th Army Operations, July 1942."
+    },
+    {
+      "ref": "Playfair, I.S.O. The Mediterranean and Middle East, Vol. III. HMSO, 1960."
+    },
+    {
+      "ref": "Carver, Michael. El Alamein. Batsford, 1962.",
+      "note": "Carver commanded an armoured brigade in the battle."
+    },
+    {
+      "ref": "Bierman, John and Smith, Colin. Alamein: War Without Hate. Viking, 2002."
+    }
   ],
   "related_records": [
-    { "id": "alamein-2", "title": "Second Battle of El Alamein", "type": "Campaign", "url": "/campaigns/africa/alamein-2" },
-    { "id": "gazala", "title": "Battle of Gazala", "type": "Campaign", "url": "/campaigns/africa/gazala" },
-    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-    { "id": "it-002", "title": "Colombo — El Alamein (1942)", "type": "Letter", "url": "/letters/it-002" }
+    {
+      "id": "alamein-2",
+      "title": "Second Battle of El Alamein",
+      "type": "Campaign"
+    },
+    {
+      "id": "gazala",
+      "title": "Battle of Gazala",
+      "type": "Campaign"
+    },
+    {
+      "id": "erwin-rommel",
+      "title": "Erwin Rommel",
+      "type": "Personnel"
+    },
+    {
+      "id": "it-002",
+      "title": "Colombo — El Alamein (1942)",
+      "type": "Letter"
+    }
   ]
 }

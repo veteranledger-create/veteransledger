@@ -15,10 +15,6 @@ async function init() {
 
   renderMission(document.getElementById("mission-content"), missionData.value);
   renderSources(document.getElementById("sources-content"), sourcesData.value);
-
-  // Update last-updated date
-  const el = document.getElementById("last-updated");
-  if (el) el.textContent = new Date().getFullYear();
 }
 
 function renderMission(container, data) {

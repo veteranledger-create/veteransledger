@@ -2,16 +2,27 @@
   "id": "market-garden",
   "title": "Operation Market Garden",
   "theater": "western-front",
-  "dates": { "start": "1944-09-17", "end": "1944-09-25" },
+  "dates": {
+    "start": "1944-09-17",
+    "end": "1944-09-25"
+  },
   "summary": "Operation Market Garden was a combined airborne and ground offensive in the Netherlands aimed at capturing eight bridges over the Rhine and ending the war by Christmas 1944. The airborne landings (Market) succeeded in capturing most objectives, but the ground advance (Garden) failed to relieve the British 1st Airborne Division at Arnhem — a 'bridge too far'.",
   "context": "Montgomery's plan was audaciously simple: three airborne divisions would land in a 100 km corridor in Holland, seizing bridges at Eindhoven, Nijmegen, and Arnhem; then XXX Corps' armoured column would drive up a single road from Belgium, crossing each bridge in turn and emerging beyond the Rhine. It was predicated on speed and surprise. Both were denied. Ultra intelligence failed to identify that II SS Panzer Corps (9th and 10th SS Panzer Divisions) was refitting near Arnhem. The British 1st Airborne Division was dropped 13 km from the bridge, their radios failed, and only one battalion (2nd Parachute Battalion under Lt Col Frost) reached Arnhem bridge and held it for four days. XXX Corps, confined to a single road through flat terrain, was repeatedly delayed. By the time relief elements reached the Arnhem perimeter on 25 September, the British 1st Airborne had been destroyed as a fighting force. The operation's failure meant the war continued into 1945, and the Netherlands endured the 'Hunger Winter' of 1944–45, in which 22,000 Dutch civilians starved.",
   "combatants": {
     "axis": {
-      "commanders": ["Walter Model (Army Group B)", "Wilhelm Bittrich (II SS Panzer Corps)"],
+      "commanders": [
+        "Walter Model (Army Group B)",
+        "Wilhelm Bittrich (II SS Panzer Corps)"
+      ],
       "strength": "9th and 10th SS Panzer Divisions (refitting near Arnhem)"
     },
     "allied": {
-      "commanders": ["Bernard Montgomery", "Frederick Browning", "Brian Horrocks (XXX Corps)", "Roy Urquhart (1st Airborne)"],
+      "commanders": [
+        "Bernard Montgomery",
+        "Frederick Browning",
+        "Brian Horrocks (XXX Corps)",
+        "Roy Urquhart (1st Airborne)"
+      ],
       "strength": "35,000 airborne troops (US 82nd, US 101st, British 1st); XXX Corps ground force"
     }
   },
@@ -21,14 +32,37 @@
     "allied": "~15,300–17,000 killed, wounded, captured (all nations); 1st Airborne Division virtually destroyed"
   },
   "sources": [
-    { "type": "primary", "ref": "National Archives (UK). WO 205/693: 21st Army Group — Operation Market Garden Report, September 1944." },
-    { "ref": "Ryan, Cornelius. A Bridge Too Far. Simon and Schuster, 1974.", "note": "The definitive popular history; based on interviews with ~1,000 survivors from all sides." },
-    { "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990.", "note": "First German-language account of Market Garden from the German perspective." },
-    { "ref": "Beevor, Antony. Arnhem: The Battle for the Bridges, 1944. Viking, 2018." }
+    {
+      "type": "primary",
+      "ref": "National Archives (UK). WO 205/693: 21st Army Group — Operation Market Garden Report, September 1944."
+    },
+    {
+      "ref": "Ryan, Cornelius. A Bridge Too Far. Simon and Schuster, 1974.",
+      "note": "The definitive popular history; based on interviews with ~1,000 survivors from all sides."
+    },
+    {
+      "ref": "Kershaw, Robert. It Never Snows in September: The German View of Market Garden. Ian Allen, 1990.",
+      "note": "First German-language account of Market Garden from the German perspective."
+    },
+    {
+      "ref": "Beevor, Antony. Arnhem: The Battle for the Bridges, 1944. Viking, 2018."
+    }
   ],
   "related_records": [
-    { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
-    { "id": "walter-model", "title": "Walter Model", "type": "Personnel", "url": "/personnel/walter-model" },
-    { "id": "bulge", "title": "Battle of the Bulge", "type": "Campaign", "url": "/campaigns/western-front/bulge" }
+    {
+      "id": "normandy",
+      "title": "Battle of Normandy",
+      "type": "Campaign"
+    },
+    {
+      "id": "walter-model",
+      "title": "Walter Model",
+      "type": "Personnel"
+    },
+    {
+      "id": "bulge",
+      "title": "Battle of the Bulge",
+      "type": "Campaign"
+    }
   ]
 }

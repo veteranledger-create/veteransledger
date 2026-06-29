@@ -1,0 +1,52 @@
+import { RecordLike } from "../publish.types";
+
+interface SourceEntry { type?: string; ref?: string; note?: string; }
+interface RelatedEntry { id: string; title?: string; type?: string; }
+
+export interface MapJson {
+  id: string;
+  title: string;
+  theater?: string;
+  year?: number;
+  summary?: string;
+  image?: string;
+  gallery?: unknown[];
+  documents?: unknown[];
+  sources?: SourceEntry[];
+  related_records?: RelatedEntry[];
+}
+
+function meta(record: RecordLike, key: string): unknown {
+  return record.metadata ? record.metadata[key] : undefined;
+}
+function str(v: unknown): string | undefined {
+  return typeof v === "string" && v.trim().length > 0 ? v : undefined;
+}
+const arr = (v: unknown) => (Array.isArray(v) && v.length > 0 ? v : undefined);
+
+export function toMapJson(record: RecordLike): MapJson {
+  const gallery = arr(meta(record, "gallery")) as unknown[] | undefined;
+  const firstImage = gallery ? (gallery[0] as Record<string, unknown>)?.url as string | undefined : undefined;
+  const yearRaw = meta(record, "year");
+  const year = typeof yearRaw === "number" ? yearRaw : undefined;
+
+  const relatedRaw = meta(record, "related_records");
+  const related = Array.isArray(relatedRaw)
+    ? relatedRaw
+        .filter((r): r is { id: string; title?: string; type?: string } => !!r && typeof r.id === "string")
+        .map(({ id, title, type }) => ({ id, ...(title ? { title } : {}), ...(type ? { type } : {}) }))
+    : undefined;
+
+  return {
+    id: record.slug ?? record.id,
+    title: record.title,
+    ...(str(meta(record, "theater")) ? { theater: str(meta(record, "theater")) } : {}),
+    ...(year !== undefined ? { year } : {}),
+    ...(str(record.summary) ? { summary: str(record.summary) } : {}),
+    ...(firstImage ? { image: firstImage } : {}),
+    ...(gallery ? { gallery } : {}),
+    ...(arr(meta(record, "documents")) ? { documents: arr(meta(record, "documents")) } : {}),
+    ...(arr(meta(record, "sources") as unknown) ? { sources: arr(meta(record, "sources") as unknown) as SourceEntry[] } : {}),
+    ...(related?.length ? { related_records: related } : {}),
+  };
+}

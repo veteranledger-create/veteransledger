@@ -1,90 +1,255 @@
 <!--
-  VeteransLedger · Contact Modal — archival document style
+  VeteransLedger · Contact Modal — Historical Postcard Edition
   Opened by any [data-action="open-contact"] trigger.
+  Text fields hydrated from /public/data/site-settings.json by settings.js.
 -->
 <div id="contact-modal" class="modal-overlay" hidden aria-modal="true" role="dialog"
   aria-labelledby="contact-modal-title">
-  <div class="modal archive-modal">
+  <div class="pc">
 
-    <!-- Modal header: spacer | eagle + title | close button -->
-    <div class="archive-modal__header">
-      <span class="archive-modal__header-spacer" aria-hidden="true"></span>
-      <div class="archive-modal__header-content">
-        <img src="/public/images/logos/eagle.png" alt="" class="archive-modal__eagle" aria-hidden="true">
-        <h2 class="archive-modal__title" id="contact-modal-title">Contact The Archive</h2>
-      </div>
-      <button type="button" class="modal__close" id="contact-modal-close" aria-label="Close contact form">
-        <img class="modal__close-icon" src="/public/images/icons/navigation/close.svg"
-          alt="" aria-hidden="true" width="24" height="24">
-      </button>
-    </div>
+    <!-- ── Close ─────────────────────────────────────────────────── -->
+    <button type="button" class="modal__close pc__close" id="contact-modal-close" aria-label="Close contact form">
+      <img class="modal__close-icon" src="/public/images/icons/navigation/close.svg"
+        alt="" aria-hidden="true" width="24" height="24">
+    </button>
 
-    <!-- Two-column body -->
-    <div class="archive-modal__body">
+    <!-- ── Postcard layout: face | divider | panel ───────────────── -->
+    <div class="pc__layout">
 
-      <!-- Left: info panel -->
-      <div class="archive-modal__info">
-        <p class="archive-modal__info-heading">Direct Communication</p>
-        <p class="archive-modal__info-text">
-          For inquiries, corrections, document submissions, or collaboration
-          requests, please reach out directly.
-        </p>
-        <div class="archive-modal__info-section">
-          <p class="archive-modal__info-label">Archive Email</p>
-          <a href="mailto:support@veteransledger.com" class="archive-modal__info-email">
-            support@veteransledger.com
-          </a>
+      <!-- ── LEFT: Decorative archival face ────────────────────── -->
+      <aside class="pc__face" aria-hidden="true">
+
+        <!-- Circular cancellation postmark -->
+        <div class="pc__postmark">
+          <svg class="pc__postmark-svg" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- Cancel lines behind circle -->
+            <line x1="0"   y1="42" x2="140" y2="42" stroke="#3d2806" stroke-width="3"/>
+            <line x1="0"   y1="53" x2="140" y2="53" stroke="#3d2806" stroke-width="1.5"/>
+            <line x1="0"   y1="64" x2="140" y2="64" stroke="#3d2806" stroke-width="1.5"/>
+            <line x1="0"   y1="75" x2="140" y2="75" stroke="#3d2806" stroke-width="3"/>
+            <!-- Mask out centre -->
+            <circle cx="70" cy="70" r="57" fill="#1c1409"/>
+            <!-- Double ring -->
+            <circle cx="70" cy="70" r="57" fill="none" stroke="#4a3010" stroke-width="2"/>
+            <circle cx="70" cy="70" r="48" fill="none" stroke="#3a2808" stroke-width="1"/>
+            <!-- Archive name -->
+            <text x="70" y="57" text-anchor="middle"
+              font-family="'Courier New',monospace" font-size="8.5" font-weight="700"
+              fill="#7a5a28" letter-spacing="2.5">VETERANSLEDGER</text>
+            <text x="70" y="69" text-anchor="middle"
+              font-family="'Courier New',monospace" font-size="7"
+              fill="#5a4218" letter-spacing="1.5">HISTORICAL ARCHIVE</text>
+            <!-- Inner cancel lines -->
+            <line x1="13" y1="75" x2="127" y2="75" stroke="#2d1e06" stroke-width="1.5"/>
+            <line x1="13" y1="81" x2="127" y2="81" stroke="#2d1e06" stroke-width="1.5"/>
+            <line x1="13" y1="87" x2="127" y2="87" stroke="#2d1e06" stroke-width="1.5"/>
+            <!-- Year -->
+            <text x="70" y="102" text-anchor="middle"
+              font-family="'Courier New',monospace" font-size="10" font-weight="700"
+              fill="#7a5a28" letter-spacing="4">MMXXVI</text>
+          </svg>
         </div>
 
-        <!-- Vertraulich stamp -->
-        <div class="archive-modal__stamp" aria-hidden="true">
-          <span>VERTRAULICH</span>
-        </div>
-      </div>
-
-      <!-- Right: form -->
-      <form class="contact-form archive-modal__form" id="contact-form" novalidate>
-
-        <div class="contact-form__group">
-          <label class="contact-form__label" for="contact-to">
-            <span class="contact-form__label-icon" aria-hidden="true">✉</span> TO
-          </label>
-          <input type="email" id="contact-to" name="to" class="contact-form__input" value="support@veteransledger.com"
-            readonly>
+        <!-- Decorative address lines (blank postcard ruling) -->
+        <div class="pc__face-lines">
+          <span></span><span></span><span></span><span></span>
         </div>
 
-        <div class="contact-form__group">
-          <label class="contact-form__label" for="contact-subject">
-            <span class="contact-form__label-icon" aria-hidden="true">✏</span> SUBJECT
-          </label>
-          <input type="text" id="contact-subject" name="subject" class="contact-form__input"
-            placeholder="Enter subject…" minlength="15" maxlength="120" required>
+        <!-- CMS-managed contact info -->
+        <div class="pc__face-info">
+          <p class="pc__face-heading" id="contact-info-heading">Direct Communication</p>
+          <p class="pc__face-text" id="contact-info-text">For inquiries, corrections, document submissions, or collaboration requests, please reach out directly.</p>
         </div>
 
-        <div class="contact-form__group">
-          <label class="contact-form__label" for="contact-message">
-            <span class="contact-form__label-icon" aria-hidden="true">≡</span> MESSAGE
-          </label>
-          <p class="contact-form__guidance">
-            Please provide a detailed message including relevant historical information, corrections, archival inquiries, or collaboration details.
-          </p>
-          <textarea id="contact-message" name="message" class="contact-form__textarea"
-            placeholder="Type your message here…" minlength="500" maxlength="5000" required></textarea>
-          <p class="contact-form__counter" id="contact-counter-display" aria-live="polite">
-            <span id="contact-char-count">0</span> / 500 minimum characters
-          </p>
+        <!-- Archival wax seal -->
+        <div class="pc__seal">
+          <svg class="pc__seal-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="sg-face" cx="38%" cy="32%" r="62%" gradientUnits="userSpaceOnUse">
+                <stop offset="0%"   stop-color="#bf2a2a"/>
+                <stop offset="60%"  stop-color="#901818"/>
+                <stop offset="100%" stop-color="#5c0d0d"/>
+              </radialGradient>
+              <filter id="sf-face" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.7)"/>
+              </filter>
+              <filter id="wax-face" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="9"/>
+                <feDisplacementMap in="SourceGraphic" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+              </filter>
+            </defs>
+            <g filter="url(#sf-face)">
+              <circle cx="60" cy="60" r="50" fill="url(#sg-face)" filter="url(#wax-face)"/>
+            </g>
+            <circle cx="60" cy="60" r="38" fill="none" stroke="#7a1010" stroke-width="1.8"/>
+            <circle cx="60" cy="60" r="35" fill="none" stroke="rgba(200,100,80,0.22)" stroke-width="0.8"/>
+            <text x="60" y="58" text-anchor="middle" dominant-baseline="middle"
+              font-family="Georgia,'Times New Roman',serif"
+              font-size="22" font-weight="bold" fill="#d4a849" letter-spacing="5">VL</text>
+            <text x="60" y="75" text-anchor="middle"
+              font-family="'Courier New',monospace"
+              font-size="7" fill="#c08040" letter-spacing="2.5">ARCHIVE</text>
+          </svg>
         </div>
 
-        <div class="archive-modal__form-footer">
-          <button type="submit" class="btn btn-primary contact-form__submit" disabled>
-            Send Message <span aria-hidden="true">›</span>
-          </button>
+        <!-- Bottom strip label -->
+        <p class="pc__face-tag">ARCHIVAL CORRESPONDENCE</p>
+
+      </aside>
+
+      <!-- ── Perforated divider ────────────────────────────────── -->
+      <div class="pc__divider" aria-hidden="true"></div>
+
+      <!-- ── RIGHT: Address + form panel ──────────────────────── -->
+      <div class="pc__panel">
+
+        <!-- Form content (fades out during processing/confirmed) -->
+        <div class="pc__form-content">
+
+          <!-- Title (aria-labelledby + CMS text) -->
+          <h2 class="pc__panel-title" id="contact-modal-title">Contact The Archive</h2>
+
+          <!-- TO address block -->
+          <div class="pc__address">
+            <p class="pc__address-label" id="contact-email-label">ARCHIVE OFFICE</p>
+            <a id="contact-email-addr" href="mailto:support@veteransledger.com"
+              class="pc__address-email">support@veteransledger.com</a>
+            <!-- Hidden: settings.js sets .value for backwards compat -->
+            <input type="hidden" id="contact-to" value="support@veteransledger.com">
+          </div>
+
+          <div class="pc__rule" aria-hidden="true"></div>
+
+          <!-- Contact form -->
+          <form class="pc__form" id="contact-form" novalidate>
+
+            <!-- FROM: name + email row -->
+            <div class="pc__from-row">
+              <div class="pc__field">
+                <label class="pc__label" for="contact-name">Your Name</label>
+                <input type="text" id="contact-name" name="name"
+                  class="pc__input" autocomplete="name"
+                  required maxlength="100" placeholder="Full name">
+              </div>
+              <div class="pc__field">
+                <label class="pc__label" for="contact-email">Your Email</label>
+                <input type="email" id="contact-email" name="email"
+                  class="pc__input" autocomplete="email"
+                  required maxlength="200" placeholder="your@email.com">
+              </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="pc__field">
+              <label class="pc__label" for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject"
+                class="pc__input" required
+                minlength="15" maxlength="120"
+                placeholder="Subject of correspondence…">
+            </div>
+
+            <!-- Message -->
+            <div class="pc__field">
+              <label class="pc__label" for="contact-message">
+                Message
+                <span class="pc__guidance" id="contact-message-guidance">Please include relevant historical detail, corrections, archival inquiries, or collaboration context.</span>
+              </label>
+              <textarea id="contact-message" name="message"
+                class="pc__textarea" required
+                minlength="500" maxlength="5000"
+                placeholder="Type your correspondence here…"></textarea>
+              <p class="pc__counter" id="contact-counter-display" aria-live="polite">
+                <span id="contact-char-count">0</span> / 500 minimum characters
+              </p>
+            </div>
+
+            <div class="pc__form-footer">
+              <button type="submit" class="pc__submit" disabled>
+                Dispatch Correspondence <span class="pc__submit-arrow" aria-hidden="true">›</span>
+              </button>
+            </div>
+
+            <div id="contact-status" class="contact-form__status" role="alert" aria-live="assertive"></div>
+
+          </form>
+        </div><!-- /pc__form-content -->
+
+        <!-- ── Processing overlay ──────────────────────────────── -->
+        <div class="pc__processing" id="contact-processing"
+          role="status" aria-live="polite" aria-label="Submitting your correspondence">
+
+          <div class="pc__proc-seal" aria-hidden="true">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sg-proc" cx="38%" cy="32%" r="62%" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%"   stop-color="#c83030"/>
+                  <stop offset="60%"  stop-color="#901818"/>
+                  <stop offset="100%" stop-color="#5c0d0d"/>
+                </radialGradient>
+                <filter id="sf-proc" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="rgba(0,0,0,0.8)"/>
+                </filter>
+                <filter id="wax-proc" x="-10%" y="-10%" width="120%" height="120%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="14"/>
+                  <feDisplacementMap in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+                </filter>
+              </defs>
+              <g filter="url(#sf-proc)">
+                <circle cx="80" cy="80" r="66" fill="url(#sg-proc)" filter="url(#wax-proc)"/>
+              </g>
+              <circle cx="80" cy="80" r="52" fill="none" stroke="#7a1010" stroke-width="2.5"/>
+              <circle cx="80" cy="80" r="48" fill="none" stroke="rgba(200,100,80,0.22)" stroke-width="1"/>
+              <text x="80" y="78" text-anchor="middle" dominant-baseline="middle"
+                font-family="Georgia,'Times New Roman',serif"
+                font-size="30" font-weight="bold" fill="#d4a849" letter-spacing="6">VL</text>
+              <text x="80" y="100" text-anchor="middle"
+                font-family="'Courier New',monospace"
+                font-size="9.5" fill="#c08040" letter-spacing="3">ARCHIVE</text>
+            </svg>
+          </div>
+
+          <p class="pc__proc-msg" id="contact-processing-msg">Sealing archival document...</p>
         </div>
 
-        <div id="contact-status" class="contact-form__status" role="status" aria-live="polite"></div>
-      </form>
-    </div>
+        <!-- ── Confirmation state ──────────────────────────────── -->
+        <div class="pc__confirmed" id="contact-confirmed">
 
-  </div>
-</div>
-</content>
+          <div class="pc__conf-seal" aria-hidden="true">
+            <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sg-conf" cx="38%" cy="32%" r="62%" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%"   stop-color="#c9a030"/>
+                  <stop offset="60%"  stop-color="#8a6a10"/>
+                  <stop offset="100%" stop-color="#4a3808"/>
+                </radialGradient>
+                <filter id="sf-conf" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.7)"/>
+                </filter>
+                <filter id="wax-conf" x="-10%" y="-10%" width="120%" height="120%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="21"/>
+                  <feDisplacementMap in="SourceGraphic" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+                </filter>
+              </defs>
+              <g filter="url(#sf-conf)">
+                <circle cx="48" cy="48" r="42" fill="url(#sg-conf)" filter="url(#wax-conf)"/>
+              </g>
+              <circle cx="48" cy="48" r="32" fill="none" stroke="#6a4a08" stroke-width="1.5"/>
+              <path d="M34 48 L43 57 L62 37"
+                stroke="#d4a849" stroke-width="3.5" fill="none"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <p class="pc__conf-ref" id="contact-ref-id" aria-label="Archive reference number">VL-2026-06-29-001842</p>
+          <h3 class="pc__conf-title">Archive Submission Received</h3>
+          <p class="pc__conf-body">Your correspondence has been securely transferred to the VeteransLedger Archive Office.</p>
+          <p class="pc__conf-note">Our archival team will review your submission if further information is required.</p>
+          <button type="button" class="pc__conf-btn" id="contact-confirmed-close">Close</button>
+
+        </div>
+
+      </div><!-- /pc__panel -->
+    </div><!-- /pc__layout -->
+
+  </div><!-- /pc -->
+</div><!-- /#contact-modal -->

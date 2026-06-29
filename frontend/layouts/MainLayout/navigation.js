@@ -239,11 +239,70 @@ function renderFooter(data) {
     });
   });
 
+  // Render archive stats list when data is present, replacing the fallback
+  // hardcoded <li> items that serve as a no-JS baseline.
+  if (Array.isArray(data.footer.stats) && data.footer.stats.length) {
+    qsa('[data-nav-source="footer-stats"]').forEach((listEl) => {
+      listEl.innerHTML = "";
+      data.footer.stats.forEach((s) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.textContent = (s.label ?? "") + ":";
+        li.appendChild(span);
+        li.appendChild(document.createTextNode(" " + (s.value ?? "")));
+        listEl.appendChild(li);
+      });
+    });
+  }
+
+  // Render footer legal links when data is present
+  if (Array.isArray(data.footer.legalLinks) && data.footer.legalLinks.length) {
+    qsa('[data-nav-source="footer-legal-links"]').forEach((listEl) => {
+      listEl.innerHTML = "";
+      data.footer.legalLinks.forEach((link) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        const href = String(link.href ?? "");
+        a.href = /^https?:\/\//.test(href) || href.startsWith("/") || href.startsWith("#") ? href : "#";
+        a.textContent = link.label ?? "";
+        li.appendChild(a);
+        listEl.appendChild(li);
+      });
+    });
+  }
+
+  // Render archive info list (bottom band)
+  if (data.footer.archiveInfo?.items?.length) {
+    qsa('[data-nav-source="footer-archive-info"]').forEach((listEl) => {
+      listEl.innerHTML = "";
+      data.footer.archiveInfo.items.forEach((item) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.textContent = (item.label ?? "") + ":";
+        li.appendChild(span);
+        li.appendChild(document.createTextNode(" " + (item.value ?? "")));
+        listEl.appendChild(li);
+      });
+    });
+  }
+
+  const connect = data.footer.connect ?? {};
   const footer = qs(".site-footer");
   if (footer)
     applyBindings(footer, {
-      legalLine: data.footer.legalLine,
-      copyright: data.footer.copyright,
+      legalLine:          data.footer.legalLine,
+      copyright:          data.footer.copyright,
+      aboutText:          data.footer.aboutText,
+      signature:          data.footer.signature,
+      educationalBadge:   data.footer.educationalBadge,
+      statsHeading:       data.footer.statsHeading,
+      quickLinksHeading:  data.footer.quickLinksHeading,
+      archiveInfoHeading: data.footer.archiveInfo?.heading,
+      legalHeading:       data.footer.legalHeading,
+      connectHeading:     connect.heading,
+      connectPrompt:      connect.prompt,
+      connectEmail:       connect.email,
+      connectEmailHref:   connect.email ? `mailto:${connect.email}` : undefined,
     });
 }
 

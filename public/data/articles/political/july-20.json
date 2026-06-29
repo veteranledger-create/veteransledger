@@ -6,7 +6,13 @@
   "date_published": "2024-03-01",
   "author": "VeteransLedger Archive",
   "image": "/storage/images/articles/july-20.jpg",
-  "tags": ["resistance", "July 20", "Stauffenberg", "Valkyrie", "assassination"],
+  "tags": [
+    "resistance",
+    "July 20",
+    "Stauffenberg",
+    "Valkyrie",
+    "assassination"
+  ],
   "summary": "On 20 July 1944, Colonel Claus von Stauffenberg placed a bomb beneath the conference table at Hitler's Wolf's Lair headquarters. Hitler survived; the conspirators were arrested and executed.",
   "body": [
     {
@@ -44,15 +50,41 @@
   ],
   "archival_note": "The principal documentary record is in the Bundesarchiv, Berlin-Lichterfelde (NS 6: Parteikanzlei records on the aftermath) and Bundesarchiv-Militärarchiv, Freiburg (N 104: Beck papers; RH 2/2939: Operation Valkyrie orders). The Gedenkstätte Deutscher Widerstand (Berlin) holds the memorial archive on the resistance.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 2/2939: Operation Valkyrie — Reserve Army orders and communications, July 1944." },
-    { "ref": "Hoffmann, Peter. The History of the German Resistance 1933–1945. MIT Press, 1977.", "note": "The definitive scholarly account, drawing on German court records and survivor testimonies." },
-    { "ref": "Fest, Joachim. Plotting Hitler's Death: The Story of the German Resistance. Holt, 1996." },
-    { "ref": "Moorhouse, Roger. Killing Hitler: The Plots, the Assassins, and the Dictator Who Cheated Death. Bantam, 2006." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 2/2939: Operation Valkyrie — Reserve Army orders and communications, July 1944."
+    },
+    {
+      "ref": "Hoffmann, Peter. The History of the German Resistance 1933–1945. MIT Press, 1977.",
+      "note": "The definitive scholarly account, drawing on German court records and survivor testimonies."
+    },
+    {
+      "ref": "Fest, Joachim. Plotting Hitler's Death: The Story of the German Resistance. Holt, 1996."
+    },
+    {
+      "ref": "Moorhouse, Roger. Killing Hitler: The Plots, the Assassins, and the Dictator Who Cheated Death. Bantam, 2006."
+    }
   ],
   "related_records": [
-    { "id": "erwin-rommel", "title": "Erwin Rommel", "type": "Personnel", "url": "/personnel/erwin-rommel" },
-    { "id": "normandy", "title": "Battle of Normandy", "type": "Campaign", "url": "/campaigns/western-front/normandy" },
-    { "id": "stalingrad", "title": "Battle of Stalingrad", "type": "Campaign", "url": "/campaigns/eastern-front/stalingrad" },
-    { "id": "nuremberg", "title": "The Nuremberg Trials", "type": "Article", "url": "/articles/legal/nuremberg" }
+    {
+      "id": "erwin-rommel",
+      "title": "Erwin Rommel",
+      "type": "Personnel"
+    },
+    {
+      "id": "normandy",
+      "title": "Battle of Normandy",
+      "type": "Campaign"
+    },
+    {
+      "id": "stalingrad",
+      "title": "Battle of Stalingrad",
+      "type": "Campaign"
+    },
+    {
+      "id": "nuremberg",
+      "title": "The Nuremberg Trials",
+      "type": "Article"
+    }
   ]
 }

@@ -4,6 +4,8 @@
  * Usage: <script type="module" src="/layouts/MainLayout/layout.js"></script>
  */
 import { initNavigation } from "/layouts/MainLayout/navigation.js";
+import { applySettings } from "/layouts/MainLayout/settings.js";
+import "/layouts/MainLayout/page-content.js";
 
 const DEFAULTS = {
   components: {
@@ -72,6 +74,7 @@ export async function injectLayout() {
   document.documentElement.setAttribute("data-layout-ready", "");
 
   await initNavigation();
+  applySettings(); // fire-and-forget: patches contact modal + cookie banner text
   initCookieBanner();
   initContactModal();
 }
@@ -103,25 +106,49 @@ function initCookieBanner() {
 }
 
 function initContactModal() {
-  const modal = document.getElementById("contact-modal");
+  const modal         = document.getElementById("contact-modal");
   if (!modal || modal.dataset.wired) return;
   modal.dataset.wired = "1";
 
   const closeBtn      = document.getElementById("contact-modal-close");
+  const confCloseBtn  = document.getElementById("contact-confirmed-close");
   const form          = document.getElementById("contact-form");
-  const msgInput      = document.getElementById("contact-message");
+  const nameInput     = document.getElementById("contact-name");
+  const emailInput    = document.getElementById("contact-email");
   const subjectInput  = document.getElementById("contact-subject");
+  const msgInput      = document.getElementById("contact-message");
   const counterEl     = document.getElementById("contact-counter-display");
   const status        = document.getElementById("contact-status");
   const submitBtn     = form?.querySelector("[type='submit']");
+  const panel         = modal.querySelector(".pc__panel");
+  const procMsgEl     = document.getElementById("contact-processing-msg");
+  const confRefEl     = document.getElementById("contact-ref-id");
 
   const MIN_SUBJECT = 15;
   const MIN_MESSAGE = 500;
   const MAX_MESSAGE = 5000;
 
-  const close = () => { modal.hidden = true; };
+  const PROC_MSGS = [
+    "Sealing archival document...",
+    "Authenticating submission...",
+    "Transferring to the VeteransLedger Archive Office...",
+    "Security verification completed.",
+    "Archive reference successfully registered.",
+  ];
 
-  if (closeBtn) closeBtn.addEventListener("click", close);
+  function resetModalState() {
+    if (panel) panel.classList.remove("is-processing", "is-confirmed");
+    if (procMsgEl) procMsgEl.textContent = PROC_MSGS[0];
+    if (status) { status.className = "contact-form__status"; status.textContent = ""; }
+  }
+
+  const close = () => {
+    modal.hidden = true;
+    resetModalState();
+  };
+
+  if (closeBtn)     closeBtn.addEventListener("click", close);
+  if (confCloseBtn) confCloseBtn.addEventListener("click", close);
   modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
   document.addEventListener("keydown", (e) => {
     if (!modal.hidden && e.key === "Escape") close();
@@ -130,32 +157,65 @@ function initContactModal() {
   function updateState() {
     const msgLen     = msgInput?.value.length ?? 0;
     const subjectLen = subjectInput?.value.trim().length ?? 0;
-    const ready      = msgLen >= MIN_MESSAGE && subjectLen >= MIN_SUBJECT;
+    const nameFilled = (nameInput?.value.trim().length ?? 0) >= 1;
+    const emailFilled = (emailInput?.value.trim() ?? "").includes("@");
+    const ready      = msgLen >= MIN_MESSAGE && subjectLen >= MIN_SUBJECT && nameFilled && emailFilled;
 
     if (counterEl) {
       if (msgLen >= MIN_MESSAGE) {
         counterEl.innerHTML =
-          `<span style="color:#70b070;font-weight:600">${msgLen}</span> / ${MAX_MESSAGE} ✓`;
+          `<span id="contact-char-count" style="color:#70b070;font-weight:600">${msgLen}</span> / ${MAX_MESSAGE} ✓`;
       } else {
         counterEl.innerHTML =
-          `<span style="font-weight:600">${msgLen}</span> / ${MIN_MESSAGE} minimum characters`;
+          `<span id="contact-char-count" style="font-weight:600">${msgLen}</span> / ${MIN_MESSAGE} minimum characters`;
       }
     }
 
     if (submitBtn) submitBtn.disabled = !ready;
   }
 
-  if (msgInput)     msgInput.addEventListener("input",  updateState);
+  if (nameInput)    nameInput.addEventListener("input", updateState);
+  if (emailInput)   emailInput.addEventListener("input", updateState);
   if (subjectInput) subjectInput.addEventListener("input", updateState);
+  if (msgInput)     msgInput.addEventListener("input", updateState);
+
+  function showStatus(msg, type) {
+    if (!status) return;
+    status.textContent = msg;
+    status.className   = `contact-form__status is-${type}`;
+  }
+
+  function genRef() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    const t  = String(d.getHours()).padStart(2, "0")
+             + String(d.getMinutes()).padStart(2, "0")
+             + String(d.getSeconds()).padStart(2, "0");
+    return `VL-${y}-${m}-${dd}-${t}`;
+  }
 
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       if (status) { status.className = "contact-form__status"; status.textContent = ""; }
 
+      const name    = nameInput?.value.trim()    ?? "";
+      const email   = emailInput?.value.trim()   ?? "";
       const subject = subjectInput?.value.trim() ?? "";
-      const message = msgInput?.value.trim() ?? "";
+      const message = msgInput?.value.trim()     ?? "";
 
+      if (!name) {
+        showStatus("Please enter your name.", "error");
+        nameInput?.focus();
+        return;
+      }
+      if (!email.includes("@")) {
+        showStatus("Please enter a valid email address.", "error");
+        emailInput?.focus();
+        return;
+      }
       if (subject.length < MIN_SUBJECT) {
         showStatus(`Subject must be at least ${MIN_SUBJECT} characters.`, "error");
         subjectInput?.focus();
@@ -169,28 +229,55 @@ function initContactModal() {
 
       if (submitBtn) submitBtn.disabled = true;
 
+      // Enter processing state — seal stamp animation starts
+      if (panel) panel.classList.add("is-processing");
+
+      // Cycle archival status messages
+      let msgIdx = 0;
+      const advanceMsg = () => {
+        if (procMsgEl && msgIdx < PROC_MSGS.length - 1) {
+          msgIdx++;
+          procMsgEl.textContent = PROC_MSGS[msgIdx];
+        }
+      };
+      const t1 = setTimeout(advanceMsg, 700);
+      const t2 = setTimeout(advanceMsg, 1450);
+      const t3 = setTimeout(advanceMsg, 2150);
+
       try {
-        const res = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ subject, message }),
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Send failed");
-        showStatus("Message sent successfully. We'll respond within 14 days.", "success");
+        // Run API call concurrently with minimum 2.8s animation floor
+        const minDelay = new Promise((r) => setTimeout(r, 2800));
+        const [result] = await Promise.all([
+          fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, email, subject, message }),
+          }).then(async (r) => ({ ok: r.ok, data: await r.json().catch(() => ({})) })),
+          minDelay,
+        ]);
+
+        clearTimeout(t1); clearTimeout(t2); clearTimeout(t3);
+
+        if (!result.ok) throw new Error(result.data?.error || "Send failed");
+
+        // Show final message, brief pause, then transition to confirmed
+        if (procMsgEl) procMsgEl.textContent = PROC_MSGS[PROC_MSGS.length - 1];
+        await new Promise((r) => setTimeout(r, 500));
+
+        if (confRefEl) confRefEl.textContent = genRef();
+        if (panel) {
+          panel.classList.remove("is-processing");
+          panel.classList.add("is-confirmed");
+        }
         form.reset();
         updateState();
       } catch (err) {
+        clearTimeout(t1); clearTimeout(t2); clearTimeout(t3);
+        resetModalState();
         showStatus(err.message || "Failed to send. Please email us directly.", "error");
         if (submitBtn) submitBtn.disabled = false;
       }
     });
-  }
-
-  function showStatus(msg, type) {
-    if (!status) return;
-    status.textContent = msg;
-    status.className = `contact-form__status is-${type}`;
   }
 
   // Delegated trigger — works for any [data-action='open-contact'] on any page
@@ -198,8 +285,9 @@ function initContactModal() {
     const trigger = e.target.closest("[data-action='open-contact']");
     if (!trigger) return;
     e.preventDefault();
+    resetModalState();
     modal.hidden = false;
-    const firstInput = modal.querySelector("input:not([readonly]), textarea");
+    const firstInput = modal.querySelector("input:not([type='hidden']), textarea");
     if (firstInput) firstInput.focus();
   });
 }

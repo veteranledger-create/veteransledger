@@ -13,22 +13,22 @@
         <img class="site-footer__eagle" src="/public/images/logos/eagle.png" alt="" aria-hidden="true">
         <span class="site-footer__brand-name" data-bind="text:name"></span>
         <p class="site-footer__tagline" data-bind="text:tagline"></p>
-        <span class="site-footer__edu-badge">Educational Use Only</span>
+        <span class="site-footer__edu-badge" data-bind="text:educationalBadge">Educational Use Only</span>
       </div>
 
       <div class="site-footer__about">
-        <p class="site-footer__about-text">
+        <p class="site-footer__about-text" data-bind="text:aboutText">
           A historical archive documenting personnel, campaigns, formations, letters, armaments,
           and primary-source material related to the Second World War.
         </p>
-        <p class="site-footer__signature">— VeteransLedger Archive Team</p>
+        <p class="site-footer__signature" data-bind="text:signature">— VeteransLedger Archive Team</p>
       </div>
     </div>
 
     <!-- CENTER: Archive Status (the sole metrics block) -->
     <div class="site-footer__stats">
-      <p class="site-footer__links-heading">Archive Status</p>
-      <ul class="site-footer__stats-list">
+      <p class="site-footer__links-heading" data-bind="text:statsHeading">Archive Status</p>
+      <ul class="site-footer__stats-list" data-nav-source="footer-stats">
         <li><span>Records:</span> 500+</li>
         <li><span>Collections:</span> 8</li>
         <li><span>Coverage Period:</span> 1933–1945</li>
@@ -38,7 +38,7 @@
 
     <!-- RIGHT: Quick Links (from nav data) -->
     <div class="site-footer__links-block">
-      <p class="site-footer__links-heading">Quick Links</p>
+      <p class="site-footer__links-heading" data-bind="text:quickLinksHeading">Quick Links</p>
       <nav aria-label="Footer quick links">
         <ul class="site-footer__column-list" data-nav-source="footer-columns"></ul>
       </nav>
@@ -51,8 +51,8 @@
 
     <!-- Archive information -->
     <div class="site-footer__info">
-      <p class="site-footer__bottom-heading">✰ Archive Information</p>
-      <ul class="site-footer__info-list">
+      <p class="site-footer__bottom-heading" data-bind="text:archiveInfoHeading">✰ Archive Information</p>
+      <ul class="site-footer__info-list" data-nav-source="footer-archive-info">
         <li><span>Project:</span> VeteransLedger Archive</li>
         <li><span>Type:</span> Historical Documentation</li>
         <li><span>License:</span> Educational Use Only</li>
@@ -61,8 +61,8 @@
 
     <!-- Legal links -->
     <div class="site-footer__legal-block">
-      <p class="site-footer__bottom-heading">Legal</p>
-      <ul class="site-footer__legal-links">
+      <p class="site-footer__bottom-heading" data-bind="text:legalHeading">Legal</p>
+      <ul class="site-footer__legal-links" data-nav-source="footer-legal-links">
         <li><a href="/site-policies#disclaimer">Archive Disclaimer</a></li>
         <li><a href="/site-policies#privacy">Privacy Policy</a></li>
         <li><a href="/site-policies#terms">Terms of Use</a></li>
@@ -73,11 +73,12 @@
 
     <!-- Connect: email + social -->
     <div class="site-footer__connect">
-      <p class="site-footer__bottom-heading">Connect</p>
-      <p class="site-footer__connect-email">
+      <p class="site-footer__bottom-heading" data-bind="text:connectHeading">Connect</p>
+      <p class="site-footer__connect-email" data-bind="text:connectPrompt">
         For inquiries, corrections, or contributions:
       </p>
-      <a href="mailto:veteransledger@gmail.com" class="site-footer__connect-addr">
+      <a id="footer-connect-email" href="mailto:veteransledger@gmail.com" class="site-footer__connect-addr"
+        data-bind="text:connectEmail,href:connectEmailHref">
         veteransledger@gmail.com
       </a>
       <ul class="site-footer__social" data-nav-source="footer-social" aria-label="Social links"></ul>

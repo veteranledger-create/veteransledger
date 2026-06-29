@@ -6,7 +6,13 @@
   "date_published": "2024-04-01",
   "author": "VeteransLedger Archive",
   "image": "/storage/images/articles/nuremberg.jpg",
-  "tags": ["Nuremberg", "war crimes", "international law", "trials", "justice"],
+  "tags": [
+    "Nuremberg",
+    "war crimes",
+    "international law",
+    "trials",
+    "justice"
+  ],
   "summary": "The Nuremberg Trials were a series of military tribunals held by the Allied powers after World War II in which prominent members of the political, military, and economic leadership of Nazi Germany were prosecuted for crimes against peace, war crimes, and crimes against humanity.",
   "body": [
     {
@@ -45,15 +51,42 @@
   "prison_sentences": 4,
   "archival_note": "Primary trial documents — indictments, testimony transcripts, and evidence submissions — are preserved in the National Archives (US), RG 238 (Records of the Office of the United States Chief Counsel for War Crimes). A complete digitised collection is maintained by the Avalon Project at Yale Law School.",
   "sources": [
-    { "type": "primary", "ref": "National Archives (US). RG 238: Records of the International Military Tribunal, Nuremberg, 1945–1946. Trial Transcripts, Volumes I–XLII." },
-    { "ref": "Tusa, Ann and Tusa, John. The Nuremberg Trial. Macmillan, 1983.", "note": "The standard scholarly account, drawing extensively on trial transcripts." },
-    { "ref": "Taylor, Telford. The Anatomy of the Nuremberg Trials. Knopf, 1992.", "note": "By the lead US Nuremberg prosecutor; covers both the IMT and subsequent trials." },
-    { "ref": "Maguire, Peter. Law and War: An American Story. Columbia University Press, 2001." }
+    {
+      "type": "primary",
+      "ref": "National Archives (US). RG 238: Records of the International Military Tribunal, Nuremberg, 1945–1946. Trial Transcripts, Volumes I–XLII."
+    },
+    {
+      "ref": "Tusa, Ann and Tusa, John. The Nuremberg Trial. Macmillan, 1983.",
+      "note": "The standard scholarly account, drawing extensively on trial transcripts."
+    },
+    {
+      "ref": "Taylor, Telford. The Anatomy of the Nuremberg Trials. Knopf, 1992.",
+      "note": "By the lead US Nuremberg prosecutor; covers both the IMT and subsequent trials."
+    },
+    {
+      "ref": "Maguire, Peter. Law and War: An American Story. Columbia University Press, 2001."
+    }
   ],
   "related_records": [
-    { "id": "rise-nsdap", "title": "Rise of the NSDAP", "type": "Article", "url": "/articles/political/rise-nsdap" },
-    { "id": "july-20", "title": "The July 20 Plot", "type": "Article", "url": "/articles/political/july-20" },
-    { "id": "karl-donitz", "title": "Karl Dönitz", "type": "Personnel", "url": "/personnel/karl-donitz" },
-    { "id": "erich-raeder", "title": "Erich Raeder", "type": "Personnel", "url": "/personnel/erich-raeder" }
+    {
+      "id": "rise-nsdap",
+      "title": "Rise of the NSDAP",
+      "type": "Article"
+    },
+    {
+      "id": "july-20",
+      "title": "The July 20 Plot",
+      "type": "Article"
+    },
+    {
+      "id": "karl-donitz",
+      "title": "Karl Dönitz",
+      "type": "Personnel"
+    },
+    {
+      "id": "erich-raeder",
+      "title": "Erich Raeder",
+      "type": "Personnel"
+    }
   ]
 }

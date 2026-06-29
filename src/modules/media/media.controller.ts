@@ -23,6 +23,6 @@ export class MediaController {
   }
 
   async remove(req: Request, res: Response, next: NextFunction): Promise<void> {
-    try { await service.delete(req.params.id); res.status(204).send(); } catch (err) { next(err); }
+    try { await service.delete(req.params.id, req.user!.userId); res.status(204).send(); } catch (err) { next(err); }
   }
 }

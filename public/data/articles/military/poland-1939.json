@@ -6,7 +6,13 @@
   "date_published": "2024-01-15",
   "author": "VeteransLedger Archive",
   "image": "/storage/images/articles/poland-1939.jpg",
-  "tags": ["poland", "1939", "blitzkrieg", "Wehrmacht", "Luftwaffe"],
+  "tags": [
+    "poland",
+    "1939",
+    "blitzkrieg",
+    "Wehrmacht",
+    "Luftwaffe"
+  ],
   "summary": "On 1 September 1939, Germany launched its invasion of Poland, beginning the Second World War. The campaign combined armoured thrusts, close air support, and motorised infantry in a manner that overwhelmed Polish defences within weeks.",
   "body": [
     {
@@ -52,14 +58,37 @@
   },
   "archival_note": "German operational records for the 1939 Polish campaign are held in the Bundesarchiv-Militärarchiv, Freiburg (RH 19 I: Heeresgruppe Süd; RH 19 III: Heeresgruppe Nord). Polish military archives are held at the Centralne Archiwum Wojskowe (CAW) in Warsaw.",
   "sources": [
-    { "type": "primary", "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 I: Heeresgruppe Süd War Diary, September 1939; RH 19 III: Heeresgruppe Nord War Diary." },
-    { "ref": "Zaloga, Steven and Madej, Victor. The Polish Campaign 1939. Hippocrene, 1985.", "note": "The standard English-language account, drawing on Polish and German sources." },
-    { "ref": "Kennedy, Robert. The German Campaign in Poland, 1939. Department of the Army Pamphlet 20-255, 1956." },
-    { "ref": "Cynk, Jerzy. History of the Polish Air Force 1918–1968. Osprey, 1972.", "note": "Covers the Polish Air Force's performance during the September campaign." }
+    {
+      "type": "primary",
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RH 19 I: Heeresgruppe Süd War Diary, September 1939; RH 19 III: Heeresgruppe Nord War Diary."
+    },
+    {
+      "ref": "Zaloga, Steven and Madej, Victor. The Polish Campaign 1939. Hippocrene, 1985.",
+      "note": "The standard English-language account, drawing on Polish and German sources."
+    },
+    {
+      "ref": "Kennedy, Robert. The German Campaign in Poland, 1939. Department of the Army Pamphlet 20-255, 1956."
+    },
+    {
+      "ref": "Cynk, Jerzy. History of the Polish Air Force 1918–1968. Osprey, 1972.",
+      "note": "Covers the Polish Air Force's performance during the September campaign."
+    }
   ],
   "related_records": [
-    { "id": "poland", "title": "Invasion of Poland (Campaign)", "type": "Campaign", "url": "/campaigns/western-front/poland" },
-    { "id": "bzura", "title": "Battle of Bzura", "type": "Campaign", "url": "/campaigns/western-front/bzura" },
-    { "id": "rearmament", "title": "German Rearmament 1933–1939", "type": "Article", "url": "/articles/military/rearmament" }
+    {
+      "id": "poland",
+      "title": "Invasion of Poland (Campaign)",
+      "type": "Campaign"
+    },
+    {
+      "id": "bzura",
+      "title": "Battle of Bzura",
+      "type": "Campaign"
+    },
+    {
+      "id": "rearmament",
+      "title": "German Rearmament 1933–1939",
+      "type": "Article"
+    }
   ]
 }

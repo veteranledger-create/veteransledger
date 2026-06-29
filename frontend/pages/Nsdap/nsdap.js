@@ -8,6 +8,8 @@ const cache = {};
 let activeSection = "overview";
 let activeHitlerSub = "bio";
 let activePartySub = "structure";
+let HITLER_SUBS = [];
+let PARTY_SUBS  = [];
 
 const DATA_MAP = {
   overview: "/public/data/nsdap/overview.json",
@@ -51,7 +53,46 @@ async function load(key) {
 
 /* ── Init ───────────────────────────────────────────────────── */
 
+async function loadManifest() {
+  try {
+    const res = await fetch("/public/data/nsdap/index.json");
+    const data = res.ok ? await res.json() : null;
+    const hitlerSection = (data?.sections ?? []).find((s) => s.id === "hitler");
+    const partySection  = (data?.sections ?? []).find((s) => s.id === "party");
+    if (hitlerSection?.subsections?.length) HITLER_SUBS = hitlerSection.subsections.map((s) => ({ id: s.id, label: s.label }));
+    if (partySection?.subsections?.length)  PARTY_SUBS  = partySection.subsections.map((s) => ({ id: s.id, label: s.label }));
+  } catch (_) {}
+  if (!HITLER_SUBS.length) {
+    HITLER_SUBS = [
+      { id: "bio",            label: "Biography" },
+      { id: "family",         label: "Family" },
+      { id: "rise",           label: "Rise to Power" },
+      { id: "chancellorship", label: "Chancellorship" },
+      { id: "rule",           label: "War & Ideology" },
+      { id: "wartime",        label: "War Leader" },
+      { id: "end",            label: "Fall & Death" },
+    ];
+  }
+  if (!PARTY_SUBS.length) {
+    PARTY_SUBS = [
+      { id: "structure",       label: "Structure" },
+      { id: "leadership",      label: "Leadership" },
+      { id: "departments",     label: "Departments" },
+      { id: "organizations",   label: "Organizations" },
+      { id: "programme",       label: "Programme" },
+      { id: "religion",        label: "Religion" },
+      { id: "formation",       label: "Formation" },
+      { id: "foreign_policy",  label: "Foreign Policy" },
+      { id: "economy",         label: "Economy" },
+      { id: "state_relations", label: "Party & State" },
+      { id: "dissolution",     label: "Dissolution" },
+    ];
+  }
+}
+
 async function init() {
+  await loadManifest();
+
   document.getElementById("nsdap-tabs")?.addEventListener("click", (e) => {
     const btn = e.target.closest(".category-tab");
     if (!btn) return;
@@ -174,15 +215,6 @@ function factRow(label, value) {
 
 /* ── Hitler Section ─────────────────────────────────────────── */
 
-const HITLER_SUBS = [
-  { id: "bio", label: "Biography" },
-  { id: "family", label: "Family" },
-  { id: "rise", label: "Rise to Power" },
-  { id: "chancellorship", label: "Chancellorship" },
-  { id: "rule", label: "War & Ideology" },
-  { id: "wartime", label: "War Leader" },
-  { id: "end", label: "Fall & Death" },
-];
 
 function renderHitlerSection(container) {
   if (container.dataset.wired === "1") {
@@ -283,19 +315,6 @@ function renderSectionDoc(container, data) {
 
 /* ── Party Section ───────────────────────────────────────────── */
 
-const PARTY_SUBS = [
-  { id: "structure", label: "Structure" },
-  { id: "leadership", label: "Leadership" },
-  { id: "departments", label: "Departments" },
-  { id: "organizations", label: "Organizations" },
-  { id: "programme", label: "Programme" },
-  { id: "religion", label: "Religion" },
-  { id: "formation", label: "Formation" },
-  { id: "foreign_policy", label: "Foreign Policy" },
-  { id: "economy", label: "Economy" },
-  { id: "state_relations", label: "Party & State" },
-  { id: "dissolution", label: "Dissolution" },
-];
 
 function renderPartySection(container) {
   if (container.dataset.wired === "1") {

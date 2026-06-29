@@ -1,19 +1,15 @@
 /**
  * VeteransLedger · Personnel page
  * Loads branch JSON files and renders person cards grouped by branch.
+ * Branch definitions loaded from personnel/index.json — no hardcoded arrays.
  * Branch icons: SVG assets for military branches; country flags for foreign volunteers.
  * Pagination: 12 cards per page per branch.
  */
 
 import { createPaginator } from "/pages/shared/paginator.js";
+import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
-const BRANCHES = [
-  { id: "army",         label: "Heer (Army)",        file: "army.json" },
-  { id: "luftwaffe",    label: "Luftwaffe",           file: "luftwaffe.json" },
-  { id: "kriegsmarine", label: "Kriegsmarine",        file: "kriegsmarine.json" },
-  { id: "waffen-ss",    label: "Waffen-SS",           file: "waffen-ss.json" },
-  { id: "foreign",      label: "Foreign Volunteers",  file: "foreign.json" },
-];
+let BRANCHES = [];
 
 const BRANCH_SVG = {
   army:         "/public/images/icons/branches/iron-cross.svg",
@@ -48,7 +44,39 @@ function branchIconHtml(branchId, person) {
   return `<img class="branch-icon branch-icon--svg" src="${svgSrc}" alt="${branchId}" loading="lazy">`;
 }
 
+async function loadManifest() {
+  try {
+    const res = await fetch("/public/data/personnel/index.json");
+    const data = res.ok ? await res.json() : null;
+    BRANCHES = (data?.branches ?? []).map((b) => ({
+      id:   b.id,
+      label: b.label,
+      file: b.file.replace("/public/data/personnel/", ""),
+    }));
+  } catch (_) {}
+  if (!BRANCHES.length) {
+    BRANCHES = [
+      { id: "army",         label: "Heer (Army)",        file: "army.json" },
+      { id: "luftwaffe",    label: "Luftwaffe",           file: "luftwaffe.json" },
+      { id: "kriegsmarine", label: "Kriegsmarine",        file: "kriegsmarine.json" },
+      { id: "waffen-ss",    label: "Waffen-SS",           file: "waffen-ss.json" },
+      { id: "foreign",      label: "Foreign Volunteers",  file: "foreign.json" },
+    ];
+  }
+}
+
+function renderBranchFilter() {
+  const bar = document.querySelector(".filter-bar");
+  if (!bar || !BRANCHES.length) return;
+  bar.innerHTML =
+    `<button type="button" class="filter-btn is-active" data-branch="all">All</button>` +
+    BRANCHES.map((b) => `<button type="button" class="filter-btn" data-branch="${b.id}">${b.label}</button>`).join("");
+}
+
 async function init() {
+  await loadManifest();
+  renderBranchFilter();
+
   document.querySelector(".filter-bar")?.addEventListener("click", (e) => {
     const btn = e.target.closest(".filter-btn");
     if (!btn) return;
@@ -108,7 +136,7 @@ function renderPeople(container, people, branchId = "") {
   people.forEach((p) => {
     const el = document.createElement("a");
     el.className = "person-card";
-    el.href = `/personnel/${p.id}`;
+    el.href = resolveRelatedUrl("Personnel", p.id);
     if (branchId) el.dataset.branch = branchId;
 
     const imgSrc = p.portrait || p.image || p.photo || PLACEHOLDER;

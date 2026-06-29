@@ -29,5 +29,21 @@
     "period_end": 1945,
     "total_records_approx": 500,
     "last_updated": "2024-12-01"
+  },
+  "contact": {
+    "toDisplay": "support@veteransledger.com",
+    "email": "support@veteransledger.com",
+    "modalTitle": "Contact The Archive",
+    "infoHeading": "Direct Communication",
+    "infoText": "For inquiries, corrections, document submissions, or collaboration requests, please reach out directly.",
+    "emailLabel": "Archive Email",
+    "guidanceText": "Please provide a detailed message including relevant historical information, corrections, archival inquiries, or collaboration details."
+  },
+  "cookieBanner": {
+    "text": "This archive uses only essential session cookies for navigation and theme preferences. No tracking or analytics cookies are used.",
+    "privacyLabel": "Privacy Policy",
+    "privacyHref": "/site-policies#privacy",
+    "acceptLabel": "Accept",
+    "dismissLabel": "Dismiss"
   }
 }
