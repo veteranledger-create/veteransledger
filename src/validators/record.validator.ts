@@ -6,8 +6,8 @@ export const createRecordValidator = [
     .isLength({ min: 1, max: 500 })
     .withMessage("Title is required and must be under 500 characters."),
   body("type")
-    .isIn(["CAMPAIGN", "ARMAMENT", "LETTER", "ARTICLE", "TIMELINE_EVENT", "DOCUMENT"])
-    .withMessage("Record type must be one of: CAMPAIGN, ARMAMENT, LETTER, ARTICLE, TIMELINE_EVENT, DOCUMENT."),
+    .isIn(["CAMPAIGN", "ARMAMENT", "LETTER", "ARTICLE", "TIMELINE_EVENT", "DOCUMENT", "AWARD", "MAP", "POLITICAL_DOCUMENT", "PERSON", "FORMATION"])
+    .withMessage("Record type must be a valid record type."),
   body("content")
     .optional()
     .trim()
@@ -31,8 +31,8 @@ export const updateRecordValidator = [
     .withMessage("Title must be under 500 characters."),
   body("type")
     .optional()
-    .isIn(["CAMPAIGN", "ARMAMENT", "LETTER", "ARTICLE", "TIMELINE_EVENT", "DOCUMENT"])
-    .withMessage("Record type must be one of: CAMPAIGN, ARMAMENT, LETTER, ARTICLE, TIMELINE_EVENT, DOCUMENT."),
+    .isIn(["CAMPAIGN", "ARMAMENT", "LETTER", "ARTICLE", "TIMELINE_EVENT", "DOCUMENT", "AWARD", "MAP", "POLITICAL_DOCUMENT", "PERSON", "FORMATION"])
+    .withMessage("Record type must be a valid record type."),
   body("content")
     .optional()
     .trim()
@@ -59,7 +59,7 @@ export const listRecordsValidator = [
     .withMessage("Limit must be between 1 and 100."),
   query("type")
     .optional()
-    .isIn(["CAMPAIGN", "ARMAMENT", "LETTER", "ARTICLE", "TIMELINE_EVENT", "DOCUMENT"])
+    .isIn(["CAMPAIGN", "ARMAMENT", "LETTER", "ARTICLE", "TIMELINE_EVENT", "DOCUMENT", "AWARD", "MAP", "POLITICAL_DOCUMENT", "PERSON", "FORMATION"])
     .withMessage("Invalid record type."),
 ];
 

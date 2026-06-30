@@ -1,0 +1,20 @@
+[
+  {
+    "runId": "cbe61fe7-86f4-47e6-8263-fe46e23bcf14",
+    "action": "promote",
+    "type": "articles",
+    "timestamp": "2026-06-30T02:42:49.549Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "legal\\nuremberg.json",
+      "military\\berlin-1945.json",
+      "military\\poland-1939.json",
+      "military\\rearmament.json",
+      "political\\anschluss.json",
+      "political\\july-20.json",
+      "political\\occupation.json",
+      "political\\rise-nsdap.json",
+      "index.json"
+    ]
+  }
+]

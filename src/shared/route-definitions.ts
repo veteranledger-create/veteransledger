@@ -14,12 +14,15 @@
 // Primary mapping: canonical type name → URL path prefix.
 // Keys define the complete set of routable record types.
 export const ROUTE_MAP = {
-  Campaign:  "/campaigns",
-  Personnel: "/personnel",
-  Armament:  "/armaments",
-  Formation: "/formations",
-  Article:   "/articles",
-  Letter:    "/letters",
+  Campaign:         "/campaigns",
+  Personnel:        "/personnel",
+  Armament:         "/armaments",
+  Formation:        "/formations",
+  Article:          "/articles",
+  Letter:           "/letters",
+  Award:            "/awards",
+  Map:              "/maps",
+  PoliticalDocument:"/political-documents",
 } as const;
 
 // Derived types — never list these separately; always derive from ROUTE_MAP.
@@ -30,12 +33,15 @@ export type RoutePath     = (typeof ROUTE_MAP)[CanonicalType];
 // Values are typed as CanonicalType → adding a value not in ROUTE_MAP fails at compile time.
 export const TYPE_ALIASES: Record<string, CanonicalType> = {
   // DB enum uppercase values
-  CAMPAIGN:  "Campaign",
-  PERSON:    "Personnel",
-  ARMAMENT:  "Armament",
-  FORMATION: "Formation",
-  ARTICLE:   "Article",
-  LETTER:    "Letter",
+  CAMPAIGN:          "Campaign",
+  PERSON:            "Personnel",
+  ARMAMENT:          "Armament",
+  FORMATION:         "Formation",
+  ARTICLE:           "Article",
+  LETTER:            "Letter",
+  AWARD:             "Award",
+  MAP:               "Map",
+  POLITICAL_DOCUMENT:"PoliticalDocument",
 
   // Letter collection name strings from legacy imported data
   "German Collection":     "Letter",

@@ -1,0 +1,124 @@
+{
+  "statistics": {
+    "uboats_lost": 783,
+    "allied_ships_sunk": 2779,
+    "uboat_crew_deaths": "~28,000 of ~40,000 who served",
+    "allied_tonnage_sunk_grt": "14,500,000+"
+  },
+  "id": "uboat-campaign",
+  "recordId": "cmqnuseb4000edn0e1fixk5ip",
+  "theater": "atlantic",
+  "region_label": "Atlantic Ocean",
+  "title": "U-Boat Campaign — The Battle of the Atlantic",
+  "dates": {
+    "start": "1939-09-03",
+    "end": "1945-05-08"
+  },
+  "combatants": {
+    "axis": {
+      "nations": [],
+      "strength": "Germany (Kriegsmarine U-boat arm, over 1,100 U-boats commissioned)",
+      "commanders": [
+        "Konteradmiral / Admiral Karl Dönitz (BdU — Commander U-boats)"
+      ]
+    },
+    "allied": {
+      "nations": [],
+      "strength": "United Kingdom, Canada, United States, and Allied nations",
+      "commanders": [
+        "Multiple — Admiral of the Fleet Sir Dudley Pound, Admiral Ernest King (USN)"
+      ]
+    }
+  },
+  "phases": [
+    {
+      "name": "First Happy Time",
+      "dates": null,
+      "period": "1940–1941",
+      "result": null,
+      "objective": null,
+      "description": "After the fall of France gave Germany Atlantic ports, U-boats operated from Brest and Lorient. Small numbers of U-boats achieved enormous sinkings. Ace commanders — Prien, Kretschmer, Schepke, Endrass — accounted for hundreds of thousands of tons. Wolfpack tactics (Rudeltaktik) overwhelmed convoy escorts."
+    },
+    {
+      "name": "Second Happy Time",
+      "dates": null,
+      "period": "1942",
+      "result": null,
+      "objective": null,
+      "description": "After the US entered the war but before it organised effective coastal convoys, U-boats operated freely off the American East Coast (Operation Drumbeat / Paukenschlag). Monthly Allied losses reached 700,000 GRT — nearly unsustainable."
+    },
+    {
+      "name": "Black May 1943",
+      "dates": null,
+      "period": "May 1943",
+      "result": null,
+      "objective": null,
+      "description": "Allied anti-submarine technology (HF/DF radio direction finding, centimetric radar, Leigh Lights, VLF Ultra codebreaking, air cover from escort carriers) decisively turned the Battle of the Atlantic. In May 1943 alone, 41 U-boats were sunk. Dönitz withdrew the U-boat fleet from the North Atlantic."
+    },
+    {
+      "name": "Endgame",
+      "dates": null,
+      "period": "1943–1945",
+      "result": null,
+      "objective": null,
+      "description": "U-boats continued to fight but losses became unsustainable. New designs (Type XXI, Type XXIII) with increased underwater speed and capacity arrived too late. The Schnorchel allowed extended submerged operation but radar still found schnorchel heads. U-boat crew mortality reached 75% — the highest loss rate of any branch of any service in the war."
+    }
+  ],
+  "context": "The U-boat campaign represented Germany's most potent strategic threat to Britain, which depended on imports for survival. Karl Dönitz had developed wolfpack tactics in the interwar years and pressed for a fleet of 300 operational submarines. He never received the resources he requested; for most of the war fewer than 30 U-boats were on station in the Atlantic at any one time. The ace commanders of the first years — Prien, Kretschmer, Schepke, Topp, Lüth — achieved remarkable individual scores before being killed or captured. The U-boat arm suffered the highest loss rate of any service arm of any nation in the war: approximately 75% of all U-boat crewmen who served were killed.",
+  "outcome": "Allied victory",
+  "significance": "The longest continuous campaign of WWII. Churchill later wrote it was 'the only thing that ever really frightened me.' Allied victory secured the supply lines that made D-Day possible.",
+  "summary": "The U-boat campaign represented Germany's most potent strategic threat to Britain, which depended on imports for survival. Karl Dönitz had developed wolfpack ta...",
+  "sources": [
+    {
+      "ref": "Bundesarchiv-Militärarchiv, Freiburg. RM 87: U-Boat Command (BdU) War Diary.",
+      "type": "primary"
+    },
+    {
+      "ref": "Dönitz, Karl. Memoirs: Ten Years and Twenty Days. Weidenfeld and Nicolson, 1959."
+    },
+    {
+      "ref": "Blair, Clay. Hitler's U-Boat War: The Hunters 1939–1942; The Hunted 1942–1945. Random House, 1996–1998."
+    },
+    {
+      "ref": "Buchheim, Lothar-Günther. Das Boot. Piper, 1973.",
+      "note": "Novelised first-hand account; basis for the 1981 film. Exceptional for atmosphere and technical detail."
+    }
+  ],
+  "related_records": [
+    {
+      "id": "atlantic",
+      "title": "Battle of the Atlantic",
+      "type": "Campaign"
+    },
+    {
+      "id": "convoy-war",
+      "title": "The Convoy War",
+      "type": "Campaign"
+    },
+    {
+      "id": "karl-donitz",
+      "title": "Karl Dönitz",
+      "type": "Personnel"
+    },
+    {
+      "id": "otto-kretschmer",
+      "title": "Otto Kretschmer",
+      "type": "Personnel"
+    },
+    {
+      "id": "gunther-prien",
+      "title": "Günther Prien",
+      "type": "Personnel"
+    },
+    {
+      "id": "erich-topp",
+      "title": "Erich Topp",
+      "type": "Personnel"
+    },
+    {
+      "id": "type-viic-uboat",
+      "title": "Type VIIC U-Boat",
+      "type": "Armament"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "runId": "13162d7a-ae52-453f-bb18-cd0c12760037",
+  "type": "campaigns",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T02:40:23.374Z",
+  "recordsChecked": 35,
+  "valid": 35,
+  "invalid": 0,
+  "issues": [
+    {
+      "recordId": "cmqnuseav0006dn0ei4d77vre",
+      "field": "combatants",
+      "message": "Campaign has no combatants data — axis/allied commanders and strength will be empty.",
+      "severity": "warning"
+    },
+    {
+      "recordId": "cmqnuseay0008dn0e0hxxfpuw",
+      "field": "combatants",
+      "message": "Campaign has no combatants data — axis/allied commanders and strength will be empty.",
+      "severity": "warning"
+    },
+    {
+      "recordId": "cmqnuseb4000edn0e1fixk5ip",
+      "field": "summary",
+      "message": "Campaign has no summary — derived from context, significance, or outcome.",
+      "severity": "warning"
+    }
+  ],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 3,
+    "issuesByField": {
+      "combatants": 2,
+      "summary": 1
+    }
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\eastern-front\\barbarossa.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\atlantic\\river-plate.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\africa\\alamein-1.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\africa\\alamein-2.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\africa\\gazala.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\africa\\sonnenblume.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\africa\\tobruk.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\atlantic\\altmark.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\atlantic\\atlantic.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\atlantic\\convoy-war.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\atlantic\\rheinubung.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\atlantic\\uboat-campaign.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\eastern-front\\blue.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\eastern-front\\caucasus.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\eastern-front\\kharkov.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\eastern-front\\kiev.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\eastern-front\\leningrad.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\eastern-front\\moscow.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\eastern-front\\stalingrad.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\italy\\cassino.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\italy\\crete.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\italy\\gothic-line.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\italy\\sicily.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\italy\\taranto.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\britain.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\bulge.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\bzura.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\dieppe.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\dunkirk.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\france.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\market-garden.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\normandy.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\norway.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\poland.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\campaigns\\western-front\\warsaw.json"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "title": "Reichsleitung: The NSDAP Central Command",
+  "summary": "The Reichsleitung (Reich Leadership) was the central administrative apparatus of the NSDAP, based in Munich at the Brown House. Each department was headed by a Reichsleiter responsible directly to Hitler.",
+  "reichsleiters": [
+    {
+      "name": "Martin Bormann",
+      "title": "Head of the Party Chancellery (Parteikanzlei)",
+      "role": "From 1941, controlled all party administration and managed access to Hitler. Bormann became the most powerful figure in the party apparatus after Hess's 1941 flight to Scotland, serving as Hitler's personal secretary and effectively controlling the domestic administration of the Reich in the war's final years.",
+      "fate": "Died attempting to escape Berlin, 1–2 May 1945 (confirmed by DNA analysis, 1998)."
+    },
+    {
+      "name": "Joseph Goebbels",
+      "title": "Reichsleiter for Propaganda; Reich Minister for Public Enlightenment and Propaganda",
+      "role": "Controlled all German media, culture, and public information. The Reich Ministry of Public Enlightenment and Propaganda (RMVP), established March 1933, exercised censorship over press, radio, film, theatre, music, and the visual arts through the Reich Chamber of Culture (Reichskulturkammer), membership of which was mandatory for all cultural practitioners.",
+      "fate": "Suicide, 1 May 1945, Berlin, after poisoning his six children."
+    },
+    {
+      "name": "Robert Ley",
+      "title": "Reichsleiter for Organisation; Head of the German Labour Front (DAF)",
+      "role": "Led the Reich Organisation Directorate, responsible for party membership and structure. Also headed the Deutsche Arbeitsfront, the compulsory organisation replacing dissolved trade unions, which at its peak had over 25 million members. Ley directed the Strength Through Joy (Kraft durch Freude, KdF) programme providing subsidised leisure for German workers.",
+      "fate": "Arrested after the war; committed suicide before trial, 25 October 1945."
+    },
+    {
+      "name": "Alfred Rosenberg",
+      "title": "Reichsleiter for Ideological Education; Reich Minister for the Occupied Eastern Territories",
+      "role": "The party's chief ideologist, though his influence was contested by Goebbels and others. His 1930 work Der Mythus des 20. Jahrhunderts (The Myth of the Twentieth Century) elaborated the racial and Nordic mysticism that underpinned Nazi ideology, though Hitler privately found it unreadable. From 1941, nominal head of administration for occupied Eastern territories, a post rendered largely irrelevant by SS and Wehrmacht authority.",
+      "fate": "Hanged at Nuremberg, 16 October 1946."
+    },
+    {
+      "name": "Franz Xaver Schwarz",
+      "title": "Reichsleiter for Finance; NSDAP Treasurer",
+      "role": "Managed NSDAP finances from 1925 to 1945. The NSDAP's financial management was notoriously opaque; Schwarz ran the treasury with meticulous secrecy. Party income derived from membership dues, business contributions, proceeds from Nazi publishing (the Eher Verlag), and increasingly from seized Jewish and expropriated property.",
+      "fate": "Died in Allied detention camp, December 1947."
+    },
+    {
+      "name": "Heinrich Himmler",
+      "title": "Reichsleiter; Reichsführer-SS; Chief of the German Police",
+      "role": "Though primarily known as head of the SS, Himmler also held party Reichsleiter rank. His cumulative power made him the second most powerful figure in the Nazi state after Hitler: commander of all SS formations, controller of all German police (including Gestapo), Reich Commissar for the Strengthening of Germandom (overseeing racial resettlement), and from 1943, Reich Minister of the Interior.",
+      "fate": "Suicide by cyanide after capture, 23 May 1945."
+    },
+    {
+      "name": "Max Amann",
+      "title": "Reichsleiter for the Press; Head of Eher Verlag",
+      "role": "Managed the NSDAP's enormous publishing empire. Eher Verlag, the Nazi party publishing house, became the largest publishing conglomerate in Germany after 1933, absorbing or eliminating most independent newspapers. Hitler's personal income from the royalties of Mein Kampf — distributed through Eher — made him one of Germany's wealthiest individuals.",
+      "fate": "Sentenced to 10 years' hard labour by a denazification court; released 1953."
+    }
+  ],
+  "departments": [
+    {
+      "name": "Reichsorganisationsleitung (Reich Organisation Directorate)",
+      "head": "Robert Ley",
+      "function": "Party organisational structure, membership records, Gauleiter supervision, political leadership training schools (Ordensburgen)."
+    },
+    {
+      "name": "Reichspropagandaleitung (Reich Propaganda Directorate)",
+      "head": "Joseph Goebbels",
+      "function": "Direction of party propaganda, mass rallies, political poster campaigns, election management. Distinct from the state Ministry of Propaganda but closely coordinated."
+    },
+    {
+      "name": "Außenpolitisches Amt (Foreign Policy Office, APA)",
+      "head": "Alfred Rosenberg",
+      "function": "Party-level foreign policy activities, distinct from the Foreign Ministry. Pursued contacts with Nordic and fascist movements abroad; generally ineffective due to conflict with Ribbentrop's Foreign Ministry."
+    },
+    {
+      "name": "Rassenpolitisches Amt (Racial Policy Office)",
+      "head": "Walter Groß",
+      "function": "Produced propaganda on racial policy and 'racial hygiene', trained party officials in racial doctrine, distributed information supporting the Nuremberg Laws and forced sterilisation programme."
+    },
+    {
+      "name": "NS-Frauenschaft (National Socialist Women's League)",
+      "head": "Gertrud Scholtz-Klink",
+      "function": "The official women's organisation, responsible for political education of German women, reinforcing domestic roles, and organising welfare activities. Scholtz-Klink held the highest female position in the Nazi state but wielded no real political power."
+    },
+    {
+      "name": "Hitler-Jugend (Hitler Youth) / BDM (League of German Girls)",
+      "head": "Baldur von Schirach (HJ)",
+      "function": "Youth indoctrination and paramilitary training for boys aged 14–18 (HJ) and girls aged 14–18 (BDM). Membership made compulsory in 1939. By 1939 the HJ had 8.8 million members. At war's end, HJ units were deployed in combat roles, including in the defence of Berlin."
+    }
+  ],
+  "brown_house": {
+    "title": "The Brown House: Party Headquarters",
+    "text": "The NSDAP's national headquarters was established at 45 Brienner Strasse, Munich — the Braunes Haus (Brown House). The building was purchased in 1930 for 805,000 Reichsmarks (largely from publishing revenues and industrialist donations) and lavishly renovated under the direction of Paul Ludwig Troost. It served as the administrative heart of the party until Munich was heavily bombed; Hitler often worked there before 1933. Munich was declared the 'Capital of the Movement' (Hauptstadt der Bewegung) and the city where the first party congress of the 'Third Reich' was held annually at the Nuremberg Rally grounds from 1933."
+  },
+  "sources": [
+    { "ref": "Orlow, Dietrich. The History of the Nazi Party: 1933–1945. University of Pittsburgh Press, 1973." },
+    { "ref": "Ley, Robert. Organisation der NSDAP. Munich: NSDAP Hauptarchiv, 1937. (Primary party document.)" },
+    { "ref": "Gellately, Robert. The Gestapo and German Society. Oxford University Press, 1990." },
+    { "ref": "Bundesarchiv Berlin-Lichterfelde: NS6 (Party Chancellery files)." }
+  ]
+}

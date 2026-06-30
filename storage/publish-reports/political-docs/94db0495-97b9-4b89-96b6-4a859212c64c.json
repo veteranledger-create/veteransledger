@@ -1,0 +1,17 @@
+{
+  "runId": "94db0495-97b9-4b89-96b6-4a859212c64c",
+  "type": "political-docs",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T02:39:47.805Z",
+  "recordsChecked": 0,
+  "valid": 0,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": []
+}

@@ -8,6 +8,9 @@
  * without adding per-page script tags or data attributes.
  */
 
+import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+
 const PAGE_MAP = {
   "":             "home",      // homepage handled separately by home.js
   "about":        "about",
@@ -37,6 +40,15 @@ async function applyPageContent() {
     const res = await fetch("/public/data/page-content.json");
     if (res.ok) data = await res.json();
   } catch (_) {}
+
+  // site_content translations store the whole source file as one
+  // re-translated JSON string — swap it in before reading this page's section.
+  let isMachine = false;
+  const t = await loadTranslation("site_content", "page-content.json");
+  if (t?.fields?.content) {
+    try { data = JSON.parse(t.fields.content); isMachine = t.isMachine; }
+    catch { /* translated content isn't valid JSON — keep English */ }
+  }
 
   const page = data?.[pageKey];
   if (!page) return;
@@ -69,6 +81,18 @@ async function applyPageContent() {
     const key = el.dataset.pcSection;
     if (page.sectionLabels?.[key] != null) el.textContent = page.sectionLabels[key];
   });
+
+  // Scoped to right after the page hero title only — other scripts (home.js,
+  // navigation.js) manage their own notices elsewhere and must not be
+  // affected by a global ".vl-mt-notice" removal here.
+  const heroTitle = document.querySelector(".page-hero__title");
+  if (heroTitle) {
+    if (heroTitle.nextElementSibling?.classList.contains("vl-mt-notice")) {
+      heroTitle.nextElementSibling.remove();
+    }
+    if (isMachine) heroTitle.insertAdjacentHTML("afterend", machineNoticeHtml({ isMachine: true }));
+  }
 }
 
 applyPageContent();
+onLocaleChange(() => applyPageContent());

@@ -1,4 +1,5 @@
-import { authHeader, makeStatusFn } from "./admin-utils.js";
+import { authHeader, makeStatusFn, safeJson } from "./admin-utils.js";
+import { TranslationsPanel } from "./translations-panel.js";
 
 /**
  * VeteransLedger · Admin — Site Settings Editor
@@ -9,6 +10,7 @@ import { authHeader, makeStatusFn } from "./admin-utils.js";
 
 const KEY = "site-settings.json";
 const setStatus = makeStatusFn("settings-form-status");
+const translationsPanel = new TranslationsPanel("settings-translations-panel", "site_content");
 let fullData = null;
 
 function f(id) { return document.getElementById(id); }
@@ -25,9 +27,10 @@ async function loadSettings() {
   try {
     const res = await fetch(`/api/site-content?key=${encodeURIComponent(KEY)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    fullData = await res.json();
+    fullData = await safeJson(res);
     populateForm(fullData);
     setStatus("", false);
+    translationsPanel.load(KEY);
   } catch (err) {
     setStatus(`Failed to load settings: ${err.message}`, true);
   }

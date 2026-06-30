@@ -3,6 +3,9 @@
  * Loads mission and sources data and renders content.
  */
 
+import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+
 async function init() {
   const [missionData, sourcesData] = await Promise.allSettled([
     fetch("/public/data/about/mission.json").then((r) =>
@@ -13,8 +16,38 @@ async function init() {
     ),
   ]);
 
-  renderMission(document.getElementById("mission-content"), missionData.value);
-  renderSources(document.getElementById("sources-content"), sourcesData.value);
+  const missionEl = document.getElementById("mission-content");
+  const sourcesEl = document.getElementById("sources-content");
+  renderMission(missionEl, missionData.value);
+  renderSources(sourcesEl, sourcesData.value);
+
+  const applyTranslations = () => {
+    applySiteContentTranslation("about/mission.json", missionEl, renderMission, missionData.value);
+    applySiteContentTranslation("about/sources.json", sourcesEl, renderSources, sourcesData.value);
+  };
+  applyTranslations();
+  onLocaleChange(applyTranslations);
+}
+
+// site_content translations store the whole source file as one re-translated
+// JSON string (see translations.service.ts generate()), so applying one means
+// parsing it back and re-running the existing English renderer with the
+// translated data. On any miss (no translation for this locale) or parse
+// failure, re-renders with the original English data — without this, a
+// switch back to English (or to a locale with no translation) would leave
+// stale translated content on screen.
+async function applySiteContentTranslation(entityId, container, renderFn, englishData) {
+  if (!container) return;
+  const t = await loadTranslation("site_content", entityId);
+  let data = englishData;
+  let isMachine = false;
+  if (t?.fields?.content) {
+    try { data = JSON.parse(t.fields.content); isMachine = t.isMachine; }
+    catch { /* translated content isn't valid JSON — keep English */ }
+  }
+  renderFn(container, data);
+  container.querySelector(":scope > .vl-mt-notice")?.remove();
+  if (isMachine) container.insertAdjacentHTML("afterbegin", machineNoticeHtml({ isMachine: true }));
 }
 
 function renderMission(container, data) {

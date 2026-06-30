@@ -8,7 +8,7 @@
  * when items are removed or reordered.
  */
 
-import { authHeader, escHtml } from "./admin-utils.js";
+import { authHeader, escHtml, safeJson } from "./admin-utils.js";
 import {
   mediaItemControls, updateSectionCount, wireMediaItemControls,
   clearSectionAttribution, validateMediaUrls, DOC_TYPE_OPTIONS,
@@ -21,7 +21,7 @@ export async function uploadFile(file) {
   fd.append("file", file);
   const res = await fetch("/api/media/upload", { method: "POST", headers: authHeader(), body: fd });
   if (!res.ok) throw new Error(`Upload failed (${res.status})`);
-  return await res.json();
+  return await safeJson(res);
 }
 
 export async function handleUpload(files, inputId, draft, renderFn, setStatus, isVideo = false) {

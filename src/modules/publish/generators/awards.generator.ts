@@ -5,6 +5,10 @@ interface RelatedEntry { id: string; title?: string; type?: string; }
 
 export interface AwardJson {
   id: string;
+  /** DB primary key — distinct from `id` (the public slug). Used by the
+   *  translation system, which keys translations by the stable DB id
+   *  rather than the human-editable slug. */
+  recordId: string;
   title: string;
   nation?: string;
   summary?: string;
@@ -34,7 +38,8 @@ export function toAwardJson(record: RecordLike): AwardJson {
     : undefined;
 
   return {
-    id: record.slug ?? record.id,
+    id:           record.slug ?? record.id,
+    recordId:     record.id,
     title: record.title,
     ...(str(meta(record, "nation")) ? { nation: str(meta(record, "nation")) } : {}),
     ...(str(record.summary) ? { summary: str(record.summary) } : {}),

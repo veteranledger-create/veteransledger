@@ -5,6 +5,9 @@
  * components are injected.
  */
 
+import { loadTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+
 export async function applySettings() {
   let data;
   try {
@@ -13,8 +16,22 @@ export async function applySettings() {
   } catch (_) {}
   if (!data) return;
 
-  applyContactModal(data.contact);
-  applyCookieBanner(data.cookieBanner);
+  await applyResolved(data);
+  onLocaleChange(() => applyResolved(data));
+}
+
+// site_content translations store the whole source file as one re-translated
+// JSON string — swap it in (if the active locale has one) before patching
+// the contact modal / cookie banner text.
+async function applyResolved(englishData) {
+  let resolved = englishData;
+  const t = await loadTranslation("site_content", "site-settings.json");
+  if (t?.fields?.content) {
+    try { resolved = JSON.parse(t.fields.content); }
+    catch { /* translated content isn't valid JSON — keep English */ }
+  }
+  applyContactModal(resolved.contact);
+  applyCookieBanner(resolved.cookieBanner);
 }
 
 function setText(id, value) {

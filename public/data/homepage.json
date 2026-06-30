@@ -21,25 +21,25 @@
     },
     {
       "href": "/campaigns",
-      "icon": "/public/images/icons/navigation/campaigns.svg",
+      "icon": "/public/images/icons/ui/campaigns.svg",
       "title": "Campaigns",
       "desc": "Detailed archives of major operations and battles."
     },
     {
       "href": "/armaments",
-      "icon": "/public/images/icons/navigation/armaments.svg",
+      "icon": "/public/images/icons/ui/armaments.svg",
       "title": "Armaments",
       "desc": "Tanks, aircraft, ships, weapons and secret projects."
     },
     {
       "href": "/personnel",
-      "icon": "/public/images/icons/navigation/personnel.svg",
+      "icon": "/public/images/icons/ui/personnel.svg",
       "title": "Personnel",
       "desc": "Profiles, units, and biographies of military personnel."
     },
     {
       "href": "/letters",
-      "icon": "/public/images/icons/navigation/letters.svg",
+      "icon": "/public/images/icons/ui/letters.svg",
       "title": "Letters",
       "desc": "Personal letters from soldiers and volunteers."
     }

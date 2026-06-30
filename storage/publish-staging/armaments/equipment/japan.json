@@ -6,6 +6,7 @@
     "length_mm": 1275,
     "weight_kg": 3.95,
     "id": "arisaka-type-38",
+    "recordId": "cmqpwr2dp000q71udoh9rfr4w",
     "name": "Arisaka Type 38",
     "nation": "Japan",
     "summary": "The primary Japanese infantry rifle of World War II, derived from an 1897 design. The long length reflected the tradition of attaching a bayonet for close combat."
@@ -17,6 +18,7 @@
     "length_mm": 1118,
     "weight_kg": 3.8,
     "id": "arisaka-type-99",
+    "recordId": "cmqpwr2dr000s71udcpj347sq",
     "name": "Arisaka Type 99",
     "nation": "Japan",
     "summary": "Replaced the Type 38 from 1939. More powerful calibre; some versions included a monopod and anti-aircraft sights. Late-war versions show significant quality decline."
@@ -27,6 +29,7 @@
     "range_m": 190,
     "weight_kg": 2.6,
     "id": "type-11-grenade-discharger",
+    "recordId": "cmqpwr2dv000w71udixxuvmzk",
     "name": "Type 11 Grenade Discharger",
     "nation": "Japan",
     "summary": "Often incorrectly called a 'knee mortar' by Allied soldiers (firing it from the knee would break the leg). Shoulder-fired or braced against the ground, it gave Japanese infantry sections organic indirect fire capability."
@@ -38,6 +41,7 @@
     "weight_kg": 9.07,
     "rate_of_fire": "550 rpm",
     "id": "type-96-light-machine-gun",
+    "recordId": "cmqpwr2dt000u71uduq8v38xu",
     "name": "Type 96 Light Machine Gun",
     "nation": "Japan",
     "summary": "Japan's squad automatic weapon through 1941. Required lubricated cartridges to feed reliably."

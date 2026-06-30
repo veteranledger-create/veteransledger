@@ -5,6 +5,10 @@ interface RelatedEntry { id: string; title?: string; type?: string; }
 
 export interface PoliticalDocJson {
   id: string;
+  /** DB primary key — distinct from `id` (the public slug). Used by the
+   *  translation system, which keys translations by the stable DB id
+   *  rather than the human-editable slug. */
+  recordId: string;
   title: string;
   date?: string;
   signatories?: string[];
@@ -43,7 +47,8 @@ export function toPoliticalDocJson(record: RecordLike): PoliticalDocJson {
   const dateStr = record.date ? record.date.toISOString().slice(0, 10) : undefined;
 
   return {
-    id: record.slug ?? record.id,
+    id:           record.slug ?? record.id,
+    recordId:     record.id,
     title: record.title,
     ...(dateStr ? { date: dateStr } : {}),
     ...(signatories?.length ? { signatories } : {}),

@@ -3,6 +3,7 @@
     "type": "Air-Dropped Cluster Bomb",
     "year": 1941,
     "id": "ab-250-2-italian-air-torpedo-variant",
+    "recordId": "cmqvfmsr9001eob0hf0biuky4",
     "name": "AB 250/2 Italian Air Torpedo Variant",
     "nation": "Italy",
     "summary": "Italian cluster bomb container carrying multiple small anti-personnel or incendiary submunitions. Used by the Regia Aeronautica in North Africa and the Mediterranean."
@@ -12,6 +13,7 @@
     "year": 1938,
     "operational_use": "Souda Bay (1941), Valletta (1941 — failed)",
     "id": "barchina-esplosiva-mtm",
+    "recordId": "cmqvfmsqs0010ob0hwviip8tr",
     "name": "Barchina Esplosiva (MTM)",
     "nation": "Italy",
     "summary": "A small plywood motorboat packed with 300kg of explosive. The pilot aimed at a target, locked the wheel, and bailed out before impact. Used in the raid on Souda Bay (1941) that damaged HMS York."
@@ -20,6 +22,7 @@
     "type": "Combat Swimmer Equipment",
     "year": 1940,
     "id": "gamma-class-frogman-suit",
+    "recordId": "cmqvfmsqw0012ob0h9b6f8deu",
     "name": "Gamma class frogman suit",
     "nation": "Italy",
     "summary": "Italy pioneered combat diving with the Gamma Group (10th MAS). Operators wore rubberised suits, closed-circuit oxygen rebreathers, and fins — equipment that was revolutionary for the era and influenced post-war special forces globally."
@@ -31,6 +34,7 @@
     "warhead_kg": 300,
     "operational_use": "Alexandria (1941), Gibraltar (multiple raids), other Mediterranean ports",
     "id": "siluro-a-lenta-corsa-slc-maiale",
+    "recordId": "cmqvfmsqq000yob0hx0ga0x55",
     "name": "Siluro a Lenta Corsa (SLC) 'Maiale'",
     "nation": "Italy",
     "summary": "Italy's most famous special weapon. Two frogmen rode astride a slow-running torpedo to enemy harbours, detached the warhead, and set a timer before making their escape. In December 1941, operators from the 10th MAS Flotilla sank HMS Queen Elizabeth and HMS Valiant at Alexandria, immobilising the British Mediterranean Battle Fleet."

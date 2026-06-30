@@ -1,0 +1,47 @@
+{
+  "id": "hitler-wartime",
+  "title": "Hitler as War Leader 1939–1945",
+  "summary": "Hitler's direction of the Second World War — his strategic decisions, command style, and the progressive military and moral catastrophe they produced.",
+  "sections": [
+    {
+      "heading": "The Decision for War",
+      "text": "Hitler had determined by late 1937 that war was necessary for Germany's expansion — this is documented in the Hossbach Memorandum of 5 November 1937, which recorded his strategic vision: Germany must secure Lebensraum by force by 1943–1945 at the latest. The invasion of Poland (1 September 1939) was preceded by the false-flag Gleiwitz incident to provide a pretext. Hitler had expected Britain and France to remain passive as they had at Munich; when they declared war on 3 September, he was genuinely surprised, reportedly asking Ribbentrop: 'What now?' Despite the miscalculation, the Polish campaign was over in five weeks. The Soviet invasion from the east on 17 September sealed Poland's fate."
+    },
+    {
+      "heading": "The Western Campaign and Its Lessons, 1940",
+      "text": "The German victory in France in May–June 1940 appeared to vindicate Hitler's strategic instincts against his generals' caution. The Manstein Plan — a drive through the Ardennes to cut off Allied forces in Belgium — had originally been proposed over the objections of OKH (army high command); Hitler embraced it against the conventional advice. France fell in 46 days. Britain, however, refused to negotiate, and the Luftwaffe failed to achieve the aerial superiority needed for Operation Sea Lion (the planned invasion). Hitler ordered the indefinite postponement of Sea Lion in September 1940. Rather than resolving the British problem, he turned east."
+    },
+    {
+      "heading": "Operation Barbarossa: The Ideological War, 1941",
+      "text": "The invasion of the Soviet Union (22 June 1941) was not merely a military campaign but an ideological one. Hitler's Commissar Order directed that captured Soviet political officers be shot immediately rather than taken prisoner. The Barbarossa Jurisdiction Decree suspended military legal protections for occupied Soviet territory. These orders, issued before the invasion, transformed the war in the east into a war of extermination from its opening day. Initial German advances were enormous: by October 1941, three million Soviet troops had been killed or captured in encirclement battles. But the failure to capture Moscow before winter — Operation Typhoon stalled in the mud and snow of November–December — ended the prospect of a decisive single-campaign victory."
+    },
+    {
+      "heading": "Command Conflicts and the 'Hold Order' Doctrine",
+      "text": "The winter crisis of 1941–1942 on the Eastern Front produced the first major command rupture between Hitler and his generals. When Army Group Centre's overextended positions began to collapse under Soviet counterattacks, generals recommended tactical withdrawal. Hitler refused, issuing his famous 'stand fast' order: divisions were to hold their positions regardless of tactical situation. The order worked — the front stabilised — and it convinced Hitler that his own instinct for rigid defence was superior to his generals' willingness to withdraw. This doctrine, applied increasingly inflexibly through 1943–1945, would eventually trap and destroy entire field armies."
+    },
+    {
+      "heading": "1942: Overextension and Stalingrad",
+      "text": "The 1942 summer offensive (Case Blue) divided Army Group South to drive simultaneously toward the Caucasus oilfields and the Volga. When 6th Army reached Stalingrad in August 1942, Hitler became fixated on capturing the city — named for his adversary — beyond strategic logic. He refused requests to withdraw when Soviet forces encircled the 6th Army in November 1942 (Operation Uranus). Göring's assurance that the Luftwaffe could supply 6th Army by air was false; the army starved. On 2 February 1943, Field Marshal Paulus surrendered approximately 91,000 survivors. It was the decisive turning point of the Eastern Front."
+    },
+    {
+      "heading": "Kursk, the Atlantic, and the Italian Collapse, 1943",
+      "text": "The Battle of Kursk (July 1943) — the last major German strategic offensive in the east — was compromised before it began: the Soviets, informed by intelligence including the British Ultra programme, had prepared deep defensive positions. The German attack failed within days. Hitler called it off to redirect forces to Italy, where Allied landings had begun. Mussolini's overthrow on 25 July 1943 removed Germany's principal ally and opened a new front in southern Europe. Simultaneously, the Battle of the Atlantic was being lost: new Allied anti-submarine technology and tactics sank 41 U-boats in May 1943, forcing Grand Admiral Dönitz to withdraw submarines from the North Atlantic."
+    },
+    {
+      "heading": "The Final Year: Absolute Authority and Total Defeat, 1944–1945",
+      "text": "After the failed July 1944 assassination attempt, Hitler's grip on military command tightened and his health deteriorated visibly. The Ardennes offensive of December 1944 — Operation Wacht am Rhein — committed Germany's last strategic reserves in a failed attempt to split the Allied front and capture Antwerp. When it failed, there was nothing left. Hitler refused all suggestions of negotiation, declaring he would fight to the last. He dismissed or threatened generals who retreated without permission. His operational orders became increasingly divorced from reality — directing 'armies' that existed only on paper, ordering counterattacks by divisions that had ceased to exist. He died in the Führerbunker on 30 April 1945."
+    },
+    {
+      "heading": "Hitler's Relationship with the Holocaust",
+      "text": "Historical debate about the precise moment Hitler issued an explicit order for the extermination of European Jews has never been fully resolved — no written Führer order has been found. What is established is that the genocide developed from Hitler's expressed genocidal intentions (Mein Kampf, speeches, documented statements), the institutional apparatus he created (SS, Gestapo, Einsatzgruppen), and the escalating radicalism of his subordinates acting in what they understood to be his will. Göring's instruction to Heydrich of 31 July 1941 to prepare a 'total solution' (Gesamtlösung) followed six weeks of Einsatzgruppen mass shootings in the east. The Wannsee Conference of 20 January 1942 coordinated the industrial-scale murder that followed. Hitler received regular reports; his approval of deportations was documented in multiple instances."
+    }
+  ],
+  "sources": [
+    { "ref": "Kershaw, Ian. Hitler: 1936–1945 Nemesis. W.W. Norton, 2000." },
+    { "ref": "Beevor, Antony. Stalingrad. Viking, 1998." },
+    { "ref": "Glantz, David M. and House, Jonathan. When Titans Clashed. University Press of Kansas, 1995." },
+    { "ref": "Browning, Christopher R. The Origins of the Final Solution. University of Nebraska Press, 2004." },
+    { "ref": "Trevor-Roper, H.R. The Last Days of Hitler. Macmillan, 1947." },
+    { "ref": "OKW War Diary (Kriegstagebuch des Oberkommando der Wehrmacht). Bundesarchiv-Militärarchiv, Freiburg." }
+  ]
+}

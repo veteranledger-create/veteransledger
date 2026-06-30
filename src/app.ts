@@ -31,6 +31,7 @@ import { contactRoutes } from "./modules/contact/contact.routes";
 import { publishRoutes } from "./modules/publish/publish.routes";
 import { siteContentRoutes } from "./modules/site-content/site-content.routes";
 import { formationsRoutes } from "./modules/formations/formations.routes";
+import { translationsRoutes } from "./modules/translations/translations.routes";
 
 export function createApp(): Application {
   const app = express();
@@ -101,6 +102,7 @@ export function createApp(): Application {
   app.use("/api/publish", publishRoutes);
   app.use("/api/site-content", siteContentRoutes);
   app.use("/api/formations", formationsRoutes);
+  app.use("/api/translations", translationsRoutes);
 
   // ── Frontend page routes ──────────────────────────────────────────────────
   const pagesDir = path.join(config.paths.frontend, "pages");

@@ -6,6 +6,8 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const PAGE_SIZE   = 10;
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
@@ -172,6 +174,18 @@ function renderCampaigns(container, campaigns) {
     card.appendChild(body);
     card.appendChild(footer);
     container.appendChild(card);
+
+    const translateId = c.recordId || c.id;
+    if (translateId) {
+      card.dataset.translateId = translateId;
+      applyRecordTranslation(card, "record", translateId);
+    }
   });
 }
+
+onLocaleChange(() => {
+  document.querySelectorAll(".record-card[data-translate-id]").forEach((card) => {
+    applyRecordTranslation(card, "record", card.dataset.translateId);
+  });
+});
 

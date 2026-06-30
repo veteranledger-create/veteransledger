@@ -5,6 +5,7 @@
     "calibre": "20mm",
     "rate_of_fire": "240 rpm",
     "id": "breda-20-65-mod-35",
+    "recordId": "cmqvfmspz000eob0hfq7kplsf",
     "name": "Breda 20/65 Mod. 35",
     "nation": "Italy",
     "summary": "Italy's standard light anti-aircraft cannon. Used in ground-based and vehicle-mounted roles. Less sophisticated than the German Flak 38 but effective at low altitudes."
@@ -15,6 +16,7 @@
     "weight_kg": 350,
     "warhead_kg": 100,
     "id": "motobomba-fff",
+    "recordId": "cmqvfmspv000cob0hnuoi16b3",
     "name": "Motobomba FFF",
     "nation": "Italy",
     "summary": "Air-dropped circling torpedo that spiralled in an expanding circle on the water surface until it struck a ship. Used by the Regia Aeronautica against Allied convoys in the Mediterranean."
@@ -24,6 +26,7 @@
     "year": 1944,
     "calibre": "45mm",
     "id": "spoleto-45-5",
+    "recordId": "cmqvfmsqa000mob0hyjbxxr13",
     "name": "Spoleto 45/5",
     "nation": "Italy",
     "summary": "Italian recoilless anti-tank weapon developed late in the war. Saw limited operational use before Italy's armistice in 1943; subsequently some were used by RSI (Italian Social Republic) forces."

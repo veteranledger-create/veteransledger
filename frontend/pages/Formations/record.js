@@ -5,6 +5,8 @@
 
 import { renderBlock, renderDossierSection, attachMediaFallbacks, initAttributionModal, initImageLightbox } from "/pages/shared/media-blocks.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const INDEX_URL = "/public/data/formations/index.json";
 
@@ -362,6 +364,9 @@ async function init() {
   attachMediaFallbacks(root);
   initAttributionModal();
   initImageLightbox();
+
+  applyRecordTranslation(root, "record", formation.recordId || formation.id);
+  onLocaleChange(() => applyRecordTranslation(root, "record", formation.recordId || formation.id));
 }
 
 function renderError(root, msg) {

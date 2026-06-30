@@ -6,6 +6,8 @@
 import { initNavigation } from "/layouts/MainLayout/navigation.js";
 import { applySettings } from "/layouts/MainLayout/settings.js";
 import "/layouts/MainLayout/page-content.js";
+import { initI18n } from "/pages/shared/i18n.js";
+import { initLanguageSwitcher } from "/components/LanguageSwitcher/language-switcher.js";
 
 const DEFAULTS = {
   components: {
@@ -74,6 +76,8 @@ export async function injectLayout() {
   document.documentElement.setAttribute("data-layout-ready", "");
 
   await initNavigation();
+  initI18n();
+  initLanguageSwitcher();
   applySettings(); // fire-and-forget: patches contact modal + cookie banner text
   initCookieBanner();
   initContactModal();
@@ -164,7 +168,8 @@ function initContactModal() {
     if (counterEl) {
       if (msgLen >= MIN_MESSAGE) {
         counterEl.innerHTML =
-          `<span id="contact-char-count" style="color:#70b070;font-weight:600">${msgLen}</span> / ${MAX_MESSAGE} ✓`;
+          `<span id="contact-char-count" style="color:#70b070;font-weight:600">${msgLen}</span> / ${MAX_MESSAGE} ` +
+          `<svg width="10" height="10" viewBox="0 0 640 640" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:-1px;color:#70b070"><path fill="currentColor" d="M297.4 438.6C309.9 451.1 330.2 451.1 342.7 438.6L502.7 278.6C515.2 266.1 515.2 245.8 502.7 233.3C490.2 220.8 469.9 220.8 457.4 233.3L320 370.7L182.6 233.4C170.1 220.9 149.8 220.9 137.3 233.4C124.8 245.9 124.8 266.2 137.3 278.7L297.3 438.7z"/></svg>`;
       } else {
         counterEl.innerHTML =
           `<span id="contact-char-count" style="font-weight:600">${msgLen}</span> / ${MIN_MESSAGE} minimum characters`;

@@ -1,0 +1,38 @@
+{
+  "sections": [
+    { "id": "overview", "label": "Party Overview", "file": "/public/data/nsdap/overview.json" },
+    {
+      "id": "hitler",
+      "label": "Adolf Hitler",
+      "subsections": [
+        { "id": "bio",            "label": "Biography",       "file": "/public/data/nsdap/hitler/bio.json" },
+        { "id": "family",         "label": "Family",          "file": "/public/data/nsdap/hitler/family.json" },
+        { "id": "rise",           "label": "Rise to Power",   "file": "/public/data/nsdap/hitler/rise.json" },
+        { "id": "chancellorship", "label": "Chancellorship",  "file": "/public/data/nsdap/hitler/chancellorship.json" },
+        { "id": "rule",           "label": "War & Ideology",  "file": "/public/data/nsdap/hitler/rule.json" },
+        { "id": "wartime",        "label": "War Leader",      "file": "/public/data/nsdap/hitler/wartime.json" },
+        { "id": "end",            "label": "Fall & Death",    "file": "/public/data/nsdap/hitler/end.json" }
+      ]
+    },
+    {
+      "id": "party",
+      "label": "The Party",
+      "subsections": [
+        { "id": "structure",       "label": "Structure",      "file": "/public/data/nsdap/party/structure.json" },
+        { "id": "leadership",      "label": "Leadership",     "file": "/public/data/nsdap/party/leadership.json" },
+        { "id": "departments",     "label": "Departments",    "file": "/public/data/nsdap/party/departments.json" },
+        { "id": "organizations",   "label": "Organizations",  "file": "/public/data/nsdap/party/organizations.json" },
+        { "id": "programme",       "label": "Programme",      "file": "/public/data/nsdap/party/programme.json" },
+        { "id": "religion",        "label": "Religion",       "file": "/public/data/nsdap/party/religion.json" },
+        { "id": "formation",       "label": "Formation",      "file": "/public/data/nsdap/party/formation.json" },
+        { "id": "foreign_policy",  "label": "Foreign Policy", "file": "/public/data/nsdap/party/foreign-policy.json" },
+        { "id": "economy",         "label": "Economy",        "file": "/public/data/nsdap/party/economy.json" },
+        { "id": "state_relations", "label": "Party & State",  "file": "/public/data/nsdap/party/state-relations.json" },
+        { "id": "dissolution",     "label": "Dissolution",    "file": "/public/data/nsdap/party/dissolution.json" }
+      ]
+    },
+    { "id": "timeline", "label": "Chronology", "file": "/public/data/nsdap/timeline.json" },
+    { "id": "glossary",  "label": "Glossary",  "file": "/public/data/nsdap/glossary.json" }
+  ],
+  "disclaimer": "This section is provided for educational purposes only and does not promote or endorse the ideology, actions, or crimes of the National Socialist regime."
+}

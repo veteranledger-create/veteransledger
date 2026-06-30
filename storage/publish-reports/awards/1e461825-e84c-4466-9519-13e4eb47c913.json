@@ -1,0 +1,19 @@
+{
+  "runId": "1e461825-e84c-4466-9519-13e4eb47c913",
+  "type": "awards",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T03:55:20.254Z",
+  "recordsChecked": 1,
+  "valid": 1,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\awards\\temp-fixture-award.json"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Structure of the NSDAP",
+  "description": "The NSDAP was organised as a highly centralised party with the Führer at its apex. The party structure paralleled and ultimately superseded the German state apparatus.",
+  "hierarchy": [
+    {
+      "level": "Führer",
+      "description": "Adolf Hitler. Held absolute authority over the party. After 1934, combined party leadership with the offices of Chancellor and President."
+    },
+    {
+      "level": "Reichsleitung (Reich Leadership)",
+      "description": "The central party apparatus in Munich. Consisted of Reichsleiters responsible for specific functions: propaganda (Goebbels), finance (Schwarz), party organisation (Ley), racial policy (Rosenberg)."
+    },
+    {
+      "level": "Gauleiter (District Leaders)",
+      "description": "Germany was divided into 43 Gaue (districts). Each Gauleiter was a regional party boss with considerable local authority, often serving simultaneously as Reichsstatthalter (Reich Governor) of their territory."
+    },
+    {
+      "level": "Kreisleiter (County Leaders)",
+      "description": "Each Gau was divided into Kreise (counties). Kreisleiter were responsible for party organisation and implementing directives at county level."
+    },
+    {
+      "level": "Ortsgruppenleiter (Local Group Leaders)",
+      "description": "The base level of the party organisation, covering villages and urban neighbourhoods. Responsible for surveillance, welfare distribution, and enforcing conformity."
+    }
+  ],
+  "affiliated_organisations": [
+    { "name": "Sturmabteilung (SA)", "role": "Original paramilitary wing, 'Brownshirts'. Subordinated after Night of the Long Knives (1934)." },
+    { "name": "Schutzstaffel (SS)", "role": "Elite protective corps; grew into a state within a state under Heinrich Himmler. Controlled camps, Gestapo, Waffen-SS." },
+    { "name": "Hitlerjugend (HJ)", "role": "Hitler Youth — mandatory membership for German boys aged 14-18." },
+    { "name": "Bund Deutscher Mädel (BDM)", "role": "League of German Girls — female counterpart to HJ." },
+    { "name": "Deutsche Arbeitsfront (DAF)", "role": "German Labour Front — replaced trade unions dissolved in 1933." },
+    { "name": "Nationalsozialistische Volkswohlfahrt (NSV)", "role": "National Socialist People's Welfare — administered social welfare." }
+  ]
+}

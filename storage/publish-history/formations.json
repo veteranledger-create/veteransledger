@@ -1,0 +1,20 @@
+[
+  {
+    "runId": "6b7d7ec0-34b9-44c2-8b48-f452582f781c",
+    "action": "promote",
+    "type": "formations",
+    "timestamp": "2026-06-30T02:42:49.620Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "allies\\allies.json",
+      "germany\\armies.json",
+      "germany\\army-groups.json",
+      "germany\\corps.json",
+      "germany\\divisions.json",
+      "germany\\luftflotte.json",
+      "germany\\naval.json",
+      "germany\\ss.json",
+      "volunteer-formations.json"
+    ]
+  }
+]

@@ -6,6 +6,7 @@
     "length_mm": 946,
     "weight_kg": 4.2,
     "id": "beretta-mab-38",
+    "recordId": "cmqpwr2di000k71udztg4n892",
     "name": "Beretta MAB 38",
     "nation": "Italy",
     "summary": "Considered one of the finest submachine guns of the war. Adopted by Italian, German, and Romanian forces. Its double-trigger design (one for semi-auto, one for full-auto) was innovative."
@@ -16,6 +17,7 @@
     "weight_kg": 10.5,
     "rate_of_fire": "475 rpm",
     "id": "breda-m30",
+    "recordId": "cmqpwr2dk000m71udb6nur5rp",
     "name": "Breda M30",
     "nation": "Italy",
     "summary": "Italy's standard squad automatic weapon. Criticised for its unusual 20-round feed strip (which had to be oiled before loading) and tendency to jam. Replaced gradually by the Breda M37."
@@ -26,6 +28,7 @@
     "weight_kg": 19.4,
     "rate_of_fire": "450–500 rpm",
     "id": "breda-m37",
+    "recordId": "cmqpwr2dn000o71udpuftp7dq",
     "name": "Breda M37",
     "nation": "Italy",
     "summary": "Italy's standard medium machine gun from 1937. More reliable than the M30. Used a tray feed system; fired cartridges were reinserted into the feed tray (a distinctive feature)."
@@ -37,6 +40,7 @@
     "length_mm": 1017,
     "weight_kg": 3.4,
     "id": "carcano-m91-38",
+    "recordId": "cmqpwr2dg000i71udafti2sqs",
     "name": "Carcano M91/38",
     "nation": "Italy",
     "summary": "The standard Italian infantry rifle. The calibre was changed from 6.5mm to 7.35mm in 1938 for better stopping power, but wartime shortages meant many soldiers continued using older 6.5mm weapons."

@@ -1,0 +1,26 @@
+{
+  "runId": "c707ae2f-5eb5-42ca-bb46-5aea400facd5",
+  "type": "articles",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T02:39:47.772Z",
+  "recordsChecked": 8,
+  "valid": 8,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\articles\\legal\\nuremberg.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\articles\\political\\occupation.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\articles\\political\\anschluss.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\articles\\political\\july-20.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\articles\\political\\rise-nsdap.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\articles\\military\\berlin-1945.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\articles\\military\\rearmament.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\articles\\military\\poland-1939.json"
+  ]
+}

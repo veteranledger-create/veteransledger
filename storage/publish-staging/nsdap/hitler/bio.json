@@ -1,0 +1,16 @@
+{
+  "id": "hitler-bio",
+  "subject": "Adolf Hitler",
+  "born": "20 April 1889",
+  "birthplace": "Braunau am Inn, Austria-Hungary",
+  "died": "30 April 1945",
+  "place_of_death": "Führerbunker, Berlin",
+  "full_name": "Adolf Hitler",
+  "titles": ["Chancellor of Germany (1933–1945)", "Führer und Reichskanzler (1934–1945)", "Supreme Commander of the Armed Forces"],
+  "biography": "Adolf Hitler was the leader of the National Socialist German Workers' Party (NSDAP) and dictator of Germany from 1933 to 1945. Born in Austria, he served as a corporal in the German Army during World War I and received the Iron Cross First Class. Embittered by Germany's defeat and the subsequent Versailles Treaty, he became politically active in Munich, joining the fledgling NSDAP and transforming it from a minor extremist group into a mass movement.\n\nAfter the failed Beer Hall Putsch of 1923, Hitler pursued the 'legal path' to power. Exploiting the Great Depression and the political instability of the Weimar Republic, he was appointed Chancellor on 30 January 1933. Within months he had consolidated dictatorial power through the Enabling Act and established the Third Reich.\n\nHis regime pursued radical policies of German expansion, racial antisemitism, and the systematic murder of European Jews in the Holocaust. His decision to launch the Second World War and to pursue a war of extermination against the Soviet Union led ultimately to Germany's total defeat. He committed suicide in the Führerbunker in Berlin on 30 April 1945 as Soviet forces fought through the city.",
+  "early_life": {
+    "childhood": "Born to Alois Hitler, a customs official, and Klara Pölzl. His father died in 1903; his mother in 1907, a loss that affected him deeply.",
+    "vienna": "Applied twice to the Vienna Academy of Fine Arts; rejected both times. Spent formative years in Vienna (1908–1913) in poverty, developing his antisemitic worldview.",
+    "ww1": "Volunteered for the German Army in 1914; served as a dispatch runner with the 16th Bavarian Reserve Infantry Regiment; wounded twice; awarded Iron Cross First and Second Class."
+  }
+}

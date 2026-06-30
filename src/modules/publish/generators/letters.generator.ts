@@ -19,6 +19,10 @@ interface RelatedRecordEntry {
 
 export interface LetterJson {
   id: string;
+  /** DB primary key — distinct from `id` (the public slug). Used by the
+   *  translation system, which keys translations by the stable DB id
+   *  rather than the human-editable slug. */
+  recordId: string;
   collection: string;
   language?: string;
   translated?: boolean;
@@ -99,7 +103,8 @@ export function toLetterJson(record: RecordLike): LetterJson {
   const sources = Array.isArray(sourcesRaw) ? (sourcesRaw as SourceEntry[]) : undefined;
 
   return {
-    id: record.slug ?? record.id,
+    id:           record.slug ?? record.id,
+    recordId:     record.id,
     collection,
     language: metaAny(record, "language"),
     translated: typeof translatedRaw === "boolean" ? translatedRaw : undefined,

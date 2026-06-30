@@ -15,6 +15,10 @@ interface RelatedRecordEntry {
 
 export interface CampaignJson {
   id: string;
+  /** DB primary key — distinct from `id` (the public slug). Used by the
+   *  translation system, which keys translations by the stable DB id
+   *  rather than the human-editable slug. */
+  recordId: string;
   theater: string;
   region_label?: string;
   title: string;
@@ -84,7 +88,8 @@ export function toCampaignJson(record: RecordLike): CampaignJson {
 
   return {
     ...extras,
-    id: record.slug ?? record.id,
+    id:           record.slug ?? record.id,
+    recordId:     record.id,
     theater: asString(meta(record, "theater")) ?? "unknown",
     region_label: asString(meta(record, "region_label")),
     title: record.title,

@@ -1,9 +1,70 @@
 {
   "theaters": [
-    { "id": "eastern-front", "label": "Eastern Front", "campaigns": ["barbarossa","moscow","leningrad","stalingrad","blue","caucasus","kharkov","kiev"] },
-    { "id": "western-front", "label": "Western Front", "campaigns": ["poland","bzura","norway","france","dunkirk","britain","normandy","market-garden","bulge","warsaw","dieppe"] },
-    { "id": "africa",        "label": "North Africa",  "campaigns": ["sonnenblume","tobruk","gazala","alamein-1","alamein-2"] },
-    { "id": "italy",         "label": "Italy / Med",   "campaigns": ["crete","sicily","cassino","taranto","gothic-line"] },
-    { "id": "atlantic",      "label": "Atlantic",      "campaigns": ["atlantic","convoy-war","rheinubung","river-plate","altmark","uboat-campaing"] }
+    {
+      "id": "africa",
+      "label": "North Africa",
+      "campaigns": [
+        "alamein-1",
+        "alamein-2",
+        "gazala",
+        "sonnenblume",
+        "tobruk"
+      ]
+    },
+    {
+      "id": "atlantic",
+      "label": "Atlantic",
+      "campaigns": [
+        "altmark",
+        "atlantic",
+        "convoy-war",
+        "rheinubung",
+        "river-plate",
+        "uboat-campaign",
+        "uboat-campaing"
+      ]
+    },
+    {
+      "id": "eastern-front",
+      "label": "Eastern Front",
+      "campaigns": [
+        "barbarossa",
+        "blue",
+        "caucasus",
+        "kharkov",
+        "kiev",
+        "leningrad",
+        "moscow",
+        "stalingrad"
+      ]
+    },
+    {
+      "id": "italy",
+      "label": "Italy / Med",
+      "campaigns": [
+        "cassino",
+        "crete",
+        "gothic-line",
+        "sicily",
+        "taranto"
+      ]
+    },
+    {
+      "id": "western-front",
+      "label": "Western Front",
+      "campaigns": [
+        "britain",
+        "bulge",
+        "bzura",
+        "dieppe",
+        "dunkirk",
+        "france",
+        "market-garden",
+        "normandy",
+        "norway",
+        "poland",
+        "warsaw"
+      ]
+    }
   ]
 }

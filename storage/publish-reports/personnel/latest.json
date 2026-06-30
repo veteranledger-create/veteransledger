@@ -1,0 +1,23 @@
+{
+  "runId": "b06d673b-5af0-4c6b-b070-4a229e50db8c",
+  "type": "personnel",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T02:42:49.328Z",
+  "recordsChecked": 46,
+  "valid": 46,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\personnel\\luftwaffe.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\personnel\\army.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\personnel\\foreign.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\personnel\\kriegsmarine.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\personnel\\waffen-ss.json"
+  ]
+}

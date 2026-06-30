@@ -1,0 +1,24 @@
+{
+  "runId": "efbab047-2bb4-49dd-8436-9da4a329996b",
+  "type": "letters",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T02:39:47.610Z",
+  "recordsChecked": 24,
+  "valid": 24,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\letters\\british.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\letters\\german.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\letters\\polish.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\letters\\volunteers.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\letters\\japanese.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\letters\\italian.json"
+  ]
+}

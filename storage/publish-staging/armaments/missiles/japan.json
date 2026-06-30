@@ -4,6 +4,7 @@
     "year": 1944,
     "warhead_kg": 0.62,
     "id": "type-4-anti-tank-grenade-japan",
+    "recordId": "cmqvfmsq7000kob0ho2ru7rsy",
     "name": "Type 4 Anti-Tank Grenade (Japan)",
     "nation": "Japan",
     "summary": "Japanese shaped-charge anti-tank grenade designed for close-range use against Allied armour in the Pacific. Often used in suicide attacks as Japanese forces lacked effective portable anti-tank weapons."
@@ -17,6 +18,7 @@
     "diameter_mm": 610,
     "speed_knots": 48,
     "id": "type-93-long-lance-torpedo",
+    "recordId": "cmqvfmsq1000gob0h40dhyofb",
     "name": "Type 93 Long Lance Torpedo",
     "nation": "Japan",
     "summary": "The finest torpedo of the war. Oxygen-fuelled (leaving no bubble trail), it had four times the range of contemporary US torpedoes. Gave Japanese destroyers a decisive night-combat advantage in the Guadalcanal campaign."

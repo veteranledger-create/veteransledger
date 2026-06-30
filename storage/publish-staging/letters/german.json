@@ -1,6 +1,50 @@
 [
   {
+    "id": "de-003",
+    "recordId": "cmqmn5klb0005rin27fp16now",
+    "collection": "german",
+    "language": "german",
+    "date": "1940-06-20",
+    "from": "Oberleutnant Friedrich von Schiller",
+    "from_unit": "3rd Panzer Division, France",
+    "nation": "Germany",
+    "to": "Father",
+    "location_written": "Paris, France",
+    "subject": "From Paris — after the victory",
+    "excerpt": "Father, we drove into Paris this morning. The boulevards are empty and silent. I confess I felt something complicated standing beneath the Arc de Triomphe...",
+    "context": "The Fall of France (May–June 1940) was one of the most shocking military collapses in modern history. The German Manstein Plan (Fall Gelb) sent armoured forces through the Ardennes, bypassing the Maginot Line and encircling Allied forces in Belgium. Paris was declared an open city on 13 June 1940; German forces entered on 14 June. France signed the Armistice on 22 June 1940 in the same railway carriage where Germany had signed the 1918 Armistice — a deliberate symbolic act by Hitler. For German officers of the old military class, the victory produced complex emotions: professional pride alongside unease about what it had been done in service of.",
+    "full_text": "Dear Father,\n\nI write from Paris — it is still strange to write those words. We drove in this morning with the column; the boulevards are empty and largely silent. A few French civilians watch from shuttered windows. I confess I felt something complicated standing beneath the Arc de Triomphe in uniform. Greatness visited by greatness, perhaps, though I know that is not how they will see it.\n\nThe campaign was everything the training had promised and more. The Panzer felt like thunder rolling across the earth. The French were not cowards — they fought in places — but they could not adjust. We were always somewhere they did not expect.\n\nGeneral Rommel was remarkable. I saw his command vehicle once during the crossing of the Meuse. He was right at the front, watching the engineers. No hesitation.\n\nI hope we have seen the last of the fighting. Perhaps now a negotiated peace will be possible, and I can come home.\n\nYour Fritz",
+    "notes": "Von Schiller survived the war and emigrated to Argentina in 1947.",
+    "archive_source": "Private collection",
+    "sources": [
+      {
+        "ref": "Original letter, private collection. Photocopy held at Institut für Zeitgeschichte, Munich. ED 200/5.",
+        "type": "primary"
+      },
+      {
+        "ref": "Frieser, Karl-Heinz. The Blitzkrieg Legend: The 1940 Campaign in the West. Naval Institute Press, 2005.",
+        "note": "Definitive operational history of the French campaign based on German archives."
+      },
+      {
+        "ref": "Jackson, Julian. The Fall of France: The Nazi Invasion of 1940. Oxford University Press, 2003."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "de-002",
+        "title": "Müller — Stalingrad Pocket (1942)",
+        "type": "German Collection"
+      },
+      {
+        "id": "de-004",
+        "title": "Haas — Normandy (1944)",
+        "type": "German Collection"
+      }
+    ]
+  },
+  {
     "id": "de-001",
+    "recordId": "cmqlp24k10000d5y0qkrp3h50",
     "collection": "german",
     "language": "german",
     "date": "1941-10-15",
@@ -25,8 +69,94 @@
       {
         "id": "de-002",
         "title": "Müller — Stalingrad Pocket (1942)",
-        "type": "German Collection",
-        "url": "/letters/de-002"
+        "type": "German Collection"
+      }
+    ]
+  },
+  {
+    "id": "de-002",
+    "recordId": "cmqmn5kl70003rin2gepgrwsp",
+    "collection": "german",
+    "language": "german",
+    "date": "1942-12-28",
+    "from": "Unteroffizier Karl Müller",
+    "from_unit": "6th Army, Stalingrad Pocket",
+    "nation": "Germany",
+    "to": "Wife",
+    "location_written": "Stalingrad",
+    "subject": "Final letter from the Stalingrad Pocket",
+    "excerpt": "I no longer believe we will be relieved. The Manstein attempt has failed. I ask only that you remember me as I was in better days...",
+    "context": "By late December 1942, approximately 290,000 German and Axis troops of the 6th Army were encircled at Stalingrad following Operation Uranus (November 1942). Operation Winter Storm — Field Marshal von Manstein's relief attempt — was halted on 23 December 1942 approximately 48 km from the pocket. Rations had been cut to 50 grams of bread per day. The Luftwaffe airlift was providing less than a quarter of the required daily supply tonnage. The men inside the pocket largely understood their situation. The last mail airlift left the pocket on 14 January 1943; the 6th Army surrendered on 2 February 1943.",
+    "full_text": "My dear Helga,\n\nI write this knowing it may be my last letter. The situation is clear to every man here who is honest with himself — I no longer believe we will be relieved. The relief attempt has failed. The rations now are almost nothing; we burn furniture for warmth.\n\nI do not write this to cause you distress, but because I believe you deserve the truth from me. I have conducted myself with honour. I have not surrendered though I might have. I believe that counts for something.\n\nIf God wills that I do not return, please raise the children to know that their father loved them above all things. Do not teach them hatred. The world we were told we were fighting for has not come to pass.\n\nKiss the children for me. I see your face each night when I sleep.\n\nYour Karl",
+    "notes": "Müller surrendered on 2 February 1943 and died in Soviet captivity in March 1943. This letter was part of the last mail airlift from the Stalingrad pocket.",
+    "archive_source": "Bundesarchiv-Militärarchiv, Freiburg",
+    "sources": [
+      {
+        "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 2/2763. Part of the Letzte Briefe aus Stalingrad collection.",
+        "type": "primary"
+      },
+      {
+        "ref": "Beevor, Antony. Stalingrad. Viking, 1998.",
+        "note": "Definitive English-language account of the battle and its human cost."
+      },
+      {
+        "ref": "Last Letters from Stalingrad. Translated by Franz Schneider and Charles Gullans. William Morrow, 1962.",
+        "note": "Collected correspondence from the airlift; provides direct comparison texts."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "de-001",
+        "title": "Becker — Vyazma, Eastern Front (1941)",
+        "type": "German Collection"
+      },
+      {
+        "id": "de-003",
+        "title": "Von Schiller — Paris (1940)",
+        "type": "German Collection"
+      }
+    ]
+  },
+  {
+    "id": "de-004",
+    "recordId": "cmqmn5kle0007rin2d6ajguus",
+    "collection": "german",
+    "language": "german",
+    "date": "1944-07-25",
+    "from": "Hauptmann Werner Haas",
+    "from_unit": "12th SS Panzer Division Hitlerjugend, Normandy",
+    "nation": "Germany",
+    "to": "Sister",
+    "location_written": "Normandy, France",
+    "subject": "After the invasion",
+    "excerpt": "The weight of the Allied material is something no one here was prepared for. We hold our positions, but each attack costs us men we cannot replace...",
+    "context": "The Normandy campaign (June–August 1944) saw the Wehrmacht attempting to hold back Allied forces following the D-Day landings of 6 June 1944. The 12th SS Panzer Division Hitlerjugend, composed largely of Hitler Youth volunteers aged 17–18 led by experienced Eastern Front veterans, fought in the Caen sector with extraordinary ferocity. Allied material superiority — particularly in artillery and air power — imposed catastrophic attrition on German armoured formations. By 25 July 1944, the day of this letter, Operation Cobra (the American breakout) was imminent. The Falaise Pocket in August 1944 would destroy much of the German force in Normandy.",
+    "full_text": "Dear Lotte,\n\nI have little time to write, but I want you to know I am alive. The situation in Normandy is not what the radio describes. The weight of Allied material — tanks, artillery, aircraft above all — is something no one here was fully prepared for. We hold our positions, but each attack costs us men we cannot replace. The replacements when they come are boys.\n\nI will not write what I truly think of our chances. You will understand what my silence means.\n\nI ask only one thing: if anything happens to me, see that my books go to the university library in Freiburg. Father will know which ones.\n\nThink of me on Sundays.\n\nYour Werner",
+    "notes": "Hauptmann Haas was wounded at Falaise in August 1944 and survived the war. He became a schoolteacher in Baden-Württemberg.",
+    "archive_source": "Family donation, Bundesarchiv",
+    "sources": [
+      {
+        "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 1/3021. Family donation, 1972.",
+        "type": "primary"
+      },
+      {
+        "ref": "Hastings, Max. Overlord: D-Day and the Battle for Normandy. Simon & Schuster, 1984."
+      },
+      {
+        "ref": "Meyer, Hubert. The History of the 12. SS-Panzerdivision 'Hitlerjugend'. J.J. Fedorowicz, 1994.",
+        "note": "Unit history; use with awareness of author's participation in the events described."
+      }
+    ],
+    "related_records": [
+      {
+        "id": "de-001",
+        "title": "Becker — Eastern Front (1941)",
+        "type": "German Collection"
+      },
+      {
+        "id": "de-003",
+        "title": "Von Schiller — Paris (1940)",
+        "type": "German Collection"
       }
     ]
   }

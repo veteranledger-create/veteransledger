@@ -1,4 +1,5 @@
-import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn } from "./admin-utils.js";
+﻿import { TranslationsPanel } from "./translations-panel.js";
+import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn, safeJson } from "./admin-utils.js";
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
 
@@ -26,6 +27,7 @@ const SECTIONS = [
 
 let currentPage = 1;
 let editingId = null;
+const translationsPanel = new TranslationsPanel("formation-translations-panel", "record");
 let sourcesDraft = [];
 let relatedDraft = [];
 let commandersDraft = [];
@@ -38,14 +40,14 @@ function renderCommanders() {
   const list = document.getElementById("formation-commanders-list");
   if (!list) return;
   if (!commandersDraft.length) {
-    list.innerHTML = `<p style="color:var(--text-muted);font-size:var(--text-xs);">No commanders added yet.</p>`;
+    list.innerHTML = `<p class="empty-note">No commanders added yet.</p>`;
     return;
   }
   list.innerHTML = commandersDraft.map((c, i) => `
-    <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:var(--space-2);margin-bottom:var(--space-2);align-items:center;">
+    <div class="commander-row">
       <input class="input" placeholder="Name" value="${escHtml(c.name || "")}" data-ci="${i}" data-field="name">
       <input class="input" placeholder="Period (e.g. Jun 1941–Jan 1942)" value="${escHtml(c.period || "")}" data-ci="${i}" data-field="period">
-      <button type="button" class="btn btn-secondary" style="padding:4px 8px;color:#e06060;border-color:#4a1515;" data-rm-cmd="${i}">✕</button>
+      <button type="button" class="btn btn-secondary btn--xs btn--danger" data-rm-cmd="${i}"><svg class="icon-inline" width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"/></svg></button>
     </div>`).join("");
 
   list.querySelectorAll("[data-ci]").forEach((inp) => {
@@ -105,46 +107,46 @@ async function loadFormations(page = 1) {
   try {
     const res = await fetch(`/api/formations?${params}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    renderList(container, await res.json());
+    renderList(container, await safeJson(res));
   } catch (_) {
-    container.innerHTML = `<p style="color:var(--text-muted)">Formations unavailable.</p>`;
+    container.innerHTML = `<p class="text-dim">Formations unavailable.</p>`;
   }
 }
 
 function renderList(container, { data, total, page, pages }) {
   if (!data.length) {
-    container.innerHTML = `<p style="color:var(--text-muted)">No formations yet. Create one above or run the data import.</p>`;
+    container.innerHTML = `<p class="text-dim">No formations yet. Create one above or run the data import.</p>`;
     return;
   }
   container.innerHTML = `
-    <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">${total} formations · page ${page} of ${pages}</p>
-    <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
-      <thead><tr style="border-bottom:1px solid var(--border-dim);color:var(--text-muted);text-align:left;">
-        <th style="padding:var(--space-2) var(--space-3);">Name</th>
-        <th style="padding:var(--space-2) var(--space-3);">Section</th>
-        <th style="padding:var(--space-2) var(--space-3);">Nation</th>
-        <th style="padding:var(--space-2) var(--space-3);">Status</th>
-        <th style="padding:var(--space-2) var(--space-3);text-align:right;">Actions</th>
+    <p class="list-meta">${total} formations · page ${page} of ${pages}</p>
+    <table class="admin-table">
+      <thead><tr>
+        <th>Name</th>
+        <th>Section</th>
+        <th>Nation</th>
+        <th>Status</th>
+        <th class="col-actions">Actions</th>
       </tr></thead>
       <tbody>
         ${data.map((r) => {
           const meta = r.metadata || {};
           const sectionLabel = SECTIONS.find((s) => s.value === meta.section)?.label || meta.section || "—";
           return `
-          <tr style="border-bottom:1px solid var(--border-dim);">
-            <td style="padding:var(--space-2) var(--space-3);color:var(--text-primary);">${escHtml(r.title)}</td>
-            <td style="padding:var(--space-2) var(--space-3);color:var(--text-muted);">${escHtml(sectionLabel)}</td>
-            <td style="padding:var(--space-2) var(--space-3);color:var(--text-muted);">${escHtml(r.nationality || "—")}</td>
-            <td style="padding:var(--space-2) var(--space-3);">${r.published ? '<span style="color:#60c060;">Published</span>' : '<span style="color:var(--text-muted);">Draft</span>'}</td>
-            <td style="padding:var(--space-2) var(--space-3);text-align:right;display:flex;gap:var(--space-2);justify-content:flex-end;">
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;" data-edit="${r.id}">Edit</button>
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;color:#e06060;border-color:#4a1515;" data-delete="${r.id}">Delete</button>
+          <tr>
+            <td class="td-primary">${escHtml(r.title)}</td>
+            <td class="td-muted">${escHtml(sectionLabel)}</td>
+            <td class="td-muted">${escHtml(r.nationality || "—")}</td>
+            <td>${r.published ? '<span class="status-published">Published</span>' : '<span class="status-draft">Draft</span>'}</td>
+            <td class="col-actions">
+              <button class="btn btn-secondary btn--xs" data-edit="${r.id}">Edit</button>
+              <button class="btn btn-secondary btn--xs btn--danger" data-delete="${r.id}">Delete</button>
             </td>
           </tr>`;
         }).join("")}
       </tbody>
     </table>
-    ${pages > 1 ? `<div style="display:flex;gap:var(--space-2);margin-top:var(--space-5);">
+    ${pages > 1 ? `<div class="pagination">
       ${page > 1 ? `<button class="btn btn-secondary" data-page="${page - 1}">← Prev</button>` : ""}
       ${page < pages ? `<button class="btn btn-secondary" data-page="${page + 1}">Next →</button>` : ""}
     </div>` : ""}`;
@@ -171,7 +173,8 @@ function openForm(id) {
   document.getElementById("formation-form-panel").hidden = false;
   renderSources(); renderRelated(); renderCommanders();
   setStatus("", false);
-  if (id) loadIntoForm(id);
+  if (id) { loadIntoForm(id); translationsPanel.load(id); }
+  else translationsPanel.clear();
 }
 
 function closeForm() {
@@ -183,7 +186,7 @@ async function loadIntoForm(id) {
   try {
     const res = await fetch(`/api/formations/${id}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const r = await res.json();
+    const r = await safeJson(res);
     const meta = r.metadata || {};
     const form = document.getElementById("formation-form");
 
@@ -217,24 +220,24 @@ async function showPreview() {
   if (!editingId) { alert("Save the formation first, then Preview."); return; }
   toggleModal("formation-preview-modal", true);
   const content = document.getElementById("formation-preview-content");
-  content.innerHTML = `<p style="color:var(--text-muted);">Loading…</p>`;
+  content.innerHTML = `<p class="text-dim">Loading…</p>`;
   try {
     const res = await fetch(`/api/formations/${editingId}/preview`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const { rendered, issues } = await res.json();
+    const { rendered, issues } = await safeJson(res);
     const errors = issues.filter((i) => i.severity === "error");
     content.innerHTML = `
-      ${errors.length ? `<div style="background:#3a1515;border:1px solid #6a2020;border-radius:4px;padding:var(--space-3);margin-bottom:var(--space-4);color:#e06060;font-size:var(--text-sm);">
+      ${errors.length ? `<div class="preview-error">
         <strong>Cannot publish — ${errors.length} blocking issue(s):</strong>
-        <ul style="margin:var(--space-2) 0 0 var(--space-4);">${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
+        <ul>${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
       </div>` : ""}
-      <h3 style="font-family:var(--font-display);margin-bottom:var(--space-2);">${escHtml(rendered.name || "—")}</h3>
-      ${rendered.type ? `<p style="color:var(--gold-dim);margin-bottom:var(--space-1);">${escHtml(rendered.type)}</p>` : ""}
-      ${rendered.nation ? `<p style="color:var(--text-muted);margin-bottom:var(--space-1);">Nation: ${escHtml(rendered.nation)}</p>` : ""}
-      ${rendered.summary ? `<p style="margin-bottom:var(--space-4);">${escHtml(String(rendered.summary).slice(0, 300))}</p>` : ""}
-      <pre style="font-size:11px;background:rgba(255,255,255,0.03);padding:var(--space-3);border-radius:4px;overflow-x:auto;">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
+      <h3 class="preview-title">${escHtml(rendered.name || "—")}</h3>
+      ${rendered.type ? `<p class="gold-dim mb-1">${escHtml(rendered.type)}</p>` : ""}
+      ${rendered.nation ? `<p class="text-dim mb-1">Nation: ${escHtml(rendered.nation)}</p>` : ""}
+      ${rendered.summary ? `<p class="mb-4">${escHtml(String(rendered.summary).slice(0, 300))}</p>` : ""}
+      <pre class="preview-json">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
   } catch (_) {
-    content.innerHTML = `<p style="color:var(--text-muted);">Preview unavailable.</p>`;
+    content.innerHTML = `<p class="text-dim">Preview unavailable.</p>`;
   }
 }
 
@@ -273,8 +276,9 @@ async function handleSubmit(e) {
       body: JSON.stringify(body),
     });
     if (!res.ok) throw new Error();
-    const saved = await res.json();
+    const saved = await safeJson(res);
     editingId = saved.id;
+    translationsPanel.load(saved.id);
     setStatus("Saved.", false);
     loadFormations(currentPage);
     if (!document.getElementById("formation-preview-modal")?.hidden) showPreview();

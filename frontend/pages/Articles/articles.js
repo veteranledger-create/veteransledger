@@ -6,6 +6,8 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 let CATEGORIES = [];
 
@@ -142,7 +144,27 @@ function renderArticles(container, articles) {
       </div>`;
 
     container.appendChild(el);
+
+    const translateId = article.recordId || article.id;
+    if (translateId) {
+      el.dataset.translateId = translateId;
+      applyRecordTranslation(el, "record", translateId, {
+        titleSelector: ".article-preview__title",
+        summarySelector: ".article-preview__summary",
+        noticeAnchor: ".article-preview__body",
+      });
+    }
   });
 }
+
+onLocaleChange(() => {
+  document.querySelectorAll(".article-preview[data-translate-id]").forEach((card) => {
+    applyRecordTranslation(card, "record", card.dataset.translateId, {
+      titleSelector: ".article-preview__title",
+      summarySelector: ".article-preview__summary",
+      noticeAnchor: ".article-preview__body",
+    });
+  });
+});
 
 init();

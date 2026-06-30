@@ -1,4 +1,5 @@
-import { authHeader, escHtml, makeStatusFn } from "./admin-utils.js";
+﻿import { TranslationsPanel } from "./translations-panel.js";
+import { authHeader, escHtml, makeStatusFn, safeJson } from "./admin-utils.js";
 
 /**
  * VeteransLedger · Admin — Content Page Editor
@@ -24,6 +25,7 @@ const PAGE_FILES = [
 
 let currentKey = null;
 const setStatus = makeStatusFn("pages-form-status");
+const translationsPanel = new TranslationsPanel("pages-translations-panel", "site_content");
 
 function init() {
   document.getElementById("admin-tabs")?.addEventListener("click", (e) => {
@@ -36,7 +38,7 @@ function renderSidebar() {
   const sidebar = document.getElementById("pages-file-list");
   if (!sidebar) return;
   sidebar.innerHTML = PAGE_FILES.map((f) => `
-    <div class="sidebar-item${currentKey === f.key ? " sidebar-item--active" : ""}" data-key="${escHtml(f.key)}" style="cursor:pointer;padding:var(--space-2) var(--space-3);border-radius:4px;font-size:var(--text-sm);${currentKey === f.key ? "background:rgba(255,255,255,0.08);" : ""}">
+    <div class="sidebar-item${currentKey === f.key ? " sidebar-item--active" : ""}" data-key="${escHtml(f.key)}">
       ${escHtml(f.label)}
     </div>`).join("");
   sidebar.querySelectorAll("[data-key]").forEach((el) => el.addEventListener("click", () => loadFile(el.dataset.key)));
@@ -56,10 +58,11 @@ async function loadFile(key) {
   try {
     const res = await fetch(`/api/site-content?key=${encodeURIComponent(key)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    const data = await safeJson(res);
     editor.value = JSON.stringify(data, null, 2);
     editor.disabled = false;
     setStatus("", false);
+    translationsPanel.load(key);
   } catch (err) {
     editor.value = "";
     setStatus(`Failed to load: ${err.message}`, true);

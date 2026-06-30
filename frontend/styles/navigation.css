@@ -228,31 +228,31 @@
   background-image: url("/public/images/icons/navigation/timeline.svg");
 }
 .nav-icon[data-icon="campaigns"] {
-  background-image: url("/public/images/icons/navigation/campaigns.svg");
+  background-image: url("/public/images/icons/ui/campaigns.svg");
 }
 .nav-icon[data-icon="armaments"] {
-  background-image: url("/public/images/icons/navigation/armaments.svg");
+  background-image: url("/public/images/icons/ui/armaments.svg");
 }
 .nav-icon[data-icon="personnel"] {
-  background-image: url("/public/images/icons/navigation/personnel.svg");
+  background-image: url("/public/images/icons/ui/personnel.svg");
 }
 .nav-icon[data-icon="letters"] {
-  background-image: url("/public/images/icons/navigation/letters.svg");
+  background-image: url("/public/images/icons/ui/letters.svg");
 }
 .nav-icon[data-icon="nsdap"] {
-  background-image: url("/public/images/icons/navigation/nsdap.svg");
+  background-image: url("/public/images/icons/ui/nsdap.svg");
 }
 .nav-icon[data-icon="articles"] {
-  background-image: url("/public/images/icons/navigation/articles.svg");
+  background-image: url("/public/images/icons/ui/articles.svg");
 }
 .nav-icon[data-icon="about"] {
-  background-image: url("/public/images/icons/navigation/about.svg");
+  background-image: url("/public/images/icons/ui/about.svg");
 }
 .nav-icon[data-icon="search"] {
   background-image: url("/public/images/icons/navigation/search.svg");
 }
 .nav-icon[data-icon="formations"] {
-  background-image: url("/public/images/icons/navigation/Formations.svg");
+  background-image: url("/public/images/icons/ui/Formations.svg");
 }
 
 /* Theme icon: changes with current theme */
@@ -428,6 +428,141 @@
 .sidebar__bottom-item {
   /* inherits .sidebar__link styles */
   font-size: 11px;
+}
+
+/* ── Language switcher (sidebar + mobile menu) ─────────────────────────── */
+.lang-switcher {
+  position: relative;
+  margin: var(--space-1) 0;
+}
+.lang-switcher__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 8px var(--space-3);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.lang-switcher__trigger:hover,
+.lang-switcher--open .lang-switcher__trigger {
+  color: var(--gold);
+  background: var(--gold-faint);
+}
+.lang-switcher__trigger:focus-visible {
+  outline: 2px solid var(--gold-dim);
+  outline-offset: 1px;
+}
+.lang-switcher__flag {
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.lang-switcher__flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.lang-switcher__label {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lang-switcher__menu {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6);
+  z-index: 150;
+  overflow: hidden;
+  /* closed state: fade + slide, matches Admin's custom-select animation */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(6px) scaleY(0.97);
+  transform-origin: bottom center;
+  transition: opacity 0.15s ease, transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.15s;
+  pointer-events: none;
+}
+.lang-switcher--open .lang-switcher__menu {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.15s ease, transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
+  pointer-events: auto;
+}
+.lang-switcher__opt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px var(--space-3);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.1s, color 0.08s;
+}
+.lang-switcher__opt:hover,
+.lang-switcher__opt--focused {
+  background: var(--gold-faint);
+  color: var(--gold);
+}
+.lang-switcher__opt--selected {
+  color: var(--gold);
+  font-weight: 600;
+}
+.lang-switcher__opt-flag {
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 12px;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+.lang-switcher__opt-flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.lang-switcher__opt-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Mobile menu variant: menu opens downward (trigger sits near top of a
+   shorter, scrollable panel rather than the sidebar's bottom edge) */
+.lang-switcher--mobile .lang-switcher__menu {
+  bottom: auto;
+  top: calc(100% + 6px);
+  transform-origin: top center;
+}
+.lang-switcher--mobile.lang-switcher--open .lang-switcher__menu {
+  transform: none;
+}
+.lang-switcher--mobile:not(.lang-switcher--open) .lang-switcher__menu {
+  transform: translateY(-6px) scaleY(0.97);
 }
 
 /* ── Mobile menu ────────────────────────────────────────────── */

@@ -40,6 +40,7 @@ function rebuildRelatedRecords(raw: unknown): unknown[] | undefined {
 export function toFormationJson(record: RecordLike): Record<string, unknown> {
   const result: Record<string, unknown> = {
     id:           record.slug ?? record.id,
+    recordId:     record.id,
     name:         record.title,
     nation:       record.nationality ?? asString(meta(record, "nation")) ?? "Germany",
     service:      asString(meta(record, "service")),

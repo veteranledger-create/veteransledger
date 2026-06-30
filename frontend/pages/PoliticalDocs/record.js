@@ -4,6 +4,8 @@
  */
 
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
@@ -143,6 +145,9 @@ async function init() {
   const doc = await findDoc(id);
   if (!doc) { renderError(root, `Political document "${id}" not found.`); return; }
   render(root, doc);
+
+  applyRecordTranslation(root, "record", doc.recordId || doc.id);
+  onLocaleChange(() => applyRecordTranslation(root, "record", doc.recordId || doc.id));
 }
 
 function renderError(root, msg) {

@@ -7,6 +7,7 @@
     "armour_mm": 50,
     "weight_tons": 18.8,
     "id": "type-3-chi-nu",
+    "recordId": "cmqpw1olv000uaya9cqtmvan7",
     "name": "Type 3 Chi-Nu",
     "nation": "Japan",
     "summary": "Japan's best mass-produced tank, capable of engaging the M4 Sherman on more equal terms. Held in reserve for the anticipated Allied invasion of the Home Islands that never came."
@@ -19,6 +20,7 @@
     "armour_mm": 8,
     "weight_tons": 3.4,
     "id": "type-94-tankette",
+    "recordId": "cmqpw1olu000saya91tzncc6e",
     "name": "Type 94 Tankette",
     "nation": "Japan",
     "summary": "Used extensively in China. Provided infantry support and logistic towing but was poorly armed and vulnerable to almost any anti-armour weapon."
@@ -32,6 +34,7 @@
     "weight_tons": 7.4,
     "max_speed_kmh": 45,
     "id": "type-95-ha-go",
+    "recordId": "cmqpw1ols000qaya93omqlaou",
     "name": "Type 95 Ha-Go",
     "nation": "Japan",
     "summary": "Japan's main light tank. Thin armour made it vulnerable to .50 calibre machine guns at close range. Used throughout the Pacific on jungle and island campaigns."
@@ -46,6 +49,7 @@
     "weight_tons": 15,
     "max_speed_kmh": 38,
     "id": "type-97-chi-ha",
+    "recordId": "cmqpw1olq000oaya9smwx4cho",
     "name": "Type 97 Chi-Ha",
     "nation": "Japan",
     "summary": "Japan's most-produced tank of the war. Effective against Chinese infantry in 1937; completely outclassed by Soviet armour at Khalkhyn Gol (1939) and by US M4 Shermans in the Pacific."

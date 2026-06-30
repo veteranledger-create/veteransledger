@@ -3,6 +3,10 @@ import { WRAPPER_KEY_BY_CATEGORY, SchemaType } from "../import-validation/armame
 
 export interface ArmamentJson {
   id: string;
+  /** DB primary key — distinct from `id` (the public slug). Used by the
+   *  translation system, which keys translations by the stable DB id
+   *  rather than the human-editable slug. */
+  recordId: string;
   name: string;
   nation?: string;
   summary?: string;
@@ -49,7 +53,8 @@ export function toArmamentJson(record: RecordLike): ArmamentJson {
 
   return {
     ...extras,
-    id: record.slug ?? record.id,
+    id:           record.slug ?? record.id,
+    recordId:     record.id,
     name: record.title,
     nation: asString(record.nationality),
     summary: asString(record.summary),

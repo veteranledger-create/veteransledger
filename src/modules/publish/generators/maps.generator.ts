@@ -5,6 +5,10 @@ interface RelatedEntry { id: string; title?: string; type?: string; }
 
 export interface MapJson {
   id: string;
+  /** DB primary key — distinct from `id` (the public slug). Used by the
+   *  translation system, which keys translations by the stable DB id
+   *  rather than the human-editable slug. */
+  recordId: string;
   title: string;
   theater?: string;
   year?: number;
@@ -38,7 +42,8 @@ export function toMapJson(record: RecordLike): MapJson {
     : undefined;
 
   return {
-    id: record.slug ?? record.id,
+    id:           record.slug ?? record.id,
+    recordId:     record.id,
     title: record.title,
     ...(str(meta(record, "theater")) ? { theater: str(meta(record, "theater")) } : {}),
     ...(year !== undefined ? { year } : {}),

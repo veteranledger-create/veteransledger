@@ -1,0 +1,15 @@
+{
+  "title": "NSDAP Leadership",
+  "description": "The principal leaders of the National Socialist regime, their roles, and their fates.",
+  "leaders": [
+    { "name": "Adolf Hitler", "role": "Führer und Reichskanzler", "fate": "Suicide, 30 April 1945, Berlin" },
+    { "name": "Hermann Göring", "role": "Reichsmarschall; Head of Luftwaffe; designated successor until 1945", "fate": "Sentenced to death at Nuremberg; suicide by cyanide, 15 October 1946" },
+    { "name": "Heinrich Himmler", "role": "Reichsführer-SS; Head of Gestapo and SS; Interior Minister", "fate": "Suicide by cyanide after capture, 23 May 1945" },
+    { "name": "Joseph Goebbels", "role": "Reich Minister of Propaganda; Reich Chancellor (1 day)", "fate": "Suicide with wife Magda (who killed their 6 children), 1 May 1945, Berlin" },
+    { "name": "Martin Bormann", "role": "Head of the Party Chancellery; Hitler's personal secretary", "fate": "Died attempting to escape Berlin, 1–2 May 1945 (confirmed 1998 by DNA)" },
+    { "name": "Rudolf Hess", "role": "Deputy Führer until 1941; flew solo to Scotland", "fate": "Life sentence at Nuremberg; suicide in Spandau Prison, 17 August 1987, age 93" },
+    { "name": "Joachim von Ribbentrop", "role": "Foreign Minister", "fate": "Hanged at Nuremberg, 16 October 1946" },
+    { "name": "Albert Speer", "role": "Reich Minister for Armaments; Hitler's architect", "fate": "20 years in Spandau; released 1966; died 1981" },
+    { "name": "Karl Dönitz", "role": "Commander U-boats; then Commander Kriegsmarine; Hitler's successor as Reich President", "fate": "10 years imprisonment at Nuremberg; released 1956; died 1980" }
+  ]
+}

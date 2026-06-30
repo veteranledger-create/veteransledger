@@ -1,0 +1,13 @@
+[
+  {
+    "runId": "24a6a679-66d6-48d1-b839-1cbb5c2efc78",
+    "action": "promote",
+    "type": "political-docs",
+    "timestamp": "2026-06-30T03:55:20.325Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "temp-fixture-poldoc.json",
+      "index.json"
+    ]
+  }
+]

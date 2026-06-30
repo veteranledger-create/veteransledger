@@ -4,6 +4,7 @@
     "year": 1944,
     "operational_range_km": 9000,
     "id": "fu-go-fire-balloon",
+    "recordId": "cmqvfmsqz0014ob0hngkrt4nl",
     "name": "Fu-Go Fire Balloon",
     "nation": "Japan",
     "summary": "Japan's most innovative long-range weapon: hydrogen-filled paper balloons carrying incendiary and fragmentation bombs, designed to ride the jet stream to North America. Approximately 9,300 were launched; 300+ reached the US and Canada. Six Americans — the only WWII combat deaths on the US mainland — were killed in Oregon in May 1945."
@@ -13,6 +14,7 @@
     "year": 1945,
     "mine_kg": 15,
     "id": "fukuryu-crouching-dragon",
+    "recordId": "cmqvfmsr7001cob0hdb5f93p7",
     "name": "Fukuryu (Crouching Dragon)",
     "nation": "Japan",
     "summary": "Combat divers who would walk along the sea floor in diving suits carrying a contact mine on a pole. Intended to destroy Allied landing craft during the anticipated invasion of Japan. Never used operationally."
@@ -24,6 +26,7 @@
     "warhead_kg": 1550,
     "speed_knots": 30,
     "id": "kaiten",
+    "recordId": "cmqvfmsr30018ob0hov7a2wub",
     "name": "Kaiten",
     "nation": "Japan",
     "summary": "A Type 93 Long Lance torpedo modified with a cockpit for a pilot who would steer it into enemy ships, giving his life in the attack. The pilot could not escape after launch. Deployed from submarines in the last year of the war; sank USS Mississinewa (November 1944)."
@@ -36,6 +39,7 @@
     "wingspan_m": 5.12,
     "max_speed_kmh": 740,
     "id": "ohka-model-11",
+    "recordId": "cmqvfmsr10016ob0hg3z79x98",
     "name": "Ohka Model 11",
     "nation": "Japan",
     "summary": "Rocket-powered piloted suicide aircraft carried under a Mitsubishi G4M bomber and released near Allied ships. With three solid-fuel rockets and 1,200kg of explosives in the nose, it reached 740 km/h in its terminal dive — impossible to intercept by 1945 fighters. Sank USS Mannert L. Abele on 12 April 1945."
@@ -45,6 +49,7 @@
     "year": 1944,
     "warhead_kg": 250,
     "id": "shinyo-suicide-boat",
+    "recordId": "cmqvfmsr5001aob0hbc0a1gf4",
     "name": "Shinyo Suicide Boat",
     "nation": "Japan",
     "summary": "Small plywood motorboat packed with 250kg of explosive, intended to ram Allied ships at night. Over 6,000 were built. Used in the Philippines and Okinawa campaigns; most were destroyed before reaching their targets."

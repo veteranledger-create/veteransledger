@@ -1,29 +1,32 @@
 [
   {
-    "id": "de-001",
+    "id": "de-003",
+    "recordId": "cmqmn5klb0005rin27fp16now",
+    "collection": "german",
     "language": "german",
-    "date": "1941-10-15",
-    "from": "Gefreiter Hans Becker",
-    "from_unit": "6th Infanterie-Division, Army Group Centre",
+    "date": "1940-06-20",
+    "from": "Oberleutnant Friedrich von Schiller",
+    "from_unit": "3rd Panzer Division, France",
     "nation": "Germany",
-    "to": "Family",
-    "location_written": "Near Vyazma, Russia",
-    "subject": "Letter from the Eastern Front",
-    "excerpt": "The distances here are incomprehensible. We have marched further in the last weeks than I could have believed possible...",
-    "context": "By October 1941, Army Group Centre was deep into Operation Typhoon, the German drive on Moscow. The encirclement battles of Vyazma and Bryansk had just concluded, trapping approximately 663,000 Soviet troops in the largest encirclement in military history. German soldiers were advancing in autumn mud — the notorious Rasputitsa — still wearing summer uniforms, with winter equipment far behind in the supply chain. The halt before Moscow in December 1941 would prove the eastern campaign's first strategic failure.",
-    "full_text": "Dearest Family,\n\nI write to you from somewhere near Vyazma, where we have halted to consolidate. The distances here are incomprehensible — we have marched and ridden further in the last weeks than I could have believed possible. Russia is not like France. The land goes on without end, and the autumn mud has already begun. My boots have not been dry in a week.\n\nDespite all this, spirits remain high. The men around me are good soldiers and good comrades. We have seen hard fighting, but we believe in what we are doing. The encirclement battles have been enormous — tens of thousands of prisoners streaming westward, more than I can count.\n\nI hope Father's health is improving. Tell Mother her package arrived with the socks and the Lebkuchen — they were shared with the whole section and gone in minutes. Everyone sends their thanks.\n\nI cannot say when I will next write, but know that I think of home every day.\n\nYour Hans",
-    "notes": "Gefreiter Becker was killed in action near Rzhev in January 1942. This letter was returned to his family after the war.",
-    "archive_source": "Private family collection, donated 1960",
+    "to": "Father",
+    "location_written": "Paris, France",
+    "subject": "From Paris — after the victory",
+    "excerpt": "Father, we drove into Paris this morning. The boulevards are empty and silent. I confess I felt something complicated standing beneath the Arc de Triomphe...",
+    "context": "The Fall of France (May–June 1940) was one of the most shocking military collapses in modern history. The German Manstein Plan (Fall Gelb) sent armoured forces through the Ardennes, bypassing the Maginot Line and encircling Allied forces in Belgium. Paris was declared an open city on 13 June 1940; German forces entered on 14 June. France signed the Armistice on 22 June 1940 in the same railway carriage where Germany had signed the 1918 Armistice — a deliberate symbolic act by Hitler. For German officers of the old military class, the victory produced complex emotions: professional pride alongside unease about what it had been done in service of.",
+    "full_text": "Dear Father,\n\nI write from Paris — it is still strange to write those words. We drove in this morning with the column; the boulevards are empty and largely silent. A few French civilians watch from shuttered windows. I confess I felt something complicated standing beneath the Arc de Triomphe in uniform. Greatness visited by greatness, perhaps, though I know that is not how they will see it.\n\nThe campaign was everything the training had promised and more. The Panzer felt like thunder rolling across the earth. The French were not cowards — they fought in places — but they could not adjust. We were always somewhere they did not expect.\n\nGeneral Rommel was remarkable. I saw his command vehicle once during the crossing of the Meuse. He was right at the front, watching the engineers. No hesitation.\n\nI hope we have seen the last of the fighting. Perhaps now a negotiated peace will be possible, and I can come home.\n\nYour Fritz",
+    "notes": "Von Schiller survived the war and emigrated to Argentina in 1947.",
+    "archive_source": "Private collection",
     "sources": [
       {
-        "type": "primary",
-        "ref": "Original letter, private family collection, donated to Bundesarchiv-Militärarchiv, Freiburg, 1960. Bestand RH 37/6254."
+        "ref": "Original letter, private collection. Photocopy held at Institut für Zeitgeschichte, Munich. ED 200/5.",
+        "type": "primary"
       },
       {
-        "ref": "Glantz, David M. and House, Jonathan. When Titans Clashed: How the Red Army Stopped Hitler. University Press of Kansas, 1995."
+        "ref": "Frieser, Karl-Heinz. The Blitzkrieg Legend: The 1940 Campaign in the West. Naval Institute Press, 2005.",
+        "note": "Definitive operational history of the French campaign based on German archives."
       },
       {
-        "ref": "Stahel, David. Operation Typhoon: Hitler's March on Moscow, October 1941. Cambridge University Press, 2013."
+        "ref": "Jackson, Julian. The Fall of France: The Nazi Invasion of 1940. Oxford University Press, 2003."
       }
     ],
     "related_records": [
@@ -40,7 +43,40 @@
     ]
   },
   {
+    "id": "de-001",
+    "recordId": "cmqlp24k10000d5y0qkrp3h50",
+    "collection": "german",
+    "language": "german",
+    "date": "1941-10-15",
+    "from": "Gefreiter Hans Becker",
+    "from_unit": "6th Infanterie-Division, Army Group Centre",
+    "nation": "Germany",
+    "to": "Family",
+    "location_written": "Near Vyazma, Russia",
+    "subject": "Letter from the Eastern Front",
+    "excerpt": "The distances here are incomprehensible. We have marched further in the last weeks than I could have believed possible...",
+    "context": "By October 1941, Army Group Centre was deep into Operation Typhoon, the German drive on Moscow. The encirclement battles of Vyazma and Bryansk had just concluded, trapping approximately 663,000 Soviet troops in the largest encirclement in military history.",
+    "full_text": "Dearest Family,\n\nI write to you from somewhere near Vyazma, where we have halted to consolidate. The distances here are incomprehensible — we have marched and ridden further in the last weeks than I could have believed possible. Russia is not like France. The land goes on without end, and the autumn mud has already begun. My boots have not been dry in a week.\n\nDespite all this, spirits remain high. The men around me are good soldiers and good comrades. We have seen hard fighting, but we believe in what we are doing. The encirclement battles have been enormous — tens of thousands of prisoners streaming westward, more than I can count.\n\nI hope Father's health is improving. Tell Mother her package arrived with the socks and the Lebkuchen — they were shared with the whole section and gone in minutes. Everyone sends their thanks.\n\nI cannot say when I will next write, but know that I think of home every day.\n\nYour Hans",
+    "notes": "Gefreiter Becker was killed in action near Rzhev in January 1942. This letter was returned to his family after the war.",
+    "archive_source": "Private family collection, donated 1960",
+    "sources": [
+      {
+        "ref": "Original letter, private family collection, donated to Bundesarchiv-Militärarchiv, Freiburg, 1960. Bestand RH 37/6254.",
+        "type": "primary"
+      }
+    ],
+    "related_records": [
+      {
+        "id": "de-002",
+        "title": "Müller — Stalingrad Pocket (1942)",
+        "type": "German Collection"
+      }
+    ]
+  },
+  {
     "id": "de-002",
+    "recordId": "cmqmn5kl70003rin2gepgrwsp",
+    "collection": "german",
     "language": "german",
     "date": "1942-12-28",
     "from": "Unteroffizier Karl Müller",
@@ -56,8 +92,8 @@
     "archive_source": "Bundesarchiv-Militärarchiv, Freiburg",
     "sources": [
       {
-        "type": "primary",
-        "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 2/2763. Part of the Letzte Briefe aus Stalingrad collection."
+        "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 2/2763. Part of the Letzte Briefe aus Stalingrad collection.",
+        "type": "primary"
       },
       {
         "ref": "Beevor, Antony. Stalingrad. Viking, 1998.",
@@ -82,48 +118,9 @@
     ]
   },
   {
-    "id": "de-003",
-    "language": "german",
-    "date": "1940-06-20",
-    "from": "Oberleutnant Friedrich von Schiller",
-    "from_unit": "3rd Panzer Division, France",
-    "nation": "Germany",
-    "to": "Father",
-    "location_written": "Paris, France",
-    "subject": "From Paris — after the victory",
-    "excerpt": "Father, we drove into Paris this morning. The boulevards are empty and silent. I confess I felt something complicated standing beneath the Arc de Triomphe...",
-    "context": "The Fall of France (May–June 1940) was one of the most shocking military collapses in modern history. The German Manstein Plan (Fall Gelb) sent armoured forces through the Ardennes, bypassing the Maginot Line and encircling Allied forces in Belgium. Paris was declared an open city on 13 June 1940; German forces entered on 14 June. France signed the Armistice on 22 June 1940 in the same railway carriage where Germany had signed the 1918 Armistice — a deliberate symbolic act by Hitler. For German officers of the old military class, the victory produced complex emotions: professional pride alongside unease about what it had been done in service of.",
-    "full_text": "Dear Father,\n\nI write from Paris — it is still strange to write those words. We drove in this morning with the column; the boulevards are empty and largely silent. A few French civilians watch from shuttered windows. I confess I felt something complicated standing beneath the Arc de Triomphe in uniform. Greatness visited by greatness, perhaps, though I know that is not how they will see it.\n\nThe campaign was everything the training had promised and more. The Panzer felt like thunder rolling across the earth. The French were not cowards — they fought in places — but they could not adjust. We were always somewhere they did not expect.\n\nGeneral Rommel was remarkable. I saw his command vehicle once during the crossing of the Meuse. He was right at the front, watching the engineers. No hesitation.\n\nI hope we have seen the last of the fighting. Perhaps now a negotiated peace will be possible, and I can come home.\n\nYour Fritz",
-    "notes": "Von Schiller survived the war and emigrated to Argentina in 1947.",
-    "archive_source": "Private collection",
-    "sources": [
-      {
-        "type": "primary",
-        "ref": "Original letter, private collection. Photocopy held at Institut für Zeitgeschichte, Munich. ED 200/5."
-      },
-      {
-        "ref": "Frieser, Karl-Heinz. The Blitzkrieg Legend: The 1940 Campaign in the West. Naval Institute Press, 2005.",
-        "note": "Definitive operational history of the French campaign based on German archives."
-      },
-      {
-        "ref": "Jackson, Julian. The Fall of France: The Nazi Invasion of 1940. Oxford University Press, 2003."
-      }
-    ],
-    "related_records": [
-      {
-        "id": "de-002",
-        "title": "Müller — Stalingrad Pocket (1942)",
-        "type": "German Collection"
-      },
-      {
-        "id": "de-004",
-        "title": "Haas — Normandy (1944)",
-        "type": "German Collection"
-      }
-    ]
-  },
-  {
     "id": "de-004",
+    "recordId": "cmqmn5kle0007rin2d6ajguus",
+    "collection": "german",
     "language": "german",
     "date": "1944-07-25",
     "from": "Hauptmann Werner Haas",
@@ -139,8 +136,8 @@
     "archive_source": "Family donation, Bundesarchiv",
     "sources": [
       {
-        "type": "primary",
-        "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 1/3021. Family donation, 1972."
+        "ref": "Original letter, Bundesarchiv-Militärarchiv, Freiburg. Bestand MSg 1/3021. Family donation, 1972.",
+        "type": "primary"
       },
       {
         "ref": "Hastings, Max. Overlord: D-Day and the Battle for Normandy. Simon & Schuster, 1984."

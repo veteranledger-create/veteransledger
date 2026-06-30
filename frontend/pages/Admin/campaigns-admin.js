@@ -1,5 +1,6 @@
+﻿import { TranslationsPanel } from "./translations-panel.js";
 import { initMediaAdmin, registerCallbacks } from "./admin-media.js";
-import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn } from "./admin-utils.js";
+import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn, safeJson } from "./admin-utils.js";
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
 import { uploadFile, handleUpload, wireSectionActions, renderGallery, renderDocuments } from "./admin-media-sections.js";
@@ -20,6 +21,7 @@ const KNOWN_THEATERS = [
 
 let currentPage = 1;
 let editingId = null;
+const translationsPanel = new TranslationsPanel("campaign-translations-panel", "record");
 let sourcesDraft = [];
 let relatedDraft = [];
 let galleryDraft = [];
@@ -78,27 +80,27 @@ async function loadCampaigns(page = 1) {
   try {
     const res = await fetch(`/api/campaigns?${params}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    renderList(container, await res.json());
+    renderList(container, await safeJson(res));
   } catch (_) {
-    container.innerHTML = `<p style="color:var(--text-muted)">Campaigns unavailable.</p>`;
+    container.innerHTML = `<p class="text-dim">Campaigns unavailable.</p>`;
   }
 }
 
 function renderList(container, { data, total, page, pages }) {
   if (!data.length) {
-    container.innerHTML = `<p style="color:var(--text-muted)">No campaigns yet. Create one above.</p>`;
+    container.innerHTML = `<p class="text-dim">No campaigns yet. Create one above.</p>`;
     return;
   }
   container.innerHTML = `
-    <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">${total} campaigns · page ${page} of ${pages}</p>
-    <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
+    <p class="list-meta">${total} campaigns · page ${page} of ${pages}</p>
+    <table class="admin-table">
       <thead>
-        <tr style="border-bottom:1px solid var(--border-dim);color:var(--text-muted);text-align:left;">
-          <th style="padding:var(--space-3) var(--space-4);">Title</th>
-          <th style="padding:var(--space-3) var(--space-4);">Theater</th>
-          <th style="padding:var(--space-3) var(--space-4);">Start</th>
-          <th style="padding:var(--space-3) var(--space-4);">Status</th>
-          <th style="padding:var(--space-3) var(--space-4);text-align:right;">Actions</th>
+        <tr>
+          <th>Title</th>
+          <th>Theater</th>
+          <th>Start</th>
+          <th>Status</th>
+          <th class="col-actions">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -107,20 +109,20 @@ function renderList(container, { data, total, page, pages }) {
           const theater = KNOWN_THEATERS.find((t) => t.value === meta.theater)?.label || meta.theater || "—";
           const start = r.startDate ? r.startDate.slice(0, 10) : (meta.dates?.start || "—");
           return `
-          <tr style="border-bottom:1px solid var(--border-dim);">
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-primary);">${escHtml(r.title)}</td>
-            <td style="padding:var(--space-3) var(--space-4);"><span class="badge">${escHtml(theater)}</span></td>
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-muted);">${escHtml(start)}</td>
-            <td style="padding:var(--space-3) var(--space-4);">${r.published ? '<span style="color:#60c060;">Published</span>' : '<span style="color:var(--text-muted);">Draft</span>'}</td>
-            <td style="padding:var(--space-3) var(--space-4);text-align:right;display:flex;gap:var(--space-2);justify-content:flex-end;">
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;" data-edit="${r.id}">Edit</button>
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;color:#e06060;border-color:#4a1515;" data-delete="${r.id}">Delete</button>
+          <tr>
+            <td class="td-primary">${escHtml(r.title)}</td>
+            <td><span class="badge">${escHtml(theater)}</span></td>
+            <td class="td-muted">${escHtml(start)}</td>
+            <td>${r.published ? '<span class="status-published">Published</span>' : '<span class="status-draft">Draft</span>'}</td>
+            <td class="col-actions">
+              <button class="btn btn-secondary btn--xs" data-edit="${r.id}">Edit</button>
+              <button class="btn btn-secondary btn--xs btn--danger" data-delete="${r.id}">Delete</button>
             </td>
           </tr>`;
         }).join("")}
       </tbody>
     </table>
-    ${pages > 1 ? `<div style="display:flex;gap:var(--space-2);margin-top:var(--space-5);">
+    ${pages > 1 ? `<div class="pagination">
       ${page > 1 ? `<button class="btn btn-secondary" data-page="${page - 1}">← Prev</button>` : ""}
       ${page < pages ? `<button class="btn btn-secondary" data-page="${page + 1}">Next →</button>` : ""}
     </div>` : ""}`;
@@ -150,7 +152,8 @@ function openForm(id) {
   document.getElementById("campaign-form-panel").hidden = false;
   renderSources(); renderRelated(); renderGalleryAdmin(); renderDocumentsAdmin();
   setStatus("", false);
-  if (id) loadCampaignIntoForm(id);
+  if (id) { loadCampaignIntoForm(id); translationsPanel.load(id); }
+  else translationsPanel.clear();
 }
 
 function closeForm() {
@@ -162,7 +165,7 @@ async function loadCampaignIntoForm(id) {
   try {
     const res = await fetch(`/api/campaigns/${id}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const r = await res.json();
+    const r = await safeJson(res);
     const meta = r.metadata || {};
     const form = document.getElementById("campaign-form");
 
@@ -192,24 +195,24 @@ async function showPreview() {
   if (!editingId) { alert("Save the campaign first, then Preview."); return; }
   toggleModal("campaign-preview-modal", true);
   const content = document.getElementById("campaign-preview-content");
-  content.innerHTML = `<p style="color:var(--text-muted);">Loading…</p>`;
+  content.innerHTML = `<p class="text-dim">Loading…</p>`;
   try {
     const res = await fetch(`/api/campaigns/${editingId}/preview`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const { rendered, issues } = await res.json();
+    const { rendered, issues } = await safeJson(res);
     const errors = issues.filter((i) => i.severity === "error");
     const dates = rendered.dates || {};
     content.innerHTML = `
-      ${errors.length ? `<div style="background:#3a1515;border:1px solid #6a2020;border-radius:4px;padding:var(--space-3);margin-bottom:var(--space-4);color:#e06060;font-size:var(--text-sm);">
+      ${errors.length ? `<div class="preview-error">
         <strong>Cannot publish — ${errors.length} blocking issue(s):</strong>
-        <ul style="margin:var(--space-2) 0 0 var(--space-4);">${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
+        <ul>${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
       </div>` : ""}
-      <h3 style="font-family:var(--font-display);margin-bottom:var(--space-2);">${escHtml(rendered.title || "—")}</h3>
-      <p style="color:var(--text-muted);margin-bottom:var(--space-1);">${escHtml(rendered.theater || "")}${dates.start ? " · " + dates.start : ""}</p>
-      <p style="margin-bottom:var(--space-4);">${escHtml((rendered.summary || "").slice(0, 200))}</p>
-      <pre style="font-size:11px;background:rgba(255,255,255,0.03);padding:var(--space-3);border-radius:4px;overflow-x:auto;">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
+      <h3 class="preview-title">${escHtml(rendered.title || "—")}</h3>
+      <p class="text-dim mb-1">${escHtml(rendered.theater || "")}${dates.start ? " · " + dates.start : ""}</p>
+      <p class="mb-4">${escHtml((rendered.summary || "").slice(0, 200))}</p>
+      <pre class="preview-json">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
   } catch (_) {
-    content.innerHTML = `<p style="color:var(--text-muted);">Preview unavailable.</p>`;
+    content.innerHTML = `<p class="text-dim">Preview unavailable.</p>`;
   }
 }
 
@@ -248,11 +251,12 @@ async function handleSubmit(e) {
       body: JSON.stringify(body),
     });
     if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
+      const err = await safeJson(res).catch(() => ({}));
       throw new Error(err.error || "Save failed.");
     }
-    const saved = await res.json();
+    const saved = await safeJson(res);
     editingId = saved.id;
+    translationsPanel.load(saved.id);
     setStatus("Saved.", false);
     loadCampaigns(currentPage);
     if (!document.getElementById("campaign-preview-modal")?.hidden) showPreview();

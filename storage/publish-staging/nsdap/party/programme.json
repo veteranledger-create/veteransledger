@@ -1,0 +1,75 @@
+{
+  "title": "The 25-Point Programme of the NSDAP",
+  "announced": "24 February 1920",
+  "location": "Hofbräuhaus, Munich",
+  "context": "The 25-Point Programme was announced by Adolf Hitler at the first mass meeting of the German Workers' Party (renamed that day to the NSDAP). Written principally by Anton Drexler and Hitler with contributions from Gottfried Feder, it remained the official party programme throughout the Third Reich, declared 'unalterable' in 1926. In practice, many points were ignored, modified, or implemented selectively. It combined nationalist, antisemitic, corporatist, and proto-socialist demands in a deliberate attempt to appeal across class lines.",
+  "points": [
+    {
+      "number": 1,
+      "text": "We demand the unification of all Germans in a Great Germany on the basis of the right of national self-determination.",
+      "analysis": "The foundational demand for Pan-German nationalism, providing ideological justification for the Anschluss (1938) and the annexation of the Sudetenland (1938)."
+    },
+    {
+      "number": 2,
+      "text": "We demand equality of rights for the German people in its dealings with other nations, and abolition of the peace treaties of Versailles and Saint-Germain.",
+      "analysis": "A rejection of the post-WWI settlement, particularly reparations, territorial losses, and military restrictions — a universally popular demand in Weimar Germany across the political spectrum."
+    },
+    {
+      "number": 3,
+      "text": "We demand land and territory (colonies) for the maintenance of our people and the settlement of our surplus population.",
+      "analysis": "The colonial demand — less about overseas territories than about the later doctrine of Lebensraum in Eastern Europe, developed more fully in Mein Kampf (1925)."
+    },
+    {
+      "number": 4,
+      "text": "Only members of the nation may be citizens of the State. Only those of German blood, whatever their creed, may be members of the nation. Accordingly, no Jew may be a member of the nation.",
+      "analysis": "The central racial exclusion clause, providing the ideological basis for the Nuremberg Laws (1935) and all subsequent antisemitic legislation."
+    },
+    {
+      "number": 5,
+      "text": "Non-citizens are to be able to live in Germany only as guests and must be subject to laws for aliens.",
+      "analysis": "Implemented through the Reich Citizenship Law (1935), which created a legal distinction between citizens (Reichsbürger) and state subjects (Staatsangehörige)."
+    },
+    {
+      "number": 6,
+      "text": "The right to vote on the State's government and legislation shall be enjoyed by the citizens of the State alone.",
+      "analysis": "Served as justification for the removal of political rights from Jews and others defined as non-citizens."
+    },
+    {
+      "number": 7,
+      "text": "We demand that the State shall above all undertake to ensure that every citizen shall have the possibility of living decently and earning a livelihood.",
+      "analysis": "A welfare-nationalist demand that formed part of the NSDAP's appeal to the unemployed during the Great Depression. Partially implemented through the DAF (German Labour Front) and NSV (People's Welfare organisation)."
+    },
+    {
+      "number": 8,
+      "text": "All further non-German immigration must be prevented. We demand that all non-Germans who entered Germany after 2 August 1914 be forced to leave the Reich immediately.",
+      "analysis": "Anti-immigration provision targeting particularly Eastern European Jews (Ostjuden) who had arrived in Germany during and after WWI."
+    },
+    {
+      "number": 13,
+      "text": "We demand the nationalisation of all businesses which have been formed into corporations (trusts).",
+      "analysis": "The most explicitly socialist-sounding clause; largely ignored after 1933 as the Nazi regime maintained and worked with large private industry. Heavy industrialists who had supported the party were not nationalised."
+    },
+    {
+      "number": 17,
+      "text": "We demand a land reform suitable to our national requirements, the passing of a law for the expropriation of land for communal purposes without compensation, abolition of interest on land loans, and prevention of all speculation in land.",
+      "analysis": "Another clause reflecting the programme's appeal to rural voters; added a note in 1928 clarifying it applied only to 'Jewish companies formed for speculative purposes', illustrating how antisemitic intent could reframe apparently socialist demands."
+    },
+    {
+      "number": 24,
+      "text": "We demand freedom of religion for all religious denominations within the State so long as they do not endanger its existence or oppose the moral senses of the Germanic race. The Party as such advocates the standpoint of a positive Christianity without binding itself confessionally to any particular denomination.",
+      "analysis": "The famous 'Positive Christianity' clause. Deliberately vague, it allowed the NSDAP to appeal to both Protestant and Catholic voters while avoiding commitment to either church. In practice, 'Positive Christianity' came to mean Christianity stripped of its Jewish origins and remade as a Germanic faith — a project pursued inconsistently and ultimately abandoned."
+    },
+    {
+      "number": 25,
+      "text": "For the execution of all of this, we demand the creation of a strong central power of the Reich. Unlimited authority of the central parliament over the whole Reich and its organisations in general.",
+      "analysis": "The authoritarian constitutional demand, which in practice was implemented by abolishing the federal structure of the Weimar Republic and centralising power in the Reich Chancellery."
+    }
+  ],
+  "declaration_of_immutability": "At the party congress of 22 May 1926, Hitler declared the programme 'unalterable'. This prevented factional debate over specific points but also meant the programme was never updated to reflect the evolving priorities of the regime. By 1933, the NSDAP had effectively ceased to function as a party programme document and had become a historical artefact of the party's founding.",
+  "sources": [
+    { "ref": "NSDAP. Das Programm der N.S.D.A.P. Munich, 1920. (Original German text.)" },
+    { "ref": "Noakes, J. and Pridham, G. (eds). Nazism 1919–1945, Vol. 1: The Rise to Power. University of Exeter Press, 1998. Document 4." },
+    { "ref": "Orlow, Dietrich. The History of the Nazi Party: 1919–1933. University of Pittsburgh Press, 1969." },
+    { "ref": "Feder, Gottfried. Das Programm der NSDAP und seine weltanschaulichen Grundlagen. Munich: NSDAP, 1927." }
+  ]
+}

@@ -5,6 +5,8 @@
 
 import { renderDossierSection, renderHistoricalPhotographsSection, attachMediaFallbacks, initAttributionModal, initImageLightbox, heroImageCandidates, isAiGeneratedImageSrc, registerAttribution } from "/pages/shared/media-blocks.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
@@ -479,6 +481,9 @@ async function init() {
   attachMediaFallbacks(root);
   initAttributionModal();
   initImageLightbox();
+
+  applyRecordTranslation(root, "record", item.recordId || item.id);
+  onLocaleChange(() => applyRecordTranslation(root, "record", item.recordId || item.id));
 }
 
 function renderError(root, msg) {

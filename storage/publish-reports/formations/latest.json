@@ -1,0 +1,27 @@
+{
+  "runId": "2aa2bff4-10e5-4868-a7cd-89eb9a2b9d46",
+  "type": "formations",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T02:42:49.589Z",
+  "recordsChecked": 32,
+  "valid": 32,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\germany\\ss.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\allies\\allies.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\volunteer-formations.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\germany\\armies.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\germany\\naval.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\germany\\divisions.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\germany\\corps.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\germany\\army-groups.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\formations\\germany\\luftflotte.json"
+  ]
+}

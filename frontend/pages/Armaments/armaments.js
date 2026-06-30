@@ -6,6 +6,8 @@
 import { createPaginator } from "/pages/shared/paginator.js";
 import { cardImageCandidates, isAiGeneratedImageSrc } from "/pages/shared/media-blocks.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 // CATEGORIES is built dynamically from armaments/index.json so that adding
 // or renaming a category in the manifest is reflected immediately without a
@@ -309,7 +311,30 @@ function renderArmaments(container, items, catId) {
     card.appendChild(imageDiv);
     card.appendChild(body);
     container.appendChild(card);
+
+    const translateId = item.recordId || item.id;
+    if (translateId) {
+      card.dataset.translateId = translateId;
+      applyRecordTranslation(card, "record", translateId, {
+        titleSelector: ".armament-card__name",
+        summarySelector: ".armament-card__desc",
+        noticeAnchor: ".armament-card__body",
+      });
+    }
   });
 }
+
+// Re-patch whatever cards are currently in the DOM (any page/category) on a
+// locale switch — decoupled from the paginator, which re-renders on its own
+// schedule and already gets fresh translations via the call above.
+onLocaleChange(() => {
+  document.querySelectorAll(".armament-card[data-translate-id]").forEach((card) => {
+    applyRecordTranslation(card, "record", card.dataset.translateId, {
+      titleSelector: ".armament-card__name",
+      summarySelector: ".armament-card__desc",
+      noticeAnchor: ".armament-card__body",
+    });
+  });
+});
 
 init();

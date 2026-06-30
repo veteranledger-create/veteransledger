@@ -1,4 +1,5 @@
-import { authHeader, makeStatusFn } from "./admin-utils.js";
+import { authHeader, makeStatusFn, safeJson } from "./admin-utils.js";
+import { TranslationsPanel } from "./translations-panel.js";
 
 /**
  * VeteransLedger · Admin — Page Content Editor
@@ -9,6 +10,7 @@ import { authHeader, makeStatusFn } from "./admin-utils.js";
 
 const KEY = "page-content.json";
 const setStatus = makeStatusFn("pce-form-status");
+const translationsPanel = new TranslationsPanel("pce-translations-panel", "site_content");
 
 let fullData = null;
 
@@ -50,8 +52,9 @@ async function loadPageContent() {
   try {
     const res = await fetch(`/api/site-content?key=${encodeURIComponent(KEY)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    fullData = await res.json();
+    fullData = await safeJson(res);
     setStatus("", false);
+    translationsPanel.load(KEY);
     // Auto-select first page if nothing is selected yet
     const sel = f("pce-page-select");
     if (sel && !sel.value) {

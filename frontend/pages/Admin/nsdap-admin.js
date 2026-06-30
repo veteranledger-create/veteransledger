@@ -1,4 +1,5 @@
-import { authHeader, escHtml, makeStatusFn } from "./admin-utils.js";
+﻿import { TranslationsPanel } from "./translations-panel.js";
+import { authHeader, escHtml, makeStatusFn, safeJson } from "./admin-utils.js";
 
 /**
  * VeteransLedger · Admin — NSDAP Content
@@ -37,6 +38,8 @@ let currentStructured = null;   // "overview" | "timeline" | "glossary" | null
 let timelineEvents = [];        // draft array for timeline editor
 let glossaryEntries = [];       // draft array for glossary editor
 
+const translationsPanel = new TranslationsPanel("nsdap-translations-panel", "site_content");
+
 const setStatus = makeStatusFn("nsdap-form-status");
 
 // ── DOM helpers ───────────────────────────────────────────────────────────────
@@ -69,9 +72,7 @@ function renderSidebar() {
   const sidebar = el("nsdap-file-list");
   if (!sidebar) return;
   sidebar.innerHTML = NSDAP_FILES.map((f) => `
-    <div class="sidebar-item${currentKey === f.key ? " sidebar-item--active" : ""}"
-         data-key="${escHtml(f.key)}"
-         style="cursor:pointer;padding:var(--space-2) var(--space-3);border-radius:4px;font-size:var(--text-sm);${currentKey === f.key ? "background:rgba(255,255,255,0.08);" : ""}">
+    <div class="sidebar-item${currentKey === f.key ? " sidebar-item--active" : ""}" data-key="${escHtml(f.key)}">
       ${f.structured ? `<span style="color:var(--gold-dim);font-size:10px;margin-right:4px;">✦</span>` : ""}${escHtml(f.label)}
     </div>`).join("");
   sidebar.querySelectorAll("[data-key]").forEach((div) =>
@@ -97,8 +98,9 @@ async function loadFile(key) {
   try {
     const res = await fetch(`/api/site-content?key=${encodeURIComponent(key)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    const data = await safeJson(res);
     setStatus("", false);
+    translationsPanel.load(key);
 
     if (fileInfo?.structured === "overview") {
       populateOverview(data);
@@ -233,14 +235,14 @@ function renderTimeline() {
   const list = el("nsdap-timeline-list");
   if (!list) return;
   list.innerHTML = timelineEvents.map((ev, i) => `
-    <div data-ti="${i}" style="border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-4);background:var(--bg-card);">
+    <div data-ti="${i}" class="admin-card">
       <div style="display:grid;grid-template-columns:80px 1fr auto;gap:var(--space-2);margin-bottom:var(--space-2);">
-        <input class="input" data-field="year" placeholder="Year" value="${escHtml(String(ev.year || ""))}" style="font-size:var(--text-sm);">
-        <input class="input" data-field="date" placeholder="Full date (e.g. 24 February 1920)" value="${escHtml(ev.date || "")}" style="font-size:var(--text-sm);">
-        <button type="button" class="btn btn-secondary" data-rm-ti="${i}" style="padding:4px 8px;color:#e06060;border-color:#4a1515;">✕</button>
+        <input class="input" data-field="year" placeholder="Year" value="${escHtml(String(ev.year || ""))}">
+        <input class="input" data-field="date" placeholder="Full date (e.g. 24 February 1920)" value="${escHtml(ev.date || "")}">
+        <button type="button" class="btn btn-secondary btn--xs btn--danger" data-rm-ti="${i}"><svg class="icon-inline" width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"/></svg></button>
       </div>
-      <input class="input" data-field="title" placeholder="Event title" value="${escHtml(ev.title || "")}" style="font-size:var(--text-sm);margin-bottom:var(--space-2);">
-      <textarea class="input" data-field="description" rows="3" placeholder="Description…" style="font-size:var(--text-sm);resize:vertical;">${escHtml(ev.description || "")}</textarea>
+      <input class="input mb-2" data-field="title" placeholder="Event title" value="${escHtml(ev.title || "")}">
+      <textarea class="input" data-field="description" rows="3" placeholder="Description…">${escHtml(ev.description || "")}</textarea>
     </div>`).join("");
 
   list.querySelectorAll("[data-rm-ti]").forEach((btn) => {
@@ -289,13 +291,13 @@ function renderGlossary() {
   const list = el("nsdap-glossary-list");
   if (!list) return;
   list.innerHTML = glossaryEntries.map((entry, i) => `
-    <div data-gi="${i}" style="border:1px solid var(--border-dim);border-radius:6px;padding:var(--space-4);background:var(--bg-card);">
+    <div data-gi="${i}" class="admin-card">
       <div style="display:grid;grid-template-columns:1fr 160px auto;gap:var(--space-2);margin-bottom:var(--space-2);">
-        <input class="input" data-field="term" placeholder="Term" value="${escHtml(entry.term || "")}" style="font-size:var(--text-sm);">
-        <input class="input" data-field="category" placeholder="Category (optional)" value="${escHtml(entry.category || "")}" style="font-size:var(--text-sm);">
-        <button type="button" class="btn btn-secondary" data-rm-gi="${i}" style="padding:4px 8px;color:#e06060;border-color:#4a1515;">✕</button>
+        <input class="input" data-field="term" placeholder="Term" value="${escHtml(entry.term || "")}">
+        <input class="input" data-field="category" placeholder="Category (optional)" value="${escHtml(entry.category || "")}">
+        <button type="button" class="btn btn-secondary btn--xs btn--danger" data-rm-gi="${i}"><svg class="icon-inline" width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"/></svg></button>
       </div>
-      <textarea class="input" data-field="definition" rows="2" placeholder="Definition…" style="font-size:var(--text-sm);resize:vertical;">${escHtml(entry.definition || "")}</textarea>
+      <textarea class="input" data-field="definition" rows="2" placeholder="Definition…">${escHtml(entry.definition || "")}</textarea>
     </div>`).join("");
 
   list.querySelectorAll("[data-rm-gi]").forEach((btn) => {

@@ -3,6 +3,10 @@ import { RelatedRecordEntry } from "../import-validation/personnel-entity-mapper
 
 export interface PersonnelJson {
   id: string;
+  /** DB primary key — distinct from `id` (the public slug). Used by the
+   *  translation system, which keys translations by the stable DB id
+   *  rather than the human-editable slug. */
+  recordId: string;
   name: string;
   rank?: string;
   branch: string;
@@ -71,6 +75,7 @@ export function toPersonnelJson(entity: EntityLike, personnelLinks: RelatedRecor
   return {
     ...extras,
     id: entity.slug ?? entity.id,
+    recordId: entity.id,
     name: entity.name,
     rank: asString(meta(entity, "rank")),
     branch: asString(meta(entity, "branch")) ?? "unknown",

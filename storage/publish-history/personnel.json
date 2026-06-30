@@ -1,0 +1,16 @@
+[
+  {
+    "runId": "e592ae2e-a7de-4d16-a09b-08616481276e",
+    "action": "promote",
+    "type": "personnel",
+    "timestamp": "2026-06-30T02:42:49.349Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "army.json",
+      "foreign.json",
+      "kriegsmarine.json",
+      "luftwaffe.json",
+      "waffen-ss.json"
+    ]
+  }
+]

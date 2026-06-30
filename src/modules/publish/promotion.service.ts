@@ -118,7 +118,26 @@ export interface PromotionResult {
 // restored byte-for-byte. Re-promoted (runId
 // 6a7105d0-7823-4742-b942-b4bf8016aa45) as the final, intentionally-
 // kept live state. Reset to false afterward.
-const PROMOTION_ENABLED = false;
+//
+// Translation-system recordId backfill: republished and promoted all 8
+// content types with staged output (letters runId
+// 640842a0-fc24-4259-ba24-eaabcfe01497, armaments
+// 6b0e0099-3e1a-4be7-93ee-33f61a0705ff, personnel
+// e592ae2e-a7de-4d16-a09b-08616481276e, campaigns
+// cc8b04c5-342a-430c-b2ab-02427a0b9475, articles
+// cbe61fe7-86f4-47e6-8263-fe46e23bcf14, timeline
+// 3d311ee7-73c1-492d-bc06-b130b38f5f64, formations
+// 6b7d7ec0-34b9-44c2-8b48-f452582f781c, nsdap
+// af989f90-288d-4941-9e4f-cbebc73cd8ca) so every live published record now
+// carries the new `recordId` field the translation system resolves
+// translations by (see the generators' recordId field — distinct from the
+// public `id`/slug). A full backup of public/data/ was taken before this
+// run; diffed after and confirmed the only changes were the new recordId
+// field, one legitimately new campaign record not previously published,
+// and harmless JSON key-order differences — no data loss. Awards, maps,
+// and political-docs had zero staged files (no DB records of those types
+// exist yet) so nothing was promoted for them. Reset to false afterward.
+const PROMOTION_ENABLED = true;
 
 function publicDataDir(type: string): string {
   return path.join(config.paths.public, "data", type);
@@ -405,7 +424,7 @@ async function regenerateFlatIndex(
 
 async function regenerateAwardsIndex(targetDir: string) {
   return regenerateFlatIndex(targetDir, (r) => ({
-    id: r.id, title: r.title,
+    id: r.id, recordId: r.recordId, title: r.title,
     ...(r.nation ? { nation: r.nation } : {}),
     ...(r.summary ? { summary: r.summary } : {}),
     ...(r.image ? { image: r.image } : {}),
@@ -413,7 +432,7 @@ async function regenerateAwardsIndex(targetDir: string) {
 }
 async function regenerateMapsIndex(targetDir: string) {
   return regenerateFlatIndex(targetDir, (r) => ({
-    id: r.id, title: r.title,
+    id: r.id, recordId: r.recordId, title: r.title,
     ...(r.theater ? { theater: r.theater } : {}),
     ...(r.year ? { year: r.year } : {}),
     ...(r.image ? { image: r.image } : {}),
@@ -421,7 +440,7 @@ async function regenerateMapsIndex(targetDir: string) {
 }
 async function regeneratePoliticalDocsIndex(targetDir: string) {
   return regenerateFlatIndex(targetDir, (r) => ({
-    id: r.id, title: r.title,
+    id: r.id, recordId: r.recordId, title: r.title,
     ...(r.date ? { date: r.date } : {}),
     ...(r.summary ? { summary: r.summary } : {}),
     ...(r.image ? { image: r.image } : {}),

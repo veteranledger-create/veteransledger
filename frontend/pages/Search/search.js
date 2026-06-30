@@ -4,6 +4,10 @@
  */
 
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+
+const ENTITY_TYPE_BY_RESULT_TYPE = { PERSON: "entity" }; // everything else is "record"
 
 const form = document.getElementById("search-form");
 const input = document.getElementById("search-input");
@@ -170,6 +174,7 @@ async function buildIndex() {
         summary: p.summary || p.biography || "",
         image: p.portrait || p.image || p.photo || null,
         url: resolveRelatedUrl("PERSON", p.id),
+        recordId: p.recordId || p.id,
         category: "Personnel",
         searchText: [
           p.name, p.fullName, p.rank, p.title, p.nation, p.nationality,
@@ -193,6 +198,7 @@ async function buildIndex() {
       summary: data.summary || "",
       image: data.image || null,
       url: resolveRelatedUrl("CAMPAIGN", data.id),
+      recordId: data.recordId || data.id,
       category: data.theater || "Campaign",
       searchText: [
         data.title, data.summary, data.theater, data.location, data.id,
@@ -222,6 +228,7 @@ async function buildIndex() {
         summary: a.summary || "",
         image: a.image || null,
         url: resolveRelatedUrl("ARMAMENT", a.id),
+        recordId: a.recordId || a.id,
         category: cat.charAt(0).toUpperCase() + cat.slice(1),
         searchText: [
           a.name, a.type, a.nation, a.designation, a.summary,
@@ -245,6 +252,7 @@ async function buildIndex() {
       summary,
       image: data.image || (Array.isArray(data.images) ? data.images[0] : null) || null,
       url: resolveRelatedUrl("ARTICLE", data.id),
+      recordId: data.recordId || data.id,
       category: (data.category || "Article").replace(/-/g, " "),
       searchText: [
         data.title, data.subtitle, data.summary, data.author, data.id,
@@ -265,6 +273,7 @@ async function buildIndex() {
         summary: l.excerpt || (typeof l.full_text === "string" ? l.full_text.slice(0, 160) : ""),
         image: null,
         url: resolveRelatedUrl("LETTER", l.id),
+        recordId: l.recordId || l.id,
         category: "Letter",
         searchText: normalise([
           l.subject, l.from, l.from_unit, l.to, l.location_written,
@@ -293,6 +302,7 @@ async function buildIndex() {
         image: null,
         icon: getSearchFormationIcon(f, section),
         url: resolveRelatedUrl("FORMATION", f.id),
+        recordId: f.recordId || f.id,
         category: f.service || f.type || "Formation",
         searchText: normalise([
           f.name, f.type, f.service, f.nation, f.theater, f.region,
@@ -325,6 +335,11 @@ filterBtns.forEach((btn) => {
 
 form?.addEventListener("submit", (e) => {
   e.preventDefault();
+  const q = input?.value.trim();
+  if (q) runSearch(q);
+});
+
+onLocaleChange(() => {
   const q = input?.value.trim();
   if (q) runSearch(q);
 });
@@ -413,6 +428,17 @@ function renderResults(items, query) {
 
     const iconImg = card.querySelector(".record-card__icon");
     if (iconImg) iconImg.addEventListener("error", () => iconImg.remove(), { once: true });
+
+    // Result count is bounded by the active query, so per-card lookups here
+    // stay small (a handful of requests, cached) rather than translating
+    // the entire search index up front.
+    if (item.recordId) {
+      applyRecordTranslation(card, ENTITY_TYPE_BY_RESULT_TYPE[item.type] || "record", item.recordId, {
+        titleSelector: ".record-card__title",
+        summarySelector: ".record-card__summary",
+        noticeAnchor: ".record-card__body",
+      });
+    }
   });
 
   results.innerHTML = "";

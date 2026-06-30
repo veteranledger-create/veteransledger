@@ -1,0 +1,50 @@
+{
+  "runId": "524eafa0-b01d-42cc-b567-c0fe77930e72",
+  "type": "nsdap",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T02:40:23.412Z",
+  "recordsChecked": 23,
+  "valid": 22,
+  "invalid": 1,
+  "issues": [
+    {
+      "recordId": "glossary.json",
+      "field": "entries",
+      "message": "glossary.json: missing or non-array 'entries' field.",
+      "severity": "error"
+    }
+  ],
+  "stats": {
+    "errorCount": 1,
+    "warningCount": 0,
+    "issuesByField": {
+      "entries": 1
+    }
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\glossary.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\hitler\\bio.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\hitler\\chancellorship.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\hitler\\end.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\hitler\\family.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\hitler\\rise.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\hitler\\rule.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\hitler\\wartime.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\index.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\overview.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\departments.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\dissolution.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\economy.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\foreign-policy.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\formation.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\leadership.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\organizations.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\programme.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\religion.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\state-relations.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\party\\structure.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\sources.json",
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\nsdap\\timeline.json"
+  ]
+}

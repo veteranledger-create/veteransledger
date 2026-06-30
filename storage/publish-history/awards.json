@@ -1,0 +1,13 @@
+[
+  {
+    "runId": "afc1de87-7ef8-44ac-8a18-de6fcf716320",
+    "action": "promote",
+    "type": "awards",
+    "timestamp": "2026-06-30T03:55:20.285Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "temp-fixture-award.json",
+      "index.json"
+    ]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "runId": "b702da35-a4d9-4e09-861d-a487f59e1c78",
+  "type": "timeline",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T02:42:49.559Z",
+  "recordsChecked": 83,
+  "valid": 83,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\timeline\\events.json"
+  ]
+}

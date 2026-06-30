@@ -1,0 +1,12 @@
+{
+  "title": "NSDAP Foreign Policy",
+  "description": "The foreign policy objectives and achievements of the Nazi regime, 1933–1939.",
+  "objectives": ["Revision of the Versailles Treaty", "Union of all German-speaking peoples (Anschluss)", "Expansion into Lebensraum in Eastern Europe", "Destruction of the Soviet Union and 'Jewish Bolshevism'", "Establishment of German hegemony over Europe"],
+  "milestones": [
+    { "year": 1933, "event": "Germany withdraws from the League of Nations and the World Disarmament Conference." },
+    { "year": 1935, "event": "Anglo-German Naval Agreement — Britain accepts German naval expansion. Saar returned to Germany by plebiscite. Nuremberg Laws enacted." },
+    { "year": 1936, "event": "Remilitarisation of the Rhineland. Rome-Berlin Axis proclaimed. Anti-Comintern Pact with Japan signed." },
+    { "year": 1938, "event": "Anschluss with Austria (March). Sudetenland crisis and Munich Agreement (September) — Britain and France concede Sudetenland." },
+    { "year": 1939, "event": "Occupation of remainder of Czechoslovakia (March) in violation of Munich. Pact of Steel with Italy (May). Molotov-Ribbentrop Pact with Soviet Union (August) — secret protocol divides Eastern Europe. Invasion of Poland (September) — World War II begins." }
+  ]
+}

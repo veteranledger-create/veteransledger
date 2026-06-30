@@ -1,4 +1,5 @@
-import { authHeader, escHtml, debounce, loader, makeStatusFn } from "./admin-utils.js";
+﻿import { TranslationsPanel } from "./translations-panel.js";
+import { authHeader, escHtml, debounce, loader, makeStatusFn, safeJson } from "./admin-utils.js";
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
 
@@ -11,6 +12,7 @@ import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } fr
 const CATEGORIES = ["political", "military", "economic", "social", "diplomatic", "other"];
 
 let editingId = null;
+const translationsPanel = new TranslationsPanel("timeline-translations-panel", "timeline_event");
 let sourcesDraft = [];
 let relatedDraft = [];
 
@@ -58,45 +60,43 @@ async function loadTimeline() {
   try {
     const res = await fetch(`/api/timeline?${params}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    renderList(container, await res.json());
+    renderList(container, await safeJson(res));
   } catch (_) {
-    container.innerHTML = `<p style="color:var(--text-muted)">Timeline unavailable.</p>`;
+    container.innerHTML = `<p class="text-dim">Timeline unavailable.</p>`;
   }
 }
 
 function renderList(container, events) {
   if (!events.length) {
-    container.innerHTML = `<p style="color:var(--text-muted)">No timeline events yet. Click "+ New Event" to create one.</p>`;
+    container.innerHTML = `<p class="text-dim">No timeline events yet. Click "+ New Event" to create one.</p>`;
     return;
   }
   container.innerHTML = `
-    <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">${events.length} event(s)</p>
-    <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
+    <p class="list-meta">${events.length} event(s)</p>
+    <table class="admin-table">
       <thead>
-        <tr style="border-bottom:1px solid var(--border-dim);color:var(--text-muted);text-align:left;">
-          <th style="padding:var(--space-3) var(--space-4);width:60px;">Year</th>
-          <th style="padding:var(--space-3) var(--space-4);width:100px;">Date</th>
-          <th style="padding:var(--space-3) var(--space-4);width:90px;">Category</th>
-          <th style="padding:var(--space-3) var(--space-4);">Title</th>
-          <th style="padding:var(--space-3) var(--space-4);">Location</th>
-          <th style="padding:var(--space-3) var(--space-4);width:80px;">Status</th>
-          <th style="padding:var(--space-3) var(--space-4);text-align:right;">Actions</th>
+        <tr>
+          <th style="width:60px;">Year</th>
+          <th style="width:100px;">Date</th>
+          <th style="width:90px;">Category</th>
+          <th>Title</th>
+          <th>Location</th>
+          <th style="width:80px;">Status</th>
+          <th class="col-actions">Actions</th>
         </tr>
       </thead>
       <tbody>
         ${events.map((ev) => `
-          <tr style="border-bottom:1px solid var(--border-dim);">
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-muted);">${escHtml(String(ev.year ?? "—"))}</td>
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-muted);font-size:11px;">${ev.date ? escHtml(ev.date.slice(0, 10)) : "—"}</td>
-            <td style="padding:var(--space-3) var(--space-4);">${ev.category ? `<span class="badge">${escHtml(ev.category)}</span>` : "—"}</td>
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-primary);">${escHtml(ev.title)}</td>
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-muted);font-size:11px;">${ev.location ? escHtml(ev.location) : "—"}</td>
-            <td style="padding:var(--space-3) var(--space-4);">${ev.published
-              ? '<span style="color:#60c060;font-size:11px;">Published</span>'
-              : '<span style="color:var(--text-muted);font-size:11px;">Draft</span>'}</td>
-            <td style="padding:var(--space-3) var(--space-4);text-align:right;display:flex;gap:var(--space-2);justify-content:flex-end;">
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;" data-edit="${ev.id}">Edit</button>
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;color:#e06060;border-color:#4a1515;" data-delete="${ev.id}">Delete</button>
+          <tr>
+            <td class="td-muted">${escHtml(String(ev.year ?? "—"))}</td>
+            <td class="td-small">${ev.date ? escHtml(ev.date.slice(0, 10)) : "—"}</td>
+            <td>${ev.category ? `<span class="badge">${escHtml(ev.category)}</span>` : "—"}</td>
+            <td class="td-primary">${escHtml(ev.title)}</td>
+            <td class="td-small">${ev.location ? escHtml(ev.location) : "—"}</td>
+            <td>${ev.published ? '<span class="status-published">Published</span>' : '<span class="status-draft">Draft</span>'}</td>
+            <td class="col-actions">
+              <button class="btn btn-secondary btn--xs" data-edit="${ev.id}">Edit</button>
+              <button class="btn btn-secondary btn--xs btn--danger" data-delete="${ev.id}">Delete</button>
             </td>
           </tr>`).join("")}
       </tbody>
@@ -124,7 +124,8 @@ function openForm(id) {
   setStatus("", false);
   renderSources();
   renderRelated();
-  if (id) loadEventIntoForm(id);
+  if (id) { loadEventIntoForm(id); translationsPanel.load(id); }
+  else translationsPanel.clear();
   // Scroll form into view
   document.getElementById("timeline-form-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
@@ -138,7 +139,7 @@ async function loadEventIntoForm(id) {
   try {
     const res = await fetch(`/api/timeline/${id}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const ev = await res.json();
+    const ev = await safeJson(res);
     const form = document.getElementById("timeline-form");
     const meta = ev.metadata || {};
 
@@ -201,8 +202,9 @@ async function handleSubmit(e) {
       body: JSON.stringify(body),
     });
     if (!res.ok) throw new Error();
-    const saved = await res.json();
+    const saved = await safeJson(res);
     editingId = saved.id;
+    translationsPanel.load(saved.id);
     document.getElementById("timeline-delete-btn").hidden = false;
     setStatus("Saved.", false);
     loadTimeline();

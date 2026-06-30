@@ -8,6 +8,8 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 let BRANCHES = [];
 
@@ -175,8 +177,28 @@ function renderPeople(container, people, branchId = "") {
     el.appendChild(portraitDiv);
     el.appendChild(body);
     container.appendChild(el);
+
+    const translateId = p.recordId || p.id;
+    if (translateId) {
+      el.dataset.translateId = translateId;
+      applyRecordTranslation(el, "entity", translateId, {
+        titleSelector: ".person-card__name",
+        summarySelector: ".person-card__excerpt",
+        noticeAnchor: ".person-card__body",
+      });
+    }
   });
 }
+
+onLocaleChange(() => {
+  document.querySelectorAll(".person-card[data-translate-id]").forEach((card) => {
+    applyRecordTranslation(card, "entity", card.dataset.translateId, {
+      titleSelector: ".person-card__name",
+      summarySelector: ".person-card__excerpt",
+      noticeAnchor: ".person-card__body",
+    });
+  });
+});
 
 function toggleBranchVisibility() {
   BRANCHES.forEach(({ id }) => {

@@ -7,6 +7,7 @@
     "commissioned": 1936,
     "displacement_tons": 695,
     "id": "adua-submarine",
+    "recordId": "cmqp78lty000od54cdslml3mq",
     "name": "Adua (submarine)",
     "nation": "Italy",
     "summary": "Representative of Italy's large submarine fleet — over 100 boats at war's start. Italian submarines operated extensively in the Mediterranean and Atlantic; they sank over 500,000 GRT of Allied shipping."
@@ -20,6 +21,7 @@
     "commissioned": 1940,
     "displacement_tons": 45236,
     "id": "littorio-later-italia",
+    "recordId": "cmqp78ltq000id54cs1vt8d4c",
     "name": "Littorio (later Italia)",
     "nation": "Italy",
     "summary": "Italy's most powerful battleship. Damaged twice by British torpedoes at Taranto (1940) and by a torpedo-bomber attack (1941). Renamed Italia in 1943 after Mussolini's fall; surrendered to the Allies."
@@ -32,6 +34,7 @@
     "commissioned": 1940,
     "displacement_tons": 45752,
     "id": "vittorio-veneto",
+    "recordId": "cmqp78ltt000kd54ckmf61hfy",
     "name": "Vittorio Veneto",
     "nation": "Italy",
     "summary": "Participated in the Battle of Cape Matapan (1941) where it was torpedoed and barely escaped. Surrendered at Malta in September 1943."
@@ -44,6 +47,7 @@
     "commissioned": 1931,
     "displacement_tons": 14530,
     "id": "zara",
+    "recordId": "cmqp78ltw000md54cc2a27mt0",
     "name": "Zara",
     "nation": "Italy",
     "summary": "Sunk by British destroyers at the Battle of Cape Matapan after being disabled. The battle was a decisive Italian defeat — three heavy cruisers and two destroyers lost in a night action."

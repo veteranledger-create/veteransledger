@@ -3,6 +3,9 @@
  * Loads awards/index.json and renders a card grid.
  */
 
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
 async function loadIndex() {
@@ -30,6 +33,19 @@ function renderCard(r) {
     </a>`;
 }
 
+function applyCardTranslations(gridEl, records) {
+  const cards = gridEl.querySelectorAll(".archive-card");
+  records.forEach((r, i) => {
+    const id = r.recordId || r.id;
+    if (!id || !cards[i]) return;
+    applyRecordTranslation(cards[i], "record", id, {
+      titleSelector: ".archive-card__title",
+      summarySelector: ".archive-card__excerpt",
+      noticeAnchor: ".archive-card__content",
+    });
+  });
+}
+
 async function init() {
   const loaderEl = document.getElementById("awards-loader");
   const gridEl   = document.getElementById("awards-grid");
@@ -47,6 +63,8 @@ async function init() {
   if (gridEl) {
     gridEl.innerHTML = records.map(renderCard).join("");
     gridEl.hidden = false;
+    applyCardTranslations(gridEl, records);
+    onLocaleChange(() => applyCardTranslations(gridEl, records));
   }
 }
 

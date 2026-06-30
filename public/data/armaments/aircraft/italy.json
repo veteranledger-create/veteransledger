@@ -7,6 +7,7 @@
     "range_km": 775,
     "max_speed_kmh": 441,
     "id": "fiat-cr-42-falco",
+    "recordId": "cmqpvh84f000wgjtc1tvmqf52",
     "name": "Fiat CR.42 Falco",
     "nation": "Italy",
     "summary": "The last major biplane fighter to see combat, the CR.42 was Italy's frontline fighter at war's start. Outclassed by monoplane opponents, it transitioned to ground-attack and night harassment roles."
@@ -26,6 +27,7 @@
     "units_produced": 1220,
     "years_of_service": "1941–1945",
     "id": "mc-202-folgore",
+    "recordId": "cmqpvh844000mgjtclqslfakb",
     "name": "Macchi C.202 Folgore",
     "nation": "Italy",
     "summary": "The finest Italian fighter of the war. Armed with a German Daimler-Benz DB 601 engine (as used in the Bf 109E), the Folgore was surprisingly competitive with contemporary Allied fighters, though Italian production constraints limited its numbers. It fought effectively in North Africa and the Mediterranean."
@@ -44,6 +46,7 @@
     "units_produced": 1217,
     "years_of_service": "1936–1945",
     "id": "sm-79-sparviero",
+    "recordId": "cmqpvh846000ogjtc5yxl2b3t",
     "name": "Savoia-Marchetti SM.79 Sparviero",
     "nation": "Italy",
     "summary": "The SM.79, known as the 'Hunchback' for its distinctive dorsal hump, was the most successful Italian aircraft of the war in its torpedo bomber role. Italian torpedo bomber pilots — the Aerosiluranti — achieved remarkable results against Allied shipping in the Mediterranean, sinking several warships including cruisers."

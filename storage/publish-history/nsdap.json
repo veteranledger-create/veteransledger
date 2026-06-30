@@ -1,0 +1,34 @@
+[
+  {
+    "runId": "af989f90-288d-4941-9e4f-cbebc73cd8ca",
+    "action": "promote",
+    "type": "nsdap",
+    "timestamp": "2026-06-30T02:42:49.729Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "glossary.json",
+      "hitler\\bio.json",
+      "hitler\\chancellorship.json",
+      "hitler\\end.json",
+      "hitler\\family.json",
+      "hitler\\rise.json",
+      "hitler\\rule.json",
+      "hitler\\wartime.json",
+      "index.json",
+      "overview.json",
+      "party\\departments.json",
+      "party\\dissolution.json",
+      "party\\economy.json",
+      "party\\foreign-policy.json",
+      "party\\formation.json",
+      "party\\leadership.json",
+      "party\\organizations.json",
+      "party\\programme.json",
+      "party\\religion.json",
+      "party\\state-relations.json",
+      "party\\structure.json",
+      "sources.json",
+      "timeline.json"
+    ]
+  }
+]

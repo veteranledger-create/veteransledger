@@ -8,6 +8,9 @@
  * that may exist in hand-authored snapshots.
  */
 
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+
 const yearNav   = document.getElementById("timeline-year-nav");
 const yearLoader = document.getElementById("year-loader");
 const track     = document.getElementById("timeline-track");
@@ -77,6 +80,8 @@ async function init() {
   // Default to the first year that has events, or 1939 if none
   const years = availableYears();
   selectYear(years.includes(1939) ? 1939 : (years[0] ?? 1939));
+
+  onLocaleChange(() => render());
 }
 
 // ── Year navigation ───────────────────────────────────────────────────────────
@@ -193,6 +198,17 @@ function render() {
               : ""}
           </div>`;
         groupEl.appendChild(evEl);
+
+        // Timeline events use their real DB id directly (no slug layer,
+        // unlike Records/Entities) — see toTimelineJson() in
+        // src/modules/publish/validators/timeline.conformance.ts.
+        if (ev.id) {
+          applyRecordTranslation(evEl, "timeline_event", ev.id, {
+            titleSelector: ".timeline-event__title",
+            summarySelector: ".timeline-event__summary",
+            noticeAnchor: ".timeline-event__body",
+          });
+        }
       });
 
       track.appendChild(groupEl);

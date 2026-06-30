@@ -1,8 +1,35 @@
 {
   "categories": [
-    { "id": "military",  "label": "Military History",   "files": ["/public/data/articles/military/poland-1939.json", "/public/data/articles/military/rearmament.json"] },
-    { "id": "political", "label": "Political History",   "files": ["/public/data/articles/political/rise-nsdap.json", "/public/data/articles/political/july-20.json", "/public/data/articles/political/anschluss.json"] },
-    { "id": "economy",   "label": "Economy & Industry",  "files": [] },
-    { "id": "legal",     "label": "Legal & Justice",     "files": ["/public/data/articles/legal/nuremberg.json"] }
+    {
+      "id": "economy",
+      "label": "Economy & Industry",
+      "files": []
+    },
+    {
+      "id": "legal",
+      "label": "Legal & Justice",
+      "files": [
+        "/public/data/articles/legal/nuremberg.json"
+      ]
+    },
+    {
+      "id": "military",
+      "label": "Military History",
+      "files": [
+        "/public/data/articles/military/berlin-1945.json",
+        "/public/data/articles/military/poland-1939.json",
+        "/public/data/articles/military/rearmament.json"
+      ]
+    },
+    {
+      "id": "political",
+      "label": "Political History",
+      "files": [
+        "/public/data/articles/political/anschluss.json",
+        "/public/data/articles/political/july-20.json",
+        "/public/data/articles/political/occupation.json",
+        "/public/data/articles/political/rise-nsdap.json"
+      ]
+    }
   ]
 }

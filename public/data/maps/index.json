@@ -1,1 +1,11 @@
-{ "records": [] }
+{
+  "records": [
+    {
+      "id": "temp-fixture-map",
+      "recordId": "cmr03z0fm0001cqt9ktknf9v7",
+      "title": "TEMP_FIXTURE_MAP_TITLE",
+      "theater": "eastern-front",
+      "year": 1942
+    }
+  ]
+}

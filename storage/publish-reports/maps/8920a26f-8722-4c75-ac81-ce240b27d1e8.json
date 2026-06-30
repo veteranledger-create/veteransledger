@@ -1,0 +1,28 @@
+{
+  "runId": "8920a26f-8722-4c75-ac81-ce240b27d1e8",
+  "type": "maps",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T03:55:20.292Z",
+  "recordsChecked": 1,
+  "valid": 1,
+  "invalid": 0,
+  "issues": [
+    {
+      "recordId": "cmr03z0fm0001cqt9ktknf9v7",
+      "field": "gallery",
+      "message": "Map has no gallery images — the map image will not display.",
+      "severity": "warning"
+    }
+  ],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 1,
+    "issuesByField": {
+      "gallery": 1
+    }
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\maps\\temp-fixture-map.json"
+  ]
+}

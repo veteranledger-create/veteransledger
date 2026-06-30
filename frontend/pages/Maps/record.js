@@ -4,6 +4,8 @@
  */
 
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
@@ -130,6 +132,9 @@ async function init() {
   const map = await findMap(id);
   if (!map) { renderError(root, `Map "${id}" not found.`); return; }
   render(root, map);
+
+  applyRecordTranslation(root, "record", map.recordId || map.id);
+  onLocaleChange(() => applyRecordTranslation(root, "record", map.recordId || map.id));
 }
 
 function renderError(root, msg) {

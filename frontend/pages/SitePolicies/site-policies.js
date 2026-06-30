@@ -5,6 +5,9 @@
  * Also highlights the TOC link as user scrolls.
  */
 
+import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+
 let POLICIES = [];
 
 async function loadManifest() {
@@ -28,19 +31,37 @@ async function init() {
   await Promise.allSettled(POLICIES.map(loadPolicy));
   initScrollSpy();
   initContactTrigger();
+
+  onLocaleChange(() => Promise.allSettled(POLICIES.map(loadPolicy)));
 }
 
 async function loadPolicy({ id, file, bodyId }) {
   const container = document.getElementById(bodyId);
   if (!container) return;
 
+  let data = null;
   try {
     const res = await fetch(file);
-    const data = res.ok ? await res.json() : null;
-    renderPolicy(container, id, data);
+    data = res.ok ? await res.json() : null;
   } catch (_) {
-    renderPolicy(container, id, null);
+    data = null;
   }
+
+  // site_content translations store the whole source file as one
+  // re-translated JSON string — swap it in transparently before rendering.
+  let isMachine = false;
+  if (data) {
+    const entityId = file.replace("/public/data/", "");
+    const t = await loadTranslation("site_content", entityId);
+    if (t?.fields?.content) {
+      try { data = JSON.parse(t.fields.content); isMachine = t.isMachine; }
+      catch { /* translated content isn't valid JSON — keep English */ }
+    }
+  }
+
+  renderPolicy(container, id, data);
+  container.querySelector(".vl-mt-notice")?.remove();
+  if (isMachine) container.insertAdjacentHTML("afterbegin", machineNoticeHtml({ isMachine: true }));
 }
 
 function renderPolicy(container, id, data) {

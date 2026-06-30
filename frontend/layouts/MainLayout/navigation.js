@@ -15,6 +15,9 @@
  *   <template id="tpl-(sidebar|mobile|footer)-…"> → row markup to clone
  */
 
+import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+
 const CONFIG = {
   dataUrl: "/public/data/navigation.json",
   sidebarPermanentFrom: 1024,
@@ -504,23 +507,64 @@ function initInteractions(data) {
   else if (mq.addListener) mq.addListener(onChange);
 }
 
+// site_content translations store the whole source file as one
+// re-translated JSON string — fetch and parse it once, reused by both the
+// initial render and any later locale-change re-render.
+async function resolveNavData(englishData) {
+  const t = await loadTranslation("site_content", "navigation.json");
+  if (t?.fields?.content) {
+    try { return { data: JSON.parse(t.fields.content), isMachine: t.isMachine }; }
+    catch { /* translated content isn't valid JSON — keep English */ }
+  }
+  return { data: englishData, isMachine: false };
+}
+
+// Scoped to elements immediately after the brand link only — other scripts
+// (home.js, page-content.js) manage their own notices elsewhere on the page
+// and must not be affected by a global ".vl-mt-notice" removal here.
+function renderNoticeNearBrand(isMachine) {
+  document.querySelectorAll(".sidebar__brand, .site-header__brand").forEach((brandEl) => {
+    if (brandEl.nextElementSibling?.classList.contains("vl-mt-notice")) {
+      brandEl.nextElementSibling.remove();
+    }
+    if (isMachine) {
+      brandEl.insertAdjacentHTML("afterend", machineNoticeHtml({ isMachine: true }));
+    }
+  });
+}
+
 /* ---------- public entry ---------- */
 export async function initNavigation(extraConfig) {
   applyConfig(extraConfig);
-  let data;
+  let englishData;
   try {
-    data = await loadNavigationData();
+    englishData = await loadNavigationData();
   } catch (err) {
     console.error("[nav] Could not load navigation data:", err);
     return;
   }
 
+  const { data, isMachine } = await resolveNavData(englishData);
+
   here = hereLoc();
   bindBrand(data);
   renderSources(data); // builds menus first so theme buttons exist
   renderFooter(data);
+  renderNoticeNearBrand(isMachine);
   initTheme(data);
   initInteractions(data);
+
+  // Re-render text content on locale switch. initTheme/initInteractions are
+  // NOT re-run — they wire one-time, delegated (document-level) listeners
+  // guarded by `wired`, so re-binding brand/nav/footer text is safe and
+  // doesn't orphan any handlers.
+  onLocaleChange(async () => {
+    const { data: newData, isMachine: newIsMachine } = await resolveNavData(englishData);
+    bindBrand(newData);
+    renderSources(newData);
+    renderFooter(newData);
+    renderNoticeNearBrand(newIsMachine);
+  });
 }
 
 export { loadNavigationData };

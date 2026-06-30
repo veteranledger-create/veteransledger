@@ -1,0 +1,11 @@
+{
+  "id": "hitler-end",
+  "title": "The Fall of the Third Reich and Hitler's Death",
+  "dates": { "start": "1944-07-20", "end": "1945-04-30" },
+  "sections": [
+    { "heading": "The Failed Assassination, July 1944", "text": "Colonel Claus von Stauffenberg's bomb at Rastenburg on 20 July 1944 failed to kill Hitler. The attempt triggered brutal reprisals: approximately 7,000 arrested, nearly 5,000 executed, including senior military figures. Field Marshal Rommel was forced to commit suicide." },
+    { "heading": "Retreat and Collapse, 1944–1945", "text": "By late 1944 Germany faced catastrophic defeat on all fronts. The failure of the Ardennes offensive (December 1944) exhausted the last reserves. Soviet forces crossed the Vistula in January 1945; American and British forces crossed the Rhine in March. Hitler rejected all advice to negotiate or withdraw to a defensible position." },
+    { "heading": "The Berlin Bunker", "text": "Hitler moved to the Führerbunker beneath the Reich Chancellery garden in January 1945. On 16 April Soviet forces began their final assault on Berlin. Hitler refused to leave; he expected 'Army Detachment Steiner' to counterattack and relieve the city — Steiner had no forces to do so. On 22 April, Hitler learned the truth and acknowledged Germany had lost the war." },
+    { "heading": "Death, 30 April 1945", "text": "On 29 April 1945, Hitler married Eva Braun in a brief ceremony in the bunker. He dictated his political testament — blaming the Jews for the war and urging Germany to continue racial struggle — and his personal will. At approximately 3:30 PM on 30 April 1945, Hitler shot himself. Eva Braun took poison simultaneously. Their bodies were burned in the Chancellery garden per Hitler's instructions. Germany surrendered unconditionally on 8 May 1945." }
+  ]
+}

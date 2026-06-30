@@ -366,5 +366,42 @@
       "wunderwaffen/other-axis.json",
       "index.json"
     ]
+  },
+  {
+    "runId": "6b0e0099-3e1a-4be7-93ee-33f61a0705ff",
+    "action": "promote",
+    "type": "armaments",
+    "timestamp": "2026-06-30T02:42:49.302Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "aircraft\\germany.json",
+      "aircraft\\italy.json",
+      "aircraft\\japan.json",
+      "aircraft\\romania.json",
+      "equipment\\czechoslovakia-germany-captured.json",
+      "equipment\\germany.json",
+      "equipment\\hungary-romania-bulgaria.json",
+      "equipment\\italy.json",
+      "equipment\\japan.json",
+      "equipment\\romania.json",
+      "missiles\\germany.json",
+      "missiles\\italy.json",
+      "missiles\\japan.json",
+      "missiles\\romania.json",
+      "naval\\germany.json",
+      "naval\\italy.json",
+      "naval\\japan.json",
+      "naval\\romania.json",
+      "panzer\\germany.json",
+      "panzer\\hungary.json",
+      "panzer\\italy.json",
+      "panzer\\japan.json",
+      "panzer\\romania.json",
+      "wunderwaffen\\germany.json",
+      "wunderwaffen\\hungary.json",
+      "wunderwaffen\\italy.json",
+      "wunderwaffen\\japan.json",
+      "wunderwaffen\\romania.json"
+    ]
   }
 ]

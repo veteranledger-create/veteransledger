@@ -1,0 +1,19 @@
+{
+  "runId": "726babcc-c22f-41c3-9145-05d849a8d376",
+  "type": "political-docs",
+  "mode": "run",
+  "status": "success",
+  "generatedAt": "2026-06-30T03:55:20.314Z",
+  "recordsChecked": 1,
+  "valid": 1,
+  "invalid": 0,
+  "issues": [],
+  "stats": {
+    "errorCount": 0,
+    "warningCount": 0,
+    "issuesByField": {}
+  },
+  "staged": [
+    "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\publish-staging\\political-docs\\temp-fixture-poldoc.json"
+  ]
+}

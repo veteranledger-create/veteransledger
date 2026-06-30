@@ -13,6 +13,9 @@ const ROUTE_MAP = {
   "Formation": "/formations",
   "Article": "/articles",
   "Letter": "/letters",
+  "Award": "/awards",
+  "Map": "/maps",
+  "PoliticalDocument": "/political-documents",
 };
 
 const TYPE_ALIASES = {
@@ -22,6 +25,9 @@ const TYPE_ALIASES = {
   "FORMATION": "Formation",
   "ARTICLE": "Article",
   "LETTER": "Letter",
+  "AWARD": "Award",
+  "MAP": "Map",
+  "POLITICAL_DOCUMENT": "PoliticalDocument",
   "German Collection": "Letter",
   "Italian Collection": "Letter",
   "Japanese Collection": "Letter",

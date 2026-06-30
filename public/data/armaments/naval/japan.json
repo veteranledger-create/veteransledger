@@ -22,6 +22,7 @@
     "commissioned": "1941-12-16",
     "displacement_tonnes": 72810,
     "id": "yamato",
+    "recordId": "cmqp78lu1000qd54cl9hbkino",
     "name": "Battleship Yamato",
     "nation": "Japan",
     "summary": "The Yamato was the largest and most powerfully armed battleship ever built, carrying the largest guns ever fitted to a warship. Yet she was largely ineffective in combat — the era of the battleship had given way to the aircraft carrier. She was sunk by American carrier aircraft during Operation Ten-Go on 7 April 1945, on a suicide mission to Okinawa with fuel for only a one-way trip."
@@ -37,6 +38,7 @@
     "aircraft_capacity": 84,
     "displacement_tonnes": 32105,
     "id": "shokaku",
+    "recordId": "cmqp78lu3000sd54c0175zsgk",
     "name": "Fleet Carrier Shōkaku",
     "nation": "Japan",
     "summary": "One of Japan's finest fleet carriers and veteran of Pearl Harbor, the Coral Sea, and Santa Cruz. Shōkaku and her sister Zuikaku were the premier carrier strike force of the Imperial Japanese Navy. She was sunk by US submarine Cavalla during the Battle of the Philippine Sea ('The Marianas Turkey Shoot')."
@@ -47,6 +49,7 @@
     "commissioned": 1944,
     "displacement_tons": 6500,
     "id": "i-400-class-submarine",
+    "recordId": "cmqp78lu5000ud54c2tqsl49k",
     "name": "I-400 class submarine",
     "nation": "Japan",
     "summary": "The largest submarines built before nuclear-powered boats. Designed to launch aircraft for strikes on the US mainland (Panama Canal, US East Coast cities). Surrendered before their missions could be executed."

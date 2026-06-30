@@ -1,4 +1,5 @@
-import { authHeader, makeStatusFn } from "./admin-utils.js";
+import { authHeader, makeStatusFn, safeJson } from "./admin-utils.js";
+import { TranslationsPanel } from "./translations-panel.js";
 
 /**
  * VeteransLedger · Admin — Homepage Editor
@@ -8,6 +9,7 @@ import { authHeader, makeStatusFn } from "./admin-utils.js";
 
 const KEY = "homepage.json";
 const setStatus = makeStatusFn("homepage-form-status");
+const translationsPanel = new TranslationsPanel("homepage-translations-panel", "site_content");
 let fullData = null;
 
 function init() {
@@ -22,9 +24,10 @@ async function loadHomepage() {
   try {
     const res = await fetch(`/api/site-content?key=${encodeURIComponent(KEY)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    fullData = await res.json();
+    fullData = await safeJson(res);
     populateForm(fullData);
     setStatus("", false);
+    translationsPanel.load(KEY);
   } catch (err) {
     setStatus(`Failed to load: ${err.message}`, true);
   }

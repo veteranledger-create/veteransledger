@@ -1,0 +1,17 @@
+{
+  "name": "Nationalsozialistische Deutsche Arbeiterpartei (NSDAP)",
+  "name_english": "National Socialist German Workers' Party",
+  "abbreviation": "NSDAP",
+  "founded": "24 February 1920",
+  "dissolved": "10 October 1945",
+  "leader": "Adolf Hitler (1921–1945)",
+  "ideology": "National Socialism, Fascism, Antisemitism, Ultranationalism",
+  "peakMembership": "8,500,000 (1945)",
+  "description": "The NSDAP was the far-right political party that governed Germany from 1933 to 1945 under Adolf Hitler. Founded in Munich in 1919 as the German Workers' Party (DAP), it was reorganised and renamed by Hitler in 1920. The party's ideology — National Socialism — combined extreme German nationalism with racial antisemitism, anticommunism, and a rejection of parliamentary democracy.\n\nThe party rose to power during the political and economic instability of the Weimar Republic. Hitler was appointed Chancellor on 30 January 1933 and the party consolidated total control of Germany through the Enabling Act of March 1933, transforming the republic into a single-party totalitarian state.\n\nUnder NSDAP rule, Germany undertook massive rearmament, territorial expansion, and ultimately launched the Second World War in 1939. The party's racial ideology was implemented through increasingly radical persecution of Jews and other groups, culminating in the Holocaust — the systematic murder of approximately six million European Jews.",
+  "headquarters": "Munich, Bavaria",
+  "youth_wings": ["Hitler Youth (Hitlerjugend)", "League of German Girls (BDM)"],
+  "paramilitary": ["Sturmabteilung (SA)", "Schutzstaffel (SS)"],
+  "newspaper": "Völkischer Beobachter",
+  "anthem": "Horst-Wessel-Lied",
+  "note": "This page documents the NSDAP for educational and historical research purposes only. The ideology documented here is presented objectively as history and is not endorsed."
+}

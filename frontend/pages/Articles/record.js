@@ -4,6 +4,8 @@
  */
 
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const PLACEHOLDER = "/public/images/covers/articles-cover.webp";
 
@@ -370,6 +372,9 @@ async function init() {
   }
 
   render(root, article);
+
+  applyRecordTranslation(root, "record", article.recordId || article.id);
+  onLocaleChange(() => applyRecordTranslation(root, "record", article.recordId || article.id));
 }
 
 function renderError(root, msg) {

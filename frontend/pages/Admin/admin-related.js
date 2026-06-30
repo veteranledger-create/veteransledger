@@ -11,16 +11,19 @@
  * modal and saving.
  */
 
-import { authHeader, escHtml, debounce } from "./admin-utils.js";
+import { authHeader, escHtml, debounce, safeJson } from "./admin-utils.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 
 const TYPE_LABEL_MAP = {
-  PERSON: "Personnel",
-  LETTER: "Letter",
-  ARTICLE: "Article",
-  CAMPAIGN: "Campaign",
-  ARMAMENT: "Armament",
-  FORMATION: "Formation",
+  PERSON:             "Personnel",
+  LETTER:             "Letter",
+  ARTICLE:            "Article",
+  CAMPAIGN:           "Campaign",
+  ARMAMENT:           "Armament",
+  FORMATION:          "Formation",
+  AWARD:              "Award",
+  MAP:                "Map",
+  POLITICAL_DOCUMENT: "Political Document",
 };
 
 let _initialized = false;
@@ -62,7 +65,7 @@ async function runSearch(e) {
   try {
     const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const data = await res.json();
+    const data = await safeJson(res);
     const items = [
       ...(data.entities || []).map((p) => ({ id: p.id, slug: p.slug, title: p.name, type: "PERSON" })),
       ...(data.records || []).map((r) => ({ id: r.id, slug: r.slug, title: r.title, type: r.type })),

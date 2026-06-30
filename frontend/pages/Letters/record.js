@@ -6,6 +6,8 @@
  */
 
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const _COLLECTIONS_FALLBACK = [
   { id: "german",     label: "German",     file: "german.json" },
@@ -247,6 +249,13 @@ async function init() {
   if (!letter) { renderError(root, `Letter record "${id}" not found.`); return; }
 
   render(root, letter);
+
+  // contentSelector covers the full transcribed letter body (`.record-letter-body`)
+  // — Letters is the one record type whose "content" field is free-form prose
+  // meant to be read in full, not structured per-type data.
+  const translateOpts = { contentSelector: ".record-letter-body" };
+  applyRecordTranslation(root, "record", letter.recordId || letter.id, translateOpts);
+  onLocaleChange(() => applyRecordTranslation(root, "record", letter.recordId || letter.id, translateOpts));
 }
 
 function renderError(root, msg) {

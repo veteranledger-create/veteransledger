@@ -5,6 +5,8 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const INDEX_URL = "/public/data/formations/index.json";
 const PAGE_SIZE = 12;
@@ -163,6 +165,7 @@ function renderGrid(container, items) {
     : items.map((f) => formationCard(f)).join("");
 
   attachIconFallbacks(container);
+  applyCardTranslations(container);
 }
 
 function renderGroupedBy(items, keyFn) {
@@ -205,8 +208,9 @@ function formationCard(f) {
     ? `<img class="record-card__icon" src="${icon.src}" alt="${icon.alt}">`
     : "";
 
+  const translateId = f.recordId || f.id;
   return `
-    <a class="record-card" href="${resolveRelatedUrl("Formation", f.id)}">
+    <a class="record-card" href="${resolveRelatedUrl("Formation", f.id)}" ${translateId ? `data-translate-id="${translateId}"` : ""}>
       <div class="record-card__body">
         <div class="record-card__header">
           <span class="record-card__type">
@@ -221,5 +225,13 @@ function formationCard(f) {
       </div>
     </a>`;
 }
+
+function applyCardTranslations(container) {
+  container.querySelectorAll(".record-card[data-translate-id]").forEach((card) => {
+    applyRecordTranslation(card, "record", card.dataset.translateId);
+  });
+}
+
+onLocaleChange(() => applyCardTranslations(grid));
 
 init();

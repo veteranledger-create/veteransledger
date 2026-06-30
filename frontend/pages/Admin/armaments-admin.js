@@ -1,5 +1,6 @@
+﻿import { TranslationsPanel } from "./translations-panel.js";
 import { initMediaAdmin, registerCallbacks } from "./admin-media.js";
-import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn } from "./admin-utils.js";
+import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn, safeJson } from "./admin-utils.js";
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
 import { uploadFile, handleUpload, wireSectionActions, renderGallery, renderBlueprints, renderVideos, renderDocuments } from "./admin-media-sections.js";
@@ -14,6 +15,7 @@ const SPEC_FIELDS = ["designation", "manufacturer", "crew", "weight", "armor", "
 
 let currentPage = 1;
 let editingId = null;
+const translationsPanel = new TranslationsPanel("armament-translations-panel", "record");
 let extraSpecs = [];
 let sourcesDraft = [];
 let relatedDraft = [];
@@ -83,47 +85,47 @@ async function loadArmaments(page = 1) {
   try {
     const res = await fetch(`/api/armaments?${params}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    renderList(container, await res.json());
+    renderList(container, await safeJson(res));
   } catch (_) {
-    container.innerHTML = `<p style="color:var(--text-muted)">Armaments unavailable.</p>`;
+    container.innerHTML = `<p class="text-dim">Armaments unavailable.</p>`;
   }
 }
 
 function renderList(container, { data, total, page, pages }) {
   if (!data.length) {
-    container.innerHTML = `<p style="color:var(--text-muted)">No armaments yet. Create one above.</p>`;
+    container.innerHTML = `<p class="text-dim">No armaments yet. Create one above.</p>`;
     return;
   }
   container.innerHTML = `
-    <p style="font-size:var(--text-xs);color:var(--text-muted);margin-bottom:var(--space-4);">${total} armaments · page ${page} of ${pages}</p>
-    <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);">
+    <p class="list-meta">${total} armaments · page ${page} of ${pages}</p>
+    <table class="admin-table">
       <thead>
-        <tr style="border-bottom:1px solid var(--border-dim);color:var(--text-muted);text-align:left;">
-          <th style="padding:var(--space-3) var(--space-4);">Title</th>
-          <th style="padding:var(--space-3) var(--space-4);">Category</th>
-          <th style="padding:var(--space-3) var(--space-4);">Nation</th>
-          <th style="padding:var(--space-3) var(--space-4);">Status</th>
-          <th style="padding:var(--space-3) var(--space-4);text-align:right;">Actions</th>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Nation</th>
+          <th>Status</th>
+          <th class="col-actions">Actions</th>
         </tr>
       </thead>
       <tbody>
         ${data.map((r) => {
           const meta = r.metadata || {};
           return `
-          <tr style="border-bottom:1px solid var(--border-dim);">
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-primary);">${escHtml(r.title)}</td>
-            <td style="padding:var(--space-3) var(--space-4);"><span class="badge">${escHtml(meta.category || "—")}</span></td>
-            <td style="padding:var(--space-3) var(--space-4);color:var(--text-muted);">${escHtml(meta.nation || r.nationality || "—")}</td>
-            <td style="padding:var(--space-3) var(--space-4);">${r.published ? '<span style="color:#60c060;">Published</span>' : '<span style="color:var(--text-muted);">Draft</span>'}</td>
-            <td style="padding:var(--space-3) var(--space-4);text-align:right;display:flex;gap:var(--space-2);justify-content:flex-end;">
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;" data-edit="${r.id}">Edit</button>
-              <button class="btn btn-secondary" style="padding:4px var(--space-3);font-size:11px;color:#e06060;border-color:#4a1515;" data-delete="${r.id}">Delete</button>
+          <tr>
+            <td class="td-primary">${escHtml(r.title)}</td>
+            <td><span class="badge">${escHtml(meta.category || "—")}</span></td>
+            <td class="td-muted">${escHtml(meta.nation || r.nationality || "—")}</td>
+            <td>${r.published ? '<span class="status-published">Published</span>' : '<span class="status-draft">Draft</span>'}</td>
+            <td class="col-actions">
+              <button class="btn btn-secondary btn--xs" data-edit="${r.id}">Edit</button>
+              <button class="btn btn-secondary btn--xs btn--danger" data-delete="${r.id}">Delete</button>
             </td>
           </tr>`;
         }).join("")}
       </tbody>
     </table>
-    ${pages > 1 ? `<div style="display:flex;gap:var(--space-2);margin-top:var(--space-5);">
+    ${pages > 1 ? `<div class="pagination">
       ${page > 1 ? `<button class="btn btn-secondary" data-page="${page - 1}">← Prev</button>` : ""}
       ${page < pages ? `<button class="btn btn-secondary" data-page="${page + 1}">Next →</button>` : ""}
     </div>` : ""}`;
@@ -156,7 +158,8 @@ function openForm(id) {
   renderExtraSpecs(); renderSources(); renderRelated(); renderMedia();
   renderGalleryAdmin(); renderBlueprintsAdmin(); renderVideosAdmin(); renderDocumentsAdmin();
   setStatus("", false);
-  if (id) loadArmamentIntoForm(id);
+  if (id) { loadArmamentIntoForm(id); translationsPanel.load(id); }
+  else translationsPanel.clear();
 }
 
 function closeForm() {
@@ -168,7 +171,7 @@ async function loadArmamentIntoForm(id) {
   try {
     const res = await fetch(`/api/armaments/${id}`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const r = await res.json();
+    const r = await safeJson(res);
     const meta = r.metadata || {};
     const form = document.getElementById("armament-form");
     form.querySelector("[name='id']").value = r.id;
@@ -205,10 +208,10 @@ function renderExtraSpecs() {
   const container = document.getElementById("armament-extra-specs");
   if (!container) return;
   container.innerHTML = extraSpecs.map((s, i) => `
-    <div style="display:flex;gap:var(--space-2);margin-bottom:var(--space-2);">
+    <div class="source-row">
       <input class="contact-form__input" placeholder="Field name" value="${escHtml(s.key)}" data-spec-key="${i}" style="flex:1;">
       <input class="contact-form__input" placeholder="Value" value="${escHtml(s.value)}" data-spec-value="${i}" style="flex:1;">
-      <button type="button" class="btn btn-secondary" data-spec-remove="${i}" style="font-size:11px;">✕</button>
+      <button type="button" class="btn btn-secondary" data-spec-remove="${i}" style="font-size:11px;"><svg class="icon-inline" width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"/></svg></button>
     </div>`).join("");
   container.querySelectorAll("[data-spec-key]").forEach((el) => el.addEventListener("input", (e) => { extraSpecs[+el.dataset.specKey].key = e.target.value; }));
   container.querySelectorAll("[data-spec-value]").forEach((el) => el.addEventListener("input", (e) => { extraSpecs[+el.dataset.specValue].value = e.target.value; }));
@@ -220,13 +223,13 @@ function renderMedia() {
   const container = document.getElementById("armament-media-list");
   if (!container) return;
   if (!mediaDraft.length) {
-    container.innerHTML = `<p style="font-size:var(--text-sm);color:var(--text-muted);">No media attached.</p>`;
+    container.innerHTML = `<p class="empty-note">No media attached.</p>`;
     return;
   }
   container.innerHTML = `<div style="display:flex;gap:var(--space-3);flex-wrap:wrap;">${mediaDraft.map((m, i) => `
     <div style="position:relative;">
       <img src="${escHtml(m.thumbnailUrl || m.url)}" alt="${escHtml(m.originalName || "")}" style="width:80px;height:60px;object-fit:cover;border-radius:4px;">
-      <button type="button" data-media-remove="${i}" style="position:absolute;top:-6px;right:-6px;background:#4a1515;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;">✕</button>
+      <button type="button" data-media-remove="${i}" style="position:absolute;top:-6px;right:-6px;background:#4a1515;color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer;"><svg class="icon-inline" width="10" height="10" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z"/></svg></button>
     </div>`).join("")}</div>`;
   container.querySelectorAll("[data-media-remove]").forEach((el) => el.addEventListener("click", () => { mediaDraft.splice(+el.dataset.mediaRemove, 1); renderMedia(); }));
 }
@@ -234,13 +237,13 @@ function renderMedia() {
 async function openMediaModal() {
   toggleModal("media-attach-modal", true);
   const grid = document.getElementById("media-attach-grid");
-  grid.innerHTML = `<p style="color:var(--text-muted);">Loading…</p>`;
+  grid.innerHTML = `<p class="text-dim">Loading…</p>`;
   try {
     const res = await fetch("/api/media?limit=60", { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const data = await res.json();
+    const data = await safeJson(res);
     const assets = data.data || [];
-    if (!assets.length) { grid.innerHTML = `<p style="color:var(--text-muted);">No media uploaded yet — use the Media tab first.</p>`; return; }
+    if (!assets.length) { grid.innerHTML = `<p class="text-dim">No media uploaded yet — use the Media tab first.</p>`; return; }
     grid.innerHTML = assets.map((a, i) => `
       <div data-pick-media="${i}" style="cursor:pointer;border:2px solid transparent;border-radius:4px;">
         <img src="${escHtml(a.thumbnailUrl || a.url)}" alt="${escHtml(a.originalName)}" style="width:100%;height:80px;object-fit:cover;border-radius:4px;">
@@ -252,7 +255,7 @@ async function openMediaModal() {
       toggleModal("media-attach-modal", false);
     }));
   } catch (_) {
-    grid.innerHTML = `<p style="color:var(--text-muted);">Media library unavailable.</p>`;
+    grid.innerHTML = `<p class="text-dim">Media library unavailable.</p>`;
   }
 }
 
@@ -267,23 +270,23 @@ async function showPreview() {
   if (!editingId) { alert("Save the armament first, then Preview."); return; }
   toggleModal("armament-preview-modal", true);
   const content = document.getElementById("armament-preview-content");
-  content.innerHTML = `<p style="color:var(--text-muted);">Loading…</p>`;
+  content.innerHTML = `<p class="text-dim">Loading…</p>`;
   try {
     const res = await fetch(`/api/armaments/${editingId}/preview`, { headers: authHeader() });
     if (!res.ok) throw new Error();
-    const { rendered, issues } = await res.json();
+    const { rendered, issues } = await safeJson(res);
     const errors = issues.filter((i) => i.severity === "error");
     content.innerHTML = `
-      ${errors.length ? `<div style="background:#3a1515;border:1px solid #6a2020;border-radius:4px;padding:var(--space-3);margin-bottom:var(--space-4);color:#e06060;font-size:var(--text-sm);">
+      ${errors.length ? `<div class="preview-error">
         <strong>Cannot publish — ${errors.length} blocking issue(s):</strong>
-        <ul style="margin:var(--space-2) 0 0 var(--space-4);">${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
+        <ul>${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
       </div>` : ""}
-      <h3 style="font-family:var(--font-display);margin-bottom:var(--space-2);">${escHtml(rendered.name)}</h3>
-      <p style="color:var(--text-muted);margin-bottom:var(--space-3);">${escHtml(rendered.nation || "")}</p>
-      <p style="margin-bottom:var(--space-4);">${escHtml(rendered.summary || "")}</p>
-      <pre style="font-size:11px;background:rgba(255,255,255,0.03);padding:var(--space-3);border-radius:4px;overflow-x:auto;">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
+      <h3 class="preview-title">${escHtml(rendered.name)}</h3>
+      <p class="text-dim mb-3">${escHtml(rendered.nation || "")}</p>
+      <p class="mb-4">${escHtml(rendered.summary || "")}</p>
+      <pre class="preview-json">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
   } catch (_) {
-    content.innerHTML = `<p style="color:var(--text-muted);">Preview unavailable.</p>`;
+    content.innerHTML = `<p class="text-dim">Preview unavailable.</p>`;
   }
 }
 
@@ -294,7 +297,7 @@ async function checkDuplicatesLive(category, title) {
     const params = new URLSearchParams({ category, name: title, ...(editingId && { excludeId: editingId }) });
     const res = await fetch(`/api/armaments/check-duplicates?${params}`, { headers: authHeader() });
     if (!res.ok) return;
-    const candidates = await res.json();
+    const candidates = await safeJson(res);
     const warningEl = document.getElementById("armament-duplicate-warning");
     if (candidates.length) {
       warningEl.hidden = false;
@@ -343,9 +346,10 @@ async function handleSubmit(e) {
       body: JSON.stringify(body),
     });
     if (!res.ok) throw new Error();
-    const saved = await res.json();
+    const saved = await safeJson(res);
     editingId = saved.id;
     form.querySelector("[name='id']").value = saved.id;
+    translationsPanel.load(saved.id);
 
     if (mediaDraft.length) {
       await fetch(`/api/armaments/${saved.id}/media`, {

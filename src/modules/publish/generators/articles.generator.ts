@@ -15,6 +15,10 @@ interface RelatedRecordEntry {
 
 export interface ArticleJson {
   id: string;
+  /** DB primary key — distinct from `id` (the public slug). Used by the
+   *  translation system, which keys translations by the stable DB id
+   *  rather than the human-editable slug. */
+  recordId: string;
   category: string;
   title: string;
   subtitle?: string;
@@ -80,7 +84,8 @@ export function toArticleJson(record: RecordLike): ArticleJson {
 
   return {
     ...extras,
-    id: record.slug ?? record.id,
+    id:           record.slug ?? record.id,
+    recordId:     record.id,
     category: asString(meta(record, "category")) ?? "military",
     title: record.title,
     subtitle: asString(meta(record, "subtitle")),

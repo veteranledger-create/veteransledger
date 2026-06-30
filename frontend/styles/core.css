@@ -428,3 +428,20 @@ main {
     display: revert;
   }
 }
+
+/* ── Machine-translation notice ────────────────────────────── */
+/* Shown by pages/shared/translation-loader.js whenever displayed content
+   came from a machine translation rather than a human-reviewed one. */
+.vl-mt-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--gold-dim);
+  background: var(--gold-faint);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  padding: 4px var(--space-3);
+  margin: var(--space-2) 0;
+}
