@@ -67,16 +67,22 @@ async function init() {
   }
 
   // ── Archive cards ────────────────────────────────────────────────────────
-  (data.archiveCards || []).forEach((card, i) => {
-    const anchor = document.querySelector(`[data-home-card="${i}"]`);
-    if (anchor && card.href) anchor.setAttribute("href", card.href);
-
-    const icon = document.querySelector(`[data-home-card-icon="${i}"]`);
-    if (icon && card.icon) icon.setAttribute("src", card.icon);
-
-    setText(`[data-home-card-title="${i}"]`, card.title);
-    setText(`[data-home-card-desc="${i}"]`,  card.desc);
-  });
+  // Rendered dynamically so the Admin card manager can add/remove/reorder/
+  // disable cards freely — the static HTML cards remain only as the
+  // no-data fallback. Disabled cards stay in the JSON but are not shown.
+  const grid = document.getElementById("browse-grid");
+  const cards = (data.archiveCards || []).filter((c) => c.enabled !== false);
+  if (grid && cards.length) {
+    grid.innerHTML = cards.map((card) => `
+        <a href="${escAttr(card.href || "#")}" class="archive-card">
+          <div class="archive-card__icon" aria-hidden="true">
+            ${card.icon ? `<img src="${escAttr(card.icon)}" alt="">` : ""}
+          </div>
+          <h2 class="archive-card__title">${escText(card.title || "")}</h2>
+          <p class="archive-card__desc">${escText(card.desc || "")}</p>
+          <span class="archive-card__arrow" aria-hidden="true">→</span>
+        </a>`).join("");
+  }
 
   // Scoped to the hero section specifically — other scripts (navigation.js,
   // page-content.js) manage their own notices elsewhere on the page and
@@ -94,6 +100,13 @@ function setText(selector, value) {
   if (!value) return;
   const el = document.querySelector(selector);
   if (el) el.textContent = value;
+}
+
+function escText(str) {
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+function escAttr(str) {
+  return escText(str).replace(/"/g, "&quot;");
 }
 
 init();

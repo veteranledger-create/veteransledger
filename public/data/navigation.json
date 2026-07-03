@@ -5,22 +5,28 @@
     "logo": "/public/images/logos/eagle.png",
     "tagline": "Axis History Archive"
   },
-
   "settings": {
     "stickyHeader": true,
     "sidebarPermanentFrom": 1024,
-    "breakpoints": { "mobile": 768, "tablet": 1024, "desktop": 1280 }
+    "breakpoints": {
+      "mobile": 768,
+      "tablet": 1024,
+      "desktop": 1280
+    }
   },
-
   "primary": [
-    { "id": "home", "label": "HOME", "href": "/", "icon": "home" },
+    {
+      "id": "home",
+      "label": "HOME",
+      "href": "/",
+      "icon": "home"
+    },
     {
       "id": "timeline",
       "label": "TIMELINE",
       "href": "/timeline",
       "icon": "timeline"
     },
-
     {
       "id": "campaigns",
       "label": "CAMPAIGNS",
@@ -42,20 +48,39 @@
           "label": "North Africa",
           "href": "/campaigns#africa"
         },
-        { "id": "camp-italy", "label": "Italy", "href": "/campaigns#italy" },
-        { "id": "camp-atl", "label": "Atlantic", "href": "/campaigns#atlantic" }
+        {
+          "id": "camp-italy",
+          "label": "Italy",
+          "href": "/campaigns#italy"
+        },
+        {
+          "id": "camp-atl",
+          "label": "Atlantic",
+          "href": "/campaigns#atlantic"
+        }
       ]
     },
-
     {
       "id": "armaments",
       "label": "ARMAMENTS",
       "href": "/armaments",
       "icon": "armaments",
       "children": [
-        { "id": "arm-panzer", "label": "Panzers", "href": "/armaments#panzer" },
-        { "id": "arm-air", "label": "Aircraft", "href": "/armaments#aircraft" },
-        { "id": "arm-naval", "label": "Naval", "href": "/armaments#naval" },
+        {
+          "id": "arm-panzer",
+          "label": "Panzers",
+          "href": "/armaments#panzer"
+        },
+        {
+          "id": "arm-air",
+          "label": "Aircraft",
+          "href": "/armaments#aircraft"
+        },
+        {
+          "id": "arm-naval",
+          "label": "Naval",
+          "href": "/armaments#naval"
+        },
         {
           "id": "arm-missile",
           "label": "Missiles",
@@ -73,7 +98,6 @@
         }
       ]
     },
-
     {
       "id": "personnel",
       "label": "PERSONNEL",
@@ -107,15 +131,22 @@
         }
       ]
     },
-
     {
       "id": "letters",
       "label": "LETTERS",
       "href": "/letters",
       "icon": "letters",
       "children": [
-        { "id": "let-german", "label": "German", "href": "/letters#german" },
-        { "id": "let-italian", "label": "Italian", "href": "/letters#italian" },
+        {
+          "id": "let-german",
+          "label": "German",
+          "href": "/letters#german"
+        },
+        {
+          "id": "let-italian",
+          "label": "Italian",
+          "href": "/letters#italian"
+        },
         {
           "id": "let-japanese",
           "label": "Japanese",
@@ -126,32 +157,71 @@
           "label": "Volunteers",
           "href": "/letters#volunteers"
         },
-        { "id": "let-british", "label": "British", "href": "/letters#british" },
-        { "id": "let-polish",  "label": "Polish",  "href": "/letters#polish"  }
+        {
+          "id": "let-british",
+          "label": "British",
+          "href": "/letters#british"
+        },
+        {
+          "id": "let-polish",
+          "label": "Polish",
+          "href": "/letters#polish"
+        }
       ]
     },
-
     {
       "id": "formations",
       "label": "FORMATIONS",
       "href": "/formations",
       "icon": "formations",
       "children": [
-        { "id": "form-army-groups", "label": "Army Groups",  "href": "/formations#army-groups" },
-        { "id": "form-armies",      "label": "Armies",       "href": "/formations#armies"      },
-        { "id": "form-corps",       "label": "Corps",        "href": "/formations#corps"       },
-        { "id": "form-divisions",  "label": "Divisions",    "href": "/formations#divisions"   },
-        { "id": "form-ss",         "label": "Waffen-SS",    "href": "/formations#waffen-ss"   },
-        { "id": "form-vol",        "label": "Volunteers",   "href": "/formations#volunteers"  },
-        { "id": "form-brigades",   "label": "Brigades",     "href": "/formations#brigades"    },
-        { "id": "form-regiments",  "label": "Regiments",    "href": "/formations#regiments"   },
-        { "id": "form-battalions", "label": "Battalions",   "href": "/formations#battalions"  },
-        { "id": "form-luft",       "label": "Luftwaffe",    "href": "/formations#luftwaffe"   },
-        { "id": "form-km",         "label": "Kriegsmarine", "href": "/formations#kriegsmarine"},
-        { "id": "form-allies",     "label": "Axis Allies",  "href": "/formations#allies"      }
+        {
+          "id": "form-army-groups",
+          "label": "Army Groups",
+          "href": "/formations#army-groups"
+        },
+        {
+          "id": "form-armies",
+          "label": "Armies",
+          "href": "/formations#armies"
+        },
+        {
+          "id": "form-corps",
+          "label": "Corps",
+          "href": "/formations#corps"
+        },
+        {
+          "id": "form-divisions",
+          "label": "Divisions",
+          "href": "/formations#divisions"
+        },
+        {
+          "id": "form-ss",
+          "label": "Waffen-SS",
+          "href": "/formations#waffen-ss"
+        },
+        {
+          "id": "form-vol",
+          "label": "Volunteers",
+          "href": "/formations#volunteers"
+        },
+        {
+          "id": "form-luft",
+          "label": "Luftwaffe",
+          "href": "/formations#luftwaffe"
+        },
+        {
+          "id": "form-km",
+          "label": "Kriegsmarine",
+          "href": "/formations#kriegsmarine"
+        },
+        {
+          "id": "form-allies",
+          "label": "Axis Allies",
+          "href": "/formations#allies"
+        }
       ]
     },
-
     {
       "id": "nsdap",
       "label": "NSDAP",
@@ -170,7 +240,6 @@
         }
       ]
     },
-
     {
       "id": "articles",
       "label": "ARTICLES",
@@ -192,17 +261,24 @@
           "label": "Economy",
           "href": "/articles#economy"
         },
-        { "id": "art-legal", "label": "Legal", "href": "/articles#legal" }
+        {
+          "id": "art-legal",
+          "label": "Legal",
+          "href": "/articles#legal"
+        }
       ]
     },
-
     {
       "id": "about",
       "label": "ABOUT",
       "href": "/about",
       "icon": "about",
       "children": [
-        { "id": "about-mission", "label": "Mission", "href": "/about#mission" },
+        {
+          "id": "about-mission",
+          "label": "Mission",
+          "href": "/about#mission"
+        },
         {
           "id": "about-sources",
           "label": "Sources & Methodology",
@@ -211,7 +287,6 @@
       ]
     }
   ],
-
   "utility": [
     {
       "id": "policies",
@@ -274,37 +349,75 @@
       "id": "theme",
       "type": "action",
       "action": "toggle-theme",
-      "labels": { "light": "LIGHT", "dark": "DARK" }
+      "labels": {
+        "light": "LIGHT",
+        "dark": "DARK"
+      }
     }
   ],
-
   "footer": {
     "aboutText": "A historical archive documenting personnel, campaigns, formations, letters, armaments, and primary-source material related to the Second World War.",
     "signature": "— VeteransLedger Archive Team",
     "educationalBadge": "Educational Use Only",
     "statsHeading": "Archive Status",
     "stats": [
-      { "label": "Records",         "value": "500+" },
-      { "label": "Collections",     "value": "8" },
-      { "label": "Coverage Period", "value": "1933–1945" },
-      { "label": "Last Updated",    "value": "2026" }
+      {
+        "label": "Records",
+        "value": "500+"
+      },
+      {
+        "label": "Collections",
+        "value": "8"
+      },
+      {
+        "label": "Coverage Period",
+        "value": "1933–1945"
+      },
+      {
+        "label": "Last Updated",
+        "value": "2026"
+      }
     ],
     "quickLinksHeading": "Quick Links",
     "archiveInfo": {
       "heading": "✰ Archive Information",
       "items": [
-        { "label": "Project", "value": "VeteransLedger Archive" },
-        { "label": "Type",    "value": "Historical Documentation" },
-        { "label": "License", "value": "Educational Use Only" }
+        {
+          "label": "Project",
+          "value": "VeteransLedger Archive"
+        },
+        {
+          "label": "Type",
+          "value": "Historical Documentation"
+        },
+        {
+          "label": "License",
+          "value": "Educational Use Only"
+        }
       ]
     },
     "legalHeading": "Legal",
     "legalLinks": [
-      { "label": "Archive Disclaimer",  "href": "/site-policies#disclaimer" },
-      { "label": "Privacy Policy",      "href": "/site-policies#privacy" },
-      { "label": "Terms of Use",        "href": "/site-policies#terms" },
-      { "label": "Removal Requests",    "href": "/site-policies#removal" },
-      { "label": "Copyright Policy",    "href": "/site-policies#copyright" }
+      {
+        "label": "Archive Disclaimer",
+        "href": "/site-policies#disclaimer"
+      },
+      {
+        "label": "Privacy Policy",
+        "href": "/site-policies#privacy"
+      },
+      {
+        "label": "Terms of Use",
+        "href": "/site-policies#terms"
+      },
+      {
+        "label": "Removal Requests",
+        "href": "/site-policies#removal"
+      },
+      {
+        "label": "Copyright Policy",
+        "href": "/site-policies#copyright"
+      }
     ],
     "connect": {
       "heading": "Connect",
@@ -314,15 +427,31 @@
     "columns": [
       {
         "heading": "EXPLORE",
-        "items": ["home", "timeline", "campaigns", "armaments"]
+        "items": [
+          "home",
+          "timeline",
+          "campaigns",
+          "armaments"
+        ]
       },
       {
         "heading": "ARCHIVE",
-        "items": ["personnel", "letters", "nsdap", "articles"]
+        "items": [
+          "personnel",
+          "letters",
+          "nsdap",
+          "articles"
+        ]
       },
       {
         "heading": "RESEARCH",
-        "items": ["sources-methodology", "about-mission", "awards-decs", "hist-maps", "pol-docs"]
+        "items": [
+          "sources-methodology",
+          "about-mission",
+          "awards-decs",
+          "hist-maps",
+          "pol-docs"
+        ]
       }
     ],
     "social": [

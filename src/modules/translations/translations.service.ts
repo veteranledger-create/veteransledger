@@ -1,8 +1,10 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { SiteContentService } from "../site-content/site-content.service";
+import { resolveProvider, TranslationProvider } from "./providers";
 
 // Supported target locales (English is always the source)
-export const SUPPORTED_LOCALES = ["de", "es", "ru", "ar"] as const;
+export const SUPPORTED_LOCALES = ["de", "ja", "it", "ru", "es", "fr", "uk", "ar"] as const;
 export type Locale = typeof SUPPORTED_LOCALES[number];
 
 // Translatable fields per entity type. Determines what gets extracted from
@@ -23,41 +25,81 @@ export type TranslationStatus = "machine" | "human" | "published";
 // via getItemStatuses() rather than duplicated here as a manifest.
 const COUNTABLE_ENTITY_TYPES = ["record", "entity", "timeline_event"] as const;
 
-// ── Translation provider interface ────────────────────────────────────────────
+// ── Translation provider ──────────────────────────────────────────────────────
+//
+// Vendor-specific logic lives in providers.ts (LibreTranslate, DeepL, Google,
+// OpenAI — interchangeable via configuration, extensible for future vendors).
+// When nothing is configured, resolveProvider() returns null and automatic
+// translation is disabled gracefully; manual editing is unaffected. A
+// provider either returns real translated text or throws — generate() never
+// stores English source as a fake "translation".
 
-interface TranslationProvider {
-  translate(text: string, targetLocale: string): Promise<string>;
+const NOT_CONFIGURED = () =>
+  new AppError(
+    503,
+    "Machine translation is not configured. Translations can still be written manually in the editor.",
+  );
+
+// ── Structure-preserving JSON translation (site_content) ─────────────────────
+//
+// Site-content files (homepage, navigation, site settings, pages, policies…)
+// are JSON documents. Translating the raw serialized string would mangle keys
+// and identifiers, so instead we walk the parsed structure and translate only
+// human-readable string VALUES, leaving keys, paths, URLs, ids, dates, and
+// other machine-facing values untouched. The output re-serializes to valid
+// JSON with the exact original shape.
+
+const NON_TRANSLATABLE_KEYS = new Set([
+  "id", "recordId", "href", "url", "src", "file", "icon", "image", "key",
+  "slug", "code", "type", "section", "category", "theater", "collection",
+  "action", "dataUrl", "panelId", "email", "privacyHref", "font", "template",
+]);
+
+function isTranslatableString(key: string, value: string): boolean {
+  if (NON_TRANSLATABLE_KEYS.has(key)) return false;
+  const v = value.trim();
+  if (!v) return false;
+  if (/^(https?:)?\//.test(v)) return false;          // URL or absolute path
+  if (/^[\d\s.,:;\/\-–—%]+$/.test(v)) return false;    // numbers, dates, ranges
+  if (v.includes("@") && !v.includes(" ")) return false; // email addresses
+  return true;
 }
 
-// LibreTranslate adapter — connects to a self-hosted free translation server.
-// Set LIBRE_TRANSLATE_URL=http://localhost:5000 (or your hosted instance).
-// Falls back to source text when URL is not configured or the call fails.
-class LibreTranslateProvider implements TranslationProvider {
-  private readonly url: string | undefined;
+type JsonValue = string | number | boolean | null | JsonValue[] | { [k: string]: JsonValue };
 
-  constructor() {
-    this.url = process.env.LIBRE_TRANSLATE_URL?.replace(/\/$/, "");
-  }
+// Collect-then-apply: gather every translatable string first, translate them
+// with bounded concurrency, then write results back. One provider failure
+// aborts the whole operation — no partially translated document is stored.
+async function translateJsonStructure(root: JsonValue, locale: string, provider: TranslationProvider): Promise<JsonValue> {
+  const cloned = JSON.parse(JSON.stringify(root)) as JsonValue;
+  const slots: Array<{ parent: Record<string, JsonValue> | JsonValue[]; key: string | number; text: string }> = [];
 
-  async translate(text: string, targetLocale: string): Promise<string> {
-    if (!this.url || !text.trim()) return text;
-    try {
-      const res = await fetch(`${this.url}/translate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ q: text, source: "en", target: targetLocale, format: "text" }),
-        signal: AbortSignal.timeout(10_000),
-      });
-      if (!res.ok) return text;
-      const data = (await res.json()) as { translatedText?: string };
-      return data.translatedText || text;
-    } catch {
-      return text; // network error or timeout — return source unchanged
+  const walk = (node: JsonValue, parent: Record<string, JsonValue> | JsonValue[] | null, key: string | number): void => {
+    if (typeof node === "string") {
+      const keyHint = typeof key === "string" ? key : "";
+      if (parent && isTranslatableString(keyHint, node)) slots.push({ parent, key, text: node });
+      return;
     }
-  }
-}
+    if (Array.isArray(node)) {
+      node.forEach((child, i) => walk(child, node, typeof key === "string" ? key : i));
+      return;
+    }
+    if (node && typeof node === "object") {
+      for (const [k, v] of Object.entries(node)) walk(v, node, k);
+    }
+  };
+  walk(cloned, null, "");
 
-const provider: TranslationProvider = new LibreTranslateProvider();
+  const CONCURRENCY = 5;
+  for (let i = 0; i < slots.length; i += CONCURRENCY) {
+    const chunk = slots.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(chunk.map((s) => provider.translate(s.text, locale)));
+    chunk.forEach((s, j) => {
+      (s.parent as Record<string | number, JsonValue>)[s.key] = results[j];
+    });
+  }
+  return cloned;
+}
 
 // ── Source field extraction ───────────────────────────────────────────────────
 
@@ -96,10 +138,11 @@ async function extractSourceFields(
       };
     }
     case "site_content": {
-      // entityId is the site-content key (e.g. "nsdap/overview.json")
-      // The full JSON is stored as the "content" field; the caller provides it.
-      // Return empty — the generate endpoint receives raw content via request body.
-      return {};
+      // Handled directly inside generate(): the source JSON is loaded
+      // server-side from the live file and translated structure-preservingly.
+      // This branch is unreachable from generate() and exists only so an
+      // unexpected caller gets an explicit error instead of empty fields.
+      throw new AppError(500, "site_content source extraction is handled by generate() directly.");
     }
     default:
       throw new AppError(400, `Unsupported entity type: ${entityType}`);
@@ -128,10 +171,24 @@ export class TranslationsService {
   }
 
   /**
+   * Availability of automatic machine translation. Exposed to the Admin UI
+   * (GET /api/translations/status) so Generate actions can be disabled
+   * proactively instead of failing at click time.
+   */
+  availability(): { available: boolean; provider: string | null } {
+    const p = resolveProvider();
+    return { available: !!p, provider: p?.name ?? null };
+  }
+
+  /**
    * Generate (or regenerate) a translation for the given locale.
-   * - Refuses to overwrite `human` status unless force=true.
-   * - Calls the translation provider for each source field.
-   * - For site_content, rawContent must be supplied as a string.
+   * - Refuses to overwrite `human`/`published` status unless force=true.
+   * - Throws 503 if no provider is configured, 502 if the provider fails —
+   *   nothing is ever stored in either case, so a "machine" row always
+   *   holds real translated output.
+   * - For site_content the source JSON is loaded server-side from the live
+   *   file and translated structure-preservingly (string values only);
+   *   rawContent remains an optional caller override.
    */
   async generate(
     entityType: string,
@@ -143,6 +200,9 @@ export class TranslationsService {
       throw new AppError(400, `Unsupported locale: ${locale}`);
     }
 
+    const provider = resolveProvider();
+    if (!provider) throw NOT_CONFIGURED();
+
     // Guard: never overwrite human-verified or published translations unless explicitly forced
     const existing = await this.get(entityType, entityId, locale);
     if ((existing?.status === "human" || existing?.status === "published") && !options.force) {
@@ -152,23 +212,37 @@ export class TranslationsService {
       );
     }
 
-    // Extract source fields
-    let sourceFields: TranslationFields;
-    if (entityType === "site_content" && options.rawContent) {
-      sourceFields = { content: options.rawContent };
-    } else {
-      sourceFields = await extractSourceFields(entityType, entityId);
-    }
-
-    // Translate each non-empty field
     const translatedFields: TranslationFields = {};
-    await Promise.all(
-      Object.entries(sourceFields).map(async ([key, value]) => {
-        translatedFields[key] = value
-          ? await provider.translate(value, locale)
-          : value;
-      }),
-    );
+
+    if (entityType === "site_content") {
+      // Load the source document (client-supplied override, else the live file).
+      let source: unknown;
+      if (options.rawContent) {
+        try { source = JSON.parse(options.rawContent); }
+        catch { source = options.rawContent; }
+      } else {
+        source = await new SiteContentService().read(entityId);
+      }
+      if (typeof source === "string") {
+        translatedFields.content = await provider.translate(source, locale);
+      } else {
+        const translated = await translateJsonStructure(source as JsonValue, locale, provider);
+        translatedFields.content = JSON.stringify(translated, null, 2);
+      }
+    } else {
+      const sourceFields = await extractSourceFields(entityType, entityId);
+      if (Object.keys(sourceFields).length === 0) {
+        throw new AppError(400, "Source record has no translatable fields — nothing to translate.");
+      }
+      // Translate each non-empty field; any provider failure aborts before storage
+      await Promise.all(
+        Object.entries(sourceFields).map(async ([key, value]) => {
+          translatedFields[key] = value
+            ? await provider.translate(value, locale)
+            : value;
+        }),
+      );
+    }
 
     const now = new Date();
     return prisma.translation.upsert({
@@ -191,9 +265,11 @@ export class TranslationsService {
   }
 
   /**
-   * Update a translation's fields and/or status.
-   * Setting status="human" or "published" records verifiedAt; "published"
-   * additionally records publishedAt. Moving back to "machine" clears both.
+   * Save a translation's fields and/or status. Upserts: manual translation
+   * authoring must work even when no machine-translation provider is
+   * configured, so saving from the editor CREATES the row when none exists
+   * yet. Setting status="human" or "published" records verifiedAt;
+   * "published" additionally records publishedAt; back to "machine" clears both.
    */
   async update(
     entityType: string,
@@ -210,16 +286,29 @@ export class TranslationsService {
           : `Unsupported locale: ${locale}. Supported: ${SUPPORTED_LOCALES.join(", ")}.`,
       );
     }
+    // Never create rows whose every field is empty — that would be a fake
+    // "translated" state indistinguishable from real content in listings.
+    if (!Object.values(fields).some((v) => typeof v === "string" && v.trim())) {
+      throw new AppError(400, "Translation is empty — write some translated text before saving.");
+    }
     const existing = await this.get(entityType, entityId, locale);
-    if (!existing) throw new AppError(404, "Translation not found");
 
     const now = new Date();
-    return prisma.translation.update({
+    return prisma.translation.upsert({
       where: { entityType_entityId_locale: { entityType, entityId, locale } },
-      data: {
+      create: {
+        entityType,
+        entityId,
+        locale,
         fields,
         status,
-        verifiedAt: status === "human" || status === "published" ? (existing.verifiedAt ?? now) : null,
+        verifiedAt: status === "human" || status === "published" ? now : null,
+        publishedAt: status === "published" ? now : null,
+      },
+      update: {
+        fields,
+        status,
+        verifiedAt: status === "human" || status === "published" ? (existing?.verifiedAt ?? now) : null,
         publishedAt: status === "published" ? now : null,
       },
     });

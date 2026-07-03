@@ -8,7 +8,10 @@ import { authHeader, escHtml, safeJson } from "./admin-utils.js";
  * the per-record panel is where an editor does the detailed field editing.
  */
 
-const LOCALE_NAMES = { de: "German", es: "Spanish", ru: "Russian", ar: "Arabic" };
+const LOCALE_NAMES = {
+  de: "German", ja: "Japanese", it: "Italian", ru: "Russian",
+  es: "Spanish", fr: "French", uk: "Ukrainian", ar: "Arabic",
+};
 const TYPE_LABELS = {
   record: "Records",
   entity: "Personnel",
@@ -37,13 +40,16 @@ const SITE_CONTENT_KEYS = [
 
 const PAGE_SIZE = 20;
 let currentPage = 1;
+let mtAvailable = true; // refreshed from /api/translations/status on tab open
 
 function init() {
   document.getElementById("admin-tabs")?.addEventListener("click", (e) => {
     if (e.target.closest('[data-tab="tab-translations"]')) {
-      loadSummary();
-      currentPage = 1;
-      loadItems();
+      loadMtStatus().then(() => {
+        loadSummary();
+        currentPage = 1;
+        loadItems();
+      });
     }
   });
 
@@ -58,6 +64,28 @@ function init() {
   });
 
   document.getElementById("tl-dash-bulk-generate")?.addEventListener("click", bulkGenerateMissing);
+}
+
+// ── Machine-translation availability ─────────────────────────────────────────
+
+async function loadMtStatus() {
+  try {
+    const res = await fetch("/api/translations/status", { headers: authHeader() });
+    mtAvailable = res.ok ? (await safeJson(res)).available === true : false;
+  } catch {
+    mtAvailable = false; // fail safe: manual-only mode, never broken buttons
+  }
+  const banner = document.getElementById("tl-dash-mt-banner");
+  if (banner) {
+    banner.innerHTML = mtAvailable ? "" : `
+      <p class="tl-mt-unavailable">Translation service not configured — automatic translation is disabled.
+      Translations can still be written manually from each record's translation panel.</p>`;
+  }
+  const bulkBtn = document.getElementById("tl-dash-bulk-generate");
+  if (bulkBtn) {
+    bulkBtn.disabled = !mtAvailable;
+    bulkBtn.title = mtAvailable ? "" : "Automatic translation is disabled — no provider is configured.";
+  }
 }
 
 // ── Summary ──────────────────────────────────────────────────────────────────
@@ -78,7 +106,7 @@ async function loadSummary() {
 
 function renderSummaryTable(rows) {
   if (!rows.length) return `<p class="text-dim">No translation data yet.</p>`;
-  const locales = ["de", "es", "ru", "ar"];
+  const locales = Object.keys(LOCALE_NAMES);
   return `
     <table class="admin-table">
       <thead><tr>
@@ -187,9 +215,11 @@ function renderItemsTable(rows) {
             <td>${escHtml(r.title)}</td>
             <td><span class="tl-badge ${STATUS_CLASSES[r.status]}">${STATUS_LABELS[r.status]}</span></td>
             <td class="col-actions">
+              ${mtAvailable ? `
               <button type="button" class="btn btn-secondary btn--xs" data-tl-generate="${escHtml(r.id)}" data-tl-was-missing="${r.status === "missing"}">
                 ${r.status === "missing" ? "Generate" : "Regenerate"}
-              </button>
+              </button>` : `
+              <span class="text-dim" style="font-size:var(--text-xs);" title="Automatic translation is disabled — edit manually from the record's translation panel.">manual only</span>`}
             </td>
           </tr>
         `).join("")}
@@ -222,10 +252,14 @@ async function generateOne(type, id, locale, force) {
     body: JSON.stringify({ force }),
   });
   // 409 = human/published translation exists and force wasn't set — skip silently in bulk mode
-  if (!res.ok && res.status !== 409) throw new Error(`HTTP ${res.status}`);
+  if (!res.ok && res.status !== 409) {
+    const d = await res.json().catch(() => ({}));
+    throw new Error(d.error || `HTTP ${res.status}`);
+  }
 }
 
 async function bulkGenerateMissing() {
+  if (!mtAvailable) return; // button is disabled; belt-and-braces
   const type = document.getElementById("tl-dash-type")?.value || "record";
   const locale = document.getElementById("tl-dash-locale")?.value || "de";
   const statusEl = document.getElementById("tl-dash-bulk-status");
@@ -238,14 +272,23 @@ async function bulkGenerateMissing() {
   }
 
   if (statusEl) statusEl.textContent = `Generating 0/${missingBtns.length}…`;
-  let done = 0;
+  let ok = 0;
+  let failed = 0;
+  let firstError = "";
   for (const btn of missingBtns) {
     const id = btn.dataset.tlGenerate;
-    try { await generateOne(type, id, locale, false); } catch { /* continue with remaining items */ }
-    done++;
-    if (statusEl) statusEl.textContent = `Generating ${done}/${missingBtns.length}…`;
+    try { await generateOne(type, id, locale, false); ok++; }
+    catch (err) { failed++; if (!firstError) firstError = err.message; }
+    if (statusEl) statusEl.textContent = `Generating ${ok + failed}/${missingBtns.length}…`;
+    // Provider unavailable fails identically for every item — stop after the
+    // first such failure instead of hammering it N more times.
+    if (failed && /not configured|unreachable/i.test(firstError)) break;
   }
-  if (statusEl) statusEl.textContent = `Done — generated ${done} translation(s).`;
+  if (statusEl) {
+    statusEl.textContent = failed
+      ? `Generated ${ok}, failed ${failed}: ${firstError}`
+      : `Done — generated ${ok} translation(s).`;
+  }
   loadItems();
 }
 

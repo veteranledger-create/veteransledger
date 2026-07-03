@@ -38,6 +38,19 @@ const FIELD_LABELS = {
 
 // ── Shared editor modal state ─────────────────────────────────────────────────
 
+// Cached availability of automatic machine translation (admin-only endpoint).
+// Unavailable (or unauthenticated) resolves to { available:false } so the UI
+// degrades to manual-only mode instead of showing broken Generate buttons.
+let _mtStatusPromise = null;
+function fetchMachineTranslationStatus() {
+  if (!_mtStatusPromise) {
+    _mtStatusPromise = fetch("/api/translations/status", { headers: authHeader() })
+      .then((r) => (r.ok ? r.json() : { available: false }))
+      .catch(() => ({ available: false }));
+  }
+  return _mtStatusPromise;
+}
+
 let _activeModal = null; // { entityType, entityId, locale, langName, fields, currentStatus, onSaved }
 
 function _getModal() { return document.getElementById("translation-editor-modal"); }
@@ -48,32 +61,44 @@ function _openEditorModal({ entityType, entityId, locale, langName, sourceFields
   const modal = _getModal();
   if (!modal) return;
 
-  document.getElementById("tl-modal-title").textContent = `Translate to ${langName}`;
+  const statusCfg = STATUS_CONFIG[currentStatus] || STATUS_CONFIG.machine;
+  const titleEl = document.getElementById("tl-modal-title");
+  titleEl.innerHTML = `Translate to ${escHtml(langName)}
+    <span class="tl-badge ${statusCfg.badge}" style="margin-left:var(--space-2);vertical-align:middle;">${statusCfg.icon} ${escHtml(statusCfg.label)}</span>`;
 
   const fieldKeys = Object.keys(sourceFields);
   const isContent = fieldKeys.length === 1 && fieldKeys[0] === "content";
+  const rowsFor = (k) => (isContent ? 16 : (k === "biography" || k === "content" ? 7 : 3));
+  // Monospace only for structured JSON content; prose fields read as prose.
+  const fieldClass = (k) => `contact-form__input${k === "content" && isContent ? " code-editor" : ""}`;
 
   const body = document.getElementById("tl-modal-body");
   body.innerHTML = `
     <div class="tl-editor-grid">
-      <div class="tl-editor-col">
-        <div class="tl-editor-col-head">English (source)</div>
+      <div class="tl-editor-col tl-editor-col--source">
+        <div class="tl-editor-col-head">
+          <span class="tl-editor-flag">${FLAG_SVGS.en || ""}</span>
+          English <span class="tl-editor-col-note">source · read-only</span>
+        </div>
         ${fieldKeys.map((k) => `
           <div class="tl-editor-field">
             <label class="tl-editor-label">${escHtml(FIELD_LABELS[k] || k)}</label>
-            <textarea class="contact-form__input code-editor" rows="${isContent ? 14 : (k === "biography" || k === "content" ? 6 : 3)}" readonly>${escHtml(sourceFields[k] || "")}</textarea>
+            <textarea class="${fieldClass(k)} tl-src" rows="${rowsFor(k)}" readonly tabindex="-1" aria-label="English source — ${escHtml(FIELD_LABELS[k] || k)}">${escHtml(sourceFields[k] || "")}</textarea>
           </div>`).join("")}
       </div>
-      <div class="tl-editor-col" ${rtl ? 'dir="rtl"' : ""}>
-        <div class="tl-editor-col-head">${escHtml(langName)}</div>
+      <div class="tl-editor-col tl-editor-col--target" ${rtl ? 'dir="rtl"' : ""}>
+        <div class="tl-editor-col-head" ${rtl ? 'dir="ltr"' : ""}>
+          <span class="tl-editor-flag">${FLAG_SVGS[locale] || ""}</span>
+          ${escHtml(langName)} <span class="tl-editor-col-note">editable translation</span>
+        </div>
         ${fieldKeys.map((k) => `
           <div class="tl-editor-field">
-            <label class="tl-editor-label">${escHtml(FIELD_LABELS[k] || k)}</label>
-            <textarea class="contact-form__input code-editor" id="tl-field-${k}" rows="${isContent ? 14 : (k === "biography" || k === "content" ? 6 : 3)}">${escHtml(translationFields[k] || "")}</textarea>
+            <label class="tl-editor-label" ${rtl ? 'dir="ltr"' : ""}>${escHtml(FIELD_LABELS[k] || k)}</label>
+            <textarea class="${fieldClass(k)}" id="tl-field-${k}" rows="${rowsFor(k)}" ${rtl ? 'dir="rtl"' : ""} aria-label="${escHtml(langName)} translation — ${escHtml(FIELD_LABELS[k] || k)}">${escHtml(translationFields[k] || "")}</textarea>
           </div>`).join("")}
       </div>
     </div>
-    <p id="tl-modal-status" class="form-status mt-2"></p>`;
+    <p id="tl-modal-status" class="form-status" style="padding:0 var(--space-5) var(--space-2);margin:0;"></p>`;
 
   modal.hidden = false;
 }
@@ -94,12 +119,15 @@ async function _saveModal(status) {
   const statusEl = document.getElementById("tl-modal-status");
   if (statusEl) { statusEl.textContent = "Saving…"; statusEl.className = "form-status mt-2"; }
   try {
-    const res = await fetch(`/api/translations/${entityType}/${entityId}/${locale}`, {
+    const res = await fetch(`/api/translations/${entityType}/${encodeURIComponent(entityId)}/${locale}`, {
       method: "PUT",
       headers: { ...authHeader(), "Content-Type": "application/json" },
       body: JSON.stringify({ fields, status }),
     });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) {
+      const d = await res.json().catch(() => ({}));
+      throw new Error(d.error || `HTTP ${res.status}`);
+    }
     if (statusEl) { statusEl.textContent = "Saved."; statusEl.className = "form-status form-status--ok mt-2"; }
     setTimeout(() => { _getModal().hidden = true; onSaved?.(); }, 800);
   } catch (err) {
@@ -161,14 +189,15 @@ export class TranslationsPanel {
     const entityType = et; // closure capture
 
     try {
-      const [tlRes, srcRes] = await Promise.all([
-        fetch(`/api/translations/${this._entityType}/${id}`, { headers: authHeader() }),
+      const [tlRes, srcRes, mt] = await Promise.all([
+        fetch(`/api/translations/${this._entityType}/${encodeURIComponent(id)}`, { headers: authHeader() }),
         this._fetchSourceFields(id),
+        fetchMachineTranslationStatus(),
       ]);
       if (!tlRes.ok) throw new Error(`HTTP ${tlRes.status}`);
       const translations = await safeJson(tlRes);
       this._sourceCache = srcRes;
-      this._renderCards(translations);
+      this._renderCards(translations, mt.available);
     } catch (err) {
       const el = this._container();
       if (el) el.innerHTML += `<p class="tl-error">Could not load translations: ${escHtml(err.message)}</p>`;
@@ -197,25 +226,33 @@ export class TranslationsPanel {
         const d = await r.json();
         return { title: d.title || "", summary: d.summary || "" };
       }
-      case "site_content":
-        return { content: "" }; // provided externally for site content
+      case "site_content": {
+        // English source = the live site-content JSON file, pretty-printed so
+        // the read-only source column shows real content next to the translation.
+        const r = await fetch(`/api/site-content?key=${encodeURIComponent(entityId)}`);
+        if (!r.ok) return {};
+        const d = await r.json();
+        return { content: JSON.stringify(d, null, 2) };
+      }
       default:
         return {};
     }
   }
 
-  _renderCards(translations) {
+  _renderCards(translations, mtAvailable = true) {
     const el = this._container();
     if (!el || !this._entityId) return;
 
     const cards = LANGUAGES.map((lang) => {
       if (lang.isSource) return this._sourceCard(lang);
       const t = translations[lang.code];
-      return t ? this._existingCard(lang, t) : this._emptyCard(lang);
+      return t ? this._existingCard(lang, t, mtAvailable) : this._emptyCard(lang, mtAvailable);
     }).join("");
 
     el.innerHTML = `
       <div class="section-label form-sub-label mt-6">Translations</div>
+      ${mtAvailable ? "" : `
+      <p class="tl-mt-unavailable">Automatic translation is not configured — translations can still be written manually with Edit.</p>`}
       <div class="tl-grid">${cards}</div>`;
 
     // Wire action buttons
@@ -241,7 +278,7 @@ export class TranslationsPanel {
       </div>`;
   }
 
-  _existingCard(lang, t) {
+  _existingCard(lang, t, mtAvailable = true) {
     const cfg = STATUS_CONFIG[t.status] || STATUS_CONFIG.machine;
     const isHuman = t.status === "human";
     return `
@@ -251,21 +288,23 @@ export class TranslationsPanel {
         <div class="tl-badge ${cfg.badge}">${cfg.icon} ${cfg.label}</div>
         <div class="tl-actions">
           <button class="tl-btn" data-tl-edit="${lang.code}">Edit</button>
+          ${mtAvailable ? `
           <button class="tl-btn ${isHuman ? "tl-btn--warn" : ""}" data-tl-generate="${lang.code}" data-tl-force="1"
-            title="${isHuman ? "This will overwrite a Human Verified translation" : "Regenerate machine translation"}">Regenerate</button>
+            title="${isHuman ? "This will overwrite a Human Verified translation" : "Regenerate machine translation"}">Regenerate</button>` : ""}
           <button class="tl-btn tl-btn--danger" data-tl-delete="${lang.code}">Delete</button>
         </div>
       </div>`;
   }
 
-  _emptyCard(lang) {
+  _emptyCard(lang, mtAvailable = true) {
     return `
       <div class="tl-card tl-card--none">
         <div class="tl-card-flag">${FLAG_SVGS[lang.code] || ""}</div>
         <div class="tl-card-lang">${escHtml(lang.name)}</div>
         <div class="tl-badge ${STATUS_CONFIG.none.badge}">Not Available</div>
         <div class="tl-actions">
-          <button class="tl-btn tl-btn--primary" data-tl-generate="${lang.code}">Generate</button>
+          ${mtAvailable ? `<button class="tl-btn tl-btn--primary" data-tl-generate="${lang.code}">Generate</button>` : ""}
+          <button class="tl-btn ${mtAvailable ? "" : "tl-btn--primary"}" data-tl-edit="${lang.code}">${mtAvailable ? "Add manually" : "Write translation"}</button>
         </div>
       </div>`;
   }
@@ -279,7 +318,7 @@ export class TranslationsPanel {
     if (btn) { btn.disabled = true; btn.textContent = "Generating…"; }
 
     try {
-      const res = await fetch(`/api/translations/${this._entityType}/${this._entityId}/${locale}/generate`, {
+      const res = await fetch(`/api/translations/${this._entityType}/${encodeURIComponent(this._entityId)}/${locale}/generate`, {
         method: "POST",
         headers: { ...authHeader(), "Content-Type": "application/json" },
         body: JSON.stringify({ force }),
@@ -325,7 +364,7 @@ export class TranslationsPanel {
     if (btn) btn.disabled = true;
 
     try {
-      const res = await fetch(`/api/translations/${this._entityType}/${this._entityId}/${locale}`, {
+      const res = await fetch(`/api/translations/${this._entityType}/${encodeURIComponent(this._entityId)}/${locale}`, {
         method: "DELETE",
         headers: authHeader(),
       });

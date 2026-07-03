@@ -137,7 +137,20 @@ export interface PromotionResult {
 // and harmless JSON key-order differences — no data loss. Awards, maps,
 // and political-docs had zero staged files (no DB records of those types
 // exist yet) so nothing was promoted for them. Reset to false afterward.
-const PROMOTION_ENABLED = true;
+//
+// Awards/Maps/PoliticalDocs verification fixtures: created one temporary
+// DB record per type, published+promoted to verify translation rendering
+// end-to-end on these previously-empty content types (listing, detail,
+// locale switch, recordId lookup, English fallback, machine notice — all
+// confirmed working). Deleted the 3 fixture records and their translations
+// from the DB, then discovered these three types have no orphan-pruning
+// logic in their index regenerators (unlike armaments/campaigns/articles),
+// so a second publish+promote with 0 records left the stale
+// temp-fixture-*.json files behind. Removed those 3 files and reset all
+// three index.json to { "records": [] } directly — verified byte-identical
+// to the pre-fixture state and zero remaining references anywhere in the
+// repo. Reset to false afterward.
+const PROMOTION_ENABLED = false;
 
 function publicDataDir(type: string): string {
   return path.join(config.paths.public, "data", type);

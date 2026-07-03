@@ -6,16 +6,23 @@
  * English is always the source language: it is never stored as a row in the
  * translations table (see src/modules/translations/translations.service.ts),
  * but it is still listed here as a selectable "Original" option for display.
+ *
+ * `name` is the English name (used in Admin screens); `nativeName` is the
+ * language's own name for itself (used in the public language switcher).
  */
 
-export const SUPPORTED_LOCALES = ["de", "es", "ru", "ar"];
+export const SUPPORTED_LOCALES = ["de", "ja", "it", "ru", "es", "fr", "uk", "ar"];
 
 export const LANGUAGES = [
-  { code: "en", name: "English", isSource: true },
-  { code: "de", name: "German",  isSource: false },
-  { code: "es", name: "Spanish", isSource: false },
-  { code: "ru", name: "Russian", isSource: false },
-  { code: "ar", name: "Arabic",  isSource: false, rtl: true },
+  { code: "en", name: "English",   nativeName: "English",    isSource: true },
+  { code: "de", name: "German",    nativeName: "Deutsch",    isSource: false },
+  { code: "ja", name: "Japanese",  nativeName: "日本語",      isSource: false },
+  { code: "it", name: "Italian",   nativeName: "Italiano",   isSource: false },
+  { code: "ru", name: "Russian",   nativeName: "Русский",    isSource: false },
+  { code: "es", name: "Spanish",   nativeName: "Español",    isSource: false },
+  { code: "fr", name: "French",    nativeName: "Français",   isSource: false },
+  { code: "uk", name: "Ukrainian", nativeName: "Українська", isSource: false },
+  { code: "ar", name: "Arabic",    nativeName: "العربية",     isSource: false, rtl: true },
 ];
 
 // Raw flag SVG markup — no size/class baked in. Wrap in your own container
@@ -35,15 +42,37 @@ export const FLAG_SVGS = {
     <rect y="26.66" width="60" height="13.34" fill="#FFCE00"/>
   </svg>`,
 
-  es: `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect width="60" height="40" fill="#AA151B"/>
-    <rect y="10" width="60" height="20" fill="#F1BF00"/>
+  ja: `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="60" height="40" fill="#fff"/>
+    <circle cx="30" cy="20" r="12" fill="#BC002D"/>
+  </svg>`,
+
+  it: `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="20" height="40" fill="#009246"/>
+    <rect x="20" width="20" height="40" fill="#fff"/>
+    <rect x="40" width="20" height="40" fill="#CE2B37"/>
   </svg>`,
 
   ru: `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="60" height="40" fill="#fff"/>
     <rect y="13.33" width="60" height="13.33" fill="#0039A6"/>
     <rect y="26.66" width="60" height="13.34" fill="#D52B1E"/>
+  </svg>`,
+
+  es: `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="60" height="40" fill="#AA151B"/>
+    <rect y="10" width="60" height="20" fill="#F1BF00"/>
+  </svg>`,
+
+  fr: `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="20" height="40" fill="#0055A4"/>
+    <rect x="20" width="20" height="40" fill="#fff"/>
+    <rect x="40" width="20" height="40" fill="#EF4135"/>
+  </svg>`,
+
+  uk: `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="60" height="20" fill="#0057B7"/>
+    <rect y="20" width="60" height="20" fill="#FFD700"/>
   </svg>`,
 
   ar: `<svg viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

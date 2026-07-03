@@ -57,6 +57,13 @@ export class TranslationsController {
     } catch (err) { next(err); }
   }
 
+  /** GET /api/translations/status — is automatic machine translation available? */
+  async status(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      res.json(service.availability());
+    } catch (err) { next(err); }
+  }
+
   /** GET /api/translations/dashboard — coverage summary across entity types */
   async dashboardSummary(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {

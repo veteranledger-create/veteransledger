@@ -9,5 +9,15 @@
       "temp-fixture-poldoc.json",
       "index.json"
     ]
+  },
+  {
+    "runId": "4ea3800d-02be-4816-b275-15c33e72e904",
+    "action": "promote",
+    "type": "political-docs",
+    "timestamp": "2026-07-02T22:06:22.770Z",
+    "userId": "cmqehwj6500006ggaik2e4tak",
+    "filesAffected": [
+      "temp-fixture-poldoc.json"
+    ]
   }
 ]

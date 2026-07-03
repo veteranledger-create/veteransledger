@@ -62,7 +62,11 @@ function mount(root) {
 
       const name = document.createElement("span");
       name.className = "lang-switcher__opt-name";
-      name.textContent = lang.isSource ? `${lang.name} (Original)` : lang.name;
+      // Native name so every reader can find their own language regardless
+      // of the currently displayed locale (standard language-menu practice).
+      name.textContent = lang.isSource
+        ? `${lang.nativeName || lang.name} (Original)`
+        : (lang.nativeName || lang.name);
 
       opt.append(flag, name);
       opt.addEventListener("click", (e) => {
@@ -86,8 +90,10 @@ function mount(root) {
     const code = getLocale();
     const lang = LANGUAGES.find((l) => l.code === code) || LANGUAGES[0];
     flagEl.innerHTML = FLAG_SVGS[code] || "";
-    labelEl.textContent = lang.name;
-    trigger.setAttribute("aria-label", `Language: ${lang.name}. Activate to change.`);
+    labelEl.textContent = lang.nativeName || lang.name;
+    // aria-label keeps the English name too so screen-reader users always
+    // have a pronounceable anchor even when the native name uses another script.
+    trigger.setAttribute("aria-label", `Language: ${lang.nativeName || lang.name} (${lang.name}). Activate to change.`);
   }
 
   function choose(code) {

@@ -12,7 +12,8 @@ const ctrl = new TranslationsController();
 translationsRoutes.get("/:entityType/:entityId",        ctrl.list.bind(ctrl));
 translationsRoutes.get("/:entityType/:entityId/:locale", ctrl.get.bind(ctrl));
 
-// Everything else (generate/edit/delete/dashboard) is admin-only.
+// Everything else (status/generate/edit/delete/dashboard) is admin-only.
+translationsRoutes.get("/status", authenticate, requireAdmin, ctrl.status.bind(ctrl));
 translationsRoutes.post("/dashboard/items", authenticate, requireAdmin, ctrl.dashboardItems.bind(ctrl));
 translationsRoutes.get("/dashboard", authenticate, requireAdmin, ctrl.dashboardSummary.bind(ctrl));
 translationsRoutes.post("/:entityType/:entityId/:locale/generate", authenticate, requireAdmin, ctrl.generate.bind(ctrl));

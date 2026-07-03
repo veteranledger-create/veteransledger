@@ -91,7 +91,23 @@ function updateTabCounts() {
     if (!tabBaseLabels.has(btn)) tabBaseLabels.set(btn, btn.textContent.trim());
     const count = allFormations.filter((f) => f._section === section).length;
     btn.textContent = `${tabBaseLabels.get(btn)} (${count})`;
+    // Empty categories are hidden rather than shown as dead ends — they
+    // reappear automatically as soon as records are published for them.
+    btn.hidden = count === 0;
   });
+
+  // If the current section's tab just got hidden, fall back to the first
+  // populated one so the page never opens on an empty grid.
+  const activeBtn = sectionNav?.querySelector(`[data-section="${activeSection}"]`);
+  if (activeBtn?.hidden) {
+    const firstVisible = sectionNav?.querySelector(".nation-tab:not([hidden])");
+    if (firstVisible) {
+      activeSection = firstVisible.dataset.section;
+      sectionNav.querySelectorAll(".nation-tab").forEach((b) =>
+        b.classList.toggle("is-active", b === firstVisible),
+      );
+    }
+  }
 }
 
 function buildPaginator() {

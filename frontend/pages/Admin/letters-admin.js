@@ -170,6 +170,7 @@ async function loadLetterIntoForm(id) {
     form.querySelector("[name='collection']").value = meta.collection || meta.language || "german";
     form.querySelector("[name='summary']").value = r.summary || "";
     form.querySelector("[name='full_text']").value = meta.full_text || meta.body || r.content || "";
+    form.querySelector("[name='original_text']").value = meta.original_text || meta.original || "";
     form.querySelector("[name='published']").checked = !!r.published;
 
     sourcesDraft = Array.isArray(meta.sources) ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" })) : [];
@@ -226,6 +227,7 @@ async function handleSubmit(e) {
       collection: collectionVal,
       language: collectionVal,
       full_text: form.querySelector("[name='full_text']").value.trim() || undefined,
+      original_text: form.querySelector("[name='original_text']").value.trim() || undefined,
       sources: sourcesDraft.filter((s) => s.ref),
       related_records: relatedDraft,
       gallery: galleryDraft.filter((g) => g.file),

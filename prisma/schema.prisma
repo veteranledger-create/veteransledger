@@ -208,7 +208,7 @@ model Translation {
   id          String    @id @default(cuid())
   entityType  String    // "record" | "entity" | "timeline_event" | "site_content"
   entityId    String    // PK of the source record, or site-content key
-  locale      String    // "de" | "es" | "ru" | "ar"
+  locale      String    // "de" | "ja" | "it" | "ru" | "es" | "fr" | "uk" | "ar" (English is the source, never stored here)
   status      String    @default("machine") // "machine" | "human" | "published"
   fields      Json      // { title?, summary?, content?, biography?, name? }
   generatedAt DateTime?

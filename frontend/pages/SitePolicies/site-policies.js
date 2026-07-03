@@ -74,17 +74,38 @@ function renderPolicy(container, id, data) {
   if (typeof content === "string") {
     container.innerHTML = `<p>${content.replace(/\n\n/g, "</p><p>")}</p>`;
   } else if (Array.isArray(content)) {
-    container.innerHTML = content
-      .map((section) => {
-        if (section.list && Array.isArray(section.list)) {
-          return `<ul>${section.list.map((item) => `<li>${item}</li>`).join("")}</ul>`;
-        }
-        return `${section.heading ? `<h3>${section.heading}</h3>` : ""}<p>${section.text || section.body || ""}</p>`;
-      })
-      .join("");
+    container.innerHTML = content.map(renderContentBlock).join("");
   } else {
     container.innerHTML = defaultPolicy(id);
   }
+}
+
+// Renders one structured content block. Supports every block type the Admin
+// structured editor can produce (admin-structured-editor.js): paragraph,
+// heading, quote, list, image, link/button, table.
+function renderContentBlock(section) {
+  if (!section || typeof section !== "object") return "";
+  if (Array.isArray(section.list)) {
+    return `<ul>${section.list.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+  }
+  if (section.quote) {
+    return `<blockquote style="border-left:3px solid var(--border-gold);padding-left:var(--space-4);color:var(--text-muted);font-style:italic;margin:var(--space-4) 0">${section.quote}</blockquote>`;
+  }
+  if (section.image?.src) {
+    return `<figure style="margin:var(--space-4) 0"><img src="${section.image.src}" alt="${section.image.caption || ""}" loading="lazy" style="max-width:100%">${section.image.caption ? `<figcaption style="font-size:var(--text-xs);color:var(--text-muted);margin-top:var(--space-1)">${section.image.caption}</figcaption>` : ""}</figure>`;
+  }
+  if (section.button?.href) {
+    return `<p style="margin:var(--space-4) 0"><a class="btn btn-secondary" href="${section.button.href}">${section.button.label || section.button.href}</a></p>`;
+  }
+  if (section.table) {
+    const t = section.table;
+    return `<table class="record-specs" style="margin:var(--space-4) 0">
+      ${t.headers?.length ? `<thead><tr>${t.headers.map((h) => `<th style="text-align:left;padding:var(--space-2) var(--space-3)">${h}</th>`).join("")}</tr></thead>` : ""}
+      <tbody>${(t.rows || []).map((row) => `<tr>${row.map((c) => `<td style="padding:var(--space-2) var(--space-3)">${c}</td>`).join("")}</tr>`).join("")}</tbody>
+    </table>`;
+  }
+  if (section.heading && !section.text && !section.body) return `<h3>${section.heading}</h3>`;
+  return `${section.heading ? `<h3>${section.heading}</h3>` : ""}<p>${section.text || section.body || ""}</p>`;
 }
 
 function defaultPolicy(id) {
