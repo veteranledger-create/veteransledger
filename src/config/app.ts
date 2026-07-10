@@ -18,6 +18,13 @@ export const config = {
   isProduction: process.env.NODE_ENV === "production",
   isDevelopment: process.env.NODE_ENV !== "production",
 
+  // Single toggle: when true, every public-facing page route serves the
+  // "Under Development" page instead of real content. The Admin panel
+  // (/admin, /api/*, static assets) is completely unaffected — this check
+  // is applied only inside the public page-route handler in app.ts, so
+  // no routing structure changes are needed to enable/disable it.
+  maintenanceMode: optional("MAINTENANCE_MODE", "false") === "true",
+
   server: {
     port: parseInt(optional("PORT", "3000"), 10),
     host: optional("HOST", "0.0.0.0"),

@@ -108,8 +108,24 @@ export function createApp(): Application {
 
   // ── Frontend page routes ──────────────────────────────────────────────────
   const pagesDir = path.join(config.paths.frontend, "pages");
-  const servePage = (page: string, file = "index.html") => (_req: express.Request, res: express.Response) =>
+  const maintenanceFile = path.join(pagesDir, "Maintenance", "index.html");
+
+  // Every public page route uses this helper — when config.maintenanceMode
+  // is on, it swaps in the "Under Development" page instead of real content.
+  // /admin is registered separately below and never passes through here, so
+  // the Admin panel (and /api/*, static assets) stay fully accessible
+  // regardless of this flag. Toggle via the single MAINTENANCE_MODE env var
+  // — no routes are added, removed, or restructured to enable/disable it.
+  const servePage = (page: string, file = "index.html") => (_req: express.Request, res: express.Response) => {
+    if (config.maintenanceMode) {
+      // 503 + Retry-After signals search engines/crawlers this is temporary
+      // and the real content should not be de-indexed, without the page
+      // itself looking or reading like an error to human visitors.
+      res.status(503).set("Retry-After", "3600").sendFile(maintenanceFile);
+      return;
+    }
     res.sendFile(path.join(pagesDir, page, file));
+  };
 
   app.get("/", servePage("Home"));
   app.get("/timeline", servePage("Timeline"));
@@ -136,7 +152,10 @@ export function createApp(): Application {
   app.get("/about", servePage("About"));
   app.get("/search", servePage("Search"));
   app.get("/site-policies", servePage("SitePolicies"));
-  app.get("/admin", servePage("Admin"));
+
+  // Admin bypasses servePage() entirely — it must stay reachable even when
+  // maintenanceMode is on, so it never touches the maintenance-mode check above.
+  app.get("/admin", (_req, res) => res.sendFile(path.join(pagesDir, "Admin", "index.html")));
 
   // ── 404 + Error handlers ─────────────────────────────────────────────────
   app.use(notFoundHandler);

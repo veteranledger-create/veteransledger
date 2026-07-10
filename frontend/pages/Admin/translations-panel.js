@@ -55,52 +55,112 @@ let _activeModal = null; // { entityType, entityId, locale, langName, fields, cu
 
 function _getModal() { return document.getElementById("translation-editor-modal"); }
 
-function _openEditorModal({ entityType, entityId, locale, langName, sourceFields, translationFields, currentStatus, rtl, onSaved }) {
+// Minimal JSON syntax highlighting for the read-only source panel.
+// Input is pretty-printed JSON; output is theme-colored HTML (keys gold,
+// strings sage, numbers amber, booleans/null muted). Escapes first, so the
+// regexes only ever see entity-safe text.
+function _highlightJson(json) {
+  return escHtml(json).replace(
+    /(&quot;(?:[^&]|&(?!quot;))*?&quot;)(\s*:)?|\b(true|false|null)\b|-?\b\d+(?:\.\d+)?\b/g,
+    (match, str, colon, lit) => {
+      if (str) {
+        return colon
+          ? `<span class="tlx-json-key">${str}</span>${colon}`
+          : `<span class="tlx-json-str">${str}</span>`;
+      }
+      if (lit) return `<span class="tlx-json-lit">${lit}</span>`;
+      return `<span class="tlx-json-num">${match}</span>`;
+    },
+  );
+}
+
+// Grow each editable textarea to its content so the modal body is the only
+// scroll region — no nested textarea scrollbars.
+function _autoGrow(ta) {
+  ta.style.height = "auto";
+  ta.style.height = `${Math.max(ta.scrollHeight + 2, 44)}px`;
+}
+
+const PROVIDER_LABELS = {
+  deepl: "DeepL", google: "Google Translate", openai: "OpenAI", libretranslate: "LibreTranslate",
+};
+
+async function _openEditorModal({ entityType, entityId, locale, langName, sourceFields, translationFields, currentStatus, rtl, onSaved }) {
   _activeModal = { entityType, entityId, locale, onSaved };
 
   const modal = _getModal();
   if (!modal) return;
 
-  const statusCfg = STATUS_CONFIG[currentStatus] || STATUS_CONFIG.machine;
-  const titleEl = document.getElementById("tl-modal-title");
-  titleEl.innerHTML = `Translate to ${escHtml(langName)}
-    <span class="tl-badge ${statusCfg.badge}" style="margin-left:var(--space-2);vertical-align:middle;">${statusCfg.icon} ${escHtml(statusCfg.label)}</span>`;
+  // ── Header: flags · one-line title · status badge · provider chip ────────
+  document.getElementById("tlx-flag-src").innerHTML = FLAG_SVGS.en || "";
+  document.getElementById("tlx-flag-tgt").innerHTML = FLAG_SVGS[locale] || "";
+  document.getElementById("tl-modal-title").textContent = `Translate to ${langName}`;
 
+  const statusCfg = STATUS_CONFIG[currentStatus] || STATUS_CONFIG.machine;
+  document.getElementById("tlx-status-badge").innerHTML =
+    `<span class="tl-badge ${statusCfg.badge}">${statusCfg.icon} ${escHtml(statusCfg.label)}</span>`;
+
+  const providerEl = document.getElementById("tlx-provider");
+  providerEl.textContent = "…";
+  fetchMachineTranslationStatus().then((s) => {
+    providerEl.textContent = s.available
+      ? (PROVIDER_LABELS[s.provider] || s.provider || "Auto-translate")
+      : "Manual mode";
+  });
+
+  // ── Body: two separated panels, single scroll region ─────────────────────
   const fieldKeys = Object.keys(sourceFields);
   const isContent = fieldKeys.length === 1 && fieldKeys[0] === "content";
-  const rowsFor = (k) => (isContent ? 16 : (k === "biography" || k === "content" ? 7 : 3));
-  // Monospace only for structured JSON content; prose fields read as prose.
-  const fieldClass = (k) => `contact-form__input${k === "content" && isContent ? " code-editor" : ""}`;
+
+  const sourceBlock = (k) => {
+    const label = escHtml(FIELD_LABELS[k] || k);
+    const value = sourceFields[k] || "";
+    return `
+      <div class="tlx-field">
+        <span class="tlx-field__label">${label}</span>
+        ${isContent && k === "content"
+          ? `<pre class="tlx-src tlx-src--json" aria-label="English source — ${label}">${_highlightJson(value)}</pre>`
+          : `<div class="tlx-src" aria-label="English source — ${label}">${escHtml(value)}</div>`}
+      </div>`;
+  };
+
+  const targetBlock = (k) => {
+    const label = escHtml(FIELD_LABELS[k] || k);
+    return `
+      <div class="tlx-field">
+        <label class="tlx-field__label" for="tl-field-${k}" ${rtl ? 'dir="ltr"' : ""}>${label}</label>
+        <textarea class="tlx-input${isContent && k === "content" ? " tlx-input--json" : ""}"
+          id="tl-field-${k}" rows="2" ${rtl ? 'dir="rtl"' : ""}
+          aria-label="${escHtml(langName)} translation — ${label}"
+          placeholder="Write the ${escHtml(langName)} translation…">${escHtml(translationFields[k] || "")}</textarea>
+      </div>`;
+  };
 
   const body = document.getElementById("tl-modal-body");
   body.innerHTML = `
-    <div class="tl-editor-grid">
-      <div class="tl-editor-col tl-editor-col--source">
-        <div class="tl-editor-col-head">
-          <span class="tl-editor-flag">${FLAG_SVGS.en || ""}</span>
-          English <span class="tl-editor-col-note">source · read-only</span>
-        </div>
-        ${fieldKeys.map((k) => `
-          <div class="tl-editor-field">
-            <label class="tl-editor-label">${escHtml(FIELD_LABELS[k] || k)}</label>
-            <textarea class="${fieldClass(k)} tl-src" rows="${rowsFor(k)}" readonly tabindex="-1" aria-label="English source — ${escHtml(FIELD_LABELS[k] || k)}">${escHtml(sourceFields[k] || "")}</textarea>
-          </div>`).join("")}
-      </div>
-      <div class="tl-editor-col tl-editor-col--target" ${rtl ? 'dir="rtl"' : ""}>
-        <div class="tl-editor-col-head" ${rtl ? 'dir="ltr"' : ""}>
-          <span class="tl-editor-flag">${FLAG_SVGS[locale] || ""}</span>
-          ${escHtml(langName)} <span class="tl-editor-col-note">editable translation</span>
-        </div>
-        ${fieldKeys.map((k) => `
-          <div class="tl-editor-field">
-            <label class="tl-editor-label" ${rtl ? 'dir="ltr"' : ""}>${escHtml(FIELD_LABELS[k] || k)}</label>
-            <textarea class="${fieldClass(k)}" id="tl-field-${k}" rows="${rowsFor(k)}" ${rtl ? 'dir="rtl"' : ""} aria-label="${escHtml(langName)} translation — ${escHtml(FIELD_LABELS[k] || k)}">${escHtml(translationFields[k] || "")}</textarea>
-          </div>`).join("")}
-      </div>
-    </div>
-    <p id="tl-modal-status" class="form-status" style="padding:0 var(--space-5) var(--space-2);margin:0;"></p>`;
+    <div class="tlx__grid">
+      <section class="tlx-panel tlx-panel--source" aria-label="English source">
+        <div class="tlx-panel__head">English<span class="tlx-panel__pill">READ-ONLY SOURCE</span></div>
+        <div class="tlx-panel__body">${fieldKeys.map(sourceBlock).join("")}</div>
+      </section>
+      <section class="tlx-panel tlx-panel--target" aria-label="${escHtml(langName)} translation" ${rtl ? 'dir="rtl"' : ""}>
+        <div class="tlx-panel__head" ${rtl ? 'dir="ltr"' : ""}>${escHtml(langName)}<span class="tlx-panel__pill">TRANSLATION</span></div>
+        <div class="tlx-panel__body">${fieldKeys.map(targetBlock).join("")}</div>
+      </section>
+    </div>`;
+
+  const statusMsg = document.getElementById("tl-modal-status");
+  if (statusMsg) { statusMsg.textContent = ""; statusMsg.className = "form-status tlx__msg"; }
 
   modal.hidden = false;
+
+  // Auto-grow after the modal is visible (scrollHeight is 0 while hidden)
+  body.querySelectorAll("textarea.tlx-input").forEach((ta) => {
+    _autoGrow(ta);
+    ta.addEventListener("input", () => _autoGrow(ta));
+  });
+  body.scrollTop = 0;
+  body.querySelector("textarea.tlx-input")?.focus({ preventScroll: true });
 }
 
 function _collectModalFields() {
@@ -117,7 +177,7 @@ async function _saveModal(status) {
   const { entityType, entityId, locale, onSaved } = _activeModal;
   const fields = _collectModalFields();
   const statusEl = document.getElementById("tl-modal-status");
-  if (statusEl) { statusEl.textContent = "Saving…"; statusEl.className = "form-status mt-2"; }
+  if (statusEl) { statusEl.textContent = "Saving…"; statusEl.className = "form-status tlx__msg"; }
   try {
     const res = await fetch(`/api/translations/${entityType}/${encodeURIComponent(entityId)}/${locale}`, {
       method: "PUT",
@@ -128,10 +188,10 @@ async function _saveModal(status) {
       const d = await res.json().catch(() => ({}));
       throw new Error(d.error || `HTTP ${res.status}`);
     }
-    if (statusEl) { statusEl.textContent = "Saved."; statusEl.className = "form-status form-status--ok mt-2"; }
+    if (statusEl) { statusEl.textContent = "Saved."; statusEl.className = "form-status form-status--ok tlx__msg"; }
     setTimeout(() => { _getModal().hidden = true; onSaved?.(); }, 800);
   } catch (err) {
-    if (statusEl) { statusEl.textContent = `Save failed: ${err.message}`; statusEl.className = "form-status form-status--err mt-2"; }
+    if (statusEl) { statusEl.textContent = `Save failed: ${err.message}`; statusEl.className = "form-status form-status--err tlx__msg"; }
   }
 }
 
