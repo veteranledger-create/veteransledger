@@ -65,6 +65,14 @@ async function init() {
     if (next) { next.focus(); activateTab(next); e.preventDefault(); }
   });
 
+  // Mobile tab select — same sections as #admin-tabs, single dropdown
+  // instead of a horizontal row, kept in sync via activateTab().
+  const mobileTabSelect = document.getElementById("admin-tabs-mobile");
+  mobileTabSelect?.addEventListener("change", () => {
+    const btn = document.querySelector(`.admin-tab-btn[data-tab="${mobileTabSelect.value}"]`);
+    if (btn) activateTab(btn);
+  });
+
   // Modal backdrop click and Escape close
   const MODAL_IDS = [
     "related-record-modal", "media-attach-modal", "armament-preview-modal",
@@ -137,6 +145,8 @@ function activateTab(btn) {
   document
     .querySelectorAll(".admin-tab-panel")
     .forEach((p) => (p.hidden = p.id !== panel));
+  const mobileTabSelect = document.getElementById("admin-tabs-mobile");
+  if (mobileTabSelect && mobileTabSelect.value !== panel) mobileTabSelect.value = panel;
   if (panel === "tab-media") loadMedia();
 }
 
@@ -187,18 +197,25 @@ async function loadStats() {
     const res = await fetch("/api/dashboard/stats", { headers: authHeader() });
     if (!res.ok) throw new Error();
     const data = await safeJson(res);
+    const ICON_FILE = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
+    const ICON_PERSONNEL = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>`;
+    const ICON_MEDIA = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>`;
+    const ICON_EVENTS = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" /><path d="M18 14v4h4" /><path d="M14 18a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M15 3v4" /><path d="M7 3v4" /><path d="M3 11h16" /></svg>`;
     const metrics = [
-      { label: "Records", value: data.records ?? "—" },
-      { label: "Personnel", value: data.entities ?? "—" },
-      { label: "Media", value: data.media ?? "—" },
-      { label: "Events", value: data.events ?? "—" },
+      { label: "Records", value: data.records ?? "—", icon: ICON_FILE },
+      { label: "Personnel", value: data.entities ?? "—", icon: ICON_PERSONNEL },
+      { label: "Media", value: data.media ?? "—", icon: ICON_MEDIA },
+      { label: "Events", value: data.events ?? "—", icon: ICON_EVENTS },
     ];
     statsGrid.innerHTML = metrics
       .map(
         (m) => `
       <div class="stat-card">
-        <div class="stat-card__value">${m.value}</div>
-        <div class="stat-card__label">${m.label}</div>
+        <span class="stat-card__icon" aria-hidden="true">${m.icon}</span>
+        <div class="stat-card__body">
+          <div class="stat-card__value">${m.value}</div>
+          <div class="stat-card__label">${m.label}</div>
+        </div>
       </div>`,
       )
       .join("");
