@@ -33,6 +33,7 @@ interface PhaseRaw {
 
 export interface LegacyCampaign {
   id: string;
+  recordId?: string;
   title?: string;
   subtitle?: string;
   theater?: string;
@@ -83,7 +84,7 @@ export interface NormalizedPhase {
 // their real Schema-A fields — is preserved as a pass-through "extra"
 // rather than silently dropped, same mechanism as Articles.
 const KNOWN_FIELDS = new Set([
-  "id", "title", "subtitle", "theater", "theatre", "dates", "date_start", "date_end",
+  "id", "recordId", "title", "subtitle", "theater", "theatre", "dates", "date_start", "date_end",
   "combatants", "commanders", "phases", "casualties", "background", "context",
   "outcome", "significance", "summary", "image", "sources", "related_records",
 ]);
@@ -161,8 +162,13 @@ export function toRecordCreateInput(campaign: LegacyCampaign, theater: string, c
   const extras = extractExtras(campaign);
   const startDate = pick(campaign.dates?.start, campaign.date_start);
   const endDate = pick(campaign.dates?.end, campaign.date_end);
+  // Recovery: reuse the original database id (embedded by the publish
+  // pipeline's recordId backfill) when present, so restored rows keep
+  // their pre-loss identity instead of getting a fresh cuid.
+  const recordId = typeof campaign.recordId === "string" ? campaign.recordId : undefined;
 
   return {
+    ...(recordId ? { id: recordId } : {}),
     type: "CAMPAIGN",
     slug: campaign.id,
     collectionId,

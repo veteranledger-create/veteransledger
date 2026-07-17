@@ -27,6 +27,7 @@ export interface NormalizedBodyBlock {
 
 export interface LegacyArticle {
   id: string;
+  recordId?: string;
   category?: string;
   title?: string;
   subtitle?: string;
@@ -50,7 +51,7 @@ export interface LegacyArticle {
 // found on a real article record is preserved as a pass-through "extra"
 // rather than silently dropped — see toRecordCreateInput below.
 const KNOWN_FIELDS = new Set([
-  "id", "category", "title", "subtitle", "date_published", "author",
+  "id", "recordId", "category", "title", "subtitle", "date_published", "author",
   "image", "tags", "summary", "body", "archival_note", "sources", "related_records",
 ]);
 
@@ -80,8 +81,13 @@ export function toRecordCreateInput(article: LegacyArticle, category: string, co
   const normalizedBody = normalizeBodyBlocks(article.body);
   const plainTextContent = normalizedBody.map((b) => b.text).filter(Boolean).join("\n\n");
   const extras = extractExtras(article);
+  // Recovery: reuse the original database id (embedded by the publish
+  // pipeline's recordId backfill) when present, so restored rows keep
+  // their pre-loss identity instead of getting a fresh cuid.
+  const recordId = typeof article.recordId === "string" ? article.recordId : undefined;
 
   return {
+    ...(recordId ? { id: recordId } : {}),
     type: "ARTICLE",
     slug: article.id,
     collectionId,

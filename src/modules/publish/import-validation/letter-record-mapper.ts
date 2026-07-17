@@ -19,6 +19,7 @@ export const COLLECTION_FILES: Record<string, string> = {
 
 export interface LegacyLetter {
   id: string;
+  recordId?: string;
   collection?: string;
   language?: string;
   translated?: boolean;
@@ -53,8 +54,13 @@ export interface LegacyLetter {
 export function toRecordCreateInput(letter: LegacyLetter, collection: string, collectionId: string) {
   const fullText = pick(letter.full_text, letter.body, letter.translation);
   const excerpt = pick(letter.excerpt) ?? (fullText ? fullText.slice(0, 160) : undefined);
+  // Recovery: reuse the original database id (embedded by the publish
+  // pipeline's recordId backfill) when present, so restored rows keep
+  // their pre-loss identity instead of getting a fresh cuid.
+  const recordId = typeof letter.recordId === "string" ? letter.recordId : undefined;
 
   return {
+    ...(recordId ? { id: recordId } : {}),
     type: "LETTER",
     slug: letter.id,
     collectionId,

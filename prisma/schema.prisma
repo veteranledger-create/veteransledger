@@ -18,6 +18,13 @@ model User {
   auditLogs  AuditLog[]
   mediaAssets MediaAsset[]
 
+  // Community System (reserved) — this User is CMS/staff auth, distinct from
+  // CommunityMember (the future public commenter/poster identity). These two
+  // relations exist only because an admin reviews reports / performs
+  // moderation actions; see the Community System block below.
+  reviewedReports    CommunityReport[]
+  moderationActions  CommunityModerationAction[]
+
   @@map("users")
 }
 
@@ -235,4 +242,149 @@ model PreservationRecord {
   createdAt   DateTime @default(now())
 
   @@map("preservation_records")
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// Community System — reserved foundation (Production Architecture phase).
+//
+// Nothing above this line is touched. Posts/Comments/Reactions/Reports/
+// Notifications/Moderation are schema-only right now — no route builds on
+// them yet (see src/modules/community and docs/community-architecture.md).
+//
+// CommunityMember is a deliberately separate identity from User: User is
+// CMS/staff auth (role VIEWER/ADMIN/SUPER_ADMIN); CommunityMember is the
+// future public-facing commenter/poster identity and has no auth wiring yet.
+//
+// A post/comment attaches to an archive record via the same generic
+// entityType/entityId string-pair convention already used by Translation
+// and PreservationRecord above — this is what lets "every archive record"
+// support future discussion with zero schema changes to Record/Entity/
+// TimelineEvent, and zero changes to their existing modules.
+// ═══════════════════════════════════════════════════════════════════════
+
+model CommunityMember {
+  id          String   @id @default(cuid())
+  displayName String
+  email       String?  @unique
+  avatarUrl   String?
+  bio         String?
+  status      String   @default("ACTIVE") // "ACTIVE" | "SUSPENDED" | "BANNED"
+  reputation  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  posts         CommunityPost[]
+  comments      CommunityComment[]
+  reactions     CommunityReaction[]
+  reportsFiled  CommunityReport[]       @relation("ReportsFiled")
+  notifications CommunityNotification[]
+
+  @@map("community_members")
+}
+
+model CommunityPost {
+  id         String   @id @default(cuid())
+  authorId   String
+  entityType String?  // "record" | "entity" | "timeline_event" — null = freestanding post
+  entityId   String?
+  title      String?
+  body       String
+  status     String   @default("PUBLISHED") // "PUBLISHED" | "HIDDEN" | "DELETED"
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  author   CommunityMember    @relation(fields: [authorId], references: [id])
+  comments CommunityComment[]
+
+  @@index([entityType, entityId])
+  @@index([authorId])
+  @@index([status])
+  @@map("community_posts")
+}
+
+model CommunityComment {
+  id        String   @id @default(cuid())
+  postId    String
+  authorId  String
+  parentId  String?  // set => reply to another comment, unifying comments+replies in one model
+  body      String
+  status    String   @default("PUBLISHED") // "PUBLISHED" | "HIDDEN" | "DELETED"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post    CommunityPost      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author  CommunityMember    @relation(fields: [authorId], references: [id])
+  parent  CommunityComment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies CommunityComment[] @relation("CommentReplies")
+
+  @@index([postId])
+  @@index([parentId])
+  @@index([authorId])
+  @@map("community_comments")
+}
+
+model CommunityReaction {
+  id         String   @id @default(cuid())
+  memberId   String
+  targetType String   // "POST" | "COMMENT"
+  targetId   String
+  type       String   // "HELPFUL" | "INFORMATIVE" | "WELL_RESEARCHED" | "NEEDS_VERIFICATION"
+  createdAt  DateTime @default(now())
+
+  member CommunityMember @relation(fields: [memberId], references: [id])
+
+  @@unique([memberId, targetType, targetId, type])
+  @@index([targetType, targetId])
+  @@map("community_reactions")
+}
+
+model CommunityReport {
+  id           String    @id @default(cuid())
+  reporterId   String
+  targetType   String    // "POST" | "COMMENT" | "MEMBER"
+  targetId     String
+  reason       String    // "SPAM" | "FLOODING" | "BOT" | "PROMOTIONAL" | "ADVERTISING" |
+                          // "MALICIOUS_LINK" | "FALSE_ACCUSATION" | "HARASSMENT" | "IMPERSONATION" | "OTHER"
+  details      String?
+  status       String    @default("PENDING") // "PENDING" | "REVIEWED" | "DISMISSED" | "ACTIONED"
+  reviewedById String?
+  reviewedAt   DateTime?
+  createdAt    DateTime  @default(now())
+
+  reporter   CommunityMember @relation("ReportsFiled", fields: [reporterId], references: [id])
+  reviewedBy User?           @relation(fields: [reviewedById], references: [id])
+
+  @@index([targetType, targetId])
+  @@index([status])
+  @@map("community_reports")
+}
+
+model CommunityModerationAction {
+  id          String   @id @default(cuid())
+  moderatorId String
+  targetType  String   // "POST" | "COMMENT" | "MEMBER"
+  targetId    String
+  action      String   // "HIDE" | "RESTORE" | "DELETE" | "WARN_MEMBER" | "SUSPEND_MEMBER" | "BAN_MEMBER"
+  reason      String?
+  createdAt   DateTime @default(now())
+
+  moderator User @relation(fields: [moderatorId], references: [id])
+
+  @@index([targetType, targetId])
+  @@index([moderatorId])
+  @@map("community_moderation_actions")
+}
+
+model CommunityNotification {
+  id        String   @id @default(cuid())
+  memberId  String
+  type      String   // "REPLY" | "MENTION" | "COMMENT_APPROVED" | "REPORT_UPDATE"
+  payload   Json?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  member CommunityMember @relation(fields: [memberId], references: [id])
+
+  @@index([memberId, read])
+  @@map("community_notifications")
 }

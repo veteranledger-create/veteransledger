@@ -20,6 +20,7 @@ export interface RelatedRecordEntry {
 
 export interface LegacyPersonnel {
   id: string;
+  recordId?: string;
   name: string;
   rank?: string;
   branch?: string;
@@ -43,7 +44,7 @@ export interface LegacyPersonnel {
 }
 
 const KNOWN_FIELDS = new Set([
-  "id", "name", "rank", "branch", "portrait", "born", "died", "birthplace",
+  "id", "recordId", "name", "rank", "branch", "portrait", "born", "died", "birthplace",
   "biography", "commands", "awards", "campaigns", "sources", "related_records",
   "nation", "service",
 ]);
@@ -82,8 +83,13 @@ function extractExtras(person: LegacyPersonnel): Record<string, unknown> {
 export function toEntityCreateInput(person: LegacyPersonnel, branch: string) {
   const extras = extractExtras(person);
   const { otherLinks } = splitRelatedRecords(person.related_records);
+  // Recovery: reuse the original database id (embedded by the publish
+  // pipeline's recordId backfill) when present, so restored rows keep
+  // their pre-loss identity instead of getting a fresh cuid.
+  const recordId = typeof person.recordId === "string" ? person.recordId : undefined;
 
   return {
+    ...(recordId ? { id: recordId } : {}),
     type: "PERSON",
     slug: person.id,
     name: person.name ?? person.id,

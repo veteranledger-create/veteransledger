@@ -74,175 +74,35 @@ export function extractItems(
 }
 
 // ── Authoritative duplicate resolutions ──────────────────────────────────
-// Exactly the four cases approved in the Pre-Phase-5A Data Normalization
-// Report — not a general heuristic, a named, documented, closed list.
-// Each rule excludes a donor entry from ever becoming its own standalone
-// record, optionally merging specific fields onto the canonical entry it
-// duplicates. canonicalId identifies an existing-id canonical record
-// (Yamato/Shōkaku); canonical (by category/fileNation/name) identifies an
-// id-less canonical entry that itself needs synthesis (Maiale/Ohka).
+// Historically held 12 rules (the original 4 from the Pre-Phase-5A Data
+// Normalization Report, plus 8 added across Phases 8A/9A/11A) — not a
+// general heuristic, a named, documented, closed list.
+//
+// Recovery-audit re-verification (see docs/community-architecture.md-style
+// audit trail — this note is the equivalent for this table): every one of
+// the 12 donors was searched for directly against the full current archive
+// (`public/data/armaments/**`, not just the germany/italy/japan/other-axis
+// subset this importer loads) and found nowhere as a standalone entry —
+// each donor's name string appears only inside the file that already holds
+// its own canonical record (e.g. "Yamato" only in naval/japan.json), never
+// in a separate other-axis/romania/hungary file. This matches
+// armaments-import-check.ts's own documented expectation (loadAllArmaments's
+// comment: "Phase 8A's promotion can legitimately delete
+// <category>/other-axis.json once every record under it has been
+// republished under its real nation") — the other-axis catch-all files
+// this table's donors lived in are gone, and their content was fully
+// absorbed rather than moved to a new location under a new name. There is
+// nothing left to rename a rule to; every rule here was obsolete, not
+// relocated, so all 12 are removed rather than updated.
 interface DuplicateResolutionRule {
   donor: { category: string; fileNation: string; name: string };
   canonicalId?: string;
   canonical?: { category: string; fileNation: string; name: string };
   fieldsToMerge: string[];
-  // Per the Normalization Report: Yamato/Shōkaku's canonical record
-  // already HAS a (terser) fate value, so a fill-if-missing merge would
-  // never apply — these two need the donor's more detailed value to win
-  // outright. Maiale/Ohka's merged fields are genuinely absent from their
-  // canonical entry, so fill-if-missing (the default) is correct there.
   overwriteFields?: boolean;
 }
 
-export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [
-  {
-    donor: { category: "naval", fileNation: "other-axis", name: "Yamato" },
-    canonicalId: "yamato",
-    fieldsToMerge: ["fate"],
-    overwriteFields: true,
-  },
-  {
-    donor: { category: "naval", fileNation: "other-axis", name: "Shōkaku" },
-    canonicalId: "shokaku",
-    fieldsToMerge: ["fate"],
-    overwriteFields: true,
-  },
-  {
-    donor: {
-      category: "missiles",
-      fileNation: "italy",
-      name: "Siluro a Lenta Corsa (SLC) / 'Maiale'",
-    },
-    canonical: {
-      category: "wunderwaffen",
-      fileNation: "italy",
-      name: "Siluro a Lenta Corsa (SLC) 'Maiale'",
-    },
-    fieldsToMerge: ["length_m", "warhead_kg"],
-  },
-  {
-    donor: { category: "missiles", fileNation: "japan", name: "Ohka Model 11" },
-    canonical: {
-      category: "wunderwaffen",
-      fileNation: "japan",
-      name: "Ohka Model 11",
-    },
-    fieldsToMerge: ["length_m", "wingspan_m", "max_speed_kmh"],
-  },
-  // Phase 8A — aircraft/other-axis.json carries six minor-schema entries;
-  // three are donors duplicating an existing full-schema canonical record
-  // (Italy/Japan), three (Fiat CR.42 Falco, Kawasaki Ki-61 Hien, IAR 80)
-  // are genuinely unique to other-axis and are NOT donors. Only "engine"
-  // is merged — every canonical lacks it entirely, so fill-if-missing
-  // applies cleanly. range_km and every other field are deliberately
-  // excluded: Ki-43's donor range_km (3200) conflicts with its canonical's
-  // (1760) — a known discrepancy to leave visible, never merged or
-  // overwritten.
-  {
-    donor: {
-      category: "aircraft",
-      fileNation: "other-axis",
-      name: "Macchi C.202 Folgore",
-    },
-    canonicalId: "mc-202-folgore",
-    fieldsToMerge: ["engine"],
-  },
-  {
-    donor: {
-      category: "aircraft",
-      fileNation: "other-axis",
-      name: "Mitsubishi A6M Zero",
-    },
-    canonicalId: "a6m-zero",
-    fieldsToMerge: ["engine"],
-  },
-  {
-    donor: {
-      category: "aircraft",
-      fileNation: "other-axis",
-      name: "Nakajima Ki-43 Hayabusa",
-    },
-    canonicalId: "ki-43-hayabusa",
-    fieldsToMerge: ["engine"],
-  },
-  // Phase 9A — panzer/other-axis.json carries four minor-schema entries;
-  // two (Carro Armato M13/40, Carro Armato P26/40) duplicate an existing
-  // full-schema Italy canonical record; two (R-2/LT vz. 35 Romania, Toldi
-  // II Hungary) are genuinely unique to other-axis and are NOT donors.
-  // Only "year" is merged — both canonicals lack it entirely (they only
-  // carry a years_of_service range), so fill-if-missing applies cleanly.
-  // Every other donor field is a differently-schemaed duplicate of data
-  // the canonical already has under a different key (weight_tons vs
-  // weight_tonnes, armour_mm vs armor_mm, max_speed_kmh vs speed_kmh,
-  // main_gun vs armament.primary) and sometimes conflicts in value
-  // (e.g. P26/40's armour_mm 60 vs canonical armor_mm.hull_front 50) —
-  // deliberately excluded, left as a known discrepancy, never merged.
-  {
-    donor: {
-      category: "panzer",
-      fileNation: "other-axis",
-      name: "Carro Armato M13/40",
-    },
-    canonicalId: "m13-40",
-    fieldsToMerge: ["year"],
-  },
-  {
-    donor: {
-      category: "panzer",
-      fileNation: "other-axis",
-      name: "Carro Armato P26/40",
-    },
-    canonicalId: "p40-heavy-tank",
-    fieldsToMerge: ["year"],
-  },
-  // Phase 11A — missiles/germany.json carries V-1 and V-2 entries that
-  // duplicate richer Wunderwaffen canonicals by the same weapon systems
-  // under different name strings (missiles: "V-1 Flying Bomb (Fieseler
-  // Fi 103)" / "V-2 Rocket (Aggregat A-4)"; wunderwaffen: "Fieseler Fi
-  // 103 / V-1 Flying Bomb" / "Aggregat 4 / V-2 Rocket"). missiles/
-  // japan.json's "Kaiten Type 1" similarly duplicates wunderwaffen/
-  // japan.json's "Kaiten". All three Wunderwaffen entries are richer
-  // (image, designation, manufacturer, longer summary); the missiles
-  // donors add only: guidance (V-1/V-2) and length_m+speed_knots
-  // (Kaiten) — genuinely absent from the canonicals, so fill-if-missing
-  // applies cleanly. Every other missiles field is either already present
-  // in Wunderwaffen or conflicts with richer canonical data — excluded.
-  {
-    donor: {
-      category: "missiles",
-      fileNation: "germany",
-      name: "V-1 Flying Bomb (Fieseler Fi 103)",
-    },
-    canonical: {
-      category: "wunderwaffen",
-      fileNation: "germany",
-      name: "Fieseler Fi 103 / V-1 Flying Bomb",
-    },
-    fieldsToMerge: ["guidance"],
-  },
-  {
-    donor: {
-      category: "missiles",
-      fileNation: "germany",
-      name: "V-2 Rocket (Aggregat A-4)",
-    },
-    canonical: {
-      category: "wunderwaffen",
-      fileNation: "germany",
-      name: "Aggregat 4 / V-2 Rocket",
-    },
-    fieldsToMerge: ["guidance"],
-  },
-  {
-    donor: { category: "missiles", fileNation: "japan", name: "Kaiten Type 1" },
-    canonical: {
-      category: "wunderwaffen",
-      fileNation: "japan",
-      name: "Kaiten",
-    },
-    fieldsToMerge: ["length_m", "speed_knots"],
-  },
-];
+export const DUPLICATE_RESOLUTIONS: DuplicateResolutionRule[] = [];
 
 export interface DuplicateResolutionOutcome {
   description: string;
@@ -380,6 +240,7 @@ export function detectIdCollisions(
 // ── Record mapping ────────────────────────────────────────────────────────
 const KNOWN_FIELDS = new Set([
   "id",
+  "recordId",
   "name",
   "nation",
   "summary",
@@ -420,8 +281,13 @@ export function toRecordCreateInput(
   // at all — never overwrites a real value (e.g. "Romania") with the
   // folder label ("Other Axis"), per the approved mapper rule.
   const nationality = pick(item.nation) ?? capitalizeFileNation(fileNation);
+  // Recovery: reuse the original database id (embedded by the publish
+  // pipeline's recordId backfill) when present, so restored rows keep
+  // their pre-loss identity instead of getting a fresh cuid.
+  const recordId = typeof item.recordId === "string" ? item.recordId : undefined;
 
   return {
+    ...(recordId ? { id: recordId } : {}),
     type: "ARMAMENT",
     slug: id,
     collectionId,

@@ -7,7 +7,7 @@ import { ARTICLE_FILES, LegacyArticle, NormalizedBodyBlock, normalizeBodyBlocks,
 import { runArticlesImportDryRun } from "./articles-import-check";
 import { toArticleJson, ArticleJson } from "../generators/articles.generator";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
-import { rollbackImportRun as sharedRollbackImportRun } from "./rollback";
+import { rollbackImportRunWithCollections } from "./rollback";
 
 const ARTICLES_DIR = path.resolve(__dirname, "../../../../public/data/articles");
 
@@ -169,9 +169,19 @@ export function compareRoundTrip(article: LegacyArticle, generated: ArticleJson)
     diffs.push({ recordId: article.id, field: "images", sourceValue: undefined, generatedValue: generated.images, classification: "expected" });
   }
 
+  // recordId — always regenerated fresh from the live database id at
+  // publish time, never a stable pass-through value (recovery preserves
+  // the original id on create when present, but the candidate used here
+  // for verification always carries the slug as its id, so
+  // generated.recordId is always the slug) — a difference from the
+  // source recordId is structurally expected, same as related_records.
+  if (article.recordId !== undefined) {
+    diffs.push({ recordId: article.id, field: "recordId", sourceValue: article.recordId, generatedValue: generated.recordId, classification: "expected" });
+  }
+
   // Pass-through extras completeness — every extension field in the source
   // must survive, unchanged, in the generated output.
-  const explicitKeys = new Set(["id", "category", "title", "subtitle", "date_published", "author", "image", "tags", "summary", "body", "archival_note", "sources", "related_records"]);
+  const explicitKeys = new Set(["id", "recordId", "category", "title", "subtitle", "date_published", "author", "image", "tags", "summary", "body", "archival_note", "sources", "related_records"]);
   for (const [key, value] of Object.entries(article)) {
     if (explicitKeys.has(key)) continue;
     const actual = generated[key];
@@ -183,8 +193,8 @@ export function compareRoundTrip(article: LegacyArticle, generated: ArticleJson)
   return diffs;
 }
 
-export async function rollbackImportRun(runId: string): Promise<{ deletedRecords: number }> {
-  return sharedRollbackImportRun("ARTICLE", runId);
+export async function rollbackImportRun(runId: string): Promise<{ deletedRecords: number; deletedCollections: number }> {
+  return rollbackImportRunWithCollections("ARTICLE", runId, "articles");
 }
 
 async function writeImportResult(result: ImportResult): Promise<void> {
@@ -253,7 +263,15 @@ export async function runArticlesImport(options: RunImportOptions): Promise<Impo
         const collectionRow = await tx.collection.upsert({
           where: { slug: `articles-${category}` },
           update: {},
-          create: { slug: `articles-${category}`, title: `${category[0].toUpperCase()}${category.slice(1)} Articles`, category: "articles" },
+          create: {
+            slug: `articles-${category}`,
+            title: `${category[0].toUpperCase()}${category.slice(1)} Articles`,
+            category: "articles",
+            // Tagged only on create, never on update — a pre-existing
+            // Collection from an earlier run keeps its original tag (or
+            // none), so a later run's rollback can never claim it.
+            metadata: { importRunId: runId },
+          },
         });
         if (preview.collectionsToCreate.includes(`articles-${category}`)) {
           collectionsCreated.push({ slug: collectionRow.slug, id: collectionRow.id });

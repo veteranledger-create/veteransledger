@@ -33,6 +33,7 @@ import { siteContentRoutes } from "./modules/site-content/site-content.routes";
 import { formationsRoutes } from "./modules/formations/formations.routes";
 import { translationsRoutes } from "./modules/translations/translations.routes";
 import { iconsRoutes } from "./modules/icons/icons.routes";
+import { communityRoutes } from "./modules/community/community.routes";
 
 export function createApp(): Application {
   const app = express();
@@ -105,6 +106,10 @@ export function createApp(): Application {
   app.use("/api/formations", formationsRoutes);
   app.use("/api/translations", translationsRoutes);
   app.use("/api/icons", iconsRoutes);
+  // Reserved foundation for the future Community system (posts, comments,
+  // reactions, reports, notifications, moderation) — every route currently
+  // responds 501. See src/modules/community and docs/community-architecture.md.
+  app.use("/api/community", communityRoutes);
 
   // ── Frontend page routes ──────────────────────────────────────────────────
   const pagesDir = path.join(config.paths.frontend, "pages");

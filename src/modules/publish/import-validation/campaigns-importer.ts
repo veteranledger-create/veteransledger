@@ -10,7 +10,7 @@ import {
 import { runCampaignsImportDryRun } from "./campaigns-import-check";
 import { toCampaignJson, CampaignJson } from "../generators/campaigns.generator";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
-import { rollbackImportRun as sharedRollbackImportRun } from "./rollback";
+import { rollbackImportRunWithCollections } from "./rollback";
 import { pick } from "./text-utils";
 
 const CAMPAIGNS_DIR = path.resolve(__dirname, "../../../../public/data/campaigns");
@@ -203,8 +203,8 @@ export function compareRoundTrip(campaign: LegacyCampaign, theater: string, gene
   return diffs;
 }
 
-export async function rollbackImportRun(runId: string): Promise<{ deletedRecords: number }> {
-  return sharedRollbackImportRun("CAMPAIGN", runId);
+export async function rollbackImportRun(runId: string): Promise<{ deletedRecords: number; deletedCollections: number }> {
+  return rollbackImportRunWithCollections("CAMPAIGN", runId, "campaigns");
 }
 
 async function writeImportResult(result: ImportResult): Promise<void> {
@@ -273,7 +273,15 @@ export async function runCampaignsImport(options: RunImportOptions): Promise<Imp
         const collectionRow = await tx.collection.upsert({
           where: { slug: `campaigns-${theater}` },
           update: {},
-          create: { slug: `campaigns-${theater}`, title: `${theater.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ")} Campaigns`, category: "campaigns" },
+          create: {
+            slug: `campaigns-${theater}`,
+            title: `${theater.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ")} Campaigns`,
+            category: "campaigns",
+            // Tagged only on create, never on update — a pre-existing
+            // Collection from an earlier run keeps its original tag (or
+            // none), so a later run's rollback can never claim it.
+            metadata: { importRunId: runId },
+          },
         });
         if (preview.collectionsToCreate.includes(`campaigns-${theater}`)) {
           collectionsCreated.push({ slug: collectionRow.slug, id: collectionRow.id });

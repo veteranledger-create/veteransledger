@@ -198,11 +198,23 @@ function compareRoundTrip(person: LegacyPersonnel, generated: PersonnelJson): St
     push("related_records", "source urls (possibly stale)", "flat urls (always regenerated)", "expected");
   }
 
+  // recordId — like related_records, always regenerated fresh from the
+  // live database id at publish time (personnel.generator.ts:
+  // `recordId: entity.id`), never a stable pass-through value. Recovery
+  // preserves the original id when present (toEntityCreateInput), but the
+  // *candidate* used here for verification always carries the slug as its
+  // id (toCandidateEntity), so generated.recordId is always the slug —
+  // a difference from the source recordId is structurally expected here,
+  // exactly like related_records above, not a bug.
+  if (person.recordId !== undefined) {
+    push("recordId", person.recordId, generated.recordId, "expected");
+  }
+
   // Pass-through extras completeness — every one-off field (kills,
   // tank_kills, ships_sunk, tonnage_sunk, aircraft, vehicles) must survive
   // the round trip unchanged.
   const explicitKeys = new Set([
-    "id", "name", "rank", "branch", "portrait", "born", "died", "birthplace",
+    "id", "recordId", "name", "rank", "branch", "portrait", "born", "died", "birthplace",
     "biography", "commands", "awards", "campaigns", "sources", "related_records",
     "nation", "service",
   ]);

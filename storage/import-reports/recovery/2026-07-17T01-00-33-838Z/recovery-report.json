@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-07-17T01:00:33.840Z",
+  "mode": "preview",
+  "preview": [
+    {
+      "type": "armaments",
+      "objectKind": "records",
+      "toCreate": 75,
+      "toUpdate": 0,
+      "extra": "18 collection(s) to create"
+    },
+    {
+      "type": "articles",
+      "objectKind": "records",
+      "toCreate": 8,
+      "toUpdate": 0,
+      "extra": "4 collection(s) to create"
+    },
+    {
+      "type": "campaigns",
+      "objectKind": "records",
+      "toCreate": 35,
+      "toUpdate": 0,
+      "extra": "5 collection(s) to create"
+    },
+    {
+      "type": "letters",
+      "objectKind": "records",
+      "toCreate": 24,
+      "toUpdate": 0,
+      "extra": "6 collection(s) to create"
+    },
+    {
+      "type": "formations",
+      "objectKind": "records",
+      "toCreate": 32,
+      "toUpdate": 0
+    },
+    {
+      "type": "personnel",
+      "objectKind": "entities",
+      "toCreate": 46,
+      "toUpdate": 0,
+      "extra": "28 Personnel-to-Personnel relationship(s) to create"
+    },
+    {
+      "type": "timeline",
+      "objectKind": "timelineEvents",
+      "toCreate": 83,
+      "toUpdate": 0
+    }
+  ],
+  "run": null
+}

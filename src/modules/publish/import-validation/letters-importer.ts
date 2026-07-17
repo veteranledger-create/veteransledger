@@ -7,7 +7,7 @@ import { COLLECTION_FILES, LegacyLetter, pick, toCandidateRecord, toRecordCreate
 import { runLettersImportDryRun } from "./letters-import-check";
 import { toLetterJson, LetterJson } from "../generators/letters.generator";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
-import { rollbackImportRun as sharedRollbackImportRun } from "./rollback";
+import { rollbackImportRunWithCollections } from "./rollback";
 
 const LETTERS_DIR = path.resolve(__dirname, "../../../../public/data/letters");
 
@@ -201,8 +201,8 @@ export function compareRoundTrip(letter: LegacyLetter, generated: LetterJson): S
 // inline in the transaction below — only the delete-by-runId utility is
 // shared, now that Articles needs the identical mechanism. Re-exported
 // under the original name so nothing importing from here needs to change.
-export async function rollbackImportRun(runId: string): Promise<{ deletedRecords: number }> {
-  return sharedRollbackImportRun("LETTER", runId);
+export async function rollbackImportRun(runId: string): Promise<{ deletedRecords: number; deletedCollections: number }> {
+  return rollbackImportRunWithCollections("LETTER", runId, "letters");
 }
 
 async function writeImportResult(result: ImportResult): Promise<void> {
@@ -274,7 +274,15 @@ export async function runLettersImport(options: RunImportOptions): Promise<Impor
         const collectionRow = await tx.collection.upsert({
           where: { slug: `letters-${collection}` },
           update: {},
-          create: { slug: `letters-${collection}`, title: `${collection[0].toUpperCase()}${collection.slice(1)} Letters`, category: "letters" },
+          create: {
+            slug: `letters-${collection}`,
+            title: `${collection[0].toUpperCase()}${collection.slice(1)} Letters`,
+            category: "letters",
+            // Tagged only on create, never on update — a pre-existing
+            // Collection from an earlier run keeps its original tag (or
+            // none), so a later run's rollback can never claim it.
+            metadata: { importRunId: runId },
+          },
         });
         if (preview.collectionsToCreate.includes(`letters-${collection}`)) {
           collectionsCreated.push({ slug: collectionRow.slug, id: collectionRow.id });

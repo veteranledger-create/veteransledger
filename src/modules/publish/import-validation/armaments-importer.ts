@@ -9,7 +9,7 @@ import {
 import { DuplicateResolutionReport, loadAllArmaments, runArmamentsImportDryRun } from "./armaments-import-check";
 import { ArmamentJson, reconstructFile, toArmamentJson } from "../generators/armaments.generator";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
-import { rollbackImportRun as sharedRollbackImportRun } from "./rollback";
+import { rollbackImportRunWithCollections } from "./rollback";
 import { pick } from "./text-utils";
 
 export type ImportMode = "insert-only" | "sync";
@@ -246,8 +246,8 @@ export function verifyWrapperReconstruction(
   return diffs;
 }
 
-export async function rollbackImportRun(runId: string): Promise<{ deletedRecords: number }> {
-  return sharedRollbackImportRun("ARMAMENT", runId);
+export async function rollbackImportRun(runId: string): Promise<{ deletedRecords: number; deletedCollections: number }> {
+  return rollbackImportRunWithCollections("ARMAMENT", runId, "armaments");
 }
 
 async function writeImportResult(result: ImportResult): Promise<void> {
@@ -365,7 +365,15 @@ export async function runArmamentsImport(options: RunImportOptions): Promise<Imp
         const collectionRow = await tx.collection.upsert({
           where: { slug },
           update: {},
-          create: { slug, title: `${category[0].toUpperCase()}${category.slice(1)} — ${fileNation[0].toUpperCase()}${fileNation.slice(1)}`, category: "armaments" },
+          create: {
+            slug,
+            title: `${category[0].toUpperCase()}${category.slice(1)} — ${fileNation[0].toUpperCase()}${fileNation.slice(1)}`,
+            category: "armaments",
+            // Tagged only on create, never on update — a pre-existing
+            // Collection from an earlier run keeps its original tag (or
+            // none), so a later run's rollback can never claim it.
+            metadata: { importRunId: runId },
+          },
         });
         if (preview.collectionsToCreate.includes(slug)) {
           collectionsCreated.push({ slug: collectionRow.slug, id: collectionRow.id });

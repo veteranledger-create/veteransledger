@@ -14,11 +14,6 @@ export interface ImportIssue extends ValidationIssue {
   category: string;
 }
 
-export interface ResolvedDuplicateCheck {
-  description: string;
-  stillPresentAsIndependentRecord: boolean;
-}
-
 // Makes the previously-invisible failure mode observable: a rule that
 // previously matched and now silently doesn't (donor renamed/removed,
 // canonical renamed) shows up here as a non-zero rulesMissingDonor/
@@ -55,7 +50,6 @@ export interface ArmamentImportSummary {
   byFileNation: Record<string, number>;
   collectionsExpected: string[]; // composite category+fileNation slugs that have >=1 record
   idCollisions: IdCollision[];
-  resolvedDuplicateChecks: ResolvedDuplicateCheck[];
   duplicateResolutionReport: DuplicateResolutionReport;
   validation: {
     errorCount: number;
@@ -153,62 +147,6 @@ export async function runArmamentsImportDryRun(scope?: ImportScope): Promise<Arm
   }
 
   // Explicit, named confirmation that each of the four approved
-  // resolutions actually took effect — not just trusting
-  // applyDuplicateResolutions ran without error. Always checked against
-  // the full, unscoped dataset (assignedAll) — this is a diagnostic, not
-  // a gate, so it should never silently read "absent" just because a
-  // scoped run excluded that rule's category.
-  const resolvedDuplicateChecks: ResolvedDuplicateCheck[] = [
-    {
-      description: "naval/other-axis.json 'Yamato' excluded (canonical: naval/japan.json id=yamato)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "naval" && a.fileNation === "other-axis" && a.item.name === "Yamato"),
-    },
-    {
-      description: "naval/other-axis.json 'Shōkaku' excluded (canonical: naval/japan.json id=shokaku)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "naval" && a.fileNation === "other-axis" && a.item.name === "Shōkaku"),
-    },
-    {
-      description: "missiles/italy.json Maiale donor excluded (canonical: wunderwaffen/italy.json)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "italy" && a.item.name === "Siluro a Lenta Corsa (SLC) / 'Maiale'"),
-    },
-    {
-      description: "missiles/japan.json Ohka Model 11 donor excluded (canonical: wunderwaffen/japan.json)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "japan" && a.item.name === "Ohka Model 11"),
-    },
-    {
-      description: "aircraft/other-axis.json 'Macchi C.202 Folgore' donor excluded (canonical: aircraft/italy.json id=mc-202-folgore)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "aircraft" && a.fileNation === "other-axis" && a.item.name === "Macchi C.202 Folgore"),
-    },
-    {
-      description: "aircraft/other-axis.json 'Mitsubishi A6M Zero' donor excluded (canonical: aircraft/japan.json id=a6m-zero)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "aircraft" && a.fileNation === "other-axis" && a.item.name === "Mitsubishi A6M Zero"),
-    },
-    {
-      description: "aircraft/other-axis.json 'Nakajima Ki-43 Hayabusa' donor excluded (canonical: aircraft/japan.json id=ki-43-hayabusa)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "aircraft" && a.fileNation === "other-axis" && a.item.name === "Nakajima Ki-43 Hayabusa"),
-    },
-    {
-      description: "panzer/other-axis.json 'Carro Armato M13/40' donor excluded (canonical: panzer/italy.json id=m13-40)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "panzer" && a.fileNation === "other-axis" && a.item.name === "Carro Armato M13/40"),
-    },
-    {
-      description: "panzer/other-axis.json 'Carro Armato P26/40' donor excluded (canonical: panzer/italy.json id=p40-heavy-tank)",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "panzer" && a.fileNation === "other-axis" && a.item.name === "Carro Armato P26/40"),
-    },
-    {
-      description: "missiles/germany.json 'V-1 Flying Bomb (Fieseler Fi 103)' donor excluded (canonical: wunderwaffen/germany.json 'Fieseler Fi 103 / V-1 Flying Bomb')",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "germany" && a.item.name === "V-1 Flying Bomb (Fieseler Fi 103)"),
-    },
-    {
-      description: "missiles/germany.json 'V-2 Rocket (Aggregat A-4)' donor excluded (canonical: wunderwaffen/germany.json 'Aggregat 4 / V-2 Rocket')",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "germany" && a.item.name === "V-2 Rocket (Aggregat A-4)"),
-    },
-    {
-      description: "missiles/japan.json 'Kaiten Type 1' donor excluded (canonical: wunderwaffen/japan.json 'Kaiten')",
-      stillPresentAsIndependentRecord: assignedAll.some((a) => a.category === "missiles" && a.fileNation === "japan" && a.item.name === "Kaiten Type 1"),
-    },
-  ];
-
   // Validation behavior: missing canonical/donor is a warning (the
   // resolution simply can't apply anymore — visible, but not blocking on
   // its own, since the underlying duplicate may have already been fixed
@@ -280,7 +218,6 @@ export async function runArmamentsImportDryRun(scope?: ImportScope): Promise<Arm
     byFileNation,
     collectionsExpected: [...collectionSet].sort(),
     idCollisions,
-    resolvedDuplicateChecks,
     duplicateResolutionReport,
     validation: { errorCount, warningCount, issuesByField, issues: allIssues },
     readyToImport: assigned.length - recordsWithErrors.size,
