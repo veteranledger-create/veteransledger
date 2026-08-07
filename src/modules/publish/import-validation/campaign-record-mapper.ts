@@ -1,16 +1,12 @@
 import { RecordLike } from "../publish.types";
 import { pick } from "./text-utils";
 
-// The 5 real theater folders under public/data/campaigns/, mapped to their
-// filenames — confirmed against disk. Unlike Letters (one file holds many
-// records), Campaigns is one file per record, same layout as Articles.
-export const CAMPAIGN_FILES: Record<string, string[]> = {
-  africa: ["alamein-1.json", "alamein-2.json", "gazala.json", "sonnenblume.json", "tobruk.json"],
-  atlantic: ["altmark.json", "atlantic.json", "convoy-war.json", "rheinubung.json", "river-plate.json", "uboat-campaing.json"],
-  "eastern-front": ["barbarossa.json", "blue.json", "caucasus.json", "kharkov.json", "kiev.json", "leningrad.json", "moscow.json", "stalingrad.json"],
-  italy: ["cassino.json", "crete.json", "gothic-line.json", "sicily.json", "taranto.json"],
-  "western-front": ["britain.json", "bulge.json", "bzura.json", "dieppe.json", "dunkirk.json", "france.json", "market-garden.json", "normandy.json", "norway.json", "poland.json", "warsaw.json"],
-};
+// The declared active campaign sources (grouped by theater folder) are no
+// longer available as a plain export from this file — they live behind
+// campaignArchiveManifestProvider.getCampaignFiles() in
+// campaigns-archive-manifest-provider.ts, the single component permitted
+// to read campaigns.archive.json or know its filesystem path. Consumers
+// call the provider directly rather than importing a constant from here.
 
 interface CombatantsSideObject {
   commanders?: string[];
@@ -100,7 +96,7 @@ function normalizeCombatantsSide(side: CombatantsSideRaw | undefined, commanderN
   if (typeof side === "string") {
     // Schema B: combatants.<side> is a flat force-description string, and
     // the actual commander's name lives in a separate top-level commanders
-    // object — confirmed in river-plate.json/altmark.json/uboat-campaing.json.
+    // object — confirmed in river-plate.json/altmark.json/uboat-campaign.json.
     return { commanders: commanderName ? [commanderName] : [], strength: side, nations: [] };
   }
   return { commanders: [], strength: null, nations: [] };
@@ -122,7 +118,7 @@ export function normalizeCombatants(combatants: CombatantsRaw | undefined, comma
 
 // Three real shapes collapse into one wide, mostly-null shape rather than
 // forcing genuinely different fields into each other — barbarossa's
-// objective/result and uboat-campaing's period are real, distinct content,
+// objective/result and uboat-campaign's period are real, distinct content,
 // not renames of "description".
 export function normalizePhases(phases: PhaseRaw[] | undefined): NormalizedPhase[] {
   if (!Array.isArray(phases)) return [];

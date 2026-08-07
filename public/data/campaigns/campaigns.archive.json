@@ -1,0 +1,48 @@
+{
+  "active": [
+    "africa/alamein-1.json",
+    "africa/alamein-2.json",
+    "africa/gazala.json",
+    "africa/sonnenblume.json",
+    "africa/tobruk.json",
+    "atlantic/altmark.json",
+    "atlantic/atlantic.json",
+    "atlantic/convoy-war.json",
+    "atlantic/rheinubung.json",
+    "atlantic/river-plate.json",
+    "atlantic/uboat-campaign.json",
+    "eastern-front/barbarossa.json",
+    "eastern-front/blue.json",
+    "eastern-front/caucasus.json",
+    "eastern-front/kharkov.json",
+    "eastern-front/kiev.json",
+    "eastern-front/leningrad.json",
+    "eastern-front/moscow.json",
+    "eastern-front/stalingrad.json",
+    "italy/cassino.json",
+    "italy/crete.json",
+    "italy/gothic-line.json",
+    "italy/sicily.json",
+    "italy/taranto.json",
+    "western-front/britain.json",
+    "western-front/bulge.json",
+    "western-front/bzura.json",
+    "western-front/dieppe.json",
+    "western-front/dunkirk.json",
+    "western-front/france.json",
+    "western-front/market-garden.json",
+    "western-front/normandy.json",
+    "western-front/norway.json",
+    "western-front/poland.json",
+    "western-front/warsaw.json"
+  ],
+  "obsolete": [
+    {
+      "file": "atlantic/uboat-campaing.json",
+      "replacedBy": "atlantic/uboat-campaign.json",
+      "reason": "Filename typo (missing the \"n\" in \"campaign\") left this pre-backfill duplicate on disk after the canonical file was created under the correctly spelled filename. This copy has no recordId; the replacement carries the original recordId cmqnuseb4000edn0e1fixk5ip. Verified via full content diff: same campaign, same statistics, same narrative text — this file has no content of its own that the replacement lacks.",
+      "date": "2026-08-07",
+      "notes": "The original recordId is independently corroborated in storage/import-reports/campaigns/results/1bb10a5f-3198-47ba-adf3-bc67f0f97253/import-result.json and storage/publish-reports/campaigns/*.json — both predate this manifest and were not written to support it. The historical source file itself was intentionally left untouched (byte-identical to its original archive content) rather than annotated in place; this manifest is the sole record of its obsolete status."
+    }
+  ]
+}

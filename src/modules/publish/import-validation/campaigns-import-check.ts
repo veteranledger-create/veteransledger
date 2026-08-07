@@ -2,7 +2,8 @@ import fs from "fs/promises";
 import path from "path";
 import { checkCampaignRecord } from "../validators/campaigns.conformance";
 import { ValidationIssue } from "../publish.types";
-import { CAMPAIGN_FILES, LegacyCampaign, toCandidateRecord } from "./campaign-record-mapper";
+import { toCandidateRecord } from "./campaign-record-mapper";
+import { loadCampaignArchive, LoadedCampaignArchive } from "./campaigns-archive-loader";
 import { targetExists } from "./cross-reference-lookup";
 import { config } from "../../../config/app";
 
@@ -11,7 +12,6 @@ import { config } from "../../../config/app";
 // related_records existence checks) and returns a report. Same structural
 // guarantee as letters-import-check.ts / articles-import-check.ts.
 const PUBLIC_DATA_DIR = path.resolve(__dirname, "../../../../public/data");
-const CAMPAIGNS_DIR = path.join(PUBLIC_DATA_DIR, "campaigns");
 
 const STORAGE_URL_PREFIX = "/storage/";
 
@@ -74,7 +74,7 @@ export interface CampaignImportSummary {
   blockedByErrors: number;
 }
 
-export async function runCampaignsImportDryRun(): Promise<CampaignImportSummary> {
+export async function runCampaignsImportDryRun(preloaded?: LoadedCampaignArchive): Promise<CampaignImportSummary> {
   const seenIds = new Map<string, string[]>();
   const byTheater: Record<string, number> = {};
   const theaterMismatches: TheaterMismatch[] = [];
@@ -84,11 +84,10 @@ export async function runCampaignsImportDryRun(): Promise<CampaignImportSummary>
   const missingImageFiles: string[] = [];
   let total = 0;
 
-  for (const [theater, filenames] of Object.entries(CAMPAIGN_FILES)) {
+  const archive = preloaded ?? await loadCampaignArchive();
+  for (const { theater, campaigns } of archive.declaredByTheater) {
     byTheater[theater] = 0;
-    for (const filename of filenames) {
-      const filePath = path.join(CAMPAIGNS_DIR, theater, filename);
-      const campaign: LegacyCampaign = JSON.parse(await fs.readFile(filePath, "utf-8"));
+    for (const campaign of campaigns) {
       byTheater[theater]++;
       total++;
 

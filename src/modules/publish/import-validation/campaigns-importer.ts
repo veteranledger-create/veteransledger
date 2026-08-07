@@ -1,19 +1,19 @@
-import fs from "fs/promises";
 import path from "path";
 import { randomUUID } from "crypto";
 import prisma from "../../../database/prisma";
 import { storageConfig } from "../../../config/storage";
 import {
-  CAMPAIGN_FILES, LegacyCampaign, deriveSummary, normalizeCombatants, normalizePhases,
+  LegacyCampaign, deriveSummary, normalizeCombatants, normalizePhases,
   toCandidateRecord, toRecordCreateInput,
 } from "./campaign-record-mapper";
+import { campaignArchiveManifestProvider } from "./campaigns-archive-manifest-provider";
+import { loadCampaignArchive, LoadedCampaignArchive } from "./campaigns-archive-loader";
 import { runCampaignsImportDryRun } from "./campaigns-import-check";
+import { validateCampaignArchiveIntegrity, CampaignArchiveIntegrityReport } from "./campaigns-archive-integrity";
 import { toCampaignJson, CampaignJson } from "../generators/campaigns.generator";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
 import { rollbackImportRunWithCollections } from "./rollback";
 import { pick } from "./text-utils";
-
-const CAMPAIGNS_DIR = path.resolve(__dirname, "../../../../public/data/campaigns");
 
 export type ImportMode = "insert-only" | "sync";
 
@@ -30,6 +30,7 @@ export interface ImportPreview {
   recordsToUpdate: string[];
   collectionsToCreate: string[];
   collectionsExisting: string[];
+  archiveIntegrity: CampaignArchiveIntegrityReport;
 }
 
 export interface StructuralDiff {
@@ -54,7 +55,7 @@ export interface ImportResult {
     expectedDifferences: StructuralDiff[];
     unexpectedDifferences: StructuralDiff[];
   };
-  status: "success" | "failed" | "verification_failed" | "execution_disabled";
+  status: "success" | "failed" | "verification_failed" | "execution_disabled" | "archive_integrity_failed";
   error?: string;
 }
 
@@ -90,20 +91,21 @@ export async function takePreImportSnapshot(): Promise<PreImportSnapshot> {
   };
 }
 
-async function loadAllSourceCampaigns(): Promise<{ theater: string; campaigns: LegacyCampaign[] }[]> {
-  const out: { theater: string; campaigns: LegacyCampaign[] }[] = [];
-  for (const [theater, filenames] of Object.entries(CAMPAIGN_FILES)) {
-    const campaigns: LegacyCampaign[] = [];
-    for (const filename of filenames) {
-      campaigns.push(JSON.parse(await fs.readFile(path.join(CAMPAIGNS_DIR, theater, filename), "utf-8")));
-    }
-    out.push({ theater, campaigns });
-  }
-  return out;
-}
+// ── Consolidated archive loading ─────────────────────────────────────────
+// buildImportPreview() and runCampaignsImport() both accept an optional
+// preloaded archive so a caller driving both from one run (as
+// runCampaignsImport() does below) reads the ~35 campaign files from disk
+// exactly once, no matter how many of these functions run as part of it.
+// Neither function caches anything itself — each call that doesn't receive
+// a preload loads its own fresh copy via loadCampaignArchive(), which never
+// caches beyond a single call either. This is deliberately request-scoped,
+// not a new global cache.
 
-export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSnapshot): Promise<ImportPreview> {
-  const groups = await loadAllSourceCampaigns();
+export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSnapshot, preloaded?: LoadedCampaignArchive): Promise<ImportPreview> {
+  const archive = preloaded ?? await loadCampaignArchive();
+  const archiveIntegrity = await validateCampaignArchiveIntegrity(archive);
+
+  const groups = archive.declaredByTheater;
   const existingSet = new Set(snapshot.existingCampaignSlugs);
   const recordsToCreate: string[] = [];
   const recordsToUpdate: string[] = [];
@@ -113,7 +115,7 @@ export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSn
     }
   }
 
-  const collectionSlugs = Object.keys(CAMPAIGN_FILES).map((t) => `campaigns-${t}`);
+  const collectionSlugs = Object.keys(campaignArchiveManifestProvider.getCampaignFiles()).map((t) => `campaigns-${t}`);
   const existingCollections = await prisma.collection.findMany({
     where: { slug: { in: collectionSlugs } },
     select: { slug: true },
@@ -127,6 +129,7 @@ export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSn
     recordsToUpdate,
     collectionsToCreate: collectionSlugs.filter((s) => !existingCollectionSlugs.has(s)),
     collectionsExisting: [...existingCollectionSlugs],
+    archiveIntegrity,
   };
 }
 
@@ -218,13 +221,24 @@ export async function runCampaignsImport(options: RunImportOptions): Promise<Imp
   const runId = randomUUID();
   const executedAt = new Date().toISOString();
 
+  // Loaded exactly once for the whole run — every check below and the
+  // transaction loop's actual record data all come from this same
+  // in-memory archive, never a fresh read per step.
+  const archive = await loadCampaignArchive();
+
+  // Archive integrity is filesystem-only (no DB access) — safe to compute
+  // even when execution is disabled, so the disabled-path result below
+  // honestly reflects the real archive state instead of a fabricated
+  // placeholder.
+  const archiveIntegrity = await validateCampaignArchiveIntegrity(archive);
+
   if (!EXECUTION_ENABLED || options.confirmExecution !== true) {
     return {
       runId,
       executedAt,
       mode: options.mode,
       preImportSnapshot: { recordCount: -1, collectionCount: -1, existingCampaignSlugs: [] },
-      preview: { generatedAt: executedAt, mode: options.mode, recordsToCreate: [], recordsToUpdate: [], collectionsToCreate: [], collectionsExisting: [] },
+      preview: { generatedAt: executedAt, mode: options.mode, recordsToCreate: [], recordsToUpdate: [], collectionsToCreate: [], collectionsExisting: [], archiveIntegrity },
       recordsCreated: [],
       collectionsCreated: [],
       recordsSkipped: [],
@@ -234,18 +248,42 @@ export async function runCampaignsImport(options: RunImportOptions): Promise<Imp
     };
   }
 
-  const dryRun = await runCampaignsImportDryRun();
+  // ── Gate: archive integrity — runs before anything else, including the
+  // conformance dry-run below. "Never silently choose one": if two source
+  // files represent the same logical record, or any other integrity
+  // violation exists (missing declared file, undeclared file, filename/id
+  // mismatch, duplicate id/recordId/slug), refuse to proceed at all. No
+  // bypass flag exists.
+  if (!archiveIntegrity.passed) {
+    const result: ImportResult = {
+      runId,
+      executedAt,
+      mode: options.mode,
+      preImportSnapshot: { recordCount: -1, collectionCount: -1, existingCampaignSlugs: [] },
+      preview: { generatedAt: executedAt, mode: options.mode, recordsToCreate: [], recordsToUpdate: [], collectionsToCreate: [], collectionsExisting: [], archiveIntegrity },
+      recordsCreated: [],
+      collectionsCreated: [],
+      recordsSkipped: [],
+      verification: { recordsCompared: 0, expectedDifferences: [], unexpectedDifferences: [] },
+      status: "archive_integrity_failed",
+      error: `Archive integrity check failed with ${archiveIntegrity.violations.length} violation(s) — aborting before any write: ${archiveIntegrity.violations.map((v) => v.message).join(" | ")}`,
+    };
+    await writeImportResult(result);
+    throw new Error(result.error);
+  }
+
+  const dryRun = await runCampaignsImportDryRun(archive);
   if (dryRun.blockedByErrors > 0) {
     throw new Error(`Pre-flight check failed: ${dryRun.blockedByErrors} record(s) have blocking errors — aborting before any write.`);
   }
 
   const snapshot = await takePreImportSnapshot();
-  const preview = await buildImportPreview(options.mode, snapshot);
-  const allGroups = await loadAllSourceCampaigns();
+  const preview = await buildImportPreview(options.mode, snapshot, archive);
+  const allGroups = archive.declaredByTheater;
   const groups = options.theaters ? allGroups.filter((g) => options.theaters!.includes(g.theater)) : allGroups;
 
   if (options.theaters) {
-    const unknown = options.theaters.filter((t) => !(t in CAMPAIGN_FILES));
+    const unknown = options.theaters.filter((t) => !(t in campaignArchiveManifestProvider.getCampaignFiles()));
     if (unknown.length) throw new Error(`Unknown theater(s) requested: ${unknown.join(", ")}`);
   }
 

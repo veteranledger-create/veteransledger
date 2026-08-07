@@ -38,6 +38,11 @@ interface TypePreviewSummary {
   toCreate: number;
   toUpdate: number;
   extra?: string;
+  // Only populated for types with an archive-integrity check (currently
+  // campaigns) — absent (not false) means "no such check exists for this
+  // type", distinct from a check that ran and passed.
+  archiveIntegrityPassed?: boolean;
+  archiveIntegrityIssues?: string[];
 }
 
 interface TypeRunSummary {
@@ -79,6 +84,8 @@ async function previewCampaigns(): Promise<TypePreviewSummary> {
     type: "campaigns", objectKind: "records",
     toCreate: preview.recordsToCreate.length, toUpdate: preview.recordsToUpdate.length,
     extra: `${preview.collectionsToCreate.length} collection(s) to create`,
+    archiveIntegrityPassed: preview.archiveIntegrity.passed,
+    archiveIntegrityIssues: preview.archiveIntegrity.violations.map((v) => v.message),
   };
 }
 
@@ -135,14 +142,25 @@ async function buildPreview(): Promise<TypePreviewSummary[]> {
 function printPreview(summaries: TypePreviewSummary[]): void {
   console.log("\n── Recovery preview — objects that WILL be restored ──\n");
   let totalCreate = 0;
+  let anyIntegrityFailure = false;
   for (const s of summaries) {
     totalCreate += s.toCreate;
     console.log(
       `  ${s.type.padEnd(11)} (${s.objectKind.padEnd(13)}): ${String(s.toCreate).padStart(3)} to create, ` +
       `${String(s.toUpdate).padStart(3)} already present${s.extra ? ` — ${s.extra}` : ""}`,
     );
+    if (s.archiveIntegrityPassed !== undefined) {
+      console.log(`               archive integrity: ${s.archiveIntegrityPassed ? "PASS" : "FAIL"}`);
+      if (!s.archiveIntegrityPassed) {
+        anyIntegrityFailure = true;
+        for (const issue of s.archiveIntegrityIssues ?? []) console.log(`                 - ${issue}`);
+      }
+    }
   }
   console.log(`\n  TOTAL new objects to create: ${totalCreate}\n`);
+  if (anyIntegrityFailure) {
+    console.log("  WARNING: archive integrity FAILED for at least one type — execution would be refused for that type until resolved.\n");
+  }
 }
 
 async function runAll(): Promise<TypeRunSummary[]> {
