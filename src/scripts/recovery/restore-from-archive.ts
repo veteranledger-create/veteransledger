@@ -64,6 +64,8 @@ async function previewArmaments(): Promise<TypePreviewSummary> {
     type: "armaments", objectKind: "records",
     toCreate: preview.recordsToCreate.length, toUpdate: preview.recordsToUpdate.length,
     extra: `${preview.collectionsToCreate.length} collection(s) to create`,
+    archiveIntegrityPassed: preview.archiveIntegrity?.passed,
+    archiveIntegrityIssues: preview.archiveIntegrity?.violations.map((v) => v.message),
   };
 }
 
@@ -74,6 +76,8 @@ async function previewArticles(): Promise<TypePreviewSummary> {
     type: "articles", objectKind: "records",
     toCreate: preview.recordsToCreate.length, toUpdate: preview.recordsToUpdate.length,
     extra: `${preview.collectionsToCreate.length} collection(s) to create`,
+    archiveIntegrityPassed: preview.archiveIntegrity?.passed,
+    archiveIntegrityIssues: preview.archiveIntegrity?.violations.map((v) => v.message),
   };
 }
 

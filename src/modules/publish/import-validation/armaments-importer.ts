@@ -6,7 +6,9 @@ import {
   AssignedArmament, DUPLICATE_RESOLUTIONS,
   applyDuplicateResolutions, assignIds, slugify, toCandidateRecord, toRecordCreateInput,
 } from "./armament-record-mapper";
-import { DuplicateResolutionReport, loadAllArmaments, runArmamentsImportDryRun } from "./armaments-import-check";
+import { DuplicateResolutionReport, runArmamentsImportDryRun } from "./armaments-import-check";
+import { loadArmamentsArchive, LoadedArmamentsArchive } from "./armaments-archive-loader";
+import { validateArmamentArchiveIntegrity, ArmamentArchiveIntegrityReport } from "./armaments-archive-integrity";
 import { ArmamentJson, reconstructFile, toArmamentJson } from "../generators/armaments.generator";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
 import { rollbackImportRunWithCollections } from "./rollback";
@@ -29,6 +31,13 @@ export interface ImportPreview {
   collectionsExisting: string[];
   synthesizedIdCount: number;
   duplicateResolutionReport: DuplicateResolutionReport;
+  /**
+   * Absent (not a fake passing report) when execution was disabled before
+   * the archive was ever loaded — distinct from a check that actually ran.
+   * Always present when buildImportPreview() runs for real, including
+   * every preview-only call (previewArmaments() in restore-from-archive.ts).
+   */
+  archiveIntegrity?: ArmamentArchiveIntegrityReport;
 }
 
 export interface StructuralDiff {
@@ -53,7 +62,7 @@ export interface ImportResult {
     expectedDifferences: StructuralDiff[];
     unexpectedDifferences: StructuralDiff[];
   };
-  status: "success" | "failed" | "verification_failed" | "execution_disabled" | "blocked_by_errors" | "duplicate_resolution_integrity_failed";
+  status: "success" | "failed" | "verification_failed" | "execution_disabled" | "blocked_by_errors" | "duplicate_resolution_integrity_failed" | "archive_integrity_failed";
   error?: string;
 }
 
@@ -119,8 +128,19 @@ export async function takePreImportSnapshot(): Promise<PreImportSnapshot> {
   };
 }
 
-async function resolveAndAssign(): Promise<{ assigned: AssignedArmament[]; rawCount: number; resolvedCount: number }> {
-  const loadedRaw = await loadAllArmaments();
+// ── Consolidated archive loading ─────────────────────────────────────────
+// buildImportPreview() and runArmamentsImport() both accept (or produce)
+// an optional preloaded archive so a caller driving both from one run (as
+// runArmamentsImport() does below) reads the 28 declared armaments files
+// from disk exactly once, no matter how many of these functions run as
+// part of it. Neither function caches anything itself — each call that
+// doesn't receive a preload loads its own fresh copy via
+// loadArmamentsArchive(), which never caches beyond a single call either.
+// This is deliberately request-scoped, not a new global cache.
+
+async function resolveAndAssign(preloaded?: LoadedArmamentsArchive): Promise<{ assigned: AssignedArmament[]; rawCount: number; resolvedCount: number }> {
+  const archive = preloaded ?? await loadArmamentsArchive();
+  const loadedRaw = archive.declaredItems;
   const { resolved } = applyDuplicateResolutions(loadedRaw);
   // Explicit runtime assertion: duplicate resolution only ever removes
   // donor entries via splice — it must never increase the working set.
@@ -135,9 +155,11 @@ async function resolveAndAssign(): Promise<{ assigned: AssignedArmament[]; rawCo
   return { assigned, rawCount: loadedRaw.length, resolvedCount: resolved.length };
 }
 
-export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSnapshot): Promise<ImportPreview> {
-  const dryRun = await runArmamentsImportDryRun();
-  const { assigned } = await resolveAndAssign();
+export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSnapshot, preloaded?: LoadedArmamentsArchive): Promise<ImportPreview> {
+  const archive = preloaded ?? await loadArmamentsArchive();
+  const archiveIntegrity = await validateArmamentArchiveIntegrity(archive);
+  const dryRun = await runArmamentsImportDryRun(undefined, archive);
+  const { assigned } = await resolveAndAssign(archive);
 
   const existingSet = new Set(snapshot.existingArmamentSlugs);
   const recordsToCreate: string[] = [];
@@ -162,6 +184,7 @@ export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSn
     collectionsExisting: [...existingCollectionSlugs],
     synthesizedIdCount: dryRun.synthesizedIdCount,
     duplicateResolutionReport: dryRun.duplicateResolutionReport,
+    archiveIntegrity,
   };
 }
 
@@ -282,21 +305,41 @@ export async function runArmamentsImport(options: RunImportOptions): Promise<Imp
   const executedAt = new Date().toISOString();
 
   // Gate 1: EXECUTION_ENABLED + Gate 2: confirmExecution — checked first,
-  // before any other work, so the disabled path performs zero database
-  // access of any kind.
+  // before any other work including the archive load itself, so the
+  // disabled path performs zero filesystem or database access of any
+  // kind. Deliberately not reordered to load first (unlike Campaigns) —
+  // there is no real archive scan to make the disabled placeholder
+  // "honest" about here, and doing one anyway would be a load introduced
+  // solely for a state that never uses it.
   if (!EXECUTION_ENABLED || options.confirmExecution !== true) {
     return emptyImportResult(runId, executedAt, options.mode, "execution_disabled",
       "Armaments import execution is disabled (EXECUTION_ENABLED=false). No database access of any kind was attempted.");
   }
 
-  // Gate 3: blockedByErrors — no bypass flags, force modes, or ignore
+  // Loaded exactly once for the whole run — every gate below, the preview,
+  // and the transaction's actual record data all come from this same
+  // in-memory archive, never a fresh read per step.
+  const archive = await loadArmamentsArchive();
+
+  // Gate 3: archive integrity — runs before anything else that depends on
+  // this archive's content, including the conformance dry-run below. No
+  // bypass flag exists.
+  const archiveIntegrity = await validateArmamentArchiveIntegrity(archive);
+  if (!archiveIntegrity.passed) {
+    const result = emptyImportResult(runId, executedAt, options.mode, "archive_integrity_failed",
+      `Archive integrity check failed with ${archiveIntegrity.violations.length} violation(s) — aborting before any write: ${archiveIntegrity.violations.map((v) => v.message).join(" | ")}`);
+    await writeImportResult(result);
+    throw new Error(result.error);
+  }
+
+  // Gate 4: blockedByErrors — no bypass flags, force modes, or ignore
   // lists exist anywhere in this function. Scoped to exactly the
   // categories/nations this run will touch (Phase 8A) — an error in a
   // category outside this run's scope (e.g. a pre-existing Naval issue
   // surfaced while preparing an Aircraft-only run) is real and must still
   // be fixed before THAT category can ever execute, but it no longer
   // blocks a run that never touches it.
-  const dryRun = await runArmamentsImportDryRun({ categories: options.categories, nations: options.nations });
+  const dryRun = await runArmamentsImportDryRun({ categories: options.categories, nations: options.nations }, archive);
   if (dryRun.blockedByErrors > 0) {
     const result = emptyImportResult(runId, executedAt, options.mode, "blocked_by_errors",
       `Pre-flight check failed: ${dryRun.blockedByErrors} record(s) have blocking errors — aborting before any write. No bypass exists.`);
@@ -304,7 +347,7 @@ export async function runArmamentsImport(options: RunImportOptions): Promise<Imp
     throw new Error(result.error);
   }
 
-  // Gate 4: duplicate-resolution integrity — guarantees the preview and
+  // Gate 5: duplicate-resolution integrity — guarantees the preview and
   // this transaction operate on identical, fully-resolved assumptions.
   // Also scoped: only rules whose donor falls within this run's
   // categories/nations are required to fully match and apply here.
@@ -318,8 +361,8 @@ export async function runArmamentsImport(options: RunImportOptions): Promise<Imp
   }
 
   const snapshot = await takePreImportSnapshot();
-  const preview = await buildImportPreview(options.mode, snapshot);
-  const { assigned: allAssigned } = await resolveAndAssign();
+  const preview = await buildImportPreview(options.mode, snapshot, archive);
+  const { assigned: allAssigned } = await resolveAndAssign(archive);
 
   // Scope filtering happens here — strictly after load, resolve, assign,
   // and the full unscoped dry-run/integrity checks above, never before.

@@ -1,14 +1,11 @@
-import fs from "fs/promises";
-import path from "path";
 import { checkArmamentRecord } from "../validators/armaments.conformance";
 import { ValidationIssue } from "../publish.types";
 import {
-  CATEGORIES, NATIONS, LoadedArmament, IdCollision, DuplicateResolutionOutcome,
+  IdCollision, DuplicateResolutionOutcome,
   applyDuplicateResolutions, assignIds, detectIdCollisions,
-  extractItems, toCandidateRecord, DUPLICATE_RESOLUTIONS,
+  toCandidateRecord, DUPLICATE_RESOLUTIONS,
 } from "./armament-record-mapper";
-
-const ARMAMENTS_DIR = path.resolve(__dirname, "../../../../public/data/armaments");
+import { loadArmamentsArchive, LoadedArmamentsArchive } from "./armaments-archive-loader";
 
 export interface ImportIssue extends ValidationIssue {
   category: string;
@@ -61,33 +58,18 @@ export interface ArmamentImportSummary {
   blockedByErrors: number;
 }
 
-export async function loadAllArmaments(): Promise<LoadedArmament[]> {
-  const out: LoadedArmament[] = [];
-  for (const category of CATEGORIES) {
-    for (const fileNation of NATIONS) {
-      const filePath = path.join(ARMAMENTS_DIR, category, `${fileNation}.json`);
-      let raw: unknown;
-      try {
-        raw = JSON.parse(await fs.readFile(filePath, "utf-8"));
-      } catch (err) {
-        // A category/fileNation combination is no longer guaranteed to
-        // exist on disk — Phase 8A's promotion can legitimately delete
-        // <category>/other-axis.json once every record under it has been
-        // republished under its real nation (see promotion.service.ts's
-        // orphan-pruning). A missing file here means "zero records for
-        // this combination right now," not an error.
-        if ((err as NodeJS.ErrnoException).code === "ENOENT") continue;
-        throw err;
-      }
-      const { items, schemaType } = extractItems(raw, category);
-      for (const item of items) out.push({ category, fileNation, schemaType, item });
-    }
-  }
-  return out;
-}
-
-export async function runArmamentsImportDryRun(scope?: ImportScope): Promise<ArmamentImportSummary> {
-  const loadedRawAll = await loadAllArmaments();
+// loadAllArmaments() (hardcoded CATEGORIES x NATIONS grid, 18 reachable
+// files) has been superseded by armaments-archive-loader.ts's
+// loadArmamentsArchive(), which reads the Phase A manifest's declared 28
+// files instead. This function accepts an optional preloaded archive so a
+// caller driving both this and other stages from one operation (as
+// runArmamentsImport() does) reads the archive exactly once, no matter how
+// many of these functions run as part of it. Each call that doesn't
+// receive a preload loads its own fresh copy, which never caches beyond a
+// single call either — deliberately request-scoped, not a new global cache.
+export async function runArmamentsImportDryRun(scope?: ImportScope, preloaded?: LoadedArmamentsArchive): Promise<ArmamentImportSummary> {
+  const archive = preloaded ?? await loadArmamentsArchive();
+  const loadedRawAll = archive.declaredItems;
   // Always run resolution against the FULL, unscoped dataset first — a
   // donor's canonical can live in a different category/fileNation than
   // the donor itself, so resolving against an already-scoped subset could

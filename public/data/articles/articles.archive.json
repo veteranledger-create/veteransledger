@@ -1,0 +1,13 @@
+{
+  "active": [
+    "legal/nuremberg.json",
+    "military/berlin-1945.json",
+    "military/poland-1939.json",
+    "military/rearmament.json",
+    "political/anschluss.json",
+    "political/july-20.json",
+    "political/occupation.json",
+    "political/rise-nsdap.json"
+  ],
+  "obsolete": []
+}

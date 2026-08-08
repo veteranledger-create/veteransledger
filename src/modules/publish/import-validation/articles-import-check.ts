@@ -1,8 +1,8 @@
-import fs from "fs/promises";
 import path from "path";
 import { checkArticleRecord } from "../validators/articles.conformance";
 import { ValidationIssue } from "../publish.types";
-import { ARTICLE_FILES, LegacyArticle, toCandidateRecord } from "./article-record-mapper";
+import { toCandidateRecord } from "./article-record-mapper";
+import { loadArticlesArchive, LoadedArticlesArchive } from "./articles-archive-loader";
 import { targetExists } from "./cross-reference-lookup";
 
 // Never imports Prisma, never writes inside public/data/ — only reads the
@@ -10,7 +10,6 @@ import { targetExists } from "./cross-reference-lookup";
 // related_records existence checks) and returns a report. Same structural
 // guarantee as letters-import-check.ts.
 const PUBLIC_DATA_DIR = path.resolve(__dirname, "../../../../public/data");
-const ARTICLES_DIR = path.join(PUBLIC_DATA_DIR, "articles");
 
 export interface ImportIssue extends ValidationIssue {
   category: string;
@@ -46,7 +45,17 @@ export interface ArticleImportSummary {
   blockedByErrors: number;
 }
 
-export async function runArticlesImportDryRun(): Promise<ArticleImportSummary> {
+// loadAllSourceArticles()-style direct reads (hardcoded ARTICLE_FILES grid)
+// have been superseded by articles-archive-loader.ts's
+// loadArticlesArchive(), which reads the Phase A manifest's declared files
+// instead. This function accepts an optional preloaded archive so a caller
+// driving both this and other stages from one operation (as
+// runArticlesImport() does) reads the archive exactly once, no matter how
+// many of these functions run as part of it. Each call that doesn't
+// receive a preload loads its own fresh copy, which never caches beyond a
+// single call either — deliberately request-scoped, not a new global cache.
+export async function runArticlesImportDryRun(preloaded?: LoadedArticlesArchive): Promise<ArticleImportSummary> {
+  const archive = preloaded ?? await loadArticlesArchive();
   const seenIds = new Map<string, string[]>();
   const byCategory: Record<string, number> = {};
   const categoryMismatches: CategoryMismatch[] = [];
@@ -54,35 +63,30 @@ export async function runArticlesImportDryRun(): Promise<ArticleImportSummary> {
   const allIssues: ImportIssue[] = [];
   let total = 0;
 
-  for (const [category, filenames] of Object.entries(ARTICLE_FILES)) {
-    byCategory[category] = 0;
-    for (const filename of filenames) {
-      const filePath = path.join(ARTICLES_DIR, category, filename);
-      const article: LegacyArticle = JSON.parse(await fs.readFile(filePath, "utf-8"));
-      byCategory[category]++;
-      total++;
+  for (const { category, article } of archive.declaredItems) {
+    byCategory[category] = (byCategory[category] ?? 0) + 1;
+    total++;
 
-      const occurrences = seenIds.get(article.id) ?? [];
-      occurrences.push(category);
-      seenIds.set(article.id, occurrences);
+    const occurrences = seenIds.get(article.id) ?? [];
+    occurrences.push(category);
+    seenIds.set(article.id, occurrences);
 
-      if (article.category && article.category !== category) {
-        categoryMismatches.push({ recordId: article.id, declaredCategory: article.category, fileCategory: category });
-      }
+    if (article.category && article.category !== category) {
+      categoryMismatches.push({ recordId: article.id, declaredCategory: article.category, fileCategory: category });
+    }
 
-      const candidate = toCandidateRecord(article, category);
-      for (const issue of checkArticleRecord(candidate)) {
-        allIssues.push({ ...issue, category });
-      }
+    const candidate = toCandidateRecord(article, category);
+    for (const issue of checkArticleRecord(candidate)) {
+      allIssues.push({ ...issue, category });
+    }
 
-      const related = Array.isArray(article.related_records) ? (article.related_records as Array<{ id?: unknown; type?: unknown }>) : [];
-      for (const entry of related) {
-        if (typeof entry?.id !== "string") continue;
-        const relatedType = typeof entry.type === "string" ? entry.type : undefined;
-        const exists = await targetExists(relatedType, entry.id, PUBLIC_DATA_DIR);
-        if (!exists) {
-          missingRelatedTargets.push({ recordId: article.id, relatedId: entry.id, relatedType: relatedType ?? "unknown" });
-        }
+    const related = Array.isArray(article.related_records) ? (article.related_records as Array<{ id?: unknown; type?: unknown }>) : [];
+    for (const entry of related) {
+      if (typeof entry?.id !== "string") continue;
+      const relatedType = typeof entry.type === "string" ? entry.type : undefined;
+      const exists = await targetExists(relatedType, entry.id, PUBLIC_DATA_DIR);
+      if (!exists) {
+        missingRelatedTargets.push({ recordId: article.id, relatedId: entry.id, relatedType: relatedType ?? "unknown" });
       }
     }
   }

@@ -1,15 +1,15 @@
-import fs from "fs/promises";
 import path from "path";
 import { randomUUID } from "crypto";
 import prisma from "../../../database/prisma";
 import { storageConfig } from "../../../config/storage";
-import { ARTICLE_FILES, LegacyArticle, NormalizedBodyBlock, normalizeBodyBlocks, toCandidateRecord, toRecordCreateInput } from "./article-record-mapper";
+import { LegacyArticle, NormalizedBodyBlock, normalizeBodyBlocks, toCandidateRecord, toRecordCreateInput } from "./article-record-mapper";
 import { runArticlesImportDryRun } from "./articles-import-check";
+import { loadArticlesArchive, LoadedArticlesArchive, LoadedArticle } from "./articles-archive-loader";
+import { articleArchiveManifestProvider } from "./articles-archive-manifest-provider";
+import { validateArticleArchiveIntegrity, ArticleArchiveIntegrityReport } from "./articles-archive-integrity";
 import { toArticleJson, ArticleJson } from "../generators/articles.generator";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
 import { rollbackImportRunWithCollections } from "./rollback";
-
-const ARTICLES_DIR = path.resolve(__dirname, "../../../../public/data/articles");
 
 export type ImportMode = "insert-only" | "sync";
 
@@ -26,6 +26,13 @@ export interface ImportPreview {
   recordsToUpdate: string[];
   collectionsToCreate: string[];
   collectionsExisting: string[];
+  /**
+   * Absent (not a fake passing report) when execution was disabled before
+   * the archive was ever loaded — distinct from a check that actually ran.
+   * Always present when buildImportPreview() runs for real, including
+   * every preview-only call (previewArticles() in restore-from-archive.ts).
+   */
+  archiveIntegrity?: ArticleArchiveIntegrityReport;
 }
 
 export interface StructuralDiff {
@@ -50,7 +57,7 @@ export interface ImportResult {
     expectedDifferences: StructuralDiff[];
     unexpectedDifferences: StructuralDiff[];
   };
-  status: "success" | "failed" | "verification_failed" | "execution_disabled";
+  status: "success" | "failed" | "verification_failed" | "execution_disabled" | "archive_integrity_failed";
   error?: string;
 }
 
@@ -86,30 +93,38 @@ export async function takePreImportSnapshot(): Promise<PreImportSnapshot> {
   };
 }
 
-async function loadAllSourceArticles(): Promise<{ category: string; articles: LegacyArticle[] }[]> {
-  const out: { category: string; articles: LegacyArticle[] }[] = [];
-  for (const [category, filenames] of Object.entries(ARTICLE_FILES)) {
-    const articles: LegacyArticle[] = [];
-    for (const filename of filenames) {
-      articles.push(JSON.parse(await fs.readFile(path.join(ARTICLES_DIR, category, filename), "utf-8")));
-    }
-    out.push({ category, articles });
+// ── Consolidated archive loading ─────────────────────────────────────────
+// buildImportPreview() and runArticlesImport() both accept (or produce) an
+// optional preloaded archive so a caller driving both from one run (as
+// runArticlesImport() does below) reads the 8 declared article files from
+// disk exactly once, no matter how many of these functions run as part of
+// it. Neither function caches anything itself — each call that doesn't
+// receive a preload loads its own fresh copy via loadArticlesArchive(),
+// which never caches beyond a single call either. This is deliberately
+// request-scoped, not a new global cache.
+
+function groupByCategory(items: LoadedArticle[]): { category: string; articles: LegacyArticle[] }[] {
+  const map = new Map<string, LegacyArticle[]>();
+  for (const { category, article } of items) {
+    const list = map.get(category) ?? [];
+    list.push(article);
+    map.set(category, list);
   }
-  return out;
+  return [...map.entries()].map(([category, articles]) => ({ category, articles }));
 }
 
-export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSnapshot): Promise<ImportPreview> {
-  const groups = await loadAllSourceArticles();
+export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSnapshot, preloaded?: LoadedArticlesArchive): Promise<ImportPreview> {
+  const archive = preloaded ?? await loadArticlesArchive();
+  const archiveIntegrity = await validateArticleArchiveIntegrity(archive);
+
   const existingSet = new Set(snapshot.existingArticleSlugs);
   const recordsToCreate: string[] = [];
   const recordsToUpdate: string[] = [];
-  for (const { articles } of groups) {
-    for (const article of articles) {
-      (existingSet.has(article.id) ? recordsToUpdate : recordsToCreate).push(article.id);
-    }
+  for (const { article } of archive.declaredItems) {
+    (existingSet.has(article.id) ? recordsToUpdate : recordsToCreate).push(article.id);
   }
 
-  const collectionSlugs = Object.keys(ARTICLE_FILES).map((c) => `articles-${c}`);
+  const collectionSlugs = Object.keys(articleArchiveManifestProvider.getArticleFiles()).map((c) => `articles-${c}`);
   const existingCollections = await prisma.collection.findMany({
     where: { slug: { in: collectionSlugs } },
     select: { slug: true },
@@ -123,6 +138,7 @@ export async function buildImportPreview(mode: ImportMode, snapshot: PreImportSn
     recordsToUpdate,
     collectionsToCreate: collectionSlugs.filter((s) => !existingCollectionSlugs.has(s)),
     collectionsExisting: [...existingCollectionSlugs],
+    archiveIntegrity,
   };
 }
 
@@ -208,6 +224,13 @@ export async function runArticlesImport(options: RunImportOptions): Promise<Impo
   const runId = randomUUID();
   const executedAt = new Date().toISOString();
 
+  // Gate 1+2: EXECUTION_ENABLED + confirmExecution — checked first, before
+  // any other work including the archive load itself, so the disabled
+  // path performs zero filesystem or database access of any kind.
+  // Deliberately not reordered to load first (unlike Campaigns) — there is
+  // no real archive scan to make the disabled placeholder "honest" about
+  // here, and doing one anyway would be a load introduced solely for a
+  // state that never uses it.
   if (!EXECUTION_ENABLED || options.confirmExecution !== true) {
     return {
       runId,
@@ -224,18 +247,47 @@ export async function runArticlesImport(options: RunImportOptions): Promise<Impo
     };
   }
 
-  const dryRun = await runArticlesImportDryRun();
+  // Loaded exactly once for the whole run — every gate below, the preview,
+  // and the transaction's actual record data all come from this same
+  // in-memory archive, never a fresh read per step.
+  const archive = await loadArticlesArchive();
+
+  // Gate 3: archive integrity — runs before anything else that depends on
+  // this archive's content, including the conformance dry-run below. No
+  // bypass flag exists.
+  const archiveIntegrity = await validateArticleArchiveIntegrity(archive);
+  if (!archiveIntegrity.passed) {
+    const result: ImportResult = {
+      runId,
+      executedAt,
+      mode: options.mode,
+      preImportSnapshot: { recordCount: -1, collectionCount: -1, existingArticleSlugs: [] },
+      preview: { generatedAt: executedAt, mode: options.mode, recordsToCreate: [], recordsToUpdate: [], collectionsToCreate: [], collectionsExisting: [], archiveIntegrity },
+      recordsCreated: [],
+      collectionsCreated: [],
+      recordsSkipped: [],
+      verification: { recordsCompared: 0, expectedDifferences: [], unexpectedDifferences: [] },
+      status: "archive_integrity_failed",
+      error: `Archive integrity check failed with ${archiveIntegrity.violations.length} violation(s) — aborting before any write: ${archiveIntegrity.violations.map((v) => v.message).join(" | ")}`,
+    };
+    await writeImportResult(result);
+    throw new Error(result.error);
+  }
+
+  // Gate 4: blockedByErrors — no bypass flags, force modes, or ignore
+  // lists exist anywhere in this function.
+  const dryRun = await runArticlesImportDryRun(archive);
   if (dryRun.blockedByErrors > 0) {
     throw new Error(`Pre-flight check failed: ${dryRun.blockedByErrors} record(s) have blocking errors — aborting before any write.`);
   }
 
   const snapshot = await takePreImportSnapshot();
-  const preview = await buildImportPreview(options.mode, snapshot);
-  const allGroups = await loadAllSourceArticles();
+  const preview = await buildImportPreview(options.mode, snapshot, archive);
+  const allGroups = groupByCategory(archive.declaredItems);
   const groups = options.categories ? allGroups.filter((g) => options.categories!.includes(g.category)) : allGroups;
 
   if (options.categories) {
-    const unknown = options.categories.filter((c) => !(c in ARTICLE_FILES));
+    const unknown = options.categories.filter((c) => !(c in articleArchiveManifestProvider.getArticleFiles()));
     if (unknown.length) throw new Error(`Unknown category(ies) requested: ${unknown.join(", ")}`);
   }
 
