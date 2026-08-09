@@ -89,8 +89,8 @@ function render(root, f) {
   root.innerHTML = `
     <nav class="record-breadcrumb" aria-label="Breadcrumb">
       <a href="/formations">Formations</a>
-      <span class="record-breadcrumb__sep">›</span>
-      ${cat.label ? `<span>${cat.label}</span><span class="record-breadcrumb__sep">›</span>` : ""}
+      <span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>
+      ${cat.label ? `<span>${cat.label}</span><span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>` : ""}
       <span>${f.name}</span>
     </nav>
 

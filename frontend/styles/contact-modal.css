@@ -39,14 +39,10 @@
 }
 .modal__close:hover { border-color: var(--gold-dim); }
 .modal__close-icon {
-  width: 22px;
-  height: 22px;
-  display: block;
-  filter: brightness(0) invert(1) opacity(0.35);
-  transition: filter var(--transition-fast);
+  color: var(--text-secondary);
 }
 .modal__close:hover .modal__close-icon {
-  filter: brightness(0) invert(1) sepia(0.6) saturate(3) hue-rotate(5deg) brightness(0.85);
+  color: var(--gold);
 }
 
 /* ── Postcard card ─────────────────────────────────────────── */
@@ -215,26 +211,6 @@
   color: #8a7040;
   margin: 0 0 18px;
 }
-
-/* TO: address block */
-.pc__address { margin-bottom: 14px; }
-.pc__address-label {
-  font-family: var(--font-display);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #6a5030;
-  margin: 0 0 5px;
-}
-.pc__address-email {
-  display: block;
-  font-size: 12px;
-  color: #a08040;
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-.pc__address-email:hover { color: var(--gold); }
 
 /* Thin ruled separator */
 .pc__rule {
@@ -680,10 +656,11 @@
   transition: border-color var(--transition-fast);
 }
 .lightbox-close:hover { border-color: var(--gold-dim); }
-.lightbox-close img {
-  width: 22px;
-  height: 22px;
-  filter: brightness(0) invert(1);
+.lightbox-close .icon-close {
+  color: rgba(255, 255, 255, 0.85);
+}
+.lightbox-close:hover .icon-close {
+  color: var(--gold);
 }
 
 /* ── Cookie banner ──────────────────────────────────────────── */

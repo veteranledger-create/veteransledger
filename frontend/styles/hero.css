@@ -79,9 +79,6 @@
 }
 
 .hero__eyebrow {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
   font-family: var(--font-display);
   font-size: var(--text-xs);
   font-weight: 600;
@@ -89,20 +86,6 @@
   text-transform: uppercase;
   color: var(--gold-dim);
   margin-bottom: var(--space-5);
-}
-.hero__eyebrow::before {
-  content: "";
-  width: 28px;
-  height: 1px;
-  background: var(--border-gold);
-}
-
-.hero__cross {
-  display: block;
-  font-size: 18px;
-  color: var(--gold-dim);
-  letter-spacing: 0;
-  margin-bottom: var(--space-4);
 }
 
 .hero__title {

@@ -53,7 +53,7 @@ export function createPaginator({ items, pageSize, renderFn, pagerEl, scrollTarg
     const nums = _pageNums(_page, tp);
     pagerEl.innerHTML = `
       <button class="pagination__btn" data-p="${_page - 1}"
-        ${_page <= 1 ? "disabled" : ""} aria-label="Previous page">‹ Prev</button>
+        ${_page <= 1 ? "disabled" : ""} aria-label="Previous page"><span class="icon-svg icon-svg--arrow-left icon-svg--md" aria-hidden="true"></span> Prev</button>
       ${nums.map(n =>
         n === "…"
           ? `<span class="pagination__ellipsis">…</span>`
@@ -61,7 +61,7 @@ export function createPaginator({ items, pageSize, renderFn, pagerEl, scrollTarg
                data-p="${n}" aria-label="Page ${n}">${n}</button>`
       ).join("")}
       <button class="pagination__btn" data-p="${_page + 1}"
-        ${_page >= tp ? "disabled" : ""} aria-label="Next page">Next ›</button>`;
+        ${_page >= tp ? "disabled" : ""} aria-label="Next page">Next <span class="icon-svg icon-svg--arrow-right icon-svg--md" aria-hidden="true"></span></button>`;
 
     pagerEl.querySelectorAll("[data-p]").forEach(btn => {
       btn.addEventListener("click", () => goTo(parseInt(btn.dataset.p, 10)));

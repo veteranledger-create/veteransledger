@@ -173,9 +173,9 @@ function render(root, item) {
   root.innerHTML = `
     <nav class="record-breadcrumb" aria-label="Breadcrumb">
       <a href="/armaments">Armaments</a>
-      <span class="record-breadcrumb__sep">›</span>
+      <span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>
       <a href="${recordPath}">${name}</a>
-      <span class="record-breadcrumb__sep">›</span>
+      <span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>
       <span>Media Gallery</span>
     </nav>
 

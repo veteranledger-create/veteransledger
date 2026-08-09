@@ -286,13 +286,75 @@ table {
  */
 .site-logo {
   flex-shrink: 0;
-  /* dark theme default: convert to white with warm glow */
-  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(201, 168, 76, 0.2));
+  /* dark theme default: convert to plain white, no glow/shadow */
+  filter: brightness(0) invert(1);
   transition: filter var(--transition-base);
 }
 [data-theme="light"] .site-logo {
   filter: brightness(0) opacity(0.8);
 }
+
+/* ── Inline SVG icon utility ──────────────────────────────────
+ * Replaces text glyphs (→ › « etc.) with the real SVG icon set.
+ * Icons are single-path monochrome SVGs recolored via mask-image +
+ * currentColor, so they automatically track the surrounding text
+ * color (including link/button :hover states) with no extra CSS. */
+.icon-svg {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  vertical-align: -0.15em;
+}
+.icon-svg--arrow-right {
+  -webkit-mask-image: url("/public/images/icons/navigation/arrow-right.svg");
+  mask-image: url("/public/images/icons/navigation/arrow-right.svg");
+}
+.icon-svg--arrow-left {
+  -webkit-mask-image: url("/public/images/icons/navigation/arrow-left.svg");
+  mask-image: url("/public/images/icons/navigation/arrow-left.svg");
+}
+.icon-svg--angle-right {
+  -webkit-mask-image: url("/public/images/icons/navigation/angle-right.svg");
+  mask-image: url("/public/images/icons/navigation/angle-right.svg");
+}
+
+.icon-svg--sm { width: 11px; height: 11px; }
+.icon-svg--md { width: 15px; height: 15px; }
+.icon-svg--lg { width: 20px; height: 20px; }
+
+/* ── Close (X) icon — built from the same bar primitive as the mobile
+ * header's hamburger (.hamburger in navigation.css): identical 20px
+ * length, 2px thickness, currentColor fill, border-radius. Two bars
+ * rotated ±45° instead of three stacked, so Menu and Close read as one
+ * consistent toggle component rather than two unrelated icon styles. */
+.icon-close {
+  display: block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.icon-close::before,
+.icon-close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transform-origin: center;
+  transition: background var(--transition-fast);
+}
+.icon-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.icon-close::after { transform: translate(-50%, -50%) rotate(-45deg); }
 
 /* ── Section label ─────────────────────────────────────────── */
 .section-label {

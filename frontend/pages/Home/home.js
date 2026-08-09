@@ -47,11 +47,17 @@ async function init() {
     if (el) el.innerHTML = hero.title;
   }
 
-  // Primary CTA
+  // Primary CTA — label is CMS-editable text; the trailing arrow is a real
+  // SVG icon appended after it, not part of the editable string, so a
+  // legacy label still ending in "→" doesn't produce a doubled-up arrow.
   if (hero.primaryCta) {
     const el = document.querySelector("[data-home='hero-primary-cta']");
     if (el) {
-      if (hero.primaryCta.label) el.textContent = hero.primaryCta.label;
+      if (hero.primaryCta.label) {
+        const label = hero.primaryCta.label.replace(/\s*(→|»|›)\s*$/, "");
+        el.textContent = label + " ";
+        el.insertAdjacentHTML("beforeend", '<span class="icon-svg icon-svg--arrow-right icon-svg--md" aria-hidden="true"></span>');
+      }
       if (hero.primaryCta.href)  el.setAttribute("href", hero.primaryCta.href);
     }
   }
@@ -80,7 +86,7 @@ async function init() {
           </div>
           <h2 class="archive-card__title">${escText(card.title || "")}</h2>
           <p class="archive-card__desc">${escText(card.desc || "")}</p>
-          <span class="archive-card__arrow" aria-hidden="true">→</span>
+          <span class="icon-svg icon-svg--arrow-right icon-svg--lg archive-card__arrow" aria-hidden="true"></span>
         </a>`).join("");
   }
 

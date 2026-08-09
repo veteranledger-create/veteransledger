@@ -116,8 +116,8 @@ function render(root, article) {
   root.innerHTML = `
     <nav class="record-breadcrumb" aria-label="Breadcrumb">
       <a href="/articles">Articles</a>
-      <span class="record-breadcrumb__sep">›</span>
-      ${catLabel ? `<span>${catLabel}</span><span class="record-breadcrumb__sep">›</span>` : ""}
+      <span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>
+      ${catLabel ? `<span>${catLabel}</span><span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>` : ""}
       <span>${article.title || ""}</span>
     </nav>
 
@@ -248,8 +248,8 @@ function renderRelatedRecords(rec, backPath) {
         prev || next
           ? `
         <div class="record-nav-prev-next">
-          ${prev ? `<a class="record-nav-link record-nav-link--prev" href="${backPath}/${prev.id}">← ${prev.title || prev.id}</a>` : "<span></span>"}
-          ${next ? `<a class="record-nav-link record-nav-link--next" href="${backPath}/${next.id}">${next.title || next.id} →</a>` : ""}
+          ${prev ? `<a class="record-nav-link record-nav-link--prev" href="${backPath}/${prev.id}"><span class="icon-svg icon-svg--arrow-left icon-svg--md" aria-hidden="true"></span> ${prev.title || prev.id}</a>` : "<span></span>"}
+          ${next ? `<a class="record-nav-link record-nav-link--next" href="${backPath}/${next.id}">${next.title || next.id} <span class="icon-svg icon-svg--arrow-right icon-svg--md" aria-hidden="true"></span></a>` : ""}
         </div>`
           : ""
       }

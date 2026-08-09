@@ -102,8 +102,8 @@ function render(root, map) {
   root.innerHTML = `
     <nav class="record-breadcrumb" aria-label="Breadcrumb">
       <a href="/maps">Maps</a>
-      ${theater ? `<span class="record-breadcrumb__sep">›</span><span>${theater}</span>` : ""}
-      <span class="record-breadcrumb__sep">›</span>
+      ${theater ? `<span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span><span>${theater}</span>` : ""}
+      <span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>
       <span>${map.title || ""}</span>
     </nav>
 

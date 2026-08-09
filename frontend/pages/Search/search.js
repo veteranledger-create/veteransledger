@@ -420,7 +420,7 @@ function renderResults(items, query) {
 
     const footer = document.createElement("div");
     footer.className = "record-card__footer";
-    footer.innerHTML = `<span class="record-card__read-more">View record →</span>`;
+    footer.innerHTML = `<span class="record-card__read-more">View record <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></span>`;
 
     card.appendChild(body);
     card.appendChild(footer);

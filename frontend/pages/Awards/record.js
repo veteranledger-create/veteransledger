@@ -112,7 +112,7 @@ function render(root, award) {
   root.innerHTML = `
     <nav class="record-breadcrumb" aria-label="Breadcrumb">
       <a href="/awards">Awards &amp; Decorations</a>
-      <span class="record-breadcrumb__sep">›</span>
+      <span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>
       <span>${award.title || ""}</span>
     </nav>
 

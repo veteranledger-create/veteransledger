@@ -9,8 +9,7 @@
 
     <!-- ── Close ─────────────────────────────────────────────────── -->
     <button type="button" class="modal__close pc__close" id="contact-modal-close" aria-label="Close contact form">
-      <img class="modal__close-icon" src="/public/images/icons/navigation/close.svg"
-        alt="" aria-hidden="true" width="24" height="24">
+      <span class="icon-close modal__close-icon" aria-hidden="true"></span>
     </button>
 
     <!-- ── Postcard layout: face | divider | panel ───────────────── -->
@@ -109,14 +108,11 @@
           <!-- Title (aria-labelledby + CMS text) -->
           <h2 class="pc__panel-title" id="contact-modal-title">Contact The Archive</h2>
 
-          <!-- TO address block -->
-          <div class="pc__address">
-            <p class="pc__address-label" id="contact-email-label">ARCHIVE OFFICE</p>
-            <a id="contact-email-addr" href="mailto:support@veteransledger.com"
-              class="pc__address-email">support@veteransledger.com</a>
-            <!-- Hidden: settings.js sets .value for backwards compat -->
-            <input type="hidden" id="contact-to" value="support@veteransledger.com">
-          </div>
+          <!-- TO address: no longer displayed as standalone text — the
+               archive's email is already surfaced via the footer's Email
+               button, so this modal only needs the hidden value the
+               submission handler reads. -->
+          <input type="hidden" id="contact-to" value="support@veteransledger.com">
 
           <div class="pc__rule" aria-hidden="true"></div>
 
@@ -165,7 +161,7 @@
 
             <div class="pc__form-footer">
               <button type="submit" class="pc__submit" disabled>
-                Dispatch Correspondence <span class="pc__submit-arrow" aria-hidden="true">›</span>
+                Dispatch Correspondence <span class="icon-svg icon-svg--angle-right icon-svg--md pc__submit-arrow" aria-hidden="true"></span>
               </button>
             </div>
 

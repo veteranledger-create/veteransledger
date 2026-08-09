@@ -160,7 +160,7 @@ function renderLetters(letters) {
         <span class="letter-card__date">${letter.date || letter.year || ""}</span>
       </div>
       ${excerpt ? `<p class="letter-card__excerpt">"${excerpt}${excerpt.length >= 200 ? "…" : ""}"</p>` : ""}
-      ${letter.id ? `<a class="letter-card__deep-link" href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-block;margin-top:8px;font-size:11px;color:var(--gold-dim);text-decoration:none;letter-spacing:0.06em;" onclick="event.stopPropagation()">Read full letter →</a>` : ""}`;
+      ${letter.id ? `<a class="letter-card__deep-link" href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:11px;color:var(--gold-dim);text-decoration:none;letter-spacing:0.06em;" onclick="event.stopPropagation()">Read full letter <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></a>` : ""}`;
 
     card.addEventListener("click", () => openLetter(letter));
     card.addEventListener("keydown", (e) => {
@@ -184,7 +184,7 @@ function openLetter(letter) {
     <div class="letter-viewer__body">${bodyHtml}</div>
     ${letter._original ? `<div class="letter-viewer__original"><strong>Original (${letter.language || "source language"}):</strong><br>${letter._original.replace(/\n/g, "<br>")}</div>` : ""}
     ${letter.translator_note ? `<p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:var(--space-3);font-style:italic">${letter.translator_note}</p>` : ""}
-    ${letter.id ? `<a href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-block;margin-top:var(--space-4);font-size:var(--text-xs);color:var(--gold);text-decoration:none;letter-spacing:0.06em;">Read full record with sources →</a>` : ""}`;
+    ${letter.id ? `<a href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-flex;align-items:center;gap:5px;margin-top:var(--space-4);font-size:var(--text-xs);color:var(--gold);text-decoration:none;letter-spacing:0.06em;">Read full record with sources <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></a>` : ""}`;
 
   viewerEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }

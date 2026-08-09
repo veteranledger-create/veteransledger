@@ -168,7 +168,7 @@ function renderCampaigns(container, campaigns) {
 
     const footer = document.createElement("div");
     footer.className = "record-card__footer";
-    footer.innerHTML = `<span class="record-card__read-more">Read more →</span>`;
+    footer.innerHTML = `<span class="record-card__read-more">Read more <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></span>`;
 
     card.appendChild(imageDiv);
     card.appendChild(body);

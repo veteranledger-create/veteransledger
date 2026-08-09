@@ -304,8 +304,6 @@ function renderFooter(data) {
       legalHeading:       data.footer.legalHeading,
       connectHeading:     connect.heading,
       connectPrompt:      connect.prompt,
-      connectEmail:       connect.email,
-      connectEmailHref:   connect.email ? `mailto:${connect.email}` : undefined,
     });
 }
 

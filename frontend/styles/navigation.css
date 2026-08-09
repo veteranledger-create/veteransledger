@@ -170,18 +170,18 @@
 .sidebar__eagle {
   width: 64px;
   height: 64px;
-  /* dark theme: white eagle + gold glow */
-  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(201, 168, 76, 0.2));
+  /* dark theme: plain white eagle, no glow/shadow */
+  filter: brightness(0) invert(1);
   transition: filter var(--transition-base);
 }
 .sidebar__brand:hover .sidebar__eagle {
-  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(201, 168, 76, 0.5));
+  filter: brightness(0) invert(1);
 }
 [data-theme="light"] .sidebar__eagle {
-  filter: brightness(0) opacity(0.75) drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+  filter: brightness(0) opacity(0.75);
 }
 [data-theme="light"] .sidebar__brand:hover .sidebar__eagle {
-  filter: brightness(0) opacity(1) drop-shadow(0 0 4px rgba(0, 0, 0, 0.2));
+  filter: brightness(0) opacity(1);
 }
 
 .sidebar__brand-name {
@@ -618,8 +618,8 @@
   text-decoration: none;
 }
 .mobile-menu__eagle {
-  /* dark theme: white eagle */
-  filter: brightness(0) invert(1) drop-shadow(0 0 4px rgba(201, 168, 76, 0.15));
+  /* dark theme: plain white eagle, no glow/shadow */
+  filter: brightness(0) invert(1);
   transition: filter var(--transition-base);
 }
 [data-theme="light"] .mobile-menu__eagle {
@@ -648,15 +648,10 @@
   border-color: var(--border-gold);
 }
 .mobile-menu__close-icon {
-  width: 24px;
-  height: 24px;
-  display: block;
-  filter: brightness(0) invert(1) opacity(0.6);
-  transition: filter var(--transition-fast);
+  color: var(--text-secondary);
 }
 .mobile-menu__close:hover .mobile-menu__close-icon {
-  filter: brightness(0) invert(1) sepia(0.6) saturate(3) hue-rotate(5deg)
-    brightness(0.95);
+  color: var(--gold);
 }
 
 /* Nav items */

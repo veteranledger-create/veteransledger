@@ -471,7 +471,7 @@ export function initAttributionModal() {
             <h2 class="archive-modal__title" id="attribution-modal-title">Source &amp; Attribution</h2>
           </div>
           <button type="button" class="modal__close" id="attribution-modal-close" aria-label="Close">
-            <img class="modal__close-icon" src="/public/images/icons/navigation/close.svg" alt="" aria-hidden="true" width="24" height="24">
+            <span class="icon-close modal__close-icon" aria-hidden="true"></span>
           </button>
         </div>
         <div class="attribution-modal__body" id="attribution-modal-body"></div>
@@ -542,7 +542,7 @@ export function initImageLightbox() {
   document.body.insertAdjacentHTML("beforeend", `
     <div id="image-lightbox" class="lightbox-overlay" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
       <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image viewer">
-        <img src="/public/images/icons/navigation/close.svg" alt="" aria-hidden="true" width="24" height="24">
+        <span class="icon-close" aria-hidden="true"></span>
       </button>
       <div class="lightbox-stage" id="lightbox-stage">
         <img class="lightbox-img" id="lightbox-img" src="" alt="" draggable="false">

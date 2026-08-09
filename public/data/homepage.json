@@ -8,7 +8,7 @@
     "title": "Welcome to VeteransLedger",
     "subtitle": "Axis History Archive",
     "description": "A comprehensive archive dedicated to preserving the history, documents, letters, armaments, and personnel of the Axis forces during World War II.",
-    "primaryCta": { "label": "EXPLORE ARCHIVE →", "href": "/campaigns" },
+    "primaryCta": { "label": "EXPLORE ARCHIVE", "href": "/campaigns" },
     "secondaryCta": { "label": "CONTACT", "action": "open-contact" }
   },
   "browseSectionLabel": "Browse Archive",

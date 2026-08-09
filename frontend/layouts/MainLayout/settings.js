@@ -46,14 +46,7 @@ function applyContactModal(contact) {
   setText("contact-modal-title",     contact.modalTitle);
   setText("contact-info-heading",    contact.infoHeading);
   setText("contact-info-text",       contact.infoText);
-  setText("contact-email-label",     contact.emailLabel);
   setText("contact-message-guidance", contact.guidanceText);
-
-  const emailLink = document.getElementById("contact-email-addr");
-  if (emailLink && contact.email) {
-    emailLink.textContent = contact.email;
-    emailLink.href = `mailto:${contact.email}`;
-  }
 
   const toInput = document.getElementById("contact-to");
   if (toInput && contact.toDisplay) {

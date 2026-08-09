@@ -80,8 +80,8 @@ function render(root, letter) {
   root.innerHTML = `
     <nav class="record-breadcrumb" aria-label="Breadcrumb">
       <a href="/letters">Letters</a>
-      <span class="record-breadcrumb__sep">›</span>
-      ${langLabel ? `<span>${langLabel}</span><span class="record-breadcrumb__sep">›</span>` : ""}
+      <span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>
+      ${langLabel ? `<span>${langLabel}</span><span class="icon-svg icon-svg--angle-right icon-svg--sm record-breadcrumb__sep" aria-hidden="true"></span>` : ""}
       <span>${n.from || letter.id || ""}</span>
     </nav>
 
@@ -181,8 +181,8 @@ function renderRelatedRecords(rec, backPath) {
       <h2 class="record-section__title">Related Records</h2>
       ${prev || next ? `
         <div class="record-nav-prev-next">
-          ${prev ? `<a class="record-nav-link record-nav-link--prev" href="${backPath}/${prev.id}">← ${prev.title || prev.id}</a>` : "<span></span>"}
-          ${next ? `<a class="record-nav-link record-nav-link--next" href="${backPath}/${next.id}">${next.title || next.id} →</a>` : ""}
+          ${prev ? `<a class="record-nav-link record-nav-link--prev" href="${backPath}/${prev.id}"><span class="icon-svg icon-svg--arrow-left icon-svg--md" aria-hidden="true"></span> ${prev.title || prev.id}</a>` : "<span></span>"}
+          ${next ? `<a class="record-nav-link record-nav-link--next" href="${backPath}/${next.id}">${next.title || next.id} <span class="icon-svg icon-svg--arrow-right icon-svg--md" aria-hidden="true"></span></a>` : ""}
         </div>` : ""}
       ${related.length ? `
         <div class="record-related-grid">
