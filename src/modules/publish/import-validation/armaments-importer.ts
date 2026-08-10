@@ -105,6 +105,11 @@ export interface ImportResult {
 // armaments-missiles-{germany,italy,japan,other-axis} +
 // armaments-wunderwaffen-{germany,italy,japan,other-axis}, 0
 // unexpected round-trip diffs), then reset.
+// DB recovery run (2026-08-10): Record/Entity/TimelineEvent tables were
+// found empty while public/data/ still held live content (see recovery
+// plan). Executed (runId in storage/import-reports/recovery/ —
+// 85 armaments records created, 0 skipped, archive integrity PASS).
+// Reset to false afterward.
 const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {

@@ -1,5 +1,6 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { notFoundAs404 } from "../../utilities/prisma-errors";
 import { findAdminDuplicateCandidates } from "./admin-duplicate-check";
 import { toRecordLike } from "../publish/publish.service";
 import { toArmamentJson } from "../publish/generators/armaments.generator";
@@ -145,7 +146,7 @@ export class ArmamentsService {
   }
 
   async delete(id: string) {
-    await prisma.record.delete({ where: { id } });
+    await notFoundAs404(() => prisma.record.delete({ where: { id } }), "Armament not found");
   }
 
   // Uses the existing RecordMedia relation already declared on both

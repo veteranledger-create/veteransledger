@@ -1,5 +1,7 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { notFoundAs404 } from "../../utilities/prisma-errors";
+import { pickEntityFields } from "../../utilities/allowlist";
 import { toPersonnelJson } from "../publish/generators/personnel.generator";
 import { checkPersonnelRecord } from "../publish/validators/personnel.conformance";
 import { RelatedRecordEntry } from "../publish/import-validation/personnel-entity-mapper";
@@ -42,17 +44,21 @@ export class PersonnelService {
   }
 
   async create(data: object) {
-    const d = data as { name?: string; slug?: string; [key: string]: unknown };
-    const slug = d.slug || await this.resolveUniqueSlug(d.name || "person");
-    return prisma.entity.create({ data: { ...d, type: "PERSON", slug } as Parameters<typeof prisma.entity.create>[0]["data"] });
+    const fields = pickEntityFields(data);
+    const name = (fields.name as string | undefined) || "person";
+    const slug = await this.resolveUniqueSlug(name);
+    return prisma.entity.create({ data: { ...fields, type: "PERSON", slug } as Parameters<typeof prisma.entity.create>[0]["data"] });
   }
 
   async update(id: string, data: object) {
-    return prisma.entity.update({ where: { id }, data: data as Parameters<typeof prisma.entity.update>[0]["data"] });
+    return notFoundAs404(
+      () => prisma.entity.update({ where: { id }, data: pickEntityFields(data) as Parameters<typeof prisma.entity.update>[0]["data"] }),
+      "Personnel record not found",
+    );
   }
 
   async delete(id: string) {
-    await prisma.entity.delete({ where: { id } });
+    await notFoundAs404(() => prisma.entity.delete({ where: { id } }), "Personnel record not found");
   }
 
   async preview(id: string) {

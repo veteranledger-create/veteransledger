@@ -6,7 +6,7 @@
  * missing, so the page works even before a first publish.
  */
 
-import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { loadTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 
 async function init() {
@@ -20,10 +20,9 @@ async function init() {
 
   // site_content translations store the whole source file as one
   // re-translated JSON string — swap it in before populating the DOM.
-  let isMachine = false;
   const t = await loadTranslation("site_content", "homepage.json");
   if (t?.fields?.content) {
-    try { data = JSON.parse(t.fields.content); isMachine = t.isMachine; }
+    try { data = JSON.parse(t.fields.content); }
     catch { /* translated content isn't valid JSON — keep English */ }
   }
 
@@ -88,15 +87,6 @@ async function init() {
           <p class="archive-card__desc">${escText(card.desc || "")}</p>
           <span class="icon-svg icon-svg--arrow-right icon-svg--lg archive-card__arrow" aria-hidden="true"></span>
         </a>`).join("");
-  }
-
-  // Scoped to the hero section specifically — other scripts (navigation.js,
-  // page-content.js) manage their own notices elsewhere on the page and
-  // must not remove this one, or each other's, via a global selector.
-  const heroEl = document.querySelector("[data-home='hero-title']")?.closest("section, .hero, header") || document.body;
-  heroEl.querySelector(":scope > .vl-mt-notice")?.remove();
-  if (isMachine) {
-    heroEl.insertAdjacentHTML("afterbegin", machineNoticeHtml({ isMachine: true }));
   }
 }
 

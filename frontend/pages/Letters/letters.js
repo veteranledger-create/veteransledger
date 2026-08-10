@@ -7,9 +7,9 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
-import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { applyRecordTranslation, loadManifestTranslated } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
-import { applyUiStrings } from "/pages/shared/ui-strings.js";
+import { applyUiStrings, t } from "/pages/shared/ui-strings.js";
 
 let COLLECTIONS = [];
 
@@ -51,8 +51,7 @@ function normalise(letter) {
 
 async function loadManifest() {
   try {
-    const res = await fetch("/public/data/letters/index.json");
-    const data = res.ok ? await res.json() : null;
+    const data = await loadManifestTranslated("/public/data/letters/index.json", "letters/index.json");
     COLLECTIONS = (data?.collections ?? []).map((c) => ({
       id:   c.id,
       label: c.label,
@@ -75,8 +74,8 @@ function renderCollectionFilter() {
   const bar = document.querySelector(".filter-bar");
   if (!bar || !COLLECTIONS.length) return;
   bar.innerHTML =
-    `<button type="button" class="filter-btn is-active" data-lang="all">All</button>` +
-    COLLECTIONS.map((c) => `<button type="button" class="filter-btn" data-lang="${c.id}">${c.label}</button>`).join("");
+    `<button type="button" class="filter-btn${activeLang === "all" ? " is-active" : ""}" data-lang="all">${t("search.filter.all", null, "All")}</button>` +
+    COLLECTIONS.map((c) => `<button type="button" class="filter-btn${activeLang === c.id ? " is-active" : ""}" data-lang="${c.id}">${c.label}</button>`).join("");
 }
 
 async function init() {
@@ -108,6 +107,11 @@ async function init() {
   });
 
   buildPaginator();
+
+  onLocaleChange(async () => {
+    await loadManifest();
+    renderCollectionFilter();
+  });
 }
 
 function buildPaginator() {
@@ -179,7 +183,6 @@ function renderLetters(letters) {
       applyRecordTranslation(card, "record", translateId, {
         titleSelector: ".letter-card__from",
         summarySelector: ".letter-card__excerpt",
-        noticeAnchor: ".letter-card__header",
       });
     }
   });
@@ -190,7 +193,6 @@ onLocaleChange(() => {
     applyRecordTranslation(card, "record", card.dataset.translateId, {
       titleSelector: ".letter-card__from",
       summarySelector: ".letter-card__excerpt",
-      noticeAnchor: ".letter-card__header",
     });
   });
 });

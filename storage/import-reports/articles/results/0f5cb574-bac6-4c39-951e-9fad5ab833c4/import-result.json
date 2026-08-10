@@ -1,0 +1,217 @@
+{
+  "runId": "0f5cb574-bac6-4c39-951e-9fad5ab833c4",
+  "executedAt": "2026-08-10T18:26:53.320Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 85,
+    "collectionCount": 28,
+    "existingArticleSlugs": []
+  },
+  "preview": {
+    "generatedAt": "2026-08-10T18:26:53.347Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "nuremberg",
+      "berlin-1945",
+      "poland-1939",
+      "rearmament",
+      "anschluss",
+      "july-20",
+      "occupation",
+      "rise-nsdap"
+    ],
+    "recordsToUpdate": [],
+    "collectionsToCreate": [
+      "articles-legal",
+      "articles-military",
+      "articles-political"
+    ],
+    "collectionsExisting": [],
+    "archiveIntegrity": {
+      "generatedAt": "2026-08-10T18:26:53.346Z",
+      "filesScanned": 8,
+      "declaredFiles": 8,
+      "activeFiles": [
+        "legal/nuremberg.json",
+        "military/berlin-1945.json",
+        "military/poland-1939.json",
+        "military/rearmament.json",
+        "political/anschluss.json",
+        "political/july-20.json",
+        "political/occupation.json",
+        "political/rise-nsdap.json"
+      ],
+      "obsoleteFiles": [],
+      "replacementMapping": [],
+      "duplicateIds": [],
+      "duplicateRecordIds": [],
+      "duplicateSlugs": [],
+      "undeclaredFiles": [],
+      "missingDeclaredFiles": [],
+      "unreadableDeclaredFiles": [],
+      "malformedDeclaredFiles": [],
+      "violations": [],
+      "passed": true
+    }
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqn1ij7c000ezv9bfoalz52g",
+      "slug": "nuremberg",
+      "category": "legal"
+    },
+    {
+      "id": "cmqn13gj30007r81ythq5nl04",
+      "slug": "berlin-1945",
+      "category": "military"
+    },
+    {
+      "id": "cmqn13gi90003r81yes89xagb",
+      "slug": "poland-1939",
+      "category": "military"
+    },
+    {
+      "id": "cmqn13gir0005r81y92az0sgx",
+      "slug": "rearmament",
+      "category": "military"
+    },
+    {
+      "id": "cmqn1ij750008zv9bulzazs1j",
+      "slug": "anschluss",
+      "category": "political"
+    },
+    {
+      "id": "cmqn1ij720006zv9b5xp0wl9n",
+      "slug": "july-20",
+      "category": "political"
+    },
+    {
+      "id": "cmqn1ij77000azv9b44hqukpa",
+      "slug": "occupation",
+      "category": "political"
+    },
+    {
+      "id": "cmqn1ij6p0004zv9bwpmw4aqp",
+      "slug": "rise-nsdap",
+      "category": "political"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "articles-legal",
+      "id": "cmsnkci78000ufrdhae2dk757"
+    },
+    {
+      "slug": "articles-military",
+      "id": "cmsnkci7e000vfrdhyh1tpgk6"
+    },
+    {
+      "slug": "articles-political",
+      "id": "cmsnkci7n000wfrdhxcyggw3f"
+    }
+  ],
+  "recordsSkipped": [],
+  "verification": {
+    "recordsCompared": 8,
+    "expectedDifferences": [
+      {
+        "recordId": "nuremberg",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/nuremberg.jpg"
+        ],
+        "classification": "expected"
+      },
+      {
+        "recordId": "nuremberg",
+        "field": "recordId",
+        "sourceValue": "cmqn1ij7c000ezv9bfoalz52g",
+        "generatedValue": "nuremberg",
+        "classification": "expected"
+      },
+      {
+        "recordId": "berlin-1945",
+        "field": "recordId",
+        "sourceValue": "cmqn13gj30007r81ythq5nl04",
+        "generatedValue": "berlin-1945",
+        "classification": "expected"
+      },
+      {
+        "recordId": "poland-1939",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/poland-1939.jpg"
+        ],
+        "classification": "expected"
+      },
+      {
+        "recordId": "poland-1939",
+        "field": "recordId",
+        "sourceValue": "cmqn13gi90003r81yes89xagb",
+        "generatedValue": "poland-1939",
+        "classification": "expected"
+      },
+      {
+        "recordId": "rearmament",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/rearmament.jpg"
+        ],
+        "classification": "expected"
+      },
+      {
+        "recordId": "rearmament",
+        "field": "recordId",
+        "sourceValue": "cmqn13gir0005r81y92az0sgx",
+        "generatedValue": "rearmament",
+        "classification": "expected"
+      },
+      {
+        "recordId": "anschluss",
+        "field": "recordId",
+        "sourceValue": "cmqn1ij750008zv9bulzazs1j",
+        "generatedValue": "anschluss",
+        "classification": "expected"
+      },
+      {
+        "recordId": "july-20",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/july-20.jpg"
+        ],
+        "classification": "expected"
+      },
+      {
+        "recordId": "july-20",
+        "field": "recordId",
+        "sourceValue": "cmqn1ij720006zv9b5xp0wl9n",
+        "generatedValue": "july-20",
+        "classification": "expected"
+      },
+      {
+        "recordId": "occupation",
+        "field": "recordId",
+        "sourceValue": "cmqn1ij77000azv9b44hqukpa",
+        "generatedValue": "occupation",
+        "classification": "expected"
+      },
+      {
+        "recordId": "rise-nsdap",
+        "field": "images",
+        "generatedValue": [
+          "/storage/images/articles/rise-nsdap.jpg"
+        ],
+        "classification": "expected"
+      },
+      {
+        "recordId": "rise-nsdap",
+        "field": "recordId",
+        "sourceValue": "cmqn1ij6p0004zv9bwpmw4aqp",
+        "generatedValue": "rise-nsdap",
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

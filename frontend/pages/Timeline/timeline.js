@@ -208,7 +208,6 @@ function render() {
           applyRecordTranslation(evEl, "timeline_event", ev.id, {
             titleSelector: ".timeline-event__title",
             summarySelector: ".timeline-event__summary",
-            noticeAnchor: ".timeline-event__body",
           });
         }
       });

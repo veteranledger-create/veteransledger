@@ -184,7 +184,6 @@ function renderCampaigns(container, campaigns) {
       applyRecordTranslation(card, "record", translateId, {
         titleSelector: ".record-card__title",
         summarySelector: ".record-card__summary",
-        noticeAnchor: ".record-card__body",
       });
     }
   });
@@ -195,7 +194,6 @@ onLocaleChange(() => {
     applyRecordTranslation(card, "record", card.dataset.translateId, {
       titleSelector: ".record-card__title",
       summarySelector: ".record-card__summary",
-      noticeAnchor: ".record-card__body",
     });
   });
 });

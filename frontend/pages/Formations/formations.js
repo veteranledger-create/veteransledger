@@ -249,7 +249,6 @@ function applyCardTranslations(container) {
     applyRecordTranslation(card, "record", card.dataset.translateId, {
       titleSelector: ".record-card__title",
       summarySelector: ".record-card__summary",
-      noticeAnchor: ".record-card__body",
     });
   });
 }

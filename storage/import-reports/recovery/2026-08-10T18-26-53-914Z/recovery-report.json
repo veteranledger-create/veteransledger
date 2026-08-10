@@ -1,0 +1,117 @@
+{
+  "generatedAt": "2026-08-10T18:26:53.915Z",
+  "mode": "execute",
+  "preview": [
+    {
+      "type": "armaments",
+      "objectKind": "records",
+      "toCreate": 85,
+      "toUpdate": 0,
+      "extra": "28 collection(s) to create",
+      "archiveIntegrityPassed": true,
+      "archiveIntegrityIssues": []
+    },
+    {
+      "type": "articles",
+      "objectKind": "records",
+      "toCreate": 8,
+      "toUpdate": 0,
+      "extra": "3 collection(s) to create",
+      "archiveIntegrityPassed": true,
+      "archiveIntegrityIssues": []
+    },
+    {
+      "type": "campaigns",
+      "objectKind": "records",
+      "toCreate": 35,
+      "toUpdate": 0,
+      "extra": "5 collection(s) to create",
+      "archiveIntegrityPassed": true,
+      "archiveIntegrityIssues": []
+    },
+    {
+      "type": "letters",
+      "objectKind": "records",
+      "toCreate": 24,
+      "toUpdate": 0,
+      "extra": "6 collection(s) to create"
+    },
+    {
+      "type": "formations",
+      "objectKind": "records",
+      "toCreate": 32,
+      "toUpdate": 0
+    },
+    {
+      "type": "personnel",
+      "objectKind": "entities",
+      "toCreate": 46,
+      "toUpdate": 0,
+      "extra": "28 Personnel-to-Personnel relationship(s) to create"
+    },
+    {
+      "type": "timeline",
+      "objectKind": "timelineEvents",
+      "toCreate": 83,
+      "toUpdate": 0
+    }
+  ],
+  "run": [
+    {
+      "type": "armaments",
+      "status": "success",
+      "created": 85,
+      "skipped": 0,
+      "invalidOrErrors": 0,
+      "runId": "b711f21c-5d4a-4a67-b915-ad6376f7c1fc"
+    },
+    {
+      "type": "articles",
+      "status": "success",
+      "created": 8,
+      "skipped": 0,
+      "invalidOrErrors": 0,
+      "runId": "0f5cb574-bac6-4c39-951e-9fad5ab833c4"
+    },
+    {
+      "type": "campaigns",
+      "status": "success",
+      "created": 35,
+      "skipped": 0,
+      "invalidOrErrors": 0,
+      "runId": "b9b50951-b99c-42e7-b3ca-2fe1c043f892"
+    },
+    {
+      "type": "letters",
+      "status": "success",
+      "created": 24,
+      "skipped": 0,
+      "invalidOrErrors": 0,
+      "runId": "34ece2be-80c4-472b-b2ab-6701a38d93b5"
+    },
+    {
+      "type": "formations",
+      "status": "success",
+      "created": 32,
+      "skipped": 0,
+      "invalidOrErrors": 0,
+      "runId": "65ae257a-1563-4005-9a53-f93dfc53ac57"
+    },
+    {
+      "type": "personnel",
+      "status": "success",
+      "created": 46,
+      "skipped": 0,
+      "invalidOrErrors": 0,
+      "runId": "f55d202e-5023-4eb3-af6c-5e991a0b515f"
+    },
+    {
+      "type": "timeline",
+      "status": "success",
+      "created": 83,
+      "skipped": 0,
+      "invalidOrErrors": 0,
+      "runId": "e1fd029a-6b79-4e75-81f9-d3c92975f818"
+    }
+  ]
+}

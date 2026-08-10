@@ -151,9 +151,46 @@ async function extractSourceFields(
 
 // ── Service ───────────────────────────────────────────────────────────────────
 
+// Mirrors the published gate every public content path (publish.service.ts's
+// loadPublished*, the public frontend's static JSON) already enforces for the
+// English source. site_content has no publish flag of its own — its English
+// source (public/data/*.json) is unconditionally public, so its translations
+// are too. record/entity/timeline_event sources CAN be unpublished drafts;
+// their translations must not be readable by an unauthenticated caller before
+// the source itself is public.
+async function isSourcePublished(entityType: string, entityId: string): Promise<boolean> {
+  switch (entityType) {
+    case "record": {
+      const r = await prisma.record.findUnique({ where: { id: entityId }, select: { published: true } });
+      return r?.published ?? false;
+    }
+    case "entity": {
+      const e = await prisma.entity.findUnique({ where: { id: entityId }, select: { published: true } });
+      return e?.published ?? false;
+    }
+    case "timeline_event": {
+      const t = await prisma.timelineEvent.findUnique({ where: { id: entityId }, select: { published: true } });
+      return t?.published ?? false;
+    }
+    case "site_content":
+      return true;
+    default:
+      return false;
+  }
+}
+
 export class TranslationsService {
-  /** Return all existing translations for a given source record, keyed by locale. */
-  async list(entityType: string, entityId: string) {
+  /**
+   * Return all existing translations for a given source record, keyed by
+   * locale. `includeUnpublished` is true only for authenticated (Admin)
+   * callers — see translations.controller.ts — so editors can still see and
+   * edit translations for a draft before it's published, while an
+   * unauthenticated caller gets an empty result for an unpublished source.
+   */
+  async list(entityType: string, entityId: string, includeUnpublished = false) {
+    if (!includeUnpublished && !(await isSourcePublished(entityType, entityId))) {
+      return {};
+    }
     const rows = await prisma.translation.findMany({
       where: { entityType, entityId },
       orderBy: { locale: "asc" },
@@ -163,8 +200,11 @@ export class TranslationsService {
     return map;
   }
 
-  /** Get a single locale translation. Returns null if not found (not an error). */
-  async get(entityType: string, entityId: string, locale: string) {
+  /** Get a single locale translation. Returns null if not found (not an error) or if the source isn't published and the caller isn't authenticated. */
+  async get(entityType: string, entityId: string, locale: string, includeUnpublished = false) {
+    if (!includeUnpublished && !(await isSourcePublished(entityType, entityId))) {
+      return null;
+    }
     return prisma.translation.findUnique({
       where: { entityType_entityId_locale: { entityType, entityId, locale } },
     });
@@ -203,8 +243,11 @@ export class TranslationsService {
     const provider = resolveProvider();
     if (!provider) throw NOT_CONFIGURED();
 
-    // Guard: never overwrite human-verified or published translations unless explicitly forced
-    const existing = await this.get(entityType, entityId, locale);
+    // Guard: never overwrite human-verified or published translations unless explicitly forced.
+    // includeUnpublished: true — this whole method is already route-gated to
+    // authenticated admins, so the public-read gate must not suppress it, or
+    // this guard would silently stop protecting drafts.
+    const existing = await this.get(entityType, entityId, locale, true);
     if ((existing?.status === "human" || existing?.status === "published") && !options.force) {
       throw new AppError(
         409,
@@ -291,7 +334,9 @@ export class TranslationsService {
     if (!Object.values(fields).some((v) => typeof v === "string" && v.trim())) {
       throw new AppError(400, "Translation is empty — write some translated text before saving.");
     }
-    const existing = await this.get(entityType, entityId, locale);
+    // includeUnpublished: true — see generate()'s identical note; this method
+    // is already route-gated to authenticated admins.
+    const existing = await this.get(entityType, entityId, locale, true);
 
     const now = new Date();
     return prisma.translation.upsert({
@@ -324,7 +369,9 @@ export class TranslationsService {
           : `Unsupported locale: ${locale}. Supported: ${SUPPORTED_LOCALES.join(", ")}.`,
       );
     }
-    const existing = await this.get(entityType, entityId, locale);
+    // includeUnpublished: true — see generate()'s identical note; this method
+    // is already route-gated to authenticated admins.
+    const existing = await this.get(entityType, entityId, locale, true);
     if (!existing) throw new AppError(404, "Translation not found");
     await prisma.translation.delete({
       where: { entityType_entityId_locale: { entityType, entityId, locale } },

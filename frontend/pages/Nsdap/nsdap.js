@@ -4,12 +4,11 @@
  * Never falls back to JSON.stringify — every section has a dedicated renderer.
  */
 
-import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { loadTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
 
 const cache = {};
-const machineFlags = {};
 let activeSection = "overview";
 let activeHitlerSub = "bio";
 let activePartySub = "structure";
@@ -65,20 +64,12 @@ async function load(key) {
     if (t?.fields?.content) {
       try {
         cache[key] = JSON.parse(t.fields.content);
-        machineFlags[key] = t.isMachine;
       } catch {
         // translated content isn't valid JSON — keep showing English
       }
     }
   }
   return cache[key];
-}
-
-function injectMachineNotice(container, keys) {
-  container.querySelector(".vl-mt-notice")?.remove();
-  if (keys.some((k) => machineFlags[k])) {
-    container.insertAdjacentHTML("afterbegin", machineNoticeHtml({ isMachine: true }));
-  }
 }
 
 /* ── Init ───────────────────────────────────────────────────── */
@@ -140,7 +131,6 @@ async function init() {
     // Cached entries were resolved for the previous locale's translation
     // (or its absence) — clear so load() re-checks against the new locale.
     Object.keys(cache).forEach((k) => delete cache[k]);
-    Object.keys(machineFlags).forEach((k) => delete machineFlags[k]);
     document.querySelectorAll('[data-wired="1"]').forEach((el) => delete el.dataset.wired);
     showSection(activeSection);
   });
@@ -156,7 +146,6 @@ async function showSection(id) {
   if (id === "overview") {
     await load("overview");
     renderOverview(container, cache.overview);
-    injectMachineNotice(container, ["overview"]);
   } else if (id === "hitler") {
     const keys = [
       "hitler_bio",
@@ -188,11 +177,9 @@ async function showSection(id) {
   } else if (id === "timeline") {
     await load("timeline");
     renderTimeline(container, cache.timeline);
-    injectMachineNotice(container, ["timeline"]);
   } else if (id === "glossary") {
     await load("glossary");
     renderGlossary(container, cache.glossary);
-    injectMachineNotice(container, ["glossary"]);
   }
 }
 
@@ -302,7 +289,6 @@ function switchHitlerSub(sub) {
 
   if (sub === "bio") renderBio(out, data);
   else renderSectionDoc(out, data);
-  injectMachineNotice(out, [`hitler_${sub}`]);
 }
 
 function renderBio(container, data) {
@@ -410,7 +396,6 @@ function switchPartySub(sub) {
   else if (sub === "economy") renderEconomy(out, data);
   else if (sub === "state_relations") renderContentDoc(out, data);
   else if (sub === "dissolution") renderContentDoc(out, data);
-  injectMachineNotice(out, [`party_${sub}`]);
 }
 
 function renderStructure(container, data) {

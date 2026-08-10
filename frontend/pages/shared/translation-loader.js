@@ -46,12 +46,30 @@ export function clearTranslationCache() {
 }
 
 /**
- * Build the small "Machine translated. Human review pending." notice.
- * Returns an empty string when no notice should be shown.
+ * Fetches a JSON manifest (e.g. armaments/index.json, personnel/index.json,
+ * letters/index.json) and transparently swaps in its translated content —
+ * same site_content/{entityId} translation these files already accept via
+ * the Admin site-content API, and the same "whole file translated as one
+ * JSON string" shape used by navigation.json/homepage.json. On any miss
+ * (no translation, parse failure, or fetch failure) falls back to the raw
+ * English manifest so category/branch/collection labels never disappear.
+ *
+ * @param {string} url - e.g. "/public/data/armaments/index.json"
+ * @param {string} entityId - e.g. "armaments/index.json"
  */
-export function machineNoticeHtml(translation) {
-  if (!translation || !translation.isMachine) return "";
-  return `<div class="vl-mt-notice" role="status">Machine translated. Human review pending.</div>`;
+export async function loadManifestTranslated(url, entityId) {
+  let english = null;
+  try {
+    const res = await fetch(url);
+    english = res.ok ? await res.json() : null;
+  } catch { /* network error — english stays null */ }
+
+  const t = await loadTranslation("site_content", entityId);
+  if (t?.fields?.content) {
+    try { return JSON.parse(t.fields.content); }
+    catch { /* translated content isn't valid JSON — keep English */ }
+  }
+  return english;
 }
 
 function escapeHtml(str) {
@@ -79,7 +97,7 @@ function escapeHtml(str) {
  * @param {HTMLElement} root - the element record.js rendered the record into
  * @param {string} entityType - "record" | "entity" | "timeline_event" | "site_content"
  * @param {string} entityId
- * @param {{titleSelector?:string, summarySelector?:string, contentSelector?:string, noticeAnchor?:string}} [opts]
+ * @param {{titleSelector?:string, summarySelector?:string, contentSelector?:string}} [opts]
  */
 export async function applyRecordTranslation(root, entityType, entityId, opts = {}) {
   if (!root || !entityId) return null;
@@ -87,7 +105,6 @@ export async function applyRecordTranslation(root, entityType, entityId, opts = 
   const titleEl = root.querySelector(opts.titleSelector ?? ".record-header__title");
   const summaryEl = root.querySelector(opts.summarySelector ?? ".record-summary");
   const contentEl = opts.contentSelector ? root.querySelector(opts.contentSelector) : null;
-  const anchor = root.querySelector(opts.noticeAnchor ?? ".record-header");
 
   // Capture the original English text on first call so a later switch back
   // to English (or to a locale with no translation yet) can restore it —
@@ -96,16 +113,12 @@ export async function applyRecordTranslation(root, entityType, entityId, opts = 
   if (summaryEl && summaryEl.dataset.originalText === undefined) summaryEl.dataset.originalText = summaryEl.textContent;
   if (contentEl && contentEl.dataset.originalHtml === undefined) contentEl.dataset.originalHtml = contentEl.innerHTML;
 
-  const existingNotice =
-    anchor?.nextElementSibling?.classList?.contains("vl-mt-notice") ? anchor.nextElementSibling : null;
-
   const t = await loadTranslation(entityType, entityId);
 
   if (!t) {
     if (titleEl?.dataset.originalText !== undefined) titleEl.textContent = titleEl.dataset.originalText;
     if (summaryEl?.dataset.originalText !== undefined) summaryEl.textContent = summaryEl.dataset.originalText;
     if (contentEl?.dataset.originalHtml !== undefined) contentEl.innerHTML = contentEl.dataset.originalHtml;
-    existingNotice?.remove();
     return null;
   }
 
@@ -113,9 +126,5 @@ export async function applyRecordTranslation(root, entityType, entityId, opts = 
   if (summaryEl && t.fields.summary) summaryEl.textContent = t.fields.summary;
   if (contentEl && t.fields.content) contentEl.innerHTML = escapeHtml(t.fields.content).replace(/\n/g, "<br>");
 
-  existingNotice?.remove();
-  if (t.isMachine && anchor) {
-    anchor.insertAdjacentHTML("afterend", machineNoticeHtml(t));
-  }
   return t;
 }

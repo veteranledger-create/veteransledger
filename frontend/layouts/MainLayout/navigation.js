@@ -15,7 +15,7 @@
  *   <template id="tpl-(sidebar|mobile|footer)-…"> → row markup to clone
  */
 
-import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { loadTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 
 const CONFIG = {
@@ -62,6 +62,14 @@ function cloneTemplate(id) {
  * Apply data-bind directives on/within a scope.
  * Grammar: "targetAttr:sourceField, …" ; "text" sets textContent.
  * null/false/undefined value → attribute omitted (keeps aria-current accurate).
+ *
+ * Deliberately leaves data-bind in place: bindBrand()/renderFooter() re-run
+ * this on every locale switch (see onLocaleChange in initNavigation), and a
+ * statically-present element — the brand tagline, footer about text,
+ * legal line, copyright, etc. — only exists once in the DOM, unlike nav
+ * rows and footer columns which are template-cloned fresh on every render.
+ * Stripping the attribute after the first call previously left those
+ * static elements permanently stuck on whatever locale rendered first.
  */
 function applyBindings(scope, view) {
   const targets = [];
@@ -79,7 +87,6 @@ function applyBindings(scope, view) {
         if (attr === "text") el.textContent = value;
         else el.setAttribute(attr, value);
       });
-    el.removeAttribute("data-bind");
   });
 }
 
@@ -517,24 +524,10 @@ function initInteractions(data) {
 async function resolveNavData(englishData) {
   const t = await loadTranslation("site_content", "navigation.json");
   if (t?.fields?.content) {
-    try { return { data: JSON.parse(t.fields.content), isMachine: t.isMachine }; }
+    try { return JSON.parse(t.fields.content); }
     catch { /* translated content isn't valid JSON — keep English */ }
   }
-  return { data: englishData, isMachine: false };
-}
-
-// Scoped to elements immediately after the brand link only — other scripts
-// (home.js, page-content.js) manage their own notices elsewhere on the page
-// and must not be affected by a global ".vl-mt-notice" removal here.
-function renderNoticeNearBrand(isMachine) {
-  document.querySelectorAll(".sidebar__brand, .site-header__brand").forEach((brandEl) => {
-    if (brandEl.nextElementSibling?.classList.contains("vl-mt-notice")) {
-      brandEl.nextElementSibling.remove();
-    }
-    if (isMachine) {
-      brandEl.insertAdjacentHTML("afterend", machineNoticeHtml({ isMachine: true }));
-    }
-  });
+  return englishData;
 }
 
 /* ---------- public entry ---------- */
@@ -548,13 +541,12 @@ export async function initNavigation(extraConfig) {
     return;
   }
 
-  const { data, isMachine } = await resolveNavData(englishData);
+  const data = await resolveNavData(englishData);
 
   here = hereLoc();
   bindBrand(data);
   renderSources(data); // builds menus first so theme buttons exist
   renderFooter(data);
-  renderNoticeNearBrand(isMachine);
   initTheme(data);
   initInteractions(data);
 
@@ -563,11 +555,10 @@ export async function initNavigation(extraConfig) {
   // guarded by `wired`, so re-binding brand/nav/footer text is safe and
   // doesn't orphan any handlers.
   onLocaleChange(async () => {
-    const { data: newData, isMachine: newIsMachine } = await resolveNavData(englishData);
+    const newData = await resolveNavData(englishData);
     bindBrand(newData);
     renderSources(newData);
     renderFooter(newData);
-    renderNoticeNearBrand(newIsMachine);
   });
 }
 

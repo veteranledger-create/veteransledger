@@ -42,6 +42,8 @@ export interface ImportResult {
 // ── Timeline execution gate ──────────────────────────────────────────────
 // Same two-factor design as every other onboarded content type's gate.
 // Independent from every other type's gate.
+// DB recovery run (2026-08-10): see armaments-importer.ts for context.
+// Executed (83 timeline events created, 0 skipped). Reset to false afterward.
 const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {

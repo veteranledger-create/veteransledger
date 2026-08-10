@@ -1,0 +1,219 @@
+{
+  "runId": "65ae257a-1563-4005-9a53-f93dfc53ac57",
+  "executedAt": "2026-08-10T18:26:53.561Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 152,
+    "existingFormationSlugs": []
+  },
+  "preview": {
+    "generatedAt": "2026-08-10T18:26:53.570Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "army-group-africa",
+      "army-group-b",
+      "army-group-centre",
+      "army-group-north",
+      "army-group-south",
+      "4th-panzer-army",
+      "6th-army",
+      "panzerarmee-afrika",
+      "panzergruppe-2",
+      "deutsches-afrikakorps",
+      "i-ss-panzer-corps",
+      "ii-ss-panzer-corps",
+      "brandenburgers",
+      "leibstandarte-ss-ah",
+      "ss-division-das-reich",
+      "ss-division-totenkopf",
+      "ss-division-wiking",
+      "luftflotte-2",
+      "luftflotte-3",
+      "luftflotte-4",
+      "befehlshaber-uboote",
+      "kriegsmarine-surface",
+      "italian-10th-army",
+      "romanian-3rd-army",
+      "finnish-defence-forces",
+      "hungarian-2nd-army",
+      "33rd-ss-charlemagne",
+      "croatian-legion",
+      "den-norske-legion",
+      "frikorps-danmark",
+      "legion-wallonie",
+      "xv-cossack-cavalry-corps"
+    ],
+    "recordsToUpdate": [],
+    "blockedByErrors": 0
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqxys3ll0003s5mzw70zh099",
+      "slug": "army-group-africa",
+      "section": "army-groups"
+    },
+    {
+      "id": "cmqxys3lo0004s5mzaj5iaeev",
+      "slug": "army-group-b",
+      "section": "army-groups"
+    },
+    {
+      "id": "cmqxys3le0001s5mzpuka1hg0",
+      "slug": "army-group-centre",
+      "section": "army-groups"
+    },
+    {
+      "id": "cmqxys3ka0000s5mzhi64j637",
+      "slug": "army-group-north",
+      "section": "army-groups"
+    },
+    {
+      "id": "cmqxys3li0002s5mz6adb1tzt",
+      "slug": "army-group-south",
+      "section": "army-groups"
+    },
+    {
+      "id": "cmqxys3lx0006s5mz6yakzwtv",
+      "slug": "4th-panzer-army",
+      "section": "armies"
+    },
+    {
+      "id": "cmqxys3lt0005s5mzo1dbv3yy",
+      "slug": "6th-army",
+      "section": "armies"
+    },
+    {
+      "id": "cmqxys3m30008s5mzjze5gf9d",
+      "slug": "panzerarmee-afrika",
+      "section": "armies"
+    },
+    {
+      "id": "cmqxys3m00007s5mzov2lsg7w",
+      "slug": "panzergruppe-2",
+      "section": "armies"
+    },
+    {
+      "id": "cmqxys3me000bs5mzmo54tyfv",
+      "slug": "deutsches-afrikakorps",
+      "section": "corps"
+    },
+    {
+      "id": "cmqxys3m80009s5mzjkmqom1x",
+      "slug": "i-ss-panzer-corps",
+      "section": "corps"
+    },
+    {
+      "id": "cmqxys3mb000as5mz1n9evj37",
+      "slug": "ii-ss-panzer-corps",
+      "section": "corps"
+    },
+    {
+      "id": "cmqxys3mi000cs5mzwp97ma7t",
+      "slug": "brandenburgers",
+      "section": "divisions"
+    },
+    {
+      "id": "cmqxys3mm000ds5mzta77cqdd",
+      "slug": "leibstandarte-ss-ah",
+      "section": "waffen-ss"
+    },
+    {
+      "id": "cmqxys3mo000es5mz8ery4pr1",
+      "slug": "ss-division-das-reich",
+      "section": "waffen-ss"
+    },
+    {
+      "id": "cmqxys3mr000fs5mzun5ahj3w",
+      "slug": "ss-division-totenkopf",
+      "section": "waffen-ss"
+    },
+    {
+      "id": "cmqxys3mt000gs5mz2nqu7n0w",
+      "slug": "ss-division-wiking",
+      "section": "waffen-ss"
+    },
+    {
+      "id": "cmqxys3mz000hs5mzmrd7fqrl",
+      "slug": "luftflotte-2",
+      "section": "luftwaffe"
+    },
+    {
+      "id": "cmqxys3n1000is5mzd202ffwn",
+      "slug": "luftflotte-3",
+      "section": "luftwaffe"
+    },
+    {
+      "id": "cmqxys3n3000js5mzswutemc3",
+      "slug": "luftflotte-4",
+      "section": "luftwaffe"
+    },
+    {
+      "id": "cmqxys3n8000ks5mzj3dv3njx",
+      "slug": "befehlshaber-uboote",
+      "section": "kriegsmarine"
+    },
+    {
+      "id": "cmqxys3nb000ls5mzgxuov3gr",
+      "slug": "kriegsmarine-surface",
+      "section": "kriegsmarine"
+    },
+    {
+      "id": "cmqxys3nh000ns5mzkqjjid1z",
+      "slug": "italian-10th-army",
+      "section": "allies"
+    },
+    {
+      "id": "cmqxys3nk000os5mz5qld4wfc",
+      "slug": "romanian-3rd-army",
+      "section": "allies"
+    },
+    {
+      "id": "cmqxys3nf000ms5mz3ql97n7w",
+      "slug": "finnish-defence-forces",
+      "section": "allies"
+    },
+    {
+      "id": "cmqxys3nn000ps5mzij081qim",
+      "slug": "hungarian-2nd-army",
+      "section": "allies"
+    },
+    {
+      "id": "cmqxys3nu000rs5mzutn576xr",
+      "slug": "33rd-ss-charlemagne",
+      "section": "volunteers"
+    },
+    {
+      "id": "cmqxys3o5000us5mzgk9jqr0t",
+      "slug": "croatian-legion",
+      "section": "volunteers"
+    },
+    {
+      "id": "cmqxys3o2000ts5mzbs6mtwsf",
+      "slug": "den-norske-legion",
+      "section": "volunteers"
+    },
+    {
+      "id": "cmqxys3ny000ss5mzit3als9b",
+      "slug": "frikorps-danmark",
+      "section": "volunteers"
+    },
+    {
+      "id": "cmqxys3ns000qs5mz8lvdzx9b",
+      "slug": "legion-wallonie",
+      "section": "volunteers"
+    },
+    {
+      "id": "cmqxys3o7000vs5mzkx50blrh",
+      "slug": "xv-cossack-cavalry-corps",
+      "section": "volunteers"
+    }
+  ],
+  "recordsSkipped": [],
+  "recordsInvalid": [],
+  "verification": {
+    "recordsCompared": 32,
+    "expectedDifferences": [],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

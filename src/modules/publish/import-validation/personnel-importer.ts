@@ -112,6 +112,9 @@ export async function buildEntityImportPreview(mode: ImportMode, snapshot: PreEn
 // relationships, runId c05431b9-7420-4174-9814-aca5afeda48b — each time
 // reset to false immediately after the run completed. Personnel migration
 // is now complete: 46/46 entities, 28/28 relationships.
+// DB recovery run (2026-08-10): see armaments-importer.ts for context.
+// Executed (46 personnel entities + 28 relationships created, 0 skipped).
+// Reset to false afterward.
 const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {

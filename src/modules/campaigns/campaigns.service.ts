@@ -1,5 +1,7 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { notFoundAs404 } from "../../utilities/prisma-errors";
+import { pickRecordFields } from "../../utilities/allowlist";
 import { toRecordLike } from "../publish/publish.service";
 import { toCampaignJson } from "../publish/generators/campaigns.generator";
 import { checkCampaignRecord } from "../publish/validators/campaigns.conformance";
@@ -31,15 +33,18 @@ export class CampaignsService {
   }
 
   async create(data: object) {
-    return prisma.record.create({ data: { ...(data as object), type: "CAMPAIGN" } as Parameters<typeof prisma.record.create>[0]["data"] });
+    return prisma.record.create({ data: { ...pickRecordFields(data), type: "CAMPAIGN" } as Parameters<typeof prisma.record.create>[0]["data"] });
   }
 
   async update(id: string, data: object) {
-    return prisma.record.update({ where: { id }, data: data as Parameters<typeof prisma.record.update>[0]["data"] });
+    return notFoundAs404(
+      () => prisma.record.update({ where: { id }, data: pickRecordFields(data) as Parameters<typeof prisma.record.update>[0]["data"] }),
+      "Campaign not found",
+    );
   }
 
   async delete(id: string) {
-    await prisma.record.delete({ where: { id } });
+    await notFoundAs404(() => prisma.record.delete({ where: { id } }), "Campaign not found");
   }
 
   async preview(id: string) {

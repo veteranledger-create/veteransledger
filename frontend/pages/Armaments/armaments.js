@@ -6,7 +6,7 @@
 import { createPaginator } from "/pages/shared/paginator.js";
 import { cardImageCandidates, isAiGeneratedImageSrc } from "/pages/shared/media-blocks.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
-import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { applyRecordTranslation, loadManifestTranslated } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { applyUiStrings } from "/pages/shared/ui-strings.js";
 
@@ -32,8 +32,8 @@ const CATEGORIES_FALLBACK = [
 let manifestPromise = null;
 async function loadManifest() {
   if (!manifestPromise) {
-    manifestPromise = fetch("/public/data/armaments/index.json")
-      .then((r) => (r.ok ? r.json() : { categories: [] }))
+    manifestPromise = loadManifestTranslated("/public/data/armaments/index.json", "armaments/index.json")
+      .then((data) => data ?? { categories: [] })
       .catch(() => ({ categories: [] }));
   }
   return manifestPromise;
@@ -52,8 +52,8 @@ async function initCategories() {
 function renderCategoryTabs() {
   const tabs = document.getElementById("category-tabs");
   if (!tabs || !CATEGORIES.length) return;
-  tabs.innerHTML = CATEGORIES.map((c, i) =>
-    `<button type="button" class="category-tab${i === 0 ? " is-active" : ""}" role="tab" data-category="${c.id}">${c.label}</button>`,
+  tabs.innerHTML = CATEGORIES.map((c) =>
+    `<button type="button" class="category-tab${c.id === activeCategory ? " is-active" : ""}" role="tab" data-category="${c.id}">${c.label}</button>`,
   ).join("");
 }
 
@@ -134,6 +134,12 @@ async function init() {
 
   await loadCategory(startCat);
   switchCategory(startCat);
+
+  onLocaleChange(async () => {
+    manifestPromise = null; // force a re-fetch so the new locale's translated labels are picked up
+    await initCategories();
+    renderCategoryTabs();
+  });
 }
 
 async function switchCategory(catId) {
@@ -320,7 +326,6 @@ function renderArmaments(container, items, catId) {
       applyRecordTranslation(card, "record", translateId, {
         titleSelector: ".armament-card__name",
         summarySelector: ".armament-card__desc",
-        noticeAnchor: ".armament-card__body",
       });
     }
   });
@@ -334,7 +339,6 @@ onLocaleChange(() => {
     applyRecordTranslation(card, "record", card.dataset.translateId, {
       titleSelector: ".armament-card__name",
       summarySelector: ".armament-card__desc",
-      noticeAnchor: ".armament-card__body",
     });
   });
 });

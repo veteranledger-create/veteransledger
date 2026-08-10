@@ -1,6 +1,6 @@
-import { Prisma } from "@prisma/client";
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { notFoundAs404 } from "../../utilities/prisma-errors";
 import { toRecordLike } from "../publish/publish.service";
 import { toAwardJson } from "../publish/generators/awards.generator";
 import { toMapJson } from "../publish/generators/maps.generator";
@@ -41,20 +41,16 @@ export class RecordsService {
   }
 
   async update(id: string, data: object, userId: string) {
-    const record = await prisma.record.update({ where: { id }, data: data as Parameters<typeof prisma.record.update>[0]["data"] });
+    const record = await notFoundAs404(
+      () => prisma.record.update({ where: { id }, data: data as Parameters<typeof prisma.record.update>[0]["data"] }),
+      "Record not found",
+    );
     await prisma.auditLog.create({ data: { userId, action: "UPDATE", entity: "Record", entityId: id } });
     return record;
   }
 
   async delete(id: string, userId: string) {
-    try {
-      await prisma.record.delete({ where: { id } });
-    } catch (err) {
-      if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2025") {
-        throw new AppError(404, "Record not found");
-      }
-      throw err;
-    }
+    await notFoundAs404(() => prisma.record.delete({ where: { id } }), "Record not found");
     await prisma.auditLog.create({ data: { userId, action: "DELETE", entity: "Record", entityId: id } });
   }
 

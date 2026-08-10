@@ -4,19 +4,24 @@ import { TranslationsService } from "./translations.service";
 const service = new TranslationsService();
 
 export class TranslationsController {
-  /** GET /api/translations/:entityType/:entityId — all locales for one record */
+  /**
+   * GET /api/translations/:entityType/:entityId — all locales for one record.
+   * Public (optionalAuth) — an authenticated admin sees translations for
+   * unpublished sources too (needed to edit drafts); an unauthenticated
+   * caller only ever sees translations whose source is published.
+   */
   async list(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { entityType, entityId } = req.params;
-      res.json(await service.list(entityType, entityId));
+      res.json(await service.list(entityType, entityId, !!req.user));
     } catch (err) { next(err); }
   }
 
-  /** GET /api/translations/:entityType/:entityId/:locale — single locale */
+  /** GET /api/translations/:entityType/:entityId/:locale — single locale. Same public/admin visibility rule as list(). */
   async get(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { entityType, entityId, locale } = req.params;
-      const t = await service.get(entityType, entityId, locale);
+      const t = await service.get(entityType, entityId, locale, !!req.user);
       if (!t) { res.status(404).json({ error: "Translation not found" }); return; }
       res.json(t);
     } catch (err) { next(err); }

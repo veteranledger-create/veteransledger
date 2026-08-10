@@ -25,24 +25,24 @@
   <main id="main-content">
 
     <div style="padding:var(--space-12) var(--space-10) var(--space-8);">
-      <div class="section-label">Archive Search</div>
+      <div class="section-label" data-i18n="search.sectionLabel">Archive Search</div>
 
       <form class="search-form" id="search-form" role="search" style="margin-bottom:var(--space-8);">
         <div style="display:flex;gap:var(--space-3);max-width:640px;">
           <input type="search" id="search-input" name="q" class="contact-form__input"
-            placeholder="Search campaigns, personnel, armaments, letters…" autocomplete="off"
+            data-i18n-placeholder="search.placeholder" placeholder="Search campaigns, personnel, armaments, letters…" autocomplete="off"
             aria-label="Search archive" style="flex:1;font-size:var(--text-base);">
-          <button type="submit" class="btn btn-primary">SEARCH</button>
+          <button type="submit" class="btn btn-primary" data-i18n="search.submit">Search</button>
         </div>
 
         <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-4);" role="group"
           aria-label="Filter by type">
-          <button type="button" class="filter-btn is-active" data-type="all">All</button>
-          <button type="button" class="filter-btn" data-type="CAMPAIGN">Campaigns</button>
-          <button type="button" class="filter-btn" data-type="PERSON">Personnel</button>
-          <button type="button" class="filter-btn" data-type="ARMAMENT">Armaments</button>
-          <button type="button" class="filter-btn" data-type="LETTER">Letters</button>
-          <button type="button" class="filter-btn" data-type="ARTICLE">Articles</button>
+          <button type="button" class="filter-btn is-active" data-type="all" data-i18n="search.filter.all">All</button>
+          <button type="button" class="filter-btn" data-type="CAMPAIGN" data-i18n="search.filter.campaigns">Campaigns</button>
+          <button type="button" class="filter-btn" data-type="PERSON" data-i18n="search.filter.personnel">Personnel</button>
+          <button type="button" class="filter-btn" data-type="ARMAMENT" data-i18n="search.filter.armaments">Armaments</button>
+          <button type="button" class="filter-btn" data-type="LETTER" data-i18n="search.filter.letters">Letters</button>
+          <button type="button" class="filter-btn" data-type="ARTICLE" data-i18n="search.filter.articles">Articles</button>
         </div>
       </form>
 

@@ -5,7 +5,7 @@
 <div class="mobile-menu" id="mobile-menu-root">
   <div class="mobile-menu__scrim" data-nav-action="close-mobile-menu" hidden></div>
 
-  <div id="mobile-menu" class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="Site navigation" hidden>
+  <div id="mobile-menu" class="mobile-menu__panel" role="dialog" aria-modal="true" data-i18n-aria-label="nav.siteNavigationAria" aria-label="Site navigation" hidden>
 
     <!-- Drawer header -->
     <div class="mobile-menu__header">
@@ -14,7 +14,7 @@
         <span class="mobile-menu__brand-name" data-nav-mount="brand" data-bind="text:name">VeteransLedger</span>
       </a>
       <button type="button" class="mobile-menu__close" data-nav-action="close-mobile-menu"
-        aria-label="Close navigation menu">
+        data-i18n-aria-label="nav.closeMenuAria" aria-label="Close navigation menu">
         <span class="icon-close mobile-menu__close-icon" aria-hidden="true"></span>
       </button>
     </div>
@@ -27,17 +27,17 @@
     <!-- Bottom: theme + language + utility links -->
     <div class="mobile-menu__bottom">
       <button type="button" class="mobile-menu__link mobile-menu__theme-btn" data-nav-action="toggle-theme"
-        aria-pressed="false" aria-label="Toggle dark mode">
+        aria-pressed="false" data-i18n-aria-label="nav.toggleThemeAria" aria-label="Toggle dark mode">
         <span class="nav-icon mobile-menu__theme-icon" aria-hidden="true"></span>
         <span data-nav-mount="theme-label">DARK</span>
       </button>
-      <a href="/search" class="mobile-menu__link">
+      <a href="/search" class="mobile-menu__link" data-i18n-aria-label="nav.searchArchiveAria" aria-label="Search archive">
         <span class="nav-icon" data-icon="search" aria-hidden="true"></span>
-        <span>Search</span>
+        <span data-i18n="nav.search">Search</span>
       </a>
       <div class="lang-switcher lang-switcher--mobile" id="lang-switcher-mobile"></div>
-      <a href="/site-policies" class="mobile-menu__link mobile-menu__util-link">Policies</a>
-      <a href="/site-policies#removal" class="mobile-menu__link mobile-menu__util-link">Removal Requests</a>
+      <a href="/site-policies" class="mobile-menu__link mobile-menu__util-link" data-i18n="nav.policies">Policies</a>
+      <a href="/site-policies#removal" class="mobile-menu__link mobile-menu__util-link" data-i18n="nav.removalRequests">Removal Requests</a>
     </div>
 
   </div>

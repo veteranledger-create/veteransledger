@@ -1,0 +1,438 @@
+{
+  "runId": "e1fd029a-6b79-4e75-81f9-d3c92975f818",
+  "executedAt": "2026-08-10T18:26:53.790Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "eventCount": 0,
+    "existingIds": [],
+    "existingNaturalKeys": []
+  },
+  "preview": {
+    "generatedAt": "2026-08-10T18:26:53.793Z",
+    "mode": "insert-only",
+    "eventsToCreate": [
+      "cmqxnz81u0000rqpqnfidd1ip",
+      "cmqxnz8230001rqpq4qclr3vd",
+      "cmqxnz8250002rqpqatywhvyt",
+      "cmqxnz8270003rqpqpno2g0du",
+      "cmqxnz8280004rqpq5cdhhiam",
+      "cmqxnz8290005rqpq7l7zdc2p",
+      "cmqxnz82a0006rqpquw7bfz9z",
+      "cmqxnz82d0008rqpqqx715pm6",
+      "cmqxnz82b0007rqpqbcn0qhdb",
+      "cmqxnz82e0009rqpq207ipqmt",
+      "cmqxnz82f000arqpqcw2o29rl",
+      "cmqxnz82g000brqpquy6uq8x4",
+      "cmqxnz82i000drqpqup3xv7fx",
+      "cmqxnz82h000crqpqilj2ko9p",
+      "cmqxnz82j000erqpqbo48dxvm",
+      "cmqxnz82k000frqpqiye81jkl",
+      "cmqxnz82m000grqpqlyqsego3",
+      "cmqxnz82n000hrqpqo0gat2b1",
+      "cmqxnz82o000irqpqvrysb5x4",
+      "cmqxnz82p000jrqpq15tjdjvq",
+      "cmqxnz82q000krqpqljpcogir",
+      "cmqxnz82q000lrqpqiv8sxk1x",
+      "cmqxnz82s000mrqpqmmb8vnpu",
+      "cmqxnz82t000nrqpq3dx5trli",
+      "cmqxnz82u000prqpqmh6q4q1j",
+      "cmqxnz82u000orqpqrljqukk2",
+      "cmqxnz82v000qrqpqgnzi4y98",
+      "cmqxnz82w000rrqpq9uk11roi",
+      "cmqxnz82x000srqpq0ly6l1no",
+      "cmqxnz82y000trqpqvgguqsjg",
+      "cmqxnz82z000urqpqb30hduws",
+      "cmqxnz830000vrqpqge7mee0z",
+      "cmqxnz831000wrqpq2g1rz8uo",
+      "cmqxnz832000xrqpqgzglho1z",
+      "cmqxnz833000yrqpq70zubuey",
+      "cmqxnz833000zrqpqdgc2olwx",
+      "cmqxnz8340010rqpqupyr88ag",
+      "cmqxnz8350011rqpqm6gz45f8",
+      "cmqxnz8360012rqpqbh5f8p5t",
+      "cmqxnz8370013rqpqo222p1ji",
+      "cmqxnz8370014rqpqmlvraywa",
+      "cmqxnz8380015rqpqr1goz7cy",
+      "cmqxnz8390016rqpqtaj2i02l",
+      "cmqxnz8390017rqpqp00orj6n",
+      "cmqxnz83a0018rqpqtr4rnvr1",
+      "cmqxnz83c001arqpqxw9ulf7x",
+      "cmqxnz83b0019rqpqm1fxi4he",
+      "cmqxnz83c001brqpq7f5ugzp5",
+      "cmqxnz83d001crqpq854nph38",
+      "cmqxnz83e001drqpq023pwv4w",
+      "cmqxnz83f001erqpqy5pqzj4j",
+      "cmqxnz83f001frqpqn21maozb",
+      "cmqxnz83g001grqpqkj88ugb6",
+      "cmqxnz83h001hrqpq96byqfko",
+      "cmqxnz83h001irqpqjbl0qqwx",
+      "cmqxnz83i001jrqpqv540s517",
+      "cmqxnz83j001krqpqe7tjhq92",
+      "cmqxnz83k001lrqpqgdkftw6l",
+      "cmqxnz83l001mrqpqbahromph",
+      "cmqxnz83m001nrqpqwzndba8h",
+      "cmqxnz83m001orqpqln5pegwt",
+      "cmqxnz83n001prqpq07njxeg7",
+      "cmqxnz83o001qrqpqepd4dkc5",
+      "cmqxnz83p001rrqpqridyqpo7",
+      "cmqxnz83p001srqpqqlrkqzjp",
+      "cmqxnz83q001trqpqewa788fn",
+      "cmqxnz83r001urqpqkis51cuk",
+      "cmqxnz83r001vrqpqjjvkcrya",
+      "cmqxnz83s001wrqpq9zxvi24n",
+      "cmqxnz83s001xrqpqgqrzll3b",
+      "cmqxnz83t001yrqpq6eetdix8",
+      "cmqxnz83u001zrqpqxwx06pl6",
+      "cmqxnz83u0020rqpq9xn3ymzl",
+      "cmqxnz83v0021rqpq5mvmjikj",
+      "cmqxnz83w0022rqpqmuw38hm4",
+      "cmqxnz83w0023rqpqjcfyyo3s",
+      "cmqxnz83x0024rqpqvfirjh4y",
+      "cmqxnz83y0025rqpqje4oghg6",
+      "cmqxnz83y0026rqpqq0dsjel3",
+      "cmqxnz83z0027rqpqjmq5raxm",
+      "cmqxnz8400028rqpq7p7wlmwu",
+      "cmqxnz8410029rqpq6y21wzb5",
+      "cmqxnz841002arqpqishqtu4t"
+    ],
+    "eventsToUpdate": [],
+    "blockedByErrors": 0
+  },
+  "eventsCreated": [
+    {
+      "id": "cmqxnz81u0000rqpqnfidd1ip",
+      "title": "Hitler Appointed Chancellor"
+    },
+    {
+      "id": "cmqxnz8230001rqpq4qclr3vd",
+      "title": "Reichstag Fire"
+    },
+    {
+      "id": "cmqxnz8250002rqpqatywhvyt",
+      "title": "Enabling Act Passed"
+    },
+    {
+      "id": "cmqxnz8270003rqpqpno2g0du",
+      "title": "National Boycott of Jewish Businesses"
+    },
+    {
+      "id": "cmqxnz8280004rqpq5cdhhiam",
+      "title": "Germany Becomes a One-Party State"
+    },
+    {
+      "id": "cmqxnz8290005rqpq7l7zdc2p",
+      "title": "Germany Withdraws from League of Nations"
+    },
+    {
+      "id": "cmqxnz82a0006rqpquw7bfz9z",
+      "title": "German–Polish Non-Aggression Pact"
+    },
+    {
+      "id": "cmqxnz82d0008rqpqqx715pm6",
+      "title": "Night of the Long Knives"
+    },
+    {
+      "id": "cmqxnz82b0007rqpqbcn0qhdb",
+      "title": "Austrian Nazis Murder Chancellor Dollfuss"
+    },
+    {
+      "id": "cmqxnz82e0009rqpq207ipqmt",
+      "title": "Death of Hindenburg — Hitler Becomes Führer"
+    },
+    {
+      "id": "cmqxnz82f000arqpqcw2o29rl",
+      "title": "Nuremberg Rally — 'Rally of Unity and Strength'"
+    },
+    {
+      "id": "cmqxnz82g000brqpquy6uq8x4",
+      "title": "Saar Plebiscite — Return to Germany"
+    },
+    {
+      "id": "cmqxnz82i000drqpqup3xv7fx",
+      "title": "Rearmament Announced — Conscription Restored"
+    },
+    {
+      "id": "cmqxnz82h000crqpqilj2ko9p",
+      "title": "Stresa Front"
+    },
+    {
+      "id": "cmqxnz82j000erqpqbo48dxvm",
+      "title": "Anglo-German Naval Agreement"
+    },
+    {
+      "id": "cmqxnz82k000frqpqiye81jkl",
+      "title": "Nuremberg Laws Enacted"
+    },
+    {
+      "id": "cmqxnz82m000grqpqlyqsego3",
+      "title": "Italy Invades Ethiopia"
+    },
+    {
+      "id": "cmqxnz82n000hrqpqo0gat2b1",
+      "title": "Remilitarisation of the Rhineland"
+    },
+    {
+      "id": "cmqxnz82o000irqpqvrysb5x4",
+      "title": "Spanish Civil War — German Intervention Begins"
+    },
+    {
+      "id": "cmqxnz82p000jrqpq15tjdjvq",
+      "title": "Berlin Olympics — International Showcase"
+    },
+    {
+      "id": "cmqxnz82q000krqpqljpcogir",
+      "title": "Rome–Berlin Axis Pact"
+    },
+    {
+      "id": "cmqxnz82q000lrqpqiv8sxk1x",
+      "title": "Anti-Comintern Pact"
+    },
+    {
+      "id": "cmqxnz82s000mrqpqmmb8vnpu",
+      "title": "Bombing of Guernica"
+    },
+    {
+      "id": "cmqxnz82t000nrqpq3dx5trli",
+      "title": "Japan Launches Full-Scale War in China"
+    },
+    {
+      "id": "cmqxnz82u000prqpqmh6q4q1j",
+      "title": "Hossbach Memorandum"
+    },
+    {
+      "id": "cmqxnz82u000orqpqrljqukk2",
+      "title": "Italy Joins the Anti-Comintern Pact"
+    },
+    {
+      "id": "cmqxnz82v000qrqpqgnzi4y98",
+      "title": "Hitler Takes Direct Command of Wehrmacht"
+    },
+    {
+      "id": "cmqxnz82w000rrqpq9uk11roi",
+      "title": "Anschluss — Annexation of Austria"
+    },
+    {
+      "id": "cmqxnz82x000srqpq0ly6l1no",
+      "title": "Munich Agreement"
+    },
+    {
+      "id": "cmqxnz82y000trqpqvgguqsjg",
+      "title": "Kristallnacht — Night of Broken Glass"
+    },
+    {
+      "id": "cmqxnz82z000urqpqb30hduws",
+      "title": "Atonement Fine Levied on German Jews"
+    },
+    {
+      "id": "cmqxnz830000vrqpqge7mee0z",
+      "title": "Germany Occupies Rump Czechoslovakia"
+    },
+    {
+      "id": "cmqxnz831000wrqpq2g1rz8uo",
+      "title": "Pact of Steel — German–Italian Military Alliance"
+    },
+    {
+      "id": "cmqxnz832000xrqpqgzglho1z",
+      "title": "Molotov–Ribbentrop Pact"
+    },
+    {
+      "id": "cmqxnz833000yrqpq70zubuey",
+      "title": "Invasion of Poland — World War II Begins"
+    },
+    {
+      "id": "cmqxnz833000zrqpqdgc2olwx",
+      "title": "Soviet Union Invades Poland"
+    },
+    {
+      "id": "cmqxnz8340010rqpqupyr88ag",
+      "title": "Soviet Union Invades Finland — Winter War"
+    },
+    {
+      "id": "cmqxnz8350011rqpqm6gz45f8",
+      "title": "Invasion of Denmark and Norway"
+    },
+    {
+      "id": "cmqxnz8360012rqpqbh5f8p5t",
+      "title": "Fall of France Begins — Low Countries Invaded"
+    },
+    {
+      "id": "cmqxnz8370013rqpqo222p1ji",
+      "title": "Dunkirk Evacuation"
+    },
+    {
+      "id": "cmqxnz8370014rqpqmlvraywa",
+      "title": "Italy Declares War on France and Britain"
+    },
+    {
+      "id": "cmqxnz8380015rqpqr1goz7cy",
+      "title": "France Signs Armistice"
+    },
+    {
+      "id": "cmqxnz8390016rqpqtaj2i02l",
+      "title": "Battle of Britain Begins"
+    },
+    {
+      "id": "cmqxnz8390017rqpqp00orj6n",
+      "title": "Tripartite Pact Signed"
+    },
+    {
+      "id": "cmqxnz83a0018rqpqtr4rnvr1",
+      "title": "Invasion of Yugoslavia and Greece"
+    },
+    {
+      "id": "cmqxnz83c001arqpqxw9ulf7x",
+      "title": "Operation Barbarossa — Invasion of the Soviet Union"
+    },
+    {
+      "id": "cmqxnz83b0019rqpqm1fxi4he",
+      "title": "Atlantic Charter Signed"
+    },
+    {
+      "id": "cmqxnz83c001brqpq7f5ugzp5",
+      "title": "Siege of Leningrad Begins"
+    },
+    {
+      "id": "cmqxnz83d001crqpq854nph38",
+      "title": "German Advance on Moscow Halted"
+    },
+    {
+      "id": "cmqxnz83e001drqpq023pwv4w",
+      "title": "Japan Attacks Pearl Harbor"
+    },
+    {
+      "id": "cmqxnz83f001erqpqy5pqzj4j",
+      "title": "Germany Declares War on the United States"
+    },
+    {
+      "id": "cmqxnz83f001frqpqn21maozb",
+      "title": "Wannsee Conference"
+    },
+    {
+      "id": "cmqxnz83g001grqpqkj88ugb6",
+      "title": "Assassination of Reinhard Heydrich"
+    },
+    {
+      "id": "cmqxnz83h001hrqpq96byqfko",
+      "title": "Battle of Midway — Japan Suffers Decisive Defeat"
+    },
+    {
+      "id": "cmqxnz83h001irqpqjbl0qqwx",
+      "title": "Case Blue — German Summer Offensive"
+    },
+    {
+      "id": "cmqxnz83i001jrqpqv540s517",
+      "title": "Allied Landings on Guadalcanal"
+    },
+    {
+      "id": "cmqxnz83j001krqpqe7tjhq92",
+      "title": "Second Battle of El Alamein"
+    },
+    {
+      "id": "cmqxnz83k001lrqpqgdkftw6l",
+      "title": "Operation Uranus — Soviet Counteroffensive at Stalingrad"
+    },
+    {
+      "id": "cmqxnz83l001mrqpqbahromph",
+      "title": "German 6th Army Surrenders at Stalingrad"
+    },
+    {
+      "id": "cmqxnz83m001nrqpqwzndba8h",
+      "title": "Axis Forces Surrender in North Africa"
+    },
+    {
+      "id": "cmqxnz83m001orqpqln5pegwt",
+      "title": "Battle of Kursk — Operation Citadel"
+    },
+    {
+      "id": "cmqxnz83n001prqpq07njxeg7",
+      "title": "Allied Invasion of Sicily"
+    },
+    {
+      "id": "cmqxnz83o001qrqpqepd4dkc5",
+      "title": "Mussolini Arrested — Italian Fascism Collapses"
+    },
+    {
+      "id": "cmqxnz83p001rrqpqridyqpo7",
+      "title": "Italy Surrenders to the Allies"
+    },
+    {
+      "id": "cmqxnz83p001srqpqqlrkqzjp",
+      "title": "Siege of Leningrad Lifted"
+    },
+    {
+      "id": "cmqxnz83q001trqpqewa788fn",
+      "title": "Liberation of Rome"
+    },
+    {
+      "id": "cmqxnz83r001urqpqkis51cuk",
+      "title": "D-Day — Allied Invasion of Normandy"
+    },
+    {
+      "id": "cmqxnz83r001vrqpqjjvkcrya",
+      "title": "Operation Bagration — Soviet Summer Offensive"
+    },
+    {
+      "id": "cmqxnz83s001wrqpq9zxvi24n",
+      "title": "July Plot — Assassination Attempt on Hitler"
+    },
+    {
+      "id": "cmqxnz83s001xrqpqgqrzll3b",
+      "title": "Warsaw Uprising Begins"
+    },
+    {
+      "id": "cmqxnz83t001yrqpq6eetdix8",
+      "title": "Liberation of Paris"
+    },
+    {
+      "id": "cmqxnz83u001zrqpqxwx06pl6",
+      "title": "Operation Market Garden"
+    },
+    {
+      "id": "cmqxnz83u0020rqpq9xn3ymzl",
+      "title": "Battle of the Bulge — German Ardennes Offensive"
+    },
+    {
+      "id": "cmqxnz83v0021rqpq5mvmjikj",
+      "title": "Soviet Vistula–Oder Offensive"
+    },
+    {
+      "id": "cmqxnz83w0022rqpqmuw38hm4",
+      "title": "Yalta Conference"
+    },
+    {
+      "id": "cmqxnz83w0023rqpqjcfyyo3s",
+      "title": "Bombing of Dresden"
+    },
+    {
+      "id": "cmqxnz83x0024rqpqvfirjh4y",
+      "title": "Allies Cross the Rhine at Remagen"
+    },
+    {
+      "id": "cmqxnz83y0025rqpqje4oghg6",
+      "title": "Soviet Assault on Berlin Begins"
+    },
+    {
+      "id": "cmqxnz83y0026rqpqq0dsjel3",
+      "title": "Mussolini Executed"
+    },
+    {
+      "id": "cmqxnz83z0027rqpqjmq5raxm",
+      "title": "Hitler's Death in the Führerbunker"
+    },
+    {
+      "id": "cmqxnz8400028rqpq7p7wlmwu",
+      "title": "Victory in Europe — Germany Surrenders"
+    },
+    {
+      "id": "cmqxnz8410029rqpq6y21wzb5",
+      "title": "Atomic Bomb Dropped on Hiroshima"
+    },
+    {
+      "id": "cmqxnz841002arqpqishqtu4t",
+      "title": "Nuremberg Trials Begin"
+    }
+  ],
+  "eventsSkipped": [],
+  "eventsInvalid": [],
+  "status": "success"
+}

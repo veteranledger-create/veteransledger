@@ -69,6 +69,9 @@ export interface ImportResult {
 // 3D's remaining 30 records across 4 theaters (runId
 // 1bb10a5f-3198-47ba-adf3-bc67f0f97253) — each time reset to false
 // immediately after the run completed.
+// DB recovery run (2026-08-10): see armaments-importer.ts for context.
+// Executed (35 campaigns created, 0 skipped, archive integrity PASS).
+// Reset to false afterward.
 const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {

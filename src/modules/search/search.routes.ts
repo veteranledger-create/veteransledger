@@ -3,6 +3,7 @@ import rateLimit from "express-rate-limit";
 import { SearchController } from "./search.controller";
 import { searchValidator } from "../../validators/record.validator";
 import { handleValidation } from "../../utilities/validation";
+import { optionalAuth } from "../../middleware/auth.middleware";
 
 // Full-text DB search is expensive — cap at 60 requests per minute per IP
 const searchRateLimit = rateLimit({
@@ -16,4 +17,7 @@ const searchRateLimit = rateLimit({
 export const searchRoutes = Router();
 const ctrl = new SearchController();
 
-searchRoutes.get("/", searchRateLimit, searchValidator, handleValidation, ctrl.search.bind(ctrl));
+// optionalAuth: public search stays public (the site's own Search page needs
+// it unauthenticated) but only ever returns published content unless the
+// caller is an authenticated admin — see search.service.ts.
+searchRoutes.get("/", searchRateLimit, optionalAuth, searchValidator, handleValidation, ctrl.search.bind(ctrl));

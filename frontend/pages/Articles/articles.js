@@ -153,7 +153,6 @@ function renderArticles(container, articles) {
       applyRecordTranslation(el, "record", translateId, {
         titleSelector: ".article-preview__title",
         summarySelector: ".article-preview__summary",
-        noticeAnchor: ".article-preview__body",
       });
     }
   });
@@ -164,7 +163,6 @@ onLocaleChange(() => {
     applyRecordTranslation(card, "record", card.dataset.translateId, {
       titleSelector: ".article-preview__title",
       summarySelector: ".article-preview__summary",
-      noticeAnchor: ".article-preview__body",
     });
   });
 });

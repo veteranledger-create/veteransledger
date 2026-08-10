@@ -66,6 +66,8 @@ export interface ImportResult {
 // Phase 1D's remaining 20 records across 5 collections (runId
 // a0d24161-72a6-4cba-b891-5bdfdd0a84a2) — each time reset to false
 // immediately after the run completed.
+// DB recovery run (2026-08-10): see armaments-importer.ts for context.
+// Executed (24 letters created, 0 skipped). Reset to false afterward.
 const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {

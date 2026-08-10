@@ -60,6 +60,8 @@ export interface ImportResult {
 // caller's literal-typed confirmExecution must both agree. Independent
 // from every other type's gate — enabling one must never risk enabling
 // another.
+// DB recovery run (2026-08-10): see armaments-importer.ts for context.
+// Executed (32 formations created, 0 skipped). Reset to false afterward.
 const EXECUTION_ENABLED = false;
 
 export interface RunImportOptions {

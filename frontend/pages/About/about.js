@@ -3,7 +3,7 @@
  * Loads mission and sources data and renders content.
  */
 
-import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { loadTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 
 async function init() {
@@ -40,14 +40,11 @@ async function applySiteContentTranslation(entityId, container, renderFn, englis
   if (!container) return;
   const t = await loadTranslation("site_content", entityId);
   let data = englishData;
-  let isMachine = false;
   if (t?.fields?.content) {
-    try { data = JSON.parse(t.fields.content); isMachine = t.isMachine; }
+    try { data = JSON.parse(t.fields.content); }
     catch { /* translated content isn't valid JSON — keep English */ }
   }
   renderFn(container, data);
-  container.querySelector(":scope > .vl-mt-notice")?.remove();
-  if (isMachine) container.insertAdjacentHTML("afterbegin", machineNoticeHtml({ isMachine: true }));
 }
 
 function renderMission(container, data) {

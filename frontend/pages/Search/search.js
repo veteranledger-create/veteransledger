@@ -439,7 +439,6 @@ function renderResults(items, query) {
       applyRecordTranslation(card, ENTITY_TYPE_BY_RESULT_TYPE[item.type] || "record", item.recordId, {
         titleSelector: ".record-card__title",
         summarySelector: ".record-card__summary",
-        noticeAnchor: ".record-card__body",
       });
     }
   });

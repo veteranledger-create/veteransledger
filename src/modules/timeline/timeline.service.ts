@@ -1,6 +1,7 @@
 import { Prisma } from "@prisma/client";
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
+import { notFoundAs404 } from "../../utilities/prisma-errors";
 
 interface ListOptions {
   year?: number;
@@ -63,6 +64,6 @@ export class TimelineService {
   }
 
   async delete(id: string) {
-    await prisma.timelineEvent.delete({ where: { id } });
+    await notFoundAs404(() => prisma.timelineEvent.delete({ where: { id } }), "Timeline event not found");
   }
 }

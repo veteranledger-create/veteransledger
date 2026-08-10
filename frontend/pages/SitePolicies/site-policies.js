@@ -5,7 +5,7 @@
  * Also highlights the TOC link as user scrolls.
  */
 
-import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
+import { loadTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 
 let POLICIES = [];
@@ -49,19 +49,16 @@ async function loadPolicy({ id, file, bodyId }) {
 
   // site_content translations store the whole source file as one
   // re-translated JSON string — swap it in transparently before rendering.
-  let isMachine = false;
   if (data) {
     const entityId = file.replace("/public/data/", "");
     const t = await loadTranslation("site_content", entityId);
     if (t?.fields?.content) {
-      try { data = JSON.parse(t.fields.content); isMachine = t.isMachine; }
+      try { data = JSON.parse(t.fields.content); }
       catch { /* translated content isn't valid JSON — keep English */ }
     }
   }
 
   renderPolicy(container, id, data);
-  container.querySelector(".vl-mt-notice")?.remove();
-  if (isMachine) container.insertAdjacentHTML("afterbegin", machineNoticeHtml({ isMachine: true }));
 }
 
 function renderPolicy(container, id, data) {

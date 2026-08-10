@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-08-10T20:46:12.807Z",
+  "purpose": "DB-01 read-only orphan report — no rows deleted by this script.",
+  "scannedTranslationRows": 9,
+  "scannedSourceRows": {
+    "record": 185,
+    "entity": 46,
+    "timeline_event": 83
+  },
+  "orphanCount": 0,
+  "orphanCountByEntityType": {},
+  "orphans": []
+}

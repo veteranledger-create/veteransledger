@@ -3,7 +3,7 @@
  * ES module — import with: import { createPaginator } from '/pages/shared/paginator.js';
  */
 
-import { applyUiStrings } from "./ui-strings.js";
+import { applyUiStrings, t } from "./ui-strings.js";
 
 /**
  * @param {object} opts
@@ -53,17 +53,19 @@ export function createPaginator({ items, pageSize, renderFn, pagerEl, scrollTarg
     if (tp <= 1) { pagerEl.innerHTML = ""; return; }
 
     const nums = _pageNums(_page, tp);
+    const prevAria = t("pagination.prevAria", null, "Previous page");
+    const nextAria = t("pagination.nextAria", null, "Next page");
     pagerEl.innerHTML = `
       <button class="pagination__btn" data-p="${_page - 1}"
-        ${_page <= 1 ? "disabled" : ""} aria-label="Previous page"><span class="icon-svg icon-svg--arrow-left icon-svg--md" aria-hidden="true"></span> <span data-i18n="pagination.prev">Prev</span></button>
+        ${_page <= 1 ? "disabled" : ""} aria-label="${prevAria}"><span class="icon-svg icon-svg--arrow-left icon-svg--md" aria-hidden="true"></span> <span data-i18n="pagination.prev">Prev</span></button>
       ${nums.map(n =>
         n === "…"
           ? `<span class="pagination__ellipsis">…</span>`
           : `<button class="pagination__btn${n === _page ? " is-active" : ""}"
-               data-p="${n}" aria-label="Page ${n}">${n}</button>`
+               data-p="${n}" aria-label="${t("pagination.pageAria", { n }, `Page ${n}`)}">${n}</button>`
       ).join("")}
       <button class="pagination__btn" data-p="${_page + 1}"
-        ${_page >= tp ? "disabled" : ""} aria-label="Next page"><span data-i18n="pagination.next">Next</span> <span class="icon-svg icon-svg--arrow-right icon-svg--md" aria-hidden="true"></span></button>`;
+        ${_page >= tp ? "disabled" : ""} aria-label="${nextAria}"><span data-i18n="pagination.next">Next</span> <span class="icon-svg icon-svg--arrow-right icon-svg--md" aria-hidden="true"></span></button>`;
 
     applyUiStrings(pagerEl);
     pagerEl.querySelectorAll("[data-p]").forEach(btn => {

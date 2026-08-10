@@ -281,11 +281,11 @@ function renderMediaGrid(container, assets, total) {
         <div class="media-grid-card">
           ${
             a.mimeType.startsWith("image/")
-              ? `<img src="${a.thumbnailUrl || a.url}" alt="${escHtml(a.originalName)}" class="media-grid-card__thumb">`
+              ? `<img src="${escHtml(a.thumbnailUrl || a.url)}" alt="${escHtml(a.originalName)}" class="media-grid-card__thumb">`
               : a.mimeType.startsWith("audio/")
-                ? `<audio controls src="${a.url}" class="media-grid-card__audio" preload="metadata"></audio>`
+                ? `<audio controls src="${escHtml(a.url)}" class="media-grid-card__audio" preload="metadata"></audio>`
                 : a.mimeType.startsWith("video/")
-                  ? `<video controls src="${a.url}" class="media-grid-card__video" preload="metadata"></video>`
+                  ? `<video controls src="${escHtml(a.url)}" class="media-grid-card__video" preload="metadata"></video>`
                   : `<div class="media-grid-card__doc">📄<span>${escHtml(a.mimeType)}</span></div>`
           }
           <div class="media-grid-card__info">

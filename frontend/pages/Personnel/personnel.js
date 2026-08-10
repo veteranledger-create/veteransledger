@@ -8,7 +8,7 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
-import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { applyRecordTranslation, loadManifestTranslated } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
 
@@ -49,8 +49,7 @@ function branchIconHtml(branchId, person) {
 
 async function loadManifest() {
   try {
-    const res = await fetch("/public/data/personnel/index.json");
-    const data = res.ok ? await res.json() : null;
+    const data = await loadManifestTranslated("/public/data/personnel/index.json", "personnel/index.json");
     BRANCHES = (data?.branches ?? []).map((b) => ({
       id:   b.id,
       label: b.label,
@@ -72,8 +71,8 @@ function renderBranchFilter() {
   const bar = document.querySelector(".filter-bar");
   if (!bar || !BRANCHES.length) return;
   bar.innerHTML =
-    `<button type="button" class="filter-btn is-active" data-branch="all">All</button>` +
-    BRANCHES.map((b) => `<button type="button" class="filter-btn" data-branch="${b.id}">${b.label}</button>`).join("");
+    `<button type="button" class="filter-btn${activeBranch === "all" ? " is-active" : ""}" data-branch="all">${t("search.filter.all", null, "All")}</button>` +
+    BRANCHES.map((b) => `<button type="button" class="filter-btn${activeBranch === b.id ? " is-active" : ""}" data-branch="${b.id}">${b.label}</button>`).join("");
 }
 
 async function init() {
@@ -91,6 +90,11 @@ async function init() {
 
   await Promise.allSettled(BRANCHES.map((b) => loadBranch(b)));
   toggleBranchVisibility();
+
+  onLocaleChange(async () => {
+    await loadManifest();
+    renderBranchFilter();
+  });
 }
 
 async function loadBranch({ id, label, file }) {
@@ -185,7 +189,6 @@ function renderPeople(container, people, branchId = "") {
       applyRecordTranslation(el, "entity", translateId, {
         titleSelector: ".person-card__name",
         summarySelector: ".person-card__excerpt",
-        noticeAnchor: ".person-card__body",
       });
     }
   });
@@ -196,7 +199,6 @@ onLocaleChange(() => {
     applyRecordTranslation(card, "entity", card.dataset.translateId, {
       titleSelector: ".person-card__name",
       summarySelector: ".person-card__excerpt",
-      noticeAnchor: ".person-card__body",
     });
   });
 });

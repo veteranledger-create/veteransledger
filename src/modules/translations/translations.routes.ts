@@ -1,16 +1,19 @@
 import { Router } from "express";
 import { TranslationsController } from "./translations.controller";
-import { authenticate } from "../../middleware/auth.middleware";
+import { authenticate, optionalAuth } from "../../middleware/auth.middleware";
 import { requireAdmin } from "../../middleware/admin.middleware";
 
 export const translationsRoutes = Router();
 const ctrl = new TranslationsController();
 
-// Public reads — the frontend language switcher needs these without admin auth.
-// English is never stored here, so there is no sensitive content to protect;
-// only the source tables (already public) and machine/human-reviewed copies.
-translationsRoutes.get("/:entityType/:entityId",        ctrl.list.bind(ctrl));
-translationsRoutes.get("/:entityType/:entityId/:locale", ctrl.get.bind(ctrl));
+// Public reads (no auth required) — the frontend language switcher needs
+// these without admin auth. optionalAuth populates req.user when a valid
+// admin token IS present, without requiring one: the service uses that to
+// show translations of unpublished (draft) sources to admins only — an
+// unauthenticated caller only ever sees translations of published sources,
+// matching how the source content itself is already gated everywhere else.
+translationsRoutes.get("/:entityType/:entityId",        optionalAuth, ctrl.list.bind(ctrl));
+translationsRoutes.get("/:entityType/:entityId/:locale", optionalAuth, ctrl.get.bind(ctrl));
 
 // Everything else (status/generate/edit/delete/dashboard) is admin-only.
 translationsRoutes.get("/status", authenticate, requireAdmin, ctrl.status.bind(ctrl));

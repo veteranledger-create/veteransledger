@@ -1,0 +1,374 @@
+{
+  "runId": "34ece2be-80c4-472b-b2ab-6701a38d93b5",
+  "executedAt": "2026-08-10T18:26:53.482Z",
+  "mode": "insert-only",
+  "preImportSnapshot": {
+    "recordCount": 128,
+    "collectionCount": 36,
+    "existingLetterSlugs": []
+  },
+  "preview": {
+    "generatedAt": "2026-08-10T18:26:53.489Z",
+    "mode": "insert-only",
+    "recordsToCreate": [
+      "de-003",
+      "de-001",
+      "de-002",
+      "de-004",
+      "it-002",
+      "it-001",
+      "it-004",
+      "it-003",
+      "jp-002",
+      "jp-003",
+      "jp-004",
+      "jp-001",
+      "pol-001",
+      "pol-004",
+      "pol-002",
+      "pol-003",
+      "brit-001",
+      "brit-002",
+      "brit-003",
+      "brit-004",
+      "vol-002",
+      "vol-001",
+      "vol-003",
+      "vol-004"
+    ],
+    "recordsToUpdate": [],
+    "collectionsToCreate": [
+      "letters-german",
+      "letters-italian",
+      "letters-japanese",
+      "letters-polish",
+      "letters-british",
+      "letters-volunteers"
+    ],
+    "collectionsExisting": []
+  },
+  "recordsCreated": [
+    {
+      "id": "cmqmn5klb0005rin27fp16now",
+      "slug": "de-003",
+      "collection": "german"
+    },
+    {
+      "id": "cmqlp24k10000d5y0qkrp3h50",
+      "slug": "de-001",
+      "collection": "german"
+    },
+    {
+      "id": "cmqmn5kl70003rin2gepgrwsp",
+      "slug": "de-002",
+      "collection": "german"
+    },
+    {
+      "id": "cmqmn5kle0007rin2d6ajguus",
+      "slug": "de-004",
+      "collection": "german"
+    },
+    {
+      "id": "cmqmng3uc000610enfzy1jnev",
+      "slug": "it-002",
+      "collection": "italian"
+    },
+    {
+      "id": "cmqmng3u6000410ennsqvvrrl",
+      "slug": "it-001",
+      "collection": "italian"
+    },
+    {
+      "id": "cmqmng3uh000a10en2b0urbj0",
+      "slug": "it-004",
+      "collection": "italian"
+    },
+    {
+      "id": "cmqmng3ue000810en9lhi4yjt",
+      "slug": "it-003",
+      "collection": "italian"
+    },
+    {
+      "id": "cmqmng3un000f10en9xjgmfor",
+      "slug": "jp-002",
+      "collection": "japanese"
+    },
+    {
+      "id": "cmqmng3up000h10enuoyg05ze",
+      "slug": "jp-003",
+      "collection": "japanese"
+    },
+    {
+      "id": "cmqmng3ur000j10ens1i2ulcn",
+      "slug": "jp-004",
+      "collection": "japanese"
+    },
+    {
+      "id": "cmqmng3ul000d10encol6tlfi",
+      "slug": "jp-001",
+      "collection": "japanese"
+    },
+    {
+      "id": "cmqmng3uv000m10enk0bi5iaz",
+      "slug": "pol-001",
+      "collection": "polish"
+    },
+    {
+      "id": "cmqmng3v2000s10engti7kwtq",
+      "slug": "pol-004",
+      "collection": "polish"
+    },
+    {
+      "id": "cmqmng3ux000o10en64gciw51",
+      "slug": "pol-002",
+      "collection": "polish"
+    },
+    {
+      "id": "cmqmng3v0000q10enm2gmv9ai",
+      "slug": "pol-003",
+      "collection": "polish"
+    },
+    {
+      "id": "cmqmng3v5000v10en78w8fu5m",
+      "slug": "brit-001",
+      "collection": "british"
+    },
+    {
+      "id": "cmqmng3v7000x10enldmktd85",
+      "slug": "brit-002",
+      "collection": "british"
+    },
+    {
+      "id": "cmqmng3v9000z10entesz7jgv",
+      "slug": "brit-003",
+      "collection": "british"
+    },
+    {
+      "id": "cmqmng3va001110endjqtovl3",
+      "slug": "brit-004",
+      "collection": "british"
+    },
+    {
+      "id": "cmqmng3vf001610enzdmsdbrv",
+      "slug": "vol-002",
+      "collection": "volunteers"
+    },
+    {
+      "id": "cmqmng3vd001410enpfzuh039",
+      "slug": "vol-001",
+      "collection": "volunteers"
+    },
+    {
+      "id": "cmqmng3vi001810eno4ac5xus",
+      "slug": "vol-003",
+      "collection": "volunteers"
+    },
+    {
+      "id": "cmqmng3vk001a10ennjew0vlg",
+      "slug": "vol-004",
+      "collection": "volunteers"
+    }
+  ],
+  "collectionsCreated": [
+    {
+      "slug": "letters-german",
+      "id": "cmsnkcib90014frdhl64v4867"
+    },
+    {
+      "slug": "letters-italian",
+      "id": "cmsnkcibj0015frdhonzcmvh2"
+    },
+    {
+      "slug": "letters-japanese",
+      "id": "cmsnkcibt0016frdhj8fkekln"
+    },
+    {
+      "slug": "letters-polish",
+      "id": "cmsnkcic50017frdhyqy83rms"
+    },
+    {
+      "slug": "letters-british",
+      "id": "cmsnkcicg0018frdhjc4y4a50"
+    },
+    {
+      "slug": "letters-volunteers",
+      "id": "cmsnkcicq0019frdhc4hny19u"
+    }
+  ],
+  "recordsSkipped": [],
+  "verification": {
+    "recordsCompared": 24,
+    "expectedDifferences": [
+      {
+        "recordId": "de-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "de-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "de-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "de-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "it-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "jp-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "pol-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "pol-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "pol-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "pol-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "brit-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "brit-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "brit-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "brit-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-002",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-001",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-003",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      },
+      {
+        "recordId": "vol-004",
+        "field": "related_records",
+        "sourceValue": "url missing in source",
+        "generatedValue": "url resolved by generator",
+        "classification": "expected"
+      }
+    ],
+    "unexpectedDifferences": []
+  },
+  "status": "success"
+}

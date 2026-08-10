@@ -41,7 +41,6 @@ function applyCardTranslations(gridEl, records) {
     applyRecordTranslation(cards[i], "record", id, {
       titleSelector: ".archive-card__title",
       summarySelector: ".archive-card__excerpt",
-      noticeAnchor: ".archive-card__content",
     });
   });
 }
