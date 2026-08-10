@@ -8,6 +8,8 @@
  * instead of each page reinventing it.
  */
 
+import { applyUiStrings } from "./ui-strings.js";
+
 const CONTENT_PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
 // Every media item this module renders may carry a classification payload:
@@ -54,7 +56,7 @@ function imageCaption(img) {
   return `
     <figcaption class="record-image-item__caption">
       ${img.caption || ""}
-      <button type="button" class="attribution-trigger" data-attribution-id="${attrId}" aria-label="View source and attribution">
+      <button type="button" class="attribution-trigger" data-attribution-id="${attrId}" data-i18n-aria-label="attribution.viewAria" aria-label="View source and attribution">
         <img src="/public/images/icons/ui/info.svg" alt="" aria-hidden="true">
       </button>
     </figcaption>`;
@@ -462,6 +464,7 @@ export function initAttributionModal() {
   if (_modalReady) return;
   _modalReady = true;
 
+  applyUiStrings(document.body); // patch attribution-trigger buttons already rendered
   document.body.insertAdjacentHTML("beforeend", `
     <div id="attribution-modal" class="modal-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="attribution-modal-title">
       <div class="modal archive-modal attribution-modal">
@@ -470,7 +473,7 @@ export function initAttributionModal() {
           <div class="archive-modal__header-content">
             <h2 class="archive-modal__title" id="attribution-modal-title">Source &amp; Attribution</h2>
           </div>
-          <button type="button" class="modal__close" id="attribution-modal-close" aria-label="Close">
+          <button type="button" class="modal__close" id="attribution-modal-close" data-i18n-aria-label="attribution.closeAria" aria-label="Close">
             <span class="icon-close modal__close-icon" aria-hidden="true"></span>
           </button>
         </div>
@@ -479,6 +482,7 @@ export function initAttributionModal() {
     </div>`);
 
   const overlay = document.getElementById("attribution-modal");
+  applyUiStrings(overlay);
   document.getElementById("attribution-modal-close").addEventListener("click", closeAttributionModal);
   overlay.addEventListener("click", (e) => { if (e.target === overlay) closeAttributionModal(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeAttributionModal(); });
@@ -540,8 +544,8 @@ export function initImageLightbox() {
   _lightboxReady = true;
 
   document.body.insertAdjacentHTML("beforeend", `
-    <div id="image-lightbox" class="lightbox-overlay" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
-      <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image viewer">
+    <div id="image-lightbox" class="lightbox-overlay" hidden role="dialog" aria-modal="true" data-i18n-aria-label="lightbox.viewerAria" aria-label="Image viewer">
+      <button type="button" class="lightbox-close" id="lightbox-close" data-i18n-aria-label="lightbox.closeAria" aria-label="Close image viewer">
         <span class="icon-close" aria-hidden="true"></span>
       </button>
       <div class="lightbox-stage" id="lightbox-stage">
@@ -554,6 +558,7 @@ export function initImageLightbox() {
   const stage = document.getElementById("lightbox-stage");
   const img = document.getElementById("lightbox-img");
 
+  applyUiStrings(overlay);
   document.getElementById("lightbox-close").addEventListener("click", closeImageLightbox);
   overlay.addEventListener("click", (e) => { if (e.target === overlay) closeImageLightbox(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !overlay.hidden) closeImageLightbox(); });

@@ -10,6 +10,7 @@ import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { t } from "/pages/shared/ui-strings.js";
 
 let BRANCHES = [];
 
@@ -124,13 +125,13 @@ async function loadBranch({ id, label, file }) {
       scrollTarget: gridEl,
     });
   } catch (_) {
-    gridEl.innerHTML = renderEmpty("Data pending compilation.");
+    gridEl.innerHTML = renderEmpty(t("empty.personnelPending", null, "Data pending compilation."));
   }
 }
 
 function renderPeople(container, people, branchId = "") {
   if (!people.length) {
-    container.innerHTML = renderEmpty("No records available yet.");
+    container.innerHTML = renderEmpty(t("empty.personnelNoRecords", null, "No records available yet."));
     return;
   }
 

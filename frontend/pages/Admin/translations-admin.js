@@ -36,6 +36,7 @@ const SITE_CONTENT_KEYS = [
   { id: "navigation.json", title: "Navigation & Footer" },
   { id: "site-settings.json", title: "Site Settings" },
   { id: "page-content.json", title: "Page Content (hero/meta for every page)" },
+  { id: "ui-strings.json", title: "Interface Strings (buttons, empty states, errors, forms)" },
 ];
 
 const PAGE_SIZE = 20;

@@ -10,6 +10,7 @@
 
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { t } from "/pages/shared/ui-strings.js";
 
 const yearNav   = document.getElementById("timeline-year-nav");
 const yearLoader = document.getElementById("year-loader");
@@ -145,10 +146,11 @@ function render() {
   });
 
   if (!events.length) {
+    const period = activeYear ?? t("empty.timeline.thisPeriod", null, "this period");
     track.innerHTML = `<div class="empty-state">
       <div class="empty-state__icon" aria-hidden="true">✛</div>
-      <p class="empty-state__title">No events found</p>
-      <p class="empty-state__text">No records match this filter for ${activeYear ?? "this period"}.</p>
+      <p class="empty-state__title">${t("empty.timeline.title", null, "No events found")}</p>
+      <p class="empty-state__text">${t("empty.timeline.text", { period }, `No records match this filter for ${period}.`)}</p>
     </div>`;
     return;
   }

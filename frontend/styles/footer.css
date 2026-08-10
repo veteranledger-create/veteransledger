@@ -265,7 +265,7 @@
   display: inline-block;
   width: 8px;
   height: 8px;
-  margin-right: 5px;
+  margin-inline-end: 5px;
   vertical-align: middle;
   background-color: var(--text-faint);
   -webkit-mask-image: url("/public/images/icons/navigation/angle-right.svg");
@@ -279,6 +279,9 @@
 }
 .site-footer__legal-links a:hover {
   color: var(--gold);
+}
+[dir="rtl"] .site-footer__legal-links a::before {
+  transform: scaleX(-1);
 }
 
 /* Connect block */

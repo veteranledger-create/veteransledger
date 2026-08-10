@@ -8,6 +8,7 @@ import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { t, applyUiStrings } from "/pages/shared/ui-strings.js";
 
 const PAGE_SIZE   = 10;
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
@@ -129,9 +130,10 @@ function renderCampaigns(container, campaigns) {
   if (!campaigns.length) {
     container.innerHTML = `<div class="empty-state">
       <div class="empty-state__icon" aria-hidden="true">✛</div>
-      <p class="empty-state__title">Records pending</p>
-      <p class="empty-state__text">Content for this theater is being compiled.</p>
+      <p class="empty-state__title" data-i18n="empty.recordsPending.title">Records pending</p>
+      <p class="empty-state__text" data-i18n="empty.recordsPending.text">Content for this theater is being compiled.</p>
     </div>`;
+    applyUiStrings(container);
     return;
   }
 
@@ -168,7 +170,8 @@ function renderCampaigns(container, campaigns) {
 
     const footer = document.createElement("div");
     footer.className = "record-card__footer";
-    footer.innerHTML = `<span class="record-card__read-more">Read more <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></span>`;
+    footer.innerHTML = `<span class="record-card__read-more"><span data-i18n="card.readMore">Read more</span> <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></span>`;
+    applyUiStrings(footer);
 
     card.appendChild(imageDiv);
     card.appendChild(body);
@@ -178,14 +181,22 @@ function renderCampaigns(container, campaigns) {
     const translateId = c.recordId || c.id;
     if (translateId) {
       card.dataset.translateId = translateId;
-      applyRecordTranslation(card, "record", translateId);
+      applyRecordTranslation(card, "record", translateId, {
+        titleSelector: ".record-card__title",
+        summarySelector: ".record-card__summary",
+        noticeAnchor: ".record-card__body",
+      });
     }
   });
 }
 
 onLocaleChange(() => {
   document.querySelectorAll(".record-card[data-translate-id]").forEach((card) => {
-    applyRecordTranslation(card, "record", card.dataset.translateId);
+    applyRecordTranslation(card, "record", card.dataset.translateId, {
+      titleSelector: ".record-card__title",
+      summarySelector: ".record-card__summary",
+      noticeAnchor: ".record-card__body",
+    });
   });
 });
 

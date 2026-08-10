@@ -95,7 +95,7 @@
 }
 
 .article-body__quote {
-  border-left: 3px solid var(--border-gold);
+  border-inline-start: 3px solid var(--border-gold);
   padding: var(--space-3) var(--space-5);
   color: var(--text-muted);
   font-style: italic;

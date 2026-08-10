@@ -11,6 +11,7 @@ const ALLOWED_PREFIXES = [
   "site-settings.json",
   "homepage.json",
   "page-content.json",
+  "ui-strings.json",
   "about",
   "legal",
   "site-policies",

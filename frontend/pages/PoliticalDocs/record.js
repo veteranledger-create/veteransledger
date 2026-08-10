@@ -6,6 +6,7 @@
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { t } from "/pages/shared/ui-strings.js";
 
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
@@ -152,10 +153,10 @@ async function init() {
 
 function renderError(root, msg) {
   root.innerHTML = `
-    <nav class="record-breadcrumb"><a href="/political-documents">← Back to Political Documents</a></nav>
+    <nav class="record-breadcrumb"><a href="/political-documents">← ${t("breadcrumb.backToPoliticalDocs", null, "Back to Political Documents")}</a></nav>
     <div class="record-error">
       <div class="record-error__icon">✦</div>
-      <div class="record-error__title">Document Not Found</div>
+      <div class="record-error__title">${t("error.documentNotFound", null, "Document Not Found")}</div>
       <p style="font-size:var(--text-sm);color:var(--text-muted)">${msg}</p>
     </div>`;
 }

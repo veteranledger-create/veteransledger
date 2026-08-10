@@ -8,6 +8,7 @@
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { t } from "/pages/shared/ui-strings.js";
 
 const _COLLECTIONS_FALLBACK = [
   { id: "german",     label: "German",     file: "german.json" },
@@ -260,10 +261,10 @@ async function init() {
 
 function renderError(root, msg) {
   root.innerHTML = `
-    <nav class="record-breadcrumb"><a href="/letters">← Back to Letters</a></nav>
+    <nav class="record-breadcrumb"><a href="/letters">← ${t("breadcrumb.backToLetters", null, "Back to Letters")}</a></nav>
     <div class="record-error">
       <div class="record-error__icon">✉</div>
-      <div class="record-error__title">Letter Not Found</div>
+      <div class="record-error__title">${t("error.letterNotFound", null, "Letter Not Found")}</div>
       <p style="font-size:var(--text-sm);color:var(--text-muted)">${msg}</p>
     </div>`;
 }

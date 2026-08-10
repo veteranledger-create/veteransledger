@@ -195,6 +195,10 @@ function renderSources(data) {
     const source = listEl.getAttribute("data-nav-source");
     if (source === "primary" || source === "utility") {
       const surface = listEl.getAttribute("data-nav-template") || "sidebar";
+      // Re-entrant on every locale switch (see onLocaleChange below) — clear
+      // the previous render first, or each switch appends a second copy of
+      // the whole menu on top of the one already there.
+      listEl.innerHTML = "";
       renderNodes(listEl, data[source], surface, 0);
     }
   });
@@ -213,6 +217,7 @@ function renderFooter(data) {
   const idx = buildIdIndex(data);
 
   qsa('[data-nav-source="footer-columns"]').forEach((listEl) => {
+    listEl.innerHTML = ""; // re-entrant on locale switch — same duplication risk as renderSources()
     (data.footer.columns || []).forEach((col) => {
       const colLi = cloneTemplate("tpl-footer-column");
       if (!colLi) return;
@@ -234,6 +239,7 @@ function renderFooter(data) {
   });
 
   qsa('[data-nav-source="footer-social"]').forEach((listEl) => {
+    listEl.innerHTML = ""; // re-entrant on locale switch — same duplication risk as renderSources()
     (data.footer.social || []).forEach((s) => {
       const li = cloneTemplate("tpl-footer-social");
       if (!li) return;

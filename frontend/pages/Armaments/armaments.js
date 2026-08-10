@@ -8,6 +8,7 @@ import { cardImageCandidates, isAiGeneratedImageSrc } from "/pages/shared/media-
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { applyUiStrings } from "/pages/shared/ui-strings.js";
 
 // CATEGORIES is built dynamically from armaments/index.json so that adding
 // or renaming a category in the manifest is reflected immediately without a
@@ -242,9 +243,10 @@ function renderArmaments(container, items, catId) {
   if (!items.length) {
     container.innerHTML = `<div class="empty-state">
       <div class="empty-state__icon" aria-hidden="true">✛</div>
-      <p class="empty-state__title">Records pending</p>
-      <p class="empty-state__text">Content being compiled.</p>
+      <p class="empty-state__title" data-i18n="empty.recordsPending.title">Records pending</p>
+      <p class="empty-state__text" data-i18n="empty.armamentsCompiling.text">Content being compiled.</p>
     </div>`;
+    applyUiStrings(container);
     return;
   }
 

@@ -324,6 +324,17 @@ table {
   mask-image: url("/public/images/icons/navigation/angle-right.svg");
 }
 
+/* These three all encode "forward/next", "back/previous", or a breadcrumb
+ * hierarchy separator — every current use is direction-of-reading, not a
+ * fixed screen side, so mirroring them for RTL is the correct meaning, not
+ * a visual-only flip. One shared rule covers pagination, breadcrumbs, the
+ * hero/record "next" links, and the Contact submit chevron at once. */
+[dir="rtl"] .icon-svg--arrow-right,
+[dir="rtl"] .icon-svg--arrow-left,
+[dir="rtl"] .icon-svg--angle-right {
+  transform: scaleX(-1);
+}
+
 .icon-svg--sm { width: 11px; height: 11px; }
 .icon-svg--md { width: 15px; height: 15px; }
 .icon-svg--lg { width: 20px; height: 20px; }

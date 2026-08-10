@@ -4,6 +4,7 @@
  */
 
 import { attachMediaFallbacks, initAttributionModal, initImageLightbox, registerAttribution } from "/pages/shared/media-blocks.js";
+import { t } from "/pages/shared/ui-strings.js";
 
 const CATEGORIES_FALLBACK = ["panzer", "aircraft", "naval", "missiles", "wunderwaffen", "equipment"];
 const NATIONS_FALLBACK = ["germany", "italy", "japan", "other-axis"];
@@ -232,14 +233,15 @@ async function init() {
   // URL is /armaments/:id/gallery — id is second-to-last segment
   const id = segments[segments.length - 2];
 
+  const backToArmaments = t("breadcrumb.backToArmaments", null, "Back to Armaments");
   if (!id) {
-    root.innerHTML = `<nav class="record-breadcrumb"><a href="/armaments">← Back to Armaments</a></nav><div class="record-error"><div class="record-error__title">No armament ID provided.</div></div>`;
+    root.innerHTML = `<nav class="record-breadcrumb"><a href="/armaments">← ${backToArmaments}</a></nav><div class="record-error"><div class="record-error__title">${t("error.noArmamentId", null, "No armament ID provided.")}</div></div>`;
     return;
   }
 
   const item = await findArmament(id);
   if (!item) {
-    root.innerHTML = `<nav class="record-breadcrumb"><a href="/armaments">← Back to Armaments</a></nav><div class="record-error"><div class="record-error__title">Record not found: ${id}</div></div>`;
+    root.innerHTML = `<nav class="record-breadcrumb"><a href="/armaments">← ${backToArmaments}</a></nav><div class="record-error"><div class="record-error__title">${t("error.armamentNotFoundWithId", { id }, `Record not found: ${id}`)}</div></div>`;
     return;
   }
 

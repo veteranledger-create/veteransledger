@@ -8,6 +8,7 @@ import { applySettings } from "/layouts/MainLayout/settings.js";
 import "/layouts/MainLayout/page-content.js";
 import { initI18n } from "/pages/shared/i18n.js";
 import { initLanguageSwitcher } from "/components/LanguageSwitcher/language-switcher.js";
+import { t, applyUiStrings } from "/pages/shared/ui-strings.js";
 
 const DEFAULTS = {
   components: {
@@ -74,6 +75,7 @@ export async function injectLayout() {
   if (main && !main.id) main.id = "main-content";
 
   document.documentElement.setAttribute("data-layout-ready", "");
+  applyUiStrings(document);
 
   await initNavigation();
   initI18n();
@@ -132,17 +134,21 @@ function initContactModal() {
   const MIN_MESSAGE = 500;
   const MAX_MESSAGE = 5000;
 
-  const PROC_MSGS = [
-    "Sealing archival document...",
-    "Authenticating submission...",
-    "Transferring to the VeteransLedger Archive Office...",
-    "Security verification completed.",
-    "Archive reference successfully registered.",
-  ];
+  // Computed fresh per submission (not cached at setup time) so a locale
+  // switch that happens after the modal first mounts is still reflected.
+  function getProcMsgs() {
+    return [
+      t("contact.proc.sealing", null, "Sealing archival document..."),
+      t("contact.proc.authenticating", null, "Authenticating submission..."),
+      t("contact.proc.transferring", null, "Transferring to the VeteransLedger Archive Office..."),
+      t("contact.proc.verified", null, "Security verification completed."),
+      t("contact.proc.registered", null, "Archive reference successfully registered."),
+    ];
+  }
 
   function resetModalState() {
     if (panel) panel.classList.remove("is-processing", "is-confirmed");
-    if (procMsgEl) procMsgEl.textContent = PROC_MSGS[0];
+    if (procMsgEl) procMsgEl.textContent = getProcMsgs()[0];
     if (status) { status.className = "contact-form__status"; status.textContent = ""; }
   }
 
@@ -167,12 +173,18 @@ function initContactModal() {
 
     if (counterEl) {
       if (msgLen >= MIN_MESSAGE) {
+        const [before, after] = t("contact.charCountMax", null, "{count} / {max}")
+          .replace("{max}", MAX_MESSAGE)
+          .split("{count}");
         counterEl.innerHTML =
-          `<span id="contact-char-count" style="color:#70b070;font-weight:600">${msgLen}</span> / ${MAX_MESSAGE} ` +
+          `${before ?? ""}<span id="contact-char-count" style="color:#70b070;font-weight:600">${msgLen}</span>${after ?? ""} ` +
           `<svg width="10" height="10" viewBox="0 0 640 640" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:-1px;color:#70b070"><path fill="currentColor" d="M297.4 438.6C309.9 451.1 330.2 451.1 342.7 438.6L502.7 278.6C515.2 266.1 515.2 245.8 502.7 233.3C490.2 220.8 469.9 220.8 457.4 233.3L320 370.7L182.6 233.4C170.1 220.9 149.8 220.9 137.3 233.4C124.8 245.9 124.8 266.2 137.3 278.7L297.3 438.7z"/></svg>`;
       } else {
+        const [before, after] = t("contact.charCountMinimum", null, "{count} / {min} minimum characters")
+          .replace("{min}", MIN_MESSAGE)
+          .split("{count}");
         counterEl.innerHTML =
-          `<span id="contact-char-count" style="font-weight:600">${msgLen}</span> / ${MIN_MESSAGE} minimum characters`;
+          `${before ?? ""}<span id="contact-char-count" style="font-weight:600">${msgLen}</span>${after ?? ""}`;
       }
     }
 
@@ -212,22 +224,22 @@ function initContactModal() {
       const message = msgInput?.value.trim()     ?? "";
 
       if (!name) {
-        showStatus("Please enter your name.", "error");
+        showStatus(t("contact.error.name", null, "Please enter your name."), "error");
         nameInput?.focus();
         return;
       }
       if (!email.includes("@")) {
-        showStatus("Please enter a valid email address.", "error");
+        showStatus(t("contact.error.email", null, "Please enter a valid email address."), "error");
         emailInput?.focus();
         return;
       }
       if (subject.length < MIN_SUBJECT) {
-        showStatus(`Subject must be at least ${MIN_SUBJECT} characters.`, "error");
+        showStatus(t("contact.error.subject", { min: MIN_SUBJECT }, `Subject must be at least ${MIN_SUBJECT} characters.`), "error");
         subjectInput?.focus();
         return;
       }
       if (message.length < MIN_MESSAGE) {
-        showStatus(`Message must be at least ${MIN_MESSAGE} characters.`, "error");
+        showStatus(t("contact.error.message", { min: MIN_MESSAGE }, `Message must be at least ${MIN_MESSAGE} characters.`), "error");
         msgInput?.focus();
         return;
       }
@@ -238,11 +250,12 @@ function initContactModal() {
       if (panel) panel.classList.add("is-processing");
 
       // Cycle archival status messages
+      const procMsgs = getProcMsgs();
       let msgIdx = 0;
       const advanceMsg = () => {
-        if (procMsgEl && msgIdx < PROC_MSGS.length - 1) {
+        if (procMsgEl && msgIdx < procMsgs.length - 1) {
           msgIdx++;
-          procMsgEl.textContent = PROC_MSGS[msgIdx];
+          procMsgEl.textContent = procMsgs[msgIdx];
         }
       };
       const t1 = setTimeout(advanceMsg, 700);
@@ -266,7 +279,7 @@ function initContactModal() {
         if (!result.ok) throw new Error(result.data?.error || "Send failed");
 
         // Show final message, brief pause, then transition to confirmed
-        if (procMsgEl) procMsgEl.textContent = PROC_MSGS[PROC_MSGS.length - 1];
+        if (procMsgEl) procMsgEl.textContent = procMsgs[procMsgs.length - 1];
         await new Promise((r) => setTimeout(r, 500));
 
         if (confRefEl) confRefEl.textContent = genRef();
@@ -279,7 +292,7 @@ function initContactModal() {
       } catch (err) {
         clearTimeout(t1); clearTimeout(t2); clearTimeout(t3);
         resetModalState();
-        showStatus(err.message || "Failed to send. Please email us directly.", "error");
+        showStatus(err.message || t("contact.error.generic", null, "Failed to send. Please email us directly."), "error");
         if (submitBtn) submitBtn.disabled = false;
       }
     });
@@ -291,6 +304,7 @@ function initContactModal() {
     if (!trigger) return;
     e.preventDefault();
     resetModalState();
+    updateState();
     modal.hidden = false;
     const firstInput = modal.querySelector("input:not([type='hidden']), textarea");
     if (firstInput) firstInput.focus();

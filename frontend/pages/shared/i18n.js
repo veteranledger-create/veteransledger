@@ -33,9 +33,23 @@ function isValidLocale(code) {
   return LANGUAGES.some((l) => l.code === code);
 }
 
+// Matches a browser language tag (e.g. "de-DE", "pt-BR") against our
+// supported locales by primary subtag — only reached when there's no
+// explicit selection or saved preference yet (see detectInitialLocale).
+function detectBrowserLocale() {
+  const tags = navigator.languages?.length ? navigator.languages : [navigator.language];
+  for (const tag of tags) {
+    if (!tag) continue;
+    const primary = tag.split("-")[0].toLowerCase();
+    if (isValidLocale(primary)) return primary;
+  }
+  return null;
+}
+
 function detectInitialLocale() {
   const stored = localStorage.getItem(STORAGE_KEY) || readCookie(COOKIE_KEY);
-  return isValidLocale(stored) ? stored : DEFAULT_LOCALE;
+  if (isValidLocale(stored)) return stored;
+  return detectBrowserLocale() || DEFAULT_LOCALE;
 }
 
 /** Current locale code (e.g. "en", "de"). Defaults to "en" on first visit. */

@@ -7,6 +7,9 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
+import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
+import { onLocaleChange } from "/pages/shared/i18n.js";
+import { applyUiStrings } from "/pages/shared/ui-strings.js";
 
 let COLLECTIONS = [];
 
@@ -138,9 +141,10 @@ function renderLetters(letters) {
   if (!letters.length) {
     listEl.innerHTML = `<div class="empty-state">
       <div class="empty-state__icon" aria-hidden="true">✉</div>
-      <p class="empty-state__title">No letters found</p>
-      <p class="empty-state__text">This collection is being compiled.</p>
+      <p class="empty-state__title" data-i18n="empty.letters.title">No letters found</p>
+      <p class="empty-state__text" data-i18n="empty.letters.text">This collection is being compiled.</p>
     </div>`;
+    applyUiStrings(listEl);
     return;
   }
 
@@ -160,15 +164,36 @@ function renderLetters(letters) {
         <span class="letter-card__date">${letter.date || letter.year || ""}</span>
       </div>
       ${excerpt ? `<p class="letter-card__excerpt">"${excerpt}${excerpt.length >= 200 ? "…" : ""}"</p>` : ""}
-      ${letter.id ? `<a class="letter-card__deep-link" href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:11px;color:var(--gold-dim);text-decoration:none;letter-spacing:0.06em;" onclick="event.stopPropagation()">Read full letter <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></a>` : ""}`;
+      ${letter.id ? `<a class="letter-card__deep-link" href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:11px;color:var(--gold-dim);text-decoration:none;letter-spacing:0.06em;" onclick="event.stopPropagation()"><span data-i18n="letters.readFullLetter">Read full letter</span> <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></a>` : ""}`;
+    applyUiStrings(card);
 
     card.addEventListener("click", () => openLetter(letter));
     card.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLetter(letter); }
     });
     listEl.appendChild(card);
+
+    const translateId = letter.recordId || letter.id;
+    if (translateId) {
+      card.dataset.translateId = translateId;
+      applyRecordTranslation(card, "record", translateId, {
+        titleSelector: ".letter-card__from",
+        summarySelector: ".letter-card__excerpt",
+        noticeAnchor: ".letter-card__header",
+      });
+    }
   });
 }
+
+onLocaleChange(() => {
+  document.querySelectorAll(".letter-card[data-translate-id]").forEach((card) => {
+    applyRecordTranslation(card, "record", card.dataset.translateId, {
+      titleSelector: ".letter-card__from",
+      summarySelector: ".letter-card__excerpt",
+      noticeAnchor: ".letter-card__header",
+    });
+  });
+});
 
 function openLetter(letter) {
   if (!viewerEl) return;
@@ -184,7 +209,8 @@ function openLetter(letter) {
     <div class="letter-viewer__body">${bodyHtml}</div>
     ${letter._original ? `<div class="letter-viewer__original"><strong>Original (${letter.language || "source language"}):</strong><br>${letter._original.replace(/\n/g, "<br>")}</div>` : ""}
     ${letter.translator_note ? `<p style="font-size:var(--text-xs);color:var(--text-muted);margin-top:var(--space-3);font-style:italic">${letter.translator_note}</p>` : ""}
-    ${letter.id ? `<a href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-flex;align-items:center;gap:5px;margin-top:var(--space-4);font-size:var(--text-xs);color:var(--gold);text-decoration:none;letter-spacing:0.06em;">Read full record with sources <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></a>` : ""}`;
+    ${letter.id ? `<a href="${resolveRelatedUrl("Letter", letter.id)}" style="display:inline-flex;align-items:center;gap:5px;margin-top:var(--space-4);font-size:var(--text-xs);color:var(--gold);text-decoration:none;letter-spacing:0.06em;"><span data-i18n="letters.readFullRecord">Read full record with sources</span> <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></a>` : ""}`;
+  applyUiStrings(viewerEl);
 
   viewerEl.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }

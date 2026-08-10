@@ -8,6 +8,7 @@ import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { applyUiStrings } from "/pages/shared/ui-strings.js";
 
 let CATEGORIES = [];
 
@@ -115,9 +116,10 @@ function renderArticles(container, articles) {
   if (!articles.length) {
     container.innerHTML = `<div class="empty-state">
       <div class="empty-state__icon" aria-hidden="true">✛</div>
-      <p class="empty-state__title">Coming soon</p>
-      <p class="empty-state__text">Articles are being prepared.</p>
+      <p class="empty-state__title" data-i18n="empty.articlesComingSoon.title">Coming soon</p>
+      <p class="empty-state__text" data-i18n="empty.articlesComingSoon.text">Articles are being prepared.</p>
     </div>`;
+    applyUiStrings(container);
     return;
   }
 

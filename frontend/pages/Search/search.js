@@ -6,6 +6,7 @@
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { t, applyUiStrings } from "/pages/shared/ui-strings.js";
 
 const ENTITY_TYPE_BY_RESULT_TYPE = { PERSON: "entity" }; // everything else is "record"
 
@@ -374,9 +375,10 @@ function renderResults(items, query) {
   if (!items.length) {
     results.innerHTML = `<div class="empty-state">
       <div class="empty-state__icon" aria-hidden="true">⌕</div>
-      <p class="empty-state__title">No results for "${escapeHtml(query)}"</p>
-      <p class="empty-state__text">Try different keywords or browse the archive sections.</p>
+      <p class="empty-state__title">${t("empty.search.noResults", { query: escapeHtml(query) }, `No results for "${escapeHtml(query)}"`)}</p>
+      <p class="empty-state__text" data-i18n="empty.search.tryDifferent">Try different keywords or browse the archive sections.</p>
     </div>`;
+    applyUiStrings(results);
     return;
   }
 
@@ -420,7 +422,8 @@ function renderResults(items, query) {
 
     const footer = document.createElement("div");
     footer.className = "record-card__footer";
-    footer.innerHTML = `<span class="record-card__read-more">View record <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></span>`;
+    footer.innerHTML = `<span class="record-card__read-more"><span data-i18n="card.viewRecord">View record</span> <span class="icon-svg icon-svg--arrow-right icon-svg--sm" aria-hidden="true"></span></span>`;
+    applyUiStrings(footer);
 
     card.appendChild(body);
     card.appendChild(footer);

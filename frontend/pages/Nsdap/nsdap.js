@@ -6,6 +6,7 @@
 
 import { loadTranslation, machineNoticeHtml } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { t } from "/pages/shared/ui-strings.js";
 
 const cache = {};
 const machineFlags = {};
@@ -199,7 +200,7 @@ async function showSection(id) {
 
 function renderOverview(container, data) {
   if (!data) {
-    container.innerHTML = renderEmpty("Overview content is being compiled.");
+    container.innerHTML = renderEmpty(t("empty.nsdap.overview", null, "Overview content is being compiled."));
     return;
   }
   const desc = data.description || "";
@@ -295,7 +296,7 @@ function switchHitlerSub(sub) {
   if (!out) return;
   const data = cache[`hitler_${sub}`];
   if (!data) {
-    out.innerHTML = renderEmpty("This section is being compiled.");
+    out.innerHTML = renderEmpty(t("empty.nsdap.section", null, "This section is being compiled."));
     return;
   }
 
@@ -394,7 +395,7 @@ function switchPartySub(sub) {
   if (!out) return;
   const data = cache[`party_${sub}`];
   if (!data) {
-    out.innerHTML = renderEmpty("This section is being compiled.");
+    out.innerHTML = renderEmpty(t("empty.nsdap.section", null, "This section is being compiled."));
     return;
   }
 
@@ -680,7 +681,7 @@ function renderEconomy(container, data) {
 function renderTimeline(container, data) {
   const events = Array.isArray(data) ? data : data?.events || [];
   if (!events.length) {
-    container.innerHTML = renderEmpty("Timeline content is being compiled.");
+    container.innerHTML = renderEmpty(t("empty.nsdap.timeline", null, "Timeline content is being compiled."));
     return;
   }
 
@@ -725,7 +726,7 @@ function renderTimeline(container, data) {
 function renderGlossary(container, data) {
   const terms = Array.isArray(data) ? data : data?.terms || [];
   if (!terms.length) {
-    container.innerHTML = renderEmpty("Glossary is being compiled.");
+    container.innerHTML = renderEmpty(t("empty.nsdap.glossary", null, "Glossary is being compiled."));
     return;
   }
 
@@ -769,7 +770,7 @@ function renderSources(sources) {
 
 /* ── Utilities ───────────────────────────────────────────────── */
 
-function renderEmpty(msg = "Content pending compilation.") {
+function renderEmpty(msg = t("empty.nsdap.default", null, "Content pending compilation.")) {
   return `<div class="empty-state">
     <div class="empty-state__icon" aria-hidden="true">✛</div>
     <p class="empty-state__title">${msg}</p>

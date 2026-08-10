@@ -7,6 +7,7 @@ import { renderBlock, renderDossierSection, attachMediaFallbacks, initAttributio
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { t } from "/pages/shared/ui-strings.js";
 
 const INDEX_URL = "/public/data/formations/index.json";
 
@@ -371,10 +372,10 @@ async function init() {
 
 function renderError(root, msg) {
   root.innerHTML = `
-    <nav class="record-breadcrumb"><a href="/formations">← Back to Formations</a></nav>
+    <nav class="record-breadcrumb"><a href="/formations">← ${t("breadcrumb.backToFormations", null, "Back to Formations")}</a></nav>
     <div class="record-error">
       <div class="record-error__icon">⚔</div>
-      <div class="record-error__title">Record Not Found</div>
+      <div class="record-error__title">${t("error.recordNotFound", null, "Record Not Found")}</div>
       <p style="font-size:var(--text-sm);color:var(--text-muted)">${msg}</p>
     </div>`;
 }

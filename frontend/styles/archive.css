@@ -72,7 +72,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-right: var(--space-2);
+  margin-inline-end: var(--space-2);
   flex-shrink: 0;
 }
 
@@ -396,6 +396,6 @@
 }
 .archive-info__value {
   color: var(--text-secondary);
-  margin-left: auto;
-  text-align: right;
+  margin-inline-start: auto;
+  text-align: end;
 }

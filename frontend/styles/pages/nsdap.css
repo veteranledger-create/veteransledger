@@ -72,4 +72,4 @@
 }
 .nsdap-facts__row:last-child { border-bottom: none; }
 .nsdap-facts__label { color: var(--text-muted); }
-.nsdap-facts__value { color: var(--text-secondary); text-align: right; }
+.nsdap-facts__value { color: var(--text-secondary); text-align: end; }

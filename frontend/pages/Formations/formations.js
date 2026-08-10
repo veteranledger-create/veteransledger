@@ -7,6 +7,7 @@ import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { applyUiStrings } from "/pages/shared/ui-strings.js";
 
 const INDEX_URL = "/public/data/formations/index.json";
 const PAGE_SIZE = 12;
@@ -169,9 +170,10 @@ function renderGrid(container, items) {
 
   if (!items.length) {
     container.innerHTML = `<div class="empty-state">
-      <p class="empty-state__title">Section Under Expansion</p>
-      <p class="empty-state__text">Current Records: 0 — this category is reserved for future archive growth.</p>
+      <p class="empty-state__title" data-i18n="empty.formationsExpansion.title">Section Under Expansion</p>
+      <p class="empty-state__text" data-i18n="empty.formationsExpansion.text">Current Records: 0 — this category is reserved for future archive growth.</p>
     </div>`;
+    applyUiStrings(container);
     return;
   }
 
@@ -244,7 +246,11 @@ function formationCard(f) {
 
 function applyCardTranslations(container) {
   container.querySelectorAll(".record-card[data-translate-id]").forEach((card) => {
-    applyRecordTranslation(card, "record", card.dataset.translateId);
+    applyRecordTranslation(card, "record", card.dataset.translateId, {
+      titleSelector: ".record-card__title",
+      summarySelector: ".record-card__summary",
+      noticeAnchor: ".record-card__body",
+    });
   });
 }
 

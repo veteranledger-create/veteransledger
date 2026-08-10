@@ -136,7 +136,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   background: var(--bg-sidebar);
-  border-right: 1px solid var(--border-dim);
+  border-inline-end: 1px solid var(--border-dim);
   display: flex;
   flex-direction: column;
   scrollbar-width: thin;
@@ -321,8 +321,8 @@
 }
 
 .sidebar__link[aria-current="page"] {
-  border-left: 2px solid var(--gold);
-  padding-left: calc(var(--space-3) - 2px);
+  border-inline-start: 2px solid var(--gold);
+  padding-inline-start: calc(var(--space-3) - 2px);
 }
 
 /* Group toggle */
@@ -370,7 +370,7 @@
 }
 
 .sidebar__chevron {
-  margin-left: auto;
+  margin-inline-start: auto;
   width: 10px;
   height: 10px;
   border-right: 1.5px solid currentColor;
@@ -382,6 +382,14 @@
 }
 .sidebar__item--group.is-open .sidebar__chevron {
   transform: rotate(45deg);
+}
+/* Mirror the corner-drawn chevron for RTL — same shape, pointing the
+   other way, so "closed" always points toward the reading-start side. */
+[dir="rtl"] .sidebar__chevron {
+  transform: scaleX(-1) rotate(-45deg);
+}
+[dir="rtl"] .sidebar__item--group.is-open .sidebar__chevron {
+  transform: scaleX(-1) rotate(45deg);
 }
 
 .sidebar__sublist {
@@ -478,7 +486,7 @@
 }
 .lang-switcher__label {
   flex: 1;
-  text-align: left;
+  text-align: start;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -587,16 +595,21 @@
 .mobile-menu__panel {
   position: fixed;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   bottom: 0;
   z-index: 300;
   width: min(320px, 88vw);
   background: var(--bg-sidebar);
-  border-right: 1px solid var(--border-dim);
+  border-inline-end: 1px solid var(--border-dim);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   box-shadow: 4px 0 32px rgba(0, 0, 0, 0.6);
+}
+/* Drawer opens from the reading-start edge — box-shadow has no logical
+   equivalent, so mirror its horizontal offset explicitly for RTL. */
+[dir="rtl"] .mobile-menu__panel {
+  box-shadow: -4px 0 32px rgba(0, 0, 0, 0.6);
 }
 .mobile-menu__panel[hidden] {
   display: none;
@@ -686,7 +699,7 @@
   border: none;
   cursor: pointer;
   width: 100%;
-  text-align: left;
+  text-align: start;
 }
 .mobile-menu__link:hover,
 .mobile-menu__link[aria-current="page"] {
@@ -724,7 +737,7 @@
   transition:
     color var(--transition-fast),
     background var(--transition-fast);
-  text-align: left;
+  text-align: start;
 }
 .mobile-menu__group-toggle:hover {
   color: var(--gold);
@@ -750,7 +763,7 @@
 }
 
 .mobile-menu__chevron {
-  margin-left: auto;
+  margin-inline-start: auto;
   width: 8px;
   height: 8px;
   border-right: 1.5px solid currentColor;
@@ -762,6 +775,12 @@
 }
 .mobile-menu__item--group.is-open .mobile-menu__chevron {
   transform: rotate(45deg);
+}
+[dir="rtl"] .mobile-menu__chevron {
+  transform: scaleX(-1) rotate(-45deg);
+}
+[dir="rtl"] .mobile-menu__item--group.is-open .mobile-menu__chevron {
+  transform: scaleX(-1) rotate(45deg);
 }
 
 .mobile-menu__sublist {
