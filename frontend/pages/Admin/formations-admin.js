@@ -1,12 +1,19 @@
-﻿import { TranslationsPanel } from "./translations-panel.js";
-import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn, safeJson } from "./admin-utils.js";
+import { TranslationsPanel } from "./translations-panel.js";
+import { escHtml } from "./admin-utils.js";
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
+import { createContentModule } from "./admin-content-module.js";
 
 /**
  * VeteransLedger · Admin — Formations
  * Full CRUD against /api/formations; structured form fields replace the old
  * raw-JSON textarea. Each formation maps to a DB record (type=FORMATION).
+ *
+ * Phase 3 pilot: this is the first module built on createContentModule().
+ * Every behavior below matches the pre-Phase-3 module exactly (same fields,
+ * same request shapes, same preview-refreshes-on-save loop) except where
+ * noted — the shared factory adds dirty-state protection, submit-state
+ * protection, and slug-format validation that didn't exist before.
  */
 
 const SECTIONS = [
@@ -25,25 +32,20 @@ const SECTIONS = [
   { value: "allies",       label: "Axis Allies" },
 ];
 
-let currentPage = 1;
-let editingId = null;
+const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
 const translationsPanel = new TranslationsPanel("formation-translations-panel", "record");
-let sourcesDraft = [];
-let relatedDraft = [];
-let commandersDraft = [];
 
-const setStatus = makeStatusFn("formation-form-status");
-function renderSources() { renderSourcesFn("formation-sources-list", sourcesDraft, renderSources); }
-function renderRelated() { renderRelatedFn("formation-related-list", relatedDraft, renderRelated); }
+initRelatedModal();
 
-function renderCommanders() {
+function renderCommanders(draft, onUpdate) {
   const list = document.getElementById("formation-commanders-list");
   if (!list) return;
-  if (!commandersDraft.length) {
+  if (!draft.length) {
     list.innerHTML = `<p class="empty-note">No commanders added yet.</p>`;
     return;
   }
-  list.innerHTML = commandersDraft.map((c, i) => `
+  list.innerHTML = draft.map((c, i) => `
     <div class="commander-row">
       <input class="input" placeholder="Name" value="${escHtml(c.name || "")}" data-ci="${i}" data-field="name">
       <input class="input" placeholder="Period (e.g. Jun 1941–Jan 1942)" value="${escHtml(c.period || "")}" data-ci="${i}" data-field="period">
@@ -53,71 +55,18 @@ function renderCommanders() {
   list.querySelectorAll("[data-ci]").forEach((inp) => {
     inp.addEventListener("input", (e) => {
       const { ci, field } = e.target.dataset;
-      commandersDraft[+ci][field] = e.target.value;
+      draft[+ci][field] = e.target.value;
     });
   });
   list.querySelectorAll("[data-rm-cmd]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      commandersDraft.splice(+btn.dataset.rmCmd, 1);
-      renderCommanders();
+      draft.splice(+btn.dataset.rmCmd, 1);
+      onUpdate();
     });
   });
 }
 
-function init() {
-  initRelatedModal();
-
-  document.getElementById("admin-tabs")?.addEventListener("click", (e) => {
-    if (e.target.closest('[data-tab="tab-formations"]')) {
-      loadFormations(1);
-    }
-  });
-
-  document.getElementById("formation-new-btn")?.addEventListener("click", () => openForm(null));
-  document.getElementById("formation-cancel-btn")?.addEventListener("click", closeForm);
-  document.getElementById("formation-filter-section")?.addEventListener("change", () => loadFormations(1));
-  document.getElementById("formation-filter-search")?.addEventListener("input", debounce(() => loadFormations(1), 350));
-  document.getElementById("formation-form")?.addEventListener("submit", handleSubmit);
-  document.getElementById("formation-preview-btn")?.addEventListener("click", showPreview);
-  document.getElementById("formation-preview-modal-close")?.addEventListener("click", () => toggleModal("formation-preview-modal", false));
-
-  document.getElementById("formation-add-commander-btn")?.addEventListener("click", () => {
-    commandersDraft.push({ name: "", period: "" });
-    renderCommanders();
-  });
-  document.getElementById("formation-add-source-btn")?.addEventListener("click", () => {
-    sourcesDraft.push({ ref: "", type: "" });
-    renderSources();
-  });
-  document.getElementById("formation-add-related-btn")?.addEventListener("click", () =>
-    openRelatedModal((item) => { relatedDraft.push(item); renderRelated(); })
-  );
-}
-
-async function loadFormations(page = 1) {
-  currentPage = page;
-  const container = document.getElementById("formation-list");
-  if (!container) return;
-  container.innerHTML = loader();
-
-  const section = document.getElementById("formation-filter-section")?.value || "";
-  const search = document.getElementById("formation-filter-search")?.value || "";
-  const params = new URLSearchParams({ page, limit: 50, ...(section && { section }), ...(search && { search }) });
-
-  try {
-    const res = await fetch(`/api/formations?${params}`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    renderList(container, await safeJson(res));
-  } catch (_) {
-    container.innerHTML = `<p class="text-dim">Formations unavailable.</p>`;
-  }
-}
-
-function renderList(container, { data, total, page, pages }) {
-  if (!data.length) {
-    container.innerHTML = `<p class="text-dim">No formations yet. Create one above or run the data import.</p>`;
-    return;
-  }
+function renderFormationsList(container, { data, total, page, pages }, { onEdit, onDelete, onPage }) {
   container.innerHTML = `
     <p class="list-meta">${total} formations · page ${page} of ${pages}</p>
     <table class="admin-table">
@@ -151,104 +100,42 @@ function renderList(container, { data, total, page, pages }) {
       ${page < pages ? `<button class="btn btn-secondary" data-page="${page + 1}">Next →</button>` : ""}
     </div>` : ""}`;
 
-  container.querySelectorAll("[data-edit]").forEach((btn) => btn.addEventListener("click", () => openForm(btn.dataset.edit)));
-  container.querySelectorAll("[data-delete]").forEach((btn) => btn.addEventListener("click", () => deleteFormation(btn.dataset.delete)));
-  container.querySelectorAll("[data-page]").forEach((btn) => btn.addEventListener("click", () => loadFormations(+btn.dataset.page)));
+  container.querySelectorAll("[data-edit]").forEach((btn) => btn.addEventListener("click", () => onEdit(btn.dataset.edit)));
+  container.querySelectorAll("[data-delete]").forEach((btn) => btn.addEventListener("click", () => onDelete(btn.dataset.delete)));
+  container.querySelectorAll("[data-page]").forEach((btn) => btn.addEventListener("click", () => onPage(+btn.dataset.page)));
 }
 
-async function deleteFormation(id) {
-  if (!confirm("Delete this formation? This cannot be undone.")) return;
-  try {
-    const res = await fetch(`/api/formations/${id}`, { method: "DELETE", headers: authHeader() });
-    if (!res.ok) throw new Error();
-    loadFormations(currentPage);
-  } catch (_) { alert("Delete failed. Try again."); }
+function populateForm(form, r, drafts) {
+  const meta = r.metadata || {};
+  form.querySelector("[name='title']").value = r.title || "";
+  form.querySelector("[name='slug']").value = r.slug || "";
+  form.querySelector("[name='section']").value = meta.section || "";
+  form.querySelector("[name='formation_type']").value = meta.formation_type || "";
+  form.querySelector("[name='nation']").value = r.nationality || "Germany";
+  form.querySelector("[name='service']").value = meta.service || "";
+  form.querySelector("[name='theater']").value = meta.theater || "";
+  form.querySelector("[name='active_from']").value = meta.active?.from || "";
+  form.querySelector("[name='active_to']").value = meta.active?.to || "";
+  form.querySelector("[name='peak_strength']").value = meta.peak_strength || "";
+  form.querySelector("[name='summary']").value = r.summary || "";
+  form.querySelector("[name='context']").value = meta.context || "";
+  form.querySelector("[name='published']").checked = !!r.published;
+
+  drafts.commanders = Array.isArray(meta.commanders)
+    ? meta.commanders.map((c) => ({ name: c.name || "", period: c.period || "" }))
+    : [];
+  drafts.sources = Array.isArray(meta.sources)
+    ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" }))
+    : [];
+  drafts.related = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
 }
 
-function openForm(id) {
-  editingId = id;
-  sourcesDraft = []; relatedDraft = []; commandersDraft = [];
-  document.getElementById("formation-form")?.reset();
-  document.getElementById("formation-form-title").textContent = id ? "Edit Formation" : "New Formation";
-  document.getElementById("formation-form-panel").hidden = false;
-  renderSources(); renderRelated(); renderCommanders();
-  setStatus("", false);
-  if (id) { loadIntoForm(id); translationsPanel.load(id); }
-  else translationsPanel.clear();
-}
-
-function closeForm() {
-  document.getElementById("formation-form-panel").hidden = true;
-  editingId = null;
-}
-
-async function loadIntoForm(id) {
-  try {
-    const res = await fetch(`/api/formations/${id}`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    const r = await safeJson(res);
-    const meta = r.metadata || {};
-    const form = document.getElementById("formation-form");
-
-    form.querySelector("[name='title']").value = r.title || "";
-    form.querySelector("[name='slug']").value = r.slug || "";
-    form.querySelector("[name='section']").value = meta.section || "";
-    form.querySelector("[name='formation_type']").value = meta.formation_type || "";
-    form.querySelector("[name='nation']").value = r.nationality || "Germany";
-    form.querySelector("[name='service']").value = meta.service || "";
-    form.querySelector("[name='theater']").value = meta.theater || "";
-    form.querySelector("[name='active_from']").value = meta.active?.from || "";
-    form.querySelector("[name='active_to']").value = meta.active?.to || "";
-    form.querySelector("[name='peak_strength']").value = meta.peak_strength || "";
-    form.querySelector("[name='summary']").value = r.summary || "";
-    form.querySelector("[name='context']").value = meta.context || "";
-    form.querySelector("[name='published']").checked = !!r.published;
-
-    commandersDraft = Array.isArray(meta.commanders)
-      ? meta.commanders.map((c) => ({ name: c.name || "", period: c.period || "" }))
-      : [];
-    sourcesDraft = Array.isArray(meta.sources)
-      ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" }))
-      : [];
-    relatedDraft = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
-
-    renderCommanders(); renderSources(); renderRelated();
-  } catch (_) { setStatus("Failed to load formation.", true); }
-}
-
-async function showPreview() {
-  if (!editingId) { alert("Save the formation first, then Preview."); return; }
-  toggleModal("formation-preview-modal", true);
-  const content = document.getElementById("formation-preview-content");
-  content.innerHTML = `<p class="text-dim">Loading…</p>`;
-  try {
-    const res = await fetch(`/api/formations/${editingId}/preview`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    const { rendered, issues } = await safeJson(res);
-    const errors = issues.filter((i) => i.severity === "error");
-    content.innerHTML = `
-      ${errors.length ? `<div class="preview-error">
-        <strong>Cannot publish — ${errors.length} blocking issue(s):</strong>
-        <ul>${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
-      </div>` : ""}
-      <h3 class="preview-title">${escHtml(rendered.name || "—")}</h3>
-      ${rendered.type ? `<p class="gold-dim mb-1">${escHtml(rendered.type)}</p>` : ""}
-      ${rendered.nation ? `<p class="text-dim mb-1">Nation: ${escHtml(rendered.nation)}</p>` : ""}
-      ${rendered.summary ? `<p class="mb-4">${escHtml(String(rendered.summary).slice(0, 300))}</p>` : ""}
-      <pre class="preview-json">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
-  } catch (_) {
-    content.innerHTML = `<p class="text-dim">Preview unavailable.</p>`;
-  }
-}
-
-async function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
+function serializeForm(form, drafts) {
   const activeFrom = form.querySelector("[name='active_from']").value.trim();
   const activeTo   = form.querySelector("[name='active_to']").value.trim();
   const contextText = form.querySelector("[name='context']").value.trim();
 
-  const body = {
+  return {
     title:       form.querySelector("[name='title']").value.trim(),
     slug:        form.querySelector("[name='slug']").value.trim() || undefined,
     nationality: form.querySelector("[name='nation']").value.trim() || "Germany",
@@ -262,27 +149,72 @@ async function handleSubmit(e) {
       active: (activeFrom || activeTo) ? { from: activeFrom || undefined, to: activeTo || undefined } : undefined,
       peak_strength:  form.querySelector("[name='peak_strength']").value.trim() || undefined,
       context:        contextText || undefined,
-      commanders:     commandersDraft.filter((c) => c.name),
-      sources:        sourcesDraft.filter((s) => s.ref),
-      related_records: relatedDraft,
+      commanders:     drafts.commanders.filter((c) => c.name),
+      sources:        drafts.sources.filter((s) => s.ref),
+      related_records: drafts.related,
     },
   };
-
-  setStatus("Saving…", false);
-  try {
-    const res = await fetch(editingId ? `/api/formations/${editingId}` : "/api/formations", {
-      method: editingId ? "PUT" : "POST",
-      headers: { ...authHeader(), "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) throw new Error();
-    const saved = await safeJson(res);
-    editingId = saved.id;
-    translationsPanel.load(saved.id);
-    setStatus("Saved.", false);
-    loadFormations(currentPage);
-    if (!document.getElementById("formation-preview-modal")?.hidden) showPreview();
-  } catch (_) { setStatus("Save failed. Try again.", true); }
 }
 
-init();
+function validate(body) {
+  const errors = [];
+  if (!body.title) errors.push("Name is required.");
+  if (!body.slug) errors.push("ID / Slug is required.");
+  else if (!SLUG_PATTERN.test(body.slug)) errors.push("Slug must be lowercase letters, numbers, and dashes only (e.g. army-group-north).");
+  if (!body.metadata.section) errors.push("Section is required.");
+  return errors;
+}
+
+function renderPreview(rendered, issues) {
+  const errors = issues.filter((i) => i.severity === "error");
+  return `
+    ${errors.length ? `<div class="preview-error">
+      <strong>Cannot publish — ${errors.length} blocking issue(s):</strong>
+      <ul>${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
+    </div>` : ""}
+    <h3 class="preview-title">${escHtml(rendered.name || "—")}</h3>
+    ${rendered.type ? `<p class="gold-dim mb-1">${escHtml(rendered.type)}</p>` : ""}
+    ${rendered.nation ? `<p class="text-dim mb-1">Nation: ${escHtml(rendered.nation)}</p>` : ""}
+    ${rendered.summary ? `<p class="mb-4">${escHtml(String(rendered.summary).slice(0, 300))}</p>` : ""}
+    <pre class="preview-json">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
+}
+
+createContentModule({
+  idPrefix: "formation",
+  apiBase: "/api/formations",
+  tabPanelId: "tab-formations",
+  tabButtonSelector: '[data-tab="tab-formations"]',
+  pageSize: 50,
+  filters: [
+    { param: "section", event: "change" },
+    { param: "search", event: "input", debounceMs: 350 },
+  ],
+  renderList: renderFormationsList,
+  emptyMessage: "No formations yet. Create one above or run the data import.",
+  translationsPanel,
+  labels: { new: "New Formation", edit: "Edit Formation" },
+  repeatableGroups: [
+    {
+      key: "commanders",
+      addBtnId: "formation-add-commander-btn",
+      render: renderCommanders,
+      itemFactory: () => ({ name: "", period: "" }),
+    },
+    {
+      key: "sources",
+      addBtnId: "formation-add-source-btn",
+      render: (draft, onUpdate) => renderSourcesFn("formation-sources-list", draft, onUpdate),
+      itemFactory: () => ({ ref: "", type: "" }),
+    },
+    {
+      key: "related",
+      addBtnId: "formation-add-related-btn",
+      render: (draft, onUpdate) => renderRelatedFn("formation-related-list", draft, onUpdate),
+      onAdd: (draft, rerender) => openRelatedModal((item) => { draft.push(item); rerender(); }),
+    },
+  ],
+  populateForm,
+  serializeForm,
+  validate,
+  renderPreview,
+});

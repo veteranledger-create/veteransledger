@@ -1,6 +1,7 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
+import { pickFormationFields } from "../../utilities/allowlist";
 import { toRecordLike } from "../publish/publish.service";
 import { toFormationJson } from "../publish/generators/formations.generator";
 import { checkFormationRecord } from "../publish/validators/formations.conformance";
@@ -35,7 +36,7 @@ export class FormationsService {
 
   async create(data: object, userId: string) {
     const record = await prisma.record.create({
-      data: { ...(data as object), type: "FORMATION" } as Parameters<typeof prisma.record.create>[0]["data"],
+      data: { ...pickFormationFields(data), type: "FORMATION" } as Parameters<typeof prisma.record.create>[0]["data"],
     });
     await prisma.auditLog.create({ data: { userId, action: "CREATE", entity: "Record", entityId: record.id } });
     return record;
@@ -45,7 +46,7 @@ export class FormationsService {
     const record = await notFoundAs404(
       () => prisma.record.update({
         where: { id },
-        data: data as Parameters<typeof prisma.record.update>[0]["data"],
+        data: pickFormationFields(data) as Parameters<typeof prisma.record.update>[0]["data"],
       }),
       "Formation not found",
     );

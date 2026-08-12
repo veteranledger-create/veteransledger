@@ -1,5 +1,7 @@
 import { authHeader, escHtml, loader, safeJson } from "./admin-utils.js";
 import { initAdminSelects } from "./admin-select.js";
+import { initModalStack, getTopModalSaveButton } from "./admin-modal-stack.js";
+import { isTabDirty, anyDirty } from "./admin-dirty-guard.js";
 
 /**
  * VeteransLedger · Admin Dashboard
@@ -73,33 +75,47 @@ async function init() {
     if (btn) activateTab(btn);
   });
 
-  // Modal backdrop click and Escape close
-  const MODAL_IDS = [
-    "related-record-modal", "media-attach-modal", "armament-preview-modal",
-    "personnel-preview-modal", "letter-preview-modal", "campaign-preview-modal",
-    "article-preview-modal", "award-preview-modal", "map-preview-modal",
-    "poldoc-preview-modal", "admin-attribution-modal", "formation-preview-modal",
-    "translation-editor-modal",
-  ];
-  MODAL_IDS.forEach((id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener("click", (e) => { if (e.target === el) el.hidden = true; });
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape") return;
-    const anyModalOpen = MODAL_IDS.some((id) => { const el = document.getElementById(id); return el && !el.hidden; });
-    MODAL_IDS.forEach((id) => { const el = document.getElementById(id); if (el && !el.hidden) el.hidden = true; });
-    // Escape also closes open form panels when no modal was open
-    if (!anyModalOpen) {
-      document.querySelectorAll(".form-panel:not([hidden])").forEach((panel) => { panel.hidden = true; });
-    }
-  });
+  // Modal stack: open/close tracking, focus trap, focus restoration, and
+  // Escape closes only the topmost modal. Passive (hidden-attribute based),
+  // so every existing modal below gets this for free with zero changes to
+  // its own module's JS. translation-editor-modal's saveSelector lets the
+  // Ctrl+S handler below route to it instead of the form behind it.
+  initModalStack(
+    [
+      { id: "related-record-modal" },
+      { id: "media-attach-modal" },
+      { id: "armament-preview-modal" },
+      { id: "personnel-preview-modal" },
+      { id: "letter-preview-modal" },
+      { id: "campaign-preview-modal" },
+      { id: "article-preview-modal" },
+      { id: "award-preview-modal" },
+      { id: "map-preview-modal" },
+      { id: "poldoc-preview-modal" },
+      { id: "admin-attribution-modal" },
+      { id: "formation-preview-modal" },
+      { id: "translation-editor-modal", saveSelector: "#tl-modal-save-human" },
+    ],
+    {
+      // Escape closes an open form panel only when no modal was open on
+      // this keypress (unchanged end-user behavior; race-free by construction).
+      onEscapeWithNoModal: () => {
+        document.querySelectorAll(".form-panel:not([hidden])").forEach((panel) => { panel.hidden = true; });
+      },
+    },
+  );
 
-  // Ctrl+S / Cmd+S: save the active form panel
+  // Ctrl+S / Cmd+S: modal-aware — if the topmost open modal has a
+  // configured save action, use it (e.g. the translation editor). Otherwise
+  // (no modal open, or the topmost one is read-only like a preview) fall
+  // through to the active form panel, exactly as before — this preserves
+  // Formations' existing "Save while Preview is open refreshes the preview"
+  // behavior, since formation-preview-modal has no saveSelector.
   document.addEventListener("keydown", (e) => {
     if (!(e.ctrlKey || e.metaKey) || e.key !== "s") return;
     e.preventDefault();
+    const modalSaveBtn = getTopModalSaveButton();
+    if (modalSaveBtn) { modalSaveBtn.click(); return; }
     const panel = document.querySelector(".form-panel:not([hidden])");
     if (panel) {
       const btn = panel.querySelector("[type='submit']") || panel.querySelector(".btn-primary");
@@ -112,6 +128,15 @@ async function init() {
         btn?.click();
       }
     }
+  });
+
+  // Unsaved-changes protection: only tabs that opt in via registerDirtyGuard
+  // (currently Formations) ever block navigation — every other tab is
+  // unaffected. Covers both leaving the browser and switching Admin tabs.
+  window.addEventListener("beforeunload", (e) => {
+    if (!anyDirty()) return;
+    e.preventDefault();
+    e.returnValue = "";
   });
 
   // Enhance all native selects with the custom dropdown
@@ -138,6 +163,19 @@ async function init() {
 
 function activateTab(btn) {
   const panel = btn.dataset.tab;
+  const currentPanel = document.querySelector(".admin-tab-panel:not([hidden])")?.id;
+
+  // Only tabs that registered a dirty guard (currently Formations) can ever
+  // block a switch — every other tab behaves exactly as before.
+  if (currentPanel && currentPanel !== panel && isTabDirty(currentPanel)) {
+    if (!confirm("You have unsaved changes on this tab. Leave without saving?")) {
+      const mobileTabSelect = document.getElementById("admin-tabs-mobile");
+      if (mobileTabSelect && mobileTabSelect.value !== currentPanel) mobileTabSelect.value = currentPanel;
+      document.querySelector(`.admin-tab-btn[data-tab="${currentPanel}"]`)?.focus();
+      return;
+    }
+  }
+
   document.querySelectorAll(".admin-tab-btn").forEach((b) => {
     b.classList.toggle("is-active", b === btn);
     b.setAttribute("aria-selected", b === btn ? "true" : "false");

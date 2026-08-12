@@ -609,3 +609,86 @@ pre.tlx-src--json { font-family:var(--font-mono);font-size:var(--text-xs);line-h
    instead of Unicode symbols — used across all pages consistently. */
 .icon-inline { display:inline-block;vertical-align:-1px;flex-shrink:0;color:currentColor;margin-right:4px; }
 .btn--xs .icon-inline:only-child, .btn .icon-inline:only-child { margin-right:0; }
+
+/* ── Admin · Topbar (shell) ──────────────────────────────────────
+   Static, always-present, English-only replacement for the public
+   site's injected header/sidebar. See /layouts/AdminLayout/
+   admin-layout.js — Phase 2 of the Admin restructuring plan. */
+:root { --admin-topbar-h: 52px; }
+.admin-topbar {
+  height:var(--admin-topbar-h);box-sizing:border-box;
+  position:sticky;top:0;z-index:30;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);
+  padding:0 var(--space-6);
+  background:var(--bg-elevated);border-bottom:1px solid var(--border-dim);
+}
+.admin-topbar__brand {
+  display:flex;align-items:center;gap:var(--space-2);
+  font-family:var(--font-display);font-size:var(--text-sm);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text-primary);text-decoration:none;
+}
+.admin-topbar__brand:hover { color:var(--gold); }
+.admin-topbar__logo { width:22px;height:22px;object-fit:contain;filter:invert(0.85); }
+[data-theme="light"] .admin-topbar__logo { filter:none; }
+.admin-topbar__brand-tag { color:var(--gold-dim);font-size:var(--text-xs);letter-spacing:.1em; }
+.admin-topbar__actions { display:flex;align-items:center;gap:var(--space-3); }
+.admin-topbar__link {
+  font-size:var(--text-xs);letter-spacing:.04em;color:var(--text-secondary);text-decoration:none;
+  white-space:nowrap;
+}
+.admin-topbar__link:hover { color:var(--gold); }
+.admin-topbar__theme {
+  font-size:var(--text-xs);letter-spacing:.04em;color:var(--text-secondary);
+  background:rgba(255,255,255,.04);border:1px solid var(--border-dim);border-radius:var(--radius-sm);
+  padding:5px 10px;cursor:pointer;transition:border-color .12s,color .12s;
+}
+.admin-topbar__theme:hover { border-color:rgba(212,168,73,.4);color:var(--gold); }
+@media(max-width:480px) {
+  .admin-topbar { padding:0 var(--space-4); }
+  .admin-topbar__brand span:not(.admin-topbar__brand-tag) { display:none; }
+  .admin-topbar__link { display:none; }
+}
+
+/* Login screen is a full-viewport centered card (min-height:100vh); the
+   topbar is always present above it, so subtract its height here rather
+   than hiding the topbar on that screen. */
+#admin-login.al-page { min-height:calc(100vh - var(--admin-topbar-h)); }
+
+/* Tab bars are sticky to their own top:0 — offset below the topbar,
+   which is sticky above them, so the two stack instead of overlapping. */
+#admin-tabs { top:var(--admin-topbar-h); }
+@media(max-width:767px) {
+  #admin-tabs-mobile-wrap { top:var(--admin-topbar-h); }
+}
+
+/* ── Admin · Content Module shared infra (Phase 3) ───────────────
+   Submit-state protection needs a visible disabled state (none existed
+   before — disabling a .btn had no visual effect beyond the default
+   cursor). Scoped to admin.css only, so the public site's buttons using
+   the same .btn class are unaffected. */
+.btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.btn-primary:disabled:hover { background:transparent;border-color:var(--gold);color:var(--gold);box-shadow:none; }
+.btn-secondary:disabled:hover { border-color:var(--border-base);color:var(--text-secondary); }
+
+/* Dirty-state indicator: createContentModule() toggles .is-dirty on the
+   .form-panel; shown next to the title so unsaved changes are visible
+   during editing, not just at the moment you try to navigate away.
+   .section-label::after is normally a decorative rule (flex:1, height:1px,
+   background line) — reset those before repurposing it for text. */
+.form-panel.is-dirty .section-label--flush::after {
+  content: "• Unsaved changes";
+  flex: none;
+  height: auto;
+  background: none;
+  margin-left: var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--gold-dim);
+  white-space: nowrap;
+}

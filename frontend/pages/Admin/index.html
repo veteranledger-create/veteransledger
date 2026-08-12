@@ -21,6 +21,21 @@
 
 <body>
 
+  <!-- ── Admin shell topbar ──────────────────────────────────────
+       Static, English-only, zero fetch, zero i18n dependency — see
+       /layouts/AdminLayout/admin-layout.js and Phase 2 of the Admin
+       restructuring plan (storage/admin-restructure/). -->
+  <header class="admin-topbar">
+    <a class="admin-topbar__brand" href="/admin">
+      <img src="/public/images/logos/eagle.png" alt="" aria-hidden="true" class="admin-topbar__logo">
+      <span>VeteransLedger <span class="admin-topbar__brand-tag">Admin</span></span>
+    </a>
+    <div class="admin-topbar__actions">
+      <a class="admin-topbar__link" href="/" target="_blank" rel="noopener">View Site ↗</a>
+      <button type="button" id="admin-theme-toggle" class="admin-topbar__theme" aria-pressed="false">Dark</button>
+    </div>
+  </header>
+
   <main id="main-content">
 
     <!-- ── Login panel ─────────────────────────────────────── -->
@@ -451,11 +466,6 @@
         <div id="formation-form-panel" hidden class="form-panel">
           <div class="panel-header">
             <h3 id="formation-form-title" class="section-label section-label--flush">New Formation</h3>
-            <div class="panel-actions">
-              <span id="formation-form-status" class="form-status"></span>
-              <button id="formation-preview-btn" type="button" class="btn btn-secondary">Preview</button>
-              <button id="formation-cancel-btn" type="button" class="btn btn-secondary">Cancel</button>
-            </div>
           </div>
 
           <form id="formation-form" class="struct-grid">
@@ -466,7 +476,7 @@
               </div>
               <div>
                 <label class="label">ID / Slug *</label>
-                <input name="slug" class="input" required placeholder="e.g. army-group-north">
+                <input name="slug" class="input" required placeholder="e.g. army-group-north" pattern="[a-z0-9]+(-[a-z0-9]+)*" title="Lowercase letters, numbers, and dashes only — e.g. army-group-north">
                 <p class="field-hint" style="margin-top:4px;">Unique identifier. Use lowercase-dashes.</p>
               </div>
             </div>
@@ -561,12 +571,17 @@
             </div>
 
             <div id="formation-translations-panel"></div>
-            <div class="published-toggle published-toggle--sm form-section-head--divided">
-              <label class="form-bottom-label">
-                <input name="published" type="checkbox"> Published
+            <div class="published-toggle">
+              <label>
+                <input type="checkbox" name="published"> Published
               </label>
-              <button type="submit" class="btn btn-primary">Save Formation</button>
             </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Save Formation</button>
+              <button type="button" class="btn btn-secondary" id="formation-preview-btn">Preview</button>
+              <button type="button" class="btn btn-secondary" id="formation-cancel-btn">Cancel</button>
+            </div>
+            <p id="formation-form-status" class="form-status"></p>
           </form>
         </div>
 
@@ -2043,7 +2058,7 @@
   <!-- Hidden shared file input used to replace an existing media file in-place -->
   <input type="file" id="admin-replace-file-input" style="display:none;" accept="*">
 
-  <script type="module" src="/layouts/MainLayout/layout.js"></script>
+  <script type="module" src="/layouts/AdminLayout/admin-layout.js"></script>
   <script type="module" src="/pages/Admin/admin.js"></script>
   <script type="module" src="/pages/Admin/armaments-admin.js"></script>
   <script type="module" src="/pages/Admin/personnel-admin.js"></script>

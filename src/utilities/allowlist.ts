@@ -10,11 +10,23 @@
  * server-generated once at create time where it applies, and the rest are
  * either server-managed or immutable identity fields that must never come
  * from request input.
+ *
+ * Formations is the one Record-backed type where slug genuinely IS a
+ * client-supplied field (the Admin form has a required "ID / Slug" input;
+ * there is no server-side slug generator for Formations the way
+ * armaments.service.ts's resolveUniqueSlug() has for Armaments) — so it
+ * gets its own allowlist that adds slug back in, rather than broadening
+ * RECORD_CONTENT_FIELDS (and quietly re-opening slug for Letters/Campaigns/
+ * Articles, which intentionally never accept it from the client).
  */
 
 const RECORD_CONTENT_FIELDS = [
   "title", "summary", "content", "date", "startDate", "endDate",
   "location", "nationality", "metadata", "tags", "published",
+] as const;
+
+const FORMATION_CONTENT_FIELDS = [
+  ...RECORD_CONTENT_FIELDS, "slug",
 ] as const;
 
 const ENTITY_CONTENT_FIELDS = [
@@ -33,6 +45,11 @@ function pick(input: Record<string, unknown>, allowed: readonly string[]): Recor
 /** Allowlisted fields for Record-backed content types (Letters/Campaigns/Articles). */
 export function pickRecordFields(input: object): Record<string, unknown> {
   return pick(input as Record<string, unknown>, RECORD_CONTENT_FIELDS);
+}
+
+/** Allowlisted fields for Formations — Record-backed, plus client-supplied slug. */
+export function pickFormationFields(input: object): Record<string, unknown> {
+  return pick(input as Record<string, unknown>, FORMATION_CONTENT_FIELDS);
 }
 
 /** Allowlisted fields for Entity-backed content types (Personnel). */

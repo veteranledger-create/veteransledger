@@ -1,10 +1,18 @@
 import { body, query } from "express-validator";
 
+const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+
 export const createFormationValidator = [
   body("title")
     .trim()
     .isLength({ min: 1, max: 500 })
     .withMessage("Title is required and must be under 500 characters."),
+  body("slug")
+    .optional({ nullable: true })
+    .trim()
+    .isLength({ max: 200 })
+    .matches(SLUG_PATTERN)
+    .withMessage("Slug must be lowercase letters, numbers, and dashes only."),
   body("summary")
     .optional({ nullable: true })
     .trim()
@@ -40,6 +48,12 @@ export const updateFormationValidator = [
     .trim()
     .isLength({ min: 1, max: 500 })
     .withMessage("Title must be under 500 characters."),
+  body("slug")
+    .optional({ nullable: true })
+    .trim()
+    .isLength({ max: 200 })
+    .matches(SLUG_PATTERN)
+    .withMessage("Slug must be lowercase letters, numbers, and dashes only."),
   body("summary")
     .optional({ nullable: true })
     .trim()

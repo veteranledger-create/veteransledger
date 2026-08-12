@@ -143,6 +143,7 @@ body {
   font-weight: 400;
   line-height: 1.65;
   min-height: 100vh;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -449,9 +450,18 @@ table {
 }
 
 /* ── Page content area ─────────────────────────────────────── */
+/* overflow-x lives on body (above), not here: setting it on main made main
+   a scroll container in its own right (an unavoidable side effect of any
+   non-visible overflow-x — it forces overflow-y to compute as auto on the
+   same element), even though main's height is always unbounded and never
+   actually scrolls. That silently broke position:sticky and scrollIntoView
+   for everything inside main, since their "nearest scrolling ancestor"
+   became main instead of the viewport. body's overflow-x propagates to the
+   viewport per the CSS overflow-propagation spec, so the horizontal-scroll
+   guard still applies page-wide without creating that inner scroll
+   container. */
 main {
   grid-area: main;
-  overflow-x: hidden;
 }
 
 /* ── Section wrapper ───────────────────────────────────────── */
