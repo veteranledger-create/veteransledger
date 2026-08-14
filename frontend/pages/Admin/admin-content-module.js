@@ -39,6 +39,9 @@ export function createContentModule(config) {
     tabButtonSelector,
     pageSize = 50,
     filters = [],
+    fixedListParams = {}, // query params always sent with the list request, independent of any filter UI —
+                            // e.g. Awards/Maps/Political Docs all share the generic /api/records endpoint
+                            // and must pin `type` on every list call, not just when a filter element has a value
     renderList,           // (container, { data, total, page, pages }) => void — builds the table + wires row actions
     emptyMessage = "Nothing here yet.",
     translationsPanel = null,
@@ -121,7 +124,7 @@ export function createContentModule(config) {
 
   // ── List / pagination / filtering ───────────────────────────────
   function buildQuery(page) {
-    const params = new URLSearchParams({ page, limit: pageSize });
+    const params = new URLSearchParams({ page, limit: pageSize, ...fixedListParams });
     filters.forEach((f) => {
       const el = document.getElementById(`${idPrefix}-filter-${f.param}`);
       const val = el?.value?.trim();

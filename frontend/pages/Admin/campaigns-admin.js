@@ -1,14 +1,18 @@
-﻿import { TranslationsPanel } from "./translations-panel.js";
-import { initMediaAdmin, registerCallbacks } from "./admin-media.js";
-import { authHeader, escHtml, debounce, loader, toggleModal, makeStatusFn, safeJson } from "./admin-utils.js";
+import { TranslationsPanel } from "./translations-panel.js";
+import { escHtml } from "./admin-utils.js";
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
 import { uploadFile, handleUpload, wireSectionActions, renderGallery, renderDocuments } from "./admin-media-sections.js";
+import { initMediaAdmin, registerCallbacks } from "./admin-media.js";
+import { createContentModule } from "./admin-content-module.js";
 
 /**
  * VeteransLedger · Admin — Campaigns
  * Campaign-specific logic only. Dates are stored in both top-level Prisma
- * columns (for orderBy) and metadata.dates (for conformance + generator).
+ * columns (for orderBy) and metadata.dates (for conformance + generator) —
+ * preserved as-is from the pre-migration implementation. Shared
+ * infrastructure lives in admin-content-module and the pre-existing
+ * admin-utils / admin-related / admin-form / admin-media(-sections) modules.
  */
 
 const KNOWN_THEATERS = [
@@ -19,90 +23,25 @@ const KNOWN_THEATERS = [
   { value: "western-front", label: "Western Front" },
 ];
 
-let currentPage = 1;
-let editingId = null;
 const translationsPanel = new TranslationsPanel("campaign-translations-panel", "record");
-let sourcesDraft = [];
-let relatedDraft = [];
-let galleryDraft = [];
-let documentsDraft = [];
 
-const setStatus = makeStatusFn("campaign-form-status");
+let _drafts = null;
+let _setStatus = null;
 
-function renderSources() { renderSourcesFn("campaign-sources-list", sourcesDraft, renderSources); }
-function renderRelated() { renderRelatedFn("campaign-related-list", relatedDraft, renderRelated); }
-function renderGalleryAdmin() { renderGallery("campaign-gallery-list", "campaign-gallery-count", galleryDraft, renderGalleryAdmin); }
-function renderDocumentsAdmin() { renderDocuments("campaign-documents-list", "campaign-documents-count", documentsDraft, renderDocumentsAdmin); }
+function renderGalleryAdmin() { renderGallery("campaign-gallery-list", "campaign-gallery-count", _drafts.gallery, renderGalleryAdmin); }
+function renderDocumentsAdmin() { renderDocuments("campaign-documents-list", "campaign-documents-count", _drafts.documents, renderDocumentsAdmin); }
 
-function init() {
-  initMediaAdmin();
-  initRelatedModal();
-  registerCallbacks(uploadFile, setStatus);
-
-  document.getElementById("admin-tabs")?.addEventListener("click", (e) => {
-    if (e.target.closest('[data-tab="tab-campaigns"]')) {
-      registerCallbacks(uploadFile, setStatus);
-      loadCampaigns(1);
-    }
-  });
-
-  document.getElementById("campaign-new-btn")?.addEventListener("click", () => openForm(null));
-  document.getElementById("campaign-cancel-btn")?.addEventListener("click", closeForm);
-  document.getElementById("campaign-filter-theater")?.addEventListener("change", () => loadCampaigns(1));
-  document.getElementById("campaign-filter-search")?.addEventListener("input", debounce(() => loadCampaigns(1), 350));
-  document.getElementById("campaign-form")?.addEventListener("submit", handleSubmit);
-  document.getElementById("campaign-preview-btn")?.addEventListener("click", showPreview);
-  document.getElementById("campaign-preview-modal-close")?.addEventListener("click", () => toggleModal("campaign-preview-modal", false));
-
-  document.getElementById("campaign-add-source-btn")?.addEventListener("click", () => { sourcesDraft.push({ ref: "", type: "" }); renderSources(); });
-  document.getElementById("campaign-add-related-btn")?.addEventListener("click", () =>
-    openRelatedModal((item) => { relatedDraft.push(item); renderRelated(); })
-  );
-
-  document.getElementById("campaign-gallery-upload")?.addEventListener("change", (e) => handleUpload(e.target.files, "campaign-gallery-upload", galleryDraft, renderGalleryAdmin, setStatus));
-  document.getElementById("campaign-documents-upload")?.addEventListener("change", (e) => handleUpload(e.target.files, "campaign-documents-upload", documentsDraft, renderDocumentsAdmin, setStatus));
-
-  wireSectionActions("campaign", "gallery", galleryDraft, renderGalleryAdmin, "image");
-  wireSectionActions("campaign", "documents", documentsDraft, renderDocumentsAdmin, "document");
-}
-
-// ── List ──────────────────────────────────────────────────────
-async function loadCampaigns(page = 1) {
-  currentPage = page;
-  const container = document.getElementById("campaign-list");
-  if (!container) return;
-  container.innerHTML = loader();
-
-  const theater = document.getElementById("campaign-filter-theater")?.value || "";
-  const search = document.getElementById("campaign-filter-search")?.value || "";
-  const params = new URLSearchParams({ page, limit: 20, ...(theater && { theater }), ...(search && { search }) });
-
-  try {
-    const res = await fetch(`/api/campaigns?${params}`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    renderList(container, await safeJson(res));
-  } catch (_) {
-    container.innerHTML = `<p class="text-dim">Campaigns unavailable.</p>`;
-  }
-}
-
-function renderList(container, { data, total, page, pages }) {
-  if (!data.length) {
-    container.innerHTML = `<p class="text-dim">No campaigns yet. Create one above.</p>`;
-    return;
-  }
+function renderCampaignsList(container, { data, total, page, pages }, { onEdit, onDelete, onPage }) {
   container.innerHTML = `
     <p class="list-meta">${total} campaigns · page ${page} of ${pages}</p>
     <table class="admin-table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Theater</th>
-          <th>Start</th>
-          <th>Status</th>
-          <th class="col-actions">Actions</th>
-        </tr>
-      </thead>
+      <thead><tr>
+        <th>Title</th>
+        <th>Theater</th>
+        <th>Start</th>
+        <th>Status</th>
+        <th class="col-actions">Actions</th>
+      </tr></thead>
       <tbody>
         ${data.map((r) => {
           const meta = r.metadata || {};
@@ -126,100 +65,32 @@ function renderList(container, { data, total, page, pages }) {
       ${page > 1 ? `<button class="btn btn-secondary" data-page="${page - 1}">← Prev</button>` : ""}
       ${page < pages ? `<button class="btn btn-secondary" data-page="${page + 1}">Next →</button>` : ""}
     </div>` : ""}`;
-
-  container.querySelectorAll("[data-edit]").forEach((btn) => btn.addEventListener("click", () => openForm(btn.dataset.edit)));
-  container.querySelectorAll("[data-delete]").forEach((btn) => btn.addEventListener("click", () => deleteCampaign(btn.dataset.delete)));
-  container.querySelectorAll("[data-page]").forEach((btn) => btn.addEventListener("click", () => loadCampaigns(+btn.dataset.page)));
+  container.querySelectorAll("[data-edit]").forEach((btn) => btn.addEventListener("click", () => onEdit(btn.dataset.edit)));
+  container.querySelectorAll("[data-delete]").forEach((btn) => btn.addEventListener("click", () => onDelete(btn.dataset.delete)));
+  container.querySelectorAll("[data-page]").forEach((btn) => btn.addEventListener("click", () => onPage(+btn.dataset.page)));
 }
 
-async function deleteCampaign(id) {
-  if (!confirm("Delete this campaign? This cannot be undone.")) return;
-  try {
-    const res = await fetch(`/api/campaigns/${id}`, { method: "DELETE", headers: authHeader() });
-    if (!res.ok) throw new Error();
-    loadCampaigns(currentPage);
-  } catch (_) {
-    alert("Delete failed. Try again.");
-  }
+function populateForm(form, r, drafts) {
+  const meta = r.metadata || {};
+  form.querySelector("[name='title']").value = r.title || "";
+  form.querySelector("[name='theater']").value = meta.theater || "";
+  form.querySelector("[name='startDate']").value = r.startDate ? r.startDate.slice(0, 10) : (meta.dates?.start || "");
+  form.querySelector("[name='endDate']").value = r.endDate ? r.endDate.slice(0, 10) : (meta.dates?.end || "");
+  form.querySelector("[name='summary']").value = r.summary || "";
+  form.querySelector("[name='context']").value = meta.context || "";
+  form.querySelector("[name='significance']").value = meta.significance || "";
+  form.querySelector("[name='outcome']").value = meta.outcome || "";
+  form.querySelector("[name='published']").checked = !!r.published;
+
+  drafts.sources = Array.isArray(meta.sources) ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" })) : [];
+  drafts.related = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
+  drafts.gallery = Array.isArray(meta.gallery) ? meta.gallery.map((g) => ({ ...g })) : [];
+  drafts.documents = Array.isArray(meta.documents) ? meta.documents.map((d) => ({ ...d })) : [];
+
+  renderGalleryAdmin(); renderDocumentsAdmin();
 }
 
-// ── Form ──────────────────────────────────────────────────────
-function openForm(id) {
-  editingId = id;
-  sourcesDraft = []; relatedDraft = []; galleryDraft = []; documentsDraft = [];
-  document.getElementById("campaign-form")?.reset();
-  document.getElementById("campaign-form-title").textContent = id ? "Edit Campaign" : "New Campaign";
-  document.getElementById("campaign-form-panel").hidden = false;
-  renderSources(); renderRelated(); renderGalleryAdmin(); renderDocumentsAdmin();
-  setStatus("", false);
-  if (id) { loadCampaignIntoForm(id); translationsPanel.load(id); }
-  else translationsPanel.clear();
-}
-
-function closeForm() {
-  document.getElementById("campaign-form-panel").hidden = true;
-  editingId = null;
-}
-
-async function loadCampaignIntoForm(id) {
-  try {
-    const res = await fetch(`/api/campaigns/${id}`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    const r = await safeJson(res);
-    const meta = r.metadata || {};
-    const form = document.getElementById("campaign-form");
-
-    form.querySelector("[name='title']").value = r.title || "";
-    form.querySelector("[name='theater']").value = meta.theater || "";
-    form.querySelector("[name='startDate']").value = r.startDate ? r.startDate.slice(0, 10) : (meta.dates?.start || "");
-    form.querySelector("[name='endDate']").value = r.endDate ? r.endDate.slice(0, 10) : (meta.dates?.end || "");
-    form.querySelector("[name='summary']").value = r.summary || "";
-    form.querySelector("[name='context']").value = meta.context || "";
-    form.querySelector("[name='significance']").value = meta.significance || "";
-    form.querySelector("[name='outcome']").value = meta.outcome || "";
-    form.querySelector("[name='published']").checked = !!r.published;
-
-    sourcesDraft = Array.isArray(meta.sources) ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" })) : [];
-    relatedDraft = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
-    galleryDraft = Array.isArray(meta.gallery) ? meta.gallery.map((g) => ({ ...g })) : [];
-    documentsDraft = Array.isArray(meta.documents) ? meta.documents.map((d) => ({ ...d })) : [];
-
-    renderSources(); renderRelated(); renderGalleryAdmin(); renderDocumentsAdmin();
-  } catch (_) {
-    setStatus("Failed to load campaign.", true);
-  }
-}
-
-// ── Preview ───────────────────────────────────────────────────
-async function showPreview() {
-  if (!editingId) { alert("Save the campaign first, then Preview."); return; }
-  toggleModal("campaign-preview-modal", true);
-  const content = document.getElementById("campaign-preview-content");
-  content.innerHTML = `<p class="text-dim">Loading…</p>`;
-  try {
-    const res = await fetch(`/api/campaigns/${editingId}/preview`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    const { rendered, issues } = await safeJson(res);
-    const errors = issues.filter((i) => i.severity === "error");
-    const dates = rendered.dates || {};
-    content.innerHTML = `
-      ${errors.length ? `<div class="preview-error">
-        <strong>Cannot publish — ${errors.length} blocking issue(s):</strong>
-        <ul>${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
-      </div>` : ""}
-      <h3 class="preview-title">${escHtml(rendered.title || "—")}</h3>
-      <p class="text-dim mb-1">${escHtml(rendered.theater || "")}${dates.start ? " · " + dates.start : ""}</p>
-      <p class="mb-4">${escHtml((rendered.summary || "").slice(0, 200))}</p>
-      <pre class="preview-json">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
-  } catch (_) {
-    content.innerHTML = `<p class="text-dim">Preview unavailable.</p>`;
-  }
-}
-
-// ── Submit ────────────────────────────────────────────────────
-async function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
+function serializeForm(form, drafts) {
   const startDateVal = form.querySelector("[name='startDate']").value.trim();
   const endDateVal = form.querySelector("[name='endDate']").value.trim();
   const theaterVal = form.querySelector("[name='theater']").value;
@@ -234,35 +105,83 @@ async function handleSubmit(e) {
       context: form.querySelector("[name='context']").value.trim() || undefined,
       significance: form.querySelector("[name='significance']").value.trim() || undefined,
       outcome: form.querySelector("[name='outcome']").value.trim() || undefined,
-      sources: sourcesDraft.filter((s) => s.ref),
-      related_records: relatedDraft,
-      gallery: galleryDraft.filter((g) => g.file),
-      documents: documentsDraft.filter((d) => d.file),
+      sources: drafts.sources.filter((s) => s.ref),
+      related_records: drafts.related,
+      gallery: drafts.gallery.filter((g) => g.file),
+      documents: drafts.documents.filter((d) => d.file),
     },
   };
 
   if (startDateVal) body.startDate = startDateVal;
   if (endDateVal) body.endDate = endDateVal;
 
-  try {
-    const res = await fetch(editingId ? `/api/campaigns/${editingId}` : "/api/campaigns", {
-      method: editingId ? "PUT" : "POST",
-      headers: { ...authHeader(), "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) {
-      const err = await safeJson(res).catch(() => ({}));
-      throw new Error(err.error || "Save failed.");
-    }
-    const saved = await safeJson(res);
-    editingId = saved.id;
-    translationsPanel.load(saved.id);
-    setStatus("Saved.", false);
-    loadCampaigns(currentPage);
-    if (!document.getElementById("campaign-preview-modal")?.hidden) showPreview();
-  } catch (err) {
-    setStatus(err.message || "Save failed. Try again.", true);
-  }
+  return body;
 }
 
-init();
+function renderPreview(rendered, issues) {
+  const errors = issues.filter((i) => i.severity === "error");
+  const dates = rendered.dates || {};
+  return `
+    ${errors.length ? `<div class="preview-error">
+      <strong>Cannot publish — ${errors.length} blocking issue(s):</strong>
+      <ul>${errors.map((e) => `<li>${escHtml(e.message)}</li>`).join("")}</ul>
+    </div>` : ""}
+    <h3 class="preview-title">${escHtml(rendered.title || "—")}</h3>
+    <p class="text-dim mb-1">${escHtml(rendered.theater || "")}${dates.start ? " · " + dates.start : ""}</p>
+    <p class="mb-4">${escHtml((rendered.summary || "").slice(0, 200))}</p>
+    <pre class="preview-json">${escHtml(JSON.stringify(rendered, null, 2))}</pre>`;
+}
+
+createContentModule({
+  idPrefix: "campaign",
+  apiBase: "/api/campaigns",
+  tabPanelId: "tab-campaigns",
+  tabButtonSelector: '[data-tab="tab-campaigns"]',
+  pageSize: 20,
+  filters: [
+    { param: "theater", event: "change" },
+    { param: "search", event: "input", debounceMs: 350 },
+  ],
+  renderList: renderCampaignsList,
+  emptyMessage: "No campaigns yet. Create one above.",
+  translationsPanel,
+  labels: { new: "New Campaign", edit: "Edit Campaign" },
+  repeatableGroups: [
+    {
+      key: "sources",
+      addBtnId: "campaign-add-source-btn",
+      render: (draft, onUpdate) => renderSourcesFn("campaign-sources-list", draft, onUpdate),
+      itemFactory: () => ({ ref: "", type: "" }),
+    },
+    {
+      key: "related",
+      addBtnId: "campaign-add-related-btn",
+      render: (draft, onUpdate) => renderRelatedFn("campaign-related-list", draft, onUpdate),
+      onAdd: (draft, rerender) => openRelatedModal((item) => { draft.push(item); rerender(); }),
+    },
+  ],
+  extraDraftKeys: ["gallery", "documents"],
+  populateForm,
+  serializeForm,
+  renderPreview,
+  onInit: (drafts, { setStatus }) => {
+    _drafts = drafts;
+    _setStatus = setStatus;
+
+    initMediaAdmin();
+    initRelatedModal();
+    registerCallbacks(uploadFile, _setStatus);
+
+    document.getElementById("campaign-gallery-upload")?.addEventListener("change", (e) => handleUpload(e.target.files, "campaign-gallery-upload", drafts.gallery, renderGalleryAdmin, _setStatus));
+    document.getElementById("campaign-documents-upload")?.addEventListener("change", (e) => handleUpload(e.target.files, "campaign-documents-upload", drafts.documents, renderDocumentsAdmin, _setStatus));
+
+    wireSectionActions("campaign", "gallery", () => drafts.gallery, renderGalleryAdmin, "image");
+    wireSectionActions("campaign", "documents", () => drafts.documents, renderDocumentsAdmin, "document");
+  },
+  onTabActivate: () => registerCallbacks(uploadFile, _setStatus),
+  onFormOpen: (drafts, isNew) => {
+    if (isNew) {
+      renderGalleryAdmin(); renderDocumentsAdmin();
+    }
+  },
+});

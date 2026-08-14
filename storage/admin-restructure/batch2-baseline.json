@@ -1,0 +1,53 @@
+{
+  "label": "batch2-baseline",
+  "capturedAt": "2026-08-14T17:28:35.972Z",
+  "record": {
+    "total": 184,
+    "byType": {
+      "FORMATION": 32,
+      "ARMAMENT": 85,
+      "ARTICLE": 8,
+      "CAMPAIGN": 35,
+      "LETTER": 24
+    }
+  },
+  "entity": {
+    "total": 46,
+    "byType": {
+      "PERSON": 46
+    }
+  },
+  "timelineEvent": {
+    "total": 83
+  },
+  "translation": {
+    "total": 72,
+    "byEntityType": {
+      "record": 8,
+      "site_content": 64
+    },
+    "byStatus": {
+      "machine": 64,
+      "human": 7,
+      "published": 1
+    }
+  },
+  "collection": {
+    "total": 42
+  },
+  "relationship": {
+    "total": 28
+  },
+  "user": {
+    "total": 1,
+    "byRole": {
+      "SUPER_ADMIN": 1
+    }
+  },
+  "auditLog": {
+    "total": 16
+  },
+  "mediaAsset": {
+    "total": 0
+  }
+}

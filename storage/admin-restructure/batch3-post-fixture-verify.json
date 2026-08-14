@@ -1,0 +1,53 @@
+{
+  "label": "batch3-post-fixture-verify",
+  "capturedAt": "2026-08-14T19:35:01.499Z",
+  "record": {
+    "total": 183,
+    "byType": {
+      "FORMATION": 32,
+      "ARMAMENT": 85,
+      "ARTICLE": 8,
+      "CAMPAIGN": 34,
+      "LETTER": 24
+    }
+  },
+  "entity": {
+    "total": 46,
+    "byType": {
+      "PERSON": 46
+    }
+  },
+  "timelineEvent": {
+    "total": 83
+  },
+  "translation": {
+    "total": 72,
+    "byEntityType": {
+      "record": 8,
+      "site_content": 64
+    },
+    "byStatus": {
+      "machine": 64,
+      "human": 7,
+      "published": 1
+    }
+  },
+  "collection": {
+    "total": 42
+  },
+  "relationship": {
+    "total": 28
+  },
+  "user": {
+    "total": 1,
+    "byRole": {
+      "SUPER_ADMIN": 1
+    }
+  },
+  "auditLog": {
+    "total": 34
+  },
+  "mediaAsset": {
+    "total": 0
+  }
+}

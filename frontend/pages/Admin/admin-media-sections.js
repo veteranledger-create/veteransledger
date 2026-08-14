@@ -44,10 +44,23 @@ export async function handleUpload(files, inputId, draft, renderFn, setStatus, i
 }
 
 // Wires Check URLs / Clear Attribution / Delete All for one media section.
-export function wireSectionActions(prefix, section, draft, renderFn, mediaType) {
-  document.getElementById(`${prefix}-${section}-check-urls`)?.addEventListener("click", () => validateMediaUrls(draft, renderFn));
-  document.getElementById(`${prefix}-${section}-clear-attr`)?.addEventListener("click", () => clearSectionAttribution(draft, renderFn, mediaType));
+//
+// `draftOrGetter` accepts either a plain array (resolved once, at call time —
+// the original calling convention) or a `() => array` getter (resolved fresh
+// on every click). A getter is required for any module whose `populateForm`/
+// the factory's `openForm` REPLACES `drafts.<key>` with a new array rather
+// than mutating it in place (which is every module using `extraDraftKeys`):
+// a plain-array binding here goes stale the moment that happens — the three
+// buttons keep operating on the original, now-orphaned array, so they fire
+// without error but have no visible effect, since rendering/upload/save all
+// correctly read the CURRENT array elsewhere. Passing a getter closes over
+// the module's stable `drafts` object instead, so it always resolves fresh.
+export function wireSectionActions(prefix, section, draftOrGetter, renderFn, mediaType) {
+  const getDraft = typeof draftOrGetter === "function" ? draftOrGetter : () => draftOrGetter;
+  document.getElementById(`${prefix}-${section}-check-urls`)?.addEventListener("click", () => validateMediaUrls(getDraft(), renderFn));
+  document.getElementById(`${prefix}-${section}-clear-attr`)?.addEventListener("click", () => clearSectionAttribution(getDraft(), renderFn, mediaType));
   document.getElementById(`${prefix}-${section}-delete-all`)?.addEventListener("click", () => {
+    const draft = getDraft();
     if (!draft.length) return;
     if (!confirm(`Remove all ${draft.length} ${mediaType}(s)?`)) return;
     draft.length = 0; renderFn();

@@ -2,6 +2,7 @@ import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
 import { pickRecordFields } from "../../utilities/allowlist";
+import { mergeMetadata } from "../../utilities/metadata-merge";
 import { toRecordLike } from "../publish/publish.service";
 import { toLetterJson } from "../publish/generators/letters.generator";
 import { checkLetterRecord } from "../publish/validators/letters.conformance";
@@ -34,8 +35,16 @@ export class LettersService {
   }
 
   async update(id: string, data: object) {
+    const fields = pickRecordFields(data);
+    // See src/utilities/metadata-merge.ts — Json columns are replaced
+    // wholesale on update, so merge onto the record's current metadata
+    // rather than overwriting with only what the Admin form manages.
+    if ("metadata" in fields) {
+      const existing = await prisma.record.findUnique({ where: { id }, select: { metadata: true } });
+      fields.metadata = mergeMetadata(existing?.metadata, fields.metadata);
+    }
     return notFoundAs404(
-      () => prisma.record.update({ where: { id }, data: pickRecordFields(data) as Parameters<typeof prisma.record.update>[0]["data"] }),
+      () => prisma.record.update({ where: { id }, data: fields as Parameters<typeof prisma.record.update>[0]["data"] }),
       "Letter not found",
     );
   }

@@ -1,6 +1,7 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
+import { pickGenericRecordFields } from "../../utilities/allowlist";
 import { toRecordLike } from "../publish/publish.service";
 import { toAwardJson } from "../publish/generators/awards.generator";
 import { toMapJson } from "../publish/generators/maps.generator";
@@ -35,14 +36,16 @@ export class RecordsService {
   }
 
   async create(data: object, userId: string) {
-    const record = await prisma.record.create({ data: data as Parameters<typeof prisma.record.create>[0]["data"] });
+    const fields = pickGenericRecordFields(data);
+    if (!fields.type) throw new AppError(400, "type must be one of AWARD, MAP, POLITICAL_DOCUMENT.");
+    const record = await prisma.record.create({ data: fields as Parameters<typeof prisma.record.create>[0]["data"] });
     await prisma.auditLog.create({ data: { userId, action: "CREATE", entity: "Record", entityId: record.id } });
     return record;
   }
 
   async update(id: string, data: object, userId: string) {
     const record = await notFoundAs404(
-      () => prisma.record.update({ where: { id }, data: data as Parameters<typeof prisma.record.update>[0]["data"] }),
+      () => prisma.record.update({ where: { id }, data: pickGenericRecordFields(data) as Parameters<typeof prisma.record.update>[0]["data"] }),
       "Record not found",
     );
     await prisma.auditLog.create({ data: { userId, action: "UPDATE", entity: "Record", entityId: id } });

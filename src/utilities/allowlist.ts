@@ -34,6 +34,17 @@ const ENTITY_CONTENT_FIELDS = [
   "summary", "biography", "metadata", "tags", "published",
 ] as const;
 
+// records.service.ts is the one Record-backed service with no dedicated
+// module of its own — it's the generic /api/records endpoint that Awards,
+// Maps, and Political Documents all share, dispatching behavior by `type`.
+// That makes `type` a legitimate, necessary client input here (unlike every
+// other pick*Fields function, where type is fixed server-side) — but it
+// must stay restricted to the record types this generic endpoint actually
+// manages, not the full Record.type enum (which also includes ARMAMENT,
+// LETTER, PERSON, FORMATION, etc.) — otherwise a call to this endpoint
+// could relabel a submission as any other content type.
+const GENERIC_RECORD_TYPES = ["AWARD", "MAP", "POLITICAL_DOCUMENT"] as const;
+
 function pick(input: Record<string, unknown>, allowed: readonly string[]): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const key of allowed) {
@@ -55,4 +66,20 @@ export function pickFormationFields(input: object): Record<string, unknown> {
 /** Allowlisted fields for Entity-backed content types (Personnel). */
 export function pickEntityFields(input: object): Record<string, unknown> {
   return pick(input as Record<string, unknown>, ENTITY_CONTENT_FIELDS);
+}
+
+/**
+ * Allowlisted fields for the generic /api/records endpoint (Awards/Maps/
+ * Political Documents). `type` is included but constrained to the three
+ * types this endpoint legitimately manages — invalid/foreign values are
+ * dropped rather than passed through, so a request can't relabel a record
+ * as ARMAMENT/LETTER/PERSON/etc. via this endpoint.
+ */
+export function pickGenericRecordFields(input: object): Record<string, unknown> {
+  const picked = pick(input as Record<string, unknown>, RECORD_CONTENT_FIELDS);
+  const type = (input as Record<string, unknown>).type;
+  if (typeof type === "string" && (GENERIC_RECORD_TYPES as readonly string[]).includes(type)) {
+    picked.type = type;
+  }
+  return picked;
 }
