@@ -1,0 +1,3810 @@
+{
+  "capturedAt": "2026-08-15T18:45:05.361Z",
+  "totalArmamentRecords": 85,
+  "recordsWithNonStringExtras": 83,
+  "recordsWithNonStringSpecFields": 29,
+  "totalNonStringExtraValues": 282,
+  "extraValueTypeFrequency": {
+    "string": 249,
+    "number": 212,
+    "null": 54,
+    "object": 16
+  },
+  "specFieldTypeFrequency": {
+    "manufacturer": {
+      "string": 34
+    },
+    "units_produced": {
+      "number": 30
+    },
+    "armament": {
+      "string": 10,
+      "object": 15,
+      "array": 14
+    },
+    "designation": {
+      "string": 10
+    },
+    "crew": {
+      "number": 38
+    },
+    "engine": {
+      "string": 14
+    }
+  },
+  "records": [
+    {
+      "id": "cmqpwr2d7000g71udmwi6h66e",
+      "title": "8.8 cm Flak 18/36/37",
+      "slug": "flak-88",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Heavy Artillery"
+        },
+        "image": {
+          "type": "string",
+          "value": "null"
+        },
+        "weight_kg": {
+          "type": "string",
+          "value": "5000"
+        },
+        "caliber_mm": {
+          "type": "string",
+          "value": "88"
+        },
+        "penetration_mm": {
+          "type": "string",
+          "value": "120"
+        },
+        "shell_weight_kg": {
+          "type": "string",
+          "value": "9.24"
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1933–1945"
+        },
+        "muzzle_velocity_ms": {
+          "type": "string",
+          "value": "820"
+        },
+        "effective_ceiling_m": {
+          "type": "string",
+          "value": "8000"
+        },
+        "effective_range_anti_tank_m": {
+          "type": "string",
+          "value": "2000"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Krupp, Rheinmetall"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 21310
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsre001iob0hnoakrnzx",
+      "title": "A-Stoff / C-Stoff rocket fuel (Hungarian-supplied)",
+      "slug": "a-stoff-c-stoff-rocket-fuel-hungarian-supplied",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Strategic Material"
+        },
+        "year": {
+          "type": "number",
+          "value": 1944
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmsr9001eob0hf0biuky4",
+      "title": "AB 250/2 Italian Air Torpedo Variant",
+      "slug": "ab-250-2-italian-air-torpedo-variant",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Air-Dropped Cluster Bomb"
+        },
+        "year": {
+          "type": "number",
+          "value": 1941
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqp78lty000od54cdslml3mq",
+      "title": "Adua (submarine)",
+      "slug": "adua-submarine",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Sunk 15 November 1942"
+        },
+        "type": {
+          "type": "string",
+          "value": "Submarine"
+        },
+        "class": {
+          "type": "string",
+          "value": "Adua class (600-series)"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "commissioned": {
+          "type": "number",
+          "value": 1936
+        },
+        "displacement_tons": {
+          "type": "number",
+          "value": 695
+        }
+      },
+      "specFields": {
+        "armament": {
+          "type": "string",
+          "value": "6× 533mm torpedo tubes, 1× 100mm deck gun"
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsqf000qob0hazrfi9m1",
+      "title": "Aggregat 4 / V-2 Rocket",
+      "slug": "v2-rocket",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Ballistic Missile"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/wunderwaffen/v2.jpg"
+        },
+        "guidance": {
+          "type": "string",
+          "value": "Inertial (gyroscope)"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 320
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 910
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 5760
+        },
+        "total_launched": {
+          "type": "number",
+          "value": 3172
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1944–1945"
+        },
+        "principal_designer": {
+          "type": "string",
+          "value": "Wernher von Braun"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Vergeltungswaffe 2 (V-2)"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "Mittelwerk GmbH"
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsq5000iob0hd2j9b0rn",
+      "title": "Antonescu Anti-Tank Grenade (OG 43)",
+      "slug": "antonescu-anti-tank-grenade-og-43",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Anti-Tank Grenade"
+        },
+        "year": {
+          "type": "number",
+          "value": 1943
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 0.78
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpwr2dp000q71udoh9rfr4w",
+      "title": "Arisaka Type 38",
+      "slug": "arisaka-type-38",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Bolt-Action Rifle"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "6.5×50mm"
+        },
+        "magazine": {
+          "type": "string",
+          "value": "5-round internal box magazine"
+        },
+        "length_mm": {
+          "type": "number",
+          "value": 1275
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 3.95
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpwr2dr000s71udcpj347sq",
+      "title": "Arisaka Type 99",
+      "slug": "arisaka-type-99",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Bolt-Action Rifle"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "7.7×58mm"
+        },
+        "magazine": {
+          "type": "string",
+          "value": "5-round internal box magazine"
+        },
+        "length_mm": {
+          "type": "number",
+          "value": 1118
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 3.8
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmsqs0010ob0hwviip8tr",
+      "title": "Barchina Esplosiva (MTM)",
+      "slug": "barchina-esplosiva-mtm",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Explosive Motorboat"
+        },
+        "year": {
+          "type": "number",
+          "value": 1938
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "operational_use": {
+          "type": "string",
+          "value": "Souda Bay (1941), Valletta (1941 — failed)"
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqp78lt9000ed54cnutt09h0",
+      "title": "Battlecruiser Gneisenau",
+      "slug": "gneisenau",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Scuttled 27 March 1945, Gdynia; wreck cleared 1951"
+        },
+        "type": {
+          "type": "string",
+          "value": "Battlecruiser"
+        },
+        "class": {
+          "type": "string",
+          "value": "Scharnhorst-class"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/naval/gneisenau.jpg"
+        },
+        "length_m": {
+          "type": "number",
+          "value": 235.4
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 32
+        },
+        "commissioned": {
+          "type": "string",
+          "value": "1938-05-21"
+        },
+        "displacement_tonnes": {
+          "type": "number",
+          "value": 38900
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 1669
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "main": "9× 28 cm SK C/34 guns (3 triple turrets)",
+            "secondary": [
+              "12× 15 cm guns",
+              "14× 10.5 cm AA guns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "cmqp78lt7000cd54c7s11wo6u",
+      "title": "Battlecruiser Scharnhorst",
+      "slug": "scharnhorst",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Sunk 26 December 1943 (Battle of North Cape)"
+        },
+        "type": {
+          "type": "string",
+          "value": "Battlecruiser"
+        },
+        "class": {
+          "type": "string",
+          "value": "Scharnhorst-class"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/naval/scharnhorst.jpg"
+        },
+        "length_m": {
+          "type": "number",
+          "value": 234.9
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 31.5
+        },
+        "commissioned": {
+          "type": "string",
+          "value": "1939-01-07"
+        },
+        "displacement_tonnes": {
+          "type": "number",
+          "value": 38100
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 1968
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "main": "9× 28 cm SK C/34 guns (3 triple turrets)",
+            "secondary": [
+              "12× 15 cm guns",
+              "14× 10.5 cm AA guns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "cmqp78lsi0006d54cccfmokuv",
+      "title": "Battleship Bismarck",
+      "slug": "bismarck",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Sunk 27 May 1941"
+        },
+        "type": {
+          "type": "string",
+          "value": "Battleship"
+        },
+        "class": {
+          "type": "string",
+          "value": "Bismarck-class"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/naval/bismarck.jpg"
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "belt": 320,
+            "deck": 80,
+            "turret_face": 360
+          }
+        },
+        "length_m": {
+          "type": "number",
+          "value": 251
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 30.1
+        },
+        "commissioned": {
+          "type": "string",
+          "value": "1940-08-24"
+        },
+        "displacement_tonnes": {
+          "type": "number",
+          "value": 50300
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 2092
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "main": "8× 38 cm SK C/34 guns (4 twin turrets)",
+            "aircraft": "4× Arado Ar 196 floatplanes",
+            "secondary": [
+              "12× 15 cm guns",
+              "16× 10.5 cm guns",
+              "16× 3.7 cm AA guns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "cmqp78lt10008d54cvi58ajg3",
+      "title": "Battleship Tirpitz",
+      "slug": "tirpitz",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Sunk by RAF Tallboy bombs, 12 November 1944"
+        },
+        "type": {
+          "type": "string",
+          "value": "Battleship"
+        },
+        "class": {
+          "type": "string",
+          "value": "Bismarck-class"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/naval/tirpitz.jpg"
+        },
+        "length_m": {
+          "type": "number",
+          "value": 251
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 30.8
+        },
+        "commissioned": {
+          "type": "string",
+          "value": "1941-02-25"
+        },
+        "displacement_tonnes": {
+          "type": "number",
+          "value": 52600
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 2608
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "main": "8× 38 cm SK C/34 guns",
+            "secondary": [
+              "12× 15 cm guns",
+              "16× 10.5 cm guns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "cmqp78lu1000qd54cl9hbkino",
+      "title": "Battleship Yamato",
+      "slug": "yamato",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Sunk 7 April 1945 by US aircraft (386 aircraft) during Operation Ten-Go"
+        },
+        "type": {
+          "type": "string",
+          "value": "Battleship"
+        },
+        "class": {
+          "type": "string",
+          "value": "Yamato-class"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "belt": 410,
+            "deck": 200,
+            "turret_face": 650
+          }
+        },
+        "length_m": {
+          "type": "number",
+          "value": 263
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 27
+        },
+        "commissioned": {
+          "type": "string",
+          "value": "1941-12-16"
+        },
+        "displacement_tonnes": {
+          "type": "number",
+          "value": 72810
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 2767
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "main": "9× 46cm/45 Type 94 guns (3 triple turrets)",
+            "secondary": [
+              "12× 15.5cm guns (removed 1944)",
+              "24× 127mm AA guns",
+              "152× 25mm AA guns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "cmqpwr2di000k71udztg4n892",
+      "title": "Beretta MAB 38",
+      "slug": "beretta-mab-38",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Submachine Gun"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "9×19mm Parabellum"
+        },
+        "magazine": {
+          "type": "string",
+          "value": "10, 20, 30, or 40-round box magazine"
+        },
+        "length_mm": {
+          "type": "number",
+          "value": 946
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 4.2
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmspz000eob0hfq7kplsf",
+      "title": "Breda 20/65 Mod. 35",
+      "slug": "breda-20-65-mod-35",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Anti-Aircraft Cannon"
+        },
+        "year": {
+          "type": "number",
+          "value": 1935
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "20mm"
+        },
+        "rate_of_fire": {
+          "type": "string",
+          "value": "240 rpm"
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpwr2dk000m71udb6nur5rp",
+      "title": "Breda M30",
+      "slug": "breda-m30",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Light Machine Gun"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "6.5×52mm"
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 10.5
+        },
+        "rate_of_fire": {
+          "type": "string",
+          "value": "475 rpm"
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpwr2dn000o71udpuftp7dq",
+      "title": "Breda M37",
+      "slug": "breda-m37",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Medium Machine Gun"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "8×59mm RB"
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 19.4
+        },
+        "rate_of_fire": {
+          "type": "string",
+          "value": "450–500 rpm"
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpwr2dg000i71udafti2sqs",
+      "title": "Carcano M91/38",
+      "slug": "carcano-m91-38",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Bolt-Action Rifle"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "7.35×51mm"
+        },
+        "magazine": {
+          "type": "string",
+          "value": "6-round en-bloc clip"
+        },
+        "length_mm": {
+          "type": "number",
+          "value": 1017
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 3.4
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpw1oll000kaya9uq810gax",
+      "title": "Carro Armato M13/40",
+      "slug": "m13-40",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Medium Tank"
+        },
+        "year": {
+          "type": "number",
+          "value": 1940
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "hull_side": 15,
+            "hull_front": 30
+          }
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 32
+        },
+        "weight_tonnes": {
+          "type": "number",
+          "value": 14
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1940–1943"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Fiat-Ansaldo"
+        },
+        "crew": {
+          "type": "number",
+          "value": 4
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "primary": "47mm Cannone da 47/32 M35",
+            "secondary": [
+              "4× 8mm Breda 38 machine guns"
+            ]
+          }
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 799
+        }
+      }
+    },
+    {
+      "id": "cmqpw1oln000maya9q5fy37dy",
+      "title": "Carro Armato P26/40",
+      "slug": "p40-heavy-tank",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Heavy Tank"
+        },
+        "year": {
+          "type": "number",
+          "value": 1943
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "hull_front": 50
+          }
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 40
+        },
+        "weight_tonnes": {
+          "type": "number",
+          "value": 26
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1943–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Fiat-Ansaldo"
+        },
+        "crew": {
+          "type": "number",
+          "value": 4
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "primary": "75mm Cannone da 75/34 M42",
+            "secondary": [
+              "8mm Breda 38 machine gun"
+            ]
+          }
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 103
+        }
+      }
+    },
+    {
+      "id": "cmqpvh84f000wgjtc1tvmqf52",
+      "title": "Fiat CR.42 Falco",
+      "slug": "fiat-cr-42-falco",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Biplane Fighter"
+        },
+        "year": {
+          "type": "number",
+          "value": 1939
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "range_km": {
+          "type": "number",
+          "value": 775
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 441
+        }
+      },
+      "specFields": {
+        "armament": {
+          "type": "string",
+          "value": "2× 12.7mm Breda-SAFAT machine guns"
+        },
+        "engine": {
+          "type": "string",
+          "value": "Fiat A.74 RC.38, 840 hp"
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsqc000oob0hxqf0nxh0",
+      "title": "Fieseler Fi 103 / V-1 Flying Bomb",
+      "slug": "v1-flying-bomb",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Cruise Missile"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/wunderwaffen/v1.jpg"
+        },
+        "guidance": {
+          "type": "string",
+          "value": "Gyroscope + pre-set range counter"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 250
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 640
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 850
+        },
+        "total_launched": {
+          "type": "number",
+          "value": 10492
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1944–1945"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Vergeltungswaffe 1 (V-1)"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "Fieseler"
+        }
+      }
+    },
+    {
+      "id": "cmqp78lu3000sd54c0175zsgk",
+      "title": "Fleet Carrier Shōkaku",
+      "slug": "shokaku",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Sunk 19 June 1944 by USS Cavalla (submarine) at Battle of the Philippine Sea"
+        },
+        "type": {
+          "type": "string",
+          "value": "Fleet Carrier"
+        },
+        "class": {
+          "type": "string",
+          "value": "Shōkaku-class"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "length_m": {
+          "type": "number",
+          "value": 257.5
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 34.2
+        },
+        "commissioned": {
+          "type": "string",
+          "value": "1941-08-08"
+        },
+        "aircraft_capacity": {
+          "type": "number",
+          "value": 84
+        },
+        "displacement_tonnes": {
+          "type": "number",
+          "value": 32105
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 1660
+        }
+      }
+    },
+    {
+      "id": "cmqpvh83n0008gjtc9g5faue2",
+      "title": "Focke-Wulf Fw 190",
+      "slug": "fw-190",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Multi-role fighter"
+        },
+        "type": {
+          "type": "string",
+          "value": "Fighter / Fighter-Bomber"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/fw190.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 800
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 12000
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 685
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1941–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Focke-Wulf Flugzeugbau"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "4× 20mm MG 151 cannon",
+            "2× 13mm MG 131 machine guns"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 20001
+        }
+      }
+    },
+    {
+      "id": "cmqpvh840000igjtcbpdviyud",
+      "title": "Focke-Wulf Ta 152 H",
+      "slug": "ta-152",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "High-altitude interceptor"
+        },
+        "type": {
+          "type": "string",
+          "value": "High-Altitude Fighter"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/ta152.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 1990
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 14800
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 755
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Focke-Wulf Flugzeugbau"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "1× 30mm MK 108 cannon",
+            "2× 20mm MG 151 cannon"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 150
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsqz0014ob0hngkrt4nl",
+      "title": "Fu-Go Fire Balloon",
+      "slug": "fu-go-fire-balloon",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Strategic Balloon Bomb"
+        },
+        "year": {
+          "type": "number",
+          "value": 1944
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "operational_range_km": {
+          "type": "number",
+          "value": 9000
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmsr7001cob0hdb5f93p7",
+      "title": "Fukuryu (Crouching Dragon)",
+      "slug": "fukuryu-crouching-dragon",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Suicide Swimmer Mine"
+        },
+        "year": {
+          "type": "number",
+          "value": 1945
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "mine_kg": {
+          "type": "number",
+          "value": 15
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmsqw0012ob0h9b6f8deu",
+      "title": "Gamma class frogman suit",
+      "slug": "gamma-class-frogman-suit",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Combat Swimmer Equipment"
+        },
+        "year": {
+          "type": "number",
+          "value": 1940
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpvh83u000egjtc9qk694k5",
+      "title": "Heinkel He 111",
+      "slug": "he-111",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Medium bomber / torpedo bomber / transport"
+        },
+        "type": {
+          "type": "string",
+          "value": "Medium Bomber"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/he111.jpg"
+        },
+        "dossier": {
+          "type": "object",
+          "value": {
+            "photos": [
+              {
+                "type": "image",
+                "images": [
+                  {
+                    "src": "/public/images/armaments/aircraft/he-111/photos/he-111.webp",
+                    "type": "photograph",
+                    "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed.",
+                    "caption": "Heinkel He 111 medium bomber",
+                    "historical_status": "Source Unverified — Pending Archival Review"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 2300
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 8500
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 440
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1935–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Heinkel"
+        },
+        "crew": {
+          "type": "number",
+          "value": 5
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "up to 7× MG 15/17 defensive guns",
+            "2500kg bomb load"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 7300
+        }
+      }
+    },
+    {
+      "id": "cmqpvh842000kgjtcec67vvld",
+      "title": "Heinkel He 177 Greif",
+      "slug": "he-177-greif",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Strategic bomber / maritime patrol"
+        },
+        "type": {
+          "type": "string",
+          "value": "Heavy Bomber"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/he177.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 5600
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 8000
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 488
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1942–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Heinkel"
+        },
+        "crew": {
+          "type": "number",
+          "value": 6
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "multiple defensive gun positions",
+            "up to 7200kg bomb load (internal + external)"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 1169
+        }
+      }
+    },
+    {
+      "id": "cmqpvh83x000ggjtc1cv42mav",
+      "title": "Heinkel He 219 Uhu",
+      "slug": "he-219-uhu",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Heavy night fighter / interceptor"
+        },
+        "type": {
+          "type": "string",
+          "value": "Night Fighter"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/he219.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 1540
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 9300
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 665
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1943–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Heinkel"
+        },
+        "crew": {
+          "type": "number",
+          "value": 2
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "2× 30mm MK 108 cannon (Schräge Musik upward-firing)",
+            "2× 20mm MG 151 forward",
+            "2× 30mm MK 108 forward"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 294
+        }
+      }
+    },
+    {
+      "id": "cmqvfmspb000aob0hwbygakbp",
+      "title": "Henschel Hs 293",
+      "slug": "hs-293",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Anti-ship Guided Missile"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "guidance": {
+          "type": "string",
+          "value": "Radio command (joystick)"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 18
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 295
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1943–1944"
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmsqo000wob0hyotrsgqi",
+      "title": "Hochdruckpumpe (V-3)",
+      "slug": "v3-supergun",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Supergun"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/wunderwaffen/v3.jpg"
+        },
+        "dossier": {
+          "type": "object",
+          "value": {
+            "diagrams": [
+              {
+                "type": "image",
+                "images": [
+                  {
+                    "src": "/public/images/armaments/wunderwaffen/v3-supergun/photos/v3-supergun.webp",
+                    "caption": "V-3 (Hochdruckpumpe) site cutaway (digital reconstruction)",
+                    "description": "Illustrated cutaway of the angled multi-chamber barrels and underground bunker complex at Mimoyecques, with a location map inset.",
+                    "is_ai_generated": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 165
+        },
+        "barrel_length_m": {
+          "type": "number",
+          "value": 130
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "Never operationally deployed"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Vergeltungswaffe 3"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "Röchling"
+        }
+      }
+    },
+    {
+      "id": "cmqp78lu5000ud54c2tqsl49k",
+      "title": "I-400 class submarine",
+      "slug": "i-400-class-submarine",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Submarine Aircraft Carrier"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "aircraft": {
+          "type": "string",
+          "value": "3× Aichi M6A Seiran torpedo bombers"
+        },
+        "commissioned": {
+          "type": "number",
+          "value": 1944
+        },
+        "displacement_tons": {
+          "type": "number",
+          "value": 6500
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpvh84j0010gjtcrx4z5a7o",
+      "title": "IAR 80",
+      "slug": "iar-80",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Fighter"
+        },
+        "year": {
+          "type": "number",
+          "value": 1941
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "range_km": {
+          "type": "number",
+          "value": 900
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 510
+        }
+      },
+      "specFields": {
+        "armament": {
+          "type": "string",
+          "value": "6× 7.92mm FN Browning machine guns"
+        },
+        "engine": {
+          "type": "string",
+          "value": "IAR K14-III C32 (Gnome-Rhône 14K licence), 1,025 hp"
+        }
+      }
+    },
+    {
+      "id": "cmqpw1ole000gaya9rfpmg66y",
+      "title": "Jagdpanther",
+      "slug": "jagdpanther",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Tank Destroyer"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/panzer/jagdpanther.jpg"
+        },
+        "armor_mm": {
+          "type": "string",
+          "value": "{\"hull_side\":50,\"hull_front\":60,\"superstructure_front\":80}"
+        },
+        "range_km": {
+          "type": "string",
+          "value": "160"
+        },
+        "speed_kmh": {
+          "type": "string",
+          "value": "46"
+        },
+        "weight_tonnes": {
+          "type": "string",
+          "value": "45.5"
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1944–1945"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Sd.Kfz. 173"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "MIAG, MBA, Niedersächsische Motorenwerke"
+        },
+        "crew": {
+          "type": "number",
+          "value": 5
+        },
+        "armament": {
+          "type": "string",
+          "value": "{\"primary\":\"8.8 cm Pak 43/3 L/71\",\"secondary\":[\"1× 7.92 mm MG 34\"]}"
+        },
+        "engine": {
+          "type": "string",
+          "value": "Maybach HL 230 P30, 700 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 415
+        }
+      }
+    },
+    {
+      "id": "cmqpvh83s000cgjtcka1uhsj2",
+      "title": "Junkers Ju 87 Stuka",
+      "slug": "ju-87-stuka",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Ground attack / dive bombing / anti-tank"
+        },
+        "type": {
+          "type": "string",
+          "value": "Dive Bomber"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/ju87.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 600
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 8000
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 380
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1936–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Junkers Flugzeug- und Motorenwerke AG"
+        },
+        "crew": {
+          "type": "number",
+          "value": 2
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "2× 7.92mm MG 17 wing guns",
+            "1× 7.92mm MG 15 rear gun",
+            "up to 1800kg bomb load"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 6000
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsr30018ob0hov7a2wub",
+      "title": "Kaiten",
+      "slug": "kaiten",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Human-Guided Torpedo"
+        },
+        "year": {
+          "type": "number",
+          "value": 1944
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "length_m": {
+          "type": "number",
+          "value": 14.75
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 1550
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 30
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpwr2d5000e71udd2piadrh",
+      "title": "Karabiner 98k",
+      "slug": "kar-98k",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Infantry Weapon"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "action": {
+          "type": "string",
+          "value": "Bolt-action, 5-round internal magazine"
+        },
+        "caliber": {
+          "type": "string",
+          "value": "7.92×57mm Mauser"
+        },
+        "length_mm": {
+          "type": "number",
+          "value": 1107
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 3.9
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1935–1945"
+        },
+        "effective_range_m": {
+          "type": "number",
+          "value": 500
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Mauser, Gustloff-Werke, Berlin-Lübecker Maschinenfabrik, others"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 14600000
+        }
+      }
+    },
+    {
+      "id": "cmqpvh84h000ygjtckvb8m5zb",
+      "title": "Kawasaki Ki-61 Hien",
+      "slug": "kawasaki-ki-61-hien",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Army Fighter"
+        },
+        "year": {
+          "type": "number",
+          "value": 1942
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "range_km": {
+          "type": "number",
+          "value": 1800
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 591
+        }
+      },
+      "specFields": {
+        "armament": {
+          "type": "string",
+          "value": "2× 20mm Ho-5 cannon, 2× 12.7mm Ho-103 machine guns"
+        },
+        "engine": {
+          "type": "string",
+          "value": "Kawasaki Ha-40 (Daimler-Benz DB 601 licence), 1,175 hp"
+        }
+      }
+    },
+    {
+      "id": "cmqp78ltq000id54cs1vt8d4c",
+      "title": "Littorio (later Italia)",
+      "slug": "littorio-later-italia",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Survived war; scuttled at La Spezia 1948"
+        },
+        "type": {
+          "type": "string",
+          "value": "Battleship"
+        },
+        "class": {
+          "type": "string",
+          "value": "Littorio class"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "length_m": {
+          "type": "number",
+          "value": 237.8
+        },
+        "commissioned": {
+          "type": "number",
+          "value": 1940
+        },
+        "displacement_tons": {
+          "type": "number",
+          "value": 45236
+        }
+      },
+      "specFields": {
+        "armament": {
+          "type": "string",
+          "value": "9× 381mm guns, 12× 152mm guns, extensive AA"
+        }
+      }
+    },
+    {
+      "id": "cmqpvh844000mgjtclqslfakb",
+      "title": "Macchi C.202 Folgore",
+      "slug": "mc-202-folgore",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Air superiority fighter"
+        },
+        "type": {
+          "type": "string",
+          "value": "Fighter"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "range_km": {
+          "type": "number",
+          "value": 765
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 595
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1941–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Macchi"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "2× 12.7mm Breda-SAFAT machine guns",
+            "2× 7.7mm machine guns"
+          ]
+        },
+        "engine": {
+          "type": "string",
+          "value": "Alfa Romeo RA.1000 RC.41 (Daimler-Benz DB 601A licence), 1,175 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 1220
+        }
+      }
+    },
+    {
+      "id": "cmqpwr2e1001271ud7ln3k6ge",
+      "title": "Mannlicher M1895 (Repetier-Gewehr M.95)",
+      "slug": "mannlicher-m1895-repetier-gewehr-m-95",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Bolt-Action Rifle"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "8×50mmR"
+        },
+        "length_mm": {
+          "type": "number",
+          "value": 1272
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 3.77
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqp78lu7000wd54cnioxu9fh",
+      "title": "Marasti",
+      "slug": "marasti",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Destroyer"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "commissioned": {
+          "type": "number",
+          "value": 1920
+        },
+        "displacement_tons": {
+          "type": "number",
+          "value": 1400
+        }
+      },
+      "specFields": {
+        "armament": {
+          "type": "string",
+          "value": "4× 120mm guns, torpedo tubes"
+        }
+      }
+    },
+    {
+      "id": "cmqpvh8320006gjtcorybdk2r",
+      "title": "Messerschmitt Bf 109",
+      "slug": "bf-109",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Single-engine fighter / interceptor"
+        },
+        "type": {
+          "type": "string",
+          "value": "Fighter"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/bf109.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 850
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 12000
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 640
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1937–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Bayerische Flugzeugwerke / Messerschmitt AG"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "2× 13mm MG 131 machine guns",
+            "1× 20mm MG 151 cannon"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 33984
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsqj000sob0h6mhtv6yl",
+      "title": "Messerschmitt Me 163 Komet",
+      "slug": "me-163-komet",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Rocket-powered interceptor"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/wunderwaffen/me163.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 80
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 960
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1944–1945"
+        },
+        "endurance_minutes": {
+          "type": "number",
+          "value": 8
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Messerschmitt AG"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "2× 30mm MK 108 cannon"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 370
+        }
+      }
+    },
+    {
+      "id": "cmqpvh83p000agjtcdkya0ojx",
+      "title": "Messerschmitt Me 262",
+      "slug": "me-262",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Interceptor / ground attack"
+        },
+        "type": {
+          "type": "string",
+          "value": "Jet Fighter / Fighter-Bomber"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/me262.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 1050
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 11450
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 900
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1944–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Messerschmitt AG"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "4× 30mm MK 108 cannon",
+            "optional R4M rockets"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 1430
+        }
+      }
+    },
+    {
+      "id": "cmqpwr2cm000671udlypcy5oe",
+      "title": "MG 42 General-Purpose Machine Gun",
+      "slug": "mg-42",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Infantry Weapon"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/equipment/mg42.jpg"
+        },
+        "caliber": {
+          "type": "string",
+          "value": "7.92×57mm Mauser"
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 11.57
+        },
+        "rate_of_fire": {
+          "type": "string",
+          "value": "1,200–1,500 rounds/min"
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1942–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Großfuß Metall- und Lackierwarenfabrik"
+        }
+      }
+    },
+    {
+      "id": "cmqpvh848000qgjtc5l8srp6f",
+      "title": "Mitsubishi A6M Zero",
+      "slug": "a6m-zero",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Carrier-based fighter"
+        },
+        "type": {
+          "type": "string",
+          "value": "Fighter"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/a6m-zero.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 3105
+        },
+        "ceiling_m": {
+          "type": "number",
+          "value": 10000
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 534
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1940–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Mitsubishi"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "2× 20mm Type 99 cannon",
+            "2× 7.7mm Type 97 machine guns"
+          ]
+        },
+        "engine": {
+          "type": "string",
+          "value": "Nakajima NK1C Sakae 12, 940 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 10939
+        }
+      }
+    },
+    {
+      "id": "cmqvfmspv000cob0hnuoi16b3",
+      "title": "Motobomba FFF",
+      "slug": "motobomba-fff",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Circling Torpedo"
+        },
+        "year": {
+          "type": "number",
+          "value": 1940
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 350
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 100
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpwr2d2000c71udmjxhj1dp",
+      "title": "MP 40 Submachine Gun",
+      "slug": "mp-40",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Infantry Weapon"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "caliber": {
+          "type": "string",
+          "value": "9×19mm Parabellum"
+        },
+        "dossier": {
+          "type": "object",
+          "value": {
+            "photos": [
+              {
+                "type": "image",
+                "images": [
+                  {
+                    "src": "/public/images/armaments/equipment/mp-40/photos/mp-40.webp",
+                    "type": "photograph",
+                    "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed.",
+                    "caption": "MP 40 submachine gun",
+                    "description": "Studio photograph showing the weapon's left and right profiles, stock extended, with the wood-and-metal grip frame and curved magazine visible in both views.",
+                    "historical_status": "Source Unverified — Pending Archival Review"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 4.03
+        },
+        "rate_of_fire": {
+          "type": "string",
+          "value": "500–550 rounds/min"
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1940–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Erma Werke, Steyr-Daimler-Puch, Haenel"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 1100000
+        }
+      }
+    },
+    {
+      "id": "cmqpvh84a000sgjtcan9zamze",
+      "title": "Nakajima Ki-43 Hayabusa",
+      "slug": "ki-43-hayabusa",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Army air superiority fighter"
+        },
+        "type": {
+          "type": "string",
+          "value": "Fighter"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/ki43.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 1760
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 530
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1941–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Nakajima"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "2× 12.7mm Ho-103 machine guns"
+          ]
+        },
+        "engine": {
+          "type": "string",
+          "value": "Nakajima Ha-115, 1,150 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 5919
+        }
+      }
+    },
+    {
+      "id": "cmqpvh84d000ugjtc4hfpwf5h",
+      "title": "Nakajima Ki-84 Hayate",
+      "slug": "ki-84-hayate",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Multi-role fighter"
+        },
+        "type": {
+          "type": "string",
+          "value": "Fighter"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/aircraft/ki84.jpg"
+        },
+        "range_km": {
+          "type": "number",
+          "value": 2168
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 631
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1944–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Nakajima"
+        },
+        "crew": {
+          "type": "number",
+          "value": 1
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "2× 20mm Ho-5 cannon",
+            "2× 12.7mm Ho-103 machine guns"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 3514
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsr10016ob0hg3z79x98",
+      "title": "Ohka Model 11",
+      "slug": "ohka-model-11",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Piloted Flying Bomb"
+        },
+        "year": {
+          "type": "number",
+          "value": 1944
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "length_m": {
+          "type": "number",
+          "value": 6.07
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 1200
+        },
+        "wingspan_m": {
+          "type": "number",
+          "value": 5.12
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 740
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpwr2d0000a71ud6id2cajn",
+      "title": "Panzerfaust",
+      "slug": "panzerfaust",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Infantry Weapon"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "dossier": {
+          "type": "object",
+          "value": {
+            "photos": [
+              {
+                "type": "image",
+                "images": [
+                  {
+                    "src": "/public/images/armaments/equipment/panzerfaust/photos/panzerfaust.webp",
+                    "type": "photograph",
+                    "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed.",
+                    "caption": "Panzerfaust anti-tank weapon",
+                    "historical_status": "Source Unverified — Pending Archival Review"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "range_m": {
+          "type": "number",
+          "value": 30
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 6.8
+        },
+        "penetration_mm": {
+          "type": "number",
+          "value": 200
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1943–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Multiple"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 8250000
+        }
+      }
+    },
+    {
+      "id": "cmqpw1okr0006aya9j2asy93u",
+      "title": "Panzerkampfwagen IV",
+      "slug": "pz-iv",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Medium Tank"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/panzer/pziv.jpg"
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "hull_side": 30,
+            "hull_front": 80,
+            "turret_front": 80
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 210
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 42
+        },
+        "weight_tonnes": {
+          "type": "number",
+          "value": 25
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1939–1945"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Pz.Kpfw. IV"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "Krupp, Vomag, Nibelungenwerk"
+        },
+        "crew": {
+          "type": "number",
+          "value": 5
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "primary": "7.5 cm KwK 40 L/48 (later marks)",
+            "secondary": [
+              "2× 7.92 mm MG 34"
+            ]
+          }
+        },
+        "engine": {
+          "type": "string",
+          "value": "Maybach HL 120 TRM, 265 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 8553
+        }
+      }
+    },
+    {
+      "id": "cmqpw1ol7000aaya9gl7isypc",
+      "title": "Panzerkampfwagen V Panther",
+      "slug": "pz-v-panther",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Medium Tank"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/panzer/panther.jpg"
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "hull_side": 40,
+            "hull_front": 80,
+            "turret_front": 110
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 250
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 46
+        },
+        "weight_tonnes": {
+          "type": "number",
+          "value": 44.8
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1943–1945"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Pz.Kpfw. V Ausf. G"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "MAN, Daimler-Benz, MNH, Henschel"
+        },
+        "crew": {
+          "type": "number",
+          "value": 5
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "primary": "7.5 cm KwK 42 L/70",
+            "secondary": [
+              "2× 7.92 mm MG 34"
+            ]
+          }
+        },
+        "engine": {
+          "type": "string",
+          "value": "Maybach HL 230 P30, 700 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 6000
+        }
+      }
+    },
+    {
+      "id": "cmqpw1ol30008aya93rpsa7vi",
+      "title": "Panzerkampfwagen VI Tiger I",
+      "slug": "pz-vi-tiger",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Heavy Tank"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/panzer/tiger.jpg"
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "hull_side": 60,
+            "hull_front": 100,
+            "turret_front": 100
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 195
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 38
+        },
+        "weight_tonnes": {
+          "type": "number",
+          "value": 57
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1942–1945"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Pz.Kpfw. VI Ausf. E"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "Henschel"
+        },
+        "crew": {
+          "type": "number",
+          "value": 5
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "primary": "8.8 cm KwK 36 L/56",
+            "secondary": [
+              "2× 7.92 mm MG 34"
+            ]
+          }
+        },
+        "engine": {
+          "type": "string",
+          "value": "Maybach HL 230 P45, 700 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 1347
+        }
+      }
+    },
+    {
+      "id": "cmqpw1ol9000caya9ldtyv9g3",
+      "title": "Panzerkampfwagen VI Tiger II",
+      "slug": "pz-vi-b-tiger-ii",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Heavy Tank"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/panzer/tiger2.jpg"
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "hull_side": 80,
+            "hull_front": 150,
+            "turret_front": 185
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 170
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 38
+        },
+        "weight_tonnes": {
+          "type": "number",
+          "value": 69.8
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1944–1945"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Pz.Kpfw. VI Ausf. B"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "Henschel"
+        },
+        "crew": {
+          "type": "number",
+          "value": 5
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "primary": "8.8 cm KwK 43 L/71",
+            "secondary": [
+              "2× 7.92 mm MG 34"
+            ]
+          }
+        },
+        "engine": {
+          "type": "string",
+          "value": "Maybach HL 230 P30, 700 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 489
+        }
+      }
+    },
+    {
+      "id": "cmqp78ltd000gd54c4gg7dbqj",
+      "title": "Pocket Battleship Admiral Graf Spee",
+      "slug": "admiral-graf-spee",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Scuttled 17 December 1939, mouth of River Plate"
+        },
+        "type": {
+          "type": "string",
+          "value": "Heavy Cruiser / Panzerschiff"
+        },
+        "class": {
+          "type": "string",
+          "value": "Deutschland-class"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/naval/graf-spee.jpg"
+        },
+        "length_m": {
+          "type": "number",
+          "value": 186
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 28.5
+        },
+        "commissioned": {
+          "type": "string",
+          "value": "1936-01-06"
+        },
+        "displacement_tonnes": {
+          "type": "number",
+          "value": 16020
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 1150
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "main": "6× 28 cm SK C/28 guns (2 triple turrets)",
+            "secondary": [
+              "8× 15 cm guns",
+              "6× 10.5 cm AA guns"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "cmqpwr2dz001071ud6ky2gwe6",
+      "title": "Puşcă Mitralieră md. 1939 (ZB-30)",
+      "slug": "pusca-mitraliera-md-1939-zb-30",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Light Machine Gun"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "7.92×57mm"
+        },
+        "magazine": {
+          "type": "string",
+          "value": "20-round box magazine"
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 9.6
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpw1olx000waya9auommc5q",
+      "title": "R-2 (LT vz. 35)",
+      "slug": "r-2-lt-vz-35",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Light Tank"
+        },
+        "year": {
+          "type": "number",
+          "value": 1936
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "main_gun": {
+          "type": "string",
+          "value": "37mm Škoda A3"
+        },
+        "armour_mm": {
+          "type": "number",
+          "value": 25
+        },
+        "weight_tons": {
+          "type": "number",
+          "value": 10.5
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 3
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsrc001gob0hjycq7czx",
+      "title": "Romanian Oil-Field Demolition Systems",
+      "slug": "romanian-oil-field-demolition-systems",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Strategic Denial Weapon"
+        },
+        "year": {
+          "type": "number",
+          "value": 1944
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpvh846000ogjtc5yxl2b3t",
+      "title": "Savoia-Marchetti SM.79 Sparviero",
+      "slug": "sm-79-sparviero",
+      "extras": {
+        "role": {
+          "type": "string",
+          "value": "Maritime strike / bomber"
+        },
+        "type": {
+          "type": "string",
+          "value": "Torpedo Bomber / Medium Bomber"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "range_km": {
+          "type": "number",
+          "value": 1900
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 430
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1936–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Savoia-Marchetti"
+        },
+        "crew": {
+          "type": "number",
+          "value": 5
+        },
+        "armament": {
+          "type": "array",
+          "value": [
+            "3× 12.7mm machine guns",
+            "2× 450mm torpedoes or 1,250kg bombs"
+          ]
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 1217
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsqm000uob0hgpbswr6e",
+      "title": "Schwerer Gustav / Dora",
+      "slug": "schwerer-gustav",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Railway Gun"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/wunderwaffen/schwerer-gustav.jpg"
+        },
+        "dossier": {
+          "type": "object",
+          "value": {
+            "diagrams": [
+              {
+                "type": "image",
+                "images": [
+                  {
+                    "src": "/public/images/armaments/wunderwaffen/schwerer-gustav/photos/schwerer-gustav.webp",
+                    "caption": "Schwerer Gustav railway gun (digital reconstruction)",
+                    "description": "Stylized illustration depicting the railway gun and its launch crew in a quarry emplacement.",
+                    "is_ai_generated": true
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 47
+        },
+        "caliber_mm": {
+          "type": "number",
+          "value": 800
+        },
+        "shell_weight_kg": {
+          "type": "number",
+          "value": 7100
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1942–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Krupp"
+        },
+        "crew": {
+          "type": "number",
+          "value": 2500
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 2
+        }
+      }
+    },
+    {
+      "id": "cmqpw1olh000iaya9sud75duw",
+      "title": "Sd.Kfz. 251 Mittlerer Gepanzerter Mannschaftskraftwagen",
+      "slug": "sdkfz-251",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Armoured Personnel Carrier / Halftrack"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/panzer/sdkfz251.jpg"
+        },
+        "dossier": {
+          "type": "object",
+          "value": {
+            "photos": [
+              {
+                "type": "image",
+                "images": [
+                  {
+                    "src": "/public/images/armaments/panzer/sdkfz-251/photos/sdkfz-251-wurfrahmen.webp",
+                    "type": "photograph",
+                    "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed.",
+                    "caption": "Sd.Kfz. 251 Wurfrahmen variant",
+                    "description": "Sd.Kfz. 251/1 fitted with Wurfrahmen 40 rocket-launcher frames.",
+                    "historical_status": "Source Unverified — Pending Archival Review"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "rear": 8,
+            "side": 8,
+            "front": 14.5
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 300
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 53
+        },
+        "passengers": {
+          "type": "number",
+          "value": 10
+        },
+        "weight_tonnes": {
+          "type": "number",
+          "value": 8.5
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1939–1945"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "Sd.Kfz. 251"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "Hanomag, Büssing-NAG, others"
+        },
+        "crew": {
+          "type": "number",
+          "value": 2
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "primary": "2× 7.92 mm MG 34/42 (standard variant)",
+            "variants": [
+              "75mm infantry gun (Sd.Kfz. 251/9)",
+              "37mm anti-tank gun (Sd.Kfz. 251/10)",
+              "80mm mortar (Sd.Kfz. 251/2)",
+              "flame-thrower (Sd.Kfz. 251/16)"
+            ]
+          }
+        },
+        "engine": {
+          "type": "string",
+          "value": "Maybach HL 42 TURKM, 100 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 15252
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsr5001aob0hbc0a1gf4",
+      "title": "Shinyo Suicide Boat",
+      "slug": "shinyo-suicide-boat",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Explosive Motorboat"
+        },
+        "year": {
+          "type": "number",
+          "value": 1944
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 250
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmsqq000yob0hx0ga0x55",
+      "title": "Siluro a Lenta Corsa (SLC) 'Maiale'",
+      "slug": "siluro-a-lenta-corsa-slc-maiale",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Manned Torpedo"
+        },
+        "year": {
+          "type": "number",
+          "value": 1936
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "length_m": {
+          "type": "number",
+          "value": 6.7
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 300
+        },
+        "operational_use": {
+          "type": "string",
+          "value": "Alexandria (1941), Gibraltar (multiple raids), other Mediterranean ports"
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmsqa000mob0hyjbxxr13",
+      "title": "Spoleto 45/5",
+      "slug": "spoleto-45-5",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Recoilless Rifle"
+        },
+        "year": {
+          "type": "number",
+          "value": 1944
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "45mm"
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpw1olb000eaya9kzy94hzs",
+      "title": "Sturmgeschütz III",
+      "slug": "stug-iii",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Assault Gun / Tank Destroyer"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/panzer/stug3.jpg"
+        },
+        "armor_mm": {
+          "type": "object",
+          "value": {
+            "hull_side": 30,
+            "hull_front": 80,
+            "superstructure_front": 80
+          }
+        },
+        "range_km": {
+          "type": "number",
+          "value": 155
+        },
+        "speed_kmh": {
+          "type": "number",
+          "value": 40
+        },
+        "weight_tonnes": {
+          "type": "number",
+          "value": 23.9
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1940–1945"
+        }
+      },
+      "specFields": {
+        "designation": {
+          "type": "string",
+          "value": "StuG III Ausf. G"
+        },
+        "manufacturer": {
+          "type": "string",
+          "value": "Alkett, MiAG"
+        },
+        "crew": {
+          "type": "number",
+          "value": 4
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "primary": "7.5 cm StuK 40 L/48",
+            "secondary": [
+              "7.92 mm MG 34"
+            ]
+          }
+        },
+        "engine": {
+          "type": "string",
+          "value": "Maybach HL 120 TRM, 265 hp"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 10086
+        }
+      }
+    },
+    {
+      "id": "cmqpwr2cx000871udnwupsw7z",
+      "title": "Sturmgewehr 44",
+      "slug": "stg-44",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Infantry Weapon"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "caliber": {
+          "type": "string",
+          "value": "7.92×33mm Kurz"
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 5.22
+        },
+        "rate_of_fire": {
+          "type": "string",
+          "value": "500–600 rounds/min"
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1944–1945"
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "C. G. Haenel, others"
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 425977
+        }
+      }
+    },
+    {
+      "id": "cmqpw1om0000yaya9pxvoqt21",
+      "title": "Toldi II",
+      "slug": "toldi-ii",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Light Tank"
+        },
+        "year": {
+          "type": "number",
+          "value": 1940
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "main_gun": {
+          "type": "string",
+          "value": "20mm Solothurn anti-tank rifle"
+        },
+        "armour_mm": {
+          "type": "number",
+          "value": 13
+        },
+        "weight_tons": {
+          "type": "number",
+          "value": 8.5
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 3
+        }
+      }
+    },
+    {
+      "id": "cmqpwr2dv000w71udixxuvmzk",
+      "title": "Type 11 Grenade Discharger",
+      "slug": "type-11-grenade-discharger",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Grenade Launcher"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "50mm"
+        },
+        "range_m": {
+          "type": "number",
+          "value": 190
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 2.6
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpw1olv000uaya9cqtmvan7",
+      "title": "Type 3 Chi-Nu",
+      "slug": "type-3-chi-nu",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Medium Tank"
+        },
+        "year": {
+          "type": "number",
+          "value": 1943
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "main_gun": {
+          "type": "string",
+          "value": "75mm Type 3"
+        },
+        "armour_mm": {
+          "type": "number",
+          "value": 50
+        },
+        "weight_tons": {
+          "type": "number",
+          "value": 18.8
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 5
+        }
+      }
+    },
+    {
+      "id": "cmqvfmsq7000kob0ho2ru7rsy",
+      "title": "Type 4 Anti-Tank Grenade (Japan)",
+      "slug": "type-4-anti-tank-grenade-japan",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Anti-Tank Grenade"
+        },
+        "year": {
+          "type": "number",
+          "value": 1944
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 0.62
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqvfmsq1000gob0h40dhyofb",
+      "title": "Type 93 Long Lance Torpedo",
+      "slug": "type-93-long-lance-torpedo",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Surface-Launched Torpedo"
+        },
+        "year": {
+          "type": "number",
+          "value": 1933
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "length_m": {
+          "type": "number",
+          "value": 9
+        },
+        "range_km": {
+          "type": "number",
+          "value": 40
+        },
+        "warhead_kg": {
+          "type": "number",
+          "value": 490
+        },
+        "diameter_mm": {
+          "type": "number",
+          "value": 610
+        },
+        "speed_knots": {
+          "type": "number",
+          "value": 48
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpw1olu000saya91tzncc6e",
+      "title": "Type 94 Tankette",
+      "slug": "type-94-tankette",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Tankette"
+        },
+        "year": {
+          "type": "number",
+          "value": 1935
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "armour_mm": {
+          "type": "number",
+          "value": 8
+        },
+        "weight_tons": {
+          "type": "number",
+          "value": 3.4
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 2
+        },
+        "armament": {
+          "type": "string",
+          "value": "1× 6.5mm Type 91 machine gun"
+        }
+      }
+    },
+    {
+      "id": "cmqpw1ols000qaya93omqlaou",
+      "title": "Type 95 Ha-Go",
+      "slug": "type-95-ha-go",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Light Tank"
+        },
+        "year": {
+          "type": "number",
+          "value": 1935
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "main_gun": {
+          "type": "string",
+          "value": "37mm Type 94"
+        },
+        "armour_mm": {
+          "type": "number",
+          "value": 12
+        },
+        "weight_tons": {
+          "type": "number",
+          "value": 7.4
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 45
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 3
+        }
+      }
+    },
+    {
+      "id": "cmqpwr2dt000u71uduq8v38xu",
+      "title": "Type 96 Light Machine Gun",
+      "slug": "type-96-light-machine-gun",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Light Machine Gun"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "6.5×50mm"
+        },
+        "magazine": {
+          "type": "string",
+          "value": "30-round detachable box magazine"
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 9.07
+        },
+        "rate_of_fire": {
+          "type": "string",
+          "value": "550 rpm"
+        }
+      },
+      "specFields": {}
+    },
+    {
+      "id": "cmqpw1olq000oaya9smwx4cho",
+      "title": "Type 97 Chi-Ha",
+      "slug": "type-97-chi-ha",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Medium Tank"
+        },
+        "year": {
+          "type": "number",
+          "value": 1937
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "main_gun": {
+          "type": "string",
+          "value": "57mm Type 97 (short-barrelled) or 47mm Type 1 (anti-tank variant)"
+        },
+        "armour_mm": {
+          "type": "number",
+          "value": 25
+        },
+        "weight_tons": {
+          "type": "number",
+          "value": 15
+        },
+        "max_speed_kmh": {
+          "type": "number",
+          "value": 38
+        }
+      },
+      "specFields": {
+        "crew": {
+          "type": "number",
+          "value": 4
+        },
+        "engine": {
+          "type": "string",
+          "value": "Mitsubishi SA12200VD diesel, 170 hp"
+        }
+      }
+    },
+    {
+      "id": "cmqp78lt3000ad54cz4asv4gi",
+      "title": "Type VIIC U-boat",
+      "slug": "type-viic-uboat",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Submarine"
+        },
+        "image": {
+          "type": "string",
+          "value": "/storage/images/armaments/naval/type-viic.jpg"
+        },
+        "length_m": {
+          "type": "number",
+          "value": 67.1
+        },
+        "range_km": {
+          "type": "number",
+          "value": 14800
+        },
+        "years_of_service": {
+          "type": "string",
+          "value": "1940–1945"
+        },
+        "max_speed_surfaced_knots": {
+          "type": "number",
+          "value": 17.7
+        },
+        "max_speed_submerged_knots": {
+          "type": "number",
+          "value": 7.6
+        },
+        "displacement_surfaced_tonnes": {
+          "type": "number",
+          "value": 769
+        },
+        "displacement_submerged_tonnes": {
+          "type": "number",
+          "value": 871
+        }
+      },
+      "specFields": {
+        "manufacturer": {
+          "type": "string",
+          "value": "Multiple yards"
+        },
+        "crew": {
+          "type": "number",
+          "value": 44
+        },
+        "armament": {
+          "type": "object",
+          "value": {
+            "gun": "1× 88 mm deck gun",
+            "torpedoes": "14× G7a/G7e torpedoes (5 tubes: 4 bow, 1 stern)"
+          }
+        },
+        "units_produced": {
+          "type": "number",
+          "value": 568
+        }
+      }
+    },
+    {
+      "id": "cmqp78ltt000kd54ckmf61hfy",
+      "title": "Vittorio Veneto",
+      "slug": "vittorio-veneto",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Survived war; scrapped 1950"
+        },
+        "type": {
+          "type": "string",
+          "value": "Battleship"
+        },
+        "class": {
+          "type": "string",
+          "value": "Littorio class"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "commissioned": {
+          "type": "number",
+          "value": 1940
+        },
+        "displacement_tons": {
+          "type": "number",
+          "value": 45752
+        }
+      },
+      "specFields": {
+        "armament": {
+          "type": "string",
+          "value": "9× 381mm guns"
+        }
+      }
+    },
+    {
+      "id": "cmqp78ltw000md54cc2a27mt0",
+      "title": "Zara",
+      "slug": "zara",
+      "extras": {
+        "fate": {
+          "type": "string",
+          "value": "Sunk 29 March 1941"
+        },
+        "type": {
+          "type": "string",
+          "value": "Heavy Cruiser"
+        },
+        "class": {
+          "type": "string",
+          "value": "Zara class"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "commissioned": {
+          "type": "number",
+          "value": 1931
+        },
+        "displacement_tons": {
+          "type": "number",
+          "value": 14530
+        }
+      },
+      "specFields": {
+        "armament": {
+          "type": "string",
+          "value": "8× 203mm guns"
+        }
+      }
+    },
+    {
+      "id": "cmqpwr2dx000y71udslid4sbh",
+      "title": "ZB vz. 26",
+      "slug": "zb-vz-26",
+      "extras": {
+        "type": {
+          "type": "string",
+          "value": "Light Machine Gun"
+        },
+        "image": {
+          "type": "null",
+          "value": null
+        },
+        "calibre": {
+          "type": "string",
+          "value": "7.92×57mm"
+        },
+        "magazine": {
+          "type": "string",
+          "value": "20 or 30-round box magazine"
+        },
+        "weight_kg": {
+          "type": "number",
+          "value": 9.6
+        },
+        "rate_of_fire": {
+          "type": "string",
+          "value": "500 rpm"
+        }
+      },
+      "specFields": {}
+    }
+  ]
+}

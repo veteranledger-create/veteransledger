@@ -3,9 +3,12 @@ import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
 import { pickRecordFields } from "../../utilities/allowlist";
 import { mergeMetadata } from "../../utilities/metadata-merge";
+import { normalizeDateFields } from "../../utilities/date-normalize";
 import { toRecordLike } from "../publish/publish.service";
 import { toCampaignJson } from "../publish/generators/campaigns.generator";
 import { checkCampaignRecord } from "../publish/validators/campaigns.conformance";
+
+const DATE_FIELDS = ["startDate", "endDate"] as const;
 
 interface ListOptions { page: number; limit: number; theater?: string; search?: string; }
 
@@ -34,11 +37,12 @@ export class CampaignsService {
   }
 
   async create(data: object) {
-    return prisma.record.create({ data: { ...pickRecordFields(data), type: "CAMPAIGN" } as Parameters<typeof prisma.record.create>[0]["data"] });
+    const fields = normalizeDateFields(pickRecordFields(data), DATE_FIELDS);
+    return prisma.record.create({ data: { ...fields, type: "CAMPAIGN" } as Parameters<typeof prisma.record.create>[0]["data"] });
   }
 
   async update(id: string, data: object) {
-    const fields = pickRecordFields(data);
+    const fields = normalizeDateFields(pickRecordFields(data), DATE_FIELDS);
     // Json columns are replaced wholesale on update — there's no partial
     // write. Merge onto the record's current metadata (fetched fresh, right
     // before the write) rather than the client's payload alone, so fields

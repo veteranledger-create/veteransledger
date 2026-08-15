@@ -2,6 +2,7 @@ import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
 import { pickFormationFields } from "../../utilities/allowlist";
+import { mergeMetadata } from "../../utilities/metadata-merge";
 import { toRecordLike } from "../publish/publish.service";
 import { toFormationJson } from "../publish/generators/formations.generator";
 import { checkFormationRecord } from "../publish/validators/formations.conformance";
@@ -43,10 +44,26 @@ export class FormationsService {
   }
 
   async update(id: string, data: object, userId: string) {
+    const fields = pickFormationFields(data);
+    // Json columns are replaced wholesale on update — there's no partial
+    // write. Merge onto the record's current metadata (fetched fresh, right
+    // before the write) rather than the client's payload alone, so fields
+    // the Admin form doesn't manage survive a save that only ever intended
+    // to change the fields it knows about. For Formations that includes the
+    // per-record narrative content (overview_blocks/context_blocks, present
+    // on every real record) plus dossier and the volunteer/org-chart extras
+    // (shield/flag/region/volunteer_origin/parent_formation/predecessor/
+    // fate/subordinate_units/constituent_divisions/campaign_participation) —
+    // all read by formations.generator.ts, none editable in the Admin form.
+    // See src/utilities/metadata-merge.ts.
+    if ("metadata" in fields) {
+      const existing = await prisma.record.findUnique({ where: { id }, select: { metadata: true } });
+      fields.metadata = mergeMetadata(existing?.metadata, fields.metadata);
+    }
     const record = await notFoundAs404(
       () => prisma.record.update({
         where: { id },
-        data: pickFormationFields(data) as Parameters<typeof prisma.record.update>[0]["data"],
+        data: fields as Parameters<typeof prisma.record.update>[0]["data"],
       }),
       "Formation not found",
     );

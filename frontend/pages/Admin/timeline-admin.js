@@ -1,78 +1,23 @@
-﻿import { TranslationsPanel } from "./translations-panel.js";
-import { authHeader, escHtml, debounce, loader, makeStatusFn, safeJson } from "./admin-utils.js";
+import { TranslationsPanel } from "./translations-panel.js";
+import { escHtml } from "./admin-utils.js";
 import { initRelatedModal, openRelatedModal } from "./admin-related.js";
 import { renderSources as renderSourcesFn, renderRelated as renderRelatedFn } from "./admin-form.js";
+import { createContentModule } from "./admin-content-module.js";
 
 /**
  * VeteransLedger · Admin — Timeline Events
- * Full CRUD for /api/timeline with sources, related records,
- * significance/notes, year, start/end date, category, location.
+ * Timeline-event-specific logic only. No media (Timeline never had a
+ * gallery/documents section) and no preview (no generator/conformance
+ * checker exists for timeline events). Shared infrastructure lives in
+ * admin-content-module and the pre-existing admin-utils / admin-related /
+ * admin-form modules.
  */
 
-const CATEGORIES = ["political", "military", "economic", "social", "diplomatic", "other"];
-
-let editingId = null;
 const translationsPanel = new TranslationsPanel("timeline-translations-panel", "timeline_event");
-let sourcesDraft = [];
-let relatedDraft = [];
 
-const setStatus = makeStatusFn("timeline-form-status");
-
-function renderSources() { renderSourcesFn("timeline-sources-list", sourcesDraft, renderSources); }
-function renderRelated() { renderRelatedFn("timeline-related-list", relatedDraft, renderRelated); }
-
-function init() {
-  initRelatedModal();
-
-  document.getElementById("admin-tabs")?.addEventListener("click", (e) => {
-    if (e.target.closest('[data-tab="tab-timeline"]')) loadTimeline();
-  });
-
-  document.getElementById("timeline-new-btn")?.addEventListener("click", () => openForm(null));
-  document.getElementById("timeline-cancel-btn")?.addEventListener("click", closeForm);
-  document.getElementById("timeline-delete-btn")?.addEventListener("click", handleDelete);
-  document.getElementById("timeline-form")?.addEventListener("submit", handleSubmit);
-
-  document.getElementById("timeline-filter-year")?.addEventListener("input", debounce(loadTimeline, 350));
-  document.getElementById("timeline-filter-category")?.addEventListener("change", loadTimeline);
-
-  document.getElementById("timeline-add-source-btn")?.addEventListener("click", () => {
-    sourcesDraft.push({ ref: "", type: "" });
-    renderSources();
-  });
-
-  document.getElementById("timeline-add-related-btn")?.addEventListener("click", () => {
-    openRelatedModal((item) => { relatedDraft.push(item); renderRelated(); });
-  });
-}
-
-// ── List ──────────────────────────────────────────────────────────────────────
-
-async function loadTimeline() {
-  const container = document.getElementById("timeline-list");
-  if (!container) return;
-  container.innerHTML = loader();
-
-  const year = document.getElementById("timeline-filter-year")?.value?.trim() || "";
-  const category = document.getElementById("timeline-filter-category")?.value || "";
-  const params = new URLSearchParams({ ...(year && { year }), ...(category && { category }) });
-
-  try {
-    const res = await fetch(`/api/timeline?${params}`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    renderList(container, await safeJson(res));
-  } catch (_) {
-    container.innerHTML = `<p class="text-dim">Timeline unavailable.</p>`;
-  }
-}
-
-function renderList(container, events) {
-  if (!events.length) {
-    container.innerHTML = `<p class="text-dim">No timeline events yet. Click "+ New Event" to create one.</p>`;
-    return;
-  }
+function renderTimelineList(container, { data, total, page, pages }, { onEdit, onDelete, onPage }) {
   container.innerHTML = `
-    <p class="list-meta">${events.length} event(s)</p>
+    <p class="list-meta">${total} event(s) · page ${page} of ${pages}</p>
     <table class="admin-table">
       <thead>
         <tr>
@@ -86,7 +31,7 @@ function renderList(container, events) {
         </tr>
       </thead>
       <tbody>
-        ${events.map((ev) => `
+        ${data.map((ev) => `
           <tr>
             <td class="td-muted">${escHtml(String(ev.year ?? "—"))}</td>
             <td class="td-small">${ev.date ? escHtml(ev.date.slice(0, 10)) : "—"}</td>
@@ -100,143 +45,89 @@ function renderList(container, events) {
             </td>
           </tr>`).join("")}
       </tbody>
-    </table>`;
+    </table>
+    ${pages > 1 ? `<div class="pagination">
+      ${page > 1 ? `<button class="btn btn-secondary" data-page="${page - 1}">← Prev</button>` : ""}
+      ${page < pages ? `<button class="btn btn-secondary" data-page="${page + 1}">Next →</button>` : ""}
+    </div>` : ""}`;
 
-  container.querySelectorAll("[data-edit]").forEach((btn) =>
-    btn.addEventListener("click", () => openForm(btn.dataset.edit)));
-  container.querySelectorAll("[data-delete]").forEach((btn) =>
-    btn.addEventListener("click", () => deleteEvent(btn.dataset.delete)));
+  container.querySelectorAll("[data-edit]").forEach((btn) => btn.addEventListener("click", () => onEdit(btn.dataset.edit)));
+  container.querySelectorAll("[data-delete]").forEach((btn) => btn.addEventListener("click", () => onDelete(btn.dataset.delete)));
+  container.querySelectorAll("[data-page]").forEach((btn) => btn.addEventListener("click", () => onPage(+btn.dataset.page)));
 }
 
-// ── Form ──────────────────────────────────────────────────────────────────────
+function populateForm(form, r, drafts) {
+  const meta = r.metadata || {};
+  form.querySelector("[name='year']").value = r.year ?? "";
+  form.querySelector("[name='date']").value = r.date ? r.date.slice(0, 10) : "";
+  form.querySelector("[name='endDate']").value = r.endDate ? r.endDate.slice(0, 10) : "";
+  form.querySelector("[name='category']").value = r.category || "";
+  form.querySelector("[name='title']").value = r.title || "";
+  form.querySelector("[name='location']").value = r.location || "";
+  form.querySelector("[name='summary']").value = r.summary || "";
+  form.querySelector("[name='significance']").value = r.significance || "";
+  form.querySelector("[name='published']").checked = !!r.published;
 
-function openForm(id) {
-  editingId = id;
-  sourcesDraft = [];
-  relatedDraft = [];
-  document.getElementById("timeline-form")?.reset();
-  // Default published to checked for new events
-  const pubCheck = document.querySelector("#timeline-form [name='published']");
-  if (pubCheck) pubCheck.checked = true;
-  document.getElementById("timeline-form-title").textContent = id ? "Edit Event" : "New Event";
-  document.getElementById("timeline-form-panel").hidden = false;
-  document.getElementById("timeline-delete-btn").hidden = !id;
-  setStatus("", false);
-  renderSources();
-  renderRelated();
-  if (id) { loadEventIntoForm(id); translationsPanel.load(id); }
-  else translationsPanel.clear();
-  // Scroll form into view
-  document.getElementById("timeline-form-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  drafts.sources = Array.isArray(meta.sources) ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" })) : [];
+  drafts.related = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
 }
 
-function closeForm() {
-  document.getElementById("timeline-form-panel").hidden = true;
-  editingId = null;
-}
-
-async function loadEventIntoForm(id) {
-  try {
-    const res = await fetch(`/api/timeline/${id}`, { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    const ev = await safeJson(res);
-    const form = document.getElementById("timeline-form");
-    const meta = ev.metadata || {};
-
-    form.querySelector("[name='year']").value = ev.year ?? "";
-    form.querySelector("[name='date']").value = ev.date ? ev.date.slice(0, 10) : "";
-    form.querySelector("[name='endDate']").value = ev.endDate ? ev.endDate.slice(0, 10) : "";
-    form.querySelector("[name='category']").value = ev.category || "";
-    form.querySelector("[name='title']").value = ev.title || "";
-    form.querySelector("[name='location']").value = ev.location || "";
-    form.querySelector("[name='summary']").value = ev.summary || "";
-    form.querySelector("[name='significance']").value = ev.significance || "";
-    form.querySelector("[name='published']").checked = !!ev.published;
-
-    sourcesDraft = Array.isArray(meta.sources)
-      ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" }))
-      : [];
-    relatedDraft = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
-
-    renderSources();
-    renderRelated();
-  } catch (_) {
-    setStatus("Failed to load event.", true);
-  }
-}
-
-// ── Save ──────────────────────────────────────────────────────────────────────
-
-async function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-
+function serializeForm(form, drafts) {
   const yearRaw = form.querySelector("[name='year']").value.trim();
   const dateRaw = form.querySelector("[name='date']").value.trim();
-  const title = form.querySelector("[name='title']").value.trim();
 
-  if (!title) { setStatus("Title is required.", true); return; }
-  if (!yearRaw && !dateRaw) { setStatus("At least a Year or Start Date is required.", true); return; }
-
-  const body = {
+  return {
     year: yearRaw ? Number(yearRaw) : (dateRaw ? new Date(dateRaw).getFullYear() : null),
     date: dateRaw || null,
     endDate: form.querySelector("[name='endDate']").value.trim() || null,
     category: form.querySelector("[name='category']").value || null,
-    title,
+    title: form.querySelector("[name='title']").value.trim(),
     location: form.querySelector("[name='location']").value.trim() || null,
     summary: form.querySelector("[name='summary']").value.trim() || null,
     significance: form.querySelector("[name='significance']").value.trim() || null,
     published: form.querySelector("[name='published']").checked,
     metadata: {
-      sources: sourcesDraft.filter((s) => s.ref),
-      related_records: relatedDraft,
+      sources: drafts.sources.filter((s) => s.ref),
+      related_records: drafts.related,
     },
   };
-
-  setStatus("Saving…", false);
-  try {
-    const res = await fetch(editingId ? `/api/timeline/${editingId}` : "/api/timeline", {
-      method: editingId ? "PUT" : "POST",
-      headers: { ...authHeader(), "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) throw new Error();
-    const saved = await safeJson(res);
-    editingId = saved.id;
-    translationsPanel.load(saved.id);
-    document.getElementById("timeline-delete-btn").hidden = false;
-    setStatus("Saved.", false);
-    loadTimeline();
-  } catch (_) {
-    setStatus("Save failed. Try again.", true);
-  }
 }
 
-// ── Delete ────────────────────────────────────────────────────────────────────
-
-async function handleDelete() {
-  if (!editingId || !confirm("Delete this timeline event? This cannot be undone.")) return;
-  try {
-    const res = await fetch(`/api/timeline/${editingId}`, { method: "DELETE", headers: authHeader() });
-    if (!res.ok) throw new Error();
-    closeForm();
-    loadTimeline();
-  } catch (_) {
-    setStatus("Delete failed.", true);
-  }
-}
-
-async function deleteEvent(id) {
-  if (!confirm("Delete this timeline event? This cannot be undone.")) return;
-  try {
-    const res = await fetch(`/api/timeline/${id}`, { method: "DELETE", headers: authHeader() });
-    if (!res.ok) throw new Error();
-    if (editingId === id) closeForm();
-    loadTimeline();
-  } catch (_) {
-    alert("Delete failed. Try again.");
-  }
-}
-
-init();
+createContentModule({
+  idPrefix: "timeline",
+  apiBase: "/api/timeline",
+  tabPanelId: "tab-timeline",
+  tabButtonSelector: '[data-tab="tab-timeline"]',
+  pageSize: 50,
+  filters: [
+    { param: "year", event: "input", debounceMs: 350 },
+    { param: "category", event: "change" },
+  ],
+  renderList: renderTimelineList,
+  emptyMessage: 'No timeline events yet. Click "+ New Event" to create one.',
+  translationsPanel,
+  labels: { new: "New Event", edit: "Edit Event" },
+  repeatableGroups: [
+    {
+      key: "sources",
+      addBtnId: "timeline-add-source-btn",
+      render: (draft, onUpdate) => renderSourcesFn("timeline-sources-list", draft, onUpdate),
+      itemFactory: () => ({ ref: "", type: "" }),
+    },
+    {
+      key: "related",
+      addBtnId: "timeline-add-related-btn",
+      render: (draft, onUpdate) => renderRelatedFn("timeline-related-list", draft, onUpdate),
+      onAdd: (draft, rerender) => openRelatedModal((item) => { draft.push(item); rerender(); }),
+    },
+  ],
+  populateForm,
+  serializeForm,
+  validate: (body) => {
+    if (!body.year && !body.date) return ["At least a Year or Start Date is required."];
+    return [];
+  },
+  onInit: () => {
+    initRelatedModal();
+  },
+});

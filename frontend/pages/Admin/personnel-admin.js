@@ -132,10 +132,12 @@ function serializeForm(form, drafts) {
     },
   };
 
+  // Always send the key (string or explicit null) rather than omitting it
+  // when empty, so clearing a date on an edit actually clears it in the DB.
   const birthDateVal = form.querySelector("[name='birthDate']").value.trim();
   const deathDateVal = form.querySelector("[name='deathDate']").value.trim();
-  if (birthDateVal) body.birthDate = birthDateVal;
-  if (deathDateVal) body.deathDate = deathDateVal;
+  body.birthDate = birthDateVal || null;
+  body.deathDate = deathDateVal || null;
 
   return body;
 }

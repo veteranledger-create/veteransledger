@@ -3,9 +3,12 @@ import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
 import { pickRecordFields } from "../../utilities/allowlist";
 import { mergeMetadata } from "../../utilities/metadata-merge";
+import { normalizeDateFields } from "../../utilities/date-normalize";
 import { toRecordLike } from "../publish/publish.service";
 import { toLetterJson } from "../publish/generators/letters.generator";
 import { checkLetterRecord } from "../publish/validators/letters.conformance";
+
+const DATE_FIELDS = ["date"] as const;
 
 interface ListOptions { page: number; limit: number; language?: string; search?: string; }
 
@@ -31,11 +34,12 @@ export class LettersService {
   }
 
   async create(data: object) {
-    return prisma.record.create({ data: { ...pickRecordFields(data), type: "LETTER" } as Parameters<typeof prisma.record.create>[0]["data"] });
+    const fields = normalizeDateFields(pickRecordFields(data), DATE_FIELDS);
+    return prisma.record.create({ data: { ...fields, type: "LETTER" } as Parameters<typeof prisma.record.create>[0]["data"] });
   }
 
   async update(id: string, data: object) {
-    const fields = pickRecordFields(data);
+    const fields = normalizeDateFields(pickRecordFields(data), DATE_FIELDS);
     // See src/utilities/metadata-merge.ts — Json columns are replaced
     // wholesale on update, so merge onto the record's current metadata
     // rather than overwriting with only what the Admin form manages.

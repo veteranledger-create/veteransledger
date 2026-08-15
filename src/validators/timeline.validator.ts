@@ -27,6 +27,11 @@ export const createTimelineEventValidator = [
     .trim()
     .isLength({ max: 300 })
     .withMessage("Location must be under 300 characters."),
+  body("summary")
+    .optional({ nullable: true })
+    .trim()
+    .isLength({ max: 2000 })
+    .withMessage("Summary must be under 2,000 characters."),
   body("significance")
     .optional({ nullable: true })
     .trim()
@@ -70,6 +75,11 @@ export const updateTimelineEventValidator = [
     .trim()
     .isLength({ max: 300 })
     .withMessage("Location must be under 300 characters."),
+  body("summary")
+    .optional({ nullable: true })
+    .trim()
+    .isLength({ max: 2000 })
+    .withMessage("Summary must be under 2,000 characters."),
   body("significance")
     .optional({ nullable: true })
     .trim()
@@ -86,6 +96,8 @@ export const updateTimelineEventValidator = [
 ];
 
 export const listTimelineValidator = [
+  query("page").optional().isInt({ min: 1 }).withMessage("Page must be a positive integer."),
+  query("limit").optional().isInt({ min: 1, max: 100 }).withMessage("Limit must be between 1 and 100."),
   query("year")
     .optional()
     .isInt({ min: 1900, max: 1950 })

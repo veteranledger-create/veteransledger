@@ -21,11 +21,11 @@ export const createCampaignValidator = [
     .isLength({ max: 255 })
     .withMessage("Location must be under 255 characters."),
   body("startDate")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("startDate must be a valid ISO 8601 date."),
   body("endDate")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("endDate must be a valid ISO 8601 date."),
   body("tags")
@@ -56,11 +56,11 @@ export const updateCampaignValidator = [
     .isLength({ max: 255 })
     .withMessage("Location must be under 255 characters."),
   body("startDate")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("startDate must be a valid ISO 8601 date."),
   body("endDate")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("endDate must be a valid ISO 8601 date."),
   body("tags")

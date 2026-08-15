@@ -1,6 +1,7 @@
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
+import { mergeMetadata } from "../../utilities/metadata-merge";
 import { findAdminDuplicateCandidates } from "./admin-duplicate-check";
 import { toRecordLike } from "../publish/publish.service";
 import { toArmamentJson } from "../publish/generators/armaments.generator";
@@ -122,7 +123,19 @@ export class ArmamentsService {
       published: input.published ?? existing.published,
     };
 
-    return prisma.record.update({ where: { id }, data: buildRecordData(merged) as Parameters<typeof prisma.record.update>[0]["data"] });
+    const dbData = buildRecordData(merged);
+    // The field-by-field merge above covers every key the Admin form knows
+    // about, but Json columns are replaced wholesale on update — so any key
+    // the form neither round-trips nor rebuilds is still dropped. That hit
+    // the import-provenance keys (importRunId/fileNation/schemaType): they
+    // are excluded from the form's extraSpecs round-trip by KNOWN_META_KEYS
+    // and never re-added by buildRecordData, so every admin save deleted
+    // them. Merging onto the record's current metadata closes that gap
+    // generally, for these and any future unmanaged key, rather than by
+    // extending the hand-written list above. See
+    // src/utilities/metadata-merge.ts.
+    const data = { ...dbData, metadata: mergeMetadata(existingMeta, dbData.metadata) };
+    return prisma.record.update({ where: { id }, data: data as Parameters<typeof prisma.record.update>[0]["data"] });
   }
 
   // Admin-specific collision check — see admin-duplicate-check.ts for why

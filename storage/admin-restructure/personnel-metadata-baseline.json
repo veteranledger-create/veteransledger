@@ -1,0 +1,435 @@
+{
+  "capturedAt": "2026-08-15T17:50:02.115Z",
+  "totalPersonnelEntities": 46,
+  "entitiesWithUnmanagedMetadata": 14,
+  "unmanagedKeyFrequency": {
+    "kills": 8,
+    "aircraft": 8,
+    "ships_sunk": 5,
+    "tonnage_sunk": 5,
+    "tank_kills": 2,
+    "vehicles": 1
+  },
+  "affectedRecords": [
+    {
+      "id": "cmqo53xq9000bznhqrlt7ouhr",
+      "name": "Adolf Galland",
+      "slug": "adolf-galland",
+      "allKeys": [
+        "rank",
+        "kills",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "aircraft",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "kills",
+        "aircraft"
+      ],
+      "unmanagedValues": {
+        "kills": 104,
+        "aircraft": [
+          "Bf 109",
+          "Fw 190",
+          "Me 262"
+        ]
+      }
+    },
+    {
+      "id": "cmqo53xq8000aznhq5p2abb3b",
+      "name": "Erich Hartmann",
+      "slug": "erich-hartmann",
+      "allKeys": [
+        "rank",
+        "kills",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "aircraft",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "kills",
+        "aircraft"
+      ],
+      "unmanagedValues": {
+        "kills": 352,
+        "aircraft": [
+          "Messerschmitt Bf 109"
+        ]
+      }
+    },
+    {
+      "id": "cmqo53xq00006znhqlhm5491k",
+      "name": "Erich Topp",
+      "slug": "erich-topp",
+      "allKeys": [
+        "rank",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "ships_sunk",
+        "importRunId",
+        "tonnage_sunk",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "ships_sunk",
+        "tonnage_sunk"
+      ],
+      "unmanagedValues": {
+        "ships_sunk": 35,
+        "tonnage_sunk": 197460
+      }
+    },
+    {
+      "id": "cmqo53xqj000hznhqg9aws7ur",
+      "name": "Gerhard Barkhorn",
+      "slug": "gerhard-barkhorn",
+      "allKeys": [
+        "rank",
+        "kills",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "aircraft",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "kills",
+        "aircraft"
+      ],
+      "unmanagedValues": {
+        "kills": 301,
+        "aircraft": [
+          "Bf 109"
+        ]
+      }
+    },
+    {
+      "id": "cmqo53xpx0004znhqp4ntmzm6",
+      "name": "Günther Prien",
+      "slug": "gunther-prien",
+      "allKeys": [
+        "rank",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "ships_sunk",
+        "importRunId",
+        "tonnage_sunk",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "ships_sunk",
+        "tonnage_sunk"
+      ],
+      "unmanagedValues": {
+        "ships_sunk": 31,
+        "tonnage_sunk": 162000
+      }
+    },
+    {
+      "id": "cmqo53xq60009znhq709hypty",
+      "name": "Hans-Ulrich Rudel",
+      "slug": "hans-ulrich-rudel",
+      "allKeys": [
+        "rank",
+        "kills",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "aircraft",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "tank_kills",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "kills",
+        "aircraft",
+        "tank_kills"
+      ],
+      "unmanagedValues": {
+        "kills": 9,
+        "aircraft": [
+          "Junkers Ju 87 Stuka",
+          "Focke-Wulf Fw 190"
+        ],
+        "tank_kills": 519
+      }
+    },
+    {
+      "id": "cmqo53xqf000fznhqhrwfckv7",
+      "name": "Hermann Göring",
+      "slug": "hermann-goring",
+      "allKeys": [
+        "rank",
+        "kills",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "aircraft",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "kills",
+        "aircraft"
+      ],
+      "unmanagedValues": {
+        "kills": 22,
+        "aircraft": [
+          "Fokker D.VII (WWI)"
+        ]
+      }
+    },
+    {
+      "id": "cmqo53xq40008znhqlxitpy0p",
+      "name": "Joachim Schepke",
+      "slug": "joachim-schepke",
+      "allKeys": [
+        "rank",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "ships_sunk",
+        "importRunId",
+        "tonnage_sunk",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "ships_sunk",
+        "tonnage_sunk"
+      ],
+      "unmanagedValues": {
+        "ships_sunk": 39,
+        "tonnage_sunk": 159130
+      }
+    },
+    {
+      "id": "cmqo53xqe000eznhqiy14j1ys",
+      "name": "Josef Kammhuber",
+      "slug": "joseph-kammhuber",
+      "allKeys": [
+        "rank",
+        "kills",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "aircraft",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "kills",
+        "aircraft"
+      ],
+      "unmanagedValues": {
+        "kills": 0,
+        "aircraft": [
+          "Bf 110",
+          "He 219"
+        ]
+      }
+    },
+    {
+      "id": "cmqo4ybva00031jud1p0k8a4l",
+      "name": "Michael Wittmann",
+      "slug": "michael-wittmann",
+      "allKeys": [
+        "rank",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "commands",
+        "portrait",
+        "vehicles",
+        "campaigns",
+        "birthplace",
+        "tank_kills",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "vehicles",
+        "tank_kills"
+      ],
+      "unmanagedValues": {
+        "vehicles": [
+          "Panzer IV",
+          "Tiger I"
+        ],
+        "tank_kills": 138
+      }
+    },
+    {
+      "id": "cmqo53xpv0003znhq89308bjd",
+      "name": "Otto Kretschmer",
+      "slug": "otto-kretschmer",
+      "allKeys": [
+        "rank",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "ships_sunk",
+        "importRunId",
+        "tonnage_sunk",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "ships_sunk",
+        "tonnage_sunk"
+      ],
+      "unmanagedValues": {
+        "ships_sunk": 47,
+        "tonnage_sunk": 274333
+      }
+    },
+    {
+      "id": "cmqo53xqc000dznhquzuw7wp2",
+      "name": "Walter Nowotny",
+      "slug": "walter-nowotny",
+      "allKeys": [
+        "rank",
+        "kills",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "aircraft",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "kills",
+        "aircraft"
+      ],
+      "unmanagedValues": {
+        "kills": 258,
+        "aircraft": [
+          "Bf 109",
+          "Fw 190",
+          "Me 262"
+        ]
+      }
+    },
+    {
+      "id": "cmqo53xqb000cznhqtpd802kq",
+      "name": "Werner Mölders",
+      "slug": "werner-molders",
+      "allKeys": [
+        "rank",
+        "kills",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "aircraft",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "importRunId",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "kills",
+        "aircraft"
+      ],
+      "unmanagedValues": {
+        "kills": 115,
+        "aircraft": [
+          "Bf 109"
+        ]
+      }
+    },
+    {
+      "id": "cmqo53xq20007znhqjqiooccn",
+      "name": "Wolfgang Lüth",
+      "slug": "wolfgang-luth",
+      "allKeys": [
+        "rank",
+        "awards",
+        "branch",
+        "service",
+        "sources",
+        "commands",
+        "portrait",
+        "campaigns",
+        "birthplace",
+        "ships_sunk",
+        "importRunId",
+        "tonnage_sunk",
+        "related_records"
+      ],
+      "unmanagedKeys": [
+        "ships_sunk",
+        "tonnage_sunk"
+      ],
+      "unmanagedValues": {
+        "ships_sunk": 46,
+        "tonnage_sunk": 225204
+      }
+    }
+  ]
+}

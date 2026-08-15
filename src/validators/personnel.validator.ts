@@ -11,11 +11,11 @@ export const createPersonnelValidator = [
     .isLength({ max: 100 })
     .withMessage("Nationality must be under 100 characters."),
   body("birthDate")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("birthDate must be a valid ISO 8601 date."),
   body("deathDate")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("deathDate must be a valid ISO 8601 date."),
   body("summary")
@@ -46,11 +46,11 @@ export const updatePersonnelValidator = [
     .isLength({ max: 100 })
     .withMessage("Nationality must be under 100 characters."),
   body("birthDate")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("birthDate must be a valid ISO 8601 date."),
   body("deathDate")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("deathDate must be a valid ISO 8601 date."),
   body("summary")

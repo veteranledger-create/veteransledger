@@ -17,14 +17,20 @@
  * tracking, or modal/keyboard behavior inside a module; that stays here.
  *
  * Migrated so far: Formations (Phase 3 pilot), Armaments, Personnel,
- * Letters. The remaining content modules keep their own bespoke code
- * until migrated in a later batch.
+ * Letters, Awards, Maps, Political Docs, Campaigns, Articles, Timeline.
+ * NSDAP is not a CRUD-list-of-records module at all — it's a fixed-file
+ * site-content editor (same /api/site-content system as Content Pages/
+ * Homepage) — and does not fit this factory's abstraction.
  *
  * DOM id convention (matches the existing per-tab markup exactly):
  *   ${idPrefix}-list, ${idPrefix}-new-btn, ${idPrefix}-cancel-btn,
  *   ${idPrefix}-form-panel, ${idPrefix}-form, ${idPrefix}-form-title,
  *   ${idPrefix}-form-status, ${idPrefix}-preview-btn (optional),
  *   ${idPrefix}-preview-modal / -content / -modal-close (optional),
+ *   ${idPrefix}-delete-btn (optional — a delete control living in the form
+ *   itself rather than only in each list row; Timeline is the first module
+ *   with one. Hidden for a new record, shown once editing an existing one,
+ *   deletes the record currently open and closes the form on success),
  *   ${idPrefix}-filter-${param} for each configured filter.
  */
 
@@ -165,6 +171,8 @@ export function createContentModule(config) {
     form?.reset();
     const titleEl = id("form-title");
     if (titleEl) titleEl.textContent = recordId ? config.labels?.edit || "Edit" : config.labels?.new || "New";
+    const deleteBtn = id("delete-btn");
+    if (deleteBtn) deleteBtn.hidden = !recordId;
     panel.hidden = false;
     renderAllGroups();
     onFormOpen?.(drafts, !recordId);
@@ -263,13 +271,29 @@ export function createContentModule(config) {
 
   // ── Delete ───────────────────────────────────────────────────────
   async function deleteRecord(recordId) {
-    if (!confirm("Delete this record? This cannot be undone.")) return;
+    if (!confirm("Delete this record? This cannot be undone.")) return false;
     try {
       const res = await fetch(`${apiBase}/${recordId}`, { method: "DELETE", headers: authHeader() });
       if (!res.ok) throw new Error();
       loadList(currentPage);
+      return true;
     } catch (_) {
       alert("Delete failed. Try again.");
+      return false;
+    }
+  }
+
+  // Form-level delete (optional ${idPrefix}-delete-btn): deletes the record
+  // currently open and closes the form on success, bypassing the
+  // confirm-discard dirty check below — the record itself is gone, there is
+  // nothing left to "discard".
+  async function deleteCurrentAndClose() {
+    if (!editingId) return;
+    const ok = await deleteRecord(editingId);
+    if (ok) {
+      const panel = id("form-panel");
+      if (panel) panel.hidden = true;
+      editingId = null;
     }
   }
 
@@ -300,6 +324,7 @@ export function createContentModule(config) {
 
     id("new-btn")?.addEventListener("click", () => openForm(null));
     id("cancel-btn")?.addEventListener("click", closeForm);
+    id("delete-btn")?.addEventListener("click", deleteCurrentAndClose);
     id("form")?.addEventListener("submit", handleSubmit);
     id("form")?.addEventListener("input", updateDirtyIndicator);
     id("form")?.addEventListener("change", updateDirtyIndicator);

@@ -6,8 +6,8 @@ const service = new TimelineService();
 export class TimelineController {
   async list(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const { year, category } = req.query;
-      res.json(await service.list({ year: year ? +year : undefined, category: category as string }));
+      const { page = "1", limit = "50", year, category } = req.query;
+      res.json(await service.list({ page: +page, limit: +limit, year: year ? +year : undefined, category: category as string }));
     } catch (err) { next(err); }
   }
 

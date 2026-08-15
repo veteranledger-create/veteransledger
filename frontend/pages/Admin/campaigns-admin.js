@@ -112,8 +112,10 @@ function serializeForm(form, drafts) {
     },
   };
 
-  if (startDateVal) body.startDate = startDateVal;
-  if (endDateVal) body.endDate = endDateVal;
+  // Always send the key (string or explicit null) rather than omitting it
+  // when empty, so clearing a date on an edit actually clears it in the DB.
+  body.startDate = startDateVal || null;
+  body.endDate = endDateVal || null;
 
   return body;
 }

@@ -1,0 +1,3133 @@
+{
+  "capturedAt": "2026-08-15T18:28:39.293Z",
+  "totalFormationRecords": 32,
+  "recordsWithUnmanagedMetadata": 32,
+  "unmanagedKeyFrequency": {
+    "fate": 32,
+    "flag": 32,
+    "region": 32,
+    "shield": 32,
+    "dossier": 32,
+    "predecessor": 32,
+    "context_blocks": 32,
+    "overview_blocks": 32,
+    "parent_formation": 32,
+    "volunteer_origin": 32,
+    "subordinate_units": 32,
+    "constituent_divisions": 32,
+    "campaign_participation": 32
+  },
+  "affectedRecords": [
+    {
+      "id": "cmqxys3mm000ds5mzta77cqdd",
+      "title": "1. SS-Panzer-Division Leibstandarte SS Adolf Hitler",
+      "slug": "leibstandarte-ss-ah",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The Leibstandarte's evolution from ceremonial guard to combat division mirrors the Waffen-SS's broader trajectory over the course of the war. Originally selected purely for physical appearance rather than military skill, by 1942–43 it had become among the Wehrmacht's most capable armoured formations, equipped on a level few other divisions could match.",
+            "type": "text",
+            "title": "From Ceremonial Guard to Armoured Division"
+          },
+          {
+            "text": "Michael Wittmann's famous single-handed destruction of a British armoured column at Villers-Bocage in Normandy, June 1944, was achieved while serving with the 101st SS Heavy Panzer Battalion, a unit attached to the division — one of the most studied small-unit tank actions of the entire war, and a key episode in Wittmann's own legend as a tank ace.",
+            "type": "text",
+            "title": "Villers-Bocage"
+          },
+          {
+            "text": "Jochen Peiper's Kampfgruppe Peiper, the spearhead of the Ardennes offensive in December 1944, drew primarily from the Leibstandarte's 1st SS Panzer Regiment. The Kampfgruppe's advance was marked by several documented massacres of American prisoners and Belgian civilians, including at Malmedy, which became the subject of a major postwar war crimes trial.",
+            "type": "text",
+            "title": "Kampfgruppe Peiper"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Leibstandarte SS Adolf Hitler began in 1933 not as a combat unit at all but as Hitler's personal protection detachment — a ceremonial guard selected as much for height and physical appearance as for any military qualification. Its transformation over the following decade into one of the Wehrmacht's most capable armoured divisions illustrates, more clearly than almost any other Waffen-SS formation, how far Himmler's combat arm evolved from its political-paramilitary origins.",
+            "type": "text"
+          },
+          {
+            "text": "As 1. SS-Panzer-Division, it belonged to the most senior tier of Waffen-SS divisions — the four 'original' divisions that traced their lineage to the prewar SS rather than to wartime volunteer recruitment, and which received priority in equipment and replacements throughout the war as a result. It fought in nearly every major German campaign from the invasion of Poland onward, a breadth of service matched by few other divisions in this archive.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, the Leibstandarte sits as a constituent division of I. SS-Panzerkorps, and its record connects to some of the most heavily documented individuals and events of the war — Michael Wittmann's exploits at Villers-Bocage, Jochen Peiper's Kampfgruppe in the Ardennes, and the war crimes investigations that followed the division's conduct in several campaigns.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": {
+          "id": "i-ss-panzer-corps",
+          "url": "/formations/i-ss-panzer-corps",
+          "title": "I. SS-Panzerkorps"
+        },
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3nh000ns5mzkqjjid1z",
+      "title": "10ª Armata Italiana (Italian 10th Army)",
+      "slug": "italian-10th-army",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Destroyed at Beda Fomm, February 1941.",
+        "flag": "/public/images/flags/italy.svg",
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Operation Compass, fought from 9 December 1940 to 7 February 1941 under the British General Richard O'Connor, remains one of the most spectacular victories in British military history. The attack was originally intended as a five-day raid to disrupt Italian positions; instead, finding Italian resistance collapsing rapidly, O'Connor pressed the advantage and turned it into a campaign of near-total annihilation.",
+            "type": "text",
+            "title": "Operation Compass"
+          },
+          {
+            "text": "The 10th Army was outfought at virtually every level of combat — its artillery was outranged by British guns, its tanks were obsolete against even the limited British armour available, and its tactical doctrine proved far too rigid for the fluid desert warfare that followed. The capture of some 130,000 Italian prisoners by a British and Commonwealth force of barely 30,000 troops stands as one of the most lopsided victories of the entire war.",
+            "type": "text",
+            "title": "A One-Sided Defeat"
+          },
+          {
+            "text": "The scale of the defeat forced Hitler to dispatch Rommel's Afrikakorps to North Africa to prevent Italy's complete ejection from the continent — a decision with consequences extending far beyond the immediate battle, since it drew German forces into a theater that would eventually consume substantial resources better needed elsewhere. The 10th Army itself never recovered as an effective fighting formation for the remainder of the war.",
+            "type": "text",
+            "title": "Consequences"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Italian 10th Army represented Fascist Italy's principal field force in North Africa at the outset of the war in the Mediterranean theater, and its catastrophic destruction in early 1941 is one of the clearest illustrations in this archive of the gap between the scale of Italy's colonial ambitions and the actual combat readiness of its armed forces.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/flags/italy.svg",
+                "caption": "Flag of Fascist Italy",
+                "description": "Germany's principal Axis partner and the originator of the North African campaign the 10th Army's destruction effectively ended."
+              }
+            ]
+          },
+          {
+            "text": "Its invasion of Egypt in September 1940 was intended to demonstrate Italian military power independent of German support, fulfilling Mussolini's own ambitions for a 'parallel war' alongside, rather than dependent on, Germany. Its destruction by a vastly smaller British force just months later forced exactly the German intervention — the dispatch of Rommel's Afrikakorps — that Mussolini had hoped to avoid, fundamentally altering the character of the entire North African campaign for the rest of the war.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3mo000es5mz8ery4pr1",
+      "title": "2. SS-Panzer-Division Das Reich",
+      "slug": "ss-division-das-reich",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Das Reich fought in France in 1940, in the Balkans campaign of 1941, and then in Operation Barbarossa from its opening days. At Kharkov in early 1943 it played a central role in Manstein's 'backhand blow', one of the last major German offensive successes on the Eastern Front.",
+            "type": "text",
+            "title": "From France to Kharkov"
+          },
+          {
+            "text": "The Oradour-sur-Glane massacre, on 10 June 1944, was perpetrated by the division's 4th SS Panzer Grenadier Regiment Der Führer as the division moved north from southern France to reinforce the Normandy front. The exact motive remains disputed among historians — possibly a reprisal for resistance activity in the area, possibly a deliberate act of terror intended to discourage further partisan attacks on the division's march route.",
+            "type": "text",
+            "title": "Oradour-sur-Glane"
+          },
+          {
+            "text": "All 642 inhabitants of the village were killed: the men were shot in barns and garages, while the women and children were locked inside the village church, which was then set ablaze. The ruins of Oradour-sur-Glane have been deliberately preserved, unrebuilt, as a permanent memorial.",
+            "type": "quote",
+            "attribution": "Summary of the established historical record of the massacre"
+          },
+          {
+            "text": "The division's commander at the time, Heinz Lammerding, was convicted in absentia by a French military court in 1953, but West Germany declined to extradite him, and he lived freely in the country until his death in 1971 — one of many cases in which senior Waffen-SS officers responsible for documented war crimes escaped meaningful postwar accountability.",
+            "type": "text",
+            "title": "Accountability"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Das Reich was one of the four senior Waffen-SS divisions formed before or in the earliest stages of the war, alongside the Leibstandarte and Totenkopf, and like them it served as a constituent division of I. SS-Panzerkorps for much of its operational life. Its name — 'the Reich' — reflected its status as a flagship formation of the SS rather than any specific regional or ideological designation.",
+            "type": "text"
+          },
+          {
+            "text": "Its combat record spans the Western and Eastern Fronts in roughly equal measure: France in 1940, the Balkans, Barbarossa, the Kharkov counteroffensive, and finally a return to France in 1944 to help meet the Normandy invasion. It is this final campaign, and specifically the division's march north from Toulouse to the Normandy front, that defines its place in this archive more than any of its purely military engagements.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, Das Reich's record is inseparable from the Oradour-sur-Glane massacre — one of the most documented and most consequential war crimes committed by any German formation in Western Europe, and a case study referenced repeatedly in postwar legal and historical scholarship on Waffen-SS conduct.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": {
+          "id": "i-ss-panzer-corps",
+          "url": "/formations/i-ss-panzer-corps",
+          "title": "I. SS-Panzerkorps"
+        },
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3mr000fs5mzun5ahj3w",
+      "title": "3. SS-Panzer-Division Totenkopf",
+      "slug": "ss-division-totenkopf",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The Le Paradis massacre, on 27 May 1940 during the French campaign, saw 97 British soldiers of the Royal Norfolk Regiment who had already surrendered machine-gunned and bayoneted by troops of the division's 2nd Regiment. The massacre resulted in the postwar trial and execution of the responsible officer, Fritz Knöchlein, one of the relatively few cases of direct legal accountability for Waffen-SS atrocities committed in Western Europe.",
+            "type": "text",
+            "title": "Le Paradis"
+          },
+          {
+            "text": "On the Eastern Front, the division fought at Demyansk in 1942, where it was encircled by Soviet forces for nearly a full year before being relieved — one of the longest sustained encirclements endured by any German division of the war. It went on to fight at Kharkov and Kursk in 1943, and in the final defensive battles in Hungary during 1944–45.",
+            "type": "text",
+            "title": "Demyansk and the Eastern Front"
+          },
+          {
+            "text": "Historians studying the division have consistently noted that its men brought the institutional values of the concentration camp system — the dehumanisation of opponents and a culture of routine brutality — directly into combat, a pattern reflected in atrocities documented in both the Western and Eastern theaters of the division's service.",
+            "type": "text",
+            "title": "A Documented Pattern"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Totenkopf occupies a distinct place even among the Waffen-SS's senior divisions: it was raised directly from the personnel of the SS concentration camp guard service by Theodor Eicke, the man most responsible for shaping the brutal administrative culture of the early camp system, and many of its first soldiers came to the division having served as camp guards rather than through any conventional military route.",
+            "type": "text"
+          },
+          {
+            "text": "This origin is reflected throughout its wartime conduct, which historians have consistently identified as among the most ideologically extreme and atrocity-prone of any Waffen-SS division, in both the Western campaign of 1940 and the Eastern Front thereafter. Operationally, however, it also became one of the most heavily engaged divisions of the war, spending nearly a full year encircled at Demyansk before going on to fight at Kharkov, Kursk, and in the final defensive battles in Hungary.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, Totenkopf's record should be read alongside Theodor Eicke's own personnel entry, since the division's character in its first years is, more than for most formations, inseparable from the personality and methods of its founding commander.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": {
+          "id": "i-ss-panzer-corps",
+          "url": "/formations/i-ss-panzer-corps",
+          "title": "I. SS-Panzerkorps"
+        },
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3nu000rs5mzutn576xr",
+      "title": "33rd Waffen Grenadier Division SS Charlemagne (French)",
+      "slug": "33rd-ss-charlemagne",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Mostly destroyed in Pomerania, March 1945. Survivors fought in Berlin to the end.",
+        "flag": null,
+        "region": "Western European Volunteers",
+        "shield": "/public/images/icons/shields/charlemagne.svg",
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Formed from the LVF and other French volunteer units in February 1945, the division was committed to combat in Pomerania within weeks of its creation and suffered catastrophic losses against the advancing Red Army — by the time it withdrew, only a small fraction of its original strength remained.",
+            "type": "text",
+            "title": "Formation and Destruction in Pomerania"
+          },
+          {
+            "text": "French SS volunteers fighting in Berlin in late April and early May 1945 represent one of the war's starkest ironies — men from one of the principal Allied nations defending the ruins of the Reich that had occupied their own homeland for four years. A remnant of roughly 300 French volunteers fought in the city's final battles, reportedly among the last defenders of the Reich Chancellery itself. Several earned the Knight's Cross during the Berlin fighting, among the last such awards made before Germany's surrender.",
+            "type": "text",
+            "title": "The Defence of Berlin"
+          },
+          {
+            "text": "Most survivors were repatriated to France after the war and tried for treason and collaboration; some were executed. The Charlemagne Division's existence — French volunteers fighting and dying for Germany in the literal last days of the Third Reich — raises some of the most difficult questions in this archive about ideology, collaboration, and the nature of political commitment under foreign occupation.",
+            "type": "text",
+            "title": "Reckoning"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Charlemagne Division was the final form taken by French collaborationist military service, formed in February 1945 — astonishingly late in the war, when German defeat was all but certain — from the consolidation of several earlier, smaller French volunteer units, chiefly the Légion des Volontaires Français contre le Bolchévisme (LVF), which had been fighting on the Eastern Front since 1941.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/icons/shields/charlemagne.svg",
+                "caption": "Charlemagne Division insignia",
+                "description": "Rendered in the blue-white-red of the French tricolor. Composite of French national colors."
+              }
+            ]
+          },
+          {
+            "text": "Its name invoked Charlemagne, the medieval Frankish emperor claimed by French nationalist mythology as a unifying European figure — a deliberate piece of propaganda framing French participation in the war against the Soviet Union as a continuation of a shared European, rather than narrowly German, cause. Within this archive, the division represents the last and smallest stage of French collaborationist military service, and its final defence of Berlin in May 1945 is among the most documented episodes of any volunteer formation in this collection.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": "Légion des Volontaires Français contre le Bolchévisme (LVF), absorbed 1945",
+        "volunteer_origin": "French collaborationist volunteers, many transferred from the earlier Légion des Volontaires Français (LVF)",
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3o5000us5mzgk9jqr0t",
+      "title": "369th (Croatian) Reinforced Infantry Regiment",
+      "slug": "croatian-legion",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Destroyed at Stalingrad, January 1943.",
+        "flag": "/public/images/flags/croatia.svg",
+        "region": "Balkan Volunteers",
+        "shield": "/public/images/icons/shields/croatia.svg",
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The Independent State of Croatia, established under Axis sponsorship after the invasion of Yugoslavia, contributed the Croatian Legion as a deliberate demonstration of loyalty to Germany, intended to secure the new regime's standing with its German sponsors at a time when its own legitimacy at home was contested.",
+            "type": "text",
+            "title": "A State Contribution"
+          },
+          {
+            "text": "Attached to the German 100th Jäger Division rather than operating independently, the regiment advanced toward Stalingrad alongside its parent division in the summer of 1942, sharing in both the initial advance and, ultimately, in the disaster that followed.",
+            "type": "text",
+            "title": "Attached to the 100th Jäger Division"
+          },
+          {
+            "text": "The regiment was caught inside the pocket when Operation Uranus encircled the German 6th Army in November 1942, and most of its men were killed or captured in the pocket's final collapse in late January 1943 — a disproportionately heavy loss for the small NDH armed forces, and one that contributed to growing disillusionment with the German alliance among Croatian officers as the war continued.",
+            "type": "text",
+            "title": "Destruction at Stalingrad"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The 369th Reinforced Infantry Regiment was the principal ground force contributed to Germany's war effort by the Independent State of Croatia (NDH), the Axis-sponsored puppet state established after the German-led invasion and dismemberment of Yugoslavia in 1941. Unlike the Western European legions in this archive, it was not a volunteer formation built around an existing political movement so much as a state-organised contingent intended to demonstrate the new Croatian regime's value as a German ally.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/icons/shields/croatia.svg",
+                "caption": "Croatian Legion insignia",
+                "description": "Red-and-white checkerboard (šahovnica) of the Croatian national arms."
+              }
+            ]
+          },
+          {
+            "text": "Attached directly to a German division — the 100th Jäger Division — rather than fighting as an independent formation, the regiment shared fully in the fate of the German 6th Army at Stalingrad, making it one of the clearest examples in this archive of how the catastrophe at Stalingrad extended well beyond German units to consume the smaller Axis-allied contingents fighting alongside them.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": "Attached to the German 100th Jäger Division",
+        "volunteer_origin": "Croatian volunteers raised by the Independent State of Croatia (NDH) as part of its alliance with Germany",
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3lx0006s5mz6yakzwtv",
+      "title": "4. Panzerarmee (4th Panzer Army)",
+      "slug": "4th-panzer-army",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The 4th Panzer Army's history tracks the arc of German fortunes in the East. In the summer of 1942 it drove across the open steppe toward Stalingrad as part of Operation Blue, the offensive intended to seize the Caucasus oilfields while also securing the Volga at Stalingrad to protect the operation's northern flank.",
+            "type": "text",
+            "title": "Operation Blue and the Drive South"
+          },
+          {
+            "text": "In December 1942, Hoth led the relief attempt, Operation Winter Storm, reaching the Aksai River before being halted by Malinovsky's 2nd Guards Army — forever 50 kilometres short of the 6th Army trapped inside Stalingrad. The failure of this relief effort sealed the fate of the encircled army.",
+            "type": "text",
+            "title": "Winter Storm"
+          },
+          {
+            "text": "At Kursk in July 1943, the 4th Panzer Army formed the more powerful of the two German pincers, with the SS Panzer Corps and 48th Panzer Corps under its command achieving the deepest penetration of Soviet defences of the entire offensive before Operation Citadel was cancelled. The tank battle at Prokhorovka on 12 July 1943 — often described as the largest armoured engagement in history, though this characterisation has been disputed by some later historians — was fought by units under the 4th Panzer Army's command.",
+            "type": "text",
+            "title": "Kursk and Prokhorovka"
+          },
+          {
+            "text": "After Kursk, the army fought a continuous defensive battle as successive Soviet offensives pushed it steadily westward through Ukraine, never again able to mount an offensive of comparable scale to its operations of 1942–43.",
+            "type": "text",
+            "title": "The Long Retreat"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "4th Panzer Army was one of the principal armoured field armies of the Wehrmacht on the Eastern Front, sitting at the same echelon as 6th Army but distinguished by its composition: rather than predominantly infantry, it commanded panzer and motorized corps, giving it the speed and striking power for the deep, mobile operations that characterised German offensive doctrine.",
+            "type": "text"
+          },
+          {
+            "text": "Formed from Panzer Group 4 in 1942, it served under Army Group South and its successor commands for most of its existence, fighting in three of the most heavily documented engagements of the Eastern Front: the drive to Stalingrad and the failed relief of the trapped 6th Army, the southern pincer at Kursk, and the immense tank battle at Prokhorovka. Its history is therefore closely intertwined with — but operationally distinct from — that of 6th Army, which it tried and failed to rescue in December 1942.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, 4th Panzer Army is most usefully read alongside the 6th Army, I. SS-Panzerkorps, and Battle of Stalingrad records, since all four describe overlapping moments of the same southern-front campaign from different organizational perspectives.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3mt000gs5mz2nqu7n0w",
+      "title": "5. SS-Panzer-Division Wiking",
+      "slug": "ss-division-wiking",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The division's multinational composition reflected Himmler's broader vision of a pan-Germanic European SS, extending beyond Germany's own borders. Recruits from occupied and neutral nations were drawn by a mixture of anti-communist conviction, sympathy with national socialist movements in their home countries, and in some cases simple adventure-seeking rather than deep ideological commitment.",
+            "type": "text",
+            "title": "A Pan-Germanic Division"
+          },
+          {
+            "text": "Felix Steiner, the division's first commander, developed innovative infantry tactics built around small-unit infiltration rather than the more rigid linear formations common elsewhere in the German army — an approach that contributed significantly to the division's combat effectiveness and reputation.",
+            "type": "text",
+            "title": "Steiner's Tactics"
+          },
+          {
+            "text": "At the Cherkassy–Korsun Pocket in January–February 1944, Wiking was among the German forces encircled by advancing Soviet armies; it broke out successfully but lost most of its heavy equipment in the process. The division's Finnish volunteer battalion was withdrawn in 1943 after the Finnish government, increasingly wary of its alliance with Germany, pressured its citizens serving in the Waffen-SS to return home.",
+            "type": "text",
+            "title": "Cherkassy and Finnish Withdrawal"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Wiking occupies an unusual position in the Waffen-SS order of battle: although classified administratively as a German Waffen-SS Panzer division, alongside the Leibstandarte, Das Reich, and Totenkopf, its rank and file were drawn overwhelmingly from volunteers outside Germany itself — Norwegians, Danes, Dutch, Finns, and Flemish Belgians — recruited under Himmler's vision of a pan-Germanic, rather than purely German, SS.",
+            "type": "text"
+          },
+          {
+            "text": "This composition makes Wiking a useful bridge between the senior German Waffen-SS divisions documented in this category and the dedicated Volunteer Formations elsewhere in this archive — many of the smaller national legions recorded under Volunteer Formations were eventually folded into or fought alongside Wiking, and its experience illustrates how the foreign-volunteer system the Waffen-SS built up from 1941 onward actually functioned in the field, rather than only on paper.",
+            "type": "text"
+          },
+          {
+            "text": "Operationally, the division served almost exclusively on the Eastern Front and built a reputation as one of the more militarily effective Waffen-SS Panzer divisions, surviving the Cherkassy encirclement of early 1944 — one of the more severe tests faced by any German formation of comparable size.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3lt0005s5mzo1dbv3yy",
+      "title": "6. Armee (6th Army)",
+      "slug": "6th-army",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Destroyed at Stalingrad. Surrendered 2 February 1943.",
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The 6th Army was the spearhead of Army Group B's drive to Stalingrad in the summer of 1942. By September it was fighting house-to-house in the city, in combat so close and so attritional that German soldiers coined the term Rattenkrieg — rat war — to describe it.",
+            "type": "text",
+            "title": "The Drive to the Volga"
+          },
+          {
+            "text": "The Soviet counteroffensive Operation Uranus (19 November 1942) broke through the weaker Romanian armies guarding the 6th Army's flanks and encircled the entire force within days. Hitler refused permission to break out while escape was still possible, insisting the army hold its position and be resupplied by air.",
+            "type": "text",
+            "title": "Encirclement"
+          },
+          {
+            "text": "Göring's assurance that the Luftwaffe could supply 300 tons per day to the trapped army proved catastrophically false — an average of only around 90 tons per day was actually delivered, far short of the minimum needed to sustain the force. The relief attempt, Operation Winter Storm in December 1942, was halted some 50 kilometres from the pocket and never reached the encircled troops.",
+            "type": "text",
+            "title": "The Airlift and Winter Storm"
+          },
+          {
+            "text": "The army fought on through January 1943 in temperatures as low as minus 30 degrees Celsius, without adequate food, ammunition, or medical care. Paulus surrendered on 2 February 1943 — the same day Hitler promoted him to Generalfeldmarschall, fully expecting him to commit suicide rather than be taken prisoner, since no German field marshal had ever previously surrendered. Paulus declined to do so.",
+            "type": "text",
+            "title": "Surrender"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "6th Army was a field army of the Heer — the echelon directly below an army group, typically commanding several corps and numbering several hundred thousand men. It existed from before the war and served in the Polish and French campaigns, but it is overwhelmingly remembered for a single episode: its destruction at Stalingrad, the costliest single battle of the Second World War and arguably of human history.",
+            "type": "text"
+          },
+          {
+            "text": "Under Friedrich Paulus, the army formed the spearhead of the 1942 summer offensive (Operation Blue) toward the Volga and the city that bore Stalin's name — a target chosen as much for its symbolic value as for any decisive strategic necessity. Its encirclement and annihilation over the winter of 1942–43 marked the turning point of the war in the East and the first unambiguous, irreversible German strategic defeat.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, 6th Army's record connects directly to the Battle of Stalingrad campaign entry, to Army Group B (its parent command), and to the broader catastrophe that also consumed the Romanian armies guarding its flanks — a chain of related records that together document one of the war's most thoroughly studied campaigns.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3nk000os5mz5qld4wfc",
+      "title": "Armata a 3-a Română (Romanian 3rd Army)",
+      "slug": "romanian-3rd-army",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Destroyed by Soviet Operation Uranus, 19–23 November 1942.",
+        "flag": "/public/images/flags/romania.svg",
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The Romanian 3rd Army's position to the north of Stalingrad, together with the Romanian 4th Army to the south, were the recognised weak points of the entire Axis front in the sector — a vulnerability known to German intelligence, reported repeatedly by Romanian commanders themselves, and apparently well understood by Soviet planners preparing their counteroffensive.",
+            "type": "text",
+            "title": "The Weak Point of the Front"
+          },
+          {
+            "text": "Romanian anti-tank weapons could not penetrate the armour of the Soviet T-34, the tank that formed the spearhead of the Soviet assault. When Operation Uranus struck on 19 November 1942, the Romanian front broke almost immediately, and within four days the two converging Soviet pincers had closed behind the German 6th Army, sealing its fate.",
+            "type": "text",
+            "title": "Operation Uranus"
+          },
+          {
+            "text": "The destruction of the Romanian armies effectively ended Romania's military usefulness as an Axis partner for the remainder of the campaign season, and the political fallout proved lasting: by August 1944, with Soviet forces approaching Romanian territory directly, Romania switched sides entirely and joined the war against Germany.",
+            "type": "text",
+            "title": "Consequences for the Alliance"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Romanian 3rd Army was one of two Romanian field armies committed to the Stalingrad sector of the Eastern Front in 1942, contributing the single largest non-German contingent to the Axis order of battle in that campaign. Romania's participation in the war against the Soviet Union stemmed primarily from its own territorial dispute with the USSR over Bessarabia and northern Bukovina, annexed by the Soviets in 1940, giving Romanian forces a war aim distinct from, though aligned with, Germany's own.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/flags/romania.svg",
+                "caption": "Flag of Romania",
+                "description": "Romania's 3rd and 4th Armies held the flanks of the German 6th Army at Stalingrad and bore the brunt of the Soviet encirclement that destroyed it."
+              }
+            ]
+          },
+          {
+            "text": "Its destruction in November 1942, alongside the parallel collapse of the Romanian 4th Army to the south, was a direct and foreseeable consequence of being assigned to hold an exposed sector of the front with equipment unable to counter Soviet armour — a failure of German operational planning as much as of Romanian fighting capacity. Within this archive, the 3rd Army's record connects directly to the 6th Army and Battle of Stalingrad entries, since the encirclement of the German force at Stalingrad was made possible specifically by the Romanian front's collapse.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3n8000ks5mzj3dv3njx",
+      "title": "Befehlshaber der Unterseeboote (BdU) — U-boat Command",
+      "slug": "befehlshaber-uboote",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Dönitz's wolf-pack (Rudeltaktik) tactics exploited a critical gap in Allied defences: between 1939 and 1941, the mid-Atlantic had no air cover at all, since land-based aircraft from Britain, Canada, and Iceland could not reach far enough out to sea. Convoys that entered this so-called 'Black Pit' were highly vulnerable to coordinated U-boat attacks.",
+            "type": "text",
+            "title": "The Black Pit"
+          },
+          {
+            "text": "The aces of the first 'happy time' — Otto Kretschmer, Günther Prien, and Joachim Schepke among the most celebrated — sank millions of tonnes of Allied shipping before countermeasures caught up with their tactics, becoming household names in Germany and the subject of extensive propaganda celebrating the U-boat arm's successes.",
+            "type": "text",
+            "title": "The First Happy Time"
+          },
+          {
+            "text": "The turning point came in May 1943, remembered in U-boat histories as 'Black May', when Allied long-range aircraft, improved ASDIC sonar, centimetric radar, and the codebreaking success at Bletchley Park in reading naval Enigma traffic combined to sink 41 U-boats in a single month. Dönitz withdrew the wolf packs from the North Atlantic convoy routes shortly afterward; the campaign continued in other forms but never recovered its earlier strategic momentum.",
+            "type": "text",
+            "title": "Black May"
+          },
+          {
+            "text": "Dönitz was nonetheless named Hitler's chosen successor as Reich President in the dictator's final testament, serving briefly as head of the short-lived Flensburg Government in May 1945 before formally surrendering Germany's remaining armed forces to the Allies and being taken into custody himself.",
+            "type": "text",
+            "title": "Dönitz's Final Role"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Befehlshaber der Unterseeboote — BdU — was the Kriegsmarine's central command authority for U-boat operations, a naval command rather than a fleet or fighting unit in the conventional sense, responsible for directing the entire German submarine campaign against Allied shipping for nearly the whole of the war.",
+            "type": "text"
+          },
+          {
+            "text": "Under Karl Dönitz, who held the post from the war's outbreak until his promotion to Commander-in-Chief of the Kriegsmarine in early 1943, BdU directed what became known as the Battle of the Atlantic — an effort to sever Britain's maritime supply lines that came closer to succeeding, by Churchill's own postwar admission, than almost any other German strategic effort of the war.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, BdU's record connects to several of the most prominent U-boat commanders of the war — Kretschmer, Prien, Schepke, and Lüth — as well as to the Battle of the Atlantic and dedicated U-boat Campaign records, and its grim statistics (a roughly seventy percent fatality rate among U-boat crew) make it one of the most costly commands, relative to personnel committed, in the entire German armed forces.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3mi000cs5mzwp97ma7t",
+      "title": "Brandenburg Division (Sonderverband z.b.V. Brandenburg)",
+      "slug": "brandenburgers",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Originally formed as a single company by the Abwehr in 1939, the Brandenburgers grew steadily through the war and reached division strength by 1944. Their speciality was deception operations — entering enemy territory disguised as civilians, police, or enemy soldiers to seize objectives before conventional forces had a chance to arrive and before defenders could organise demolitions or resistance.",
+            "type": "text",
+            "title": "Origins in Military Intelligence"
+          },
+          {
+            "text": "In Operation Barbarossa, Brandenburger detachments seized critical bridges and installations in the very first hours of the invasion, often before the bulk of conventional forces had even crossed the frontier. In the Caucasus campaign of 1942, similar detachments seized the Maykop oilfields before retreating Soviet forces could destroy them — though the fields proved less productive than German planners had hoped, and the wider Caucasus offensive ultimately failed regardless.",
+            "type": "text",
+            "title": "Barbarossa and the Caucasus"
+          },
+          {
+            "text": "As the war turned decisively against Germany and the need for covert operations behind a contracting front diminished, the unit increasingly operated as conventional infantry rather than in its original specialist role. In 1944, much of the division was absorbed into the Großdeutschland Corps, an elite combined formation, marking the effective end of the Brandenburgers as an independent special-operations command — though the unit's methods are widely credited with influencing postwar special forces doctrine in multiple countries.",
+            "type": "text",
+            "title": "Conventional Infantry and Absorption"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Brandenburg Division belonged to a category unlike any other formation in this archive: it was raised not by the regular army or the Waffen-SS but by the Abwehr, German military intelligence, specifically to conduct covert and deception operations rather than conventional combat. Its soldiers trained in foreign languages, foreign uniforms, and the customs of the countries they would operate in, blurring the line between soldier and intelligence operative.",
+            "type": "text"
+          },
+          {
+            "text": "It grew from a single company in 1939 to full division strength by 1944, expanding as the German military leadership found increasing uses for troops who could seize bridges, tunnels, and installations intact in the chaotic opening hours of an invasion, before defenders had time to demolish them or organise resistance. This made the Brandenburgers a recurring presence at the very start of nearly every major German offensive of the war, even though their numbers were always small relative to the conventional forces that followed them.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, the division sits administratively under the Heer (it was eventually placed under conventional army command despite its Abwehr origins) but functionally apart from every other division — its closest connection is to Otto Skorzeny, the SS commando leader whose later, more famous operations drew directly on methods the Brandenburgers had pioneered earlier in the war.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3o2000ts5mzbs6mtwsf",
+      "title": "Den Norske Legion (Norwegian Legion)",
+      "slug": "den-norske-legion",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Disbanded May 1943; survivors transferred to the SS Division Nordland.",
+        "flag": "/public/images/flags/norway.svg",
+        "region": "Western European Volunteers",
+        "shield": "/public/images/icons/shields/norway.svg",
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Recruitment for the Norwegian Legion was actively promoted by Vidkun Quisling's collaborationist Nasjonal Samling government, which saw the unit as a way to demonstrate Norwegian commitment to the German cause — though the legion never reached the size its organisers had hoped, a reflection of how limited genuine support for collaboration remained among the wider Norwegian population.",
+            "type": "text",
+            "title": "Quisling's Recruitment Drive"
+          },
+          {
+            "text": "The legion served in the siege lines around Leningrad through the brutal winter of 1941–42, suffering heavily from cold, disease, and the static attrition typical of that front — conditions that took a steady toll on a unit too small to sustain significant combat losses indefinitely.",
+            "type": "text",
+            "title": "The Leningrad Front"
+          },
+          {
+            "text": "As with the Danish and other small national legions, declining recruitment combined with a broader German push toward consolidation led to the unit's dissolution in 1943, with its surviving veterans transferring into the multinational SS Division Nordland alongside Danish and Dutch volunteers.",
+            "type": "text",
+            "title": "Dissolution"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Den Norske Legion was Norway's counterpart to Frikorps Danmark — a national volunteer formation raised within weeks of the German invasion of the Soviet Union in 1941, intended to give occupied Norway's own collaborationist movement a visible military contribution to Germany's war against Bolshevism.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/icons/shields/norway.svg",
+                "caption": "Den Norske Legion collar/sleeve shield",
+                "description": "Drawing on the red, white, and blue of the Norwegian national flag."
+              }
+            ]
+          },
+          {
+            "text": "Unlike Denmark, Norway was under direct German civil administration alongside Vidkun Quisling's puppet Nasjonal Samling government, which actively promoted recruitment — yet the legion never grew to the size its organisers had hoped, reflecting the limited genuine popular support for collaboration in occupied Norway. Within this archive it sits alongside Frikorps Danmark as one of the two principal Scandinavian national legions, both of which followed a nearly identical trajectory toward dissolution and absorption into the SS Division Nordland in 1943.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": "Norwegian volunteers, organised with backing from Vidkun Quisling's Nasjonal Samling party",
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3me000bs5mzmo54tyfv",
+      "title": "Deutsches Afrikakorps (DAK)",
+      "slug": "deutsches-afrikakorps",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Absorbed into Panzerarmee Afrika as its German corps component; surrendered with Heeresgruppe Afrika in Tunisia, May 1943.",
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Hitler dispatched the Afrikakorps reluctantly, mainly to prevent a total Italian collapse after the disaster of Operation Compass, in which a much smaller British force had destroyed Italy's 10th Army. German strategic priorities lay firmly in the East, and North Africa was intended initially as a holding operation, not a campaign of conquest.",
+            "type": "text",
+            "title": "A Reluctant Commitment"
+          },
+          {
+            "text": "Rommel exceeded his orders almost immediately, attacking rather than holding a defensive line as instructed, and the corps' rapid advance to the Egyptian frontier in the spring of 1941 set the pattern for the seesaw campaign that followed over the next two years — repeated advances and retreats across the same several hundred kilometres of coastal desert.",
+            "type": "text",
+            "title": "Rommel Exceeds His Orders"
+          },
+          {
+            "text": "As Panzerarmee Afrika grew to include Italian armoured and infantry corps, the Afrikakorps designation persisted informally and became a byword — in German propaganda and in Allied accounts alike — for the entire desert war. Its veterans wore the Afrikakorps cuff title with evident pride after the war, and the unit retains a reputation, contested by historians, for having fought a comparatively less ideologically driven and less atrocity-marked war than German formations on the Eastern Front — a claim that has been both repeated and challenged in postwar scholarship.",
+            "type": "text",
+            "title": "A Contested Reputation"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Deutsches Afrikakorps was the founding German formation of the North African campaign — a single corps, originally just the 5th Light Division (soon redesignated 21st Panzer) and the 15th Panzer Division, dispatched in February 1941 to prevent the total collapse of Italy's colonial position in Libya after its catastrophic defeat in Operation Compass.",
+            "type": "text"
+          },
+          {
+            "text": "It is the smallest echelon — a single corps — among the major German commands documented for the North African theater in this archive, yet its name became synonymous with the entire desert war: as the German presence in Africa grew into the larger Panzerarmee Afrika, incorporating Italian formations as well, the original Afrikakorps designation persisted informally in both German propaganda and Allied reporting, eventually being applied loosely to the whole Axis force in the theater rather than strictly to the corps itself.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, the Deutsches Afrikakorps should be read as the founding component of Panzerarmee Afrika and, later, Heeresgruppe Afrika — the corps from which the larger army and army-group commands grew, and the formation whose cuff title veterans wore with particular pride for the rest of their lives.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": {
+          "id": "panzerarmee-afrika",
+          "url": "/formations/panzerarmee-afrika",
+          "title": "Panzerarmee Afrika"
+        },
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": [
+          "15th Panzer Division",
+          "21st Panzer Division",
+          "90th Light Afrika Division"
+        ],
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3nf000ms5mz3ql97n7w",
+      "title": "Finnish Defence Forces (Suomen Puolustusvoimat)",
+      "slug": "finnish-defence-forces",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": "/public/images/flags/finland.svg",
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The Winter War, from 30 November 1939 to 13 March 1940, saw Finland resist the Soviet invasion for 105 days — far longer than almost anyone expected — despite facing the Red Army at a manpower ratio of roughly 1:7 and an aircraft ratio of roughly 1:30. The Mannerheim Line and skilled Finnish defensive tactics inflicted enormous losses on Soviet forces before sheer weight of numbers eventually prevailed, and Finland was forced to cede 11 percent of its territory and 30 percent of its economic capacity in the resulting peace.",
+            "type": "text",
+            "title": "The Winter War"
+          },
+          {
+            "text": "In the Continuation War, from June 1941 to September 1944, Finland advanced to recover its 1940 border and somewhat beyond, but stopped well short of participating in the siege of Leningrad despite intense and repeated German pressure to do so — a decision taken personally by Mannerheim that distinguished Finland's war aims clearly from Germany's own.",
+            "type": "text",
+            "title": "The Continuation War"
+          },
+          {
+            "text": "Finland's separate peace with the Soviet Union in September 1944, followed by the brief Lapland War against German forces still on Finnish soil, preserved Finnish independence and territorial integrity — making it the only state allied with Germany against the Soviet Union to emerge from the war with its sovereignty fully intact.",
+            "type": "text",
+            "title": "A Separate Peace"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Finnish Defence Forces occupy a distinct position among the Axis Allies documented in this archive: unlike Italy, Romania, or Hungary, Finland was never a member of the Axis alliance in any formal or ideological sense. It fought alongside Germany for pragmatic reasons of national survival, having been invaded by the Soviet Union in 1939, and its war aims remained narrowly focused on recovering territory lost in that earlier conflict rather than on any shared Axis project.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/flags/finland.svg",
+                "caption": "Flag of Finland",
+                "description": "Finnish forces fought the Soviet Union in two separate wars between 1939 and 1944 while maintaining political distance from the wider Axis alliance."
+              }
+            ]
+          },
+          {
+            "text": "Under Marshal Mannerheim, one of the most respected military leaders of the war on any side, Finland fought the Winter War and the Continuation War as essentially separate conflicts bound by the same underlying cause, and emerged from both with its independence and core territory intact — a record matched by no other state that fought alongside Germany against the Soviet Union. Within this archive, the Finnish Defence Forces should be read as a case apart from the other Axis Allies entries, illustrating that 'fighting alongside Germany' did not always mean sharing Germany's wider war aims.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3ny000ss5mzit3als9b",
+      "title": "Frikorps Danmark (Free Corps Denmark)",
+      "slug": "frikorps-danmark",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Disbanded June 1943 after heavy losses; survivors transferred to the SS Division Nordland.",
+        "flag": "/public/images/flags/denmark.svg",
+        "region": "Western European Volunteers",
+        "shield": "/public/images/icons/shields/denmark.svg",
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Denmark's unique status as an occupied but formally neutral-administered country shaped Frikorps Danmark's character from the outset. Recruitment was tolerated rather than state-organised, drawing mainly from the small Danish Nazi party and from former army officers, rather than representing any broad cross-section of Danish society.",
+            "type": "text",
+            "title": "Recruitment Under Occupation"
+          },
+          {
+            "text": "The corps fought at Demyansk in 1942, a brutal sector of the front where German forces held an exposed salient inside Soviet lines for over a year. Losses there were severe, including the death in combat of the corps' second commander, von Schalburg.",
+            "type": "text",
+            "title": "Demyansk"
+          },
+          {
+            "text": "The unit's disbandment in June 1943 and absorption into the multinational SS Division Nordland reflected a broader German policy of consolidating the smaller national legions into larger combined formations as the war ground on and individual national contingents proved too small to sustain as independent units.",
+            "type": "text",
+            "title": "Disbandment and Absorption"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Frikorps Danmark was Denmark's principal contribution to the Waffen-SS's foreign-volunteer system, raised in the weeks after the invasion of the Soviet Union in 1941 from a country whose occupation status was unlike almost any other in German-controlled Europe — the Danish government remained nominally in office and the country was treated officially as a 'model protectorate' rather than a conquered territory until 1943.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/icons/shields/denmark.svg",
+                "caption": "Frikorps Danmark collar/sleeve shield",
+                "description": "The white Nordic cross on a red field of the Danish national flag."
+              }
+            ]
+          },
+          {
+            "text": "This unusual political situation meant recruitment was tolerated by the authorities rather than state-organised, drawing mainly from the small Danish Nazi party (DNSAP) and from former Danish army officers seeking continued military careers. Within this archive, the unit sits among the Western European volunteer legions whose service and eventual dissolution into the multinational SS Division Nordland in 1943 illustrate the broader pattern followed by several of the smaller national contingents documented here.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": "Danish volunteers, organised with the cooperation of the Danish Nazi party (DNSAP) and tolerated by the Danish government under occupation",
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3ll0003s5mzw70zh099",
+      "title": "Heeresgruppe Afrika (Army Group Africa)",
+      "slug": "army-group-africa",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": "Panzerarmee Afrika (Rommel)",
+        "context_blocks": [
+          {
+            "text": "Army Group Africa existed for less than three months. Formed in February 1943 from Panzerarmee Afrika and the Italian 1st Army, it was a desperate holding force for the Tunisian bridgehead. Rommel had left Africa sick in March 1943, handing command to von Arnim — an able defensive commander but one lacking Rommel's aggressiveness and reputation.",
+            "type": "text",
+            "title": "Formation and Command"
+          },
+          {
+            "text": "Von Arnim could not prevent the Anglo-American pincer from collapsing the bridgehead. The surrender on 13 May 1943 cost the Axis 275,000 men — a toll equivalent to the losses at Stalingrad — and ended the North African campaign entirely. Churchill referred to the defeat as 'Tunisgrad' in deliberate echo of the disaster in the East, and Mussolini's Italy never recovered strategically from the loss of its African empire and the bulk of its remaining field army.",
+            "type": "text",
+            "title": "The Tunisian Collapse"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Army Group Africa was a short-lived but consequential command, created in February 1943 to unify the remaining German and Italian forces in Tunisia under a single headquarters after the long retreat from El Alamein. It absorbed what remained of Rommel's Panzerarmee Afrika together with the Italian 1st Army, making it — unusually for a German army group — a genuinely joint Axis command rather than a purely German one.",
+            "type": "text"
+          },
+          {
+            "text": "It existed for less than three months, its sole strategic purpose being to hold the Tunisian bridgehead for as long as possible against the converging British 8th Army advancing from the east and the Anglo-American 1st Army advancing from Algeria in the west. Within this archive it represents the final chapter of the North African campaign — the formation that inherited Rommel's army after his own departure from the theater, and the one that ultimately surrendered it.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3lo0004s5mzaj5iaeev",
+      "title": "Heeresgruppe B (Army Group B)",
+      "slug": "army-group-b",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Rommel commanded Army Group B during the critical period of preparation for the Allied invasion and the Normandy battle itself. His disagreement with von Rundstedt, the overall commander in the West (OB West), over the deployment of the Panzer reserve — Rommel wanted it positioned close to the beaches to counterattack immediately, Rundstedt preferred holding it further back for a more concentrated response — proved fatal to German prospects when the invasion came; the reserve was held back and ultimately committed piecemeal, achieving neither commander's intent. Rommel himself was severely wounded by an Allied aircraft strafing his car on 17 July 1944, removing him from command at a decisive moment.",
+            "type": "text",
+            "title": "Rommel and the Atlantic Wall"
+          },
+          {
+            "text": "Under Kluge and then Model, the army group conducted an increasingly desperate fighting retreat through France. Model's conduct of the battle for Arnhem during Operation Market Garden — utilising Wilhelm Bittrich's II SS Panzer Corps, refitting nearby almost by chance, to defeat the British 1st Airborne Division — stands as his finest defensive achievement in the West and one of the most consequential German tactical successes of the late war.",
+            "type": "text",
+            "title": "Market Garden and the Defence of the West"
+          },
+          {
+            "text": "The Ardennes offensive (Wacht am Rhein, December 1944) was conducted under Model's command as Army Group B's last major operation; its failure left German forces in the West unable to mount any further significant counteroffensive. In April 1945, some 325,000 German troops were encircled in the Ruhr pocket as American forces closed in from multiple directions. Recognising the situation as hopeless, Model dissolved the army group on his own authority and took his own life on 21 April 1945, rather than surrender or face capture.",
+            "type": "text",
+            "title": "The Ardennes and the End"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Army Group B was the principal German command on the Western Front for the latter half of the war, formed in mid-1943 and given responsibility for the defence of France and the Low Countries against the long-anticipated Allied invasion. It belonged to OB West's broader command structure alongside Army Group G in southern France, and at its height controlled the bulk of German armoured and infantry strength facing the Western Allies.",
+            "type": "text"
+          },
+          {
+            "text": "Its history falls into three distinct phases that this record traces in sequence: the defensive preparations and the Normandy battle under Rommel; the fighting retreat through France and the defence against Operation Market Garden under Kluge and then Model; and the final catastrophe of the Ardennes offensive and the Ruhr encirclement under Model, ending with the army group's dissolution and its last commander's suicide in April 1945.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, Army Group B is the principal point of reference for the German side of the campaign in north-west Europe from 1944 onward, connecting directly to the formations, personnel, and campaigns most associated with Normandy, Market Garden, and the Battle of the Bulge.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3le0001s5mzpuka1hg0",
+      "title": "Heeresgruppe Mitte (Army Group Centre)",
+      "slug": "army-group-centre",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Army Group Centre's advance in 1941 was staggering in scope. The Białystok-Minsk encirclement (June–July 1941) captured 290,000 prisoners; Smolensk (July–August) yielded 310,000; Vyazma-Bryansk (October) added another 663,000. By the time the army group stood before Moscow in December 1941, it had advanced 1,000 kilometres and captured over 1.5 million prisoners — but had also suffered 400,000 casualties it could not fully replace.",
+            "type": "text",
+            "title": "The Encirclement Battles of 1941"
+          },
+          {
+            "text": "The Soviet counteroffensive of December 1941, launched while German forces were exhausted, under-supplied for winter, and overextended, drove the army group back 100–300 kilometres from the gates of the capital. It remained on the offensive again in 1943 but was never able to replicate the scale of its 1941 successes as Soviet strength grew and German reserves dwindled.",
+            "type": "text",
+            "title": "Stalled Before Moscow"
+          },
+          {
+            "text": "Operation Bagration (23 June–19 August 1944), the Soviet summer offensive timed to coincide with the Normandy landings, destroyed 28 of the army group's 34 divisions and killed or captured some 300,000 German troops. It is considered the greatest military catastrophe in German history — larger in scale than Stalingrad — and effectively ended Army Group Centre as a coherent fighting force for the remainder of the war.",
+            "type": "text",
+            "title": "Operation Bagration"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Army Group Centre was the largest and most heavily resourced of the three army groups committed to Operation Barbarossa, reflecting Hitler's and OKH's judgement that the central axis through Belarus toward Moscow was the war's decisive front. It commanded the 4th, 9th, and (initially) 2nd Armies together with Panzer Groups 2 and 3 — the single greatest concentration of German armour assembled for the invasion.",
+            "type": "text"
+          },
+          {
+            "text": "Its mission was unambiguous: destroy the Red Army's forces in Belarus and western Russia, then capture Moscow, the Soviet capital and its principal rail and industrial hub. The army group's commanders — Bock initially, then a succession of Hitler's most senior field marshals — pursued this objective with a single-mindedness that produced both the largest encirclement victories of the war and, ultimately, its largest single defeat.",
+            "type": "text"
+          },
+          {
+            "text": "In this archive, Army Group Centre sits as the central of the three 1941 invasion army groups, and its trajectory — from the most spectacular German successes of the war to the catastrophic destruction of Operation Bagration in 1944 — makes it one of the clearest single records through which to trace the rise and collapse of German fortunes on the Eastern Front.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": [
+          {
+            "id": "panzergruppe-2",
+            "url": "/formations/panzergruppe-2",
+            "title": "Panzergruppe 2 (Guderian)"
+          }
+        ],
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3ka0000s5mzhi64j637",
+      "title": "Heeresgruppe Nord (Army Group North)",
+      "slug": "army-group-north",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Army Group North achieved its initial objectives with remarkable speed — Riga fell on 1 July, Pskov on 9 July, Novgorod on 19 August 1941. Soviet resistance in the Baltic states collapsed faster than almost anywhere else along the front, and by early September German forces had reached the outskirts of Leningrad itself.",
+            "type": "text",
+            "title": "The Drive to Leningrad"
+          },
+          {
+            "text": "The failure to take Leningrad by direct assault led to one of the longest and most murderous sieges in modern history. The city was partially encircled from September 1941 and completely cut off by land from October 1941 to January 1943, when Operation Iskra opened a narrow corridor along the shore of Lake Ladoga. The full siege was lifted only on 27 January 1944, after 872 days — at a cost of approximately one million Soviet civilian dead from starvation, bombardment, and cold, and several hundred thousand Soviet military casualties.",
+            "type": "text",
+            "title": "The Siege"
+          },
+          {
+            "text": "The army group was progressively stripped of forces to reinforce other theaters as the war turned against Germany, and by 1944 it faced massive Soviet offensives that drove it back through the Baltic states to the Courland Peninsula in Latvia, where it was cut off by the advancing Red Army and held out — entirely isolated from the rest of the German front — until the general German surrender in May 1945.",
+            "type": "text",
+            "title": "Decline and Collapse"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Army Group North was one of the three principal field-army commands assembled for Operation Barbarossa, the German invasion of the Soviet Union launched on 22 June 1941. It belonged to the Heer's highest echelon of organization — an army group sat above individual armies and corps, coordinating multiple field armies across an entire strategic sector of the front, in this case the Baltic axis running from East Prussia through Lithuania, Latvia, and Estonia toward Leningrad.",
+            "type": "text"
+          },
+          {
+            "text": "It was created specifically for Barbarossa's northern thrust, built around the 16th and 18th Armies together with Panzer Group 4, and tasked with destroying Soviet forces in the Baltic states before driving on Leningrad — a city of immense symbolic and industrial importance as the cradle of the Bolshevik revolution and the Soviet Union's second-largest city. Its operational area placed it furthest north of the three army groups, fighting in terrain of forests, lakes, and marshland markedly different from the open steppe its counterparts to the south encountered.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, Army Group North represents the northern of the three Barbarossa army groups, and its record is dominated by a single, defining episode: the siege of Leningrad, one of the longest and most destructive urban sieges of the twentieth century, which this record documents in detail below.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3li0002s5mz6adb1tzt",
+      "title": "Heeresgruppe Süd (Army Group South)",
+      "slug": "army-group-south",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The Kiev encirclement of September 1941, achieved against Hitler's own initial preference for pushing directly toward Moscow, captured 665,000 Soviet prisoners — the largest encirclement in military history. Army Group South subsequently drove on into southern Ukraine, exploiting the scale of the Soviet collapse in the sector.",
+            "type": "text",
+            "title": "Kiev, 1941"
+          },
+          {
+            "text": "In late 1942, the command structure split into Army Groups A and B for Operation Blue and the drive toward the Caucasus oilfields and Stalingrad — a division of forces across two divergent objectives that historians have long identified as a critical strategic overreach.",
+            "type": "text",
+            "title": "Stalingrad and the Caucasus"
+          },
+          {
+            "text": "After the disaster at Stalingrad, Manstein's reconstituted Army Group South executed the masterful 'backhand blow' at Kharkov in February–March 1943, destroying two Soviet armies that had overextended in pursuit of the retreating Germans. At Kursk that July, the southern pincer under Army Group South's command made the deeper penetration of the two German thrusts before Operation Citadel was called off.",
+            "type": "text",
+            "title": "Manstein's Reconstitution and the Backhand Blow"
+          },
+          {
+            "text": "By early 1944, continuous Soviet pressure had forced the army group back toward the Dnieper and beyond; Manstein, whose operational skill had repeatedly stabilised the southern front, was relieved by Hitler in March 1944 over disagreements about strategy, and the command was subsequently renamed Army Group North Ukraine as the front continued its westward collapse.",
+            "type": "text",
+            "title": "Decline and Dissolution"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Army Group South was the southernmost of the three German army groups committed to Operation Barbarossa, responsible for the invasion's Ukrainian axis. It was built around the 6th, 11th, and 17th Armies along with Panzer Group 1, and — reflecting the multinational character of the war in this sector — incorporated Romanian and later Hungarian and Italian forces fighting alongside it.",
+            "type": "text"
+          },
+          {
+            "text": "Its objective was to destroy Soviet forces in Ukraine and seize the region's agricultural and industrial resources, above all the Donbas coalfields and the wheat-producing steppe. Unlike Army Groups North and Centre, which fought largely static campaigns after 1941, Army Group South was repeatedly reorganised, split, and renamed as the war's geography shifted — it generated Army Groups A and B for the 1942 drive to the Caucasus and Stalingrad, then was reconstituted under Manstein for the 1943 fighting around Kharkov and Kursk.",
+            "type": "text"
+          },
+          {
+            "text": "Because of this administrative fluidity, Army Group South's record in this archive should be read alongside its successor and sibling commands — Army Group B, the 6th Army, and the various Panzer armies that operated under its authority at different points — rather than as a single unbroken command lineage.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3m80009s5mzjkmqom1x",
+      "title": "I. SS-Panzerkorps",
+      "slug": "i-ss-panzer-corps",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": {
+          "orders": [
+            {
+              "text": "Field Marshal Erich von Manstein's operational plan for Army Group South called for a controlled withdrawal to draw overextended Soviet spearheads away from their supply lines, followed by a concentrated counterattack. The I SS Panzer Corps, newly transferred from France, was committed to this 'backhand blow' as it assembled around Kharkov in February 1943, recapturing the city on 14 March after a week of street fighting.",
+              "type": "text",
+              "title": "Manstein's Counteroffensive Directive, February 1943"
+            }
+          ],
+          "equipment": [
+            {
+              "rows": [
+                [
+                  "Panzer VI Tiger I",
+                  "Heavy breakthrough tank, concentrated in corps-level heavy companies"
+                ],
+                [
+                  "Panzer V Panther",
+                  "Main battle tank from late 1943 onward"
+                ],
+                [
+                  "StuG III",
+                  "Assault gun / tank destroyer, issued across all three divisions"
+                ]
+              ],
+              "type": "table",
+              "title": "Principal Armor, 1943–1944",
+              "headers": [
+                "Type",
+                "Role"
+              ]
+            }
+          ],
+          "order_of_battle": [
+            {
+              "rows": [
+                {
+                  "type": "Panzer Division",
+                  "unit": "1. SS-Panzer-Division Leibstandarte",
+                  "strength": "c. 21,000 (1944)",
+                  "commander": "SS-Brigadeführer Theodor Wisch (from Jul 1943)"
+                },
+                {
+                  "type": "Panzer Division",
+                  "unit": "2. SS-Panzer-Division Das Reich",
+                  "strength": "c. 19,000 (1943)",
+                  "commander": "Multiple commanders"
+                },
+                {
+                  "type": "Panzer Division",
+                  "unit": "3. SS-Panzer-Division Totenkopf",
+                  "strength": "c. 19,000 (1943)",
+                  "commander": "SS-Brigadeführer Hermann Priess / others"
+                }
+              ],
+              "type": "orbat",
+              "title": "I. SS-Panzerkorps — constituent divisions"
+            }
+          ]
+        },
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The Third Battle of Kharkov (February–March 1943) established the I SS Panzer Corps' reputation. After the encirclement at Stalingrad, two Soviet armies had overextended in pursuit and Manstein allowed them to advance until they outran their supply before the SS Corps cut them off and destroyed them. This 'backhand blow' — the last major German offensive success on the Eastern Front — recaptured Kharkov on 14 March 1943.",
+            "type": "text",
+            "title": "The Backhand Blow at Kharkov"
+          },
+          {
+            "text": "At Kursk that July, the corps formed the spearhead of the 4th Panzer Army's assault in the south, advancing against the deepest and most heavily mined defensive system the Red Army had yet constructed. The battle exhausted both sides; when Hitler called off Operation Citadel on 13 July to redeploy forces against the Allied landings in Sicily, I. SS-Panzerkorps had advanced further than any other German formation in the offensive but had failed to achieve the operational breakthrough Manstein had hoped for.",
+            "type": "text",
+            "title": "Kursk, July 1943"
+          },
+          {
+            "text": "By the time of its commitment in Normandy a year later, the corps no longer enjoyed the operational freedom it had under Manstein at Kharkov. Hitler's no-withdrawal orders locked it into a static defensive battle south of Caen, absorbing Allied material superiority while denying the British and Canadians the open ground they needed to break out of the bridgehead — a costly but, for several weeks, effective use of the corps' remaining armoured strength. Sepp Dietrich's elevation to command the newly formed 6th SS Panzer Army in August 1944 effectively ended I. SS-Panzerkorps' existence as a fully independent command, though its constituent divisions continued fighting under various corps formations through the war's final months.",
+            "type": "text",
+            "title": "Normandy and the End of an Independent Command"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "I. SS-Panzerkorps was the first corps-level command formed within the Waffen-SS, established in July 1943 to give unified operational control over the three most experienced Waffen-SS armoured divisions then serving on the Eastern Front. It belonged administratively to the Waffen-SS but operated under conventional Wehrmacht corps command — a hybrid arrangement typical of how Himmler's combat formations were folded into the German order of battle as the war progressed.",
+            "type": "text"
+          },
+          {
+            "text": "Its creation reflected a wider shift in how the Waffen-SS was used: away from independent divisions operating under army-level command, toward larger, corps-sized armoured formations capable of conducting the concentrated, mobile operations the German army increasingly depended on as it lost the initiative in the East. Bringing the Leibstandarte, Das Reich, and Totenkopf together under one corps headquarters consolidated what was already, division for division, some of the best-equipped and most experienced armour in the Wehrmacht.",
+            "type": "text"
+          },
+          {
+            "text": "The corps fought in two of the most heavily studied engagements of the war — the recapture of Kharkov in early 1943 and the southern pincer at Kursk that summer — before being transferred west to meet the Allied invasion of Normandy in 1944. Within this archive it sits at the corps echelon of the Waffen-SS hierarchy, directly above its three constituent Panzer divisions and below the army-level commands, 4th Panzer Army and later 6th SS Panzer Army, it served under at different points in the war.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": [
+          {
+            "id": "leibstandarte-ss-ah",
+            "url": "/formations/leibstandarte-ss-ah",
+            "title": "1st SS Panzer Division Leibstandarte"
+          },
+          {
+            "id": "ss-division-das-reich",
+            "url": "/formations/ss-division-das-reich",
+            "title": "2nd SS Panzer Division Das Reich"
+          },
+          {
+            "id": "ss-division-totenkopf",
+            "url": "/formations/ss-division-totenkopf",
+            "title": "3rd SS Panzer Division Totenkopf"
+          }
+        ],
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3mb000as5mz1n9evj37",
+      "title": "II. SS-Panzerkorps",
+      "slug": "ii-ss-panzer-corps",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The corps had fought at Kharkov and Kursk before being sent to France to help meet the anticipated Allied invasion, and fought through the Normandy campaign before being pulled back, badly depleted, to re-equip in the Netherlands — a quiet rear area chosen specifically because it was assumed to be safe from Allied ground operations.",
+            "type": "text",
+            "title": "From Kharkov to the Refit at Arnhem"
+          },
+          {
+            "text": "Allied intelligence — specifically the failure of Major Brian Urquhart to convince his superiors that aerial reconnaissance photographs showed SS armour refitting near Arnhem — did not adequately account for the corps' presence in the area chosen for the British 1st Airborne Division's landing zones, a failure that would have grave consequences once the operation began.",
+            "type": "text",
+            "title": "Missed Warning"
+          },
+          {
+            "text": "Bittrich's rapid decision to reinforce the Arnhem road bridge with elements of the 9th SS and block the approach routes with the 10th SS, combined with the near-total breakdown of British radio communications during the battle, sealed the fate of the British 1st Airborne Division. Lieutenant Colonel John Frost's battalion held the northern end of Arnhem bridge for four days against elements of the corps before being overwhelmed — a defence later commemorated in the title of Cornelius Ryan's history of the battle, A Bridge Too Far.",
+            "type": "text",
+            "title": "The Battle for Arnhem Bridge"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "II. SS-Panzerkorps was the second corps-level Waffen-SS armoured command, formed in February 1943 — roughly contemporary with I. SS-Panzerkorps — as part of the same broader consolidation of independent SS divisions into larger, corps-sized formations. It commanded the 9th SS Panzer Division Hohenstaufen and 10th SS Panzer Division Frundsberg, two divisions raised specifically for this corps rather than inherited from the earlier, more senior SS divisions.",
+            "type": "text"
+          },
+          {
+            "text": "Like its sister corps, it fought at Kharkov and Kursk before being transferred to France to meet the Normandy invasion. Its most consequential moment, however, came not in offensive action but almost by accident: refitting near Arnhem in the Netherlands in September 1944, it found itself directly in the path of the largest airborne operation of the war, Operation Market Garden, and its presence — undetected or disbelieved by Allied intelligence — proved decisive in the operation's failure.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, II. SS-Panzerkorps sits alongside I. SS-Panzerkorps as one of the two senior Waffen-SS corps commands, and its record connects most directly to the Operation Market Garden campaign entry and to Wilhelm Bittrich, the corps commander whose decisions at Arnhem are central to its history.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": [
+          "9th SS Panzer Division Hohenstaufen",
+          "10th SS Panzer Division Frundsberg"
+        ],
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3nb000ls5mzgxuov3gr",
+      "title": "Kriegsmarine Surface Fleet",
+      "slug": "kriegsmarine-surface",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Raeder's surface fleet strategy was based on commerce raiding — using capital ships individually or in small groups to threaten Atlantic convoys rather than risking the fleet in a decisive engagement it could not realistically win against the Royal Navy's numerical superiority. The Scharnhorst and Gneisenau raided shipping together in Operation Berlin from January to March 1941, sinking 22 ships in a single extended sortie.",
+            "type": "text",
+            "title": "Commerce Raiding Strategy"
+          },
+          {
+            "text": "The Bismarck's sortie, Operation Rheinübung, sank the British battlecruiser HMS Hood in May 1941 in one of the most dramatic single ship-to-ship actions of the naval war, but Bismarck was herself hunted down and sunk only three days later by a concentrated Royal Navy pursuit. After the Bismarck disaster, and the embarrassment of the Channel Dash that followed soon after, Hitler's confidence in the value of large surface warships collapsed almost entirely.",
+            "type": "text",
+            "title": "Bismarck and the Loss of Confidence"
+          },
+          {
+            "text": "Hitler's order to scrap the Kriegsmarine's remaining capital ships in December 1942 prompted Raeder's resignation in protest. The Tirpitz, the fleet's last major capital ship, spent most of the remainder of the war stationed in Norwegian fjords as a 'fleet in being' — tying down substantial British naval resources simply through the threat of her existence, without ever again engaging in major combat, until she was finally sunk by RAF Tallboy bombs in November 1944.",
+            "type": "text",
+            "title": "Raeder's Resignation and the Fjord Fleet"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Kriegsmarine's surface fleet represented Germany's conventional battle fleet — battleships, battlecruisers, and heavy cruisers — as distinct from the U-boat arm documented separately in this archive. It never approached the size of Britain's Royal Navy, and German naval strategy was built around this numerical inferiority from the outset.",
+            "type": "text"
+          },
+          {
+            "text": "Under Erich Raeder, the fleet's strategy centred on commerce raiding rather than seeking decisive fleet engagements: individual capital ships and raiders would sortie into the Atlantic to threaten convoys, forcing the Royal Navy to divert disproportionate resources to hunt them down even when no German ship was actually at sea — the so-called 'fleet in being' concept that Raeder consciously inherited from earlier naval theory.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, the surface fleet's record connects to several of its named capital ships documented separately as armaments — Bismarck, Tirpitz, and Scharnhorst chief among them — and its trajectory from active commerce raiding in 1940–41 to passive, fjord-bound inactivity by 1943 traces the broader decline of German surface naval ambitions over the course of the war.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3ns000qs5mz8lvdzx9b",
+      "title": "Legion Wallonie / 28th SS Volunteer Grenadier Division Wallonien",
+      "slug": "legion-wallonie",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": "Western European Volunteers",
+        "shield": "/public/images/icons/shields/wallonie.svg",
+        "dossier": {
+          "gallery": [
+            {
+              "type": "gallery",
+              "title": "Insignia",
+              "images": [
+                {
+                  "src": "/public/images/icons/shields/wallonie.svg",
+                  "caption": "Legion Wallonie collar/sleeve shield",
+                  "description": "Black, yellow, and red in the Belgian national colors."
+                }
+              ]
+            }
+          ],
+          "propaganda": [
+            {
+              "text": "Degrelle's Rexist party framed enlistment as a crusade against Bolshevism rather than service to a foreign occupier, presenting the Legion as the armed wing of a 'New Order' Belgium aligned with Germany. Recruitment material emphasised anti-communism and Walloon martial tradition over explicit National Socialist ideology, an approach that broadened the Legion's appeal beyond Rexism's existing membership.",
+              "type": "text",
+              "title": "Rexist Recruitment Themes"
+            }
+          ]
+        },
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "The Walloon Legion exemplifies the ideological volunteers who served Germany from across occupied Europe. Degrelle, the Rexist leader, volunteered with the first contingent in 1941 as an ordinary private rather than claiming a command position outright — a deliberate piece of political theatre that he repeated throughout the war, fighting alongside his men at the front rather than directing from the rear.",
+            "type": "text",
+            "title": "Volunteers, Not Conscripts"
+          },
+          {
+            "text": "His personal bravery — he was wounded on multiple occasions — impressed Himmler and led to his rapid promotion from the ranks to command of the division by 1943. Hitler reportedly remarked of Degrelle that if he had a son, he would want him to be like Degrelle, a level of personal favour rarely extended to a non-German officer.",
+            "type": "text",
+            "title": "Degrelle's Rise"
+          },
+          {
+            "text": "The unit was surrounded and nearly destroyed in the Cherkassy–Korsun Pocket in February 1944 alongside several German divisions, but broke out with the survivors of the encirclement. It fought on in a steadily contracting Eastern Front through 1944 and into the final collapse in 1945.",
+            "type": "text",
+            "title": "Cherkassy and the Final Year"
+          },
+          {
+            "text": "After the war Degrelle escaped to Francoist Spain, where he lived in exile until his death in 1994, never facing trial for collaboration. Many of his surviving men were not so fortunate, returning to a liberated Belgium where collaboration with the German occupation carried severe legal and social consequences.",
+            "type": "text",
+            "title": "Aftermath"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Walloon Legion belonged to the family of foreign volunteer formations the Waffen-SS recruited from across occupied and allied Europe — units raised not from German conscripts but from ideologically sympathetic or anti-communist volunteers in France, the Netherlands, Scandinavia, the Balkans, and, here, French-speaking Belgium. It was created in August 1941 in the weeks following the invasion of the Soviet Union, when Léon Degrelle's Rexist movement offered a contingent of Walloon volunteers to fight alongside Germany against Bolshevism.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/icons/shields/wallonie.svg",
+                "caption": "Legion Wallonie collar/sleeve shield",
+                "description": "Worn in place of SS rank insignia after Himmler ruled that foreign legions could not use SS unit markings. Composite of Belgian national colors (black, yellow, red)."
+              }
+            ],
+            "layout": "left"
+          },
+          {
+            "text": "Unlike the SS divisions it eventually fought alongside, the Legion began life under Wehrmacht rather than Waffen-SS command, and only transferred to the SS in 1943 as Himmler absorbed the smaller national legions into a more unified foreign-volunteer system. Within this archive, the Legion sits in the Volunteer Formations category rather than among Germany's own national divisions — its later redesignation as the 28th SS Volunteer Grenadier Division Wallonien marks the formal endpoint of that absorption, even though it never stopped being, in composition and motivation, a Belgian unit rather than a German one.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": "Subsequently redesignated 28th SS Volunteer Grenadier Division Wallonien (1943)",
+        "volunteer_origin": "Walloon (French-speaking Belgian) volunteers recruited by Léon Degrelle's Rexist movement",
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3mz000hs5mzmrd7fqrl",
+      "title": "Luftflotte 2",
+      "slug": "luftflotte-2",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "In the Battle of Britain, Luftflotte 2 under Kesselring operated from Belgium and northern France, targeting London and south-east England, while Luftflotte 3 under Sperrle operated from France against western England — a geographic division that gave each fleet responsibility for distinct sectors of the British defensive system.",
+            "type": "text",
+            "title": "Two Fleets Against Britain"
+          },
+          {
+            "text": "Göring's decision in early September 1940 to shift the weight of attacks from RAF airfields to London — made at the precise moment when Fighter Command was most critically weakened by weeks of sustained losses — is widely regarded by historians as the single most consequential German error of the campaign, allowing the RAF the breathing room it needed to recover its strength.",
+            "type": "text",
+            "title": "The Fatal Shift to London"
+          },
+          {
+            "text": "Luftflotte 2's subsequent attacks on London during the Blitz, from September 1940 to May 1941, caused enormous civilian casualties but failed to break British civilian morale or government resolve in the way German planners had hoped. Kesselring himself argued throughout that only a ground invasion could decide the issue; the Blitz, in his own later assessment, proved a poor substitute for the invasion that air superiority was meant to enable.",
+            "type": "text",
+            "title": "The Blitz"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Luftflotte 2 was one of the Luftwaffe's air fleets — the service's highest echelon of organisation, each fleet responsible for air operations across an entire theater or sector, broadly comparable to an army group's role for ground forces. It was the larger and more important of the two air fleets committed to the Battle of Britain, the first major campaign in history fought almost entirely in the air.",
+            "type": "text"
+          },
+          {
+            "text": "Operating from captured airfields in Belgium and northern France, it bore primary responsibility for the assault on RAF Fighter Command and, subsequently, the bombing campaign against London known as the Blitz. Under Albert Kesselring, one of the more capable Luftwaffe commanders, it represented Germany's best opportunity to achieve the air superiority that an invasion of Britain would have required.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, Luftflotte 2 connects directly to the Battle of Britain campaign record and to Kesselring's own personnel entry, and its later transfer to the Mediterranean theater links it to Germany's wider air operations in Italy and North Africa, beyond the single campaign for which it is most remembered.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3n1000is5mzd202ffwn",
+      "title": "Luftflotte 3",
+      "slug": "luftflotte-3",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Luftflotte 3's role in the Battle of Britain was consistently secondary to Luftflotte 2's, targeting western England and Wales rather than the capital and the more heavily defended south-east. Its area of operations included sustained attacks on Bristol, Liverpool, Birmingham, and Coventry.",
+            "type": "text",
+            "title": "A Secondary Role"
+          },
+          {
+            "text": "The raid on Coventry on the night of 14–15 November 1940, codenamed Operation Mondscheinsonate (Moonlight Sonata), destroyed much of the city's historic centre and killed 568 people — the single most destructive Luftwaffe raid against any British city, and one that introduced the term 'Coventrate' into wartime English as a verb for systematic urban destruction.",
+            "type": "text",
+            "title": "Coventry"
+          },
+          {
+            "text": "Sperrle commanded the fleet from the Hotel Ritz in Paris, a tenure noted by contemporaries for its comfort and remoteness from the front, in marked contrast to the conditions endured by the pilots under his command. He was nonetheless acquitted at the Nuremberg High Command Trial in 1948, one of several senior Luftwaffe officers whose direct command responsibility for bombing campaigns against civilian targets did not result in conviction.",
+            "type": "text",
+            "title": "Command from the Ritz"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Luftflotte 3 was the second of the two air fleets committed to the Battle of Britain, operating throughout the campaign from bases in occupied France under the command of Hugo Sperrle, one of the longest-serving Luftwaffe commanders of the war — he held the post from January 1939 until August 1944.",
+            "type": "text"
+          },
+          {
+            "text": "Its operational role was consistently secondary to Luftflotte 2's, targeting western England and Wales rather than the more heavily defended south-east, and conducting a significant proportion of its operations at night against British industrial cities and ports rather than in the daylight fighter-versus-fighter battles more associated with the campaign's popular memory.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, Luftflotte 3 is best read alongside Luftflotte 2 as the western pairing of German air fleets in the 1940 campaign, and its commander's postwar acquittal at Nuremberg places it among the relatively small number of senior Luftwaffe commands whose leadership avoided conviction for war crimes.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3n3000js5mzswutemc3",
+      "title": "Luftflotte 4",
+      "slug": "luftflotte-4",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Luftflotte 4's most consequential moment was the attempted Stalingrad airlift. Richthofen warned Göring explicitly in November 1942 that the Luftwaffe could not supply the encircled 6th Army with the required 300 tonnes of supplies per day — the fleet had at most around 300 available transport aircraft, and weather, Soviet fighter opposition, and aircraft losses would inevitably reduce actual deliveries far below the stated minimum.",
+            "type": "text",
+            "title": "Richthofen's Warning"
+          },
+          {
+            "text": "Göring overrode Richthofen's professional assessment and promised Hitler that the airlift would succeed regardless — a promise made, by most historical accounts, more to preserve his own standing with Hitler than from any genuine belief in its feasibility.",
+            "type": "text",
+            "title": "Göring's Override"
+          },
+          {
+            "text": "The fleet never exceeded an average of roughly 150 tonnes per day, barely half the stated requirement, and on many days adverse weather or Soviet interdiction meant nothing at all reached the pocket. The resulting shortfall in food, fuel, and medical supplies contributed directly to the deaths of tens of thousands of German soldiers from starvation, untreated wounds, and exposure to the Russian winter before the 6th Army's surrender in February 1943.",
+            "type": "text",
+            "title": "The Reality of the Airlift"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Luftflotte 4 was the Luftwaffe's principal air fleet on the southern Eastern Front, providing close air support to Army Group South throughout Operation Barbarossa and the 1942 advance toward the Caucasus and Stalingrad. Its Stuka dive-bomber units were closely integrated into the army's ground operations, a hallmark of Luftwaffe doctrine in the war's first years.",
+            "type": "text"
+          },
+          {
+            "text": "Its record in this archive is dominated by a single, catastrophic episode: the attempt to keep the encircled 6th Army supplied by air during the Stalingrad pocket's final months, a mission its own commander, Wolfram von Richthofen, judged impossible before it was even attempted, and was overruled on by Hermann Göring regardless.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, Luftflotte 4 connects directly to the 6th Army and Battle of Stalingrad records, and its history illustrates how air power — even when correctly and honestly assessed by the commander responsible for delivering it — could be overridden by political pressure from above with catastrophic consequences for the ground troops who depended on it.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3nn000ps5mzij081qim",
+      "title": "Magyar 2. Hadsereg (Hungarian 2nd Army)",
+      "slug": "hungarian-2nd-army",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Destroyed in Soviet Ostrogozhsk–Rossosh offensive, January 1943.",
+        "flag": "/public/images/flags/hungary.svg",
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Like the Romanian formations to the north, the Hungarian 2nd Army was stationed on a dangerously exposed sector of the Eastern Front, equipped with anti-tank weapons inadequate against Soviet armour, possessing no significant reserves, and responsible for holding some 200 kilometres of front with insufficient troop density to do so securely.",
+            "type": "text",
+            "title": "An Exposed Front"
+          },
+          {
+            "text": "The Soviet offensive of January 1943 — launched in close coordination with the final destruction of the German 6th Army at Stalingrad — broke through the Hungarian positions within hours of beginning. The army disintegrated almost completely; survivors streamed westward through winter temperatures as low as minus 40 degrees Celsius, with no coherent rear-area supply system to support their retreat.",
+            "type": "text",
+            "title": "The Ostrogozhsk–Rossosh Offensive"
+          },
+          {
+            "text": "Hungary's political relationship with Germany never recovered from the scale of this loss. Admiral Miklós Horthy, Hungary's regent, began quietly exploring ways to exit the war and seek a separate peace with the Allies; Germany pre-empted any such move by occupying Hungary outright in March 1944, ending what remained of the country's independent decision-making for the rest of the conflict.",
+            "type": "text",
+            "title": "Political Fallout"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The Hungarian 2nd Army was Hungary's principal contribution to the Eastern Front campaign of 1942, assigned to hold a long and exposed stretch of the Don River line to the south of the German 6th Army's positions at Stalingrad. Hungary's alliance with Germany, like Romania's, was driven substantially by territorial disputes — in Hungary's case, the desire to retain or recover land lost to neighbouring states after the First World War.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/flags/hungary.svg",
+                "caption": "Flag of Hungary",
+                "description": "Hungary's 2nd Army suffered the greatest single military catastrophe in the country's history during the Soviet offensive of January 1943."
+              }
+            ]
+          },
+          {
+            "text": "Its destruction in January 1943, in an offensive that struck almost simultaneously with the final collapse of the German 6th Army at Stalingrad, is remembered in Hungarian national memory as the single greatest military catastrophe in the country's history — a scale of loss that permanently damaged Hungary's relationship with Germany and set the stage for the country's later, ultimately unsuccessful attempt to exit the war independently.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3m30008s5mzjze5gf9d",
+      "title": "Panzerarmee Afrika / Deutsch-Italienische Panzerarmee",
+      "slug": "panzerarmee-afrika",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Rommel arrived in Libya in February 1941 with instructions to hold the line — and immediately attacked instead. His audacity, speed of decision, and willingness to lead from the front made him the most celebrated German commander of the war outside the Eastern Front, and his early successes against a numerically superior but poorly coordinated British force established a reputation that endured long after the campaign's outcome turned against him.",
+            "type": "text",
+            "title": "Arrival and Early Offensives"
+          },
+          {
+            "text": "He drove the British from Cyrenaica, besieged Tobruk, was driven back, advanced again, captured Tobruk on 21 June 1942, and reached El Alamein just 100 kilometres from Alexandria — the deepest German penetration into Egypt and the high-water mark of the entire North African campaign.",
+            "type": "text",
+            "title": "The Seesaw Campaign"
+          },
+          {
+            "text": "At its peak strength, the Afrika Korps was consuming more supply than could realistically be shipped across the Mediterranean under sustained RAF and Royal Navy interdiction of Axis convoys — a structural problem that no amount of tactical skill could fully overcome, and one that ultimately constrained every German offensive option in the theater.",
+            "type": "text",
+            "title": "The Supply Problem"
+          },
+          {
+            "text": "The second Battle of El Alamein (October–November 1942) ended in a crushing defeat for the depleted and under-supplied Axis force; Rommel conducted a fighting withdrawal across nearly 2,000 kilometres of North African coastline back into Tunisia. The army was redesignated Heeresgruppe Afrika in February 1943, by which point its remaining strength had been folded into the final defence of the Tunisian bridgehead, which surrendered that May.",
+            "type": "text",
+            "title": "El Alamein and Withdrawal"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Panzerarmee Afrika occupied a unique place among German field armies: a joint German-Italian command formed not for an existing strategic plan but reactively, to prevent the total collapse of Italy's position in Libya after its disastrous defeat in Operation Compass. It absorbed the Deutsches Afrikakorps — the original German expeditionary force — and grew over 1941–42 into a substantial combined-arms army incorporating Italian armoured and infantry corps alongside German formations.",
+            "type": "text"
+          },
+          {
+            "text": "Its commander, Erwin Rommel, became the single most internationally famous German general of the war, his reputation built on the seesaw campaign across Libya and Egypt that this army's record documents — repeated advances and retreats across the same stretch of North African coastline, driven as much by the chronic supply difficulties of fighting at the end of a long and contested Mediterranean line of communication as by tactical skill on either side.",
+            "type": "text"
+          },
+          {
+            "text": "Within this archive, Panzerarmee Afrika connects directly to the Deutsches Afrikakorps (its founding component), Army Group Africa (its eventual successor command), and the sequence of North African campaign records — Sonnenblume, Gazala, and the two Battles of El Alamein — that together trace the rise and fall of the Axis position in the desert.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": [
+          {
+            "id": "deutsches-afrikakorps",
+            "url": "/formations/deutsches-afrikakorps",
+            "title": "Deutsches Afrikakorps (DAK)"
+          }
+        ],
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3m00007s5mzov2lsg7w",
+      "title": "Panzergruppe 2 / 2. Panzerarmee",
+      "slug": "panzergruppe-2",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": null,
+        "flag": null,
+        "region": null,
+        "shield": null,
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Guderian's operational methods — deep penetration ignoring flanks, crossing rivers in the teeth of opposition, maintaining momentum at all costs — defined Blitzkrieg at its most effective, and Panzer Group 2's 1941 campaign is often cited as the clearest practical demonstration of the doctrine he had championed since the 1930s.",
+            "type": "text",
+            "title": "Doctrine in Practice"
+          },
+          {
+            "text": "Panzer Group 2's advance from the Polish border to Smolensk covered some 700 kilometres in just 52 days — a pace of advance that exceeded almost anything achieved by mechanised forces up to that point in military history, and one that left Soviet forces with little time to organise coherent defensive lines.",
+            "type": "text",
+            "title": "The Advance to Smolensk"
+          },
+          {
+            "text": "The drive south to close the Kiev encirclement — executed against OKH's preference for a continued direct advance on Moscow, and in direct disagreement with his immediate superior, Fedor von Bock — resulted in the largest encirclement in military history, but the diversion of Panzer Group 2's strength southward cost critical weeks that some historians argue proved decisive in the subsequent failure to take Moscow before winter.",
+            "type": "text",
+            "title": "Kiev and the Cost of Diversion"
+          },
+          {
+            "text": "Guderian's subsequent drive on Moscow stalled in early December 1941 when his leading elements came within roughly 30 kilometres of the Kremlin, the closest German forces would ever get to the Soviet capital. He was dismissed by Hitler on Christmas Day 1941 after ordering tactical withdrawals he judged necessary to hold a defensible line in the face of the Soviet winter counteroffensive — a decision Hitler regarded as defeatism.",
+            "type": "text",
+            "title": "Dismissal"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "Panzer Group 2 was one of the four Panzer groups created for Operation Barbarossa — armoured formations roughly equivalent in size to a field army but distinguished by their composition of fast-moving Panzer and motorized divisions, intended to operate ahead of the slower marching infantry armies and achieve the deep penetrations that defined German operational doctrine.",
+            "type": "text"
+          },
+          {
+            "text": "Commanded from its creation by Heinz Guderian, one of the principal theorists and practitioners of armoured warfare in the interwar German army, it formed the spearhead of Army Group Centre's advance into Belarus and Russia in 1941, and its operational history is in many respects inseparable from Guderian's own personal record as a commander — its successes are presented in his postwar memoir Panzer Leader as vindication of the armoured doctrine he had spent the 1930s advocating.",
+            "type": "text"
+          },
+          {
+            "text": "Redesignated 2nd Panzer Army in October 1941, it continued under different commanders after Guderian's dismissal, but this record focuses primarily on the 1941 campaign that made it, briefly, the most successful armoured formation in the history of warfare to that date.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": {
+          "id": "army-group-centre",
+          "url": "/formations/army-group-centre",
+          "title": "Heeresgruppe Mitte (Army Group Centre)"
+        },
+        "volunteer_origin": null,
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    },
+    {
+      "id": "cmqxys3o7000vs5mzkx50blrh",
+      "title": "XV SS-Kosaken-Kavallerie-Korps (XV SS Cossack Cavalry Corps)",
+      "slug": "xv-cossack-cavalry-corps",
+      "allKeys": [
+        "fate",
+        "flag",
+        "active",
+        "region",
+        "shield",
+        "context",
+        "dossier",
+        "section",
+        "service",
+        "sources",
+        "theater",
+        "commanders",
+        "importRunId",
+        "predecessor",
+        "peak_strength",
+        "context_blocks",
+        "formation_type",
+        "overview_blocks",
+        "related_records",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedKeys": [
+        "fate",
+        "flag",
+        "region",
+        "shield",
+        "dossier",
+        "predecessor",
+        "context_blocks",
+        "overview_blocks",
+        "parent_formation",
+        "volunteer_origin",
+        "subordinate_units",
+        "constituent_divisions",
+        "campaign_participation"
+      ],
+      "unmanagedValues": {
+        "fate": "Surrendered to British forces in Austria, May 1945; handed over to the Soviet Union under the Yalta repatriation agreements. Pannwitz and senior Cossack officers were executed in Moscow in 1947.",
+        "flag": null,
+        "region": "Cossack Formations",
+        "shield": "/public/images/icons/shields/cossack.svg",
+        "dossier": null,
+        "predecessor": null,
+        "context_blocks": [
+          {
+            "text": "Many Cossacks viewed the war as a continuation of the Russian Civil War of 1917–1923, fighting Bolshevism rather than serving Hitler's wider racial and territorial aims — a distinction that mattered greatly to the men themselves even if it made little practical difference to how the corps was used by German command.",
+            "type": "text",
+            "title": "A Continuation of the Civil War"
+          },
+          {
+            "text": "Pannwitz, fluent in Russian and genuinely respected by his troops, was one of the few German officers ever to receive a Cossack cavalry sabre as a mark of honour from the men under his command — an unusually personal gesture of trust between a German commander and non-German volunteer troops.",
+            "type": "text",
+            "title": "Pannwitz"
+          },
+          {
+            "text": "In May 1945 the corps surrendered to the British 5th Corps in Austria. Under the Yalta agreements on the repatriation of Soviet citizens, the British handed the Cossacks — including pre-revolutionary émigrés who had never held Soviet citizenship at all — over to Soviet forces at Judenburg. Pannwitz voluntarily accompanied his men into Soviet custody rather than seek his own safety.",
+            "type": "quote",
+            "attribution": "Summary of the established historical record of the Judenburg repatriations"
+          },
+          {
+            "text": "Pannwitz and senior Cossack leaders, including the émigré generals Pyotr Krasnov and Andrei Shkuro — men who had not been Soviet citizens since fleeing Russia decades earlier — were executed in Moscow in January 1947, an outcome that remains one of the most cited examples of the moral complexity surrounding the Western Allies' wartime agreements with Stalin.",
+            "type": "text",
+            "title": "Execution in Moscow"
+          }
+        ],
+        "overview_blocks": [
+          {
+            "text": "The XV SS Cossack Cavalry Corps was, by a substantial margin, the largest of the Eastern volunteer formations recruited by Germany, and the only one organised at corps strength. It drew on a distinct constituency: not occupied Western Europeans recruited by ideological sympathy, but Cossack émigrés who had fled Russia after the 1917 revolution and civil war, together with Soviet prisoners of war and defectors from the Don, Kuban, and Terek Cossack hosts who viewed the war primarily through the lens of a decades-old struggle against Bolshevism rather than any commitment to German aims.",
+            "type": "text"
+          },
+          {
+            "type": "image",
+            "images": [
+              {
+                "src": "/public/images/icons/shields/cossack.svg",
+                "caption": "Composite Cossack formation insignia",
+                "description": "Used by units raised from the Don, Kuban, and Terek hosts under German command."
+              }
+            ]
+          },
+          {
+            "text": "Commanded by Helmuth von Pannwitz, a German cavalry officer fluent in Russian and unusually well regarded by the men he led, the corps fought anti-German partisans in the Balkans before being committed against the Red Army directly in 1945. Within this archive it represents the Eastern volunteer category in its starkest form, and its postwar fate — forced repatriation to the Soviet Union and the execution of its senior leadership — is one of the most consequential and controversial episodes documented among any of the volunteer formations here.",
+            "type": "text"
+          }
+        ],
+        "parent_formation": null,
+        "volunteer_origin": "Cossack émigrés and Soviet POWs/defectors from the Don, Kuban, and Terek hosts, anti-Bolshevik in orientation",
+        "subordinate_units": null,
+        "constituent_divisions": null,
+        "campaign_participation": null
+      }
+    }
+  ]
+}

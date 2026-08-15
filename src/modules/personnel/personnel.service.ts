@@ -2,9 +2,13 @@ import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
 import { pickEntityFields } from "../../utilities/allowlist";
+import { normalizeDateFields } from "../../utilities/date-normalize";
+import { mergeMetadata } from "../../utilities/metadata-merge";
 import { toPersonnelJson } from "../publish/generators/personnel.generator";
 import { checkPersonnelRecord } from "../publish/validators/personnel.conformance";
 import { RelatedRecordEntry } from "../publish/import-validation/personnel-entity-mapper";
+
+const DATE_FIELDS = ["birthDate", "deathDate"] as const;
 
 interface ListOptions { page: number; limit: number; branch?: string; nation?: string; search?: string; }
 
@@ -44,15 +48,27 @@ export class PersonnelService {
   }
 
   async create(data: object) {
-    const fields = pickEntityFields(data);
+    const fields = normalizeDateFields(pickEntityFields(data), DATE_FIELDS);
     const name = (fields.name as string | undefined) || "person";
     const slug = await this.resolveUniqueSlug(name);
     return prisma.entity.create({ data: { ...fields, type: "PERSON", slug } as Parameters<typeof prisma.entity.create>[0]["data"] });
   }
 
   async update(id: string, data: object) {
+    const fields = normalizeDateFields(pickEntityFields(data), DATE_FIELDS);
+    // Json columns are replaced wholesale on update — there's no partial
+    // write. Merge onto the record's current metadata (fetched fresh, right
+    // before the write) rather than the client's payload alone, so fields
+    // the Admin form doesn't manage (combat-statistics extras like kills/
+    // aircraft/ships_sunk, or anything not yet represented in the form)
+    // survive a save that only ever intended to change the fields it
+    // knows about. See src/utilities/metadata-merge.ts.
+    if ("metadata" in fields) {
+      const existing = await prisma.entity.findUnique({ where: { id }, select: { metadata: true } });
+      fields.metadata = mergeMetadata(existing?.metadata, fields.metadata);
+    }
     return notFoundAs404(
-      () => prisma.entity.update({ where: { id }, data: pickEntityFields(data) as Parameters<typeof prisma.entity.update>[0]["data"] }),
+      () => prisma.entity.update({ where: { id }, data: fields as Parameters<typeof prisma.entity.update>[0]["data"] }),
       "Personnel record not found",
     );
   }

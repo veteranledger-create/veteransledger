@@ -19,6 +19,74 @@ import { createContentModule } from "./admin-content-module.js";
 const SPEC_FIELDS = ["designation", "manufacturer", "crew", "weight", "armor", "armament", "engine", "speed", "range", "units_produced"];
 const KNOWN_META_KEYS = new Set(["category", "nation", "sources", "related_records", "importRunId", "fileNation", "schemaType", "gallery", "blueprints", "videos", "documents", ...SPEC_FIELDS]);
 
+// ── Metadata value type fidelity ──────────────────────────────────────
+// Armament metadata holds arbitrary JSON — numbers (range_km: 800),
+// booleans, nulls, and nested objects/arrays (dossier, armament) — but the
+// Admin edits every one of them through a plain text input. Rendering a
+// value into an input and reading it back out therefore used to coerce
+// everything to a string, so a save that touched one field silently
+// retyped every other one (800 -> "800", {...} -> a JSON string, null ->
+// "null"). These helpers keep the original parsed value alongside its
+// display text and hand back the original verbatim whenever the admin
+// didn't actually edit that input — generic across any key, so unknown and
+// future metadata fields are covered without naming any of them.
+
+function metaValueToDisplay(value) {
+  if (value === null) return "null";
+  if (typeof value === "object") return JSON.stringify(value);
+  return String(value);
+}
+
+// Interpret edited text as JSON, preferring the original value's type when
+// the new text is compatible with it — editing range_km from 800 to 900
+// should stay a number, not become "900".
+function displayToMetaValue(text, original) {
+  const trimmed = String(text).trim();
+  const originalType = original === null ? "null" : Array.isArray(original) ? "array" : typeof original;
+  const parseJson = (fallback) => { try { return JSON.parse(trimmed); } catch (_) { return fallback; } };
+
+  switch (originalType) {
+    case "null":
+      if (trimmed === "" || trimmed === "null") return null;
+      break;
+    case "number":
+      if (trimmed !== "" && Number.isFinite(Number(trimmed))) return Number(trimmed);
+      break;
+    case "boolean":
+      if (trimmed === "true" || trimmed === "false") return trimmed === "true";
+      break;
+    case "object":
+    case "array":
+      if (trimmed.startsWith("{") || trimmed.startsWith("[")) return parseJson(text);
+      break;
+    case "string":
+      return text;
+    default:
+      break;
+  }
+
+  // No original (a newly added row) or an edit incompatible with the
+  // original type — infer generically from the text itself.
+  if (trimmed === "null") return null;
+  if (trimmed === "true") return true;
+  if (trimmed === "false") return false;
+  if (trimmed !== "" && Number.isFinite(Number(trimmed))) return Number(trimmed);
+  if (trimmed.startsWith("{") || trimmed.startsWith("[")) return parseJson(text);
+  return text;
+}
+
+// The round-trip guarantee: unchanged text returns the original value
+// untouched (exact type and content), edited text is re-interpreted.
+function resolveMetaValue(text, original) {
+  if (original !== undefined && text === metaValueToDisplay(original)) return original;
+  return displayToMetaValue(text, original);
+}
+
+// Original values for the fixed SPEC_FIELDS inputs, captured on populate so
+// an untouched input can hand its exact original value back on save.
+// Reset per form-open (see onFormOpen) so a new record starts clean.
+let _specOriginals = {};
+
 const translationsPanel = new TranslationsPanel("armament-translations-panel", "record");
 
 // ── Local thin wrappers bind container IDs + drafts to shared renderers ──
@@ -143,12 +211,20 @@ function populateForm(form, r, drafts) {
   form.querySelector("[name='nation']").value = meta.nation || r.nationality || "";
   form.querySelector("[name='published']").checked = !!r.published;
 
+  _specOriginals = {};
   for (const field of SPEC_FIELDS) {
     const input = form.querySelector(`[name='spec_${field}']`);
-    if (input && meta[field] !== undefined) input.value = typeof meta[field] === "object" ? JSON.stringify(meta[field]) : meta[field];
+    if (input && meta[field] !== undefined) {
+      _specOriginals[field] = meta[field];
+      input.value = metaValueToDisplay(meta[field]);
+    }
   }
 
-  drafts.extraSpecs = Object.entries(meta).filter(([k]) => !KNOWN_META_KEYS.has(k)).map(([key, value]) => ({ key, value: typeof value === "object" ? JSON.stringify(value) : String(value) }));
+  // `original` rides alongside the display string so serializeForm can hand
+  // back the exact original value (and JSON type) for any row left untouched.
+  drafts.extraSpecs = Object.entries(meta)
+    .filter(([k]) => !KNOWN_META_KEYS.has(k))
+    .map(([key, value]) => ({ key, value: metaValueToDisplay(value), original: value }));
   drafts.sources = Array.isArray(meta.sources) ? meta.sources.map((s) => ({ ref: s.ref || "", type: s.type || "" })) : [];
   drafts.related = Array.isArray(meta.related_records) ? [...meta.related_records] : [];
   drafts.media = Array.isArray(r.media) ? [...r.media] : [];
@@ -167,10 +243,21 @@ function serializeForm(form, drafts) {
   const specs = {};
   for (const field of SPEC_FIELDS) {
     const value = form.querySelector(`[name='spec_${field}']`)?.value;
-    if (value) specs[field] = field === "crew" || field === "units_produced" ? Number(value) : value;
+    const original = _specOriginals[field];
+    if (original !== undefined && value === metaValueToDisplay(original)) {
+      // Untouched — hand back the exact original value, preserving objects
+      // and arrays (armament is stored as either on real records) that a
+      // text round-trip would otherwise flatten into a JSON string.
+      specs[field] = original;
+    } else if (value) {
+      // Edited or newly entered — crew/units_produced keep their existing
+      // explicit numeric coercion; every other field keeps its existing
+      // string behavior, so this path is unchanged from before.
+      specs[field] = field === "crew" || field === "units_produced" ? Number(value) : value;
+    }
   }
-  for (const { key, value } of drafts.extraSpecs) {
-    if (key) specs[key] = value;
+  for (const { key, value, original } of drafts.extraSpecs) {
+    if (key) specs[key] = resolveMetaValue(value, original);
   }
 
   return {
@@ -295,6 +382,10 @@ createContentModule({
   onTabActivate: () => registerCallbacks(uploadFile, _setStatus),
   onFormOpen: (drafts, isNew) => {
     document.getElementById("armament-duplicate-warning").hidden = true;
+    // Clear captured SPEC_FIELD originals on every open — populateForm
+    // repopulates them for an existing record, and a new record must not
+    // inherit the previously-edited record's values.
+    _specOriginals = {};
     if (isNew) {
       // input[type=hidden]'s .value reflects straight to the attribute, so
       // form.reset() does NOT clear it back to "" once afterSave has set it

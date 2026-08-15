@@ -17,6 +17,10 @@ export const createRecordValidator = [
     .optional()
     .isInt({ min: 1900, max: 1950 })
     .withMessage("Year must be between 1900 and 1950."),
+  body("date")
+    .optional({ nullable: true })
+    .isISO8601()
+    .withMessage("date must be a valid ISO 8601 date."),
   body("tags")
     .optional()
     .isArray()
@@ -42,6 +46,10 @@ export const updateRecordValidator = [
     .optional()
     .isInt({ min: 1900, max: 1950 })
     .withMessage("Year must be between 1900 and 1950."),
+  body("date")
+    .optional({ nullable: true })
+    .isISO8601()
+    .withMessage("date must be a valid ISO 8601 date."),
   body("tags")
     .optional()
     .isArray()

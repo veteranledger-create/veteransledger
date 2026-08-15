@@ -2,6 +2,8 @@ import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
 import { notFoundAs404 } from "../../utilities/prisma-errors";
 import { pickGenericRecordFields } from "../../utilities/allowlist";
+import { normalizeDateFields } from "../../utilities/date-normalize";
+import { mergeMetadata } from "../../utilities/metadata-merge";
 import { toRecordLike } from "../publish/publish.service";
 import { toAwardJson } from "../publish/generators/awards.generator";
 import { toMapJson } from "../publish/generators/maps.generator";
@@ -9,6 +11,8 @@ import { toPoliticalDocJson } from "../publish/generators/political-docs.generat
 import { checkAwardRecord } from "../publish/validators/awards.conformance";
 import { checkMapRecord } from "../publish/validators/maps.conformance";
 import { checkPoliticalDocRecord } from "../publish/validators/political-docs.conformance";
+
+const DATE_FIELDS = ["date"] as const;
 
 interface ListOptions { page: number; limit: number; type?: string; search?: string; }
 
@@ -36,7 +40,7 @@ export class RecordsService {
   }
 
   async create(data: object, userId: string) {
-    const fields = pickGenericRecordFields(data);
+    const fields = normalizeDateFields(pickGenericRecordFields(data), DATE_FIELDS);
     if (!fields.type) throw new AppError(400, "type must be one of AWARD, MAP, POLITICAL_DOCUMENT.");
     const record = await prisma.record.create({ data: fields as Parameters<typeof prisma.record.create>[0]["data"] });
     await prisma.auditLog.create({ data: { userId, action: "CREATE", entity: "Record", entityId: record.id } });
@@ -44,8 +48,19 @@ export class RecordsService {
   }
 
   async update(id: string, data: object, userId: string) {
+    const fields = normalizeDateFields(pickGenericRecordFields(data), DATE_FIELDS);
+    // Json columns are replaced wholesale on update — there's no partial
+    // write. Merge onto the record's current metadata (fetched fresh, right
+    // before the write) rather than the client's payload alone, so fields
+    // the Admin form doesn't manage (or doesn't yet exist) survive a save
+    // that only ever intended to change the fields it knows about. See
+    // src/utilities/metadata-merge.ts.
+    if ("metadata" in fields) {
+      const existing = await prisma.record.findUnique({ where: { id }, select: { metadata: true } });
+      fields.metadata = mergeMetadata(existing?.metadata, fields.metadata);
+    }
     const record = await notFoundAs404(
-      () => prisma.record.update({ where: { id }, data: pickGenericRecordFields(data) as Parameters<typeof prisma.record.update>[0]["data"] }),
+      () => prisma.record.update({ where: { id }, data: fields as Parameters<typeof prisma.record.update>[0]["data"] }),
       "Record not found",
     );
     await prisma.auditLog.create({ data: { userId, action: "UPDATE", entity: "Record", entityId: id } });

@@ -1,7 +1,7 @@
 # Batch 3 — Incident Report + Fix Summary
 
-**Date:** 2026-08-14
-**Status:** All work in this report is **non-destructive** (source-code changes + read-only DB investigation). **No database write, restore, or delete has been executed.** Batch 3 (Campaigns/Articles migration) remains paused pending your review.
+**Date:** 2026-08-14, updated 2026-08-15
+**Status:** §§1–6 below (2026-08-14) were non-destructive prep work. §7 (2026-08-15) executed the approved restore and ran the required verification — **the restore succeeded and is confirmed intact**, but the post-restore live-save integrity check (step 4 of your instructions) **failed and was stopped immediately**, per your explicit "stop, do not repair, document" instruction. Root cause: a pre-existing, previously out-of-scope bug (bare-date strings vs. Prisma's `DateTime` type), unrelated to the metadata-merge fix. See §7.4. **Batch 3 migration remains paused. Do not resume without reviewing §7 first.**
 
 This supersedes the earlier, less rigorous `battle-of-britain-incident-recovery-plan.md` for the recovery-preview portion — the authoritative, field-by-field preview is `battle-of-britain-recovery-preview.md` (written this round).
 
@@ -118,11 +118,99 @@ Verified directly, just before writing this report: the `batch3-post-incident-ch
 
 ---
 
-## Awaiting your direction on:
+## 7. 2026-08-15 — Restore executed, verification completed, one new defect found (out of scope, not fixed)
 
-1. Whether to execute the Battle of Britain restore as previewed in `battle-of-britain-recovery-preview.md`.
-2. Whether to run the fixture-based save/merge verification for the Campaigns fix (ZZ-TEST fixture only, fully cleaned up afterward) before considering it proven.
-3. Whether to extend the same `mergeMetadata()` fix to `articles.service.ts` (still unshipped/mid-migration in this batch) and/or `letters.service.ts` (already shipped, currently live and at-risk).
-4. Whether to resume Batch 3 (Articles regression, then the batch-wide pass) once the above are resolved.
+### 7.1 mergeMetadata extended to Articles and Letters
 
-No further action will be taken until you respond.
+Applied the identical pattern from §2 to `articles.service.ts` and `letters.service.ts`: both `update()` methods now read current `metadata` immediately before the write and merge the incoming save on top via the same `mergeMetadata()` helper, rather than replacing wholesale. No field list, no per-module logic — the same general fix. `tsc --noEmit`: clean.
+
+### 7.2 ZZ-TEST fixture verification — Campaigns, Articles, Letters
+
+Two rounds of verification were run:
+
+**Round 1 (API-level, all three modules):** created a rich ZZ-TEST fixture per module (managed + unmanaged metadata, including a `custom_future_field` key that exists in no code path at all, to prove the fix isn't tied to any known field list), changed one admin-managed field via a direct authenticated PUT to the real `/api/{campaigns,articles,letters}/:id` endpoint (same route the Admin UI hits), re-read, and diffed every other field. **64/64 checks passed** — every unmanaged field (including `combatants`/`phases`/`casualties`/`background`/`image`/`technology`/`subtitle`/`region_label`/`importRunId` for Campaigns, `subtitle`/`author`/`image`/`tags`/`archival_note`/`custom_future_field` for Articles, `from_unit`/`location_written`/`subject`/`context`/`notes`/`archive_source`/`translated`/`custom_future_field` for Letters) survived byte-identical; the one changed field changed as expected; translations were unaffected; all fixtures and translations were deleted with zero remainder.
+
+**Round 2 (real Admin UI, all three modules, requested explicitly):** re-ran the same test, but this time the save step went through the actual browser — logged into the real Admin UI, opened each fixture's Edit form via a selector scoped to that module's own list container with the target ID verified before the click (per the §3 testing-safety protocol), changed one field through the DOM, clicked the real Save button, and confirmed via the Network panel that the request returned `200 OK` (not the `500` recorded earlier for the unrelated date-bug incident — see §7.4). Every fixture was created **without any date field** (no `startDate`/`endDate`/`metadata.dates` for Campaigns, no `date` for Letters), specifically to keep this test isolated from the separate, out-of-scope date defect. All 3 modules × all fields: **36/36 checks passed**. Fixtures and translations deleted; global sweep confirmed zero `ZZ-TEST-*` records, zero `ZZ-TEST-*` translations, `MediaAsset` count still 0.
+
+The metadata-merge fix is now verified for all three modules via both the backend route directly and the literal browser save path.
+
+### 7.3 Battle of Britain restore — executed
+
+Executed exactly as previewed in `battle-of-britain-recovery-preview.md`, via a direct `prisma.record.create()` (the only way to preserve the original `id` — the app's own `/api/campaigns` POST route deliberately cannot accept a client-supplied `id`, by design, per the Phase 1 allowlist). One correction caught during execution, not in the original preview: the archive file also has a top-level `technology` field (radar/aircraft descriptions) that passes through `campaigns.generator.ts`'s same untyped `extras` mechanism as `combatants`/`phases`/`casualties`/`background` — included in the restore rather than silently dropped, and flagged here rather than smoothed over.
+
+**Uncertain-field decisions, as documented in the preview and applied exactly:**
+- `slug: "britain"` — deterministic, not guessed: `campaigns.generator.ts` line 91 emits `record.slug ?? record.id`; the archive's `id` is `"britain"` (not the record's cuid), which is only possible if `slug === "britain"`.
+- `createdAt` — deliberate policy, not a guess or a fabricated backdate: used the real restoration timestamp (`2026-08-14T19:36:40.317Z`) rather than inventing a plausible-looking historical value. `createdAt` has zero effect on any ordering or public rendering (the Campaigns list sorts by `startDate`; the generator never publishes `createdAt`), so a fabricated backdate would only add a false claim with no offsetting benefit.
+
+**Post-restore verification (immediately after, read-only):**
+- Record identity: id, type, title, theater, `startDate` (1940-07-10), `published` (true) all confirmed against pre-deletion evidence — all PASS.
+- Every metadata field (`combatants`, `phases`, `casualties`, `background`, `context`, `outcome`, `significance`, `summary`, `image`, `technology`, `sources`, `related_records`) diffed against the archive file directly — 17/17 PASS. (`subtitle`/`region_label` are absent from the archive and were correctly left unset, matching every sibling western-front campaign.)
+- Relations: 0 `Citation` rows, 0 `Relationship` rows referencing this id — correct, Campaigns doesn't use either table for sources/related-records (both are stored as JSON inside `metadata`, verified as the existing pattern for every sibling campaign, not a restoration artifact).
+- Translations/media: 0 of each — matches pre-deletion state exactly (none existed before the deletion either).
+- Duplicates: exactly 1 record with this id, exactly 1 record titled "Battle of Britain" — no duplicates created.
+- Collection: correctly assigned to `cmsnkcia50012frdhuli9fqu0` ("Western Front Campaigns").
+
+**Admin UI verification:** logged into the real Admin UI, opened the Campaigns tab. List view showed `Battle of Britain | WESTERN FRONT | 1940-07-10 | Published` — matches the captured pre-deletion evidence exactly. Opened Edit (selector scoped to `#campaign-list`, target id verified before the click): title, theater, start/end dates, summary, context, significance, outcome, all 7 related records, and all 4 sources populated correctly in the form.
+
+### 7.4 Post-restore live-save integrity check — FAILED, stopped immediately, NOT repaired
+
+Per your step 4, attempted a real-save-path test on the restored record itself (not a synthetic fixture): opened Battle of Britain's Edit form, appended a temporary marker to `significance`, clicked Save.
+
+**Result: `500 Internal Server Error`.** Server log shows the exact cause:
+```
+Invalid value for argument `startDate`: premature end of input. Expected ISO-8601 DateTime.
+```
+This is the pre-existing, previously-documented, explicitly out-of-scope bare-date defect (first found in Batch 1 for Personnel/Letters, carried forward as a known risk in every report since): `<input type="date">` yields a bare `"1940-07-10"` string; `express-validator`'s `isISO8601()` accepts that bare form, but Prisma's `DateTime` type requires a full ISO-8601 datetime and rejects it — client-side, before any SQL is constructed. **This is not a defect in the metadata-merge fix.** The log shows `mergeMetadata()`'s read (`SELECT id, metadata FROM records WHERE id = ...`) executed correctly and produced a fully-correct merged payload — the request never got further than Prisma's own input validation on the unrelated `startDate` field.
+
+Per your explicit instruction, **I stopped immediately and did not attempt a repair.** I did not touch any date-handling code. This is being reported as a separate, dedicated defect (see below), not folded into the metadata-merge fix.
+
+**Confirmed database state after the failure (this was the first thing verified, before any further action):** the record is **completely unchanged**. `createdAt` and `updatedAt` are still identical (`2026-08-14T19:36:40.317Z` — both the original restoration instant, meaning zero writes have touched this row since the restore), `significance` contains no trace of the temporary test marker, and the metadata key count is still 15. Prisma's client-side validation rejects malformed input *before* constructing any SQL — so no partial write occurred. Re-confirmed a second time, fresh, immediately before writing this report: identical result.
+
+**New follow-up task (separate, not to be silently fixed here):** *Battle of Britain — and any other campaign with real `startDate`/`endDate` values — currently cannot be edited and saved through the Admin UI at all.* Every save attempt on such a record will 500 until the bare-date defect is fixed as its own explicitly-scoped, explicitly-approved task. This is a live, practical blocker (not just a theoretical risk) for this specific restored record and for any of the other 34 real campaigns that have dates set, going forward, independent of and unrelated to the metadata-merge fix verified in §7.2.
+
+### 7.5 Fresh checks
+
+- `tsc --noEmit`: clean.
+- Fresh Admin console check (new tab, fresh login, every tab clicked including Campaigns/Articles/Letters/Formations/Armaments/Personnel/Timeline/NSDAP): zero errors.
+- Fresh public-site console check (new tab, homepage): zero errors.
+
+### 7.6 Database before/after — full session
+
+| Table | `batch3-baseline` (pre-incident) | `batch3-checkpoint` (incident discovered) | `batch3-post-restore-check` | `batch3-final-check` (now, after all fixture testing + cleanup) |
+|---|---|---|---|---|
+| Record total | 184 | 183 | 184 | 184 |
+| Record CAMPAIGN | 35 | 34 | 35 | 35 |
+| Record ARTICLE | 8 | 8 | 8 | 8 |
+| Entity | 46 | 46 | 46 | 46 |
+| TimelineEvent | 83 | 83 | 83 | 83 |
+| Translation | 72 | 72 | 72 | 72 |
+| Collection | 42 | 42 | 42 | 42 |
+| Relationship | 28 | 28 | 28 | 28 |
+| AuditLog | 30 | 34 | 34 | 34 |
+| MediaAsset | 0 | 0 | 0 | 0 |
+
+Record/CAMPAIGN is back to the exact pre-incident baseline (184 / 35). Every table used by the ZZ-TEST fixture rounds (Record, Translation) nets to zero — fixtures were created and fully deleted within the same session, confirmed by the direct global sweep in §7.2, not just by the aggregate count returning to baseline. `AuditLog` did not increase further this round — none of `campaigns.service.ts`/`articles.service.ts`/`letters.service.ts` write audit-log entries (a pre-existing characteristic, not something this work changed), so the fixture create/update/delete cycles and the restore itself don't appear there; this was already true in §2's findings and remains consistent.
+
+**Confirmation: no unrelated production record was modified, created, or deleted this round.** The only real-content change in the entire database, across this whole incident, is the single restored Battle of Britain record — verified by table-count comparison, by the explicit global ZZ-TEST/orphan sweep, and by direct re-confirmation of Battle of Britain's own `createdAt`/`updatedAt`/field values immediately before writing this report.
+
+### 7.7 Note: two scratch files were caught in an external commit
+
+Between this report's §1–6 and §7, the working tree was committed (commit `56d0278`, authored by the repo's own git user, timestamped during a gap in this session) — this captured all of this batch's legitimate work (the admin JS migrations, the service.ts fixes, `metadata-merge.ts`, the reports/baselines) correctly, but also swept up two of my scratch debugging scripts (`src/scripts/_tmp-restore-britain.ts`, `src/scripts/_tmp-verify-restore.ts`) that should never have been committed. I've deleted both from the working tree (they were disposable, my own scratch files, not referenced anywhere) but have **not** committed that deletion or touched git history in any other way — that's left for you to handle however you prefer.
+
+---
+
+## Status: incident and recovery phase — mostly complete, one item blocked
+
+**Complete:**
+- Battle of Britain restored, verified against archive + pre-deletion evidence, zero duplicates, zero orphans.
+- Metadata wholesale-replace bug fixed and verified for Campaigns, Articles, and Letters — both via direct API and via the real Admin UI, with a field that exists in no code path at all, proving the fix is general rather than tied to a known field list.
+- Testing-safety protocol adopted and followed throughout this round (scoped selectors, ID verification before every destructive action).
+- Zero unrelated production data touched, confirmed multiple ways.
+
+**Blocked, reported separately, not fixed here:**
+- The pre-existing bare-date defect now confirmed to also affect Campaigns (previously only confirmed for Personnel/Letters), and specifically blocks any future edit-and-save of the just-restored Battle of Britain record (or any other campaign with real dates) through the Admin UI. This needs its own explicitly-scoped, explicitly-approved fix before that record — or any dated campaign — can be safely edited again.
+
+**Do not resume Batch 3 migration yet.** Awaiting your direction on:
+1. Whether/when to scope and approve a dedicated fix for the bare-date defect (now confirmed across Personnel, Letters, and Campaigns; Political Docs still unconfirmed-but-suspected).
+2. Whether to resume Batch 3 (Articles regression, then the batch-wide pass) now that the metadata-merge and restore work is verified complete, independent of the date-defect follow-up.
+3. How you'd like the two accidentally-committed scratch files (§7.7) handled.

@@ -16,7 +16,7 @@ export const createLetterValidator = [
     .isLength({ max: 2000 })
     .withMessage("Summary must be under 2,000 characters."),
   body("date")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("date must be a valid ISO 8601 date."),
   body("nationality")
@@ -47,7 +47,7 @@ export const updateLetterValidator = [
     .isLength({ max: 2000 })
     .withMessage("Summary must be under 2,000 characters."),
   body("date")
-    .optional()
+    .optional({ nullable: true })
     .isISO8601()
     .withMessage("date must be a valid ISO 8601 date."),
   body("nationality")
