@@ -1,5 +1,6 @@
 import { authHeader, makeStatusFn, safeJson } from "./admin-utils.js";
 import { TranslationsPanel } from "./translations-panel.js";
+import { createFileEditorGuard } from "./admin-file-editor-guard.js";
 
 /**
  * VeteransLedger · Admin — Navigation & Footer Editor
@@ -11,6 +12,7 @@ import { TranslationsPanel } from "./translations-panel.js";
 const KEY = "navigation.json";
 const setStatus = makeStatusFn("nav-form-status");
 const translationsPanel = new TranslationsPanel("navigation-translations-panel", "site_content");
+const guard = createFileEditorGuard({ tabPanelId: "tab-navigation" });
 let fullData = null;
 
 function f(id) { return document.getElementById(id); }
@@ -29,6 +31,7 @@ async function loadNav() {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     fullData = await safeJson(res);
     populateForm(fullData);
+    guard.markClean();
     setStatus("", false);
     translationsPanel.load(KEY);
   } catch (err) {
@@ -144,6 +147,7 @@ async function handleSave() {
       body: JSON.stringify(fullData),
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    guard.markClean();
     setStatus("Saved.", false);
   } catch (err) {
     setStatus(`Save failed: ${err.message}`, true);

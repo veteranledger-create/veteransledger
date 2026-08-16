@@ -1,0 +1,717 @@
+{
+  "capturedAt": "2026-08-16T06:48:28.539Z",
+  "fileCount": 63,
+  "files": [
+    {
+      "key": "about/about.json",
+      "bytes": 1424,
+      "sha256": "02a744e11de540e618efc71b6b13bdb3bbdb7707e8dad29e5e5051450e686cc3",
+      "topLevelKeys": [
+        "contact",
+        "description",
+        "disclaimer",
+        "founded",
+        "name",
+        "purpose",
+        "sections",
+        "tagline"
+      ]
+    },
+    {
+      "key": "about/mission.json",
+      "bytes": 1785,
+      "sha256": "2c35591e335e2a979deca1eb911b2218ce54ff8af3df86c4c00f821b279c68dd",
+      "topLevelKeys": [
+        "contact",
+        "description",
+        "headline",
+        "last_updated",
+        "team",
+        "values"
+      ]
+    },
+    {
+      "key": "about/sources.json",
+      "bytes": 3086,
+      "sha256": "3fbc099a143564790c5e25de659dca6559d1d0e9023137ee94ccc5b0720b3078",
+      "topLevelKeys": [
+        "description",
+        "sources"
+      ]
+    },
+    {
+      "key": "armaments/index.json",
+      "bytes": 1610,
+      "sha256": "31515401a0bad8bab15da0d32ddb9624f8becd5f4566e2cd2c89415567bc8a6a",
+      "topLevelKeys": [
+        "categories",
+        "nations"
+      ]
+    },
+    {
+      "key": "articles/index.json",
+      "bytes": 863,
+      "sha256": "885190bf79bfb929dc79d9d90f7b29280d60607d970539754e423d412d7a941c",
+      "topLevelKeys": [
+        "categories"
+      ]
+    },
+    {
+      "key": "awards/index.json",
+      "bytes": 18,
+      "sha256": "517fa068b1e37a49c921e14788f827b4465a651d85e2d388233890c050a155f4",
+      "topLevelKeys": [
+        "records"
+      ]
+    },
+    {
+      "key": "campaigns/index.json",
+      "bytes": 1220,
+      "sha256": "4adad5ce1a6055db2c3b02e59896d5897c1549e4b787a2b49893ecdd15608433",
+      "topLevelKeys": [
+        "theaters"
+      ]
+    },
+    {
+      "key": "formations/allies/allies.json",
+      "bytes": 21307,
+      "sha256": "5f51f20c67b032442812a99bfdff20de9aa1eff6649854a38d716ec73ba6a24e",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/armies.json",
+      "bytes": 24456,
+      "sha256": "984c177752db749647bc51860acc6bff421ff2974799b96fbb7963c6c9fcb16b",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/army-groups.json",
+      "bytes": 30501,
+      "sha256": "d3ce883cf85ade39b816fdd4002805805830abb4dc85ec7870f1b6d14a89ab6e",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/battalions.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/brigades.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/companies.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/corps.json",
+      "bytes": 21487,
+      "sha256": "0df390cb95e6eb0c9fd31e833196bf59415b782fe024eaca3327a128ea4f6a7d",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/divisions.json",
+      "bytes": 5543,
+      "sha256": "cdc44cb18002cee5121e91e7a0f3917050e68d94ab5ffb01aaca091dada94c49",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/luftflotte.json",
+      "bytes": 15009,
+      "sha256": "c838f01141c91cac274877b65204790761b68460c0dccb442a1a146b42f11e8f",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/naval.json",
+      "bytes": 12329,
+      "sha256": "34788c9808f987cab63806568093236358388fbcd6d0d667c328758e3a29c7ee",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/regiments.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/germany/ss.json",
+      "bytes": 21749,
+      "sha256": "55001bc6a5c7fc70fdd16aed61ced0881c596911253ed613f3a893080d2f5c25",
+      "topLevelKeys": []
+    },
+    {
+      "key": "formations/index.json",
+      "bytes": 2611,
+      "sha256": "7ce7101d720c361d8b796ca81304717738c9ab622fd3b99e7736136b346984a7",
+      "topLevelKeys": [
+        "categories"
+      ]
+    },
+    {
+      "key": "formations/volunteer-formations.json",
+      "bytes": 33879,
+      "sha256": "2616e71b057b40baecb4fbe7c1f95b65d1d4b3ff0fd3d22fcefc3cb4d5cab324",
+      "topLevelKeys": []
+    },
+    {
+      "key": "homepage.json",
+      "bytes": 1750,
+      "sha256": "428f13b76ae3596fef7b6caac00e2716180fd3c164afabacc12b6d2952b91548",
+      "topLevelKeys": [
+        "archiveCards",
+        "browseSectionLabel",
+        "hero",
+        "meta"
+      ]
+    },
+    {
+      "key": "legal/cookie-policy.json",
+      "bytes": 1402,
+      "sha256": "3e23f6e660a76bb442815bf0c5ed41d6c654998831db5cd8075237c3ae4d5202",
+      "topLevelKeys": [
+        "lastUpdated",
+        "sections",
+        "title"
+      ]
+    },
+    {
+      "key": "legal/copyright-policy.json",
+      "bytes": 1701,
+      "sha256": "ba5aecbf2b76f602d3a94b553e055a2c76603a04303e96c679b173dfffa67168",
+      "topLevelKeys": [
+        "lastUpdated",
+        "sections",
+        "title"
+      ]
+    },
+    {
+      "key": "legal/privacy-policy.json",
+      "bytes": 1638,
+      "sha256": "13511d4d33c8227751bfc5ab5d7c6acf00b6e76ccb9d5aba901d77775d3f7bb1",
+      "topLevelKeys": [
+        "lastUpdated",
+        "sections",
+        "title"
+      ]
+    },
+    {
+      "key": "legal/terms-of-use.json",
+      "bytes": 1875,
+      "sha256": "1394667f0c05c3c62d140bddd93fea443afd07df7476bba7bc917173d9065956",
+      "topLevelKeys": [
+        "lastUpdated",
+        "sections",
+        "title"
+      ]
+    },
+    {
+      "key": "letters/index.json",
+      "bytes": 1007,
+      "sha256": "e363ce8f285a61d5a623e594d5813989703a94b21f20f29a88f13c0911043552",
+      "topLevelKeys": [
+        "collections",
+        "note"
+      ]
+    },
+    {
+      "key": "maps/index.json",
+      "bytes": 18,
+      "sha256": "517fa068b1e37a49c921e14788f827b4465a651d85e2d388233890c050a155f4",
+      "topLevelKeys": [
+        "records"
+      ]
+    },
+    {
+      "key": "navigation.json",
+      "bytes": 10861,
+      "sha256": "c50aeee7153bbedbf247320e68937a9b9dfb6d5196623eae78a6a6cb7b6d0b66",
+      "topLevelKeys": [
+        "brand",
+        "footer",
+        "primary",
+        "settings",
+        "utility"
+      ]
+    },
+    {
+      "key": "nsdap/glossary.json",
+      "bytes": 14230,
+      "sha256": "14cd3f97fe324fb14ef44f12ce390b4d49bba7ff9345a14cf184930c3f6f5752",
+      "topLevelKeys": [
+        "terms"
+      ]
+    },
+    {
+      "key": "nsdap/hitler/bio.json",
+      "bytes": 2149,
+      "sha256": "5ed2c63ab1e91f6b02ff58e9d2a829366ed8659414498c2361c26c20bef98f81",
+      "topLevelKeys": [
+        "biography",
+        "birthplace",
+        "born",
+        "died",
+        "early_life",
+        "full_name",
+        "id",
+        "place_of_death",
+        "subject",
+        "titles"
+      ]
+    },
+    {
+      "key": "nsdap/hitler/chancellorship.json",
+      "bytes": 7796,
+      "sha256": "deffbfd343ffa9dc918d9623daf3e802410a6c1dc6a503bc83cde3e97df4b37c",
+      "topLevelKeys": [
+        "id",
+        "sections",
+        "sources",
+        "summary",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/hitler/end.json",
+      "bytes": 1838,
+      "sha256": "921a896d75a3f2f00ebfb50a14926d0dfe4cc23b72a71d39cc010c385a281afd",
+      "topLevelKeys": [
+        "dates",
+        "id",
+        "sections",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/hitler/family.json",
+      "bytes": 6293,
+      "sha256": "e653badd54879a9435928827305df9108d584b4348205f213aa5bc96911d090f",
+      "topLevelKeys": [
+        "id",
+        "sections",
+        "sources",
+        "summary",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/hitler/rise.json",
+      "bytes": 1952,
+      "sha256": "0e5b649df430e0111a9829b325611a4938bad1064b1bd3de970fc792cf966c66",
+      "topLevelKeys": [
+        "id",
+        "sections",
+        "summary",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/hitler/rule.json",
+      "bytes": 2231,
+      "sha256": "d2de5f0e9f0225abfd16bba51ea5a9f0247915891bf525446179657b52d95bba",
+      "topLevelKeys": [
+        "id",
+        "sections",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/hitler/wartime.json",
+      "bytes": 7378,
+      "sha256": "e337c57b4819de526363fd2007b5aa730d89221f8f55d634a72d5d546c9f6f5a",
+      "topLevelKeys": [
+        "id",
+        "sections",
+        "sources",
+        "summary",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/index.json",
+      "bytes": 2739,
+      "sha256": "33519bb472c8ff5febb434bc11e371e760639f890e6138ddebaf4f5641fedb9d",
+      "topLevelKeys": [
+        "disclaimer",
+        "sections"
+      ]
+    },
+    {
+      "key": "nsdap/overview.json",
+      "bytes": 1902,
+      "sha256": "e881d1d5d9cd8e02f1906c60c0e6ddb12031f1cf8835b824e464c5bfd3276194",
+      "topLevelKeys": [
+        "abbreviation",
+        "anthem",
+        "description",
+        "dissolved",
+        "founded",
+        "headquarters",
+        "ideology",
+        "leader",
+        "name",
+        "name_english",
+        "newspaper",
+        "note",
+        "paramilitary",
+        "peakMembership",
+        "youth_wings"
+      ]
+    },
+    {
+      "key": "nsdap/party/departments.json",
+      "bytes": 7700,
+      "sha256": "24cadb9f28c6d26b03631e858faf044d9e9cdec4dbe683e7ce2955cfe3f30113",
+      "topLevelKeys": [
+        "brown_house",
+        "departments",
+        "reichsleiters",
+        "sources",
+        "summary",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/dissolution.json",
+      "bytes": 1154,
+      "sha256": "1e4b4346e7c00fdef3e635ff5fc6b529f2a6f4f42d9ccc7990274d090647d80a",
+      "topLevelKeys": [
+        "content",
+        "description",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/economy.json",
+      "bytes": 1600,
+      "sha256": "8218eaf6422bb860ab727d34e656a21a892023dd86091bcddef99d4da6cb99be",
+      "topLevelKeys": [
+        "description",
+        "policies",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/foreign-policy.json",
+      "bytes": 1311,
+      "sha256": "cf2e96cafa6a466cf93c4151e2f36ee048dd54b72fefd4af5c5f55aed9874b22",
+      "topLevelKeys": [
+        "description",
+        "milestones",
+        "objectives",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/formation.json",
+      "bytes": 1204,
+      "sha256": "7bfb35daac2ecad855e1abbcd3123875a100c18d7c433726619bf285f30997e5",
+      "topLevelKeys": [
+        "content",
+        "description",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/leadership.json",
+      "bytes": 1665,
+      "sha256": "ec14fc2e90533055013ebe745113e7c6aa161bff9deba6f70c04ef9b12327b9d",
+      "topLevelKeys": [
+        "description",
+        "leaders",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/organizations.json",
+      "bytes": 2208,
+      "sha256": "0037eaf4205c26363108783abb7f0106b84b8b3e0e2d1083800cd0dfd5f2ced2",
+      "topLevelKeys": [
+        "organisations",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/programme.json",
+      "bytes": 6766,
+      "sha256": "7fd9403e17e0641a77c36e00a5c18141b0ef576fa798cef2dbc0e24678ac0d23",
+      "topLevelKeys": [
+        "announced",
+        "context",
+        "declaration_of_immutability",
+        "location",
+        "points",
+        "sources",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/religion.json",
+      "bytes": 7055,
+      "sha256": "4bdb16243e78461287d8787e8fcb0175d9d412b2fb7a2ca68cd3e80eff0ef128",
+      "topLevelKeys": [
+        "sections",
+        "sources",
+        "summary",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/state-relations.json",
+      "bytes": 1310,
+      "sha256": "132b71ea538ea4a874ac4483a612e393b864c03986cddce2fa8244ce6f370fb1",
+      "topLevelKeys": [
+        "content",
+        "description",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/party/structure.json",
+      "bytes": 2383,
+      "sha256": "f717060c6c6eeeda5999389a483b8a2f6be3dc8e3e7497fbb02ba26b2eaccb76",
+      "topLevelKeys": [
+        "affiliated_organisations",
+        "description",
+        "hierarchy",
+        "title"
+      ]
+    },
+    {
+      "key": "nsdap/sources.json",
+      "bytes": 1076,
+      "sha256": "bd493ff440c6c0cc63b41058f4732b5e01b8afe3f799463b7cd08ac2b33e6473",
+      "topLevelKeys": [
+        "sources"
+      ]
+    },
+    {
+      "key": "nsdap/timeline.json",
+      "bytes": 7163,
+      "sha256": "8ab63f31ef8f91175cc558324eda9305f227dadad4e34d5b5ecf26958e6fed42",
+      "topLevelKeys": [
+        "events"
+      ]
+    },
+    {
+      "key": "page-content.json",
+      "bytes": 4850,
+      "sha256": "85ed9397e180c3120b891d07ad57c4fcdedd51d5beb83aca56f55f5a2805b784",
+      "topLevelKeys": [
+        "about",
+        "armaments",
+        "articles",
+        "awards",
+        "campaigns",
+        "formations",
+        "letters",
+        "maps",
+        "nsdap",
+        "personnel",
+        "policies",
+        "political-docs",
+        "search",
+        "timeline"
+      ]
+    },
+    {
+      "key": "personnel/index.json",
+      "bytes": 587,
+      "sha256": "a50d8d8805b3cbfee104a571448c847a5b77f90d9427d846d59ec2b4a46c624c",
+      "topLevelKeys": [
+        "branches"
+      ]
+    },
+    {
+      "key": "political-docs/index.json",
+      "bytes": 18,
+      "sha256": "517fa068b1e37a49c921e14788f827b4465a651d85e2d388233890c050a155f4",
+      "topLevelKeys": [
+        "records"
+      ]
+    },
+    {
+      "key": "site-policies/copyright-policy.json",
+      "bytes": 5147,
+      "sha256": "9869462c308e3b7a41ee8034906b8a30501ae0173053ad902ed3f9156ce5950c",
+      "topLevelKeys": [
+        "content",
+        "last_updated",
+        "title"
+      ]
+    },
+    {
+      "key": "site-policies/disclaimer.json",
+      "bytes": 6298,
+      "sha256": "d7e5a5c06503e46b3133fe70c2a6a9630303b663cfba6eb50344a23e66bcf989",
+      "topLevelKeys": [
+        "content",
+        "last_updated",
+        "title"
+      ]
+    },
+    {
+      "key": "site-policies/index.json",
+      "bytes": 593,
+      "sha256": "75479bc08fc0414a4e9bdab602505a151ca9770f6713767f282c5cdc1d67b8b2",
+      "topLevelKeys": [
+        "policies"
+      ]
+    },
+    {
+      "key": "site-policies/privacy-policy.json",
+      "bytes": 5865,
+      "sha256": "c4d5f662b63667b92b75e08c694185131266e4ac624925915791fef67eabfbe4",
+      "topLevelKeys": [
+        "content",
+        "last_updated",
+        "title"
+      ]
+    },
+    {
+      "key": "site-policies/removal-requests.json",
+      "bytes": 519,
+      "sha256": "685799ad10bdc692883073d3e1713fc25db21a5840e928cf7a2328255ad9d5f3",
+      "topLevelKeys": [
+        "content"
+      ]
+    },
+    {
+      "key": "site-policies/terms-of-use.json",
+      "bytes": 6247,
+      "sha256": "f6938c8d151813df189d3a79a10cba95e5ff071fca0275e1f45d37401d303d44",
+      "topLevelKeys": [
+        "content",
+        "last_updated",
+        "title"
+      ]
+    },
+    {
+      "key": "site-settings.json",
+      "bytes": 1990,
+      "sha256": "ca9369a680ff42038550a27f6bc1ec845423baf0d3469a5e306c3b4ca44c687b",
+      "topLevelKeys": [
+        "archive",
+        "contact",
+        "cookieBanner",
+        "disclaimer",
+        "features",
+        "site",
+        "social"
+      ]
+    },
+    {
+      "key": "ui-strings.json",
+      "bytes": 5406,
+      "sha256": "52298bfa0aeca6dc732eebbb848f26470edde77ef149e584670911c652276f96",
+      "topLevelKeys": [
+        "a11y.skipToContent",
+        "armaments.nation.all",
+        "armaments.nation.germany",
+        "armaments.nation.italy",
+        "armaments.nation.japan",
+        "armaments.nation.otherAxis",
+        "attribution.closeAria",
+        "attribution.viewAria",
+        "breadcrumb.backToArmaments",
+        "breadcrumb.backToArticles",
+        "breadcrumb.backToAwards",
+        "breadcrumb.backToCampaigns",
+        "breadcrumb.backToFormations",
+        "breadcrumb.backToLetters",
+        "breadcrumb.backToMaps",
+        "breadcrumb.backToPersonnel",
+        "breadcrumb.backToPoliticalDocs",
+        "card.readMore",
+        "card.viewRecord",
+        "contact.charCountMax",
+        "contact.charCountMinimum",
+        "contact.closeAria",
+        "contact.confirmedBody",
+        "contact.confirmedClose",
+        "contact.confirmedNote",
+        "contact.confirmedTitle",
+        "contact.error.email",
+        "contact.error.generic",
+        "contact.error.message",
+        "contact.error.name",
+        "contact.error.subject",
+        "contact.label.email",
+        "contact.label.message",
+        "contact.label.name",
+        "contact.label.subject",
+        "contact.placeholder.email",
+        "contact.placeholder.message",
+        "contact.placeholder.name",
+        "contact.placeholder.subject",
+        "contact.proc.authenticating",
+        "contact.proc.registered",
+        "contact.proc.sealing",
+        "contact.proc.transferring",
+        "contact.proc.verified",
+        "contact.submit",
+        "empty.armamentsCompiling.text",
+        "empty.articlesComingSoon.text",
+        "empty.articlesComingSoon.title",
+        "empty.formationsExpansion.text",
+        "empty.formationsExpansion.title",
+        "empty.letters.text",
+        "empty.letters.title",
+        "empty.nsdap.default",
+        "empty.nsdap.glossary",
+        "empty.nsdap.overview",
+        "empty.nsdap.section",
+        "empty.nsdap.timeline",
+        "empty.personnelNoRecords",
+        "empty.personnelPending",
+        "empty.recordsPending.text",
+        "empty.recordsPending.title",
+        "empty.search.noResults",
+        "empty.search.promptText",
+        "empty.search.promptTitle",
+        "empty.search.tryDifferent",
+        "empty.timeline.text",
+        "empty.timeline.thisPeriod",
+        "empty.timeline.title",
+        "error.armamentNotFoundWithId",
+        "error.articleNotFound",
+        "error.awardNotFound",
+        "error.documentNotFound",
+        "error.letterNotFound",
+        "error.mapNotFound",
+        "error.noArmamentId",
+        "error.recordNotFound",
+        "letters.readFullLetter",
+        "letters.readFullRecord",
+        "lightbox.closeAria",
+        "lightbox.viewerAria",
+        "nav.closeMenuAria",
+        "nav.openMenuAria",
+        "nav.policies",
+        "nav.removalRequests",
+        "nav.search",
+        "nav.searchArchiveAria",
+        "nav.siteNavigationAria",
+        "nav.toggleThemeAria",
+        "pagination.next",
+        "pagination.nextAria",
+        "pagination.pageAria",
+        "pagination.prev",
+        "pagination.prevAria",
+        "search.filter.all",
+        "search.filter.armaments",
+        "search.filter.articles",
+        "search.filter.campaigns",
+        "search.filter.letters",
+        "search.filter.personnel",
+        "search.placeholder",
+        "search.sectionLabel",
+        "search.submit"
+      ]
+    }
+  ]
+}

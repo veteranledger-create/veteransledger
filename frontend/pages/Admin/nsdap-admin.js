@@ -1,5 +1,6 @@
 ﻿import { TranslationsPanel } from "./translations-panel.js";
 import { authHeader, escHtml, makeStatusFn, safeJson } from "./admin-utils.js";
+import { createFileEditorGuard } from "./admin-file-editor-guard.js";
 
 /**
  * VeteransLedger · Admin — NSDAP Content
@@ -35,10 +36,20 @@ const NSDAP_FILES = [
 
 let currentKey = null;
 let currentStructured = null;   // "overview" | "timeline" | "glossary" | null
+let currentData = null;         // the loaded file, kept so structured editors can
+                                 // preserve keys their form doesn't manage
+let glossaryKey = "terms";      // which top-level key this glossary file uses
 let timelineEvents = [];        // draft array for timeline editor
 let glossaryEntries = [];       // draft array for glossary editor
 
 const translationsPanel = new TranslationsPanel("nsdap-translations-panel", "site_content");
+const guard = createFileEditorGuard({
+  tabPanelId: "tab-nsdap",
+  // Timeline/glossary rows are re-rendered from these drafts; their inputs are
+  // covered by the panel snapshot, but row add/remove is not, so length is
+  // tracked explicitly.
+  extra: () => [timelineEvents.length, glossaryEntries.length],
+});
 
 const setStatus = makeStatusFn("nsdap-form-status");
 
@@ -99,6 +110,7 @@ async function loadFile(key) {
     const res = await fetch(`/api/site-content?key=${encodeURIComponent(key)}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await safeJson(res);
+    currentData = data;
     setStatus("", false);
     translationsPanel.load(key);
 
@@ -116,7 +128,9 @@ async function loadFile(key) {
       el("nsdap-editor").disabled = false;
       showPanel(null);
     }
+    guard.markClean();
   } catch (err) {
+    currentData = null;
     setStatus(`Failed to load: ${err.message}`, true);
     el("nsdap-editor").disabled = false;
     showPanel(null);
@@ -144,6 +158,8 @@ async function handleSave() {
       body: JSON.stringify(parsed),
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    currentData = parsed;
+    guard.markClean();
     setStatus("Saved.", false);
   } catch (err) {
     setStatus(`Save failed: ${err.message}`, true);
@@ -182,6 +198,11 @@ function populateOverview(data) {
 
 function readOverview() {
   return {
+    // Spread the loaded file first so keys this form has no input for
+    // (overview.json also carries youth_wings, paramilitary, newspaper and
+    // anthem) survive a save instead of being dropped. Generic: any future
+    // key is preserved too, without naming it here.
+    ...(currentData ?? {}),
     name:           el("nsdap-ov-name").value.trim(),
     name_english:   el("nsdap-ov-name-en").value.trim() || undefined,
     abbreviation:   el("nsdap-ov-abbr").value.trim() || undefined,
@@ -199,8 +220,10 @@ function readOverview() {
 // ── Timeline structured editor ────────────────────────────────────────────────
 
 function populateTimeline(data) {
+  // `_original` carries the untouched source event so readTimeline() can put
+  // back any per-event key this form has no input for.
   timelineEvents = Array.isArray(data.events)
-    ? data.events.map((e) => ({ year: e.year ?? "", date: e.date || "", title: e.title || "", description: e.description || "" }))
+    ? data.events.map((e) => ({ year: e.year ?? "", date: e.date || "", title: e.title || "", description: e.description || "", _original: e }))
     : [];
   renderTimeline();
 }
@@ -216,7 +239,11 @@ function readTimeline() {
     timelineEvents[i].description = row.querySelector("[data-field='description']")?.value?.trim() || "";
   });
   return {
+    // Preserve any top-level key besides `events`, and any per-event key the
+    // form doesn't manage.
+    ...(currentData ?? {}),
     events: timelineEvents.map((e) => ({
+      ...(e._original ?? {}),
       year:        e.year !== "" ? (isNaN(+e.year) ? e.year : +e.year) : undefined,
       date:        e.date || undefined,
       title:       e.title || "",
@@ -256,9 +283,20 @@ function renderTimeline() {
 // ── Glossary structured editor ────────────────────────────────────────────────
 
 function populateGlossary(data) {
-  glossaryEntries = Array.isArray(data.entries)
-    ? data.entries.map((e) => ({ term: e.term || "", definition: e.definition || "", category: e.category || "" }))
-    : [];
+  // The real glossary file stores its list under `terms`; only read it as
+  // `entries` if that's what a given file actually uses. Reading the wrong
+  // key yielded an empty editor that then wrote an empty list back over the
+  // real content on save.
+  glossaryKey = Array.isArray(data.terms) ? "terms" : "entries";
+  const list = Array.isArray(data[glossaryKey]) ? data[glossaryKey] : [];
+  // `_original` carries the untouched source entry so readGlossary() can put
+  // back per-entry keys this form has no input for (e.g. `origin`).
+  glossaryEntries = list.map((e) => ({
+    term: e.term || "",
+    definition: e.definition || "",
+    category: e.category || "",
+    _original: e,
+  }));
   renderGlossary();
 }
 
@@ -271,9 +309,13 @@ function readGlossary() {
     glossaryEntries[i].category   = row.querySelector("[data-field='category']")?.value?.trim() || "";
   });
   return {
-    entries: glossaryEntries
+    // Preserve any other top-level key, and write the list back under the
+    // same key the file actually uses (`terms` for the real glossary).
+    ...(currentData ?? {}),
+    [glossaryKey]: glossaryEntries
       .filter((e) => e.term)
       .map((e) => ({
+        ...(e._original ?? {}),
         term:       e.term,
         definition: e.definition || "",
         ...(e.category ? { category: e.category } : {}),

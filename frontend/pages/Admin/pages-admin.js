@@ -1,6 +1,7 @@
 import { TranslationsPanel } from "./translations-panel.js";
 import { authHeader, escHtml, makeStatusFn, safeJson } from "./admin-utils.js";
 import { createStructuredEditor } from "./admin-structured-editor.js";
+import { createFileEditorGuard } from "./admin-file-editor-guard.js";
 
 /**
  * VeteransLedger · Admin — Content Page Editor
@@ -33,6 +34,7 @@ let structured = null;   // handle returned by createStructuredEditor
 let currentData = null;  // last-parsed JSON for the loaded file
 const setStatus = makeStatusFn("pages-form-status");
 const translationsPanel = new TranslationsPanel("pages-translations-panel", "site_content");
+const guard = createFileEditorGuard({ tabPanelId: "tab-pages" });
 
 function el(id) { return document.getElementById(id); }
 
@@ -71,6 +73,9 @@ function toggleDevMode() {
     editor.hidden = true;
     structuredEl.hidden = false;
   }
+  // Toggling Developer mode re-renders the same content in a different
+  // surface — a view change, not an edit.
+  guard.markClean();
 }
 
 function renderSidebar() {
@@ -102,6 +107,7 @@ async function loadFile(key) {
     editor.disabled = false;
     editor.hidden = !devMode();
     structuredEl.hidden = devMode();
+    guard.markClean();
     setStatus("", false);
     translationsPanel.load(key);
   } catch (err) {
@@ -140,6 +146,7 @@ async function handleSave() {
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     currentData = parsed;
+    guard.markClean();
     setStatus("Saved.", false);
   } catch (err) {
     setStatus(`Save failed: ${err.message}`, true);

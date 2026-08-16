@@ -1,5 +1,6 @@
 import { authHeader, makeStatusFn, safeJson } from "./admin-utils.js";
 import { TranslationsPanel } from "./translations-panel.js";
+import { createFileEditorGuard } from "./admin-file-editor-guard.js";
 
 /**
  * VeteransLedger · Admin — Page Content Editor
@@ -11,6 +12,7 @@ import { TranslationsPanel } from "./translations-panel.js";
 const KEY = "page-content.json";
 const setStatus = makeStatusFn("pce-form-status");
 const translationsPanel = new TranslationsPanel("pce-translations-panel", "site_content");
+const guard = createFileEditorGuard({ tabPanelId: "tab-page-content" });
 
 let fullData = null;
 
@@ -42,6 +44,8 @@ function init() {
     const key = f("pce-page-select")?.value;
     if (!key || !fullData) return;
     populateForm(key, fullData[key] ?? {});
+    // Switching page repopulates every field — that's a load, not an edit.
+    guard.markClean();
   });
 
   f("pce-save-btn")?.addEventListener("click", handleSave);
@@ -63,6 +67,7 @@ async function loadPageContent() {
     } else if (sel?.value) {
       populateForm(sel.value, fullData[sel.value] ?? {});
     }
+    guard.markClean();
   } catch (err) {
     setStatus(`Failed to load: ${err.message}`, true);
   }
@@ -133,6 +138,7 @@ async function handleSave() {
       body: JSON.stringify(fullData),
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    guard.markClean();
     setStatus("Saved.", false);
   } catch (err) {
     setStatus(`Save failed: ${err.message}`, true);

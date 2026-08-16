@@ -26,6 +26,8 @@ storage/temporary/
 backups/database/
 *.db
 *.sqlite
+# Production DB dumps — contain the users table (password hashes). Never commit.
+*.dump
 
 # OS
 .DS_Store
