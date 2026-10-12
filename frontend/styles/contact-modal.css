@@ -521,49 +521,130 @@
 }
 
 /* ── Attribution modal (single-column archive modal variant) ── */
-.attribution-modal { max-width: 440px; }
+/* ── Image Record panel ───────────────────────────────────────────────
+   An editorial archive card rather than a metadata form. Three distinct
+   registers instead of one repeating row type:
+     · caption  — the image's own short label, set as a lede
+     · provenance — a single marker line that states, honestly, whether
+       the source is confirmed; never shown when no status exists
+     · notes    — long-form prose at a comfortable reading measure
+     · plate    — short catalogue values as a dense two-column grid,
+       which is what removes the repetitive-row and empty-space problem
+   Palette, type and spacing are the site's existing archival tokens. */
+.attribution-modal {
+  max-width: 540px;
+  width: min(540px, calc(100vw - 2 * var(--space-5)));
+}
 .attribution-modal__body {
-  padding: var(--space-6) var(--space-6);
-  background: #141008;
+  /* Keeps a long record scrollable inside the panel instead of pushing
+     the dialog past the viewport on short screens. */
+  max-height: min(70vh, 620px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
-.attribution-modal__list { margin: 0; }
-.attribution-modal__row {
+
+.image-record { display: flex; flex-direction: column; gap: var(--space-5); }
+
+.image-record__caption {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: 1.35;
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
+}
+
+/* Provenance marker — a small square plate, filled when the archive has
+   confirmed the source and hollow when it has not, so verified and
+   unverified never read alike. */
+.image-record__provenance {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.image-record__provenance-mark {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin-top: 5px;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+.image-record__provenance--verified { color: #c9a227; }
+.image-record__provenance--verified .image-record__provenance-mark { background: currentColor; }
+.image-record__provenance--unverified { color: var(--text-faint); }
+
+.image-record__note { margin: 0; }
+.image-record__note-label {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.image-record__note-text {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  overflow-wrap: break-word;
+}
+
+/* Catalogue plate — dense label/value pairs, hairline separated, no
+   per-row borders or alternating fills. */
+.image-record__plate {
   display: grid;
-  grid-template-columns: 90px 1fr;
-  gap: var(--space-3);
-  padding: var(--space-2) 0;
-  border-bottom: 1px solid #2a1c06;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--space-4) var(--space-5);
+  margin: 0;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-dim);
 }
-.attribution-modal__row:last-child { border-bottom: none; }
-.attribution-modal__row dt {
+.image-record__cell { min-width: 0; }
+.image-record__cell dt {
   font-family: var(--font-display);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #7a6040;
-  margin: 0;
+  color: var(--gold-dim);
+  margin-bottom: 2px;
 }
-.attribution-modal__row dd {
-  font-size: 12px;
-  line-height: 1.6;
-  color: #c8b888;
+.image-record__cell dd {
   margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
 }
-.attribution-modal__empty {
+
+.image-record__empty {
   margin: 0;
-  font-size: 12px;
+  font-size: var(--text-sm);
+  color: var(--text-faint);
   font-style: italic;
-  color: #6a5838;
 }
-/* Historical Status row — purposely stands out */
-.attribution-modal__row--status {
-  border-inline-start: 2px solid #8a6a30;
-  padding-inline-start: var(--space-3);
-  margin-top: 4px;
+
+@media (max-width: 520px) {
+  .image-record__plate { grid-template-columns: 1fr; gap: var(--space-3); }
+  .attribution-modal__body { max-height: 76vh; }
 }
-.attribution-modal__row--status dt { color: #b08a3a; }
-.attribution-modal__row--status dd { color: #d4b86a; }
+.attribution-modal__body {
+  padding: var(--space-6) var(--space-6);
+  background: #141008;
+}
+/* The former uniform-row list (.attribution-modal__list/__row/__empty) was
+   removed with the redesign — the panel now renders prose, a catalogue
+   plate and a provenance marker as distinct registers, all defined in the
+   .image-record block above. */
 
 /* ── Image lightbox ─────────────────────────────────────────── */
 .lightbox-overlay {

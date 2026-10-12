@@ -7,8 +7,9 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
+import { initMissingMediaFallback } from "/pages/shared/media-blocks.js";
 
-const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
+initMissingMediaFallback();
 
 let _indexPromise = null;
 async function loadIndex() {
@@ -74,7 +75,7 @@ function renderMapImages(rec) {
         <figure class="record-media-item" style="max-width:100%;margin-bottom:var(--space-6)">
           <img src="${g.url || g.file || ""}" alt="${g.caption || rec.title}" loading="lazy"
             style="max-width:100%;height:auto"
-            onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
+            data-missing-fallback>
           ${g.caption ? `<figcaption>${g.caption}</figcaption>` : ""}
         </figure>`).join("")}
     </section>`;

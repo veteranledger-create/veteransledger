@@ -176,22 +176,6 @@
   },
   {
     "type": "Infantry Weapon",
-    "dossier": {
-      "photos": [
-        {
-          "type": "image",
-          "images": [
-            {
-              "src": "/public/images/armaments/equipment/panzerfaust/photos/panzerfaust.webp",
-              "type": "photograph",
-              "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed.",
-              "caption": "Panzerfaust anti-tank weapon",
-              "historical_status": "Source Unverified — Pending Archival Review"
-            }
-          ]
-        }
-      ]
-    },
     "range_m": 30,
     "weight_kg": 6.8,
     "manufacturer": "Multiple",

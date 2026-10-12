@@ -7,8 +7,9 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
+import { initMissingMediaFallback } from "/pages/shared/media-blocks.js";
 
-const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
+initMissingMediaFallback();
 
 const _THEATERS_FALLBACK = [
   { id: "eastern-front", label: "Eastern Front", campaigns: ["barbarossa","blue","caucasus","kharkov","kiev","leningrad","moscow","stalingrad"] },
@@ -56,7 +57,7 @@ function formatDate(dateStr) {
 function render(root, campaign) {
   const theater = campaign._theater || campaign.theater || "";
   const theaterLabel = campaign._theaterLabel || theater;
-  const img = campaign.image || PLACEHOLDER;
+  const img = campaign.image || "";
   const dateStart = formatDate(campaign.dates?.start);
   const dateEnd = formatDate(campaign.dates?.end);
   const dateStr =
@@ -88,7 +89,7 @@ function render(root, campaign) {
       </div>
     </header>
 
-    <img class="record-hero-image" src="${img}" alt="${campaign.title || ""}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
+    <img class="record-hero-image" src="${img}" alt="${campaign.title || ""}" data-missing-fallback>
 
     ${campaign.summary ? `<blockquote class="record-summary">${campaign.summary}</blockquote>` : ""}
 

@@ -3,7 +3,7 @@
  * Renders a tabbed full-media viewer for gallery images, blueprints, videos, and documents.
  */
 
-import { attachMediaFallbacks, initAttributionModal, initImageLightbox, registerAttribution } from "/pages/shared/media-blocks.js";
+import { attachMediaFallbacks, initAttributionModal, initImageLightbox, registerAttribution , attributionTriggerMarkup} from "/pages/shared/media-blocks.js";
 import { t } from "/pages/shared/ui-strings.js";
 
 const CATEGORIES_FALLBACK = ["panzer", "aircraft", "naval", "missiles", "wunderwaffen", "equipment"];
@@ -46,9 +46,9 @@ async function findArmament(id) {
   return null;
 }
 
-function attrInfoBtn(attrId) {
-  return `<button type="button" class="attribution-trigger" data-attribution-id="${attrId}" aria-label="View source and attribution"><img src="/public/images/icons/ui/info.svg" alt="" aria-hidden="true"></button>`;
-}
+// Uses the shared control markup so every image-record trigger on the
+// site is the same component.
+const attrInfoBtn = attributionTriggerMarkup;
 
 function renderImagePanel(items, modifier = "", isBlueprint = false) {
   if (!items || !items.length) {

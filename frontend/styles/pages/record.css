@@ -303,41 +303,79 @@
   letter-spacing: 0.04em;
 }
 
-/* Attribution trigger — a small inline icon next to an image caption that
-   opens the attribution modal on demand. Title/license/credit/archive/year
-   stay out of the caption entirely until a visitor asks for them, instead
-   of being printed permanently under every image. */
-.attribution-trigger {
+/* Image-record trigger — the caption-side control that opens an image's
+   provenance panel. Deliberately reads as archival apparatus rather than a
+   generic icon button: a small rotated specimen-plate mark followed by a
+   letterspaced label that says what it opens, so the affordance is legible
+   without an icon legend. Credit/licence/archive/year stay out of the
+   caption entirely until a visitor asks for them. */
+.image-record-trigger {
   appearance: none;
   -webkit-appearance: none;
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 19px;
-  height: 19px;
-  margin-inline-start: 6px;
+  gap: 6px;
+  margin-inline-start: var(--space-3);
   padding: 0;
   border: none;
   background: none;
-  background-color: transparent;
+  color: var(--gold-dim);
   cursor: pointer;
-  vertical-align: -4px;
-  opacity: 0.55;
-  transition: opacity 0.2s;
+  vertical-align: baseline;
+  transition: color 0.18s ease;
 }
-.attribution-trigger:hover,
-.attribution-trigger:focus-visible { opacity: 1; }
-.attribution-trigger img {
-  width: 100%;
-  height: 100%;
+/* Invisible 44px-tall hit area, centred on the control. Uses a pseudo
+   element so the touch target meets guidance without padding changing the
+   caption's layout or line rhythm. */
+.image-record-trigger::after {
+  content: "";
+  position: absolute;
+  inset-block: 50%;
+  inset-inline: -8px;
+  height: 44px;
+  transform: translateY(-50%);
 }
-/* The icon's colour is baked into the SVG itself rather than produced via a
-   CSS filter chain — at this icon's small render size, recolouring through
-   brightness/invert/sepia filters degraded the rasterized ring into a solid
-   blob in some browsers. A plain brightness dip is enough to keep it legible
-   against the light theme's pale background. */
-[data-theme="light"] .attribution-trigger img { filter: brightness(0.55); opacity: 0.8; }
-.record-gallery__item figcaption { display: flex; align-items: baseline; flex-wrap: wrap; gap: 2px; }
+.image-record-trigger__mark {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+  transition: background-color 0.18s ease;
+}
+.image-record-trigger__label {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color 0.18s ease;
+}
+.image-record-trigger:hover,
+.image-record-trigger:focus-visible { color: var(--gold); }
+.image-record-trigger:hover .image-record-trigger__mark,
+.image-record-trigger:focus-visible .image-record-trigger__mark { background-color: currentColor; }
+.image-record-trigger:hover .image-record-trigger__label { border-bottom-color: currentColor; }
+.image-record-trigger:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+}
+.image-record-trigger:active { transform: translateY(1px); }
+[data-theme="light"] .image-record-trigger { color: #8a6d1f; }
+[data-theme="light"] .image-record-trigger:hover,
+[data-theme="light"] .image-record-trigger:focus-visible { color: #6b5416; }
+
+.record-gallery__item figcaption,
+.record-image-item__caption {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px var(--space-2);
+}
 
 /* Organization chart — a real, data-driven hierarchy diagram built from
    each record's own parent_formation / constituent_divisions fields
@@ -672,6 +710,60 @@
   margin: 0;
 }
 
+/* Neutral stand-in for a single image that failed to load. Deliberately
+   restrained — a quiet labelled panel in the archive's own dark palette,
+   not a large illustrated "file not available" graphic. Sized to sit in
+   the same flow as the image it replaces without dominating the record. */
+.record-media-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-5);
+  background: var(--bg-card);
+  border: 1px dashed var(--border-dim);
+  border-radius: var(--radius);
+  box-sizing: border-box;
+}
+.record-media-missing__label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: center;
+}
+/* Hero variant: taller so the page keeps its vertical rhythm where a hero
+   image would have been, but still flat and quiet rather than pictorial. */
+.record-media-missing--hero {
+  min-height: 200px;
+  margin-bottom: var(--space-6);
+}
+
+/* Responsive guards — images and their wrappers must never force the page
+   wider than the viewport on small screens. */
+.record-image-item__img,
+.record-gallery__item img,
+.record-document__img,
+.record-media-item img,
+.record-hero-image {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 640px) {
+  .record-image-left,
+  .record-image-right {
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+  }
+  .record-image-single { max-width: 100%; }
+  .record-image-row { flex-wrap: wrap; }
+  .record-media-missing--hero { min-height: 140px; }
+}
+
 .record-letter-body {
   font-family: var(--font-serif);
   font-size: var(--text-base);
@@ -898,20 +990,13 @@
 }
 
 /* Attribution trigger inside media items */
-.record-media-item figcaption .attribution-trigger {
-  display: inline-flex;
-  align-items: center;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  opacity: 0.5;
-  vertical-align: middle;
-  margin-inline-start: 4px;
+/* Dense media-grid captions sit tighter than record-body captions, so the
+   control only needs its inline offset trimmed — everything else is
+   inherited from the shared .image-record-trigger definition above. */
+.record-media-item figcaption .image-record-trigger {
+  margin-inline-start: var(--space-2);
   flex-shrink: 0;
 }
-.record-media-item figcaption .attribution-trigger:hover { opacity: 1; }
-.record-media-item figcaption .attribution-trigger img { width: 12px; height: 12px; }
 
 /* Documents & Manuals list */
 .record-documents-list {

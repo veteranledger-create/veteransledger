@@ -7,8 +7,9 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
+import { initMissingMediaFallback } from "/pages/shared/media-blocks.js";
 
-const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
+initMissingMediaFallback();
 
 const _BRANCHES_FALLBACK = [
   { id: "army",         label: "Heer (Army)",        file: "army.json" },
@@ -63,7 +64,7 @@ function render(root, p) {
   document.title = `${p.name} · VeteransLedger`;
 
   const branchLabel = p._branchLabel || p._branch || p.branch || "";
-  const portrait = p.portrait || p.image || p.photo || PLACEHOLDER;
+  const portrait = p.portrait || p.image || p.photo || "";
   const born = formatDate(p.born);
   const died = formatDate(p.died);
   const commands = p.commands || [];
@@ -88,7 +89,7 @@ function render(root, p) {
           ${born ? `b. ${born}` : ""}${born && died ? " · " : ""}${died ? `d. ${died}` : ""}
         </p>
       </div>
-      <img class="record-portrait" src="${portrait}" alt="${p.name || ""}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
+      <img class="record-portrait" src="${portrait}" alt="${p.name || ""}" data-missing-fallback>
     </header>
 
     ${p.biography ? (() => {

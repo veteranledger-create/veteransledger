@@ -289,23 +289,6 @@
     "crew": 2,
     "type": "Armoured Personnel Carrier / Halftrack",
     "engine": "Maybach HL 42 TURKM, 100 hp",
-    "dossier": {
-      "photos": [
-        {
-          "type": "image",
-          "images": [
-            {
-              "src": "/public/images/armaments/panzer/sdkfz-251/photos/sdkfz-251-wurfrahmen.webp",
-              "type": "photograph",
-              "notes": "This image's original source has not yet been verified. Provenance details will be added once confirmed.",
-              "caption": "Sd.Kfz. 251 Wurfrahmen variant",
-              "description": "Sd.Kfz. 251/1 fitted with Wurfrahmen 40 rocket-launcher frames.",
-              "historical_status": "Source Unverified — Pending Archival Review"
-            }
-          ]
-        }
-      ]
-    },
     "armament": {
       "primary": "2× 7.92 mm MG 34/42 (standard variant)",
       "variants": [

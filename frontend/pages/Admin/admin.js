@@ -18,6 +18,25 @@ const activityLog = document.getElementById("activity-log");
 
 let token = null;
 
+// ── Admin shell topbar ──────────────────────────────────────
+// The topbar belongs to the authenticated dashboard. On the login screen
+// it is detached from the DOM entirely — not hidden — so the full-viewport
+// login composition centres against the real viewport instead of being
+// pushed down by a 52px bar. A comment node holds its position so it can be
+// re-attached in the same place on sign-in.
+const topbarEl = document.getElementById("admin-topbar");
+const topbarSlot = document.createComment("admin-topbar");
+topbarEl?.before(topbarSlot);
+
+function setTopbarAttached(attached) {
+  if (!topbarEl) return;
+  if (attached) { if (!topbarEl.isConnected) topbarSlot.after(topbarEl); }
+  else if (topbarEl.isConnected) topbarEl.remove();
+}
+
+// Applied before init() so the bar never flashes on an unauthenticated load.
+setTopbarAttached(!!sessionStorage.getItem("vl_admin_token"));
+
 // ── Init ────────────────────────────────────────────────────
 async function init() {
   token = sessionStorage.getItem("vl_admin_token");
@@ -217,12 +236,14 @@ loginForm?.addEventListener("submit", async (e) => {
 logoutBtn?.addEventListener("click", () => {
   token = null;
   sessionStorage.removeItem("vl_admin_token");
+  setTopbarAttached(false);
   if (loginPanel) loginPanel.style.display = "flex";
   if (dashboard) dashboard.hidden = true;
   loginForm?.reset();
 });
 
 async function showDashboard() {
+  setTopbarAttached(true);
   if (loginPanel) loginPanel.style.display = "none";
   if (dashboard) dashboard.hidden = false;
   await Promise.allSettled([loadStats(), loadActivity()]);

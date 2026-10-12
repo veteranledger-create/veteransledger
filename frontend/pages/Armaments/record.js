@@ -3,13 +3,12 @@
  * Reads :id from URL, searches all category/nation files, renders specifications.
  */
 
-import { renderDossierSection, renderHistoricalPhotographsSection, attachMediaFallbacks, initAttributionModal, initImageLightbox, heroImageCandidates, isAiGeneratedImageSrc, registerAttribution } from "/pages/shared/media-blocks.js";
+import { renderDossierSection, renderHistoricalPhotographsSection, attachMediaFallbacks, initAttributionModal, initImageLightbox, heroImageCandidates, isAiGeneratedImageSrc, registerAttribution, missingMediaElement , attributionTriggerMarkup} from "/pages/shared/media-blocks.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
 
-const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
 // Fallback used only if index.json cannot be fetched — keeps legacy
 // germany/italy/japan/other-axis coverage intact for any edge case where
@@ -85,10 +84,12 @@ function render(root, item) {
       : [];
 
   // Cascades explicit image → real photo → blueprint/diagram → AI
-  // illustration → placeholder, advancing on load failure instead of
-  // jumping straight to the placeholder (handles the many still-broken
-  // legacy /storage/... paths gracefully).
-  const heroCandidates = heroImageCandidates(item, PLACEHOLDER);
+  // illustration, advancing on load failure (handles the many still-broken
+  // legacy /storage/... paths gracefully). No placeholder image closes the
+  // cascade: when every real candidate fails the hero becomes the neutral
+  // missing-media block rather than a large illustrated graphic that would
+  // dominate the record.
+  const heroCandidates = heroImageCandidates(item, null);
   let heroIndex = 0;
   const heroWrap = document.createElement("div");
   heroWrap.className = "armament-hero-wrap";
@@ -102,9 +103,16 @@ function render(root, item) {
   const updateHeroBadge = () => {
     heroBadge.hidden = !isAiGeneratedImageSrc(item, heroImg.src.replace(location.origin, ""));
   };
+  const showHeroMissing = () => {
+    heroBadge.hidden = true;
+    const missing = missingMediaElement(item.name || "");
+    missing.classList.add("record-media-missing--hero");
+    heroImg.replaceWith(missing);
+  };
   const tryNextHero = () => {
     heroIndex++;
     if (heroIndex < heroCandidates.length) { heroImg.src = heroCandidates[heroIndex]; updateHeroBadge(); }
+    else showHeroMissing();
   };
   heroImg.addEventListener("error", tryNextHero);
   heroImg.addEventListener("load", () => { if (!heroImg.naturalWidth) tryNextHero(); });
@@ -336,9 +344,9 @@ const DOC_TYPE_LABELS = {
   original_document: "Original Document",
 };
 
-function attrInfoBtn(attrId) {
-  return `<button type="button" class="attribution-trigger" data-attribution-id="${attrId}" aria-label="View source and attribution"><img src="/public/images/icons/ui/info.svg" alt="" aria-hidden="true"></button>`;
-}
+// Uses the shared control markup so every image-record trigger on the
+// site is the same component.
+const attrInfoBtn = attributionTriggerMarkup;
 
 function renderGallery(item) {
   const items = item.gallery;

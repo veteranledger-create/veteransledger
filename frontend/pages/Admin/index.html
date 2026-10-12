@@ -24,8 +24,12 @@
   <!-- ── Admin shell topbar ──────────────────────────────────────
        Static, English-only, zero fetch, zero i18n dependency — see
        /layouts/AdminLayout/admin-layout.js and Phase 2 of the Admin
-       restructuring plan (storage/admin-restructure/). -->
-  <header class="admin-topbar">
+       restructuring plan (storage/admin-restructure/).
+
+       Belongs to the authenticated dashboard only. admin.js detaches it
+       from the DOM while signed out so the login screen renders as a
+       single full-viewport composition, and re-attaches it on sign-in. -->
+  <header class="admin-topbar" id="admin-topbar">
     <a class="admin-topbar__brand" href="/admin">
       <img src="/public/images/logos/eagle.png" alt="" aria-hidden="true" class="admin-topbar__logo">
       <span>VeteransLedger <span class="admin-topbar__brand-tag">Admin</span></span>

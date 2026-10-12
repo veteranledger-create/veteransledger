@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-16
 **Environment:** `https://veteransledger.com` — Railway, project `compassionate-recreation`, env `production`
-**Status:** ✅ **Outage resolved. Production hardened.** Two follow-up tasks remain (§10, §11).
+**Status:** ⚠️ **RECOVERY WORK COMPLETED AND VERIFIED — BUT PRODUCTION IS CURRENTLY NOT SERVING.** See §16 (addendum). Five follow-up tasks documented, none implemented (§10–§14).
 
 ---
 
@@ -171,6 +171,7 @@ Two non-causal behaviours observed:
 | 4 | Public site fully functional | ✅ 10/10 routes HTTP 200 |
 | 5 | All 8 locales + Arabic RTL | ✅ 8 × 200; `dir="rtl"`, `lang="ar"` confirmed |
 | 6 | Database zero drift | ✅ **18/18 checks passed** |
+| 7 | English restored after locale testing | ✅ `<title>VeteransLedger · Axis History Archive 1933–1945</title>` |
 
 **#3 — token rejection, proven directly.** A JWT was signed with the *old* secret (the public `.env.example` placeholder) and sent to `/api/campaigns`:
 
@@ -299,7 +300,79 @@ if (config.isProduction) {
 
 ---
 
-## 12. Production changes made — complete list
+## 12. FOLLOW-UP TASK C — Missing `/storage/images/**` assets
+
+**Not started. Documented only.**
+
+**What:** `public/data/**` references **91 unique** `/storage/images/…` paths. Only **2** image files exist on disk locally, and **0** are tracked in git — `.gitignore:18` ignores `storage/images/`.
+
+**Evidence it is NOT a deployment fault:** the same image returns **404 on local and production identically**. It never shipped because it was never committed, and it is equally absent in development.
+
+**Impact:** every archive card and record hero falls back to the "FILE NOT AVAILABLE / ARCHIVE DOCUMENT MISSING" placeholder. This is the visual basis for the original "the public site has no content" report — the *text* content renders correctly. Degrades gracefully; nothing errors.
+
+**Why it is separate:** this is a **content/asset** problem, not code, schema or deployment. Restoring it means locating the original image files, which exist outside this repository.
+
+**Suggested approach:**
+1. Locate the source images (original import set or archive backup).
+2. Decide where they should live — committing ~91 binaries to git is probably wrong. A Railway **volume** mounted at `/app/storage`, or object storage (S3/R2) with `/storage` proxying to it, is the better shape.
+3. Reconcile the 91 referenced paths against what is recovered; for any genuinely lost image, decide whether to clear the reference in `public/data` or keep the placeholder.
+4. Note production currently holds **1** `media_assets` row — confirm whether its file is present.
+
+**Blocker:** none. Independent of everything else.
+
+---
+
+## 13. FOLLOW-UP TASK D — `public/data` is git-tracked source *and* runtime-mutable
+
+**Not started. Documented only. Do not redesign as part of recovery.**
+
+**What:** all 150 files under `public/data/` are committed to git **and** written at runtime by the Admin via `PUT /api/site-content`. Those are contradictory roles.
+
+**Consequence:** **any redeploy from git silently discards every site-content edit made in production.** An admin changes the homepage, a deploy happens, the change vanishes with no error and no warning. There is also no history or rollback for site-content saves — unlike the Record publish pipeline.
+
+**Severity:** 🟡 Medium. No data has been lost to this yet *that we know of* — but it is unobservable by design, which is itself the problem.
+
+**Why it is separate:** a genuine architectural decision with several valid answers. It must not be resolved under time pressure during an incident.
+
+**The decision to make — it cannot stay both:**
+
+| Option | Shape | Trade-off |
+|---|---|---|
+| **A — build-time source** | `public/data` stays in git; Admin loses write access; edits go through PR | Full history and review; slow, developer-only editing |
+| **B — runtime data** | Remove from git; mount a Railway volume at `/app/public/data`; seed once | Admin edits persist; needs backup, and the volume becomes new critical state |
+| **C — database-backed** | Move site-content into Postgres like every other content type | Consistent with the rest of the system; largest change; gains the existing backup path |
+
+**Recommendation if asked:** **B** is the smallest correct fix for the immediate persistence bug. **C** is the better long-term shape — it would also close the "no history/rollback" gap and the missing server-side schema validation on `PUT /api/site-content` in one move.
+
+**Prerequisite:** whichever is chosen, take a copy of the current `public/data` state first — production may already contain Admin edits not present in git.
+
+---
+
+## 14. FOLLOW-UP TASK E — Document the Railway deployment architecture in the repository
+
+**Not started. Documented only.**
+
+**What:** the repository contains **no deployment configuration or documentation of any kind** — no Dockerfile, no compose file, no `.github/`, no PaaS config, no process-manager config, and no commit in the entire history mentioning deployment. Production runs from `/app/dist/` in a Railway container, and nothing in the repo says so.
+
+**Why this matters most:** **this absence is the root cause of the entire incident.** Nothing in the repo ever ran `prisma migrate deploy`, so the schema drifted four migrations behind the code and stayed there. Until a deploy step exists, **it will happen again on the next migration.**
+
+**What to add:**
+
+1. **`DEPLOYMENT.md`** covering: Railway project `compassionate-recreation`, environment `production`, services `veteransledger` (app) and `Postgres`; that `PGHOST` is `postgres.railway.internal` and unreachable externally, so operational commands must use `DATABASE_PUBLIC_URL`; the full required environment-variable list; and the operational runbook (`railway run`, `railway logs`, `railway redeploy`).
+2. **A migration step in the deploy pipeline — the critical item.** Either a Railway pre-deploy command or:
+   ```json
+   "start": "prisma migrate deploy && node dist/index.js"
+   ```
+   Weigh this: it makes every boot apply pending migrations, which is safe for additive migrations and dangerous for destructive ones. A separate pre-deploy hook is the safer shape.
+3. **Add `MAINTENANCE_MODE` to `.env.example`** — currently undocumented, and it silently 503s every public page while leaving Admin up. A future operator would struggle to diagnose that.
+4. **Record the backup position.** The current Railway plan has **no automated backups or PITR**. Either upgrade, or schedule periodic `pg_dump` runs. Right now production has no recovery point beyond the manual pre-flight dump taken during this incident.
+5. **Document that `.env.example` placeholders must be replaced** — and pair this with Follow-up Task A, which makes that mechanically enforced rather than advisory.
+
+**Blocker:** none, and item 2 is the highest-leverage change in this entire report.
+
+---
+
+## 15. Production changes made — complete list
 
 1. `prisma migrate deploy` — 4 schema migrations
 2. 455 data rows inserted (Collection, Record, Entity, Relationship, TimelineEvent, Translation)
@@ -310,3 +383,70 @@ if (config.isProduction) {
 **Not touched:** Cloudflare, application architecture, application code, the Admin password hash, `public/data` files, `User`/`AuditLog`/`MediaAsset` rows.
 
 **Local repository:** `.gitignore` gained `*.dump`; six read-only/guarded scripts added under `src/scripts/`; reports added under `storage/production-incident/`. `tsc --noEmit` clean.
+
+
+---
+
+## 16. ADDENDUM — production is currently not serving (new condition)
+
+**Recorded at 2026-10-10 17:38 UTC, during the final confirmation pass.**
+
+### What is happening
+
+Every production URL now returns **HTTP 404** — `/`, `/campaigns`, `/public/data/homepage.json`, `/api/translations/…`. This is **not** an application error:
+
+```
+HTTP/1.1 404 Not Found
+Server: railway-hikari
+x-railway-fallback: true
+x-railway-edge: ams1
+
+{"status":"error","code":404,"message":"Application not found"}
+```
+
+`"Application not found"` with `x-railway-fallback: true` is **Railway's own edge** reporting that **no service is bound to this domain**. The application is not running; nothing is reaching the app code.
+
+### Evidence
+
+| Observation | Earlier (verified healthy) | Now |
+|---|---|---|
+| `Server` header | `cloudflare` | `railway-hikari` |
+| `CF-RAY` / Cloudflare headers | present | **absent (0)** |
+| `/` | 200 | **404 "Application not found"** |
+| `/public/data/homepage.json` | 200 | **404** |
+| `/api/translations/…/de` | 200 | **404** |
+| Railway CLI | authenticated | **"Unauthorized. Please run `railway login` again."** |
+| DNS `veteransledger.com` | — | `69.46.46.67` (not a Cloudflare IP) |
+| Postgres proxy `hayabusa.proxy.rlwy.net:15591` | reachable | **TCP connect still OK** |
+
+Two things changed simultaneously and independently of this work: **Cloudflare is no longer in front of the domain**, and **the Railway application service is no longer bound/running**. The **database infrastructure appears to still exist** — the public proxy still accepts TCP connections.
+
+### Date discrepancy — important
+
+Earlier commands in this session reported the local date as **2026-08-16**, and that date was stamped on every artifact in this folder. The local clock and Railway's edge now **agree on 2026-10-10**. The authoritative date is **2026-10-10**; treat the `2026-08-16` stamps on these reports as unreliable. A substantial period may have elapsed between the verified-healthy state and this observation, which would be consistent with a lapsed plan, an expired trial, or an expired CLI token.
+
+### What this does and does not mean
+
+- **It does not invalidate the recovery work.** The migrations, the 455-row restore, the translation recovery, the secret rotation and `NODE_ENV` hardening were all executed and verified against a live, healthy production — repeatedly, with 18/18 database checks and 8/8 locales confirmed rendering.
+- **It is not a regression caused by that work.** The last production action was a redeploy that succeeded, after which the site was verified healthy multiple times.
+- **It is a platform/account-level condition**, outside the application and outside this repository.
+
+### Most likely causes (not verified — I cannot reach Railway)
+
+1. Railway plan/trial lapsed or resources exhausted → service suspended or removed. Consistent with the account having **no backups or PITR available**, which indicates a free or trial tier.
+2. The service or its domain binding was deleted.
+3. DNS was repointed and Cloudflare removed from the path.
+
+### What I did NOT do
+
+I did **not** re-authenticate the Railway CLI, redeploy, recreate the service, or change DNS or Cloudflare. Re-authenticating and redeploying would be improvising a recovery, which is explicitly out of scope, and no further production changes were authorised.
+
+### Data safety
+
+The pre-flight dump is intact and gitignored: `prod-preflight-20260816-093207.dump`, 26,585 bytes, sha256 `17494884db91f11ebb70feff4a2fe76184baa83c6ddb813cc08e838b870827ca`. Note it captures the **pre-migration, pre-restore** state.
+
+The **restorable payload is also intact**: `storage/production-incident/prod-restore-payload.json` — all 455 rows with original IDs. If the production database were ever lost, `prod-restore-import.ts` can replay it into a fresh database after `prisma migrate deploy`, with all guards intact. **No recovery capability has been lost.**
+
+### Required next step (yours)
+
+Check the Railway dashboard for project `compassionate-recreation`: is the `veteransledger` service still present, is the plan active, and is the custom domain still bound? That determines whether this is a billing/plan issue, a deleted service, or a DNS change. I can resume the moment you tell me — the tooling and payload are ready.

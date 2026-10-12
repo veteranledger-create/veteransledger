@@ -10,7 +10,6 @@
 
 import { applyUiStrings } from "./ui-strings.js";
 
-const CONTENT_PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
 
 // Every media item this module renders may carry a classification payload:
 // { src, caption, title, description, historical_context, type,
@@ -51,14 +50,30 @@ function aiBadge(img) {
 // Inline caption stays deliberately short — a plain identifying label only.
 // Source/credit/license/year/etc. all live in the attribution modal now, so
 // nothing here duplicates what a click on the info icon already reveals.
+// The caption-side "Image record" control. Reads as archival apparatus —
+// a specimen-plate mark and a letterspaced label — rather than a generic
+// dashboard icon button, and states plainly what it opens. Rendered only
+// when the panel has something to show, and the whole figcaption is
+// dropped when there is neither a caption nor any attribution, because an
+// empty caption bar under an image is noise rather than metadata.
+// Markup for an already-registered attribution id. Exported so the pages
+// that register their own entries (Armaments record/gallery panels) emit
+// the identical control instead of keeping their own copy of this HTML.
+export function attributionTriggerMarkup(attrId) {
+  return `<button type="button" class="image-record-trigger" data-attribution-id="${attrId}" data-i18n-aria-label="attribution.viewAria" aria-label="View image record: source and attribution"><span class="image-record-trigger__mark" aria-hidden="true"></span><span class="image-record-trigger__label">Image record</span></button>`;
+}
+
+export function attributionTrigger(img) {
+  if (!hasAttributionData(img)) return "";
+  return attributionTriggerMarkup(registerAttribution(img));
+}
+
 function imageCaption(img) {
-  const attrId = registerAttribution(img);
+  const trigger = attributionTrigger(img);
+  if (!img.caption && !trigger) return "";
   return `
     <figcaption class="record-image-item__caption">
-      ${img.caption || ""}
-      <button type="button" class="attribution-trigger" data-attribution-id="${attrId}" data-i18n-aria-label="attribution.viewAria" aria-label="View source and attribution">
-        <img src="/public/images/icons/ui/info.svg" alt="" aria-hidden="true">
-      </button>
+      ${img.caption || ""}${trigger}
     </figcaption>`;
 }
 
@@ -98,17 +113,12 @@ function renderGalleryBlock(block) {
     ${block.title ? `<h3 class="record-block__title">${block.title}</h3>` : ""}
     <div class="record-gallery">
       ${images.map((img) => {
-        const attrId = registerAttribution(img);
+        const trigger = attributionTrigger(img);
         return `
         <figure class="record-gallery__item">
           ${aiBadge(img)}
           <img src="${img.src}" alt="${img.caption || ""}" loading="lazy">
-          <figcaption>
-            ${img.caption || ""}
-            <button type="button" class="attribution-trigger" data-attribution-id="${attrId}" aria-label="View source and attribution">
-              <img src="/public/images/icons/ui/info.svg" alt="" aria-hidden="true">
-            </button>
-          </figcaption>
+          ${img.caption || trigger ? `<figcaption>${img.caption || ""}${trigger}</figcaption>` : ""}
         </figure>`;
       }).join("")}
     </div>`;
@@ -247,12 +257,22 @@ export function renderHistoricalPhotographsSection(title, blocks) {
   const realPhotos = allImages.filter(isRealPhoto);
   const { count, dateRange, archivesRepresented } = summarizeRealPhotos(realPhotos);
 
-  const summaryPanel = `
+  // The summary only describes photographs that actually exist. With none
+  // catalogued it is dropped entirely rather than printing "0 / — / —",
+  // and individual rows are omitted when that fact isn't documented, so the
+  // panel never pads itself with placeholder dashes.
+  const summaryRows = [
+    ["Photographs Available", String(count)],
+    ["Date Range", dateRange !== "—" ? dateRange : null],
+    ["Archives Represented", archivesRepresented !== "—" ? archivesRepresented : null],
+  ].filter(([, v]) => v);
+
+  const summaryPanel = count
+    ? `
     <dl class="record-meta-grid record-media-summary">
-      <div class="record-meta-item"><dt>Photographs Available</dt><dd>${count}</dd></div>
-      <div class="record-meta-item"><dt>Date Range</dt><dd>${dateRange}</dd></div>
-      <div class="record-meta-item"><dt>Archives Represented</dt><dd>${archivesRepresented}</dd></div>
-    </dl>`;
+      ${summaryRows.map(([label, value]) => `<div class="record-meta-item"><dt>${label}</dt><dd>${value}</dd></div>`).join("")}
+    </dl>`
+    : "";
 
   const body = count
     ? renderGalleryBlock({ images: realPhotos })
@@ -317,17 +337,52 @@ export function isAiGeneratedImageSrc(item, src) {
   return dossierImages(dossier, VISUAL_DOSSIER_KEYS).some((i) => i.src === src && isAiGenerated(i));
 }
 
+// A restrained, neutral stand-in for an image that failed to load. Replaces
+// the <img> entirely rather than swapping in a large illustrated
+// "file not available" graphic, which overwhelmed the record content and was
+// itself not an archival image. Styling lives in record.css and follows the
+// existing dark archival palette.
+export function missingMediaElement(label) {
+  const el = document.createElement("div");
+  el.className = "record-media-missing";
+  el.setAttribute("role", "img");
+  el.setAttribute("aria-label", label || "Image not available");
+  el.innerHTML = `<span class="record-media-missing__label">Image not available</span>`;
+  return el;
+}
+
+// Delegated, page-wide replacement for the per-page inline
+// `onerror="this.src='...placeholder-cards.webp'"` handlers that each record
+// page used to carry. Any <img data-missing-fallback> anywhere on the page
+// becomes the neutral missing-media block when it fails to load, so every
+// content type shares one behaviour instead of five near-copies. Registered
+// in the capture phase because `error` does not bubble.
+let _missingFallbackReady = false;
+
+export function initMissingMediaFallback() {
+  if (_missingFallbackReady) return;
+  _missingFallbackReady = true;
+  document.addEventListener("error", (e) => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement)) return;
+    if (!img.hasAttribute("data-missing-fallback")) return;
+    img.replaceWith(missingMediaElement(img.alt));
+  }, true);
+}
+
 export function attachMediaFallbacks(root) {
   // Small classification markers (icons/shields/flags) — disappear cleanly
   // if the asset is ever missing, rather than showing a broken-image box.
   root.querySelectorAll(".record-card__icon").forEach((img) => {
     img.addEventListener("error", () => img.remove(), { once: true });
   });
-  // Larger dossier content images (photos, scans, maps) — fall back to the
-  // archive's standard "file not available" placeholder instead of just
-  // vanishing, since a missing photo should still read as a labelled gap.
+  // Larger dossier content images (photos, scans, maps) — swapped for the
+  // neutral missing-media block so a gap still reads as a labelled absence
+  // without a broken-image icon and without dominating the record.
   root.querySelectorAll(".record-image-item__img, .record-gallery__item img, .record-document__img, .record-media-item img").forEach((img) => {
-    img.addEventListener("error", () => { img.src = CONTENT_PLACEHOLDER; }, { once: true });
+    img.addEventListener("error", () => {
+      img.replaceWith(missingMediaElement(img.alt));
+    }, { once: true });
   });
 }
 
@@ -337,12 +392,6 @@ export function attachMediaFallbacks(root) {
 // year — only when the visitor asks for them, instead of permanently
 // printing a credit line under every image.
 let _modalReady = false;
-
-function buildModalRow(label, value, modifierClass) {
-  if (!value) return "";
-  const cls = modifierClass ? `attribution-modal__row ${modifierClass}` : "attribution-modal__row";
-  return `<div class="${cls}"><dt>${label}</dt><dd>${value}</dd></div>`;
-}
 
 function titleCase(s) {
   return String(s).replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
@@ -418,46 +467,146 @@ function modalCopyrightStatus(data) {
   return isAiGenerated(data) ? "AI-Generated — No Traditional Copyright Claim" : null;
 }
 
+// Single source of truth for what the modal would show. Returns [label,
+// value, modifier] triples for every row that has a real value — nothing is
+// invented here, each entry either comes straight from the image's own data
+// or from an explicit AI-content label derived from is_ai_generated.
+// hasAttributionData() reuses this so the info trigger can be hidden when
+// opening the modal would only produce "no information available".
+const hasValue = (v) => v != null && String(v).trim() !== "";
+
+// Splits an image's metadata into the three shapes the panel actually
+// renders, instead of flattening everything into identical table rows:
+//
+//   prose  — long-form text that wants a reading measure (description,
+//            historical context, notes)
+//   facts  — short catalogue values that read best as a dense plate of
+//            label/value pairs (type, source, credit, license, year…)
+//   status — the provenance line, surfaced as a marker rather than a row,
+//            with `verified` false whenever the archive's own wording says
+//            the source has not been confirmed. Nothing is inferred beyond
+//            that: an absent status stays absent.
+function attributionModel(data) {
+  const prose = [
+    ["Description", data.description],
+    ["Historical Context", data.historical_context],
+    ["Notes", modalNotes(data)],
+  ].filter(([, v]) => hasValue(v));
+
+  const facts = [
+    ["Type", modalTypeLabel(data)],
+    ["Original Source", modalSource(data)],
+    ["Creator", data.credit],
+    ["Archive", data.archive],
+    ["Collection", data.collection],
+    ["Year", data.year],
+    ["Date", data.date],
+    ["License", modalLicense(data)],
+    ["Copyright", modalCopyrightStatus(data)],
+    ["Usage Rights", data.usage_rights],
+    ["Location", data.location],
+    ["Scale", data.scale],
+    ["Resolution", data.resolution],
+    ["Codec", data.codec],
+    ["File Size", data.file_size],
+    ["Manufacturer", data.manufacturer],
+    ["Language", data.language],
+  ].filter(([, v]) => hasValue(v));
+
+  const status = modalHistoricalStatus(data);
+  const verified = hasValue(status) && !/unverified|pending|unconfirmed/i.test(String(status));
+
+  return { title: modalTitle(data) || data.caption || null, prose, facts, status, verified };
+}
+
+// Flat view of everything the panel would show — the single test for
+// "is there anything here at all", used to decide whether the trigger
+// renders in the first place.
+function attributionRows(data) {
+  const m = attributionModel(data);
+  return [...m.prose, ...m.facts, ...(hasValue(m.status) ? [["Historical Status", m.status]] : [])];
+}
+
+// True when the modal would show at least one row. Used to suppress the
+// info trigger entirely on images that carry nothing beyond src/caption,
+// so a visitor is never offered a button that opens an empty panel.
+export function hasAttributionData(img) {
+  return !!img && attributionRows(img).length > 0;
+}
+
+let _lastFocused = null;
+
 function openAttributionModal(id) {
   const data = _attributionRegistry.get(id);
   const overlay = document.getElementById("attribution-modal");
   const body = document.getElementById("attribution-modal-body");
   if (!data || !overlay || !body) return;
 
-  const rows = [
-    buildModalRow("Title", modalTitle(data)),
-    buildModalRow("Description", data.description),
-    buildModalRow("Historical Context", data.historical_context),
-    buildModalRow("Type", modalTypeLabel(data)),
-    buildModalRow("Historical Status", modalHistoricalStatus(data), "attribution-modal__row--status"),
-    buildModalRow("Source", modalSource(data)),
-    buildModalRow("License", modalLicense(data)),
-    buildModalRow("Credit", data.credit),
-    buildModalRow("Archive", data.archive),
-    buildModalRow("Collection", data.collection),
-    buildModalRow("Year", data.year),
-    buildModalRow("Date", data.date),
-    buildModalRow("Usage Rights", data.usage_rights),
-    buildModalRow("Copyright Status", modalCopyrightStatus(data), "attribution-modal__row--status"),
-    buildModalRow("Notes", modalNotes(data), "attribution-modal__row--status"),
-    buildModalRow("Location", data.location),
-    buildModalRow("Scale", data.scale),
-    buildModalRow("Resolution", data.resolution),
-    buildModalRow("Codec", data.codec),
-    buildModalRow("File Size", data.file_size),
-    buildModalRow("Manufacturer", data.manufacturer),
-    buildModalRow("Language", data.language),
-  ].join("");
+  const { title, prose, facts, status, verified } = attributionModel(data);
 
-  body.innerHTML = rows
-    ? `<dl class="attribution-modal__list">${rows}</dl>`
-    : `<p class="attribution-modal__empty">No additional source information available.</p>`;
+  // Provenance reads as a marker, not another row — and says plainly
+  // whether the archive has confirmed the source. Absent status stays
+  // absent rather than being filled in with a guess.
+  const provenance = hasValue(status)
+    ? `<p class="image-record__provenance image-record__provenance--${verified ? "verified" : "unverified"}">
+         <span class="image-record__provenance-mark" aria-hidden="true"></span>
+         <span>${status}</span>
+       </p>`
+    : "";
+
+  const proseHtml = prose.map(([label, value]) => `
+    <section class="image-record__note">
+      <h3 class="image-record__note-label">${label}</h3>
+      <p class="image-record__note-text">${value}</p>
+    </section>`).join("");
+
+  // Short values become a dense catalogue plate — one grid, tiny gold
+  // labels — instead of a column of near-identical bordered rows.
+  const plateHtml = facts.length
+    ? `<dl class="image-record__plate">
+        ${facts.map(([label, value]) => `
+          <div class="image-record__cell">
+            <dt>${label}</dt>
+            <dd>${value}</dd>
+          </div>`).join("")}
+       </dl>`
+    : "";
+
+  body.innerHTML = (proseHtml || plateHtml || provenance)
+    ? `<div class="image-record">
+         ${title ? `<p class="image-record__caption">${title}</p>` : ""}
+         ${provenance}
+         ${proseHtml}
+         ${plateHtml}
+       </div>`
+    : `<p class="image-record__empty">No additional source information has been catalogued for this image.</p>`;
+
+  _lastFocused = document.activeElement;
   overlay.hidden = false;
+  document.getElementById("attribution-modal-close")?.focus();
 }
 
 function closeAttributionModal() {
   const overlay = document.getElementById("attribution-modal");
-  if (overlay) overlay.hidden = true;
+  if (!overlay || overlay.hidden) return;
+  overlay.hidden = true;
+  // Return focus to whatever opened the panel so keyboard users land back
+  // beside the image they were inspecting rather than at the top of the page.
+  if (_lastFocused && document.contains(_lastFocused)) _lastFocused.focus();
+  _lastFocused = null;
+}
+
+// Keeps Tab inside the open panel. Without this, tabbing walks out into the
+// page behind the overlay while the dialog is still showing.
+function trapAttributionFocus(e) {
+  const overlay = document.getElementById("attribution-modal");
+  if (!overlay || overlay.hidden || e.key !== "Tab") return;
+  const focusable = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
 }
 
 export function initAttributionModal() {
@@ -471,7 +620,7 @@ export function initAttributionModal() {
         <div class="archive-modal__header">
           <span class="archive-modal__header-spacer" aria-hidden="true"></span>
           <div class="archive-modal__header-content">
-            <h2 class="archive-modal__title" id="attribution-modal-title">Source &amp; Attribution</h2>
+            <h2 class="archive-modal__title" id="attribution-modal-title">Image Record</h2>
           </div>
           <button type="button" class="modal__close" id="attribution-modal-close" data-i18n-aria-label="attribution.closeAria" aria-label="Close">
             <span class="icon-close modal__close-icon" aria-hidden="true"></span>
@@ -485,10 +634,15 @@ export function initAttributionModal() {
   applyUiStrings(overlay);
   document.getElementById("attribution-modal-close").addEventListener("click", closeAttributionModal);
   overlay.addEventListener("click", (e) => { if (e.target === overlay) closeAttributionModal(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeAttributionModal(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeAttributionModal();
+    trapAttributionFocus(e);
+  });
 
+  // Matches both the current control and the legacy icon-button class, so
+  // any page still emitting the old markup keeps working.
   document.body.addEventListener("click", (e) => {
-    const trigger = e.target.closest(".attribution-trigger");
+    const trigger = e.target.closest(".image-record-trigger, .attribution-trigger");
     if (trigger) openAttributionModal(trigger.dataset.attributionId);
   });
 }
