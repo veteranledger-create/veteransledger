@@ -7,6 +7,7 @@
 import { loadTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
+import { fetchContentJson, renderContentError } from "/pages/shared/content-fetch.js";
 
 const cache = {};
 let activeSection = "overview";
@@ -39,6 +40,25 @@ const DATA_MAP = {
   glossary: "/public/data/nsdap/glossary.json",
 };
 
+const INDEX_URL = "/public/data/nsdap/index.json";
+
+// Deliberately NOT a version session.
+//
+// This page used to open one, on the same pattern as the archive sections.
+// It never did anything: nsdap is outside VERSIONED_TYPES, so the version
+// resolver declines the path and the request falls through to static —
+// no X-Content-Version comes back, the pin is always null, and every record
+// was being fetched unpinned anyway. Keeping the session only made the page
+// read as if it were protected.
+//
+// What remains true, and is not fixed by removing it: these files are served
+// live from public/data, so a request arriving while an NSDAP promotion is
+// writing can observe a partially updated set. Serialising publication stops
+// two writers colliding; it does not make a reader's view of an unversioned
+// directory atomic. Making it atomic needs either versioning (which would
+// freeze editorial text behind a promotion) or a single-rename directory
+// swap — neither is in place.
+
 async function load(key) {
   if (key in cache) return cache[key];
   const url = DATA_MAP[key];
@@ -47,10 +67,15 @@ async function load(key) {
     return null;
   }
   try {
-    const res = await fetch(url);
-    cache[key] = res.ok ? await res.json() : null;
-  } catch (_) {
+    cache[key] = (await fetchContentJson(url)).data;
+  } catch (err) {
+    // fetchContentJson resolves to null for a missing or unreadable file and
+    // only throws when the server reports a version gone, which this path
+    // cannot provoke. Kept so a section failure still says so where the
+    // content would have been, rather than leaving a silently blank panel.
     cache[key] = null;
+    renderContentError(document.getElementById(activeSection), err);
+    return null;
   }
 
   // site_content translations store the whole source file as one
@@ -76,8 +101,11 @@ async function load(key) {
 
 async function loadManifest() {
   try {
-    const res = await fetch("/public/data/nsdap/index.json");
-    const data = res.ok ? await res.json() : null;
+    // Read once, at init. The subsection labels it supplies are the only
+    // thing taken from the index — record URLs come from DATA_MAP above, not
+    // from here, which is why there is no index-to-record derivation for a
+    // version pin to have protected.
+    const data = (await fetchContentJson(INDEX_URL)).data;
     const hitlerSection = (data?.sections ?? []).find((s) => s.id === "hitler");
     const partySection  = (data?.sections ?? []).find((s) => s.id === "party");
     if (hitlerSection?.subsections?.length) HITLER_SUBS = hitlerSection.subsections.map((s) => ({ id: s.id, label: s.label }));
@@ -131,6 +159,9 @@ async function init() {
     // Cached entries were resolved for the previous locale's translation
     // (or its absence) — clear so load() re-checks against the new locale.
     Object.keys(cache).forEach((k) => delete cache[k]);
+    // Nothing else to invalidate: the index is read once at init for the
+    // subsection labels and is not re-read here, so the session's cache drop
+    // that used to sit on this line discarded an entry nobody read again.
     document.querySelectorAll('[data-wired="1"]').forEach((el) => delete el.dataset.wired);
     showSection(activeSection);
   });
@@ -142,6 +173,7 @@ async function showSection(id) {
   });
   const container = document.getElementById(id);
   if (!container) return;
+
 
   if (id === "overview") {
     await load("overview");

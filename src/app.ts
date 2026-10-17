@@ -13,6 +13,7 @@ import { config } from "./config/app";
 import { securityConfig } from "./config/security";
 import { requestLogger } from "./middleware/logger.middleware";
 import { errorHandler, notFoundHandler } from "./middleware/error.middleware";
+import { versionResolver } from "./modules/publish/version-resolver";
 import { logger } from "./middleware/logger.middleware";
 
 // Module routes
@@ -70,6 +71,10 @@ export function createApp(): Application {
   app.use(requestLogger);
 
   // ── Static files ─────────────────────────────────────────────────────────
+  // Version-aware archive content. Mounted ahead of the static handler so
+  // the public URLs are unchanged; falls through to it whenever no version
+  // store exists or the path is not versioned content.
+  app.use("/public/data", versionResolver());
   app.use("/public", express.static(config.paths.public));
   app.use("/styles", express.static(path.join(config.paths.frontend, "styles")));
   app.use("/components", express.static(path.join(config.paths.frontend, "components")));

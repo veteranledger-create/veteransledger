@@ -6,7 +6,8 @@
 import { createPaginator } from "/pages/shared/paginator.js";
 import { cardImageCandidates, isAiGeneratedImageSrc } from "/pages/shared/media-blocks.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
-import { applyRecordTranslation, loadManifestTranslated } from "/pages/shared/translation-loader.js";
+import { applyRecordTranslation, loadManifestTranslatedVersioned } from "/pages/shared/translation-loader.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { applyUiStrings } from "/pages/shared/ui-strings.js";
 
@@ -29,18 +30,24 @@ const CATEGORIES_FALLBACK = [
 // promoted file (e.g. naval/romania.json, from an admin-published record
 // whose real nation isn't one of the four legacy migration folders)
 // becomes visible here automatically, with no frontend edit required.
-let manifestPromise = null;
-async function loadManifest() {
-  if (!manifestPromise) {
-    manifestPromise = loadManifestTranslated("/public/data/armaments/index.json", "armaments/index.json")
-      .then((data) => data ?? { categories: [] })
-      .catch(() => ({ categories: [] }));
-  }
-  return manifestPromise;
-}
+// One session per page load. The index is fetched and cached exactly as
+// before, but every record request is pinned to the version that index came
+// from, so a promotion mid-load cannot answer from different content. The
+// per-record try/catch is gone on purpose: a pruned version must reach the
+// session so it can reload the index and retry, not be swallowed here.
+//
+// The manifest keeps going through the translation loader, so translated
+// category labels still apply; the version pinned is the English source's,
+// which is what the server actually served.
+const content = createContentSession("/public/data/armaments/index.json", {
+  loadIndex: (url) =>
+    loadManifestTranslatedVersioned(url, "armaments/index.json")
+      .then(({ data, version }) => ({ data: data ?? { categories: [] }, version }))
+      .catch(() => ({ data: { categories: [] }, version: null })),
+});
 
 async function initCategories() {
-  const manifest = await loadManifest();
+  const manifest = (await content.index()).data;
   const cats = manifest.categories ?? [];
   if (cats.length) {
     CATEGORIES = cats.map((c) => ({ id: c.id, label: c.label ?? c.id, path: c.id }));
@@ -184,14 +191,16 @@ async function loadCategory(catId) {
   const cat = CATEGORIES.find((c) => c.id === catId);
   if (!cat) { cache[catId] = []; return; }
 
-  const manifest = await loadManifest();
-  const nationFiles = manifest.categories?.find((c) => c.id === catId)?.nations ?? [];
+  // Promise.all rather than allSettled: a record fetch only ever rejects
+  // when its version has been pruned, and that has to reach the session so
+  // it can reload the index — allSettled would bury it as a rejected entry
+  // and leave the page rendering a half-loaded category.
+  cache[catId] = await content.load(async (manifest, record) => {
+    const nationFiles = manifest?.categories?.find((c) => c.id === catId)?.nations ?? [];
 
-  const results = await Promise.allSettled(
-    nationFiles.map((nation) =>
-      fetch(`/public/data/armaments/${cat.path}/${nation}.json`)
-        .then((r) => (r.ok ? r.json() : null))
-        .then((data) => {
+    const loaded = await Promise.all(
+      nationFiles.map((nation) =>
+        record(`/public/data/armaments/${cat.path}/${nation}.json`).then((data) => {
           if (!data) return { nation, items: [] };
           // Minor-schema files wrap their array under a category-specific
           // key (vehicles/aircraft/vessels/weapons/equipment), never a
@@ -202,14 +211,13 @@ async function loadCategory(catId) {
             : Object.values(data || {}).find((v) => Array.isArray(v)) ?? [];
           return { nation, items };
         }),
-    ),
-  );
+      ),
+    );
 
-  cache[catId] = results
-    .filter((r) => r.status === "fulfilled")
-    .flatMap(({ value: { nation, items } }) =>
+    return loaded.flatMap(({ nation, items }) =>
       items.map((item) => ({ ...item, _nation: nation })),
     );
+  });
 }
 
 function getFiltered(catId) {

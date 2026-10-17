@@ -8,28 +8,22 @@ import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
 import { initMissingMediaFallback } from "/pages/shared/media-blocks.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 initMissingMediaFallback();
 
-let _indexPromise = null;
-async function loadIndex() {
-  if (!_indexPromise) {
-    _indexPromise = fetch("/public/data/political-docs/index.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null);
-  }
-  return _indexPromise;
-}
+// One session per page load: the index is fetched once and cached as before,
+// but the record request is pinned to the version that index came from. If
+// that version has been pruned, the session re-reads the index and runs this
+// whole lookup again rather than resolving the record against a different one.
+const content = createContentSession("/public/data/political-docs/index.json");
 
 async function findDoc(id) {
-  const index = await loadIndex();
-  const records = index?.records ?? [];
-  const entry = records.find((r) => r.id === id);
-  if (!entry) return null;
-  try {
-    const res = await fetch(`/public/data/political-docs/${id}.json`);
-    return res.ok ? await res.json() : null;
-  } catch { return null; }
+  return content.load(async (index, record) => {
+    const entry = (index?.records ?? []).find((r) => r.id === id);
+    if (!entry) return null;
+    return record(`/public/data/political-docs/${id}.json`);
+  });
 }
 
 function formatDate(dateStr) {
@@ -144,7 +138,13 @@ async function init() {
   const root = document.getElementById("record-root");
   const id   = location.pathname.split("/").filter(Boolean).pop();
   if (!id) { renderError(root, "No document ID provided."); return; }
-  const doc = await findDoc(id);
+  let doc;
+  try {
+    doc = await findDoc(id);
+  } catch (err) {
+    renderError(root, err.message);
+    return;
+  }
   if (!doc) { renderError(root, `Political document "${id}" not found.`); return; }
   render(root, doc);
 

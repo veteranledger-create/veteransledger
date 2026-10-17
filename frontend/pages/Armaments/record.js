@@ -7,6 +7,7 @@ import { renderDossierSection, renderHistoricalPhotographsSection, attachMediaFa
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 import { t } from "/pages/shared/ui-strings.js";
 
 
@@ -36,35 +37,27 @@ const CAT_LABELS = {
 // exist — same pattern as armaments.js. This correctly includes
 // romania/hungary/etc. files introduced by the DB-driven publish cycle
 // without requiring any hardcoded list update here in the future.
-let manifestPromise = null;
-async function loadManifest() {
-  if (!manifestPromise) {
-    manifestPromise = fetch("/public/data/armaments/index.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null);
-  }
-  return manifestPromise;
-}
+// One session per page load. The index is fetched and cached exactly as
+// before, but every record request is pinned to the version that index came
+// from, so a promotion mid-load cannot answer from different content. The
+// per-record try/catch is gone on purpose: a pruned version must reach the
+// session so it can reload the index and retry, not be swallowed here.
+const content = createContentSession("/public/data/armaments/index.json");
 
 async function findArmament(id) {
-  const manifest = await loadManifest();
-  const pairs = manifest?.categories?.flatMap(
-    (cat) => (cat.nations || []).map((nation) => [cat.id, nation]),
-  ) ?? CATEGORIES_FALLBACK.flatMap((cat) => NATIONS_FALLBACK.map((nation) => [cat, nation]));
+  return content.load(async (manifest, record) => {
+    const pairs = manifest?.categories?.flatMap(
+      (cat) => (cat.nations || []).map((nation) => [cat.id, nation]),
+    ) ?? CATEGORIES_FALLBACK.flatMap((cat) => NATIONS_FALLBACK.map((nation) => [cat, nation]));
 
-  for (const [cat, nation] of pairs) {
-    try {
-      const res = await fetch(`/public/data/armaments/${cat}/${nation}.json`);
-      if (!res.ok) continue;
-      const data = await res.json();
-      const arr = Array.isArray(data)
-        ? data
-        : data?.armaments || data?.items || [];
+    for (const [cat, nation] of pairs) {
+      const data = await record(`/public/data/armaments/${cat}/${nation}.json`);
+      const arr = Array.isArray(data) ? data : data?.armaments || data?.items || [];
       const item = arr.find((a) => a.id === id);
       if (item) return { ...item, _category: cat, _nation: nation };
-    } catch (_) {}
-  }
-  return null;
+    }
+    return null;
+  });
 }
 
 function render(root, item) {

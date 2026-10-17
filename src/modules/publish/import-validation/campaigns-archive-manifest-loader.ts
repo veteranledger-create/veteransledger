@@ -1,5 +1,5 @@
-import path from "path";
 import { BaseArchiveManifestLoader } from "./archive-manifest-loader";
+import { paths } from "../../../config/paths";
 
 // Campaigns' implementation of the generic archive-loading framework
 // (archive-manifest-loader.ts). Everything mechanical — read, parse,
@@ -21,7 +21,7 @@ export interface CampaignArchiveManifest {
   obsolete: CampaignArchiveManifestObsoleteEntry[];
 }
 
-const CAMPAIGNS_DIR = path.resolve(__dirname, "../../../../public/data/campaigns");
+const CAMPAIGNS_DIR = paths.repoInput.dir("campaigns");
 
 export class CampaignArchiveManifestLoader extends BaseArchiveManifestLoader<CampaignArchiveManifest> {
   constructor() {

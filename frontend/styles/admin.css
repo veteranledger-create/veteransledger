@@ -306,48 +306,214 @@ select.contact-form__input option:checked, select.input option:checked {
 .body-block__header { display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap; }
 .body-block__hint { font-size:10px;color:var(--text-muted);margin:4px 0 0; }
 
-/* ── Admin · Tab Navigation ───────────────────────────────────── */
-/* Desktop/tablet: horizontal pill row, hidden native scrollbar, sticky */
-#admin-tabs {
-  display:flex;gap:0;border-bottom:1px solid var(--border-dim);margin-bottom:var(--space-8);
-  position:sticky;top:0;z-index:20;background:var(--bg-elevated);
-  overflow-x:auto;overflow-y:visible;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
-}
-#admin-tabs::-webkit-scrollbar { display:none; }
-#admin-tabs .category-tab { flex-shrink:0; }
+/* ── Admin · Shell & Section Navigation ────────────────────────
+   Replaces the former flat 20-item tablist (and its mobile <select>) with a
+   grouped section sidebar. The dashboard is a two-column grid: navigation in
+   column 1, everything else — page header, metrics and all 20 tab panels —
+   in column 2. Children are placed by column rather than wrapped in a new
+   container, so the existing panel markup is untouched. */
+:root { --admin-nav-w: 216px; }
 
-/* Mobile: replaced entirely by a full-width custom select (a-select) so
-   there is no clipped, crowded, or endlessly-scrolling tab row on phones.
-   #admin-tabs-mobile is a native <select> enhanced by admin-select.js;
-   its value is kept in sync with the desktop tab state in admin.js. */
-#admin-tabs-mobile-wrap { display:none; margin-bottom:var(--space-6); }
+/* The sidebar is taken out of flow rather than made a grid column. As a
+   grid item spanning every row its own height drove the row track sizing,
+   inflating the header row and pushing content down the page. Fixed
+   positioning plus a matching inline-start padding on the content keeps the
+   two columns aligned without the sidebar influencing content layout, and
+   needs no wrapper around the existing panels. */
+.admin-dashboard {
+  padding:var(--space-8) var(--space-10);
+  padding-inline-start:calc(var(--admin-nav-w) + var(--space-10) + var(--space-6));
+}
+.admin-dashboard > * { min-width:0; }
+
+.admin-nav {
+  position:fixed;
+  top:var(--admin-topbar-h);
+  inset-inline-start:0;
+  z-index:25;
+  width:calc(var(--admin-nav-w) + var(--space-6));
+  height:calc(100vh - var(--admin-topbar-h));
+  box-sizing:border-box;
+  display:flex; flex-direction:column; gap:var(--space-6);
+  overflow-y:auto; scrollbar-width:thin;
+  padding:var(--space-6) var(--space-4) var(--space-6) var(--space-6);
+  border-inline-end:1px solid var(--border-dim);
+}
+.admin-nav__group-label {
+  margin:0 0 var(--space-2);
+  font-family:var(--font-display); font-size:10px; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--gold-dim);
+}
+.admin-nav__list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px; }
+.admin-nav__item {
+  appearance:none; -webkit-appearance:none;
+  display:block; width:100%; text-align:start;
+  padding:7px var(--space-3);
+  background:none; border:none; border-inline-start:2px solid transparent;
+  color:var(--text-secondary); font-size:var(--text-sm); line-height:1.3;
+  cursor:pointer; transition:color .15s, background-color .15s, border-color .15s;
+}
+.admin-nav__item:hover { color:var(--text-primary); background:rgba(212,168,73,.05); }
+.admin-nav__item:focus-visible { outline:1px solid var(--gold); outline-offset:-1px; }
+.admin-nav__item.is-active {
+  color:var(--gold); background:rgba(212,168,73,.08);
+  border-inline-start-color:var(--gold); font-weight:600;
+}
+
+/* ── Admin · Page header ───────────────────────────────────────
+   One contextual header per section: where you are, what the section does,
+   and the account action. Sized to orient without consuming working space. */
+.admin-page-header {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  gap:var(--space-4); flex-wrap:wrap;
+  margin-bottom:var(--space-6); padding-bottom:var(--space-4);
+  border-bottom:1px solid var(--border-dim);
+}
+.admin-page-header__text { min-width:0; }
+.admin-page-header__crumb {
+  margin:0 0 4px; font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold-dim);
+}
+.admin-page-header__title {
+  margin:0; font-family:var(--font-display); font-size:var(--text-xl);
+  letter-spacing:.06em; text-transform:uppercase; color:var(--text-primary);
+}
+.admin-page-header__desc {
+  margin:4px 0 0; font-size:var(--text-sm); color:var(--text-muted); max-width:68ch;
+}
+.admin-page-header__actions { display:flex; align-items:center; gap:var(--space-3); flex-shrink:0; }
+.admin-nav__toggle { display:none; }
+
+/* Store badge — states where this section's content is actually persisted.
+   Database-backed and file-backed editors look alike but save through
+   different mechanisms, so the distinction is surfaced rather than implied. */
+.admin-store-badge {
+  display:inline-block; margin-inline-start:var(--space-2);
+  padding:1px 7px; border:1px solid currentColor; border-radius:999px;
+  font-size:9px; letter-spacing:.12em; text-transform:uppercase; vertical-align:1px;
+}
+.admin-store-badge--db { color:var(--gold-dim); }
+.admin-store-badge--file { color:#7f9ab0; }
+.admin-store-badge--tool { color:var(--text-muted); }
+
+/* Mobile: the sidebar becomes a drawer opened from the page header, so a
+   phone keeps full width for the editor it is actually showing. */
 @media(max-width:767px) {
-  #admin-tabs { display:none; }
-  #admin-tabs-mobile-wrap { display:block;position:sticky;top:0;z-index:20;background:var(--bg-elevated);padding:var(--space-3) 0;margin-bottom:var(--space-5); }
+  .admin-dashboard { padding-inline-start:var(--space-4); }
+  .admin-nav {
+    position:fixed; inset-block:0; inset-inline-start:0; z-index:40;
+    width:min(280px, 82vw); height:100%;
+    padding:var(--space-6) var(--space-4);
+    background:var(--bg-elevated); border-inline-end:1px solid var(--border-dim);
+    box-shadow:2px 0 18px rgba(0,0,0,.5);
+    transform:translateX(-102%); transition:transform .22s ease;
+  }
+  .admin-nav.is-open { transform:translateX(0); }
+  .admin-nav__toggle {
+    display:inline-flex; align-items:center;
+    padding:6px var(--space-3);
+    background:none; border:1px solid var(--border-dim); border-radius:var(--radius);
+    color:var(--text-secondary); font-size:var(--text-xs);
+    letter-spacing:.08em; text-transform:uppercase; cursor:pointer;
+  }
+  .admin-nav__toggle:hover { border-color:var(--gold-dim); color:var(--gold); }
+  body.admin-nav-open { overflow:hidden; }
 }
 
-/* ── Admin · Dashboard ────────────────────────────────────────── */
-.admin-dashboard { padding:var(--space-8) var(--space-10); }
+/* ── Admin · Dashboard ──────────────────────────────────────────
+   An operational status surface rather than a row of statistic cards:
+   figures are set as an archival register, and each health row states its
+   value, a written status and a route to the section that resolves it.
+   Status is never carried by colour alone — every row pairs its colour
+   with a distinct mark shape and an explicit written state. */
 .dashboard-title { font-family:var(--font-display);font-size:var(--text-2xl);letter-spacing:0.08em;text-transform:uppercase;margin:0; }
-.stats-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--space-4);margin-bottom:var(--space-10); }
-.stat-card {
-  background:var(--bg-card);border:1px solid var(--border-dim);border-top:2px solid rgba(212,168,73,.3);
-  border-radius:var(--radius);padding:var(--space-6);
-  display:flex;align-items:flex-start;gap:var(--space-3);
-  transition:border-color .15s,box-shadow .15s,transform .15s;
+.stats-grid { display:block; margin-bottom:var(--space-8); }
+.stats-grid[hidden] { display:none; }
+
+.dash-loading, .dash-error { font-size:var(--text-sm); color:var(--text-muted); margin:0; }
+.dash-error { color:#d08a6a; }
+
+.dash-section { margin-bottom:var(--space-8); }
+.dash-section__title {
+  margin:0 0 2px; font-family:var(--font-display); font-size:var(--text-sm);
+  letter-spacing:.14em; text-transform:uppercase; color:var(--text-primary);
 }
-.stat-card:hover { border-color:rgba(212,168,73,.45);box-shadow:0 2px 12px rgba(0,0,0,.3);transform:translateY(-1px); }
-.stat-card__icon { flex-shrink:0;width:20px;height:20px;color:var(--gold-dim);margin-top:2px; }
-.stat-card__icon svg { display:block;width:100%;height:100%; }
-.stat-card__body { min-width:0; }
-.stat-card__value { font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;color:var(--gold);line-height:1.1;margin-bottom:var(--space-1); }
-.stat-card__label { font-size:var(--text-xs);color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase; }
+.dash-section__source {
+  margin:0 0 var(--space-4); font-size:10px; letter-spacing:.08em;
+  color:var(--text-faint, var(--text-muted));
+}
+.dash-section--muted .dash-section__title { color:var(--text-muted); }
+
+/* Figures — a register line, not boxed cards. */
+.dash-figures {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:var(--space-5); margin:0 0 var(--space-5);
+  padding-bottom:var(--space-5); border-bottom:1px solid var(--border-dim);
+}
+.dash-figure { min-width:0; }
+.dash-figure__label {
+  font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-dim);
+  margin-bottom:4px;
+}
+.dash-figure__value {
+  margin:0; font-family:var(--font-display); font-size:var(--text-2xl);
+  font-weight:700; color:var(--text-primary); line-height:1.05;
+}
+.dash-figure__note { margin:3px 0 0; font-size:var(--text-xs); color:var(--text-muted); }
+
+/* Type breakdown — dense leader-style rows. */
+.dash-breakdown { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:2px var(--space-6); }
+.dash-breakdown li {
+  display:flex; justify-content:space-between; gap:var(--space-3);
+  padding:3px 0; font-size:var(--text-sm); color:var(--text-secondary);
+  border-bottom:1px dotted rgba(212,168,73,.14);
+}
+.dash-breakdown li span:last-child { color:var(--text-primary); font-variant-numeric:tabular-nums; }
+
+/* Health rows */
+.dash-health { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; }
+.dash-health__row {
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto auto auto;
+  align-items:center; gap:var(--space-3);
+  padding:var(--space-3) 0; border-bottom:1px solid var(--border-dim);
+}
+.dash-health__row:last-child { border-bottom:none; }
+.dash-health__mark { width:8px; height:8px; flex:0 0 auto; border:1px solid currentColor; }
+.dash-health__mark--ok { border-radius:50%; background:currentColor; color:#6f8f5a; }
+.dash-health__mark--attention { transform:rotate(45deg); color:#c98a3a; }
+.dash-health__mark--info { color:var(--gold-dim); }
+.dash-health__body { min-width:0; }
+.dash-health__label { margin:0; font-size:var(--text-sm); color:var(--text-primary); }
+.dash-health__detail { margin:2px 0 0; font-size:var(--text-xs); color:var(--text-muted); }
+.dash-health__value { font-family:var(--font-display); font-size:var(--text-sm); color:var(--text-primary); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.dash-health__state { font-size:10px; letter-spacing:.1em; text-transform:uppercase; white-space:nowrap; }
+.dash-health__row--ok .dash-health__state { color:#6f8f5a; }
+.dash-health__row--attention .dash-health__state { color:#c98a3a; }
+.dash-health__row--info .dash-health__state { color:var(--gold-dim); }
+.dash-health__go {
+  padding:4px var(--space-3); background:none;
+  border:1px solid var(--border-dim); border-radius:var(--radius);
+  color:var(--text-secondary); font-size:10px; letter-spacing:.08em;
+  text-transform:uppercase; cursor:pointer; white-space:nowrap;
+}
+.dash-health__go:hover { border-color:var(--gold-dim); color:var(--gold); }
+.dash-health__go:focus-visible { outline:1px solid var(--gold); outline-offset:2px; }
+
+.dash-notes { margin:0; padding-inline-start:var(--space-5); }
+.dash-notes li { font-size:var(--text-xs); color:var(--text-muted); margin-bottom:4px; }
+
 @media(max-width:768px){ .admin-dashboard { padding:var(--space-5) var(--space-4) !important; } }
+@media(max-width:620px){
+  /* Health rows stack: mark + label, then value/state/action on one line. */
+  .dash-health__row { grid-template-columns:auto minmax(0,1fr); row-gap:var(--space-2); }
+  .dash-health__value { grid-column:2; }
+  .dash-health__state { grid-column:2; }
+  .dash-health__go { grid-column:2; justify-self:start; }
+}
 @media(max-width:480px){
   .admin-dashboard { padding:var(--space-4) var(--space-3) !important; }
-  .stats-grid { grid-template-columns:repeat(2,1fr);gap:var(--space-3); }
-  .stat-card { padding:var(--space-4); }
+  .dash-figures { grid-template-columns:repeat(2,1fr); gap:var(--space-4); }
 }
 .activity-log-list { display:flex;flex-direction:column;gap:var(--space-3); }
 .activity-entry { display:flex;gap:var(--space-4);padding:var(--space-3);background:var(--bg-card);border:1px solid var(--border-dim);border-radius:var(--radius);flex-wrap:wrap;align-items:center; }
@@ -649,17 +815,14 @@ pre.tlx-src--json { font-family:var(--font-mono);font-size:var(--text-xs);line-h
   .admin-topbar__link { display:none; }
 }
 
-/* Login screen is a full-viewport centered card (min-height:100vh); the
-   topbar is always present above it, so subtract its height here rather
-   than hiding the topbar on that screen. */
-#admin-login.al-page { min-height:calc(100vh - var(--admin-topbar-h)); }
+/* Login screen is a full-viewport centered card. The topbar is detached
+   from the DOM while signed out (see admin.js), so there is nothing above
+   it to offset against — it centers on the full viewport via the base
+   .al-page min-height:100vh. No topbar-height subtraction here. */
 
-/* Tab bars are sticky to their own top:0 — offset below the topbar,
-   which is sticky above them, so the two stack instead of overlapping. */
-#admin-tabs { top:var(--admin-topbar-h); }
-@media(max-width:767px) {
-  #admin-tabs-mobile-wrap { top:var(--admin-topbar-h); }
-}
+/* The former horizontal tab bars are gone — section navigation is now the
+   sticky sidebar (.admin-nav), which takes its own topbar offset in the
+   Shell & Section Navigation block above. */
 
 /* ── Admin · Content Module shared infra (Phase 3) ───────────────
    Submit-state protection needs a visible disabled state (none existed

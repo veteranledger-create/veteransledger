@@ -9,6 +9,7 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { applyUiStrings } from "/pages/shared/ui-strings.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 let CATEGORIES = [];
 
@@ -28,25 +29,31 @@ const pagerEl  = (() => {
   return el;
 })();
 
+// One session per page load: the index is fetched once and cached as before,
+// but every article request is pinned to the version that index came from,
+// so a promotion mid-load cannot mix content from two versions.
+const content = createContentSession("/public/data/articles/index.json");
+
+const CATEGORIES_FALLBACK = [
+  { id: "military",  label: "Military",  path: "military",  files: ["poland-1939.json","rearmament.json","berlin-1945.json"] },
+  { id: "political", label: "Political", path: "political", files: ["anschluss.json","july-20.json","rise-nsdap.json","occupation.json"] },
+  { id: "economy",   label: "Economy",   path: "economy",   files: [] },
+  { id: "legal",     label: "Legal",     path: "legal",     files: ["nuremberg.json"] },
+];
+
+/** Categories as one particular manifest describes them. */
+function categoriesFrom(manifest) {
+  const cats = (manifest?.categories ?? []).map((c) => ({
+    id:    c.id,
+    label: c.label,
+    path:  c.id,
+    files: (c.files || []).map((f) => f.split("/").pop()),
+  }));
+  return cats.length ? cats : CATEGORIES_FALLBACK;
+}
+
 async function loadManifest() {
-  try {
-    const res = await fetch("/public/data/articles/index.json");
-    const data = res.ok ? await res.json() : null;
-    CATEGORIES = (data?.categories ?? []).map((c) => ({
-      id:    c.id,
-      label: c.label,
-      path:  c.id,
-      files: (c.files || []).map((f) => f.split("/").pop()),
-    }));
-  } catch (_) {}
-  if (!CATEGORIES.length) {
-    CATEGORIES = [
-      { id: "military",  label: "Military",  path: "military",  files: ["poland-1939.json","rearmament.json","berlin-1945.json"] },
-      { id: "political", label: "Political", path: "political", files: ["anschluss.json","july-20.json","rise-nsdap.json","occupation.json"] },
-      { id: "economy",   label: "Economy",   path: "economy",   files: [] },
-      { id: "legal",     label: "Legal",     path: "legal",     files: ["nuremberg.json"] },
-    ];
-  }
+  CATEGORIES = categoriesFrom((await content.index()).data);
 }
 
 function renderCategoryTabs() {
@@ -72,22 +79,43 @@ async function init() {
     updatePaginator();
   });
 
-  await Promise.allSettled(CATEGORIES.map((cat) => loadCategory(cat)));
-  allArticles = Object.values(cache).flat();
+  await loadAllCategories();
   buildPaginator();
 }
 
-async function loadCategory({ id, path, files }) {
-  if (!files.length) { cache[id] = []; return; }
+/**
+ * Loads every category's articles as one unit, against a single version.
+ *
+ * The category list is re-derived from the manifest inside the load rather
+ * than read from the module-level CATEGORIES, so if the session has to
+ * reload a newer index the file list reloads with it instead of replaying a
+ * stale one. Promise.all rather than allSettled: the only rejection a record
+ * fetch produces is a pruned version, and that must reach the session.
+ */
+async function loadAllCategories() {
+  const loaded = await content.load(async (manifest, record) => {
+    const cats = categoriesFrom(manifest);
+    CATEGORIES = cats;
+    renderCategoryTabs();
 
-  const results = await Promise.allSettled(
-    files.map((file) =>
-      fetch(`/public/data/articles/${path}/${file}`)
-        .then((r) => (r.ok ? r.json() : null))
-        .then((data) => data ? { ...data, _category: id, _file: file } : null),
-    ),
-  );
-  cache[id] = results.filter((r) => r.status === "fulfilled" && r.value).map((r) => r.value);
+    const out = {};
+    await Promise.all(
+      cats.map(async ({ id, path, files }) => {
+        const items = await Promise.all(
+          files.map((file) =>
+            record(`/public/data/articles/${path}/${file}`)
+              .then((data) => (data ? { ...data, _category: id, _file: file } : null)),
+          ),
+        );
+        out[id] = items.filter(Boolean);
+      }),
+    );
+    return out;
+  });
+
+  for (const key of Object.keys(cache)) delete cache[key];
+  Object.assign(cache, loaded);
+  allArticles = Object.values(cache).flat();
 }
 
 function filteredArticles() {

@@ -6,12 +6,13 @@ import { toCandidateRecord } from "./campaign-record-mapper";
 import { loadCampaignArchive, LoadedCampaignArchive } from "./campaigns-archive-loader";
 import { targetExists } from "./cross-reference-lookup";
 import { config } from "../../../config/app";
+import { paths } from "../../../config/paths";
 
 // Never imports Prisma, never writes inside public/data/ — only reads the
 // real campaigns/**/*.json files (plus other content types, read-only, for
 // related_records existence checks) and returns a report. Same structural
 // guarantee as letters-import-check.ts / articles-import-check.ts.
-const PUBLIC_DATA_DIR = path.resolve(__dirname, "../../../../public/data");
+const PUBLIC_DATA_DIR = paths.repoInput.root;
 
 const STORAGE_URL_PREFIX = "/storage/";
 

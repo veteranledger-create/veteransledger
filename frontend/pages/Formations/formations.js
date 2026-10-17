@@ -8,6 +8,7 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { applyUiStrings } from "/pages/shared/ui-strings.js";
+import { createContentSession, renderContentError } from "/pages/shared/content-fetch.js";
 
 const INDEX_URL = "/public/data/formations/index.json";
 const PAGE_SIZE = 12;
@@ -27,28 +28,31 @@ let allFormations = [];
 let activeSection = "army-groups";
 let paginator     = null;
 
+// One session per page load: the index is fetched once and every category
+// file is pinned to the version that index came from, so a promotion
+// mid-load cannot mix two versions. Promise.all rather than allSettled —
+// the only rejection a record fetch produces is a pruned version, which has
+// to reach the session so it can reload the index and retry.
+const content = createContentSession(INDEX_URL);
+
 async function init() {
-  let categories = [];
   try {
-    const res = await fetch(INDEX_URL);
-    const data = res.ok ? await res.json() : {};
-    categories = data.categories || [];
-  } catch (_) {}
-
-  const results = await Promise.allSettled(
-    categories.map((cat) =>
-      fetch(cat.file)
-        .then((r) => (r.ok ? r.json() : []))
-        .then((data) => {
-          const items = Array.isArray(data) ? data : [];
-          return items.map((f) => ({ ...f, _section: cat.section, _categoryLabel: cat.label }));
-        }),
-    ),
-  );
-
-  allFormations = results
-    .filter((r) => r.status === "fulfilled")
-    .flatMap((r) => r.value);
+    allFormations = await content.load(async (data, record) => {
+      const categories = data?.categories || [];
+      const loaded = await Promise.all(
+        categories.map((cat) =>
+          record(cat.file).then((d) => {
+            const items = Array.isArray(d) ? d : [];
+            return items.map((f) => ({ ...f, _section: cat.section, _categoryLabel: cat.label }));
+          }),
+        ),
+      );
+      return loaded.flat();
+    });
+  } catch (err) {
+    renderContentError(grid, err);
+    return;
+  }
 
   updateTabCounts();
 

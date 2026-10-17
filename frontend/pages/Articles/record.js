@@ -7,6 +7,7 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 const PLACEHOLDER = "/public/images/covers/articles-cover.webp";
 
@@ -17,33 +18,27 @@ const _ARTICLE_CATEGORIES_FALLBACK = [
   { cat: "legal",     files: ["nuremberg.json"] },
 ];
 
-let _manifestPromise = null;
-async function loadManifest() {
-  if (!_manifestPromise) {
-    _manifestPromise = fetch("/public/data/articles/index.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null);
-  }
-  return _manifestPromise;
-}
+// One session per page load. The index is fetched once and cached exactly as
+// before, but every record request is pinned to the version that index came
+// from — so a promotion mid-load cannot answer from different content. The
+// per-record try/catch is gone on purpose: a pruned version must reach the
+// session so it can reload the index and retry, not be swallowed here.
+const content = createContentSession("/public/data/articles/index.json");
 
 async function findArticle(id) {
-  const manifest = await loadManifest();
-  const categories = manifest?.categories
-    ? manifest.categories.map((c) => ({ cat: c.id, files: (c.files || []).map((f) => f.split("/").pop()) }))
-    : _ARTICLE_CATEGORIES_FALLBACK;
+  return content.load(async (manifest, record) => {
+    const categories = manifest?.categories
+      ? manifest.categories.map((c) => ({ cat: c.id, files: (c.files || []).map((f) => f.split("/").pop()) }))
+      : _ARTICLE_CATEGORIES_FALLBACK;
 
-  for (const { cat, files } of categories) {
-    for (const file of files) {
-      try {
-        const res = await fetch(`/public/data/articles/${cat}/${file}`);
-        if (!res.ok) continue;
-        const data = await res.json();
+    for (const { cat, files } of categories) {
+      for (const file of files) {
+        const data = await record(`/public/data/articles/${cat}/${file}`);
         if (data?.id === id) return { ...data, _category: cat };
-      } catch (_) {}
+      }
     }
-  }
-  return null;
+    return null;
+  });
 }
 
 function formatDate(dateStr) {
@@ -366,7 +361,15 @@ async function init() {
     return;
   }
 
-  const article = await findArticle(id);
+  // A version that vanished mid-load is recoverable; recovery that does not
+  // converge is not, and the reader is told so rather than shown "not found".
+  let article;
+  try {
+    article = await findArticle(id);
+  } catch (err) {
+    renderError(root, err.message);
+    return;
+  }
   if (!article) {
     renderError(root, `Article "${id}" not found.`);
     return;

@@ -8,12 +8,13 @@ import {
 } from "./personnel-entity-mapper";
 import { targetExists } from "./cross-reference-lookup";
 import { config } from "../../../config/app";
+import { paths } from "../../../config/paths";
 
 // Never imports Prisma, never writes inside public/data/ — only reads the
 // real personnel/*.json files (plus other content types, read-only, for
 // related_records existence checks) and returns a report. Same structural
 // guarantee as letters-/articles-/campaigns-import-check.ts.
-const PUBLIC_DATA_DIR = path.resolve(__dirname, "../../../../public/data");
+const PUBLIC_DATA_DIR = paths.repoInput.root;
 const PERSONNEL_DIR = path.join(PUBLIC_DATA_DIR, "personnel");
 
 const STORAGE_URL_PREFIX = "/storage/";

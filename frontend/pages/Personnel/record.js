@@ -8,6 +8,7 @@ import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
 import { initMissingMediaFallback } from "/pages/shared/media-blocks.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 initMissingMediaFallback();
 
@@ -19,33 +20,27 @@ const _BRANCHES_FALLBACK = [
   { id: "foreign",      label: "Foreign Volunteers",  file: "foreign.json" },
 ];
 
-let _manifestPromise = null;
-async function loadManifest() {
-  if (!_manifestPromise) {
-    _manifestPromise = fetch("/public/data/personnel/index.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null);
-  }
-  return _manifestPromise;
-}
+// One session per page load. The index is fetched once and cached exactly as
+// before, but every record request is pinned to the version that index came
+// from — so a promotion mid-load cannot answer from different content. The
+// per-record try/catch is gone on purpose: a pruned version must reach the
+// session so it can reload the index and retry, not be swallowed here.
+const content = createContentSession("/public/data/personnel/index.json");
 
 async function findPerson(id) {
-  const manifest = await loadManifest();
-  const branches = (manifest?.branches ?? _BRANCHES_FALLBACK).map((b) => ({
-    ...b,
-    file: b.file.replace("/public/data/personnel/", ""),
-  }));
-  for (const branch of branches) {
-    try {
-      const res = await fetch(`/public/data/personnel/${branch.file}`);
-      if (!res.ok) continue;
-      const data = await res.json();
+  return content.load(async (manifest, record) => {
+    const branches = (manifest?.branches ?? _BRANCHES_FALLBACK).map((b) => ({
+      ...b,
+      file: b.file.replace("/public/data/personnel/", ""),
+    }));
+    for (const branch of branches) {
+      const data = await record(`/public/data/personnel/${branch.file}`);
       const arr = Array.isArray(data) ? data : data?.personnel || data?.people || [];
       const person = arr.find((p) => p.id === id);
       if (person) return { ...person, _branch: branch.id, _branchLabel: branch.label };
-    } catch (_) {}
-  }
-  return null;
+    }
+    return null;
+  });
 }
 
 function formatDate(dateStr) {
@@ -367,7 +362,15 @@ async function init() {
     return;
   }
 
-  const person = await findPerson(id);
+  // A version that vanished mid-load is recoverable; recovery that does not
+  // converge is not, and the reader is told so rather than shown "not found".
+  let person;
+  try {
+    person = await findPerson(id);
+  } catch (err) {
+    renderError(root, err.message);
+    return;
+  }
   if (!person) {
     renderError(root, `Personnel record "${id}" not found.`);
     return;

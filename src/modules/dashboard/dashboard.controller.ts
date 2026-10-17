@@ -12,6 +12,14 @@ export class DashboardController {
     }
   }
 
+  async getContentHealth(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      res.json(await service.getContentHealth());
+    } catch (err) {
+      next(err);
+    }
+  }
+
   async getRecentActivity(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       res.json(await service.getRecentActivity());

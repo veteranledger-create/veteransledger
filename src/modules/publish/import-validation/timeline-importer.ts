@@ -7,8 +7,9 @@ import { LegacyTimelineEvent, fallbackNaturalKey, toTimelineEventCreateInput } f
 import { checkTimelineEvent, TimelineEventRow } from "../validators/timeline.conformance";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
 import { rollbackTimelineImportRun } from "./rollback";
+import { paths } from "../../../config/paths";
 
-const TIMELINE_FILE = path.resolve(__dirname, "../../../../public/data/timeline/events.json");
+const TIMELINE_FILE = paths.repoInput.file("timeline", "events.json");
 
 export type ImportMode = "insert-only" | "sync";
 

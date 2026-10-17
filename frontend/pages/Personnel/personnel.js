@@ -8,7 +8,8 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
-import { applyRecordTranslation, loadManifestTranslated } from "/pages/shared/translation-loader.js";
+import { applyRecordTranslation, loadManifestTranslatedVersioned } from "/pages/shared/translation-loader.js";
+import { createContentSession, renderContentError } from "/pages/shared/content-fetch.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
 
@@ -47,16 +48,28 @@ function branchIconHtml(branchId, person) {
   return `<img class="branch-icon branch-icon--svg" src="${svgSrc}" alt="${branchId}" loading="lazy">`;
 }
 
+// One session per page load: the index is fetched once and every branch file
+// is pinned to the version that index came from. The manifest still goes
+// through the translation loader, so translated labels apply; the version
+// pinned is the English source's, which is what the server served.
+const content = createContentSession("/public/data/personnel/index.json", {
+  loadIndex: (url) => loadManifestTranslatedVersioned(url, "personnel/index.json"),
+});
+
+/** Branches as one particular manifest describes them, or null if it has none. */
+function branchesFrom(manifest) {
+  const list = (manifest?.branches ?? []).map((b) => ({
+    id:   b.id,
+    label: b.label,
+    file: String(b.file ?? "").replace("/public/data/personnel/", ""),
+  }));
+  return list.length ? list : null;
+}
+
 async function loadManifest() {
-  try {
-    const data = await loadManifestTranslated("/public/data/personnel/index.json", "personnel/index.json");
-    BRANCHES = (data?.branches ?? []).map((b) => ({
-      id:   b.id,
-      label: b.label,
-      file: b.file.replace("/public/data/personnel/", ""),
-    }));
-  } catch (_) {}
-  if (!BRANCHES.length) {
+  const parsed = branchesFrom((await content.index()).data);
+  if (parsed) { BRANCHES = parsed; return; }
+  {
     BRANCHES = [
       { id: "army",         label: "Heer (Army)",        file: "army.json" },
       { id: "luftwaffe",    label: "Luftwaffe",           file: "luftwaffe.json" },
@@ -88,16 +101,36 @@ async function init() {
     toggleBranchVisibility();
   });
 
-  await Promise.allSettled(BRANCHES.map((b) => loadBranch(b)));
+  // Every branch loads against one version, so the page can never show one
+  // branch from v41 beside another from v42.
+  try {
+    await content.load(async (manifest, record) => {
+      const parsed = branchesFrom(manifest);
+      if (parsed) { BRANCHES = parsed; renderBranchFilter(); }
+      return Promise.all(BRANCHES.map((b) => loadBranch(b, record)));
+    });
+  } catch (err) {
+    BRANCHES.forEach(({ id }) => {
+      const gridId = `${id.replace("-", "")}-grid`;
+      renderContentError(
+        document.getElementById(gridId) || document.getElementById(`${id}-grid`),
+        err,
+      );
+    });
+  }
   toggleBranchVisibility();
 
   onLocaleChange(async () => {
+    // Re-read the index so the new locale's translated labels apply. That
+    // also re-pins to whatever version is active now, which is correct here
+    // because no record requests are in flight at this point.
+    content.invalidate();
     await loadManifest();
     renderBranchFilter();
   });
 }
 
-async function loadBranch({ id, label, file }) {
+async function loadBranch({ id, label, file }, record) {
   const gridId = `${id.replace("-", "")}-grid`;
   const gridEl = document.getElementById(gridId) || document.getElementById(`${id}-grid`);
   const countEl = document.getElementById(`${id.replace("-", "")}-count`)
@@ -114,23 +147,27 @@ async function loadBranch({ id, label, file }) {
     gridEl.parentNode.insertBefore(pagerEl, gridEl.nextSibling);
   }
 
-  try {
-    const res  = await fetch(`/public/data/personnel/${file}`);
-    const data = res.ok ? await res.json() : null;
-    const people = Array.isArray(data) ? data : data?.personnel || data?.people || [];
+  // A pruned version propagates out to the session rather than being shown
+  // as "data pending"; a missing or unreadable file still degrades to the
+  // empty state exactly as before.
+  const data = await record(`/public/data/personnel/${file}`);
+  const people = Array.isArray(data) ? data : data?.personnel || data?.people || [];
 
-    if (countEl) countEl.textContent = `${people.length} records`;
-
-    createPaginator({
-      items:       people,
-      pageSize:    PAGE_SIZE,
-      renderFn:    (slice) => renderPeople(gridEl, slice, id),
-      pagerEl,
-      scrollTarget: gridEl,
-    });
-  } catch (_) {
+  if (!people.length) {
     gridEl.innerHTML = renderEmpty(t("empty.personnelPending", null, "Data pending compilation."));
+    if (countEl) countEl.textContent = "0 records";
+    return;
   }
+
+  if (countEl) countEl.textContent = `${people.length} records`;
+
+  createPaginator({
+    items:       people,
+    pageSize:    PAGE_SIZE,
+    renderFn:    (slice) => renderPeople(gridEl, slice, id),
+    pagerEl,
+    scrollTarget: gridEl,
+  });
 }
 
 function renderPeople(container, people, branchId = "") {

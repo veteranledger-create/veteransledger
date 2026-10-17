@@ -8,6 +8,7 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 const INDEX_URL = "/public/data/formations/index.json";
 
@@ -17,25 +18,22 @@ const INDEX_URL = "/public/data/formations/index.json";
 // without an extra round-trip per related record.
 let formationsById = new Map();
 
-async function loadAllFormations() {
-  let categories = [];
-  try {
-    const res = await fetch(INDEX_URL);
-    const data = res.ok ? await res.json() : {};
-    categories = data.categories || [];
-  } catch (_) {}
+// One session per page load: every category file is pinned to the version
+// the index came from. The per-file try/catch is gone on purpose — a pruned
+// version must reach the session so it can reload the index and retry.
+const content = createContentSession(INDEX_URL);
 
-  const map = new Map();
-  await Promise.all(categories.map(async (cat) => {
-    try {
-      const res = await fetch(cat.file);
-      if (!res.ok) return;
-      const data = await res.json();
-      const arr = Array.isArray(data) ? data : [];
+async function loadAllFormations() {
+  return content.load(async (data, record) => {
+    const categories = data?.categories || [];
+    const map = new Map();
+    await Promise.all(categories.map(async (cat) => {
+      const loaded = await record(cat.file);
+      const arr = Array.isArray(loaded) ? loaded : [];
       arr.forEach((f) => { if (f?.id) map.set(f.id, { ...f, _category: cat }); });
-    } catch (_) {}
-  }));
-  return map;
+    }));
+    return map;
+  });
 }
 
 // Mirrors the classification-icon logic on the listing page, keyed off the

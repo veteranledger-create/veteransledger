@@ -7,6 +7,7 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t, applyUiStrings } from "/pages/shared/ui-strings.js";
+import { createContentSession, renderContentError } from "/pages/shared/content-fetch.js";
 
 const ENTITY_TYPE_BY_RESULT_TYPE = { PERSON: "entity" }; // everything else is "record"
 
@@ -38,9 +39,8 @@ const _ARTICLE_FILES_FALLBACK  = [["military","poland-1939.json"],["military","r
 const _LETTER_FILES_FALLBACK   = ["german.json","italian.json","japanese.json","volunteers.json"];
 const _PERSONNEL_FILES_FALLBACK = ["army.json","luftwaffe.json","kriegsmarine.json","waffen-ss.json","foreign.json"];
 
-async function loadSectionManifests(safeFetch) {
-  const [campaignsIdx, articlesIdx, lettersIdx, personnelIdx] = await Promise.all([
-    safeFetch("/public/data/campaigns/index.json"),
+async function loadSectionManifests(safeFetch, campaignsIdx) {
+  const [articlesIdx, lettersIdx, personnelIdx] = await Promise.all([
     safeFetch("/public/data/articles/index.json"),
     safeFetch("/public/data/letters/index.json"),
     safeFetch("/public/data/personnel/index.json"),
@@ -124,21 +124,24 @@ function normalise(str) {
 
 // ── Index builder ──────────────────────────────────────────────
 
-async function buildIndex() {
-  const index = [];
+// A published version covers the whole archive, not one section, so a single
+// session pins every manifest and every record this page reads — across all
+// six sections — to one version.
+const content = createContentSession("/public/data/campaigns/index.json");
 
-  const safeFetch = async (url) => {
-    try {
-      const r = await fetch(url);
-      return r.ok ? r.json() : null;
-    } catch (_) { return null; }
-  };
+async function buildIndex() {
+  return content.load(buildIndexForVersion);
+}
+
+async function buildIndexForVersion(campaignsIdx, safeFetch) {
+  const index = [];
 
   // Load all section manifests dynamically — file lists come from index.json
   // for every section, so a newly published file becomes searchable on the
-  // next page load without any source-code change.
+  // next page load without any source-code change. The campaigns manifest is
+  // the session's own index and is already loaded.
   const { CAMPAIGN_FILES, ARTICLE_FILES, LETTER_FILES, PERSONNEL_FILES } =
-    await loadSectionManifests(safeFetch);
+    await loadSectionManifests(safeFetch, campaignsIdx);
 
   const formationIndex = await safeFetch("/public/data/formations/index.json");
   const formationCategories = formationIndex?.categories || [];
@@ -354,7 +357,16 @@ async function runSearch(query) {
   history.replaceState({}, "", url.toString());
 
   if (!searchIndex) {
-    searchIndex = await buildIndex();
+    // The index spans every section, so it is also the most exposed to a
+    // promotion landing mid-build. The session retries against a fresh
+    // version; if that does not converge the reader is told, rather than
+    // being shown results built from two different versions.
+    try {
+      searchIndex = await buildIndex();
+    } catch (err) {
+      renderContentError(results, err);
+      return;
+    }
   }
 
   const words = normalise(query).trim().split(/\s+/).filter(Boolean);

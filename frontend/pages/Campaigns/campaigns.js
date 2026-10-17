@@ -9,6 +9,7 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t, applyUiStrings } from "/pages/shared/ui-strings.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 const PAGE_SIZE   = 10;
 const PLACEHOLDER = "/public/images/covers/placeholder-cards.webp";
@@ -19,17 +20,30 @@ let activeTheater = "eastern-front";
 const cache       = {};
 let paginator     = null;
 
-async function loadManifest() {
-  try {
-    const res = await fetch("/public/data/campaigns/index.json");
-    const data = res.ok ? await res.json() : null;
-    const theaters = data?.theaters ?? [];
-    THEATERS = theaters.map((t) => ({ id: t.id, label: t.label, path: t.id }));
-    FILE_MAP  = Object.fromEntries(
+// One session per page load: the index is fetched once and cached as before,
+// but every campaign request is pinned to the version that index came from,
+// so switching theatres long after load cannot mix two versions.
+const content = createContentSession("/public/data/campaigns/index.json");
+
+/** Theatres and their file lists as one particular manifest describes them. */
+function theatersFrom(manifest) {
+  const theaters = manifest?.theaters ?? [];
+  if (!theaters.length) return null;
+  return {
+    list: theaters.map((t) => ({ id: t.id, label: t.label, path: t.id })),
+    files: Object.fromEntries(
       theaters.map((t) => [t.id, (t.campaigns || []).map((c) => `${c}.json`)]),
-    );
-    if (theaters.length) activeTheater = theaters[0].id;
-  } catch (_) {
+    ),
+  };
+}
+
+async function loadManifest() {
+  const parsed = theatersFrom((await content.index()).data);
+  if (parsed) {
+    THEATERS = parsed.list;
+    FILE_MAP = parsed.files;
+    activeTheater = parsed.list[0].id;
+  } else {
     // fallback defaults if manifest unavailable
     THEATERS = [
       { id: "eastern-front", label: "Eastern Front", path: "eastern-front" },
@@ -116,14 +130,26 @@ async function switchTheater(theaterId) {
   });
 }
 
+/**
+ * The file list is re-derived from the manifest inside the load rather than
+ * read from the module-level FILE_MAP, so if the session has to reload a
+ * newer index the file list reloads with it instead of replaying a stale
+ * one. Promise.all rather than allSettled: the only rejection a record fetch
+ * produces is a pruned version, and that must reach the session.
+ */
 async function loadTheaterData(theaterId) {
-  const files = FILE_MAP[theaterId] || [];
-  const results = await Promise.allSettled(
-    files.map((file) =>
-      fetch(`/public/data/campaigns/${theaterId}/${file}`).then((r) => r.ok ? r.json() : null),
-    ),
-  );
-  return results.filter((r) => r.status === "fulfilled" && r.value).map((r) => r.value);
+  return content.load(async (manifest, record) => {
+    const parsed = theatersFrom(manifest);
+    if (parsed) {
+      THEATERS = parsed.list;
+      FILE_MAP = parsed.files;
+    }
+    const files = (parsed?.files ?? FILE_MAP)[theaterId] || [];
+    const loaded = await Promise.all(
+      files.map((file) => record(`/public/data/campaigns/${theaterId}/${file}`)),
+    );
+    return loaded.filter(Boolean);
+  });
 }
 
 function renderCampaigns(container, campaigns) {

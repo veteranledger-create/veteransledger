@@ -8,28 +8,22 @@ import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
 import { initMissingMediaFallback } from "/pages/shared/media-blocks.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 initMissingMediaFallback();
 
-let _indexPromise = null;
-async function loadIndex() {
-  if (!_indexPromise) {
-    _indexPromise = fetch("/public/data/awards/index.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null);
-  }
-  return _indexPromise;
-}
+// One session per page load: the index is fetched once and cached as before,
+// but the record request is pinned to the version that index came from. If
+// that version has been pruned, the session re-reads the index and runs this
+// whole lookup again rather than resolving the record against a different one.
+const content = createContentSession("/public/data/awards/index.json");
 
 async function findAward(id) {
-  const index = await loadIndex();
-  const records = index?.records ?? [];
-  const entry = records.find((r) => r.id === id);
-  if (!entry) return null;
-  try {
-    const res = await fetch(`/public/data/awards/${id}.json`);
-    return res.ok ? await res.json() : null;
-  } catch { return null; }
+  return content.load(async (index, record) => {
+    const entry = (index?.records ?? []).find((r) => r.id === id);
+    if (!entry) return null;
+    return record(`/public/data/awards/${id}.json`);
+  });
 }
 
 function formatDate(dateStr) {
@@ -145,7 +139,13 @@ async function init() {
   const root = document.getElementById("record-root");
   const id   = location.pathname.split("/").filter(Boolean).pop();
   if (!id) { renderError(root, "No award ID provided."); return; }
-  const award = await findAward(id);
+  let award;
+  try {
+    award = await findAward(id);
+  } catch (err) {
+    renderError(root, err.message);
+    return;
+  }
   if (!award) { renderError(root, `Award "${id}" not found.`); return; }
   render(root, award);
 

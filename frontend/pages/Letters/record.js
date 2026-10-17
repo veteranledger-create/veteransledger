@@ -9,6 +9,7 @@ import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
 import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 const _COLLECTIONS_FALLBACK = [
   { id: "german",     label: "German",     file: "german.json" },
@@ -19,33 +20,27 @@ const _COLLECTIONS_FALLBACK = [
   { id: "polish",     label: "Polish",     file: "polish.json" },
 ];
 
-let _manifestPromise = null;
-async function loadManifest() {
-  if (!_manifestPromise) {
-    _manifestPromise = fetch("/public/data/letters/index.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null);
-  }
-  return _manifestPromise;
-}
+// One session per page load. The index is fetched once and cached exactly as
+// before, but every record request is pinned to the version that index came
+// from — so a promotion mid-load cannot answer from different content. The
+// per-record try/catch is gone on purpose: a pruned version must reach the
+// session so it can reload the index and retry, not be swallowed here.
+const content = createContentSession("/public/data/letters/index.json");
 
 async function findLetter(id) {
-  const manifest = await loadManifest();
-  const collections = (manifest?.collections ?? _COLLECTIONS_FALLBACK).map((c) => ({
-    ...c,
-    file: c.file.replace("/public/data/letters/", ""),
-  }));
-  for (const col of collections) {
-    try {
-      const res = await fetch(`/public/data/letters/${col.file}`);
-      if (!res.ok) continue;
-      const data = await res.json();
+  return content.load(async (manifest, record) => {
+    const collections = (manifest?.collections ?? _COLLECTIONS_FALLBACK).map((c) => ({
+      ...c,
+      file: c.file.replace("/public/data/letters/", ""),
+    }));
+    for (const col of collections) {
+      const data = await record(`/public/data/letters/${col.file}`);
       const arr = Array.isArray(data) ? data : data?.letters || [];
       const letter = arr.find((l) => l.id === id);
       if (letter) return { ...letter, _lang: col.id, _langLabel: col.label };
-    } catch (_) {}
-  }
-  return null;
+    }
+    return null;
+  });
 }
 
 function formatDate(dateStr) {
@@ -246,7 +241,15 @@ async function init() {
 
   if (!id) { renderError(root, "No letter ID provided."); return; }
 
-  const letter = await findLetter(id);
+  // A version that vanished mid-load is recoverable; recovery that does not
+  // converge is not, and the reader is told so rather than shown "not found".
+  let letter;
+  try {
+    letter = await findLetter(id);
+  } catch (err) {
+    renderError(root, err.message);
+    return;
+  }
   if (!letter) { renderError(root, `Letter record "${id}" not found.`); return; }
 
   render(root, letter);

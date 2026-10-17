@@ -1,4 +1,8 @@
+// Renders the grouped section sidebar/drawer and the contextual page header.
+// Imported first so its buttons exist before init() wires aria-controls.
+import "./admin-nav.js";
 import { authHeader, escHtml, loader, safeJson } from "./admin-utils.js";
+import { publishResultMarkup, isStructuredFailure } from "./publish-result-view.js";
 import { initAdminSelects } from "./admin-select.js";
 import { initModalStack, getTopModalSaveButton } from "./admin-modal-stack.js";
 import { isTabDirty, anyDirty } from "./admin-dirty-guard.js";
@@ -57,15 +61,17 @@ async function init() {
     }
   });
 
-  // Tab wiring — click
-  document.getElementById("admin-tabs")?.addEventListener("click", (e) => {
+  // Tab wiring — click. Delegated on the section navigation container
+  // (#admin-nav, rendered by admin-nav.js), which replaced the former
+  // #admin-tabs row. The .admin-tab-btn[data-tab] contract is unchanged.
+  document.getElementById("admin-nav")?.addEventListener("click", (e) => {
     const btn = e.target.closest(".admin-tab-btn");
     if (!btn) return;
     activateTab(btn);
   });
 
   // Tab wiring — keyboard (WAI-ARIA tablist pattern)
-  document.getElementById("admin-tabs")?.addEventListener("keydown", (e) => {
+  document.getElementById("admin-nav")?.addEventListener("keydown", (e) => {
     const btn = e.target.closest(".admin-tab-btn");
     if (!btn) return;
     const tabs = Array.from(document.querySelectorAll(".admin-tab-btn"));
@@ -86,13 +92,8 @@ async function init() {
     if (next) { next.focus(); activateTab(next); e.preventDefault(); }
   });
 
-  // Mobile tab select — same sections as #admin-tabs, single dropdown
-  // instead of a horizontal row, kept in sync via activateTab().
-  const mobileTabSelect = document.getElementById("admin-tabs-mobile");
-  mobileTabSelect?.addEventListener("change", () => {
-    const btn = document.querySelector(`.admin-tab-btn[data-tab="${mobileTabSelect.value}"]`);
-    if (btn) activateTab(btn);
-  });
+  // (The former mobile <select> was replaced by the navigation drawer in
+  // admin-nav.js, which renders the same .admin-tab-btn buttons as desktop.)
 
   // Modal stack: open/close tracking, focus trap, focus restoration, and
   // Escape closes only the topmost modal. Passive (hidden-attribute based),
@@ -188,8 +189,6 @@ function activateTab(btn) {
   // block a switch — every other tab behaves exactly as before.
   if (currentPanel && currentPanel !== panel && isTabDirty(currentPanel)) {
     if (!confirm("You have unsaved changes on this tab. Leave without saving?")) {
-      const mobileTabSelect = document.getElementById("admin-tabs-mobile");
-      if (mobileTabSelect && mobileTabSelect.value !== currentPanel) mobileTabSelect.value = currentPanel;
       document.querySelector(`.admin-tab-btn[data-tab="${currentPanel}"]`)?.focus();
       return;
     }
@@ -202,8 +201,6 @@ function activateTab(btn) {
   document
     .querySelectorAll(".admin-tab-panel")
     .forEach((p) => (p.hidden = p.id !== panel));
-  const mobileTabSelect = document.getElementById("admin-tabs-mobile");
-  if (mobileTabSelect && mobileTabSelect.value !== panel) mobileTabSelect.value = panel;
   if (panel === "tab-media") loadMedia();
 }
 
@@ -250,38 +247,170 @@ async function showDashboard() {
 }
 
 // ── Stats ───────────────────────────────────────────────────
+// ── Dashboard ───────────────────────────────────────────────
+// Every figure shown here comes from /api/dashboard/stats (database
+// aggregates) or /api/dashboard/content-health (a direct scan of the
+// file-backed content under public/data). Nothing is estimated and nothing
+// is hard-coded — when a value cannot be measured, its row is omitted
+// rather than filled with a placeholder.
+
+const num = (n) => (typeof n === "number" ? n.toLocaleString("en-GB") : "—");
+
+const TYPE_LABEL = {
+  ARMAMENT: "Armaments", CAMPAIGN: "Campaigns", FORMATION: "Formations",
+  LETTER: "Letters", ARTICLE: "Articles", AWARD: "Awards",
+  MAP: "Maps", POLITICAL_DOCUMENT: "Political Documents", PERSON: "Personnel",
+};
+
+function figure(label, value, note) {
+  return `
+    <div class="dash-figure">
+      <dt class="dash-figure__label">${escHtml(label)}</dt>
+      <dd class="dash-figure__value">${escHtml(String(value))}</dd>
+      ${note ? `<p class="dash-figure__note">${escHtml(note)}</p>` : ""}
+    </div>`;
+}
+
+// state: "ok" | "attention" | "info". Paired with a text label and a distinct
+// mark shape so status is never carried by colour alone.
+function healthRow({ label, value, state, detail, goto, action }) {
+  const STATE_TEXT = { ok: "OK", attention: "Needs attention", info: "For review" };
+  return `
+    <li class="dash-health__row dash-health__row--${state}">
+      <span class="dash-health__mark dash-health__mark--${state}" aria-hidden="true"></span>
+      <div class="dash-health__body">
+        <p class="dash-health__label">${escHtml(label)}</p>
+        ${detail ? `<p class="dash-health__detail">${escHtml(detail)}</p>` : ""}
+      </div>
+      <span class="dash-health__value">${escHtml(String(value))}</span>
+      <span class="dash-health__state">${STATE_TEXT[state]}</span>
+      ${goto ? `<button type="button" class="dash-health__go" data-goto="${goto}">${escHtml(action || "Open")}</button>` : "<span></span>"}
+    </li>`;
+}
+
 async function loadStats() {
   if (!statsGrid) return;
-  try {
-    const res = await fetch("/api/dashboard/stats", { headers: authHeader() });
-    if (!res.ok) throw new Error();
-    const data = await safeJson(res);
-    const ICON_FILE = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
-    const ICON_PERSONNEL = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>`;
-    const ICON_MEDIA = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>`;
-    const ICON_EVENTS = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" /><path d="M18 14v4h4" /><path d="M14 18a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M15 3v4" /><path d="M7 3v4" /><path d="M3 11h16" /></svg>`;
-    const metrics = [
-      { label: "Records", value: data.records ?? "—", icon: ICON_FILE },
-      { label: "Personnel", value: data.entities ?? "—", icon: ICON_PERSONNEL },
-      { label: "Media", value: data.media ?? "—", icon: ICON_MEDIA },
-      { label: "Events", value: data.events ?? "—", icon: ICON_EVENTS },
-    ];
-    statsGrid.innerHTML = metrics
-      .map(
-        (m) => `
-      <div class="stat-card">
-        <span class="stat-card__icon" aria-hidden="true">${m.icon}</span>
-        <div class="stat-card__body">
-          <div class="stat-card__value">${m.value}</div>
-          <div class="stat-card__label">${m.label}</div>
-        </div>
-      </div>`,
-      )
-      .join("");
-  } catch (_) {
-    statsGrid.innerHTML = `<p class="text-dim">Stats unavailable — database not connected.</p>`;
+  statsGrid.innerHTML = `<p class="dash-loading" role="status">Loading archive status…</p>`;
+
+  const [statsRes, healthRes] = await Promise.allSettled([
+    fetch("/api/dashboard/stats", { headers: authHeader() }).then((r) => (r.ok ? safeJson(r) : Promise.reject(new Error(String(r.status))))),
+    fetch("/api/dashboard/content-health", { headers: authHeader() }).then((r) => (r.ok ? safeJson(r) : Promise.reject(new Error(String(r.status))))),
+  ]);
+
+  const stats = statsRes.status === "fulfilled" ? statsRes.value : null;
+  const health = healthRes.status === "fulfilled" ? healthRes.value : null;
+
+  if (!stats && !health) {
+    statsGrid.innerHTML = `<p class="dash-error" role="alert">Archive status unavailable — the dashboard API did not respond. Database-backed sections may also be affected.</p>`;
+    return;
   }
+
+  const sections = [];
+
+  // ── Archive Overview ──────────────────────────────────────
+  if (stats) {
+    const byType = stats.recordsByType || {};
+    const breakdown = Object.entries(byType)
+      .sort((a, b) => b[1] - a[1])
+      .map(([t, n]) => `<li><span>${escHtml(TYPE_LABEL[t] || t)}</span><span>${num(n)}</span></li>`)
+      .join("");
+
+    sections.push(`
+      <section class="dash-section">
+        <h2 class="dash-section__title">Archive Overview</h2>
+        <p class="dash-section__source">Database aggregates · /api/dashboard/stats</p>
+        <dl class="dash-figures">
+          ${figure("Records", num(stats.records), `${num(stats.published?.records)} published`)}
+          ${figure("Personnel", num(stats.entities), `${num(stats.published?.entities)} published`)}
+          ${figure("Timeline Events", num(stats.events), `${num(stats.published?.events)} published`)}
+          ${figure("Media Assets", num(stats.media), "Uploaded via Media Library")}
+        </dl>
+        ${breakdown ? `<ul class="dash-breakdown">${breakdown}</ul>` : ""}
+      </section>`);
+  }
+
+  // ── Content Health ────────────────────────────────────────
+  const rows = [];
+  if (health) {
+    const { imageReferences: img, provenance: prov } = health;
+    rows.push(healthRow({
+      label: "Image references that resolve to a file",
+      value: `${num(img.resolved)} / ${num(img.unique)}`,
+      state: img.missing > 0 ? "attention" : "ok",
+      detail: img.missing > 0
+        ? `${num(img.missing)} referenced images are not present on disk.`
+        : "Every referenced image is present.",
+      goto: "tab-media", action: "Media",
+    }));
+    rows.push(healthRow({
+      label: "Images with unverified source",
+      value: num(prov.unverifiedSource),
+      state: prov.unverifiedSource > 0 ? "info" : "ok",
+      detail: "Marked in the content data as awaiting archival review.",
+    }));
+    rows.push(healthRow({
+      label: "Images declared AI-generated",
+      value: num(prov.declaredAiGenerated),
+      state: prov.declaredAiGenerated > 0 ? "attention" : "ok",
+      detail: "Counted from the is_ai_generated flag in content data.",
+    }));
+    rows.push(healthRow({
+      label: "Images with no provenance recorded",
+      value: num(prov.noProvenanceRecorded),
+      state: prov.noProvenanceRecorded > 0 ? "info" : "ok",
+      detail: "No source, credit, licence, archive or status field present.",
+    }));
+  }
+  if (stats?.translations) {
+    const t = stats.translations;
+    const cov = t.recordCoverage || {};
+    rows.push(healthRow({
+      label: "Record translations",
+      value: `${num(cov.translated)} / ${num(cov.possible)}`,
+      state: cov.translated < cov.possible ? "info" : "ok",
+      detail: `${num(stats.published?.records)} published records × ${t.supportedLocales} locales.`,
+      goto: "tab-translations", action: "Translations",
+    }));
+    rows.push(healthRow({
+      label: "Site content translations",
+      value: num(t.byEntityType?.site_content ?? 0),
+      state: "info",
+      detail: `${num(t.total)} translation rows in total across ${Object.keys(t.byLocale || {}).length} locales.`,
+      goto: "tab-translations", action: "Translations",
+    }));
+  }
+
+  if (rows.length) {
+    sections.push(`
+      <section class="dash-section">
+        <h2 class="dash-section__title">Content Health</h2>
+        <p class="dash-section__source">${health ? `Scan of ${num(health.scannedFiles)} content files · /api/dashboard/content-health` : "Database aggregates"}</p>
+        <ul class="dash-health">${rows.join("")}</ul>
+      </section>`);
+  }
+
+  // ── Not measured ──────────────────────────────────────────
+  // Stated explicitly so an absent figure is never mistaken for a zero.
+  const notMeasured = [];
+  if (!health) notMeasured.push("Content health (image references and provenance) — the content-health request failed.");
+  if (!stats) notMeasured.push("Archive totals and translation coverage — the stats request failed.");
+  notMeasured.push("Record field completeness — no validation rule set exists yet to measure it against.");
+  sections.push(`
+    <section class="dash-section dash-section--muted">
+      <h2 class="dash-section__title">Not measured</h2>
+      <ul class="dash-notes">${notMeasured.map((n) => `<li>${escHtml(n)}</li>`).join("")}</ul>
+    </section>`);
+
+  statsGrid.innerHTML = sections.join("");
 }
+
+// Jump straight to the section a health row refers to, reusing the shared
+// navigation buttons so the dirty guard and header stay in step.
+statsGrid?.addEventListener("click", (e) => {
+  const go = e.target.closest("[data-goto]");
+  if (!go) return;
+  document.querySelector(`.admin-tab-btn[data-tab="${go.dataset.goto}"]`)?.click();
+});
 
 async function loadActivity() {
   if (!activityLog) return;
@@ -446,7 +575,16 @@ async function runPublishAction(action) {
       headers: authHeader(),
     });
     const data = await safeJson(res);
-    if (!res.ok) throw new Error(data.error || `${action} failed.`);
+    if (!res.ok) {
+      // A promotion that aborted returns a structured body saying whether the
+      // files were put back. That is far more use than one line of text, so
+      // it is rendered like any other result.
+      if (isStructuredFailure(data)) {
+        renderPublishResult(data, action, type);
+        return;
+      }
+      throw new Error(data.error || `${action} failed.`);
+    }
     if (action === "history") {
       renderPublishHistory(data, type);
     } else {
@@ -477,60 +615,10 @@ document.getElementById("publish-btn-history")?.addEventListener("click", () => 
 function renderPublishResult(report, action, type) {
   const container = document.getElementById("publish-result");
   if (!container || !report) return;
-
-  const actionLabel = { validate: "Validation", run: "Staging", promote: "Promotion", rollback: "Rollback" }[action] || action;
-  const hasIssues = Array.isArray(report.issues) && report.issues.length;
-  const hasProblems = report.invalid > 0 || hasIssues;
-  const statusText = hasProblems ? "Completed with issues" : "Completed successfully";
-
-  const statCards = typeof report.recordsChecked === "number" ? `
-    <div class="result-stat-grid">
-      <div class="result-stat-card">
-        <div class="result-stat-card__value" style="color:var(--gold);">${report.recordsChecked ?? "—"}</div>
-        <div class="result-stat-card__label">Checked</div>
-      </div>
-      <div class="result-stat-card">
-        <div class="result-stat-card__value" style="color:#60c060;">${report.valid ?? "—"}</div>
-        <div class="result-stat-card__label">Valid</div>
-      </div>
-      <div class="result-stat-card">
-        <div class="result-stat-card__value" style="color:${hasProblems ? "#e0a060" : "#60c060"};">${report.invalid ?? "—"}</div>
-        <div class="result-stat-card__label">Invalid</div>
-      </div>
-    </div>` : "";
-
-  const issuesList = hasIssues ? `
-    <div class="mb-6">
-      <p class="section-label mb-3">Issues</p>
-      <div class="result-issues-list">
-        ${report.issues.map((i) => `
-          <div class="result-issue">
-            <span class="badge">${escHtml(i.field || i.severity || "issue")}</span>
-            <span class="result-issue__record">${escHtml(i.recordId || "")}</span>
-            <p class="result-issue__msg">${escHtml(i.message)}</p>
-          </div>`).join("")}
-      </div>
-    </div>` : "";
-
-  const stagedList = Array.isArray(report.staged) ? `
-    <div>
-      <p class="section-label mb-3">Staged Files</p>
-      ${report.staged.length
-        ? `<ul class="result-staged-list">${report.staged.map((s) => `<li>${escHtml(s)}</li>`).join("")}</ul>`
-        : `<p class="text-dim">Nothing staged — no valid records to publish.</p>`}
-    </div>` : "";
-
-  const message = report.message ? `<p class="text-secondary text-sm mb-4">${escHtml(report.message)}</p>` : "";
-
-  container.innerHTML = `
-    <div class="result-header">
-      <span class="badge">${escHtml(type)}</span>
-      <span class="text-secondary text-sm">${actionLabel}</span>
-      <span class="result-header__status" style="color:${hasProblems ? "#e0a060" : "#60c060"};">${statusText}</span>
-    </div>
-    ${message}${statCards}${issuesList}${stagedList}`;
+  // All wording and colour logic lives in publish-result-view.js, which is a
+  // pure string-builder so the promotion branches can actually be tested.
+  container.innerHTML = publishResultMarkup(report, action, type);
 }
-
 function renderPublishHistory(entries, type) {
   const container = document.getElementById("publish-result");
   if (!container) return;

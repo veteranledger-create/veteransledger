@@ -209,86 +209,32 @@
     <div id="admin-dashboard" hidden class="admin-dashboard">
 
       <!-- Header -->
-      <div class="panel-header mb-8">
-        <h1 class="dashboard-title">Dashboard</h1>
-        <button type="button" class="btn btn-secondary" id="logout-btn">Sign Out</button>
-      </div>
+      <!-- ── Admin shell ──────────────────────────────────────────
+           Grouped section navigation + a contextual page header, in place
+           of the former flat 20-item tablist and mobile <select>.
 
-      <!-- Stats grid -->
+           #admin-nav is populated by admin-nav.js with buttons that keep
+           the existing .admin-tab-btn[data-tab] contract, so activateTab()
+           and all 20 panels continue to work with no changes to their own
+           modules. #logout-btn stays in static markup because admin.js
+           resolves it at module load. -->
+      <nav id="admin-nav" class="admin-nav" aria-label="Admin sections"></nav>
+
+      <header class="admin-page-header">
+        <div class="admin-page-header__text">
+          <p class="admin-page-header__crumb" id="admin-crumb"></p>
+          <h1 class="admin-page-header__title" id="admin-page-title">Dashboard</h1>
+          <p class="admin-page-header__desc" id="admin-page-desc"></p>
+        </div>
+        <div class="admin-page-header__actions">
+          <button type="button" class="admin-nav__toggle" id="admin-nav-toggle"
+            aria-controls="admin-nav" aria-expanded="false">Sections</button>
+          <button type="button" class="btn btn-secondary" id="logout-btn">Sign Out</button>
+        </div>
+      </header>
+
+      <!-- Dashboard metrics — shown only on Overview (toggled by admin-nav.js) -->
       <div id="stats-grid" class="stats-grid"></div>
-
-      <!-- Admin tabs -->
-      <div id="admin-tabs" role="tablist">
-        <button type="button" class="admin-tab-btn category-tab is-active" data-tab="tab-overview" role="tab"
-          aria-selected="true">Overview</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-armaments" role="tab"
-          aria-selected="false">Armaments</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-personnel" role="tab"
-          aria-selected="false">Personnel</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-letters" role="tab"
-          aria-selected="false">Letters</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-campaigns" role="tab"
-          aria-selected="false">Campaigns</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-articles" role="tab"
-          aria-selected="false">Articles</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-timeline" role="tab"
-          aria-selected="false">Timeline</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-nsdap" role="tab"
-          aria-selected="false">NSDAP</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-formations" role="tab"
-          aria-selected="false">Formations</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-awards" role="tab"
-          aria-selected="false">Awards</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-maps" role="tab"
-          aria-selected="false">Maps</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-poldocs" role="tab"
-          aria-selected="false">Political Docs</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-media" role="tab"
-          aria-selected="false">Media</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-publish" role="tab"
-          aria-selected="false">Publish</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-navigation" role="tab"
-          aria-selected="false">Navigation</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-settings" role="tab"
-          aria-selected="false">Settings</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-pages" role="tab"
-          aria-selected="false">Pages</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-homepage" role="tab"
-          aria-selected="false">Homepage</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-page-content" role="tab"
-          aria-selected="false">Page Content</button>
-        <button type="button" class="admin-tab-btn category-tab" data-tab="tab-translations" role="tab"
-          aria-selected="false">Translations</button>
-      </div>
-
-      <!-- Mobile tab navigation (< 768px) — same sections, one dropdown instead
-           of a crowded/clipped horizontal row. Kept in sync with #admin-tabs
-           by admin.js so there is exactly one source of truth for the active tab. -->
-      <div id="admin-tabs-mobile-wrap">
-        <label class="label" for="admin-tabs-mobile">Section</label>
-        <select id="admin-tabs-mobile" class="input">
-          <option value="tab-overview">Overview</option>
-          <option value="tab-armaments">Armaments</option>
-          <option value="tab-personnel">Personnel</option>
-          <option value="tab-letters">Letters</option>
-          <option value="tab-campaigns">Campaigns</option>
-          <option value="tab-articles">Articles</option>
-          <option value="tab-timeline">Timeline</option>
-          <option value="tab-nsdap">NSDAP</option>
-          <option value="tab-formations">Formations</option>
-          <option value="tab-awards">Awards</option>
-          <option value="tab-maps">Maps</option>
-          <option value="tab-poldocs">Political Docs</option>
-          <option value="tab-media">Media</option>
-          <option value="tab-publish">Publish</option>
-          <option value="tab-navigation">Navigation</option>
-          <option value="tab-settings">Settings</option>
-          <option value="tab-pages">Pages</option>
-          <option value="tab-homepage">Homepage</option>
-          <option value="tab-page-content">Page Content</option>
-          <option value="tab-translations">Translations</option>
-        </select>
-      </div>
 
       <!-- Tab: Overview (activity log) -->
       <div id="tab-overview" class="admin-tab-panel" role="tabpanel">

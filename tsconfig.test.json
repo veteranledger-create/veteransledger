@@ -1,7 +1,21 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    // The shared frontend modules are plain ESM .js; tests import them
+    // directly rather than keeping a second copy of their logic in sync.
+    "allowJs": true,
+    "checkJs": false,
+    // The build config roots at ./src, which puts frontend/ outside the
+    // compilation root and makes ts-jest give up on those files. Widening
+    // the root here affects tests only — npm run build still emits dist/
+    // from src/ exactly as before.
+    "rootDir": "."
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*",
+    "frontend/pages/shared/**/*",
+    "frontend/pages/Admin/publish-result-view.js",
+    "frontend/pages/Admin/__tests__/**/*"
+  ]
 }

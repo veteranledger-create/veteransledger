@@ -6,6 +6,7 @@ import { COLLECTION_FILES, LegacyLetter, toCandidateRecord } from "./letter-reco
 import { targetExists } from "./cross-reference-lookup";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
 import { storageConfig } from "../../../config/storage";
+import { paths } from "../../../config/paths";
 
 // This module never imports Prisma and never writes inside public/data/ —
 // it only reads the real letters/*.json files (plus other content types,
@@ -13,7 +14,7 @@ import { storageConfig } from "../../../config/storage";
 // That's a structural guarantee, not just a runtime flag: there's no
 // database client reference anywhere in this file for a future edit to
 // accidentally wire up.
-const PUBLIC_DATA_DIR = path.resolve(__dirname, "../../../../public/data");
+const PUBLIC_DATA_DIR = paths.repoInput.root;
 const LETTERS_DIR = path.join(PUBLIC_DATA_DIR, "letters");
 
 export interface ImportIssue extends ValidationIssue {

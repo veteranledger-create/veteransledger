@@ -7,6 +7,7 @@
  */
 
 import { getLocale } from "./i18n.js";
+import { fetchContentJson } from "./content-fetch.js";
 
 const cache = new Map();
 
@@ -58,18 +59,33 @@ export function clearTranslationCache() {
  * @param {string} entityId - e.g. "armaments/index.json"
  */
 export async function loadManifestTranslated(url, entityId) {
-  let english = null;
-  try {
-    const res = await fetch(url);
-    english = res.ok ? await res.json() : null;
-  } catch { /* network error — english stays null */ }
+  return (await loadManifestTranslatedVersioned(url, entityId)).data;
+}
+
+/**
+ * As loadManifestTranslated, but also reports the published version the
+ * English manifest was served from, so a caller can pin its record requests
+ * to that same version.
+ *
+ * The version describes the English source, which is what the server
+ * actually served. A translation is a stored copy of a manifest made at some
+ * earlier point, so a stale one can name files that the pinned version does
+ * not contain — those resolve to null exactly as a missing file always has,
+ * rather than being silently answered from a different version.
+ *
+ * @param {string} url
+ * @param {string} entityId
+ * @returns {Promise<{ data: unknown, version: string|null }>}
+ */
+export async function loadManifestTranslatedVersioned(url, entityId) {
+  const { data: english, version } = await fetchContentJson(url);
 
   const t = await loadTranslation("site_content", entityId);
   if (t?.fields?.content) {
-    try { return JSON.parse(t.fields.content); }
+    try { return { data: JSON.parse(t.fields.content), version }; }
     catch { /* translated content isn't valid JSON — keep English */ }
   }
-  return english;
+  return { data: english, version };
 }
 
 function escapeHtml(str) {

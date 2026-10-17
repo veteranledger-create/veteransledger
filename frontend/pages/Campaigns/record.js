@@ -8,6 +8,7 @@ import { applyRecordTranslation } from "/pages/shared/translation-loader.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { t } from "/pages/shared/ui-strings.js";
 import { initMissingMediaFallback } from "/pages/shared/media-blocks.js";
+import { createContentSession } from "/pages/shared/content-fetch.js";
 
 initMissingMediaFallback();
 
@@ -19,27 +20,23 @@ const _THEATERS_FALLBACK = [
   { id: "atlantic",      label: "Atlantic",      campaigns: ["altmark","atlantic","convoy-war","rheinubung","river-plate","uboat-campaing"] },
 ];
 
-let _manifestPromise = null;
-async function loadManifest() {
-  if (!_manifestPromise) {
-    _manifestPromise = fetch("/public/data/campaigns/index.json")
-      .then((r) => (r.ok ? r.json() : null))
-      .catch(() => null);
-  }
-  return _manifestPromise;
-}
+// One session per page load. The index is fetched once and cached exactly as
+// before, but every record request is pinned to the version that index came
+// from — so a promotion mid-load cannot answer from different content. The
+// per-record try/catch is gone on purpose: a pruned version must reach the
+// session so it can reload the index and retry, not be swallowed here.
+const content = createContentSession("/public/data/campaigns/index.json");
 
 async function findCampaign(id) {
-  const manifest = await loadManifest();
-  const theaters = manifest?.theaters ?? _THEATERS_FALLBACK;
-  for (const theater of theaters) {
-    if (!(theater.campaigns || []).includes(id)) continue;
-    try {
-      const res = await fetch(`/public/data/campaigns/${theater.id}/${id}.json`);
-      if (res.ok) return { ...(await res.json()), _theater: theater.id, _theaterLabel: theater.label };
-    } catch (_) {}
-  }
-  return null;
+  return content.load(async (manifest, record) => {
+    const theaters = manifest?.theaters ?? _THEATERS_FALLBACK;
+    for (const theater of theaters) {
+      if (!(theater.campaigns || []).includes(id)) continue;
+      const data = await record(`/public/data/campaigns/${theater.id}/${id}.json`);
+      if (data) return { ...data, _theater: theater.id, _theaterLabel: theater.label };
+    }
+    return null;
+  });
 }
 
 function formatDate(dateStr) {
@@ -401,7 +398,15 @@ async function init() {
     return;
   }
 
-  const campaign = await findCampaign(id);
+  // A version that vanished mid-load is recoverable; recovery that does not
+  // converge is not, and the reader is told so rather than shown "not found".
+  let campaign;
+  try {
+    campaign = await findCampaign(id);
+  } catch (err) {
+    renderError(root, err.message);
+    return;
+  }
   if (!campaign) {
     renderError(root, `Campaign record "${id}" not found.`);
     return;

@@ -7,7 +7,8 @@
 
 import { createPaginator } from "/pages/shared/paginator.js";
 import { resolveRelatedUrl } from "/pages/shared/related-url-resolver.js";
-import { applyRecordTranslation, loadManifestTranslated } from "/pages/shared/translation-loader.js";
+import { applyRecordTranslation, loadManifestTranslatedVersioned } from "/pages/shared/translation-loader.js";
+import { createContentSession, renderContentError } from "/pages/shared/content-fetch.js";
 import { onLocaleChange } from "/pages/shared/i18n.js";
 import { applyUiStrings, t } from "/pages/shared/ui-strings.js";
 
@@ -49,25 +50,35 @@ function normalise(letter) {
   };
 }
 
+// One session per page load: the index is fetched once and every collection
+// file is pinned to the version that index came from. The manifest still
+// goes through the translation loader, so translated labels apply; the
+// version pinned is the English source's, which is what the server served.
+const content = createContentSession("/public/data/letters/index.json", {
+  loadIndex: (url) => loadManifestTranslatedVersioned(url, "letters/index.json"),
+});
+
+const COLLECTIONS_FALLBACK = [
+  { id: "german",     label: "German",     file: "german.json" },
+  { id: "italian",    label: "Italian",    file: "italian.json" },
+  { id: "japanese",   label: "Japanese",   file: "japanese.json" },
+  { id: "volunteers", label: "Volunteers", file: "volunteers.json" },
+  { id: "british",    label: "British",    file: "british.json" },
+  { id: "polish",     label: "Polish",     file: "polish.json" },
+];
+
+/** Collections as one particular manifest describes them. */
+function collectionsFrom(manifest) {
+  const cols = (manifest?.collections ?? []).map((c) => ({
+    id:   c.id,
+    label: c.label,
+    file: String(c.file ?? "").replace("/public/data/letters/", ""),
+  }));
+  return cols.length ? cols : COLLECTIONS_FALLBACK;
+}
+
 async function loadManifest() {
-  try {
-    const data = await loadManifestTranslated("/public/data/letters/index.json", "letters/index.json");
-    COLLECTIONS = (data?.collections ?? []).map((c) => ({
-      id:   c.id,
-      label: c.label,
-      file: c.file.replace("/public/data/letters/", ""),
-    }));
-  } catch (_) {}
-  if (!COLLECTIONS.length) {
-    COLLECTIONS = [
-      { id: "german",     label: "German",     file: "german.json" },
-      { id: "italian",    label: "Italian",    file: "italian.json" },
-      { id: "japanese",   label: "Japanese",   file: "japanese.json" },
-      { id: "volunteers", label: "Volunteers", file: "volunteers.json" },
-      { id: "british",    label: "British",    file: "british.json" },
-      { id: "polish",     label: "Polish",     file: "polish.json" },
-    ];
-  }
+  COLLECTIONS = collectionsFrom((await content.index()).data);
 }
 
 function renderCollectionFilter() {
@@ -82,20 +93,31 @@ async function init() {
   await loadManifest();
   renderCollectionFilter();
 
-  const results = await Promise.allSettled(
-    COLLECTIONS.map((c) =>
-      fetch(`/public/data/letters/${c.file}`)
-        .then((r) => (r.ok ? r.json() : []))
-        .then((data) => {
-          const letters = Array.isArray(data) ? data : data?.letters || [];
-          return letters.map((l) => normalise({ ...l, _lang: c.id }));
-        }),
-    ),
-  );
+  // The collection list is re-derived inside the load, so if the session has
+  // to reload a newer index the file list reloads with it rather than
+  // replaying a stale one. Promise.all rather than allSettled: the only
+  // rejection a record fetch produces is a pruned version, which must reach
+  // the session.
+  try {
+    allLetters = await content.load(async (manifest, record) => {
+      const cols = collectionsFrom(manifest);
+      COLLECTIONS = cols;
+      renderCollectionFilter();
 
-  allLetters = results
-    .filter((r) => r.status === "fulfilled")
-    .flatMap((r) => r.value);
+      const loaded = await Promise.all(
+        cols.map((c) =>
+          record(`/public/data/letters/${c.file}`).then((data) => {
+            const letters = Array.isArray(data) ? data : data?.letters || [];
+            return letters.map((l) => normalise({ ...l, _lang: c.id }));
+          }),
+        ),
+      );
+      return loaded.flat();
+    });
+  } catch (err) {
+    renderContentError(listEl, err);
+    return;
+  }
 
   document.querySelector(".filter-bar")?.addEventListener("click", (e) => {
     const btn = e.target.closest(".filter-btn");
@@ -109,6 +131,10 @@ async function init() {
   buildPaginator();
 
   onLocaleChange(async () => {
+    // Re-read the index so the new locale's translated labels apply. That
+    // also re-pins to whatever version is active now, which is correct here
+    // because no record requests are in flight at this point.
+    content.invalidate();
     await loadManifest();
     renderCollectionFilter();
   });

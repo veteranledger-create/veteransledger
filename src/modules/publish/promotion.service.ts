@@ -2,34 +2,31 @@ import fs from "fs/promises";
 import path from "path";
 import { randomUUID } from "crypto";
 import prisma from "../../database/prisma";
-import { config } from "../../config/app";
 import { storageConfig } from "../../config/storage";
+import { paths } from "../../config/paths";
+import { versionStore, isVersionedType } from "./version-store";
+import { publicationLock } from "./publication-lock";
+import {
+  readSnapshotManifest,
+  writeSnapshotManifest,
+  ManifestMissingError,
+  ManifestInvalidError,
+} from "./snapshot-manifest";
+import {
+  writeRecoveryPoint,
+  writeWriteMarker,
+  writeCompletion,
+  recoveryPointPath,
+  writeMarkerPath,
+  completionPath,
+} from "./rollback-recovery";
+import { assertStagingPromotable, provenancePath } from "./staging-provenance";
+import { PublishService } from "./publish.service";
+import { isProtectedRootFile } from "./import-validation/importer-inputs";
+import { regenerateIndex, schemaFor } from "./index-schema";
 import { AppError } from "../../middleware/error.middleware";
-import { promoteFilesAtomically, restoreFromSnapshot, applyFileChangesAtomically, PromotionSnapshot } from "./promote-atomic";
+import { promoteFilesAtomically, restoreFromSnapshot, applyFileChangesAtomically, normalizeSnapshotKey, resolveSnapshotPath, readForSnapshot, AtomicApplyError, ReversalFailure, PromotionSnapshot } from "./promote-atomic";
 
-interface ArmamentsIndexCategory {
-  id: string;
-  label: string;
-  nations: string[];
-  [key: string]: unknown;
-}
-
-interface ArmamentsIndex {
-  categories: ArmamentsIndexCategory[];
-  [key: string]: unknown;
-}
-
-// Fallback labels used only if public/data/armaments/index.json is ever
-// missing entirely — every real run preserves the labels already on disk
-// instead of these.
-const DEFAULT_ARMAMENTS_CATEGORIES: Array<{ id: string; label: string }> = [
-  { id: "panzer", label: "Panzers & Armour" },
-  { id: "aircraft", label: "Aircraft" },
-  { id: "naval", label: "Naval Vessels" },
-  { id: "missiles", label: "Missiles & Rockets" },
-  { id: "wunderwaffen", label: "Wunderwaffen" },
-  { id: "equipment", label: "Infantry Equipment" },
-];
 
 export interface PromotionHistoryEntry {
   runId: string;
@@ -39,6 +36,41 @@ export interface PromotionHistoryEntry {
   userId: string;
   filesAffected: string[];
   restoredFromRunId?: string;
+  /** How a section index was regenerated, when there was anything to say. */
+  indexNotes?: string[];
+}
+
+/** What each stage of a promotion actually achieved. */
+export interface PromotionSteps {
+  /** Staged files (and the regenerated index) are on disk under public/data. */
+  contentApplied: boolean;
+  /**
+   * The snapshot manifest a rollback needs, made durable BEFORE activation.
+   *
+   * "not-applicable" is not a softer "persisted": it means this operation
+   * wrote no rollback snapshot of its own, so it cannot be reversed from one.
+   * A rollback is the case — it restores from an existing manifest and
+   * records nothing new (see R8).
+   */
+  recoveryMetadata: "persisted" | "failed" | "not-applicable";
+  /**
+   * Whether the active-version pointer was moved to the new content.
+   *
+   * "not-applicable" is the honest answer for a type outside VERSIONED_TYPES:
+   * nsdap is served live from public/data, so its content went live when the
+   * files landed and there is no pointer for it to flip. Reporting
+   * "activated" there would describe a switch that never happened.
+   */
+  activation: "activated" | "aborted" | "not-applicable";
+  /** The history file and audit row. Not required for recovery. */
+  history: "recorded" | "failed";
+  /**
+   * Retention pruning. Housekeeping only.
+   *
+   * "not-applicable" when the operation captured no version: there is nothing
+   * to retain and nothing to prune, which is not the same as having pruned.
+   */
+  cleanup: "completed" | "failed" | "not-applicable";
 }
 
 export interface PromotionResult {
@@ -46,8 +78,29 @@ export interface PromotionResult {
   action: "promote" | "rollback";
   type: string;
   filesAffected: string[];
-  status: "success" | "failed" | "disabled";
+  /**
+   * "activated-with-warnings" means the content IS live and recoverable, but
+   * a post-activation step failed. It is deliberately not "success", so a
+   * caller cannot read a clean success where there was a partial one.
+   */
+  status: "success" | "activated-with-warnings" | "failed" | "disabled";
   error?: string;
+  /** The published version this run produced, when versioning is in use. */
+  version?: string;
+  /** How a section index was regenerated, when there was anything to say. */
+  indexNotes?: string[];
+  /**
+   * Per-stage outcome. Present on any run that reached the filesystem, so a
+   * caller can tell active content apart from persisted recovery metadata,
+   * audit status and cleanup status rather than inferring all four from one
+   * boolean.
+   */
+  steps?: PromotionSteps;
+  /**
+   * Problems that occurred AFTER the content was already live. The promotion
+   * genuinely succeeded; these need attention but do not undo it.
+   */
+  warnings?: string[];
 }
 
 // Same two-factor fail-closed design as every transactional database
@@ -153,11 +206,11 @@ export interface PromotionResult {
 const PROMOTION_ENABLED = false;
 
 function publicDataDir(type: string): string {
-  return path.join(config.paths.public, "data", type);
+  return paths.published.dir(type);
 }
 
 function stagingDir(type: string): string {
-  return path.join(storageConfig.directories.publishStaging, type);
+  return paths.staging.dir(type);
 }
 
 function snapshotDir(type: string, runId: string): string {
@@ -184,281 +237,64 @@ async function listFilesRecursive(dir: string, base = dir): Promise<Map<string, 
   return out;
 }
 
+function manifestPath(type: string, runId: string): string {
+  return path.join(snapshotDir(type, runId), "manifest.json");
+}
+
+/**
+ * Writes the manifest that makes this promotion reversible.
+ *
+ * Delegates to writeSnapshotManifest for the checksummed envelope and the
+ * fsync-then-rename ordering. The durability report is returned rather than
+ * surfaced to the caller: on Windows the directory flush is unsupported, so
+ * raising it as a promotion warning would fire on every single run and say
+ * nothing about that run. The limitation belongs in the documentation and
+ * the tests, which is where it is.
+ */
 async function persistSnapshotManifest(type: string, runId: string, snapshot: PromotionSnapshot): Promise<void> {
-  const dir = snapshotDir(type, runId);
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(path.join(dir, "manifest.json"), JSON.stringify(snapshot, null, 2), "utf-8");
+  await writeSnapshotManifest(manifestPath(type, runId), { type, runId }, snapshot);
 }
 
-async function loadSnapshotManifest(type: string, runId: string): Promise<PromotionSnapshot> {
-  const manifestPath = path.join(snapshotDir(type, runId), "manifest.json");
-  const raw = await fs.readFile(manifestPath, "utf-8");
-  return JSON.parse(raw) as PromotionSnapshot;
+/**
+ * Turns a manifest-loading failure into the status the operator should see.
+ *
+ * The distinction this exists for: a rollback whose manifest is *missing*
+ * and one whose manifest is *damaged* are different situations, and both
+ * used to produce "No snapshot found for runId X — cannot roll back." That
+ * sends someone to look for a file that is sitting right there, corrupted.
+ *
+ * Exported because it is the whole of the mapping, and promote/rollback
+ * cannot be executed with PROMOTION_ENABLED false — the same reason
+ * abortedBody is exported and tested directly.
+ */
+export function rollbackTargetError(type: string, runId: string, err: unknown): AppError {
+  if (err instanceof ManifestMissingError || (err as Error)?.name === "ManifestMissingError") {
+    // Message preserved verbatim: it is what the Admin has always shown for
+    // a runId that does not exist, and that case has not changed.
+    return new AppError(404, `No snapshot found for runId "${runId}" — cannot roll back.`);
+  }
+  if (err instanceof ManifestInvalidError || (err as Error)?.name === "ManifestInvalidError") {
+    const invalid = err as ManifestInvalidError;
+    return new AppError(
+      409,
+      `Cannot roll back ${type} to runId "${runId}": its snapshot manifest exists but ` +
+        `is unusable (${invalid.reason}). ${invalid.message} Nothing was changed.`,
+    );
+  }
+  return new AppError(
+    500,
+    `Cannot roll back ${type} to runId "${runId}": ${(err as Error)?.message ?? String(err)}. ` +
+      "Nothing was changed.",
+  );
 }
 
-// Rebuilds categories[].nations from a real scan of public/data/armaments/<id>/
-// — never from anything staged or assumed — so a newly promoted file (e.g.
-// naval/romania.json, added by an admin-authored record whose real nation
-// isn't one of the four legacy migration folders) is picked up automatically.
-// Existing category labels (and any other top-level manifest content, e.g.
-// the unrelated `nations` flag list) are preserved verbatim.
-async function regenerateArmamentsIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
-  const indexPath = path.join(targetDir, "index.json");
-  let current: ArmamentsIndex;
-  try {
-    current = JSON.parse(await fs.readFile(indexPath, "utf-8")) as ArmamentsIndex;
-  } catch {
-    current = { categories: DEFAULT_ARMAMENTS_CATEGORIES.map((c) => ({ ...c, nations: [] })) };
-  }
-
-  const categories = current.categories?.length
-    ? current.categories
-    : DEFAULT_ARMAMENTS_CATEGORIES.map((c) => ({ ...c, nations: [] }));
-
-  const rebuilt: ArmamentsIndexCategory[] = [];
-  for (const cat of categories) {
-    let entries: import("fs").Dirent[];
-    try {
-      entries = await fs.readdir(path.join(targetDir, cat.id), { withFileTypes: true });
-    } catch {
-      entries = [];
-    }
-    const nations = entries
-      .filter((e) => e.isFile() && e.name.endsWith(".json"))
-      .map((e) => e.name.slice(0, -".json".length))
-      .sort();
-    rebuilt.push({ ...cat, nations });
-  }
-
-  const newIndex: ArmamentsIndex = { ...current, categories: rebuilt };
-  const content = JSON.stringify(newIndex, null, 2);
-
-  // Skip the write entirely if nothing actually changed — avoids a
-  // no-op snapshot entry cluttering rollback history on every promotion.
-  let existingRaw: string | null = null;
-  try {
-    existingRaw = await fs.readFile(indexPath, "utf-8");
-  } catch {
-    // index.json doesn't exist yet — proceed with the write
-  }
-  if (existingRaw !== null && JSON.stringify(JSON.parse(existingRaw)) === JSON.stringify(newIndex)) {
-    return null;
-  }
-
-  return { relPath: "index.json", content };
-}
 
 // Generic helper — reads a JSON file from disk, returns null on any error.
-async function readJsonFile<T>(filePath: string): Promise<T | null> {
-  try { return JSON.parse(await fs.readFile(filePath, "utf-8")) as T; } catch { return null; }
-}
 
-// Regenerates personnel/index.json after a personnel promotion.
-// Preserves existing branch labels; detects which branch files are
-// actually present on disk so new branches appear automatically.
-async function regeneratePersonnelIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
-  const indexPath = path.join(targetDir, "index.json");
-  interface PersonnelIndex { branches: Array<{ id: string; label: string; file: string; [k: string]: unknown }>; [k: string]: unknown }
-  const current = await readJsonFile<PersonnelIndex>(indexPath);
-  const existing = new Map((current?.branches ?? []).map((b) => [b.id, b]));
 
-  const defaultBranches = [
-    { id: "army",         label: "Heer (Army)",        file: "" },
-    { id: "luftwaffe",    label: "Luftwaffe",           file: "" },
-    { id: "kriegsmarine", label: "Kriegsmarine",        file: "" },
-    { id: "waffen-ss",    label: "Waffen-SS",           file: "" },
-    { id: "foreign",      label: "Foreign Volunteers",  file: "" },
-  ];
 
-  const knownIds = new Set(defaultBranches.map((b) => b.id));
-  const branches = existing.size > 0 ? [...existing.values()] : defaultBranches;
 
-  // Discover any new branch files not yet in the index
-  let entries: import("fs").Dirent[];
-  try { entries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { entries = []; }
-  for (const e of entries) {
-    if (!e.isFile() || !e.name.endsWith(".json") || e.name === "index.json") continue;
-    const id = e.name.slice(0, -".json".length);
-    if (!existing.has(id) && !knownIds.has(id)) {
-      branches.push({ id, label: id, file: `/public/data/personnel/${e.name}` });
-    }
-  }
 
-  const rebuilt = branches.map((b) => ({
-    ...b,
-    file: `/public/data/personnel/${b.id}.json`,
-  }));
-
-  const newIndex = { ...(current ?? {}), branches: rebuilt };
-  const content = JSON.stringify(newIndex, null, 2);
-  const existingRaw = await readJsonFile<unknown>(indexPath);
-  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
-  return { relPath: "index.json", content };
-}
-
-// Regenerates letters/index.json after a letters promotion.
-async function regenerateLettersIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
-  const indexPath = path.join(targetDir, "index.json");
-  interface LettersIndex { collections: Array<{ id: string; label: string; file: string; [k: string]: unknown }>; [k: string]: unknown }
-  const current = await readJsonFile<LettersIndex>(indexPath);
-  const existing = new Map((current?.collections ?? []).map((c) => [c.id, c]));
-
-  let entries: import("fs").Dirent[];
-  try { entries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { entries = []; }
-
-  const collections = [...existing.values()];
-  const seenIds = new Set(collections.map((c) => c.id));
-
-  for (const e of entries) {
-    if (!e.isFile() || !e.name.endsWith(".json") || e.name === "index.json") continue;
-    const id = e.name.slice(0, -".json".length);
-    if (!seenIds.has(id)) {
-      const label = id.charAt(0).toUpperCase() + id.slice(1);
-      collections.push({ id, label, file: `/public/data/letters/${e.name}` });
-    } else {
-      // Update file path on existing entry (preserves label and other fields)
-      const c = existing.get(id)!;
-      existing.set(id, { ...c, file: `/public/data/letters/${e.name}` });
-    }
-  }
-
-  const rebuilt = collections.map((c) => ({ ...existing.get(c.id) ?? c }));
-  const newIndex = { ...(current ?? {}), collections: rebuilt };
-  const content = JSON.stringify(newIndex, null, 2);
-  const existingRaw = await readJsonFile<unknown>(indexPath);
-  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
-  return { relPath: "index.json", content };
-}
-
-// Regenerates campaigns/index.json after a campaigns promotion.
-// Scans theater subdirectories for campaign files to keep the campaigns[]
-// list in sync with what is actually on disk.
-async function regenerateCampaignsIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
-  const indexPath = path.join(targetDir, "index.json");
-  interface CampaignsIndex { theaters: Array<{ id: string; label: string; campaigns: string[]; [k: string]: unknown }>; [k: string]: unknown }
-  const current = await readJsonFile<CampaignsIndex>(indexPath);
-  const existing = new Map((current?.theaters ?? []).map((t) => [t.id, t]));
-
-  let topEntries: import("fs").Dirent[];
-  try { topEntries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { topEntries = []; }
-
-  const theaterDirs = topEntries.filter((e) => e.isDirectory());
-  const rebuilt = [];
-
-  for (const dir of theaterDirs) {
-    const theaterId = dir.name;
-    let files: import("fs").Dirent[];
-    try { files = await fs.readdir(path.join(targetDir, theaterId), { withFileTypes: true }); } catch { files = []; }
-    const campaigns = files
-      .filter((f) => f.isFile() && f.name.endsWith(".json"))
-      .map((f) => f.name.slice(0, -".json".length))
-      .sort();
-    const prev = existing.get(theaterId);
-    rebuilt.push({ ...prev, id: theaterId, label: prev?.label ?? theaterId, campaigns });
-  }
-
-  // Preserve theaters in the existing index that have no directory yet (empty theaters)
-  for (const [id, t] of existing) {
-    if (!rebuilt.find((r) => r.id === id)) rebuilt.push({ ...t, campaigns: t.campaigns ?? [] });
-  }
-
-  const newIndex = { ...(current ?? {}), theaters: rebuilt };
-  const content = JSON.stringify(newIndex, null, 2);
-  const existingRaw = await readJsonFile<unknown>(indexPath);
-  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
-  return { relPath: "index.json", content };
-}
-
-// Regenerates articles/index.json after an articles promotion.
-// Scans category subdirectories for article files; preserves existing labels.
-async function regenerateArticlesIndex(targetDir: string): Promise<{ relPath: string; content: string } | null> {
-  const indexPath = path.join(targetDir, "index.json");
-  interface ArticlesIndex { categories: Array<{ id: string; label: string; files: string[]; [k: string]: unknown }>; [k: string]: unknown }
-  const current = await readJsonFile<ArticlesIndex>(indexPath);
-  const existing = new Map((current?.categories ?? []).map((c) => [c.id, c]));
-
-  let topEntries: import("fs").Dirent[];
-  try { topEntries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { topEntries = []; }
-
-  const categoryDirs = topEntries.filter((e) => e.isDirectory());
-  const rebuilt = [];
-
-  for (const dir of categoryDirs) {
-    const categoryId = dir.name;
-    let files: import("fs").Dirent[];
-    try { files = await fs.readdir(path.join(targetDir, categoryId), { withFileTypes: true }); } catch { files = []; }
-    const filePaths = files
-      .filter((f) => f.isFile() && f.name.endsWith(".json"))
-      .map((f) => `/public/data/articles/${categoryId}/${f.name}`)
-      .sort();
-    const prev = existing.get(categoryId);
-    const label = prev?.label ?? (categoryId.charAt(0).toUpperCase() + categoryId.slice(1));
-    rebuilt.push({ ...prev, id: categoryId, label, files: filePaths });
-  }
-
-  for (const [id, c] of existing) {
-    if (!rebuilt.find((r) => r.id === id)) rebuilt.push({ ...c, files: c.files ?? [] });
-  }
-
-  const newIndex = { ...(current ?? {}), categories: rebuilt };
-  const content = JSON.stringify(newIndex, null, 2);
-  const existingRaw = await readJsonFile<unknown>(indexPath);
-  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
-  return { relPath: "index.json", content };
-}
-
-// Regenerates a flat index.json for Awards, Maps, or Political Documents
-// after a promotion. Scans the target directory for record files, reads
-// the key display fields from each, and rebuilds the records[] array.
-// The index is the only discovery mechanism for these types on the public site.
-async function regenerateFlatIndex(
-  targetDir: string,
-  pickFields: (raw: Record<string, unknown>) => Record<string, unknown>,
-): Promise<{ relPath: string; content: string } | null> {
-  const indexPath = path.join(targetDir, "index.json");
-  let entries: import("fs").Dirent[];
-  try { entries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { return null; }
-
-  const records: Record<string, unknown>[] = [];
-  for (const e of entries.sort((a, b) => a.name.localeCompare(b.name))) {
-    if (!e.isFile() || !e.name.endsWith(".json") || e.name === "index.json") continue;
-    try {
-      const raw = JSON.parse(await fs.readFile(path.join(targetDir, e.name), "utf-8")) as Record<string, unknown>;
-      records.push(pickFields(raw));
-    } catch { /* skip malformed files */ }
-  }
-
-  const newIndex = { records };
-  const content = JSON.stringify(newIndex, null, 2);
-  const existingRaw = await readJsonFile<unknown>(indexPath);
-  if (existingRaw !== null && JSON.stringify(existingRaw) === JSON.stringify(newIndex)) return null;
-  return { relPath: "index.json", content };
-}
-
-async function regenerateAwardsIndex(targetDir: string) {
-  return regenerateFlatIndex(targetDir, (r) => ({
-    id: r.id, recordId: r.recordId, title: r.title,
-    ...(r.nation ? { nation: r.nation } : {}),
-    ...(r.summary ? { summary: r.summary } : {}),
-    ...(r.image ? { image: r.image } : {}),
-  }));
-}
-async function regenerateMapsIndex(targetDir: string) {
-  return regenerateFlatIndex(targetDir, (r) => ({
-    id: r.id, recordId: r.recordId, title: r.title,
-    ...(r.theater ? { theater: r.theater } : {}),
-    ...(r.year ? { year: r.year } : {}),
-    ...(r.image ? { image: r.image } : {}),
-  }));
-}
-async function regeneratePoliticalDocsIndex(targetDir: string) {
-  return regenerateFlatIndex(targetDir, (r) => ({
-    id: r.id, recordId: r.recordId, title: r.title,
-    ...(r.date ? { date: r.date } : {}),
-    ...(r.summary ? { summary: r.summary } : {}),
-    ...(r.image ? { image: r.image } : {}),
-  }));
-}
 
 // Phase 8A: "other-axis" is a migration-source folder concept, not a
 // published-data concept — once a category's records are grouped by real
@@ -486,14 +322,24 @@ function categoriesInBatch(relPaths: string[]): Set<string> {
 // eastern-front.json, military.json). The new pipeline only writes to
 // {theater}/{slug}.json or {category}/{slug}.json subdirectories, so any
 // root-level .json file other than index.json is an orphaned aggregate.
-async function findOrphanedRootJsonFiles(targetDir: string): Promise<Map<string, null>> {
+//
+// Except that not every root-level file is pipeline output. The archive
+// manifests the importers READ also live at the root — campaigns.archive.json
+// and articles.archive.json — so an unqualified sweep would have deleted this
+// pipeline's own input. Which files are inputs is declared explicitly in
+// importer-inputs.ts and cross-checked against the loaders by its test,
+// rather than inferred from the filename here.
+export async function findOrphanedRootJsonFiles(
+  targetDir: string,
+  type: string,
+): Promise<Map<string, null>> {
   const toDelete = new Map<string, null>();
   let entries: import("fs").Dirent[];
   try { entries = await fs.readdir(targetDir, { withFileTypes: true }); } catch { return toDelete; }
   for (const entry of entries) {
-    if (entry.isFile() && entry.name.endsWith(".json") && entry.name !== "index.json") {
-      toDelete.set(entry.name, null);
-    }
+    if (!entry.isFile() || !entry.name.endsWith(".json")) continue;
+    if (isProtectedRootFile(type, entry.name)) continue;
+    toDelete.set(entry.name, null);
   }
   return toDelete;
 }
@@ -538,6 +384,316 @@ async function appendHistory(entry: PromotionHistoryEntry): Promise<void> {
   });
 }
 
+/**
+ * The current on-disk content of exactly the files a snapshot covers, in the
+ * same shape as a snapshot — so an operation about to apply that snapshot can
+ * record what it is about to overwrite and put it back if a later step fails.
+ *
+ * Shares readForSnapshot with the atomic apply rather than keeping its own
+ * read: this is the *only* record of the state a rollback is about to
+ * replace, so a read error silently recorded as `null` would make the
+ * recovery point itself an instruction to delete a file that is present.
+ * Only a confirmed ENOENT becomes null; anything else throws, before any
+ * write has happened.
+ */
+async function captureCurrentState(baseDir: string, snapshot: PromotionSnapshot): Promise<PromotionSnapshot> {
+  const out: PromotionSnapshot = {};
+  for (const key of Object.keys(snapshot)) {
+    const normalized = normalizeSnapshotKey(key);
+    out[normalized] = await readForSnapshot(resolveSnapshotPath(baseDir, key), normalized);
+  }
+  return out;
+}
+
+/**
+ * Captures what is now in public/data as a new version and makes it active.
+ *
+ * Deliberately ordered: content lands in public/data first, is then copied to
+ * an immutable version directory, and only then does the pointer flip. Until
+ * that last step readers keep being served the previous version in full, so
+ * the switch is atomic from a reader's point of view rather than a window in
+ * which some files are new and some are old.
+ *
+ * The outgoing version is claimed for the duration so a concurrent prune
+ * cannot delete content a page load is still resolving records against.
+ */
+async function captureAndActivateVersion(): Promise<string> {
+  const previous = await versionStore.readActiveVersion();
+  const release = previous ? versionStore.claimVersion(previous) : () => undefined;
+  try {
+    const version = await versionStore.createVersionFrom(paths.published.root);
+    await versionStore.writeActiveVersion(version);
+    return version;
+  } finally {
+    release();
+  }
+}
+
+/** Whether the pre-activation content really was put back. */
+export type RestorationOutcome = "verified" | "failed" | "not-attempted";
+
+/** Where a promotion gave up. Everything here is strictly before activation. */
+export type AbortStage = "content" | "index" | "recovery-metadata" | "activation";
+
+/**
+ * A promotion that did not activate, carrying both the failure that stopped
+ * it and what became of the content that had already been written.
+ *
+ * The compensating restore used to be `.catch(() => undefined)`, so a failed
+ * restore was invisible: the caller saw only the original error and would
+ * reasonably conclude nothing had changed, while public/data could be left
+ * part-promoted. Both errors are now preserved, and restoration is only
+ * described as succeeding when it has been checked file by file.
+ */
+export class PromotionAbortedError extends Error {
+  constructor(
+    message: string,
+    public readonly stage: AbortStage,
+    public readonly originalError: Error,
+    public readonly restoration: RestorationOutcome,
+    public readonly restorationError?: Error,
+    /** Files that did not match the snapshot after the restore. */
+    public readonly unverifiedPaths: string[] = [],
+    /**
+     * Files the inner atomic apply could not reverse on its own, before this
+     * layer attempted its own restore. Reported because they are the clearest
+     * signal that the directory was left mid-change.
+     */
+    public readonly reversalFailures: ReversalFailure[] = [],
+  ) {
+    super(message);
+    this.name = "PromotionAbortedError";
+  }
+
+  /** True when public/data may be in a part-promoted state. */
+  get requiresManualVerification(): boolean {
+    return this.restoration !== "verified";
+  }
+}
+
+/**
+ * Puts the snapshot back, then proves it by re-reading every file it covers
+ * and comparing against the snapshot's own bytes — including the null
+ * entries, which mean "this file did not exist and must not exist now".
+ *
+ * restoreFromSnapshot returning without throwing is not treated as proof: the
+ * point of this check is that the caller is told "restored" only when the
+ * bytes on disk actually say so.
+ */
+/**
+ * Compares what is on disk against a snapshot, file by file, and writes
+ * nothing.
+ *
+ * Both halves of a snapshot are checked: an entry with content must read back
+ * byte-for-byte, and a null entry must be ABSENT. Checking only the files
+ * that should exist would let a deletion that never happened pass as done.
+ *
+ * Extracted from restoreAndVerify so the same comparison can answer a second
+ * question — "did the restore actually land?" — without performing another
+ * restore to find out.
+ */
+export async function verifyAgainstSnapshot(
+  baseDir: string,
+  snapshot: PromotionSnapshot,
+): Promise<{ matched: boolean; mismatched: string[] }> {
+  const mismatched: string[] = [];
+  for (const [key, expected] of Object.entries(snapshot)) {
+    const normalized = normalizeSnapshotKey(key);
+    let actual: string | null;
+    try {
+      actual = await readForSnapshot(resolveSnapshotPath(baseDir, key), normalized);
+    } catch {
+      // Unreadable: its state could not be established, so it has not been
+      // verified. Counting it as absent would let an unreadable file match
+      // an expected `null` and be reported as restored — the one claim this
+      // function exists to make only when the bytes say so.
+      mismatched.push(normalized);
+      continue;
+    }
+    const matches = expected === null ? actual === null : actual === expected;
+    if (!matches) mismatched.push(normalized);
+  }
+  return { matched: mismatched.length === 0, mismatched };
+}
+
+export async function restoreAndVerify(
+  baseDir: string,
+  snapshot: PromotionSnapshot,
+): Promise<{ outcome: RestorationOutcome; error?: Error; mismatched: string[] }> {
+  try {
+    await restoreFromSnapshot(baseDir, snapshot);
+  } catch (err) {
+    return { outcome: "failed", error: err as Error, mismatched: [] };
+  }
+
+  const { matched, mismatched } = await verifyAgainstSnapshot(baseDir, snapshot);
+  return matched
+    ? { outcome: "verified", mismatched: [] }
+    : { outcome: "failed", mismatched };
+}
+
+/**
+ * Aborts a promotion: restore, verify, and throw an error that says plainly
+ * which of the three situations the operator is in.
+ */
+export async function abortBeforeActivation(
+  stage: AbortStage,
+  originalError: Error,
+  baseDir: string,
+  snapshot: PromotionSnapshot,
+  /** Reversal failures the inner atomic apply already reported. */
+  innerReversalFailures: ReversalFailure[] = [],
+): Promise<never> {
+  const result = await restoreAndVerify(baseDir, snapshot);
+
+  const inner = innerReversalFailures.length > 0
+    ? ` The write's own reversal had already failed for ${innerReversalFailures.length} file(s) ` +
+      `(${innerReversalFailures.map((f) => f.path).join(", ")}).`
+    : "";
+  const what = `${stage} step failed: ${originalError.message}${inner}`;
+  let consequence: string;
+  if (result.outcome === "verified") {
+    consequence =
+      `The promotion did not activate. Every file it had written was restored ` +
+      `and verified against the snapshot, so ${baseDir} is as it was before.`;
+  } else if (result.error) {
+    consequence =
+      `The promotion did not activate, and RESTORATION ALSO FAILED ` +
+      `(${result.error.message}). ${baseDir} may be part-promoted and REQUIRES ` +
+      `MANUAL VERIFICATION.`;
+  } else {
+    consequence =
+      `The promotion did not activate, and RESTORATION COULD NOT BE VERIFIED: ` +
+      `${result.mismatched.length} file(s) do not match the snapshot ` +
+      `(${result.mismatched.slice(0, 10).join(", ")}${result.mismatched.length > 10 ? ", …" : ""}). ` +
+      `${baseDir} REQUIRES MANUAL VERIFICATION.`;
+  }
+
+  throw new PromotionAbortedError(
+    `${what} ${consequence}`,
+    stage,
+    originalError,
+    result.outcome,
+    result.error,
+    result.mismatched,
+    innerReversalFailures,
+  );
+}
+
+/**
+ * Everything that happens once the content is already live.
+ *
+ * Separated out because the distinction it encodes is the whole point of R2:
+ * a failure here cannot mean "the promotion failed", because the promotion
+ * has already happened. These steps are reported, never thrown, and the
+ * status says "activated-with-warnings" rather than "success" so a caller
+ * cannot mistake a partial outcome for a clean one.
+ *
+ * Taking the two operations as arguments is what makes each boundary
+ * fault-injectable in tests while promotion itself stays disabled.
+ */
+export async function completeAfterActivation(args: {
+  runId: string;
+  /**
+   * What this operation did about rollback metadata. Passed in rather than
+   * assumed, because a promotion persists a new snapshot and a rollback does
+   * not — reporting "persisted" for both would describe an existing source
+   * snapshot as a newly written one.
+   */
+  recoveryMetadata: "persisted" | "not-applicable";
+  /**
+   * Whether a version pointer was actually flipped. Defaults to "activated",
+   * which is the case for every versioned type; a non-versioned type passes
+   * "not-applicable" because its content went live with the file write and no
+   * pointer exists to move.
+   */
+  activation?: "activated" | "not-applicable";
+  /**
+   * Retention pruning, or null when this operation captured no version.
+   *
+   * Passing null is what stops a non-versioned promotion consuming a
+   * retention slot: with no version of its own it has nothing to retain, and
+   * pruning anyway would evict a real version to make room for one that was
+   * never created.
+   */
+  prune: (() => Promise<unknown>) | null;
+  recordHistory: () => Promise<unknown>;
+}): Promise<{
+  steps: PromotionSteps;
+  warnings: string[];
+  status: "success" | "activated-with-warnings";
+}> {
+  const warnings: string[] = [];
+  const steps: PromotionSteps = {
+    contentApplied: true,
+    recoveryMetadata: args.recoveryMetadata,
+    activation: args.activation ?? "activated",
+    history: "recorded",
+    cleanup: args.prune ? "completed" : "not-applicable",
+  };
+
+  if (args.prune) {
+    try {
+      await args.prune();
+    } catch (err) {
+      steps.cleanup = "failed";
+      warnings.push(
+        `Version retention pruning failed after activation (${(err as Error).message}). ` +
+          "The content is live; old versions may not have been cleaned up.",
+      );
+    }
+  }
+
+  try {
+    await args.recordHistory();
+  } catch (err) {
+    steps.history = "failed";
+    warnings.push(
+      `History and audit logging failed after activation (${(err as Error).message}). ` +
+        "The content is live" +
+        (args.recoveryMetadata === "persisted"
+          ? ` and its rollback snapshot is stored under runId ${args.runId},`
+          : " (this operation wrote no rollback snapshot of its own),") +
+        // appendHistory writes the history file first and the audit row
+        // second, so either or both may be missing. Claiming the run is
+        // absent from the history would be wrong whenever only the audit
+        // row failed.
+        " but part or all of its history and audit record may be missing.",
+    );
+  }
+
+  return {
+    steps,
+    warnings,
+    status: warnings.length > 0 ? "activated-with-warnings" : "success",
+  };
+}
+
+/**
+ * Aborts before anything was written.
+ *
+ * applyFileChangesAtomically validates every key and reads the snapshot
+ * BEFORE it opens its try block, so a throw from that phase escapes
+ * unwrapped — and it escapes having touched nothing. Treating it like a
+ * mid-write failure demanded manual verification of a directory the code
+ * path proves is untouched, which spends the operator's trust on a false
+ * alarm. Reserved for exactly that case; anything that may have written
+ * goes through abortBeforeActivation and is verified.
+ */
+export function abortBeforeAnyWrite(
+  stage: AbortStage,
+  originalError: Error,
+  baseDir: string,
+): never {
+  throw new PromotionAbortedError(
+    `${stage} step failed: ${originalError.message} The promotion did not activate. ` +
+      `It failed before any file was written, so ${baseDir} is unchanged and needs no checking.`,
+    stage,
+    originalError,
+    "not-attempted",
+  );
+}
+
 export class PromotionService {
   async listHistory(type: string): Promise<PromotionHistoryEntry[]> {
     const historyFile = path.join(storageConfig.directories.publishHistory, `${type}.json`);
@@ -563,16 +719,86 @@ export class PromotionService {
       };
     }
 
+    // Everything from reading staging to the last housekeeping step runs
+    // under one lock. The boundary is not "the write" but "the whole
+    // operation", because the hazard is not a torn single file — the atomic
+    // apply already handles that — it is a *second* operation observing this
+    // one's intermediate tree. captureAndActivateVersion copies every
+    // versioned type out of public/data, so a concurrent promotion reaching
+    // capture while this one is mid-apply would freeze and then activate
+    // this one's half-written state. Pruning is inside for the same reason:
+    // it decides what to delete from the version list this operation is
+    // still adding to.
+    return publicationLock.run(() => this.promoteLocked(type, userId, runId));
+  }
+
+  private async promoteLocked(type: string, userId: string, runId: string): Promise<PromotionResult> {
     const staged = await listFilesRecursive(stagingDir(type));
     if (staged.size === 0) {
       throw new AppError(400, `No staged files found for type "${type}" — run a publish first.`);
     }
 
     const targetDir = publicDataDir(type);
-    const { promoted, snapshot } = await promoteFilesAtomically(targetDir, staged);
+
+    // ── Staging provenance, before the first public-content write ──
+    //
+    // Staging is never cleared, and writeStagedFilesAtomically leaves the
+    // directory untouched when a run generates nothing — so a directory can
+    // hold a superseded run's output while the publish report says the
+    // intended output was empty. That is the state awards, maps and
+    // political-docs are in today: each holds a temp-fixture-*.json from an
+    // earlier run, and promoting one would write the fixture into
+    // public/data where the index regenerator, which scans the directory
+    // rather than the report, would publish it as a real record.
+    //
+    // This runs before promoteFilesAtomically and therefore before every
+    // downstream mutation — orphan pruning, index regeneration, the
+    // snapshot manifest, version capture and activation. A refusal is
+    // routed through abortBeforeAnyWrite, so it carries the same "nothing
+    // was written and nothing needs checking" guarantee as any other
+    // pre-write abort.
+    try {
+      await assertStagingPromotable({
+        type,
+        provenanceFile: provenancePath(paths.staging.root, type),
+        staged,
+        // Recomputed through the publish service's own loader, so both
+        // sides of the comparison are produced by one implementation. A
+        // filesystem-backed type resolves this without touching the
+        // database at all.
+        recomputeSource: () => new PublishService().sourceFingerprint(type),
+      });
+    } catch (err) {
+      abortBeforeAnyWrite("content", err as Error, targetDir);
+    }
+
+    // Applying the staged files is the first write, and used to be the one
+    // boundary with no structured failure path: a throw here went straight
+    // out raw, so the caller could not tell an intact directory from a
+    // part-promoted one. The inner apply reverses what it managed to write
+    // and reports any reversal it could not do; this layer then restores
+    // against the same snapshot and verifies it file by file.
+    let promoted: string[];
+    let snapshot: PromotionSnapshot;
+    try {
+      ({ promoted, snapshot } = await promoteFilesAtomically(targetDir, staged));
+    } catch (err) {
+      if (err instanceof AtomicApplyError) {
+        throw await abortBeforeActivation(
+          "content", err.originalError, targetDir, err.snapshot, err.reversalFailures,
+        );
+      }
+      // Anything that is not an AtomicApplyError came from key validation or
+      // the snapshot read, both of which run before the first write.
+      abortBeforeAnyWrite("content", err as Error, targetDir);
+    }
 
     let filesAffected = promoted;
     let fullSnapshot = snapshot;
+    // Surfaced rather than logged and lost: a regenerated index that fell back
+    // to a default skeleton, or dropped an orphan, is something the operator
+    // needs told.
+    const indexNotes: string[] = [];
 
     // After every promotion, regenerate the section's index.json so that
     // any new files added to the directory are immediately discoverable by
@@ -580,18 +806,11 @@ export class PromotionService {
     // preserves existing labels and only writes if something actually changed.
     // If this step fails, the staged promotion above is rolled back too so no
     // partial state can remain.
-    const indexRegenerator: (() => Promise<{ relPath: string; content: string } | null>) | null =
-      type === "armaments"      ? () => regenerateArmamentsIndex(targetDir)      :
-      type === "personnel"      ? () => regeneratePersonnelIndex(targetDir)      :
-      type === "letters"        ? () => regenerateLettersIndex(targetDir)        :
-      type === "campaigns"      ? () => regenerateCampaignsIndex(targetDir)      :
-      type === "articles"       ? () => regenerateArticlesIndex(targetDir)       :
-      type === "awards"         ? () => regenerateAwardsIndex(targetDir)         :
-      type === "maps"           ? () => regenerateMapsIndex(targetDir)           :
-      type === "political-docs" ? () => regeneratePoliticalDocsIndex(targetDir)  :
-      // formations: index.json is static structural config (category paths never change) — no regeneration needed.
-      // nsdap: files are promoted as-is; no index.json to update.
-      null;
+    // Which fields are editorial and which are regenerated is declared per
+    // type in index-schema.ts, and applied by one merge engine. Types with no
+    // schema have no index to regenerate: formations/index.json is static
+    // structural config, and nsdap files are promoted as-is.
+    const indexRegenerator = schemaFor(type) ? () => regenerateIndex(type, targetDir) : null;
 
     if (indexRegenerator) {
       try {
@@ -609,7 +828,7 @@ export class PromotionService {
           // JSON files at the root of the data directory (e.g. eastern-front.json,
           // military.json). These were written by the old pipeline and are now
           // superseded by per-record files in {theater|category}/{slug}.json subdirs.
-          const orphanDeletions = await findOrphanedRootJsonFiles(targetDir);
+          const orphanDeletions = await findOrphanedRootJsonFiles(targetDir, type);
           if (orphanDeletions.size > 0) {
             const { applied: orphanApplied, snapshot: orphanSnapshot } = await applyFileChangesAtomically(targetDir, orphanDeletions);
             filesAffected = [...filesAffected, ...orphanApplied];
@@ -619,6 +838,7 @@ export class PromotionService {
 
         const indexChange = await indexRegenerator();
         if (indexChange) {
+          indexNotes.push(...indexChange.notes);
           const { applied: indexApplied, snapshot: indexSnapshot } = await applyFileChangesAtomically(
             targetDir,
             new Map([[indexChange.relPath, indexChange.content]]),
@@ -627,15 +847,68 @@ export class PromotionService {
           fullSnapshot = { ...fullSnapshot, ...indexSnapshot };
         }
       } catch (err) {
-        await restoreFromSnapshot(targetDir, fullSnapshot).catch(() => undefined);
-        throw err;
+        throw await abortBeforeActivation("index", err as Error, targetDir, fullSnapshot);
       }
     }
 
-    await persistSnapshotManifest(type, runId, fullSnapshot);
-    await appendHistory({ runId, action: "promote", type, timestamp: new Date().toISOString(), userId, filesAffected });
+    // ── Recovery metadata, BEFORE activation ──────────────────
+    // This manifest is the only way to roll this promotion back. It used to
+    // be written after the pointer flip, which meant a failure here left
+    // content live and permanently unrollbackable while the caller saw an
+    // error and assumed nothing had happened. Persisted first, a failure is
+    // simply a promotion that did not activate.
+    try {
+      await persistSnapshotManifest(type, runId, fullSnapshot);
+    } catch (err) {
+      throw await abortBeforeActivation("recovery-metadata", err as Error, targetDir, fullSnapshot);
+    }
 
-    return { runId, action: "promote", type, filesAffected, status: "success" };
+    // ── Activation ────────────────────────────────────────────
+    // For a versioned type, writeActiveVersion inside this call is the exact
+    // moment the new content becomes what readers are served. Everything
+    // above is reversible; nothing below may throw.
+    //
+    // Gated, because createVersionFrom captures VERSIONED_TYPES only. Run
+    // unconditionally it did real damage for nsdap: a version containing no
+    // nsdap content and no change to anything else was captured, activated,
+    // and then counted against "active plus three prior" — so three nsdap
+    // promotions evicted three versions that recorded actual published
+    // state, replacing the rollback window with duplicates. Skipping it is
+    // not a loss of safety for nsdap: its content is served live from
+    // public/data and was never covered by a version, and its rollback runs
+    // from the snapshot manifest persisted above, which is unchanged.
+    let version: string | undefined;
+    if (isVersionedType(type)) {
+      try {
+        version = await captureAndActivateVersion();
+      } catch (err) {
+        throw await abortBeforeActivation("activation", err as Error, targetDir, fullSnapshot);
+      }
+    }
+
+    // ── After activation: housekeeping only ───────────────────
+    // The content is live and recoverable from here on, so nothing below may
+    // throw — see completeAfterActivation. Both the reported activation and
+    // whether anything is pruned are derived from `version` rather than
+    // re-testing the type, so they cannot disagree with what actually ran.
+    const { steps, warnings, status } = await completeAfterActivation({
+      runId,
+      // Persisted above, before activation.
+      recoveryMetadata: "persisted",
+      activation: version ? "activated" : "not-applicable",
+      prune: version ? () => versionStore.pruneVersions() : null,
+      recordHistory: () => appendHistory({
+        runId, action: "promote", type, timestamp: new Date().toISOString(), userId, filesAffected,
+        ...(indexNotes.length > 0 ? { indexNotes } : {}),
+      }),
+    });
+
+    return {
+      runId, action: "promote", type, filesAffected, steps, status,
+      ...(version ? { version } : {}),
+      ...(indexNotes.length > 0 ? { indexNotes } : {}),
+      ...(warnings.length > 0 ? { warnings } : {}),
+    };
   }
 
   // Restores public/data/<type>/ to exactly the state it was in
@@ -653,21 +926,204 @@ export class PromotionService {
       };
     }
 
+    // Same lock as promote(), for the same reason: a rollback rewrites
+    // public/data and then captures it as a version, so it is a publication
+    // operation and must not interleave with another one — including a
+    // second rollback of a different type, which would otherwise be captured
+    // mid-restore.
+    return publicationLock.run(() => this.rollbackLocked(type, targetRunId, userId, runId));
+  }
+
+  private async rollbackLocked(
+    type: string,
+    targetRunId: string,
+    userId: string,
+    runId: string,
+  ): Promise<PromotionResult> {
+    // Validated in full before anything else happens: structure, entry
+    // types, key safety, checksum where there is one, and that it records at
+    // least one file. Every rejection here is strictly before the first read
+    // of public/data, let alone the first write, the pointer, the history
+    // file or the audit row.
     let snapshot: PromotionSnapshot;
     try {
-      snapshot = await loadSnapshotManifest(type, targetRunId);
-    } catch {
-      throw new AppError(404, `No snapshot found for runId "${targetRunId}" — cannot roll back.`);
+      ({ snapshot } = await readSnapshotManifest(manifestPath(type, targetRunId)));
+    } catch (err) {
+      throw rollbackTargetError(type, targetRunId, err);
     }
 
     const targetDir = publicDataDir(type);
-    const { restored } = await restoreFromSnapshot(targetDir, snapshot);
+    // What this rollback is about to overwrite, so a failure part-way can be
+    // put back and verified rather than left half-applied.
+    //
+    // Wrapped because this can now fail: a file that is present but
+    // unreadable stops the capture instead of being recorded as absent. That
+    // is strictly before the first write, so it is reported as such — and
+    // the read error is carried through rather than reduced to a generic
+    // 500, since which file and which errno is the whole diagnosis.
+    let beforeRollback: PromotionSnapshot;
+    try {
+      beforeRollback = await captureCurrentState(targetDir, snapshot);
+    } catch (err) {
+      abortBeforeAnyWrite("content", err as Error, targetDir);
+    }
 
-    await appendHistory({
-      runId, action: "rollback", type, timestamp: new Date().toISOString(), userId,
-      filesAffected: restored, restoredFromRunId: targetRunId,
+    // ── Durable recovery point, BEFORE the first destructive write ──
+    //
+    // beforeRollback existed only as a local, so a process that died during
+    // the restore left public/data part-way between two states with no
+    // record of either. Compensation that only runs when JavaScript catches
+    // an error is not recovery; it is a best case.
+    //
+    // Written to the ROLLBACK's own run directory, never over the target
+    // promotion's manifest.json — the writer refuses that filename, because
+    // overwriting it would destroy the very thing this rollback is reading.
+    //
+    // A failure here aborts before anything is written. That is deliberate
+    // and is not downgraded to a warning: proceeding would reinstate exactly
+    // the gap this closes, while reporting that it had been closed.
+    const runDir = snapshotDir(type, runId);
+    const activeVersionAtCapture = await versionStore.readActiveVersion();
+    let recoveryChecksum: string;
+    try {
+      ({ checksum: recoveryChecksum } = await writeRecoveryPoint(
+        recoveryPointPath(runDir),
+        { type, runId, restoredFromRunId: targetRunId, activeVersionAtCapture },
+        beforeRollback,
+      ));
+    } catch (err) {
+      abortBeforeAnyWrite("recovery-metadata", err as Error, targetDir);
+    }
+
+    // ── Write-start marker ────────────────────────────────────
+    //
+    // Written and flushed before the first destructive write, so the two are
+    // ordered on disk. What that ordering establishes depends on how a run
+    // ended, and the difference matters:
+    //
+    //   - Its PRESENCE means only that writes were about to begin. Never
+    //     that any landed, and never that the run failed or succeeded.
+    //   - Its ABSENCE means writes had not begun only where absence is
+    //     meaningful: a process killed with the filesystem intact, or a
+    //     platform that can flush a directory entry. On Windows it cannot
+    //     (fsync on a directory fails), and this marker lives in a different
+    //     directory from the content files, so after a power loss a lost
+    //     marker alongside completed writes is reachable. Absence is then
+    //     AMBIGUOUS, not proof.
+    //
+    // STATE_MEANING in rollback-recovery.ts is the full statement of this,
+    // and the inspection command reports the ambiguity where it applies.
+    try {
+      await writeWriteMarker(writeMarkerPath(runDir), {
+        type, runId, restoredFromRunId: targetRunId,
+        recoveryChecksum, fileCount: Object.keys(beforeRollback).length,
+      });
+    } catch (err) {
+      abortBeforeAnyWrite("recovery-metadata", err as Error, targetDir);
+    }
+
+    // ── First destructive write ───────────────────────────────
+    let restored: string[];
+    try {
+      restored = (await restoreFromSnapshot(targetDir, snapshot)).restored;
+    } catch (err) {
+      throw await abortBeforeActivation("content", err as Error, targetDir, beforeRollback);
+    }
+
+    // ── Verify the restore actually landed ────────────────────
+    //
+    // restoreFromSnapshot resolving is not evidence that the bytes are
+    // there. Every write is a rename, and a rename that resolves without
+    // moving anything — a stubbed or lying filesystem layer, a silently
+    // failing driver — leaves the content untouched while the call reports
+    // success. Taken on trust, that produced a rollback with
+    // status: "success", a filesAffected list, an activated version and a
+    // completion record, over content that was never written.
+    //
+    // So the disk is read back and compared against the validated target:
+    // every entry with content must match byte-for-byte, and every null
+    // entry must be ABSENT. Checking only the files that should exist would
+    // let a deletion that never happened pass as done.
+    const landed = await verifyAgainstSnapshot(targetDir, snapshot);
+    if (!landed.matched) {
+      // Routed through the same compensation path as a thrown write failure:
+      // beforeRollback is restored and byte-verified, and the resulting
+      // PromotionAbortedError carries the restoration outcome and any paths
+      // that could not be put back. Nothing is activated.
+      throw await abortBeforeActivation(
+        "content",
+        new Error(
+          `the restore reported success but ${landed.mismatched.length} of ` +
+            `${Object.keys(snapshot).length} file(s) do not match the target snapshot ` +
+            `(${landed.mismatched.slice(0, 10).join(", ")}` +
+            `${landed.mismatched.length > 10 ? ", …" : ""})`,
+        ),
+        targetDir,
+        beforeRollback,
+      );
+    }
+
+    // A rollback produces a new published state, so it becomes a new version
+    // rather than reactivating an old directory — the version history stays a
+    // forward-only record of what was live and when.
+    //
+    // Gated exactly as promote() is: rolling nsdap back would otherwise
+    // capture and activate a version holding none of what it changed, and
+    // spend a retention slot doing it.
+    let version: string | undefined;
+    if (isVersionedType(type)) {
+      try {
+        version = await captureAndActivateVersion();
+      } catch (err) {
+        throw await abortBeforeActivation("activation", err as Error, targetDir, beforeRollback);
+      }
+    }
+
+    // Activated.
+    //
+    // recoveryMetadata is "persisted", not "not-applicable". Until R8 Stage 3
+    // a rollback genuinely wrote no snapshot of its own and "not-applicable"
+    // was the truthful answer; it now writes a durable, checksummed
+    // pre-rollback recovery point before its first destructive write, under
+    // this same runId. Continuing to report "none written" would tell an
+    // operator that recovery is impossible when the artefact to recover from
+    // is sitting on disk.
+    const { steps, warnings, status } = await completeAfterActivation({
+      runId,
+      recoveryMetadata: "persisted",
+      activation: version ? "activated" : "not-applicable",
+      prune: version ? () => versionStore.pruneVersions() : null,
+      recordHistory: () => appendHistory({
+        runId, action: "rollback", type, timestamp: new Date().toISOString(), userId,
+        filesAffected: restored, restoredFromRunId: targetRunId,
+      }),
     });
 
-    return { runId, action: "rollback", type, filesAffected: restored, status: "success" };
+    // ── Completion record, last ───────────────────────────────
+    // Best-effort by design: the content is already live and recoverable, so
+    // this must not throw. Its absence understates how far the run got —
+    // inspection reports "writing", which is the safe direction to be wrong
+    // in — and is never read as proof that the rollback failed.
+    const allWarnings = [...warnings];
+    try {
+      await writeCompletion(completionPath(runDir), {
+        type, runId, restoredFromRunId: targetRunId,
+        activatedVersion: version ?? null, filesRestored: restored.length,
+      });
+    } catch (err) {
+      allWarnings.push(
+        `The rollback is complete and its content is live, but the completion record ` +
+          `could not be written (${(err as Error).message}). The recovery point and write ` +
+          `marker under runId ${runId} are unaffected; inspection will report this run as ` +
+          `"writing" rather than "completed".`,
+      );
+    }
+
+    return {
+      runId, action: "rollback", type, filesAffected: restored, steps,
+      status: allWarnings.length > 0 ? "activated-with-warnings" : status,
+      ...(version ? { version } : {}),
+      ...(allWarnings.length > 0 ? { warnings: allWarnings } : {}),
+    };
   }
 }

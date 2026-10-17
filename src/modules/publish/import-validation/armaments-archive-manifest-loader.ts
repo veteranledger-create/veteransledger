@@ -1,5 +1,5 @@
-import path from "path";
 import { BaseArchiveManifestLoader } from "./archive-manifest-loader";
+import { paths } from "../../../config/paths";
 
 // Armaments' implementation of the generic archive-loading framework
 // (archive-manifest-loader.ts). Everything mechanical — read, parse,
@@ -21,7 +21,7 @@ export interface ArmamentArchiveManifest {
   obsolete: ArmamentArchiveManifestObsoleteEntry[];
 }
 
-const ARMAMENTS_DIR = path.resolve(__dirname, "../../../../public/data/armaments");
+const ARMAMENTS_DIR = paths.repoInput.dir("armaments");
 
 export class ArmamentArchiveManifestLoader extends BaseArchiveManifestLoader<ArmamentArchiveManifest> {
   constructor() {

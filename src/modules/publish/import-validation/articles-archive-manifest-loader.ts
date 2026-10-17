@@ -1,5 +1,5 @@
-import path from "path";
 import { BaseArchiveManifestLoader } from "./archive-manifest-loader";
+import { paths } from "../../../config/paths";
 
 // Articles' implementation of the generic archive-loading framework
 // (archive-manifest-loader.ts). Everything mechanical — read, parse,
@@ -21,7 +21,7 @@ export interface ArticleArchiveManifest {
   obsolete: ArticleArchiveManifestObsoleteEntry[];
 }
 
-const ARTICLES_DIR = path.resolve(__dirname, "../../../../public/data/articles");
+const ARTICLES_DIR = paths.repoInput.dir("articles");
 
 export class ArticleArchiveManifestLoader extends BaseArchiveManifestLoader<ArticleArchiveManifest> {
   constructor() {

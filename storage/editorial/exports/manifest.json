@@ -1,0 +1,258 @@
+{
+  "createdAt": "2026-10-13T07:56:33.247Z",
+  "archive": "20261013T075633247Z.tar",
+  "archiveSha256": "5dd284fc882d61ed3f06996f71db89e490341f9f3721a7abac8a7fc2caa477ea",
+  "archiveBytes": 200192,
+  "fileCount": 49,
+  "totalBytes": 158881,
+  "files": [
+    {
+      "key": "about/about.json",
+      "sha256": "02a744e11de540e618efc71b6b13bdb3bbdb7707e8dad29e5e5051450e686cc3",
+      "bytes": 1424
+    },
+    {
+      "key": "about/mission.json",
+      "sha256": "2c35591e335e2a979deca1eb911b2218ce54ff8af3df86c4c00f821b279c68dd",
+      "bytes": 1785
+    },
+    {
+      "key": "about/sources.json",
+      "sha256": "3fbc099a143564790c5e25de659dca6559d1d0e9023137ee94ccc5b0720b3078",
+      "bytes": 3086
+    },
+    {
+      "key": "armaments/index.json",
+      "sha256": "31515401a0bad8bab15da0d32ddb9624f8becd5f4566e2cd2c89415567bc8a6a",
+      "bytes": 1610
+    },
+    {
+      "key": "articles/index.json",
+      "sha256": "885190bf79bfb929dc79d9d90f7b29280d60607d970539754e423d412d7a941c",
+      "bytes": 863
+    },
+    {
+      "key": "awards/index.json",
+      "sha256": "517fa068b1e37a49c921e14788f827b4465a651d85e2d388233890c050a155f4",
+      "bytes": 18
+    },
+    {
+      "key": "campaigns/index.json",
+      "sha256": "4adad5ce1a6055db2c3b02e59896d5897c1549e4b787a2b49893ecdd15608433",
+      "bytes": 1220
+    },
+    {
+      "key": "homepage.json",
+      "sha256": "428f13b76ae3596fef7b6caac00e2716180fd3c164afabacc12b6d2952b91548",
+      "bytes": 1750
+    },
+    {
+      "key": "legal/cookie-policy.json",
+      "sha256": "3e23f6e660a76bb442815bf0c5ed41d6c654998831db5cd8075237c3ae4d5202",
+      "bytes": 1402
+    },
+    {
+      "key": "legal/copyright-policy.json",
+      "sha256": "ba5aecbf2b76f602d3a94b553e055a2c76603a04303e96c679b173dfffa67168",
+      "bytes": 1701
+    },
+    {
+      "key": "legal/privacy-policy.json",
+      "sha256": "13511d4d33c8227751bfc5ab5d7c6acf00b6e76ccb9d5aba901d77775d3f7bb1",
+      "bytes": 1638
+    },
+    {
+      "key": "legal/terms-of-use.json",
+      "sha256": "1394667f0c05c3c62d140bddd93fea443afd07df7476bba7bc917173d9065956",
+      "bytes": 1875
+    },
+    {
+      "key": "letters/index.json",
+      "sha256": "e363ce8f285a61d5a623e594d5813989703a94b21f20f29a88f13c0911043552",
+      "bytes": 1007
+    },
+    {
+      "key": "maps/index.json",
+      "sha256": "517fa068b1e37a49c921e14788f827b4465a651d85e2d388233890c050a155f4",
+      "bytes": 18
+    },
+    {
+      "key": "navigation.json",
+      "sha256": "c50aeee7153bbedbf247320e68937a9b9dfb6d5196623eae78a6a6cb7b6d0b66",
+      "bytes": 10861
+    },
+    {
+      "key": "nsdap/glossary.json",
+      "sha256": "14cd3f97fe324fb14ef44f12ce390b4d49bba7ff9345a14cf184930c3f6f5752",
+      "bytes": 14230
+    },
+    {
+      "key": "nsdap/hitler/bio.json",
+      "sha256": "5ed2c63ab1e91f6b02ff58e9d2a829366ed8659414498c2361c26c20bef98f81",
+      "bytes": 2149
+    },
+    {
+      "key": "nsdap/hitler/chancellorship.json",
+      "sha256": "deffbfd343ffa9dc918d9623daf3e802410a6c1dc6a503bc83cde3e97df4b37c",
+      "bytes": 7796
+    },
+    {
+      "key": "nsdap/hitler/end.json",
+      "sha256": "921a896d75a3f2f00ebfb50a14926d0dfe4cc23b72a71d39cc010c385a281afd",
+      "bytes": 1838
+    },
+    {
+      "key": "nsdap/hitler/family.json",
+      "sha256": "e653badd54879a9435928827305df9108d584b4348205f213aa5bc96911d090f",
+      "bytes": 6293
+    },
+    {
+      "key": "nsdap/hitler/rise.json",
+      "sha256": "0e5b649df430e0111a9829b325611a4938bad1064b1bd3de970fc792cf966c66",
+      "bytes": 1952
+    },
+    {
+      "key": "nsdap/hitler/rule.json",
+      "sha256": "d2de5f0e9f0225abfd16bba51ea5a9f0247915891bf525446179657b52d95bba",
+      "bytes": 2231
+    },
+    {
+      "key": "nsdap/hitler/wartime.json",
+      "sha256": "e337c57b4819de526363fd2007b5aa730d89221f8f55d634a72d5d546c9f6f5a",
+      "bytes": 7378
+    },
+    {
+      "key": "nsdap/index.json",
+      "sha256": "33519bb472c8ff5febb434bc11e371e760639f890e6138ddebaf4f5641fedb9d",
+      "bytes": 2739
+    },
+    {
+      "key": "nsdap/overview.json",
+      "sha256": "e881d1d5d9cd8e02f1906c60c0e6ddb12031f1cf8835b824e464c5bfd3276194",
+      "bytes": 1902
+    },
+    {
+      "key": "nsdap/party/departments.json",
+      "sha256": "24cadb9f28c6d26b03631e858faf044d9e9cdec4dbe683e7ce2955cfe3f30113",
+      "bytes": 7700
+    },
+    {
+      "key": "nsdap/party/dissolution.json",
+      "sha256": "1e4b4346e7c00fdef3e635ff5fc6b529f2a6f4f42d9ccc7990274d090647d80a",
+      "bytes": 1154
+    },
+    {
+      "key": "nsdap/party/economy.json",
+      "sha256": "8218eaf6422bb860ab727d34e656a21a892023dd86091bcddef99d4da6cb99be",
+      "bytes": 1600
+    },
+    {
+      "key": "nsdap/party/foreign-policy.json",
+      "sha256": "cf2e96cafa6a466cf93c4151e2f36ee048dd54b72fefd4af5c5f55aed9874b22",
+      "bytes": 1311
+    },
+    {
+      "key": "nsdap/party/formation.json",
+      "sha256": "7bfb35daac2ecad855e1abbcd3123875a100c18d7c433726619bf285f30997e5",
+      "bytes": 1204
+    },
+    {
+      "key": "nsdap/party/leadership.json",
+      "sha256": "ec14fc2e90533055013ebe745113e7c6aa161bff9deba6f70c04ef9b12327b9d",
+      "bytes": 1665
+    },
+    {
+      "key": "nsdap/party/organizations.json",
+      "sha256": "0037eaf4205c26363108783abb7f0106b84b8b3e0e2d1083800cd0dfd5f2ced2",
+      "bytes": 2208
+    },
+    {
+      "key": "nsdap/party/programme.json",
+      "sha256": "7fd9403e17e0641a77c36e00a5c18141b0ef576fa798cef2dbc0e24678ac0d23",
+      "bytes": 6766
+    },
+    {
+      "key": "nsdap/party/religion.json",
+      "sha256": "4bdb16243e78461287d8787e8fcb0175d9d412b2fb7a2ca68cd3e80eff0ef128",
+      "bytes": 7055
+    },
+    {
+      "key": "nsdap/party/state-relations.json",
+      "sha256": "132b71ea538ea4a874ac4483a612e393b864c03986cddce2fa8244ce6f370fb1",
+      "bytes": 1310
+    },
+    {
+      "key": "nsdap/party/structure.json",
+      "sha256": "f717060c6c6eeeda5999389a483b8a2f6be3dc8e3e7497fbb02ba26b2eaccb76",
+      "bytes": 2383
+    },
+    {
+      "key": "nsdap/sources.json",
+      "sha256": "bd493ff440c6c0cc63b41058f4732b5e01b8afe3f799463b7cd08ac2b33e6473",
+      "bytes": 1076
+    },
+    {
+      "key": "nsdap/timeline.json",
+      "sha256": "8ab63f31ef8f91175cc558324eda9305f227dadad4e34d5b5ecf26958e6fed42",
+      "bytes": 7163
+    },
+    {
+      "key": "page-content.json",
+      "sha256": "85ed9397e180c3120b891d07ad57c4fcdedd51d5beb83aca56f55f5a2805b784",
+      "bytes": 4850
+    },
+    {
+      "key": "personnel/index.json",
+      "sha256": "a50d8d8805b3cbfee104a571448c847a5b77f90d9427d846d59ec2b4a46c624c",
+      "bytes": 587
+    },
+    {
+      "key": "political-docs/index.json",
+      "sha256": "517fa068b1e37a49c921e14788f827b4465a651d85e2d388233890c050a155f4",
+      "bytes": 18
+    },
+    {
+      "key": "site-policies/copyright-policy.json",
+      "sha256": "9869462c308e3b7a41ee8034906b8a30501ae0173053ad902ed3f9156ce5950c",
+      "bytes": 5147
+    },
+    {
+      "key": "site-policies/disclaimer.json",
+      "sha256": "d7e5a5c06503e46b3133fe70c2a6a9630303b663cfba6eb50344a23e66bcf989",
+      "bytes": 6298
+    },
+    {
+      "key": "site-policies/index.json",
+      "sha256": "75479bc08fc0414a4e9bdab602505a151ca9770f6713767f282c5cdc1d67b8b2",
+      "bytes": 593
+    },
+    {
+      "key": "site-policies/privacy-policy.json",
+      "sha256": "c4d5f662b63667b92b75e08c694185131266e4ac624925915791fef67eabfbe4",
+      "bytes": 5865
+    },
+    {
+      "key": "site-policies/removal-requests.json",
+      "sha256": "685799ad10bdc692883073d3e1713fc25db21a5840e928cf7a2328255ad9d5f3",
+      "bytes": 519
+    },
+    {
+      "key": "site-policies/terms-of-use.json",
+      "sha256": "f6938c8d151813df189d3a79a10cba95e5ff071fca0275e1f45d37401d303d44",
+      "bytes": 6247
+    },
+    {
+      "key": "site-settings.json",
+      "sha256": "ca9369a680ff42038550a27f6bc1ec845423baf0d3469a5e306c3b4ca44c687b",
+      "bytes": 1990
+    },
+    {
+      "key": "ui-strings.json",
+      "sha256": "52298bfa0aeca6dc732eebbb848f26470edde77ef149e584670911c652276f96",
+      "bytes": 5406
+    }
+  ],
+  "offVolume": false,
+  "archiveDirectory": "C:\\Users\\veter\\Downloads\\veteransledger\\storage\\editorial\\exports",
+  "note": "This archive is on the same storage volume as the content it contains. It protects against an accidental edit, not against loss of the volume. Copy it elsewhere for that."
+}

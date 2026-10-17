@@ -8,8 +8,9 @@ import { runLettersImportDryRun } from "./letters-import-check";
 import { toLetterJson, LetterJson } from "../generators/letters.generator";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
 import { rollbackImportRunWithCollections } from "./rollback";
+import { paths } from "../../../config/paths";
 
-const LETTERS_DIR = path.resolve(__dirname, "../../../../public/data/letters");
+const LETTERS_DIR = paths.repoInput.dir("letters");
 
 export type ImportMode = "insert-only" | "sync";
 

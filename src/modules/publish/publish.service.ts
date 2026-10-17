@@ -4,7 +4,18 @@ import { randomUUID } from "crypto";
 import prisma from "../../database/prisma";
 import { AppError } from "../../middleware/error.middleware";
 import { storageConfig } from "../../config/storage";
+import { paths } from "../../config/paths";
 import { PublishReport, RecordLike, ValidationIssue, ValidationStats } from "./publish.types";
+import { sha256 } from "../editorial-history/revision-store";
+import { stagingLock } from "./publication-lock";
+import {
+  SourceFingerprint,
+  fingerprintSource,
+  fingerprintOutput,
+  beginStagingRun,
+  completeStagingRun,
+  provenancePath,
+} from "./staging-provenance";
 import { checkLetterRecord } from "./validators/letters.conformance";
 import { toLetterJson, resolveCollectionKey } from "./generators/letters.generator";
 import { checkArmamentRecord } from "./validators/armaments.conformance";
@@ -84,6 +95,30 @@ function computeStats(issues: ValidationIssue[]): ValidationStats {
     else warningCount++;
   }
   return { errorCount, warningCount, issuesByField };
+}
+
+/**
+ * The part of a source row the fingerprint covers.
+ *
+ * `updatedAt` is what makes an edit visible; the row's presence or absence
+ * is what makes an insert or a delete visible. Related entities are folded
+ * in because personnel output renders a linked entity's slug and name, and
+ * a change there does not touch the personnel row's own updatedAt — so
+ * without this, editing a linked person would leave staged output stale
+ * with nothing to detect it.
+ */
+function projectRowForFingerprint(row: Record<string, unknown>): string {
+  const updatedAt = row.updatedAt instanceof Date
+    ? row.updatedAt.toISOString()
+    : String(row.updatedAt ?? "");
+
+  const relations = Array.isArray(row.relationsFrom)
+    ? (row.relationsFrom as Array<{ to?: { id?: unknown; slug?: unknown; name?: unknown } }>)
+      .map((r) => `${String(r.to?.id ?? "")}|${String(r.to?.slug ?? "")}|${String(r.to?.name ?? "")}`)
+      .sort()
+    : [];
+
+  return JSON.stringify([updatedAt, relations]);
 }
 
 export class PublishService {
@@ -258,7 +293,7 @@ export class PublishService {
   // Reads all NSDAP JSON files from public/data/nsdap/ for pipeline validation.
   // Returns a Map of relPath → raw JSON string.
   private async loadNsdapFiles(): Promise<Map<string, string>> {
-    const resolvedDir = path.resolve(process.cwd(), "public", "data", "nsdap");
+    const resolvedDir = paths.repoInput.dir("nsdap");
     const result = new Map<string, string>();
     const readDir = async (dir: string, base: string) => {
       let entries: import("fs").Dirent[];
@@ -311,6 +346,47 @@ export class PublishService {
     await prisma.auditLog.create({
       data: { userId, action, entity: "Record", entityId: report.runId, metadata: report as unknown as object },
     });
+  }
+
+  /**
+   * A digest of the authoritative source this type is generated from.
+   *
+   * Used twice, identically: once at publish time to record what the output
+   * was generated from, and again at promote time to confirm the source has
+   * not moved since. Computing both sides through the same function is what
+   * makes them comparable — a second, parallel projection would drift.
+   *
+   * The projection carries updatedAt, not just ids, so an update is caught;
+   * a deletion is caught by the row's absence and an insert by its
+   * presence. Each type's rows come from a single findMany, so the rows
+   * within one digest are a consistent read. No claim is made that the
+   * surrounding publish run is transactional — see staging-provenance.ts.
+   *
+   * nsdap is filesystem-backed and never touches the database here.
+   */
+  async sourceFingerprint(type: string): Promise<SourceFingerprint> {
+    this.assertSupported(type);
+
+    if (type === "nsdap") {
+      const files = await this.loadNsdapFiles();
+      return fingerprintSource(
+        "files",
+        [...files].map(([rel, content]) => [rel, sha256(content)] as const),
+      );
+    }
+
+    const rows = await this.loadSourceRows(type as SupportedType);
+    return fingerprintSource(
+      "database",
+      rows.map((row) => [String(row.id), projectRowForFingerprint(row)] as const),
+    );
+  }
+
+  /** The rows a type's generator reads, loaded exactly as it loads them. */
+  private async loadSourceRows(type: SupportedType): Promise<Array<Record<string, unknown>>> {
+    if (type === "personnel") return (await this.loadPublishedPersonnel()) as unknown as Array<Record<string, unknown>>;
+    if (type === "timeline") return (await this.loadPublishedTimeline()) as unknown as Array<Record<string, unknown>>;
+    return (await this.loadAndCheck(type)).records as unknown as Array<Record<string, unknown>>;
   }
 
   private async loadAndCheck(type: SupportedType): Promise<{ records: RecordLike[]; valid: RecordLike[]; issues: ValidationIssue[] }> {
@@ -514,7 +590,29 @@ export class PublishService {
   // rather than half-overwritten. Same guarantee for every onboarded type.
   async run(type: string, userId: string): Promise<PublishReport> {
     this.assertSupported(type);
+
+    // Serialised per type. A run is a read-modify-write across the
+    // provenance record and the staging directory, and two runs of the same
+    // type could otherwise interleave those steps — ending with one run's
+    // directory beside another run's record. The provenance gate refuses
+    // that mismatch, so nothing unsafe was promotable, but the type would be
+    // stranded until re-published for no better reason than two clicks.
+    //
+    // Per type, not global: another type's publish touches a different
+    // directory and a different record. Takes no other lock — see
+    // stagingLock's note on why that is what keeps this deadlock-free.
+    return stagingLock.run(type, () => this.runLocked(type, userId));
+  }
+
+  private async runLocked(type: string, userId: string): Promise<PublishReport> {
     const runId = randomUUID();
+
+    // Taken BEFORE the generator reads its source, so a write landing
+    // mid-run is in neither the fingerprint nor reliably in the output, and
+    // the next promote recomputes, sees the difference and refuses. Taking
+    // it afterwards would make that race fail open instead.
+    const source = await this.sourceFingerprint(type);
+    const startedAt = new Date().toISOString();
 
     let recordsChecked: number;
     let validCount: number;
@@ -553,13 +651,34 @@ export class PublishService {
       filesToWrite = this.generateFiles(type as SupportedType, res.valid);
     }
 
-    const outDir = path.join(storageConfig.directories.publishStaging, type);
+    const outDir = paths.staging.dir(type);
+
+    const provenanceFile = provenancePath(paths.staging.root, type);
 
     let staged: string[] = [];
     let status: "success" | "failed" = "success";
     let error: string | undefined;
     try {
+      // Invalidate first. From here until completion there is no record
+      // that validates anything, so a crash between replacing the directory
+      // and recording the result refuses rather than letting the previous
+      // run's record authorise content it never described.
+      //
+      // The cost is deliberate: if the write below fails, a previously
+      // promotable directory becomes unpromotable until re-published.
+      // Failing closed on availability is the trade.
+      await beginStagingRun(provenanceFile, { type, runId, source, startedAt });
+
       staged = await writeStagedFilesAtomically(outDir, filesToWrite);
+
+      // Only now — the directory is in place and is exactly what
+      // filesToWrite describes. An empty intended set is recorded as such:
+      // writeStagedFilesAtomically leaves the directory untouched in that
+      // case, and recording {} is what lets promote notice the difference.
+      await completeStagingRun(provenanceFile, {
+        type, runId, source, startedAt,
+        intendedFiles: fingerprintOutput(filesToWrite),
+      });
     } catch (err) {
       status = "failed";
       error = (err as Error).message;

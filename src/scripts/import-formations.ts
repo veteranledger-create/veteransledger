@@ -10,6 +10,7 @@
 import fs from "fs/promises";
 import path from "path";
 import prisma from "../database/prisma";
+import { paths } from "../config/paths";
 
 // Maps section key to the relative path within public/data/formations/
 const SECTION_FILES: Array<{ section: string; file: string }> = [
@@ -39,7 +40,7 @@ async function readFormations(filePath: string): Promise<unknown[]> {
 }
 
 export async function run() {
-  const baseDir = path.resolve(process.cwd(), "public", "data", "formations");
+  const baseDir = paths.repoInput.dir("formations");
   let created = 0;
   let skipped = 0;
   let errors = 0;

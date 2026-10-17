@@ -1,9 +1,33 @@
 import { Request, Response, NextFunction } from "express";
 import { PublishService } from "./publish.service";
-import { PromotionService } from "./promotion.service";
+import { PromotionService, PromotionAbortedError } from "./promotion.service";
 
 const service = new PublishService();
 const promotionService = new PromotionService();
+
+/**
+ * The client-facing form of an aborted promotion.
+ *
+ * PromotionAbortedError is not an AppError, so the generic error handler
+ * would reduce it to "Internal server error" — and in production drop the
+ * explanation entirely, throwing away the one thing the operator needs:
+ * whether the files were put back. Messages only; never a stack or a raw
+ * error object.
+ */
+export function abortedBody(action: "promote" | "rollback", type: string, err: PromotionAbortedError) {
+  return {
+    status: "failed" as const,
+    action,
+    type,
+    stage: err.stage,
+    error: err.originalError.message,
+    detail: err.message,
+    restoration: err.restoration,
+    requiresManualVerification: err.requiresManualVerification,
+    unverifiedPaths: err.unverifiedPaths,
+    reversalFailures: err.reversalFailures,
+  };
+}
 
 export class PublishController {
   async validate(req: Request, res: Response, next: NextFunction): Promise<void> {
@@ -33,6 +57,10 @@ export class PublishController {
       const confirmPromotion = req.body?.confirmPromotion as true;
       res.json(await promotionService.promote(req.params.type, req.user!.userId, confirmPromotion));
     } catch (err) {
+      if (err instanceof PromotionAbortedError) {
+        res.status(500).json(abortedBody("promote", req.params.type, err));
+        return;
+      }
       next(err);
     }
   }
@@ -43,6 +71,10 @@ export class PublishController {
       const confirmRollback = req.body?.confirmRollback as true;
       res.json(await promotionService.rollback(req.params.type, runId, req.user!.userId, confirmRollback));
     } catch (err) {
+      if (err instanceof PromotionAbortedError) {
+        res.status(500).json(abortedBody("rollback", req.params.type, err));
+        return;
+      }
       next(err);
     }
   }

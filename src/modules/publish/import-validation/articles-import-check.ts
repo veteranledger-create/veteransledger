@@ -1,15 +1,15 @@
-import path from "path";
 import { checkArticleRecord } from "../validators/articles.conformance";
 import { ValidationIssue } from "../publish.types";
 import { toCandidateRecord } from "./article-record-mapper";
 import { loadArticlesArchive, LoadedArticlesArchive } from "./articles-archive-loader";
 import { targetExists } from "./cross-reference-lookup";
+import { paths } from "../../../config/paths";
 
 // Never imports Prisma, never writes inside public/data/ — only reads the
 // real articles/*.json files (plus other content types, read-only, for
 // related_records existence checks) and returns a report. Same structural
 // guarantee as letters-import-check.ts.
-const PUBLIC_DATA_DIR = path.resolve(__dirname, "../../../../public/data");
+const PUBLIC_DATA_DIR = paths.repoInput.root;
 
 export interface ImportIssue extends ValidationIssue {
   category: string;

@@ -10,8 +10,9 @@ import { toFormationJson } from "../generators/formations.generator";
 import { checkFormationRecord } from "../validators/formations.conformance";
 import { writeStagedFilesAtomically } from "../atomic-stage-writer";
 import { rollbackImportRun as sharedRollbackImportRun } from "./rollback";
+import { paths } from "../../../config/paths";
 
-const FORMATIONS_DIR = path.resolve(__dirname, "../../../../public/data/formations");
+const FORMATIONS_DIR = paths.repoInput.dir("formations");
 
 export type ImportMode = "insert-only" | "sync";
 
